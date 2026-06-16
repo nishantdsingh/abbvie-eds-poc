@@ -5,6 +5,7 @@
   max-width: none;
   width: 100%;
   background: transparent;
+  margin: var(--spacing-00);
 }
 
 /* AbbVie Hero — White overlap panel on hero image */
