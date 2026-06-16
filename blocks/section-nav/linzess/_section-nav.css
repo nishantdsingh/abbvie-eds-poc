@@ -17,13 +17,17 @@
   --section-nav-dropdown-bg: var(--background-color);
   --section-nav-dropdown-text: var(--linz-dark-purple);
   --section-nav-radius: var(--linz-rounded-corner);
-  --section-nav-mobile-width: 70vw;
+  --section-nav-mobile-width: 80vw;
 
   border-bottom: none;
   border-radius: var(--section-nav-radius);
   margin: 0 auto;
   overflow: visible;
   width: var(--section-nav-mobile-width);
+
+  /* Mobile pill: dark-purple bar background (matches live). Desktop (>=744px)
+     re-asserts its own background below. */
+  background-color: var(--section-nav-bg);
 }
 
 /* ── Links (mobile base) ─────────────────────────────────────────────── */
@@ -62,11 +66,14 @@
 .section-nav.sticky.is-stuck {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: var(--shadow-section-nav-stuck);
+  box-shadow: none;
   left: 50%;
   right: auto;
   transform: translateX(-50%);
   width: var(--section-nav-mobile-width);
+  z-index: 5;
+  top: 0;
+  background-color: var(--section-nav-bg);
 }
 
 /* ── Mobile menu: hide hamburger + generic toggle label ──────────────── */
@@ -202,12 +209,15 @@
     width: 100%;
   }
 
-  /* Restore base full-width stuck behaviour (undo mobile transform/width) */
+  /* Restore base full-width stuck behaviour (undo mobile transform/width).
+     Keep the wrapper transparent — the purple pill lives on the nav element,
+     so the wrapper must NOT inherit the mobile stuck background. */
   .section-nav.sticky.is-stuck {
     left: 0;
     right: 0;
     transform: none;
     width: 100%;
+    background-color: transparent;
   }
 
   /* Content-width dark-purple pill, centered via margin: 0 auto from base */
@@ -215,7 +225,7 @@
     background-color: var(--section-nav-bg);
     border-radius: var(--section-nav-radius);
     max-width: fit-content;
-    padding: 0 var(--spacing-08);
+    padding: 0;
   }
 
   /* Flatten top corners of pill when stuck — live-site pattern */
@@ -224,9 +234,11 @@
     border-top-right-radius: 0;
   }
 
-  /* Links: 600 base weight */
+  /* Links: 16px / 800 base weight (matches live) / line-height 50px for vertical centering */
   .section-nav a {
-    font-weight: var(--font-weight-semibold);
+    font-size: 16px;
+    font-weight: var(--font-weight-extra-bold);
+    line-height: 50px;
     opacity: 1;
   }
 
@@ -273,8 +285,10 @@
     border-bottom: none;
     color: var(--section-nav-text);
     display: inline-block;
+    font-size: 16px;
     font-weight: var(--font-weight-semibold);
-    padding: var(--spacing-12) var(--spacing-24);
+    line-height: 50px;
+    padding: 0 25px;
     text-align: unset;
     width: auto;
   }

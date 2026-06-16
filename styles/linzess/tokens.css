@@ -210,6 +210,13 @@
   --linz-heading2-font-size: var(--font-size-h2);
   --linz-body-font-size: var(--font-size-body);
 
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
+
   /* ---- Hero: Linzess-specific ---- */
   --hero-behind-nav-min-height: 52rem;
   --hero-behind-nav-min-height-desktop: 62rem;

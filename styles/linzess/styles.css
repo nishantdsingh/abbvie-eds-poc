@@ -1,5 +1,4570 @@
-@import 'tokens.css';
-@import 'fonts.css';
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* ========================================================================
+   AbbVie Design Tokens
+   ======================================================================== */
+
+/** TODO  - Fix ESlint Issue */
+/* stylelint-disable */
+:root {
+  /* PX to REM Conversion */
+  --base-size: 10;
+  --px-to-rem: calc(1rem / var(--base-size));
+  --direction-multiplier: 1;
+
+  /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+  --background-color: #fff;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color: #0066f5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-border-color: #e1e1e1;
+  --footer-text-color: #071d49;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49;
+  --text-label-color: #061e47;
+  --text-color-gray: #808080;
+  --strong-heading: #0066f5;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-medium-light: #e4e4e4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+  --color-gray-900: #25282a;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', Helvetica, Arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', Helvetica, Arial, sans-serif;
+  --heading-font-family-bold: 'F37 Lineca Medium', Helvetica, Arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --roboto-small-font-family: 'Roboto Small', Helvetica, Arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', Helvetica, Arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', Helvetica, Arial, sans-serif;
+  --roboto-light-font-family: 'Roboto Light', Helvetica, Arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+
+  /* Granular font sizes */
+  --font-size-06: 0.6rem;
+  --font-size-07: 0.7rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-30: 3rem;
+  --font-size-32: 3.2rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-48: 4.8rem;
+  --font-size-50: 5rem;
+  --font-size-56: 5.6rem;
+  --font-size-64: 6.4rem;
+  --font-size-80: 8rem;
+  --icon-size-08: 8px;
+  --icon-size-010: 10px;
+  --icon-size-02: 2px;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* Nav heights */
+  --nav-height: 88px;
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+  --header-height-mobile: var(--nav-height-mobile);
+
+  /* Breakpoints: see styles/tokens.css @custom-media (--bp-tablet, --bp-desktop, --bp-wide). */
+
+  /* Font Weights */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing */
+  --spacing-01: 0.1rem;
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-07: 0.7rem;
+  --spacing-075: 0.75rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-13: 1.3rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-28: 2.8rem;
+  --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
+  --spacing-32: 3.2rem;
+  --spacing-33: 3.3rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-41: 4.1rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-49: 4.9rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-62: 6.2rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-88: 8.8rem;
+  --spacing-90: 9rem;
+  --spacing-96: 9.6rem;
+  --spacing-100: 10rem;
+  --spacing-108: 10.8rem;
+  --spacing-110: 11rem;
+  --spacing-118: 11.8rem;
+  --spacing-120: 12rem;
+  --spacing-140: 14rem;
+  --spacing-124: 12.4rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-190: 19rem;
+  --spacing-192: 19.2rem;
+  --spacing-250: 25rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-312: 31.2rem;
+  --spacing-320: 32rem;
+  --spacing-368: 36.8rem;
+  --spacing-375: 37.5rem;
+  --spacing-380: 38rem;
+  --spacing-400: 40rem;
+  --spacing-420: 42rem;
+  --spacing-480: 48rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-12: 1.2rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-100: 10rem;
+  --spacing-225: 2.25rem;
+  --spacing-025: 0.25rem;
+  --spacing-055: 0.55rem;
+  --spacing-00: 0;
+
+  /* negative spacing variables */
+  --spacing-n15: -1.5rem;
+  --spacing-n40: -4rem;
+  --spacing-n50: -5rem;
+  --spacing-n20: -2rem;
+  --spacing-n80: -8rem;
+  --spacing-n64: -6.4rem;
+  --spacing-n44: -4.4rem;
+  --spacing-n48: -4.8rem;
+  --spacing-n55: -5.5rem;
+  --spacing-n112: -11.2rem;
+
+  /* Line Heights */
+  --line-height-00: 0;
+  --line-height-1: 1rem;
+  --line-height-16: 1.6rem;
+  --line-height-18: 1.8rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-38: 3.8rem;
+  --line-height-40: 4rem;
+  --line-height-44: 4.4rem;
+  --line-height-45: 4.5rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-84: 8.4rem;
+  --line-height-52: 5.2rem;
+  --line-height-58: 5.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-04: 0.4rem;
+  --gap-10: 1rem;
+  --gap-15: 1.5rem;
+  --gap-16: 1.6rem;
+  --gap-18: 1.8rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-40: 4rem;
+  --gap-42: 4.2rem;
+
+  /* Letter spacing */
+  --letter-spacing-n03: -.03rem;
+  --letter-spacing-tight: -0.02rem;
+  --letter-spacing-tight-xl: -2.4px;
+  --letter-spacing-tight-lg: -1.68px;
+  --letter-spacing-tight-md: -1.28px;
+  --letter-spacing-wide-04: 0.04rem;
+  --letter-spacing-wide-06: 0.06rem;
+  --letter-spacing-wide-08: 0.08rem;
+  --letter-spacing-wide-56: 0.56px;
+  --letter-spacing-wide-84: 0.84px;
+  --letter-spacing-wide-86: 0.86px;
+  --letter-spacing-wide-96: 0.96px;
+  --letter-spacing-wide-72: 0.72px;
+
+  /* Scroll margin */
+  --scroll-margin-heading: 40px;
+
+  /* Icon height */
+  --icon-height-20: 2rem;
+  --icon-width-20: 2rem;
+  --icon-height: 2.4rem;
+  --icon-width: 2.4rem;
+
+  /* Hero */
+  --border-top-radius: 3.2rem;
+  --border-top-radius-medium: 2.4rem;
+  --hero-section-height: 12rem;
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-color: #479ff8;
+  --hero-button-hover-color: var(--container-border-color);
+  --hero-image-container-height: 21.6rem;
+  --hero-tall-image-container-height: 25.6rem;
+  --hero-profile-container-height: 12rem;
+  --hero-landing-container-height: 41.8rem;
+
+  /* ---- Hero: Overlay Colors ---- */
+  --hero-overlay-dark-90: rgb(0 0 0 / 90%);
+  --hero-overlay-dark-70: rgb(0 0 0 / 70%);
+  --hero-overlay-dark-60: rgb(0 0 0 / 60%);
+  --hero-overlay-dark-55: rgb(0 0 0 / 55%);
+  --hero-overlay-dark-45: rgb(0 0 0 / 45%);
+
+  /* ---- Hero: Overlay Gradients ---- */
+  --hero-overlay-gradient-full: linear-gradient(to right, rgb(0 0 0 / 60%) 0%, transparent 60%);
+  --hero-overlay-gradient-compact: linear-gradient(to right, rgb(0 0 0 / 55%) 0%, transparent 65%);
+  --hero-overlay-gradient-centered: rgb(0 0 0 / 45%);
+
+  /* ---- Hero: Text on Dark ---- */
+  --color-text-on-dark-90: rgb(255 255 255 / 90%);
+  --color-text-on-dark-80: rgb(255 255 255 / 80%);
+  --color-text-on-dark-60: rgb(255 255 255 / 60%);
+
+  /* ---- Hero: Indication Banner ---- */
+  --hero-indication-bg: rgb(0 0 0 / 70%);
+
+  /* ---- Hero: Variant min-heights (mobile base) ---- */
+  /* All values in rem (1rem = 10px at 62.5% html font-size) for WCAG 1.4.4 compliance */
+  --hero-full-min-height: 70rem;
+  --hero-full-min-height-mobile: 40rem;
+  --hero-full-min-height-desktop: 80rem;
+  --hero-compact-min-height: 28rem;
+  --hero-compact-min-height-mobile: 20rem;
+  --hero-compact-min-height-tablet: 34rem;
+  --hero-centered-min-height: 60rem;
+  --hero-centered-min-height-mobile: 40rem;
+  --hero-video-min-height: 70rem;
+  --hero-video-min-height-mobile: 40rem;
+  --hero-video-min-height-desktop: 80rem;
+  --hero-solid-min-height: 45rem;
+  --hero-solid-min-height-mobile: 30rem;
+  --hero-solid-min-height-desktop: 50rem;
+  --hero-solid-img-max-height: 40rem;
+  --hero-split-min-height: 50rem;
+  --hero-split-img-max-height: 45rem;
+
+  /* ---- Hero: Content max-widths ---- */
+  --hero-content-max-width-full: 55%;
+  --hero-content-max-width-full-desktop: 50%;
+  --hero-content-max-width-compact: 70%;
+  --hero-content-max-width-solid: 60%;
+  --hero-content-max-width-centered: 800px;
+  --hero-content-max-width-mobile: 90%;
+
+  /* ---- Hero: Multilayer animation ---- */
+  --hero-layer-transition: opacity 0.6s ease;
+  --hero-layer-opacity-hidden: 0;
+  --hero-layer-opacity-visible: 1;
+
+  /* ---- Hero: Solid fallback bg ---- */
+  --hero-solid-bg-fallback: var(--color-gray-900, #25282a);
+
+  /* Line Clamp */
+
+  --line-clamp-2: 2;
+
+  /* grid column start */
+  --grid-column-start-2: 2;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* Border Radius */
+  --border-radius-s: 0.2rem;
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+  --border-radius-l: 8rem;
+  --border-radius-00: 0;
+  --border-00: 0;
+
+  /* border */
+  --border-01: 1px;
+  --border-02: 2px;
+
+  /* Border Radius for Styled Sections */
+  --border-top-left-radius: 3.2rem;
+  --border-top-left-radius-40: 4rem;
+  --border-top-left-radius-tablet:6.4rem;
+  --border-top-left-radius-desktop:8rem;
+  --border-top-left-radius-24: 2.4rem;
+
+  /* Opacity */
+  --opacity-00: 0;
+  --opacity-07: 0.7;
+  --opacity-1: 1;
+  --opacity-2: 2;
+
+  /* Section/container widths) */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --content-max-width-wide: 144rem;
+
+  /* accordion */
+  --accordion-icon-width: 0.7rem;
+  --accordion-icon-height: 0.7rem;
+  --accordion-border-02: var(--spacing-02);
+  --accordion-border-01: var(--spacing-01);
+
+  /* text container */
+  --text-container-li-width: var(--spacing-06);
+  --text-container-li-height: var(--spacing-06);
+
+  /* Icons / UI */
+  --icon-size: 2.4rem;
+
+  /* Text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Story card */
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+   /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-4 : 4;
+
+  /* order */
+  --order-0: 0;
+  --order-1: 1;
+  --order-2: 2;
+  --order-n1: -1;
+
+  /* Form */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+  --semi-transparent-color: #071d49b2;
+
+  --letter-spacing-06: .06em;
+  --letter-spacing-neg-03: -.03em;
+  --letter-spacing-neg-02: -.02em;
+}
+
+/* Responsive token adjustments */
+@media (width >= 744px) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --border-top-radius-medium: 4rem;
+    --hero-image-container-height: 36.8rem;
+    --hero-tall-image-container-height: 41.6rem;
+    --hero-landing-container-height: 57.6rem;
+  }
+}
+
+@media (width >= 1024px) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-image-container-height: 44.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+    --hero-landing-container-height: 81rem;
+  }
+}
+
+/* Fallback fonts */
+@font-face {
+  font-family: roboto-fallback;
+  size-adjust: 100.06%;
+  ascent-override: 95%;
+  src: local('Arial');
+}
+
+/* ========================================================================
+   Base Styles
+   ======================================================================== */
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  font-family: var(--body-font-family);
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  display: none;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  text-rendering: optimizespeed;
+}
+
+body.appear {
+  display: block;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+header {
+  height: var(--header-height-mobile);
+}
+
+@media (width >= 1024px) {
+  header {
+    height: var(--header-height);
+  }
+}
+
+header .header,
+footer .footer {
+  visibility: hidden;
+}
+
+header .header[data-block-status="loaded"],
+footer .footer[data-block-status="loaded"] {
+  visibility: visible;
+}
+
+/* Breadcrumbs are now inside the hero block, not the header */
+
+/* ========================================================================
+   Typography
+   ======================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family-bold);
+  font-weight: var(--font-weight-800);
+  margin-bottom: var(--spacing-24);
+  color: var(--text-color);
+}
+
+h1 { font-size: var(--font-size-30); line-height: var(--line-height-34); }
+h2 { font-size: var(--font-size-28); line-height: var(--line-height-32); }
+h3 { font-size: var(--font-size-26); line-height: var(--line-height-30); }
+h4 { font-size: var(--font-size-24); line-height: var(--line-height-28); }
+h5 { font-size: var(--font-size-20); line-height: var(--line-height-24); }
+h6 { font-size: var(--font-size-28); line-height: var(--line-height-32); }
+
+@media (width >= 744px) {
+  h1 { font-size: var(--font-size-40); line-height: var(--line-height-44); }
+  h2 { font-size: var(--font-size-36); line-height: var(--spacing-40); }
+  h3 { font-size: var(--font-size-32); line-height: var(--line-height-36); }
+  h4 { font-size: var(--font-size-30); line-height: var(--line-height-34); }
+  h5 { font-size: var(--font-size-28); line-height: var(--line-height-32); }
+  h6 { font-size: var(--font-size-28); line-height: var(--line-height-32); }
+}
+
+@media (width >= 1024px) {
+  h1 { font-size: var(--font-size-64); line-height: var(--line-height-68); letter-spacing: -0.02em; }
+  h2 { font-size: var(--font-size-56); line-height: var(--spacing-64); letter-spacing: -0.02em; }
+  h3 { font-size: var(--heading-font-size-l); line-height: var(--line-height-46); }
+  h4 { font-size: var(--font-size-40); line-height: var(--line-height-44); }
+  h5 { font-size: var(--font-size-32); line-height: var(--line-height-36); }
+  h6 { font-size: var(--font-size-24); line-height: var(--line-height-28); }
+}
+
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+a,
+li,
+dd,
+dt {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  margin-bottom: 0;
+}
+
+p {
+  margin-bottom: 3rem;
+}
+
+p:not(.button-container):last-child {
+  margin-bottom: 0;
+}
+
+#stories-behind-science p:not(.button-container):last-child {
+  margin-bottom: var(--spacing-20);
+}
+
+@media (width >= 744px) {
+  p,
+  a,
+  li,
+  dd,
+  dt {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+@media (width >= 1024px) {
+  p,
+  a,
+  li,
+  dd,
+  dt {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+  }
+}
+
+code,
+pre {
+  font-size: var(--body-font-size-s);
+}
+
+pre {
+  padding: 1.6rem;
+  border-radius: .8rem;
+  background-color: var(--highlight-background-color);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/* ========================================================================
+   Links
+   ======================================================================== */
+
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* ========================================================================
+   Buttons — AbbVie outlined style
+   ======================================================================== */
+
+a.button:any-link,
+button {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  margin: 12px 0;
+  border: 2px solid transparent;
+  border-radius: 2.4em;
+  padding: 0.5em 1.2em;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--link-color);
+  color: var(--background-color);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.button:hover,
+a.button:focus,
+button:hover,
+button:focus {
+  /* background-color: var(--highlight-dark-background-color); */
+  color: var(--background-color);
+  cursor: pointer;
+}
+
+button:disabled,
+button:disabled:hover {
+  background-color: var(--light-color);
+  cursor: unset;
+}
+
+a.button.secondary,
+button.secondary {
+  background-color: unset;
+  border: 1px solid currentcolor;
+  color: var(--text-color);
+}
+
+/* ========================================================================
+   Images
+   ======================================================================== */
+
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* ========================================================================
+   Icons
+   ======================================================================== */
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
+}
+
+/* ========================================================================
+   Sections — Layout
+   ======================================================================== */
+
+main > .section {
+  max-width: 133rem;
+  margin-bottom: 8rem;
+}
+
+main > .section:first-of-type {
+  margin-top: 0;
+}
+
+main > .section > div {
+  max-width: 100%;
+}
+
+main > .section.columns-container.section-wide, main > .section.section-wide, main > .section-wide{
+    max-width: var(--content-max-width-wide);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (width >= 744px) {
+  main > .section {
+    margin-left: 7rem;
+    margin-right: 7rem;
+  }
+
+  main > .section-wide .hero > div:first-child{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section {
+    margin-left: 5.5rem;
+    margin-right: 5.5rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main > .section {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--content-max-width);
+  }
+
+  main > .section.embed-container:not(.navy) {
+    max-width: var(--content-max-width);
+  }
+
+  main > .section.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight) {
+    padding-left: var(--spacing-55);
+    padding-right: var(--spacing-55);
+    margin: 0 auto;
+  }
+
+  main > .section.accordion-container:not(.navy) {
+    max-width: var(--content-max-width);
+  }
+}
+
+/* AbbVie signature: rounded top-left corner on styled sections */
+main .section.navy-overlap,
+main .section.navy,
+main .section.purple {
+  border-top-left-radius: var(--border-top-radius);
+  overflow: hidden;
+}
+
+/* ========================================================================
+   Section Metadata — Background Styles
+   ======================================================================== */
+
+/* navy-overlap: Light blue/lavender background (hero overlap area) */
+main .section.navy-overlap {
+  background-color: var(--highlight-background-color);
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  padding: 4rem 0 8rem;
+}
+
+@media (width >= 744px) {
+  main .section.navy-overlap {
+    /* margin-left: 7rem;
+    margin-right: 7rem; */
+    padding: 5.6rem 0 8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.navy-overlap {
+    /* margin-left: 5.5rem;
+    margin-right: 5.5rem; */
+    padding: 8rem 0;
+  }
+}
+
+@media (width >= 1440px) {
+  main .section.navy-overlap {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* dark: Navy blue background with white text */
+main .section.dark {
+  background-color: var(--color-navy-dark);
+  color: var(--background-color);
+  margin: 0 auto;
+  padding: 4rem 3.5rem 8rem;
+  max-width: var(--content-max-width-wide);;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--background-color);
+}
+
+main .section.dark p,
+main .section.dark li,
+main .section.dark a:not(.button) {
+  color: var(--background-color);
+}
+
+main .section.dark a.button:any-link {
+  border: 1px solid var(--background-color);
+  padding: 1.6rem 4rem;
+  color: var(--background-color);
+}
+
+main .section.dark a.button:hover {
+  background-color: var(--background-color);
+  color: var(--color-navy-dark);
+}
+
+@media (width >= 744px) {
+  main .section.dark {
+    padding: 5.6rem 7rem 8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.dark {
+    padding: 8rem 5.5rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main .section.dark > div {
+    max-width: 133rem;
+    margin: 0 auto;
+  }
+}
+
+/* navy: Navy blue background with white text */
+main .section.navy {
+  background-color: var(--color-navy-dark);
+  color: var(--background-color);
+  margin: 0 auto;
+  padding: 4rem 3.5rem 8rem;
+  max-width: var(--content-max-width-wide);
+}
+
+main .section.navy h1,
+main .section.navy h2,
+main .section.navy h3,
+main .section.navy h4,
+main .section.navy h5,
+main .section.navy h6 {
+  color: var(--background-color);
+}
+
+main .section.navy p,
+main .section.navy li,
+main .section.navy a:not(.button) {
+  color: var(--background-color);
+}
+
+main .section.navy a.button:any-link {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+main .section.navy a.button:hover {
+  background-color: var(--background-color);
+  color: var(--color-navy-dark);
+}
+
+@media (width >= 744px) {
+  main .section.navy {
+    padding: 5.6rem 7rem 8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.navy {
+    padding: 8rem 5.5rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main .section.navy > div {
+    max-width: 133rem;
+    margin: 0 auto;
+  }
+}
+
+/* purple: Purple background with white text */
+main .section.purple {
+  background-color: var(--color-purple-primary);
+  color: var(--background-color);
+  margin: 0 auto;
+  padding: 4rem 3.5rem 8rem;
+  max-width: var(--content-max-width-wide);
+}
+
+main .section.purple h1,
+main .section.purple h2,
+main .section.purple h3,
+main .section.purple h4,
+main .section.purple h5,
+main .section.purple h6 {
+  color: var(--background-color);
+}
+
+main .section.purple p,
+main .section.purple li,
+main .section.purple a:not(.button) {
+  color: var(--background-color);
+}
+
+main .section.purple a.button:any-link {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+main .section.purple a.button:hover {
+  background-color: var(--background-color);
+  color: var(--color-purple-primary);
+}
+
+@media (width >= 744px) {
+  main .section.purple {
+    padding: 5.6rem 7rem 8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.purple {
+    padding: 8rem 5.5rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main .section.purple > div {
+    max-width: 133rem;
+    margin: 0 auto;
+  }
+}
+
+/* light: Light gray background */
+main .section.light {
+  background-color: var(--footer-background-color);
+  margin: 0 auto;
+  padding: var(--spacing-40) var(--spacing-35);
+  max-width: var(--content-max-width-wide);
+}
+
+/* highlight: Light lavender background */
+main .section.highlight {
+  background-color: var(--highlight-background-color);
+  margin: 0 auto;
+  padding: var(--spacing-40) var(--spacing-35) var(--spacing-16) ;
+  max-width: var(--content-max-width-wide);
+  margin-bottom: var(--spacing-32);
+}
+
+@media (width >= 744px) {
+  main .section.light,
+  main .section.highlight {
+    padding: 5.6rem 7rem 1.6rem;
+  }
+
+  main .section.highlight {
+  margin-bottom: var(--spacing-80);
+}
+}
+
+@media (width >= 1024px) {
+  main .section.light,
+  main .section.highlight {
+    padding: 8rem 5.5rem 5.8rem;
+  }
+}
+
+/* light-blue: Light lavender/blue background */
+main .section.light-blue {
+  background-color: var(--highlight-background-color);
+  margin: 0 auto;
+  padding: 4rem 3.5rem;
+  max-width: var(--content-max-width-wide);
+}
+
+@media (width >= 744px) {
+  main .section.light-blue {
+    padding: 5.6rem 7rem 1.6rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.light-blue {
+    padding: 8rem 5.5rem 5.8rem;
+  }
+}
+
+/* Text CTA style for accordion section default content */
+main .section.accordion-container > .default-content-wrapper .button-container a.button {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: var(--spacing-16) 0 var(--spacing-24);
+  color: var(--highlight-dark-background-color);
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  text-transform: uppercase;
+  letter-spacing: 0.84px;
+  line-height: var(--line-height-20);
+  display: inline-flex;
+  align-items: center;
+  white-space: normal;
+  overflow: visible;
+  transition: color 0.2s ease;
+}
+
+main .section.accordion-container > .default-content-wrapper .button-container a.button::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--highlight-dark-background-color);
+  border-right: 2px solid var(--highlight-dark-background-color);
+  transform: rotate(45deg);
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+main .section.accordion-container > .default-content-wrapper .button-container a.button:hover {
+  color: var(--link-hover-color);
+}
+
+main .section.accordion-container > .default-content-wrapper .button-container a.button:hover::after {
+  border-color: var(--link-hover-color);
+}
+/* CTA highlight section — h2 matches original 48px */
+main .section.highlight:not([data-background]) > .default-content-wrapper h2 {
+  font-size: var(--heading-font-size-l);
+}
+
+/* ========================================================================
+   Section Width Variants (AEM Container System)
+   Maps original AEM `cmp-container-*` widths to EDS section-metadata styles.
+   Authoring: add "style: <variant>" in section-metadata block.
+   ======================================================================== */
+
+/*
+ * full-width: Content extends full viewport (like cmp-container-full-width)
+ * Inner content breaks out of section padding to fill viewport.
+ */
+main .section.full-width {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+main .section.full-width > div {
+  max-width: 133rem;
+  margin: 0 auto;
+  padding: 4rem 3.5rem;
+}
+
+@media (width >= 744px) {
+  main .section.full-width > div {
+    padding: 5.6rem 7rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.full-width > div {
+    padding: 8rem 5.5rem;
+  }
+}
+
+/*
+ * narrow: Narrower content area (~110rem max, like cmp-container-x-large)
+ * Good for focused reading content.
+ */
+main .section.narrow > div {
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+/*
+ * medium-width: Medium content area (~90rem max, like cmp-container-medium)
+ * Good for centered FAQ, forms, single-column text.
+ */
+main .section.medium-width > div {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/*
+ * centered: Centers all text content inside the section.
+ */
+main .section.centered {
+  text-align: center;
+}
+
+/* ========================================================================
+   Section Border Radius Variants
+   Maps AEM radius modifiers to EDS section-metadata styles.
+   ======================================================================== */
+
+/*
+ * radius-large: 8rem border-top-left-radius (like AEM large-radius → 80px)
+ */
+main .section.radius-large {
+  border-top-left-radius: var(--spacing-80);
+}
+
+/*
+ * radius-medium: 4rem border-top-left-radius (like AEM medium-radius → 40px)
+ */
+main .section.radius-medium {
+  border-top-left-radius: var(--spacing-40);
+}
+
+/*
+ * radius-small: 1.6rem border-top-left-radius (like AEM small-radius → 16px)
+ */
+
+main .section.radius-small{
+  border-top-left-radius: var(--spacing-16);
+}
+
+/*
+ * radius-default: 2rem border-top-left-radius (like AEM default-radius)
+ */
+main .section.radius-default {
+  border-top-left-radius: var(--spacing-20);
+}
+
+/*
+ * none: Remove border-top-left-radius (author selected "None" for Border Radius)
+ */
+main .section.none {
+  /* border-top-left-radius: var(--spacing-00); */
+}
+
+/* ========================================================================
+   Section Modifier Variants
+   Maps AEM container modifiers to EDS section-metadata styles.
+   ======================================================================== */
+
+/*
+ * overlap: Section overlaps the previous section (like AEM overlap-predecessor)
+ * Creates the white panel overlapping the hero image effect.
+ */
+main .section.overlap {
+  position: relative;
+  z-index: 1;
+  margin-top: -5rem;
+}
+
+@media (width >= 744px) {
+  main .section.overlap {
+    margin-top: -8rem;
+  }
+
+  /*
+ * no-padding: Removes section padding (like AEM no-padding)
+ */
+main .section.no-padding, main > .section.no-padding.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight) {
+  padding: 0;
+}
+}
+
+@media (width >= 1024px) {
+  main .section.overlap {
+    margin-top: -11.2rem;
+  }
+}
+
+
+
+/*
+ * no-margin: Removes section bottom margin (like AEM no-bottom-margin)
+ */
+main .section.no-margin {
+  margin-bottom: 0;
+}
+
+main .section.no-bottom-margin {
+  margin-bottom: var(--spacing-00);
+}
+
+/*
+ * compact: Reduces section vertical padding
+ */
+main .section.compact {
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+}
+
+@media (width >= 1024px) {
+  main .section.compact {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* ========================================================================
+   Navy Overlap Section Effect
+   ======================================================================== */
+
+/* Empty navy-overlap section creates visual overlap with hero */
+main .section.navy-overlap:empty {
+  padding: 0;
+  min-height: 0;
+}
+
+/* Navy-overlap without hero block: navy bar + white overlap card effect */
+main .section.navy-overlap:not(.hero-container) {
+  background-color: var(--background-color);
+  position: relative;
+  padding-top: 10rem;
+  padding-bottom: 4rem;
+}
+
+main .section.navy-overlap:not(.hero-container)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 14rem;
+  background-color: var(--color-navy-dark);
+  border-top-left-radius: 4rem;
+  z-index: 0;
+}
+
+main .section.navy-overlap:not(.hero-container) > .default-content-wrapper {
+  position: relative;
+  z-index: 1;
+  background-color: var(--background-color);
+  border-top-left-radius: 4rem;
+  padding: 3rem 3rem 1rem;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+@media (width >= 744px) {
+  main .section.navy-overlap:not(.hero-container) {
+    padding-top: 12rem;
+  }
+
+  main .section.navy-overlap:not(.hero-container)::before {
+    height: 16rem;
+  }
+
+  main .section.navy-overlap:not(.hero-container) > .default-content-wrapper {
+    padding: 4rem 5rem 1rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.navy-overlap:not(.hero-container) {
+    padding-top: 12rem;
+  }
+
+  main .section.navy-overlap:not(.hero-container)::before {
+    height: 18rem;
+  }
+
+  main .section.navy-overlap:not(.hero-container) > .default-content-wrapper {
+    padding: 4rem 6rem 1rem;
+  }
+}
+
+/* Standalone breadcrumbs (pages without hero block) */
+.section-breadcrumbs {
+  margin-bottom: var(--spacing-32);
+}
+
+.section-breadcrumbs ol {
+  display: flex;
+  flex-flow: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+
+.section-breadcrumbs ol li {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  letter-spacing: 0.06em;
+  line-height: var(--line-height-20);
+  text-transform: uppercase;
+  color: var(--text-color);
+  display: flex;
+  align-items: flex-end;
+}
+
+.section-breadcrumbs ol li:not(:last-child)::after {
+  content: '\203A';
+  padding-left: 0.8rem;
+  font-size: var(--font-size-30);
+  font-weight: var(--font-weight-700);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.section-breadcrumbs ol li a {
+  color: var(--text-color);
+  font-weight: var(--font-weight-700);
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.section-breadcrumbs ol li[aria-current] {
+  color: var(--color-gray-dark);
+  font-weight: var(--font-weight-700);
+}
+
+/* ========================================================================
+   Section Background Image (from section-metadata "background" property)
+   Applied via JS: decorateSectionBackgrounds() sets inline background-image.
+   ======================================================================== */
+main .section[data-background] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Highlight section with background image — stats cards variant */
+main .section.highlight[data-background] {
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  max-width: var(--content-max-width-wide);
+}
+
+main .section.highlight[data-background] .columns > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+main .section.highlight[data-background] .columns.block.columns-4-cols > div {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: unset;
+}
+
+@media (width >= 744px) {
+  main .section.highlight[data-background] .columns.block.columns-4-cols > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.highlight[data-background] .columns.block.columns-4-cols > div {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+main .section.highlight[data-background] .columns > div > div {
+  background-color: var(--background-color);
+  padding: 2.4rem 3.2rem;
+}
+
+main .section.highlight[data-background] .columns h2 {
+  font-size: var(--font-size-14);
+  font-family: var(--roboto-bold-font-family);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 3.8rem;
+  text-transform: var(--font-uppercase);
+  letter-spacing: var(--letter-spacing-06);
+  line-height: var(--line-height-20);
+}
+
+/* main .section.highlight[data-background] .columns p {
+
+} */
+
+main .section.highlight[data-background] .columns p strong {
+  color: var(--strong-heading);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-650);
+  font-size: var(--font-size-56);
+  letter-spacing: var(--letter-spacing-neg-03);
+  line-height: var(--line-height-64);
+}
+
+@media (width >= 744px) {
+  main .section.highlight[data-background] .columns p strong {
+    font-size: var(--font-size-64);
+    letter-spacing: var(--letter-spacing-neg-02);
+    line-height: var(--line-height-68);
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.highlight[data-background] .columns p strong {
+    font-size: var(--font-size-80);
+    letter-spacing: var(--letter-spacing-neg-03);
+    line-height: var(--line-height-84);
+  }
+}
+
+main .section.highlight[data-background] .columns p {
+  font-size: var(--font-size-12);
+  color: var(--text-color);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-16);
+  margin-bottom: var(--spacing-00);
+}
+
+@media (width >= 744px) {
+  main .section.highlight[data-background] .columns p {
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-20);
+    margin-bottom: var(--spacing-00);
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.highlight[data-background] .columns p {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-20);
+    margin-bottom: var(--spacing-00);
+  }
+}
+
+@media (width < 744px) {
+  main .section.highlight[data-background] .columns > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width >= 744px) {
+  main .section.highlight[data-background] {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    min-height: 36.8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main .section.highlight[data-background] {
+    margin-left: 0rem;
+    margin-right: 0rem;
+    min-height: 44.8rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main .section.highlight[data-background] {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ========================================================================
+   Mixed-Content Section Background Overrides
+   When section-metadata groups multiple blocks with different visual
+   treatments, override section bg to white and apply per-wrapper
+   backgrounds to match the original site layout.
+   ======================================================================== */
+
+/* --- Section: hero + columns + cards + quote (originally "dark") --- */
+
+/* Light blue base background; hero wrapper overrides to white */
+main > .section.dark.cards-container {
+  background-color: var(--highlight-background-color);
+  color: var(--text-color);
+}
+
+/* Content-series dark section: light gray (#F4F4F4) matches original AbbVie */
+main > .section.dark.cards-container:not(.hero-container) {
+  background-color: var(--color-gray-light);
+}
+
+/* Content-series card tiles: light blue on gray background */
+main > .section.dark.cards-container:not(.hero-container) .cards > ul > li {
+  background-color: var(--highlight-background-color);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+main > .section.dark.cards-container:not(.hero-container) .cards .cards-card-body {
+  padding: 0 1.6rem 1.6rem;
+}
+
+main > .section.dark.cards-container :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-color);
+}
+
+main > .section.dark.cards-container :is(p, li) {
+  color: var(--text-color);
+}
+
+main > .section.dark.cards-container a:not(.button) {
+  color: var(--text-color);
+}
+
+main > .section.dark.cards-container a.button:any-link {
+  border-color: var(--highlight-dark-background-color);
+  color: var(--highlight-dark-background-color);
+}
+
+main > .section.dark.cards-container a.button:hover {
+  background-color: var(--highlight-dark-background-color);
+  color: var(--background-color);
+}
+
+/* Hero wrapper: full-bleed, transparent so section white bg shows through */
+
+/* Original AEM: large-radius cmp-container-full-width (80px radius) */
+main > .section.dark.cards-container .hero-wrapper {
+  background-color: var(--background-color);
+  margin: -4rem -3.5rem 0;
+  padding: 0;
+  border-top-left-radius: var(--spacing-32);
+  overflow: hidden;
+}
+
+@media (width >= 744px) {
+  main > .section.dark.cards-container .hero-wrapper {
+    margin: -5.6rem -7rem 0;
+    border-top-left-radius: var(--spacing-64);
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.dark.cards-container .hero-wrapper {
+    margin: -8rem -5.5rem 0;
+    border-top-left-radius: var(--spacing-80);
+  }
+}
+
+/* Quote band: full-width background image with quote overlay */
+main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) {
+  position: relative;
+  margin: 4rem -3.5rem 0;
+  padding: 0;
+  line-height: 0;
+  overflow: hidden;
+  border-top-left-radius: var(--spacing-32);
+  max-width: none;
+}
+
+main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2 / 3;
+}
+
+/* Semi-transparent overlay on the background image */
+main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(7 29 73 / 70%);
+  pointer-events: none;
+}
+
+main > .section.dark.cards-container .quote-wrapper {
+  position: relative;
+  margin: 0 -3.5rem -8rem;
+  padding: 0 3.5rem 4rem;
+  margin-top: -34rem;
+  z-index: 1;
+  max-width: none;
+  background-color: transparent;
+}
+
+main > .section.dark.cards-container .quote-wrapper .quote {
+  background: none;
+}
+
+main > .section.dark.cards-container .quote-wrapper :is(p, em) {
+  color: var(--background-color);
+}
+
+main > .section.dark.cards-container .quote-wrapper blockquote::before {
+  color: var(--background-color);
+}
+
+@media (width >= 744px) {
+  main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) {
+    margin: 4rem -7rem 0;
+    border-top-left-radius: var(--spacing-64);
+  }
+
+  main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) img {
+    aspect-ratio: 3 / 2;
+  }
+
+  main > .section.dark.cards-container .quote-wrapper {
+    margin: 0 -7rem -8rem;
+    margin-top: -30rem;
+    padding: 0 7rem 5.6rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) {
+    margin: 4rem -5.5rem 0;
+    border-top-left-radius: var(--spacing-80);
+  }
+
+  main > .section.dark.cards-container .default-content-wrapper:has(+ .quote-wrapper) img {
+    aspect-ratio: 5 / 2;
+  }
+
+  main > .section.dark.cards-container .quote-wrapper {
+    margin: 0 -5.5rem -8rem;
+    margin-top: -36rem;
+    padding: 6rem 5.5rem 8rem;
+    padding-left: 50%;
+  }
+}
+
+/* Columns + Cards area: light blue background matching original */
+main > .section.dark.cards-container .columns-wrapper {
+  background-color: var(--highlight-background-color);
+  margin: 0 -3.5rem;
+  padding: 4rem 3.5rem;
+  max-width: none;
+}
+
+main > .section.dark.cards-container .cards-wrapper {
+  background-color: var(--highlight-background-color);
+  margin: 0 -3.5rem;
+  padding: 2.4rem 3.5rem;
+  max-width: none;
+}
+
+@media (width >= 744px) {
+  main > .section.dark.cards-container .columns-wrapper {
+    margin: 0 -7rem;
+    padding: 4rem 7rem;
+  }
+
+  main > .section.dark.cards-container .cards-wrapper {
+    margin: 0 -7rem;
+    padding: 2.4rem 7rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.dark.cards-container .columns-wrapper {
+    margin: 0 -5.5rem;
+    padding: 4rem 5.5rem;
+  }
+
+  main > .section.dark.cards-container .cards-wrapper {
+    margin: 0 -5.5rem;
+    padding: 2.4rem 5.5rem;
+  }
+}
+
+/* Cards bottom padding before quote section */
+main > .section.dark.cards-container .cards-wrapper:last-of-type {
+  padding-bottom: 4rem;
+}
+
+/* Cards groups: no separator between card rows */
+main > .section.dark.cards-container .columns-wrapper + .cards-wrapper,
+main > .section.dark.cards-container .cards-wrapper + .cards-wrapper {
+  border-top: none;
+}
+
+/* Video columns: 67-33 ratio matching original AEM col-with-8 + col-with-4 */
+@media (width >= 900px) {
+  main > .section.dark.cards-container .columns > div > div:first-child {
+    flex: 8;
+  }
+
+  main > .section.dark.cards-container .columns > div > div:last-child {
+    flex: 4;
+  }
+}
+
+/* Mobile: text column first, video card second (matching original site) */
+@media (width < 900px) {
+  main > .section.dark.cards-container .columns > div > div:last-child {
+    order: 0;
+  }
+
+  main > .section.dark.cards-container .columns > div > div:first-child {
+    order: 1;
+  }
+}
+
+/* --- Video thumbnail overlay (main "Behind the Science" video) ---
+   Original AEM: image with dark navy overlay, title + watch button
+   centered on the image. */
+
+main > .section.dark.cards-container .columns > div > div:first-child {
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+main > .section.dark.cards-container .columns > div > div:first-child > p:first-child {
+  margin: 0;
+  line-height: 0;
+}
+
+main > .section.dark.cards-container .columns > div > div:first-child img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark navy overlay on the video thumbnail */
+main > .section.dark.cards-container .columns > div > div:first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(7 29 73 / 50%);
+  pointer-events: none;
+  border-radius: 0.8rem;
+}
+
+/* Video title overlaid on image — centered vertically + horizontally */
+main > .section.dark.cards-container .columns > div > div:first-child > p:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -80%);
+  width: 80%;
+  text-align: center;
+  color: var(--background-color);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-24);
+  line-height: var(--line-height-32);
+  font-weight: 800;
+  z-index: 1;
+  margin: 0;
+}
+
+/* Watch button overlaid on image — centered below title */
+main > .section.dark.cards-container .columns > div > div:first-child > p:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 80%);
+  color: var(--background-color);
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: 700;
+  text-transform: var(--font-uppercase);
+  letter-spacing: 0.06em;
+  border: 1px solid var(--background-color);
+  padding: 1.2rem 3.2rem;
+  z-index: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* Play icon before watch text */
+main > .section.dark.cards-container .columns > div > div:first-child > p:last-child::before {
+  content: '\25B6';
+  margin-right: 0.8rem;
+  font-size: var(--font-size-12);
+}
+
+@media (width >= 900px) {
+  main > .section.dark.cards-container .columns > div > div:first-child > p:nth-child(2) {
+    font-size: var(--font-size-30);
+    line-height: var(--line-height-34);
+  }
+}
+
+/* Columns video: playing state — hide overlay, title, button; show iframe */
+main > .section.dark.cards-container .columns > div > div:first-child.playing::after,
+main > .section.dark.cards-container .columns > div > div:first-child.playing > p:not(:first-child) {
+  display: none;
+}
+
+main > .section.dark.cards-container .columns > div > div:first-child.playing .columns-video-player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0.8rem;
+}
+
+/* --- Video cards: overlay handled by cards.js + cards.css --- */
+
+/* --- Section: R&D + embed + FAQ + CTA (originally "navy") --- */
+
+/* Override to white base */
+main > .section.navy.embed-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main > .section.navy.embed-container :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-color);
+}
+
+main > .section.navy.embed-container :is(p, li) {
+  color: var(--text-color);
+}
+
+main > .section.navy.embed-container a:not(.button) {
+  color: var(--highlight-dark-background-color);
+}
+
+main > .section.navy.embed-container a.button:any-link {
+  border-color: var(--highlight-dark-background-color);
+  color: var(--highlight-dark-background-color);
+}
+
+main > .section.navy.embed-container a.button:hover {
+  background-color: var(--highlight-dark-background-color);
+  color: var(--background-color);
+}
+
+/* Embed: full-bleed navy background with video overlay */
+main > .section.navy.embed-container .embed-wrapper {
+  background-color: var(--color-navy-dark);
+  margin: 0 -3.5rem;
+  padding: 0;
+  position: relative;
+  max-width: none;
+}
+
+main > .section.navy.embed-container .embed-wrapper .embed {
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+main > .section.navy.embed-container .embed-wrapper .embed img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+main > .section.navy.embed-container .embed-wrapper .embed .embed-placeholder {
+  aspect-ratio: 3 / 4;
+}
+
+/* Dark overlay on discovery video image */
+main > .section.navy.embed-container .embed-wrapper .embed::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(7 29 73 / 55%);
+  pointer-events: none;
+}
+
+/* Centered play button on discovery video */
+main > .section.navy.embed-container .embed-wrapper .embed::before {
+  content: '\25B6  Watch 2:33';
+  position: absolute;
+  top: 76%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--background-color);
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-12);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: var(--font-uppercase);
+  border: 1px solid var(--background-color);
+  padding: 1.2rem 3.2rem;
+  z-index: 2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Title overlay on discovery video */
+main > .section.navy.embed-container .embed-wrapper::before {
+  content: 'The eureka moment behind a scientific discovery';
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--background-color);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-26);
+  font-weight: 800;
+  text-align: center;
+  max-width: 75%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Description overlay on discovery video */
+main > .section.navy.embed-container .embed-wrapper::after {
+  content: 'Hear from scientists about what it takes to make a breakthrough.';
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--background-color);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
+  text-align: center;
+  max-width: 80%;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+}
+
+main > .section.navy.embed-container .embed-wrapper :is(h2, p, a) {
+  color: var(--background-color);
+}
+
+@media (width >= 744px) {
+  main > .section.navy.embed-container .embed-wrapper {
+    margin: 0 -7rem;
+    padding: 0;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed img {
+    aspect-ratio: 16 / 9;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed .embed-placeholder {
+    aspect-ratio: 16 / 9;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper::before {
+    font-size: var(--font-size-30);
+    line-height: var(--line-height-34);
+    max-width: 65%;
+    top: 28%;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper::after {
+    display: block;
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-22);
+    max-width: 60%;
+    top: 52%;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed::before {
+    font-size: var(--font-size-14);
+    padding: 1.6rem 4rem;
+    top: 68%;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.embed-container .embed-wrapper {
+    margin: 0 -5.5rem;
+    padding: 0;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed img {
+    aspect-ratio: 16 / 7;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed .embed-placeholder {
+    aspect-ratio: 16 / 7;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper::before {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    max-width: 60%;
+    top: 30%;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper::after {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+    max-width: 50%;
+    top: 53%;
+  }
+
+  main > .section.navy.embed-container .embed-wrapper .embed::before {
+    top: 68%;
+  }
+}
+
+/* Embed: hide default play button (CSS overlay provides the button) */
+main > .section.navy.embed-container .embed-placeholder-play {
+  display: none;
+}
+
+/* Embed: hide all overlays when video is loaded */
+main > .section.navy.embed-container .embed-wrapper .embed.embed-is-loaded::before,
+main > .section.navy.embed-container .embed-wrapper .embed.embed-is-loaded::after {
+  display: none;
+}
+
+main > .section.navy.embed-container .embed-wrapper:has(.embed-is-loaded)::before,
+main > .section.navy.embed-container .embed-wrapper:has(.embed-is-loaded)::after {
+  display: none;
+}
+
+/* FAQ heading: full-bleed light gray background */
+main > .section.navy.embed-container > .default-content-wrapper {
+  background-color: var(--color-gray-extra-light);
+  margin: 0 -3.5rem;
+  padding: 4rem 3.5rem 0;
+  text-align: center;
+  max-width: none;
+}
+
+main > .section.navy.embed-container > .default-content-wrapper h2 {
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  margin-bottom: 0;
+  padding-bottom: var(--spacing-16);
+}
+
+/* Accordion: full-bleed light gray background */
+main > .section.navy.embed-container .accordion-wrapper {
+  background-color: var(--color-gray-extra-light);
+  margin: 0 -3.5rem;
+  padding: 0 3.5rem 4rem;
+  max-width: none;
+  overflow: hidden;
+}
+
+main > .section.navy.embed-container .accordion-wrapper .accordion {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@media (width >= 744px) {
+  main > .section.navy.embed-container > .default-content-wrapper {
+    margin: 0 -7rem;
+    padding: 5.6rem 7rem 0;
+  }
+
+  main > .section.navy.embed-container .accordion-wrapper {
+    margin: 0 -7rem;
+    padding: 0 7rem 5.6rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.embed-container > .default-content-wrapper {
+    margin: 0 -5.5rem;
+    padding: 8rem 5.5rem 0;
+  }
+
+  main > .section.navy.embed-container > .default-content-wrapper h2 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+
+  main > .section.navy.embed-container .accordion-wrapper {
+    margin: 0 -5.5rem;
+    padding: 0 5.5rem 8rem;
+  }
+}
+
+/* CTA columns: full-bleed blue background */
+
+/* Original AEM: medium-radius cmp-container-full-width (40px radius) */
+main > .section.navy.embed-container .columns-wrapper:last-child {
+  background-color: var(--highlight-dark-background-color);
+  margin: 0 -3.5rem -8rem;
+  padding: 4rem 3.5rem;
+  border-top-left-radius: var(--spacing-20);
+  max-width: none;
+}
+
+main > .section.navy.embed-container .columns-wrapper:last-child :is(h4, p, a) {
+  color: var(--background-color);
+}
+
+main > .section.navy.embed-container .columns-wrapper:last-child a.button:any-link {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+main > .section.navy.embed-container .columns-wrapper:last-child a.button:hover {
+  background-color: var(--background-color);
+  color: var(--highlight-dark-background-color);
+}
+
+@media (width >= 744px) {
+  main > .section.navy.embed-container .columns-wrapper:last-child {
+    margin: 0 -7rem -8rem;
+    padding: 5.6rem 7rem;
+    border-top-left-radius: var(--spacing-32);
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.embed-container .columns-wrapper:last-child {
+    margin: 0 -5.5rem -8rem;
+    padding: 8rem 5.5rem;
+    border-top-left-radius: var(--spacing-40);
+  }
+}
+
+/* R&D community section: proper 2-column layout */
+main > .section.navy.embed-container .columns-wrapper:first-child {
+  padding: 4rem 0;
+}
+
+main > .section.navy.embed-container .columns-wrapper:first-child h3 {
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-24);
+}
+
+/* R&D community left column: add image below heading via pseudo-element */
+main > .section.navy.embed-container .columns-wrapper:first-child .columns > div > div:first-child::after {
+  content: '';
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: var(--spacing-24);
+  background: url('https://abbvie.scene7.com/is/image/abbviecorp/explore%20randd%20workers') center / cover no-repeat;
+  border-radius: 0.8rem;
+}
+
+/* R&D community: 42-58 ratio matching original AEM col-with-5 + col-with-7 */
+@media (width >= 900px) {
+  main > .section.navy.embed-container .columns-wrapper:first-child .columns > div > div:first-child {
+    flex: 5;
+  }
+
+  main > .section.navy.embed-container .columns-wrapper:first-child .columns > div > div:last-child {
+    flex: 7;
+  }
+}
+
+/* R&D community links: styled with dividers and arrows */
+main > .section.navy.embed-container .columns-wrapper:first-child ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-16) 0 0;
+}
+
+main > .section.navy.embed-container .columns-wrapper:first-child ul li {
+  border-bottom: 1px solid var(--container-border-color);
+  padding: var(--spacing-16) 0;
+  margin: 0;
+}
+
+main > .section.navy.embed-container .columns-wrapper:first-child ul li:first-child {
+  border-top: 1px solid var(--container-border-color);
+}
+
+main > .section.navy.embed-container .columns-wrapper:first-child ul li a {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-18);
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main > .section.navy.embed-container .columns-wrapper:first-child ul li a::after {
+  content: '\2192';
+  font-size: var(--font-size-18);
+  color: var(--text-color);
+  flex-shrink: 0;
+  margin-left: var(--spacing-16);
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.embed-container .columns-wrapper:first-child h3 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+
+  main > .section.navy.embed-container .columns-wrapper:first-child ul li a {
+    font-size: var(--font-size-20);
+  }
+}
+
+/* CTA heading: F37 Lineca Book, 40px, weight 650 */
+main > .section.navy.embed-container .columns-wrapper:last-child h4 {
+  font-family: var(--heading-font-family);
+  font-weight: 650;
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+}
+
+@media (width >= 744px) {
+  main > .section.navy.embed-container .columns-wrapper:last-child h4 {
+    font-size: var(--font-size-36);
+    line-height: var(--line-height-44);
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.embed-container .columns-wrapper:last-child h4 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+}
+
+/* ========================================================================
+   Content-Series Pages — Section Spacing
+   Reduces gaps between sections for pages where the hero is in its own
+   section (not combined with columns/cards like the landing page).
+   ======================================================================== */
+
+/* Hero-only section: reduce bottom padding */
+main > .section.navy-overlap.hero-container:not(.columns-container, .cards-container) {
+  padding-bottom: 0;
+}
+
+/* Content-series hero: full-bleed hero wrapper (matches landing page treatment) */
+main > .section.navy-overlap.hero-container:not(.columns-container, .cards-container) .hero-wrapper {
+  margin: -4rem -3.5rem 0;
+  max-width: none;
+  overflow: hidden;
+}
+
+@media (width >= 744px) {
+  main > .section.navy-overlap.hero-container:not(.columns-container, .cards-container) .hero-wrapper {
+    margin: -5.6rem -7rem 0;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy-overlap.hero-container:not(.columns-container, .cards-container) .hero-wrapper {
+    margin: -8rem -5.5rem 0;
+  }
+}
+
+/* Dark section after hero-only: remove top padding, wrapper padding suffices */
+main > .section.navy-overlap.hero-container:not(.columns-container) + .section.dark {
+  padding-top: 0;
+}
+
+/* Dark section → dive deeper: ensure no gap between full-bleed backgrounds */
+main > .section.dark.cards-container:not(:has(.hero-wrapper)) {
+  margin-bottom: 0;
+}
+
+/* ========================================================================
+   Content-Series Pages — Dive Deeper Section
+   The unstyled columns section after the dark section contains the
+   "Dive deeper into AbbVie science" navigation links.
+   ======================================================================== */
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 4rem 3.5rem;
+  max-width: none;
+  border-top-left-radius: 4rem;
+}
+
+@media (width >= 744px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) {
+    padding: 8rem 7rem;
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) {
+    padding: 8rem 5.5rem;
+  }
+}
+
+@media (width >= 1440px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) > div {
+    max-width: 133rem;
+    margin: 0 auto;
+  }
+}
+
+/* Dive deeper heading */
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) h3 {
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  color: var(--text-color);
+  margin: 0 0 var(--spacing-24);
+}
+
+@media (width >= 1024px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) h3 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+}
+
+/* Dive deeper image in left column */
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) .columns > div > div:first-child img {
+  /* border-radius: 0.8rem; */
+  margin-top: var(--spacing-24);
+}
+
+/* Dive deeper: 42-58 column ratio */
+@media (width >= 900px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) .columns > div > div:first-child {
+    flex: 5;
+  }
+
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) .columns > div > div:last-child {
+    flex: 7;
+  }
+}
+
+/* Dive deeper links: styled with dividers and arrows */
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-16) 0 0;
+}
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li {
+  border-bottom: 1px solid var(--container-border-color);
+  padding: var(--spacing-16) 0;
+  margin: 0;
+}
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li:first-child {
+  border-top: 1px solid var(--container-border-color);
+}
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li a {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-18);
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li a::after {
+  content: '\e905';
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-16);
+  color: var(--text-color);
+  flex-shrink: 0;
+  margin-left: var(--spacing-16);
+  line-height: var(--line-height-20);
+}
+
+@media (width >= 1024px) {
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li a {
+    font-size: var(--font-size-20);
+  }
+}
+
+/* ========================================================================
+   Content-Series Pages — CTA Section
+   The navy section with a columns block containing heading + button.
+   Uses the base .navy styles. CTA heading matches landing page style.
+   ======================================================================== */
+
+/* stylelint-disable no-descending-specificity */
+main > .section.navy.columns-container h4,
+main > .section.purple.columns-container h4 {
+  font-family: var(--heading-font-family);
+  font-weight: 650;
+  font-size: var(--font-size-24);
+  line-height: var(--line-height-28);
+}
+
+@media (width >= 744px) {
+  main > .section.navy.columns-container h4,
+  main > .section.purple.columns-container h4 {
+    font-size: var(--font-size-30);
+    line-height: var(--line-height-34);
+  }
+}
+
+@media (width >= 1024px) {
+  main > .section.navy.columns-container h4,
+  main > .section.purple.columns-container h4 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ========================================================================
+   Utilities
+   ======================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.hide {
+  display: none !important;
+}
+
+
+.section .large-radius {
+  border-top-left-radius: var(--border-top-left-radius);
+}
+
+@media (width >= 744px) {
+  .section .large-radius {
+    border-top-left-radius: var(--border-top-left-radius-tablet);
+  }
+
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li a::after {
+    line-height: var(--line-height-22);
+  }
+}
+
+@media (width >= 1024px) {
+  .section .large-radius {
+    border-top-left-radius: var(--border-top-left-radius-desktop);
+  }
+
+  main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) ul li a::after {
+    line-height: var(--line-height-24);
+  }
+}
+
+.bg-f4f4f4 {
+  background-color: var(--color-gray-light);
+}
+
+
+/* rte body unica custom classes */
+
+.body-unica-32-reg p {
+    color: var(--text-color);
+    font-family: var(--roboto-small-font-family);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-26);
+}
+
+.body-unica-26-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-22);
+}
+
+.body-unica-24-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-24);
+}
+
+.body-unica-20-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-20);
+}
+
+.body-unica-18-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-13);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-20);
+}
+
+.body-unica-16-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-16);
+}
+
+/* CTA link — blue, Roboto Bold, 14px, uppercase, letter-spacing 0.84px */
+main > .section.cards-container:has(#the-stories-behind-our-science) .cards .cards-card-body .button-container .button {
+  color: var(--highlight-dark-background-color);
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-wide-06);
+}
+
+/* Image aspect ratio — live site uses ~5:6 (natural 1331x1600) */
+main > .section.cards-container:has(#the-stories-behind-our-science) .cards > ul > li img {
+  aspect-ratio: 1331 / 1600;
+}
+
+/* Card body padding — match live site spacing */
+main > .section.cards-container:has(#the-stories-behind-our-science) .cards .cards-card-body {
+  padding: var(--spacing-16) 0 var(--spacing-24);
+}
+
+
+/* rte body unica custom classes */
+
+.body-unica-32-reg p {
+    color: var(--text-color);
+    font-family: var(--roboto-small-font-family);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-26);
+}
+
+.body-unica-26-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-22);
+}
+
+.body-unica-24-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-24);
+}
+
+.body-unica-20-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-20);
+}
+
+.body-unica-18-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-13);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-20);
+}
+
+.body-unica-16-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-16);
+}
+
+.body-unica-14-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-16);
+}
+
+.section-padding {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  padding-top: 3.2rem;
+}
+
+.section.section-bottom-margin {
+  margin-bottom: 8rem !important;
+}
+
+@media(width >= 744px) {
+    .body-unica-32-reg p {
+        font-size: var(--font-size-24);
+        line-height: var(--line-height-30);
+    }
+
+    .body-unica-26-reg p {
+        font-size: var(--font-size-22);
+        line-height: var(--line-height-30);
+    }
+
+    .body-unica-24-reg p {
+        font-size: var(--font-size-20);
+        line-height: var(--line-height-26);
+    }
+
+    .body-unica-20-reg p {
+        font-size: var(--font-size-18);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-18-reg p {
+        font-size: var(--font-size-16);
+        line-height: var(--line-height-22);
+    }
+
+    .body-unica-16-reg p {
+        font-size: var(--font-size-14);
+        line-height: var(--line-height-20);
+    }
+
+    .section-padding {
+      padding-left: 7rem;
+      padding-right: 7rem;
+      padding-top: 5.6rem;
+    }
+}
+
+@media(width >= 1024px) {
+    .body-unica-32-reg p {
+        font-size: var(--font-size-32);
+        line-height: var(--line-height-40);
+    }
+
+    .body-unica-26-reg p {
+        font-size: var(--font-size-26);
+        line-height: var(--line-height-32);
+    }
+
+    .body-unica-24-reg p {
+        font-size: var(--font-size-24);
+        line-height: var(--line-height-32);
+    }
+
+    .body-unica-20-reg p {
+        font-size: var(--font-size-20);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-18-reg p {
+        font-size: var(--font-size-18);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-16-reg p {
+        font-size: var(--font-size-16);
+        line-height: var(--line-height-20);
+    }
+
+    .body-unica-14-reg p {
+        font-size: var(--font-size-14);
+        line-height: var(--line-height-20);
+    }
+
+    .section-padding {
+      padding-left: 5.5rem;
+      padding-right: 5.5rem;
+      padding-top: 8rem;
+    }
+}
+
+/* body unica custom classes - end */
+
+/* abbvie container styles */
+.abbvie-container {
+  display: grid;
+  column-gap: var(--spacing-15);
+  grid-template-columns: repeat(6, 1fr);
+  margin-left: var(--spacing-20);
+  margin-right: var(--spacing-20);
+}
+
+/* inner cmp-container base setup */ .abbvie-container div {
+  grid-column: 1 / span 6;
+}
+
+.abbvie-separator hr {
+    border: var(--border-01) solid var(--footer-seperator-color);
+}
+
+@media (width >=744px) {
+  .abbvie-container {
+    column-gap: var(--spacing-20);
+    grid-template-columns: repeat(8, 1fr);
+    margin-left: var(--spacing-70);
+    margin-right: var(--spacing-70);
+  }
+
+  .abbvie-container div {
+  grid-column: 1 / span 8;
+}
+}
+
+@media (width >= 1024px) {
+  /* 4-column grid at desktop — matches live site 4x .grid-row__col-with-3 */
+  main > .section.cards-container:has(#the-stories-behind-our-science) .cards > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .abbvie-container div {
+    grid-column: 1 / span 8;
+  }
+}
+
+@media (width >= 1440px) {
+  main > .section.cards-container:has(#the-stories-behind-our-science) > div {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+  }
+}
+
+@media (width >=1024px) {
+  .abbvie-container {
+    grid-template-columns: repeat(12, 1fr);
+    margin-left: var(--spacing-55);
+    margin-right: var(--spacing-55);
+  }
+
+  .abbvie-container div {
+    grid-column: 1 / span 12;
+  }
+}
+
+/* =====================================================
+   Priorities / Core focus areas section
+   Part of the dashboard — lab background image with
+   white panel overlay and 3-column layout
+   ===================================================== */
+
+main .section.dark:has(#core-focus-areas) {
+  background-color: var(--color-gray-light);
+  background-image: url('https://abbvie.scene7.com/is/image/abbviecorp/abbvie-src-scout?$Hero$');
+  background-size: cover;
+  background-position: center bottom;
+  color: var(--color-navy-dark);
+  padding: var(--spacing-00) var(--spacing-55) var(--spacing-80);
+  margin-top: var(--spacing-n50);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* White panel overlay for priorities content */
+main .section.dark:has(#core-focus-areas) > .default-content-wrapper {
+  background-color: #fff;
+  padding: 5.6rem 7rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+main .section.dark:has(#core-focus-areas) h4 {
+  color: var(--color-navy-dark);
+  font-family: var(--heading-font-family);
+  font-size: 4rem;
+  font-weight: 650;
+  line-height: 4.4rem;
+  margin-bottom: 0;
+}
+
+/* PRIORITIES eyebrow */
+main .section.dark:has(#core-focus-areas) > .default-content-wrapper > p:first-child {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14, 1.4rem);
+  font-weight: var(--font-weight-700);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide-04);
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+/* Description paragraph */
+main .section.dark:has(#core-focus-areas) p {
+  color: var(--color-navy-dark);
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+}
+
+/* Link lists */
+main .section.dark:has(#core-focus-areas) ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.body-unica-14-reg p {
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-16);
+}
+
+.section-padding {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  padding-top: 3.2rem;
+}
+
+.section.section-bottom-margin {
+  margin-bottom: 8rem !important;
+}
+
+@media(width >= 744px) {
+    .body-unica-32-reg p {
+        font-size: var(--font-size-24);
+        line-height: var(--line-height-30);
+    }
+
+    .body-unica-26-reg p {
+        font-size: var(--font-size-22);
+        line-height: var(--line-height-30);
+    }
+
+    .body-unica-24-reg p {
+        font-size: var(--font-size-20);
+        line-height: var(--line-height-26);
+    }
+
+    .body-unica-20-reg p {
+        font-size: var(--font-size-18);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-18-reg p {
+        font-size: var(--font-size-16);
+        line-height: var(--line-height-22);
+    }
+
+    .body-unica-16-reg p {
+        font-size: var(--font-size-14);
+        line-height: var(--line-height-20);
+    }
+
+    .section-padding {
+      padding-left: 7rem;
+      padding-right: 7rem;
+      padding-top: 5.6rem;
+    }
+}
+
+@media(width >= 1024px) {
+    .body-unica-32-reg p {
+        font-size: var(--font-size-32);
+        line-height: var(--line-height-40);
+    }
+
+    .body-unica-26-reg p {
+        font-size: var(--font-size-26);
+        line-height: var(--line-height-32);
+    }
+
+    .body-unica-24-reg p {
+        font-size: var(--font-size-24);
+        line-height: var(--line-height-32);
+    }
+
+    .body-unica-20-reg p {
+        font-size: var(--font-size-20);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-18-reg p {
+        font-size: var(--font-size-18);
+        line-height: var(--line-height-24);
+    }
+
+    .body-unica-16-reg p {
+        font-size: var(--font-size-16);
+        line-height: var(--line-height-20);
+    }
+
+    .body-unica-14-reg p {
+        font-size: var(--font-size-14);
+        line-height: var(--line-height-20);
+    }
+
+    .section-padding {
+      padding-left: 5.5rem;
+      padding-right: 5.5rem;
+      padding-top: 8rem;
+    }
+  }
+
+main .section.dark:has(#core-focus-areas) ul li a::after {
+  content: '\e905';
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-16, 1.6rem);
+  color: var(--color-navy-dark);
+  flex-shrink: 0;
+  margin-left: 1.6rem;
+}
+
+/* Desktop: 3-column grid (text left, 2 link columns right) */
+@media (width >= 1024px) {
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 5fr 3fr 3fr;
+    gap: 0 4rem;
+  }
+
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper > p:first-child,
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper > h4,
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper > p:nth-of-type(2) {
+    grid-column: 1;
+  }
+
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper > ul:first-of-type {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: start;
+  }
+
+  main .section.dark:has(#core-focus-areas) > .default-content-wrapper > ul:last-of-type {
+    grid-column: 3;
+    grid-row: 1 / span 3;
+    align-self: start;
+  }
+
+  .abbvie-container {
+    grid-template-columns: repeat(12, 1fr);
+    margin-left: var(--spacing-55);
+    margin-right: var(--spacing-55);
+  }
+
+  .abbvie-container div {
+    grid-column: 1 / span 12;
+  }
+}
+
+/* =====================================================
+   Science page — Columns section (Explore + Tenacity)
+   Scoped via :has(#explore-our-science)
+   ===================================================== */
+
+/* F1: H3 headings — 26px → 48px to match live site */
+main .section.columns-container:has(#explore-our-science) h3 {
+  font-size: 4.8rem;
+  font-weight: 800;
+  line-height: 5.2rem;
+  letter-spacing: -0.096rem;
+  color: var(--color-navy-dark);
+}
+
+/* F8: Link list arrows in Explore section */
+main .section.columns-container:has(#explore-our-science) ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+main .section.columns-container:has(#explore-our-science) ul li {
+  margin: 0 0 1.2rem;
+}
+
+main .section.columns-container:has(#explore-our-science) ul li a {
+  font-family: var(--body-font-family);
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--color-navy-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0 1.6rem;
+  border-bottom: 1px solid rgb(185 180 180);
+}
+
+main .section.columns-container:has(#explore-our-science) ul li a::after {
+  content: '\e905';
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-16, 1.6rem);
+  color: var(--color-navy-dark);
+  flex-shrink: 0;
+  margin-left: 1.6rem;
+}
+
+/* F5: Quote text — 40px F37 Lineca Book to match original site
+   DOM: .columns > div:nth-child(2) > div:last-child > p:first-child
+   (tenacity is its own section on live AEM with 2 rows, not 3) */
+main .section:has(#the-tenacity-to-take-on-the-toughest-challenges) .columns > div:nth-child(2) > div:last-child > p:first-child {
+  font-family: var(--heading-font-family);
+  font-size: 4rem;
+  font-weight: 650;
+  line-height: 4.4rem;
+  color: var(--color-navy-dark);
+  font-style: normal;
+  padding-top: 2rem;
+}
+
+/* F12: Blue quote icon above quote text */
+main .section:has(#the-tenacity-to-take-on-the-toughest-challenges) .columns > div:nth-child(2) > div:last-child > p:first-child::before {
+  content: '\e91b';
+  font-family: var(--icon-font-family);
+  font-size: 3.3rem;
+  color: var(--link-color, #0066f5);
+  display: block;
+  margin-bottom: 1.6rem;
+}
+
+/* F13: Quote attribution — bold author name */
+main .section:has(#the-tenacity-to-take-on-the-toughest-challenges) .columns > div:nth-child(2) > div:last-child > p:last-child {
+  font-family: var(--roboto-bold-font-family);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+  color: var(--color-navy-dark);
+}
+
+/* =====================================================
+   Science page — Stories section
+   Scoped via :has(#the-stories-behind-our-science)
+   ===================================================== */
+
+/* F2: Stories H1 — 32px → 48px to match live site */
+main .section:has(#the-stories-behind-our-science) h1 {
+  font-size: 4.8rem;
+  font-weight: 800;
+  line-height: 5.2rem;
+  letter-spacing: -0.096rem;
+  color: var(--color-navy-dark);
+}
+
+/* F14: Blue separator below stories heading */
+main .section:has(#the-stories-behind-our-science) .default-content-wrapper {
+  border-bottom: none;
+}
+
+main .section:has(#the-stories-behind-our-science) h1::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  margin-top: 1.6rem;
+}
+
+/* F11: Story card CTA links — text links with arrow, not filled buttons */
+main .section:has(#the-stories-behind-our-science) .cards-card-body a.button {
+  font-family: var(--roboto-bold-font-family);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.084rem;
+  color: var(--link-color, #0066f5);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+main .section:has(#the-stories-behind-our-science) .cards-card-body a.button::after {
+  content: '\e905';
+  font-family: var(--icon-font-family);
+  font-size: 1.2rem;
+  color: var(--link-color, #0066f5);
+}
+
+/* =====================================================
+   Science page — FAQ / Accordion section
+   Double-scoped: main:has(#core-focus-areas) ensures
+   science page only + :has(#frequently-asked-questions)
+   ===================================================== */
+
+/* F3: FAQ H2 — 32px → 48px to match live site */
+main:has(#core-focus-areas) .section:has(#frequently-asked-questions) h2 {
+  font-size: 4.8rem;
+  font-weight: 800;
+  line-height: 5.2rem;
+  letter-spacing: -0.096rem;
+  color: var(--color-navy-dark);
+  text-align: center;
+}
+
+/* F4: Accordion item labels — 26px/Roboto Bold/700 to match original */
+main:has(#core-focus-areas) .section:has(#frequently-asked-questions) .accordion-item-label {
+  font-family: var(--roboto-bold-font-family);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  color: var(--color-navy-dark);
+}
+
+/* F15: Expand All button — blue, bold */
+main:has(#core-focus-areas) .section:has(#frequently-asked-questions) .accordion-wrapper > div > button {
+  font-family: var(--roboto-bold-font-family);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--link-color, #0066f5);
+}
+
+/* =====================================================
+   Science page — CTA / Highlight section
+   Scoped via :has(#where-bold-science-meets-real-world-results)
+   ===================================================== */
+
+/* F10: CTA button — filled → outlined to match live site */
+main .section.highlight:has(#where-bold-science-meets-real-world-results) a {
+  background: transparent;
+  border: 1px solid var(--link-color, #0066f5);
+  color: var(--link-color, #0066f5);
+  font-family: var(--roboto-bold-font-family);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.084rem;
+  padding: 1.6rem 4rem;
+  line-height: 2rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0;
+}
+
+/* body unica custom classes - end */
+
+/* abbvie container styles */
+.abbvie-container {
+  display: grid;
+  column-gap: var(--spacing-15);
+  grid-template-columns: repeat(6, 1fr);
+  margin-left: var(--spacing-20);
+  margin-right: var(--spacing-20);
+}
+
+/* inner cmp-container base setup */ .abbvie-container div {
+  grid-column: 1 / span 6;
+}
+
+@media (width >=744px) {
+  .abbvie-container {
+    column-gap: var(--spacing-20);
+    grid-template-columns: repeat(8, 1fr);
+    margin-left: var(--spacing-70);
+    margin-right: var(--spacing-70);
+  }
+
+  .abbvie-container div {
+    grid-column: 1 / span 8;
+  }
+}
+
+@media (width >=1024px) {
+  .abbvie-container {
+    grid-template-columns: repeat(12, 1fr);
+    margin-left: var(--spacing-55);
+    margin-right: var(--spacing-55);
+  }
+
+  .abbvie-container div {
+    grid-column: 1 / span 12;
+  }
+}
+
+/* stylelint-disable no-descending-specificity, no-duplicate-selectors */
+
+/* ============================================================
+   LINZESS DTC — Theme Overrides
+   Primary: Purple #422E83 | Accent: Orange #FAA633
+   Display Font: Bebas Neue (headings)
+   Body Font: Lato
+   Legal Font: BasicCommercialLT
+   Rounded corners: 16px standard, 8px small
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-h1-hero);
+  line-height: var(--line-height-h1-hero);
+}
+
+h2 {
+  font-size: var(--font-size-h2-hero);
+  line-height: var(--line-height-h2-hero);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--body-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 { font-size: var(--font-size-h3); }
+
+/* ---- Links ---- */
+a { color: var(--link-color); }
+a:hover { color: var(--color-brand-primary-light); }
+
+/* ---- Buttons ---- */
+.button-container a,
+a.button.primary {
+  color: var(--button-primary-color);
+  background-color: var(--button-primary-bg);
+  border: none;
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-extra-bold);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition-button);
+}
+
+.button-container a:hover,
+a.button.primary:hover {
+  background-color: #e8941e;
+}
+
+a.button.secondary {
+  color: var(--color-brand-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-brand-primary);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-extra-bold);
+  text-decoration: none;
+}
+
+a.button.secondary:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Header ---- */
+header {
+  background-color: var(--background-color);
+}
+
+header nav a {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-on-dark);
+}
+
+footer a {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-footer);
+}
+
+/* ---- Hero Section ---- */
+.section.hero-container {
+  position: relative;
+}
+
+.section.hero-container h1 {
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family);
+  text-transform: uppercase;
+}
+
+
+/* ---- Safety Bar ---- */
+.isi-container {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-safety-bar);
+  box-shadow: var(--shadow-safety-bar);
+}
+
+/* ---- ISI / Legal Text ---- */
+.isi-container p,
+.legal-text {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  line-height: var(--line-height-legal);
+}
+
+.isi-container strong {
+  font-family: var(--font-family-legal-bold);
+}
+
+/* ---- Accordion (FAQ) ---- */
+.accordion {
+  border-radius: var(--linz-rounded-corner-sm);
+}
+
+.accordion summary {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---- Cards ---- */
+.cards .cards-card-body {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+}
+
+/* ---- Video Player ---- */
+.embed.embed-brightcove {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+}
+
+/* ---- Tabs ---- */
+.tabs .tabs-tab {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+  border-bottom: 3px solid transparent;
+}
+
+.tabs .tabs-tab.active,
+.tabs .tabs-tab[aria-selected="true"] {
+  color: var(--color-brand-primary);
+  border-bottom-color: var(--color-brand-primary);
+}
+
+/* ---- Section Backgrounds ---- */
+.section.off-white-bg { background-color: var(--color-background-light); }
+
+.section.purple-bg,
+body main .section.dark {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+.section.purple-bg h1, .section.purple-bg h2, .section.purple-bg h3,
+body main .section.dark h1, body main .section.dark h2, body main .section.dark h3,
+body main .section.dark p, body main .section.dark strong,
+body main .section.dark a:not(.button) { color: var(--color-text-on-dark); }
+.section.light-purple-bg { background-color: var(--linz-light-purple); }
+
+/* ---- Savings Card Disclaimer ---- */
+main > .section:has(.columns-homepage-savings) > .default-content-wrapper:last-child p {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-body);
+  line-height: normal;
+  color: var(--linz-grey);
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WHY LINZESS PAGE — Section-specific styles
+   Scoped to section-metadata classes to prevent cross-page conflicts
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Hero height constraint */
+.hero.linzess-behind-nav,
+.hero.linzess-behind-nav-linzess-editorial-hero {
+  max-height: 768px;
+}
+
+/* Hero eyebrow — match source: 12px/800/uppercase with 24px margin-bottom
+   Scoped to editorial heroes only; homepage CTA hero uses 16px/400/none */
+.section.hero-container .default-content-wrapper > p:first-child,
+.section.hero-container .hero:not(.linzess-behind-nav-linzess-cta-hero) p:first-of-type {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Section-nav overlaps bottom of hero */
+.section.section-nav-container {
+  margin-top: -80px;
+  margin-bottom: 17px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile: the hero image is only ~384px tall, so the -80px overlap lifted the
+   JUMP TO bar fully onto the photo. Live straddles the image's bottom edge
+   (bar bottom sits just below it), so reduce the overlap here. */
+@media (width < 768px) {
+  .section.section-nav-container {
+    margin-top: -36px;
+  }
+}
+
+/* ---- "How LINZESS Can Help" Section ---- */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) {
+  text-align: center;
+  padding: 80px 24px 60px;
+  max-width: 1046px;
+  margin: 0 auto;
+}
+
+/* Intro copy block matches live's 928px text column (narrower than the
+   998px stat-card grid below it). */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child {
+  max-width: 928px;
+  margin-inline: auto;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2),
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the section heading. */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(n+3) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.6rem;
+  color: var(--linz-grey);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:last-child a {
+  background-color: var(--color-brand-primary);
+  color: var(--linz-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: var(--font-weight-extra-bold);
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-top: 40px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:last-child a::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+/* Symptom cards (columns block - two-column layout) */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms {
+  margin-top: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Symptom cards — reset homepage fallback + two separate cards */
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms {
+  display: block;
+  background-color: transparent;
+  border-radius: 0;
+  max-width: 1030px;
+  margin: 60px auto 0;
+  padding: 0;
+  overflow: visible;
+}
+
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > .columns-item,
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  overflow: visible;
+  padding-top: 60px;
+  padding-bottom: 0;
+  background: transparent;
+  align-items: stretch;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content {
+  padding: 60px 32px 40px;
+  text-align: left;
+  position: relative;
+  border-radius: var(--linz-rounded-corner);
+}
+
+/* IBS-C card (left) — off-white bg */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:first-child {
+  background-color: var(--linz-off-white);
+}
+
+/* CIC card (right) — light purple bg, stretch to match IBS-C height */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:last-child {
+  background-color: var(--linz-light-purple);
+  align-self: stretch;
+  min-height: 100%;
+}
+
+/* Circle badges — overlap the top of each card */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content > p:first-child strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  background-color: var(--linz-light-purple);
+  border-radius: 50%;
+  width: 136px;
+  height: 136px;
+  line-height: 136px;
+  text-align: center;
+  margin: -100px auto 24px;
+  display: block;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:last-child > p:first-child strong {
+  background-color: var(--linz-off-white);
+}
+
+/* Checkmark list items */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms li {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  padding-left: 36px;
+  position: relative;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiM0MjJFODMiLz4KPHBhdGggZD0iTTE4LjUgOUwxMSAxN0w3LjAwMDAyIDEzIiBzdHJva2U9IiNGQUE2MzMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=") no-repeat center;
+  background-size: contain;
+}
+
+/* Footnote */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content > p:last-child {
+  font-size: var(--linz-card-footnote-size);
+  color: var(--linz-grey);
+  margin-top: 24px;
+  font-weight: var(--font-weight-body);
+}
+
+@media (width <= 599px) {
+  body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > .columns-item {
+    flex-direction: column;
+  }
+}
+
+/* Mechanism card text colour in the dark "How LINZESS Works" section.
+   Card background/radius/padding live on the block in columns.css; the
+   columns-item (> div) must stay padding-free so card height matches live. */
+body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card li {
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---- "How LINZESS Works" Section (dark purple with arc) ---- */
+.section:has(.whylinzess-timeline) {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  padding: 34px 24px 80px;
+  text-align: center;
+  max-width: none;
+  margin: 0;
+  margin-top: -20px;
+  position: relative;
+}
+
+.section:has(.whylinzess-timeline)::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-brand-primary);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+/* Bottom inward curve — an off-white dome rising into the dark section, carving
+   the transition down to the off-white Side Effects section below. The dome
+   colour must match that section (not pure white) so there's no visible gap. */
+.section:has(.whylinzess-timeline)::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-background-light);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper,
+.section:has(.whylinzess-timeline) > .columns-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-timeline) p,
+.section:has(.whylinzess-timeline) li,
+.section:has(.whylinzess-timeline) h2 {
+  color: var(--color-text-on-dark);
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the "How LINZESS Works" heading. */
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Footnote "*Abdominal symptoms…" (first <p> of the post-cards wrapper) — remove
+   its bottom margin so the *…/†… footnote lines sit tight, like live. */
+.section:has(.whylinzess-timeline) > .columns-wrapper + .default-content-wrapper > p:first-child {
+  margin-bottom: 0;
+}
+
+/* Add bottom spacing below the second mechanism card (gut card) in this section. */
+.section:has(.whylinzess-timeline) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+  margin-bottom: 20px;
+}
+
+.section:has(.whylinzess-timeline) ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-timeline) li {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.section:has(.whylinzess-timeline) li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.section:has(.whylinzess-timeline) h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+/* "When Can I Expect" sub-heading with divider — targets 2nd default-content-wrapper, 2nd child */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) strong {
+  font-weight: var(--font-weight-body);
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ---- Gradient Overlays ---- */
+.section.hero-container::after {
+  background: var(--gradient-hero-overlay);
+}
+
+/* Why LINZESS — "When Can I Expect" sub-heading */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin: 60px auto 24px;
+  max-width: 700px;
+  text-align: center;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) strong {
+  font-weight: var(--font-weight-body);
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Footnote (*Abdominal symptoms… / †animal studies) above the "When Can I
+   Expect" heading is 12px on live, not the inherited 18px. */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:not(:has(strong)) {
+  font-size: 12px;
+}
+
+
+/* Post-timeline wrapper (after the IBS-C/CIC cards): "If you stop taking
+   LINZESS…" is 16px body copy and the "*Abdominal symptoms…" footnote below
+   it is 12px on live, with a 40px gap between them. */
+body main .section:has(.whylinzess-timeline).cards-grid-container.carousel-video-playlist-container > .cards-grid-wrapper + .default-content-wrapper > p:first-child {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+body main .section:has(.whylinzess-timeline).cards-grid-container.carousel-video-playlist-container > .cards-grid-wrapper + .default-content-wrapper > p:nth-child(2) {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* ---- "Side Effects" Section (off-white bg, centered) ---- */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)),
+main > .section.dark + .section.columns-container.whylinzess-sideeffects {
+  background-color: var(--color-background-light);
+  padding: 40px 24px 150px;
+  text-align: center;
+  max-width: none;
+  position: relative;
+
+  /* Full-bleed: the off-white background spans the viewport on live, not the
+     base 5.5rem section inset. Pull the section edge-to-edge (the inner content
+     keeps its own gutters). */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+/* Bottom inward curve — a white dome rising into the off-white Side Effects
+   section, carving the transition down to the white Patient Experiences
+   section below (matches live). */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline))::after,
+main > .section.dark + .section.columns-container.whylinzess-sideeffects::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--background-color);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper,
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the section heading. */
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(3) {
+  font-size: 16px;
+  color: var(--linz-grey);
+  margin-bottom: 19px;
+}
+
+/* Side effects cards: 1st and 3rd = dark purple, 2nd = light purple */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--color-brand-primary);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card strong,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card li {
+  color: var(--color-text-on-dark);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--linz-light-purple);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--color-brand-primary);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card strong {
+  color: var(--color-text-on-dark);
+}
+
+/* FDA reporting paragraph — 690px wide, centered, bold. */
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:last-child > p:last-child {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin: 40px auto 0;
+  max-width: 690px;
+  text-align: center;
+}
+
+/* "Hear from real patients" heading in How Works section.
+   Extra container classes raise specificity above the competing global
+   desktop h2 size rule so 40px wins without !important. */
+body main .section.cards-grid-container.carousel-video-playlist-container:has(.whylinzess-timeline) h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--color-text-on-dark);
+}
+
+body main .section:has(.whylinzess-timeline) h2::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+/* Center video playlist in How Works section */
+body main .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+/* "Our panel of real people…" intro under the "Hear from real patients"
+   heading is 720px / 16px centered on live, not the 928px / 14px default. */
+body main .section.cards-grid-container.carousel-video-playlist-container:has(.whylinzess-timeline) > .default-content-wrapper:has(h2) > p:last-child {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+
+/* Center video items within the playlist */
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist {
+  justify-content: center;
+}
+
+/* ───────────────────────────────────────────────────────────────────
+   WHY LINZESS — Patient Experiences section (white, centered eyebrow +
+   heading + body, then video carousel). Mirrors the help/sideeffects
+   section pattern, which was missing for this variant.
+   ─────────────────────────────────────────────────────────────────── */
+body main .section:has(.carousel-video-playlist.featured) {
+  background-color: var(--background-color);
+  padding: 80px 24px;
+  text-align: center;
+  max-width: none;
+}
+
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.carousel-video-playlist.featured) > .carousel-video-playlist-wrapper {
+  max-width: 998px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The off-white Side Effects section's inward arc already supplies visual
+   space below it, so the Patient Experiences section needs less top padding
+   (the heading was sitting too far below the curve). */
+body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+  padding-top: 24px;
+}
+
+/* Desktop: the patient-experiences band is full-bleed on live (white bg spans
+   the viewport edge-to-edge) with the player, thumbnails, savings card, and
+   disclaimer centered at their own max-widths. The base section margin (~55px
+   each side) was insetting the whole band, shrinking the player/thumbnails and
+   stopping the background short of the edges. Override to full width and let
+   the inner wrappers center. */
+@media (width >= 986px) {
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Reduce the gap between the intro copy and the featured video player to
+   match live (~39px). The header wrapper's default 48px bottom margin was
+   pushing the player too far down. */
+body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper:first-child {
+  margin-bottom: 16px;
+}
+
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper:first-child > p:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the section heading. */
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-size: 16px;
+  color: var(--linz-grey);
+  margin-bottom: 24px;
+}
+
+.section:has(.carousel-video-playlist.featured) > .default-content-wrapper:last-child > p {
+  font-size: 14px;
+  color: var(--linz-grey);
+  margin-top: 40px;
+}
+
+/* Force Linzess brand font tokens (override base styles.css) */
+:root {
+  --body-font-family: 'Lato', sans-serif;
+  --heading-font-family: 'Bebas Neue', sans-serif;
+  --heading-font-family-bold: 'Bebas Neue', sans-serif;
+}
+
+/* ---- Non-hero pages: purple header + reverse arc ---- */
+body.no-hero header {
+  background-color: var(--color-brand-primary);
+}
+
+body.no-hero main > .section:first-child {
+  position: relative;
+  padding-top: 80px;
+}
+
+body.no-hero main > .section:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-brand-primary);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  z-index: 0;
+}
+
+body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-brand-primary);
+  margin-bottom: 40px;
+}
+
+body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+/* Mobile responsive overrides */
+@media (width < 768px) {
+  /* Live's mobile section heading ("LINZESS CAN HELP RELIEVE SYMPTOMS…") is
+     32px/30px. Include the inner strong so it doesn't keep the 40px desktop
+     size set by the more-specific `p:nth-child(2) strong` rule above. */
+  .section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2),
+  .section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2) strong,
+  .section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2),
+  .section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2) strong,
+  body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1 {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* Live's mobile top dome is a tall, round arc (border-radius 100% 100% with a
+     130%-wide centered shape), not the shallow full-width ellipse used at
+     desktop. Match it so the purple section's curved top reads the same. */
+  .section:has(.whylinzess-timeline)::before {
+    left: 50%;
+    right: auto;
+    width: 130%;
+    transform: translateX(-50%);
+
+    /* Live's mobile dome is shorter (75px tall, -60px offset): a taller dome
+       crowds the CTA above and pushes the arc crest up toward the eyebrow. */
+    height: 75px;
+    top: -60px;
+    border-radius: 100% 100% 0 0;
+  }
+
+  /* Mobile: live's bottom inward arc is a shallower dome (30% vertical radius),
+     and the band leaves less purple below the last video before the curve. */
+  .section:has(.whylinzess-timeline) {
+    padding-bottom: 40px;
+  }
+
+  .section:has(.whylinzess-timeline)::after {
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  }
+
+  .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper,
+  .section:has(.carousel-video-playlist.featured) > .carousel-video-playlist-wrapper {
+    max-width: 100%;
+  }
+
+  /* Mobile: live leaves far less purple below the last video before the bottom
+     arc. The 100px desktop margin pushes the video ~150px above the dome — trim
+     it so the video sits close to the curve. */
+  body main .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper {
+    margin-bottom: 24px;
+  }
+
+  /* Featured carousel sections: drop the 24px side padding on mobile so the
+     player spans nearly the full viewport width (matching live). The intro
+     copy keeps its own breathing room via the wrapper below. */
+  body main .section:has(.carousel-video-playlist.featured) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Patient Experiences section: also zero the side margins on mobile. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Side Effects bottom arc: the 80px full-width dome is too deep/pointed on a
+     390px viewport. Live uses a shallow gentle curve — reduce the height.
+     Match both the mechanism-card and the higher-specificity sideeffects
+     selectors so neither base rule keeps the 80px height. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline))::after,
+  body main > .section.dark + .section.columns-container.whylinzess-sideeffects::after,
+  body main .section.columns-container.whylinzess-sideeffects::after {
+    height: 40px;
+  }
+
+  /* Side Effects section: the off-white background must span the full viewport
+     width on mobile (live is edge-to-edge). Zero any side margin; the inner
+     content keeps its 24px gutter via the section's own padding. */
+  body main .section.whylinzess-sideeffects,
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* FDA reporting footnote: live sits it close under the last card with a
+     14px/regular size and a small 14px top gap (vs the 16px/700, 40px-gap
+     desktop treatment). */
+  .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:last-child > p:last-child {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 14px;
+  }
+
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Heading "Hear From Real Patients…" 28→32px to match live. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(2),
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* Intro copy "If you're experiencing…" 16px/tight → 14px/normal (live)
+     so the lines stop overlapping. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(3) {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  body main .section:has(.whylinzess-timeline) .carousel-video-playlist {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2),
+  .section:has(.carousel-video-playlist.featured) > .default-content-wrapper:first-child > p:nth-child(2) {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  /* "When Can I Expect…" heading: 40→32px / 36→30px to match live mobile. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* "When LINZESS is taken daily…" intro: 24px/tight → 18px/normal so the
+     lines no longer overlap (live uses 18px, normal line-height). */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+    font-size: 18px;
+    line-height: normal;
+  }
+
+  /* Footnote "*Abdominal…/†This was seen…" left-aligned on mobile too (it
+     inherits center from the dark section otherwise). Matches live. */
+  body main .section:has(.whylinzess-timeline) > .columns-wrapper + .default-content-wrapper > p:first-child {
+    text-align: left;
+  }
+
+  /* Mechanism-card body copy: live uses 14px bold (the source wraps the copy in
+     <b>), not the 16px desktop size. Keep the bold weight from the top-of-file
+     rule and only shrink the size on mobile. */
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-content p {
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Stack the symptom cards on mobile. The section-level grid rule (0,4,1)
+     outranks the block-level mobile rule, so override it here at matching
+     specificity, otherwise the IBS-C/CIC cards stay side-by-side. */
+  body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > .columns-item,
+  body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > div {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* Tablet (768–985): live uses the same smaller "When Can I Expect" heading
+   (32px) and 18px intro as mobile, and left-aligns the *…/†… footnote — but
+   our tablet range otherwise falls back to the 40px/24px desktop sizes. */
+@media (width >= 768px) and (width < 986px) {
+  /* Heading uses the full content width on live's tablet (not the 700px desktop
+     cap), so it wraps to two balanced lines. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+    font-size: 32px;
+    line-height: 30px;
+    max-width: none;
+  }
+
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+    font-size: 18px;
+    line-height: normal;
+    max-width: none;
+  }
+
+  /* Footnote "*Abdominal…/†This was seen…" left-aligned to match live. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:first-child {
+    text-align: left;
+  }
+
+  /* Patient Experiences band runs near-full-width on live's tablet (16px
+     gutters), not the base 70px section inset. Pull the side margins in so the
+     savings card and its left-aligned disclaimer span the viewport like live. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Homepage savings + gut-check bands also run near-full-width on live's
+     tablet (16px gutters → ~736px cards), not the base 70px section inset.
+     Scoped to the homepage savings & gut-check columns so why-linzess and
+     resources columns sections are untouched. */
+  body main .section.columns-container:has(.columns-homepage-savings),
+  body main .section.columns-container:has(.columns-homepage-gutcheck),
+  body main .section.columns-container:has(.columns-homepage-promo) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  /* "How LINZESS Works" content cards band also runs near-full-width on live's
+     tablet (16px gutters → ~736px cards). Pull in the 70px section inset. */
+  body main .section.cards-grid-container:has(.cards-grid-homepage-content) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Video playlist cards in How Works section */
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+  max-width: 420px;
+  flex: 1;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item-meta {
+  padding: 16px 20px;
+  background-color: var(--background-color);
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item-title {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+}
+
+/* Homepage video playlist cards */
+body main .carousel-video-playlist .carousel-video-playlist-item {
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1;
+  max-width: 420px;
+  background-color: var(--background-color);
+}
+
+body main .carousel-video-playlist .carousel-video-playlist-item-meta {
+  padding: 16px 20px;
+  background-color: var(--background-color);
+}
+
+body main .carousel-video-playlist .carousel-video-playlist-item-title {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+/* Hide raw metadata section (brand/nav/footer not consumed by framework) */
+main > .section[class="section abbvie-container"]:last-of-type {
+  display: none !important;
+}
+
+/* Remove section gaps on Linzess homepage to match live site (0px between sections) */
+main > .section.columns-container,
+main > .section.cards-grid-container {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Savings card section spacing */
+main > .section:has(.columns-homepage-savings) {
+  padding-top: 48px;
+  padding-bottom: 80px;
+}
+
+/* Stats/Videos section intro heading — Bebas Neue 32px to match live site */
+main > .section.carousel-video-playlist-container > .default-content-wrapper:first-child > p:first-child strong {
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: var(--font-weight-body);
+  line-height: 30px;
+  text-transform: uppercase;
+}
 
 /* LINZESS DTC — Brand-specific style overrides */
 
@@ -45,5 +4610,1105 @@ body.no-hero main > .section:first-child > .default-content-wrapper:first-child 
   body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1 {
     font-size: var(--no-hero-h1-font-size-mobile);
     line-height: var(--no-hero-h1-line-height-mobile);
+  }
+}
+
+/* Indication statement above the promo card (regulated copy): small, gray,
+   centered — matches the live site. Targets the loose paragraph that sits in
+   the promo section's content wrapper, before the columns block.
+   Shown only on mobile (≤767px) per the live mobile layout. */
+main .section.columns-container:has(.columns-homepage-promo) > .default-content-wrapper p,
+main .section p.linzess-indication {
+  display: none;
+}
+
+@media (width < 768px) {
+  main .section.columns-container:has(.columns-homepage-promo) > .default-content-wrapper p,
+  main .section p.linzess-indication {
+    display: block;
+    margin: 12px auto;
+    max-width: 802px;
+    font-size: 12px;
+    line-height: 1.3;
+    font-weight: 400;
+    text-align: center;
+    color: #4d4d4f;
+  }
+}
+
+/* Static inline ISI section above the footer — default content + Section
+   Metadata style "isi" (same pattern as the transcript pages). White bg,
+   BasicCommercialLT, purple 16px headings, grey 14px body. */
+.section.isi,
+main > .section:has(> .default-content-wrapper > h3:first-child) {
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0 20px 80px;
+  background-color: #fff;
+  font-family: var(--font-family-legal);
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* White top-dome that rises into the purple Explore band above, carving the
+   curved purple→white transition. Matches the live/reference arc mechanism: a
+   dome behind the content (z-index:-5), not a shallow forward dome. The dome is
+   shallow on small screens (75px) and deepens to 255px at >=900px, mirroring
+   the reference. */
+.section.isi::before,
+main > .section:has(> .default-content-wrapper > h3:first-child)::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 75px;
+  background-color: #fff;
+  border-radius: 100% 100% 0 0;
+  z-index: -5;
+}
+
+@media (width >= 900px) {
+  .section.isi::before,
+  main > .section:has(> .default-content-wrapper > h3:first-child)::before {
+    top: -150px;
+    height: 255px;
+  }
+}
+
+/* At >=1440px live insets the ISI body to a 1240px content column (100px each
+   side). Match that with wider horizontal padding so the legal copy doesn't run
+   full-bleed. */
+@media (width >= 1440px) {
+  .section.isi,
+  main > .section:has(> .default-content-wrapper > h3:first-child) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+/* USES, IMPORTANT RISK INFORMATION, "Before you take...", "Side Effects"
+   are all bold purple headings (BasicCommercialLT-Black). */
+.section.isi h3,
+.section.isi h4,
+.section.isi h5,
+main > .section:has(> .default-content-wrapper > h3:first-child) h3,
+main > .section:has(> .default-content-wrapper > h3:first-child) h4,
+main > .section:has(> .default-content-wrapper > h3:first-child) h5 {
+  margin: 10px 0 0;
+  font-family: var(--font-family-legal-bold);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  color: #422e83;
+}
+
+.section.isi p,
+.section.isi li,
+main > .section:has(> .default-content-wrapper > h3:first-child) p,
+main > .section:has(> .default-content-wrapper > h3:first-child) li {
+  font-family: var(--font-family-legal);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #555;
+}
+
+.section.isi p,
+main > .section:has(> .default-content-wrapper > h3:first-child) p {
+  margin: 10px 0;
+}
+
+.section.isi ul,
+main > .section:has(> .default-content-wrapper > h3:first-child) ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.section.isi li,
+main > .section:has(> .default-content-wrapper > h3:first-child) li {
+  margin-bottom: 4px;
+}
+
+.section.isi a,
+main > .section:has(> .default-content-wrapper > h3:first-child) a {
+  color: #422e83;
+  text-decoration: underline;
+}
+
+/* why-linzess page only (identified by the How-LINZESS-Works timeline block):
+   last paragraph in each block gets a 20px bottom margin, except CTA buttons. */
+main:has(.whylinzess-timeline) p:not(.button-container):last-child {
+  margin-bottom: 20px;
+}
+
+/* why-linzess pixel parity: Patient Experiences carousel section headings
+   ("Hear From Real Patients…" / "HEAR THE CONSTIPATION CONVERSATION") are
+   40px on live, not the 32px carousel default. */
+body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p:first-child strong,
+body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p:nth-child(2) strong {
+  font-size: 40px;
+}
+
+/* Mobile: those carousel headings shrink to 32px/30px (live) to stop the
+   overlapping lines. Placed after the 40px rule so it wins by source order. */
+@media (width < 768px) {
+  /* :not(:last-child) excludes the savings-card disclaimer, which is the last
+     content wrapper in the patients section (also a carousel container) — it is
+     a 12px footnote, not a 32px heading. */
+  body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper:not(:last-child) > p:nth-child(2),
+  body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper:not(:last-child) > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+}
+
+/* Savings card inherits the homepage columns-homepage-savings styling
+   verbatim (982-wide, 55% image, 18px title, 14px body) — no why-linzess
+   overrides, so it renders identically to the homepage card. */
+
+/* Tighten the gap between the body copy and the Sign Up CTA. */
+main:has(.whylinzess-timeline) .columns.columns-homepage-savings .columns-item-content > p:has(+ .button-container) {
+  margin-bottom: 8px;
+}
+
+/* Reduce card height: the image column drives the row height, so cap it to
+   match live (~300px) rather than the taller default. */
+body main:has(.whylinzess-timeline) .section.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) {
+  max-height: 300px;
+}
+
+body main:has(.whylinzess-timeline) .section.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) img {
+  max-height: 300px;
+}
+
+/* Savings disclaimer "Program Terms, Conditions, Privacy Notice, and
+   Eligibility Criteria" link is underlined on live across all breakpoints.
+   Target it by href so it stays underlined wherever the anchor is present
+   (why-linzess, resources, homepage). NOTE: on the homepage this phrase was
+   imported as plain text with no anchor, so CSS cannot underline it there —
+   that requires re-importing the content with the link intact. */
+main a[href*="savings-and-support#expand"] {
+  text-decoration: underline;
+}
+
+/* Savings disclaimer footnote: EDS auto-converts this standalone link
+   paragraph into a button. Revert it to plain grey legal text (matching
+   the homepage disclaimer), since here the link has no surrounding copy. */
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container {
+  text-align: left;
+}
+
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container a.button {
+  display: inline;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-body);
+  line-height: normal;
+  color: var(--linz-grey);
+  text-decoration: underline;
+}
+
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container a.button::after {
+  content: none;
+}
+
+/* Explore cards (Check My Symptoms / Understanding Constipation): title 24px
+   white on live, not 18px purple. */
+main:has(.whylinzess-timeline) .cards-grid .abbv-stretched-card-body p.heading-2 {
+  font-size: 24px;
+  color: var(--linz-white);
+}
+
+/* why-linzess page: uniform 1.6rem line-height for body copy. Headings
+   (and their inline <strong>) keep their own larger line-height so the
+   40px multi-line titles don't overlap. */
+main:has(.whylinzess-timeline) :is(p, li, a):not(:has(strong)) {
+  line-height: 1.6rem;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESOURCES PAGE — scoped to .resources-* variants only so the homepage
+   and why-linzess pages are never affected. Explicit px per the Linzess
+   CSS-isolation rule. Breakpoints: mobile <768, tablet 768-985, desktop >=986.
+   Live facts: all 3 sections have white/transparent bg; cards are
+   light-purple (#d9d7f9) 16px-radius. Article cards 3-up (300px, image-top);
+   tip cards stacked full-width (670px, icon-top + bullet list).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) {
+  text-align: center;
+  padding: 60px 24px;
+  max-width: none;
+  margin: 0;
+}
+
+/* Center inner content wrappers since the section itself is now full-bleed */
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > div {
+  max-width: 1046px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wellness Tips = full-bleed dark-purple band with white header text */
+body main .section:is(.resources-wellness-tips, #wellnesstips) {
+  background: #422e83;
+  position: relative;
+  padding-bottom: 140px;
+}
+
+/* Top inward curve — a purple dome rising into the white Healthy Routines
+   section above, so the band's top edge reads as an arch (matches live). */
+body main .section:is(.resources-wellness-tips, #wellnesstips)::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 133px;
+  background-color: #422e83;
+  border-radius: 100% 100% 0 0;
+  z-index: 0;
+}
+
+/* Keep header + content above the top dome. */
+body main .section:is(.resources-wellness-tips, #wellnesstips) > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom inward curve — an off-white dome rising into the dark Wellness Tips
+   band, carving the transition down to the off-white Community section below.
+   The dome colour matches that section (#f4f6fb) so there's no visible seam. */
+body main .section:is(.resources-wellness-tips, #wellnesstips)::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #f4f6fb;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+/* Community Resources = full-bleed off-white band */
+body main .section:is(.resources-community, #communityresources) {
+  background: #f4f6fb;
+  margin-top: -40px !important;
+
+  /* Sit above the wellness band's bottom dome (::after z-index:1); without this
+     the dome paints over the eyebrow, leaving a white bar on the published page. */
+  position: relative;
+
+  /* z-index intentionally omitted: raising it here clips the explorer arc. */
+}
+
+/* Savings-card disclaimer footnote (last loose paragraph in the community band):
+   live renders it 12px/400, left-aligned, in a centered 920px column. */
+body main .section:has(.cards-grid.resources-community) > .default-content-wrapper:last-child > p {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  color: #4d4d4f;
+  text-align: left;
+  max-width: 920px;
+  margin: 12px auto;
+}
+
+/* Section header: eyebrow → divider → heading → intro */
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+  color: #422e83;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 32px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #422e83;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  color: #4d4d4f;
+  text-align: center;
+  max-width: 998px;
+  margin: 0 auto;
+}
+
+/* Intro line that precedes the wellness article grid — live renders it as the
+   block's 24px/700 heading-2, centered, full container width. */
+.section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:not(:first-child) > p {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  color: #fff;
+  text-align: center;
+  max-width: 998px;
+  margin: 24px auto;
+}
+
+/* Wellness Tips dark band: eyebrow, heading and intro are white */
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:first-child,
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(2),
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(2) strong,
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  color: #fff;
+}
+
+/* ── Article cards (Healthy Routines 3-up, Wellness 5-up wrapping) ──
+   300px light-purple cards, image-top 174px, 3 per row, gap 16px. */
+body main .section .cards-grid.resources-articles .abbv-flex-container-v2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 998px;
+  margin: 40px auto 0;
+}
+
+/* Base rule forces nowrap on .flexbox-cards:has(.col-2-card) at >=986px;
+   keep the resources article grids wrapping (3-up, then 2). */
+@media (width >= 986px) {
+  body main .section .cards-grid.resources-articles .abbv-flex-container-v2.flexbox-cards {
+    flex-wrap: wrap;
+  }
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 {
+  background: #d9d7f9;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Card is a full-height flex column: image+text block on top, the CTA row
+   (a separate .cta sibling) pinned to the bottom so "Read the article" aligns
+   across cards whose body copy differs in length (matches live). */
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 {
+  display: flex;
+  flex-direction: column;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 > .image-text-v2 {
+  flex: 0 0 auto;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 > .cta {
+  margin-top: auto;
+  padding: 0 24px 24px;
+}
+
+/* Force card inner layout to a full-width column (image top, text below) */
+body main .section .cards-grid.resources-articles .image-text-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-v2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-content-container-v2 {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+/* Base .cards-grid-icon-image-card pulls the image up -50px (icon overlap);
+   the article-card images are full photos, so cancel that to show them fully. */
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 {
+  margin-top: 0;
+}
+
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 picture,
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+  object-fit: fill;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 p {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2 {
+  padding: 0 24px;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 .heading-2 {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 p:not(.heading-2) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: #4d4d4f;
+  margin-bottom: 20px;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2 a,
+body main .section .cards-grid.resources-articles a.abbv-button-primary {
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+  color: #422e83;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-articles a.abbv-button-primary.i-a::after,
+body main .section .cards-grid.resources-articles a.abbv-button-primary.i-b::before {
+  content: none;
+  display: none;
+}
+
+body main .section .cards-grid.resources-articles a.abbv-button-primary:hover,
+body main .section .cards-grid.resources-articles a.abbv-button-primary:focus {
+  background: transparent;
+  color: #422e83;
+}
+
+/* ── Tip cards (3 stacked light-purple boxes: icon left, text right) ── */
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns-wrapper:has(.columns.resources-tips) {
+  width: 100%;
+  max-width: none;
+}
+
+/* Stack the 3 tip cards centered on the page with a 20px gap between them
+   (matches live: 670px-wide cards, centered, 20px vertical gap). */
+body main .section:is(.resources-wellness-tips, #wellnesstips).columns-container .columns.resources-tips.block {
+  background: transparent;
+  border-radius: 0;
+  padding: 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: none;
+}
+
+body main .section .columns.resources-tips .columns-item {
+  width: 670px;
+  max-width: 670px;
+  margin: 0;
+  align-self: center !important;
+}
+
+body main .section .columns.resources-tips .columns-item > div {
+  background: #d9d7f9;
+  border-radius: 16px;
+  padding: 16px 24px;
+  text-align: left;
+  width: auto;
+}
+
+/* Second tip card ("Drink More Water") uses an off-white background on live. */
+body main .section .columns.resources-tips .columns-item:nth-child(2) > div {
+  background: #f4f6fb;
+}
+
+/* Icon-left layout (matches live): the icon's white circle overhangs the card's
+   left edge by ~45px and is vertically centered beside the title + bullet list.
+   A 2-column grid (icon zone + content); the icon is pulled left out of the card
+   via a negative margin so its circle pokes past the rounded-card edge. */
+body main .section .columns.resources-tips .columns-item .columns-item-image {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+
+  /* Flexible spacer rows top & bottom so the title + list block centers
+     vertically against the taller icon (matches live), instead of pinning to
+     the top on shorter cards. */
+  grid-template-rows: 1fr auto auto 1fr;
+  column-gap: 0;
+  align-items: start;
+  width: auto;
+}
+
+/* Icon spans all rows and is vertically centered against the title+list. */
+body main .section .columns.resources-tips .columns-item .columns-item-image p:has(picture) {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: center;
+  margin: 0;
+  overflow: visible;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image p:not(:has(picture)) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image ul {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image picture {
+  display: block;
+  width: 120px;
+  margin-left: -69px;
+}
+
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns.resources-tips > .columns-item:has(.columns-item-image) .columns-item-image img,
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns.resources-tips > .columns-item:has(.columns-item-image) picture img {
+  width: 120px;
+  height: auto;
+  max-width: 120px;
+  min-height: 0;
+  margin: 0;
+  display: block;
+  object-fit: contain;
+}
+
+/* Tip-card title paragraph: 16px, no inherited 3rem bottom margin (the base
+   `p { margin-bottom: 3rem }` rule otherwise opens a big gap before the list). */
+body main .section .columns.resources-tips .columns-item-image p:not(:has(picture)) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  margin: 0;
+}
+
+body main .section .columns.resources-tips p strong {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+body main .section .columns.resources-tips ul {
+  text-align: left;
+  font-family: var(--body-font-family);
+  font-size: 14.4px;
+  line-height: normal;
+  color: #4d4d4f;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+body main .section .columns.resources-tips ul li {
+  font-size: 14.4px;
+  line-height: normal;
+  color: #4d4d4f;
+  margin-bottom: 10px;
+}
+
+body main .section .columns.resources-tips ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Mobile: wellness section + tip cards (matches live /resources) ──
+   Less top space above the eyebrow, and tip cards switch from icon-left to a
+   centered column with the icon straddling the card's top edge. */
+@media (width < 768px) {
+  /* Reduce the gap between the top arc and the Wellness Tips eyebrow. */
+  body main .section:is(.resources-wellness-tips, #wellnesstips) {
+    padding-top: 24px;
+  }
+
+  /* Cards fit the viewport instead of the 670px desktop width. */
+  body main .section .columns.resources-tips .columns-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Stack icon-on-top, content centered below. */
+  body main .section .columns.resources-tips .columns-item .columns-item-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Icon centered, overlapping the card's top edge. */
+  body main .section .columns.resources-tips .columns-item .columns-item-image p:has(picture) {
+    order: -1;
+    margin: -65px 0 0;
+  }
+
+  body main .section .columns.resources-tips .columns-item .columns-item-image picture {
+    margin-left: 0;
+  }
+
+  body main .section .columns.resources-tips .columns-item > div {
+    padding-top: 0;
+  }
+
+  /* Bullet list stays left-aligned within the centered card. */
+  body main .section .columns.resources-tips ul {
+    text-align: left;
+  }
+
+  /* "Check out some articles…" intro: 18px and tighter vertical margin. */
+  body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:not(:first-child) > p {
+    font-size: 18px;
+    margin: 18px auto;
+  }
+}
+
+/* ── Gut-check promo banner (image left + copy right, off-white card) ──
+   The block authors as two sibling .columns-item cells (image + content); make
+   the .columns block itself the rounded card and lay the two cells out as a
+   50/50 grid (matches live's single full-width 998px card). */
+body main .section.columns-container .columns.columns-resources-gutcheck {
+  display: grid !important;
+  grid-template-columns: 440px 1fr;
+  align-items: stretch;
+  height: 299px;
+  min-height: 299px !important;
+  max-width: 998px;
+  margin: 60px auto 0;
+  background: #f4f6fb;
+  border-radius: 16px;
+  overflow: visible;
+}
+
+body main .section .columns.columns-resources-gutcheck > .columns-item {
+  width: auto;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Image column: live renders a 440×324 photo that overhangs the card top by
+   25px and ends flush at the bottom, so the photo (not the copy) sets the
+   visible height. The image is bottom-aligned so its taller-than-card height
+   pushes the top above the card edge — a base rule zeroes any negative
+   margin-top, so we use align-self:end instead. The image carries the curved
+   right edge. */
+body main .section .columns.columns-resources-gutcheck .columns-item-image {
+  align-self: start;
+  height: auto;
+}
+
+body main .section .columns.columns-resources-gutcheck .columns-item-image,
+body main .section .columns.columns-resources-gutcheck .columns-item-image img {
+  width: 100%;
+  display: block;
+}
+
+body main .section .columns.columns-resources-gutcheck .columns-item-image img {
+  position: relative;
+  top: -25px;
+  height: 324px;
+  object-fit: cover;
+  border-radius: 0 60px 60px 0;
+}
+
+/* Content column: no vertical padding (live uses padding-left only) and the
+   copy is vertically centered against the taller image column. */
+body main .section .columns.columns-resources-gutcheck .columns-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px 0 56px;
+  text-align: left;
+}
+
+body main .section .columns.columns-resources-gutcheck p strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+body main .section .columns.columns-resources-gutcheck p {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  color: #4d4d4f;
+  margin: 0 0 14px;
+}
+
+/* Body copy: tighter spacing above the CTA (matches live). */
+body main .section .columns.columns-resources-gutcheck .columns-item-content p:nth-child(2) {
+  margin: 0 0 24px;
+}
+
+/* CTA → dark-purple pill (matches live: 16px radius, arrow on the right). */
+body main .section .columns.columns-resources-gutcheck .columns-item-content a {
+  display: inline-block;
+  background: #422e83;
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px 48px 16px 32px;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* ── Community cards (2 dark-purple cards, white text, white "Learn More" pill) ── */
+body main .section .cards-grid.resources-community .abbv-flex-container-v2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+body main .section .cards-grid.resources-community .flexboxitem-v2 {
+  flex: 0 0 491px;
+  max-width: 491px;
+}
+
+body main .section .cards-grid.resources-community .abbv-flex-item-v2 {
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  height: auto;
+}
+
+/* Live: 1st card (IBSPatient.org) is dark purple with white copy; 2nd card
+   (PatientsLikeMe.com) is light purple with dark copy. Because this section is
+   a carousel-video-playlist-container and the flex container carries
+   .savings-card-cards, the homepage stats-card rules recolour these cards
+   (off-white on the 2nd item). Match that exact structure so these win. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) .abbv-flex-item-v2 {
+  background: #422e83;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .abbv-flex-item-v2 {
+  background: #d9d7f9;
+}
+
+/* Icon overhangs the card top by -50px (matches live). The icon asset already
+   includes its own circular badge, so the container has NO background/circle —
+   just centre the 105px icon and let it overlap the card's top edge. */
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 {
+  margin: -50px auto 0;
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 img {
+  width: 105px;
+  height: auto;
+  margin: -25px auto 0;
+  display: inline-block;
+}
+
+/* The card TITLE (p.heading-2) is otherwise turned into a 136px circle by the
+   homepage stats-circle rule (this section is a carousel-video-playlist-container
+   and the flex container carries .savings-card-cards). Reset it back to a plain
+   heading. */
+/* The card TITLE (p.heading-2) is otherwise turned into a 136px circle by the
+   homepage stats-circle rule (this section is a carousel-video-playlist-container
+   and the flex container carries .savings-card-cards). Reset both cards' titles
+   back to plain headings — match the .savings-card-cards .flexboxitem-v2
+   structure so this beats the stats-circle + nth-child(2) overrides. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2 .heading-2 {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 12px;
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  word-spacing: normal;
+  text-transform: none;
+}
+
+/* Card 1 (dark) → white title + body; Card 2 (light) → dark-purple title,
+   dark-grey body. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) .heading-2,
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) p:not(.heading-2) {
+  color: #fff;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .heading-2 {
+  color: #422e83;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) p:not(.heading-2) {
+  color: #4d4d4f;
+}
+
+/* Card 2 (light) "Learn More" → dark-purple pill with white text (card 1's
+   white pill is set further below). */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) a.abbv-button-primary,
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .abbv-image-text-content-v2 a {
+  background: #422e83;
+  color: #fff;
+}
+
+/* Savings card heading (matches live 24px/700 Lato, dark purple) */
+body main .section .columns.columns-resources-savings p strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+/* Savings card body copy + "Already have a savings card?" line: dark grey on
+   the light-purple card (the community section otherwise inherits white text,
+   which made this copy invisible). */
+body main .section .columns.columns-resources-savings .columns-item-content p,
+body main .section .columns.columns-resources-savings .columns-item-content {
+  color: #4d4d4f;
+}
+
+/* The whole savings card is a single white rounded card (matches live). The
+   tout image carries its own light-purple panel, so the image cell stays
+   transparent and the card background reads white across both halves.
+   Scoped through the community section so it beats the section's #f4f6fb
+   band that would otherwise show through the card. */
+body main .section:is(.resources-community, #communityresources) .columns.columns-resources-savings {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Content side of the savings card sits on the white card. */
+body main .section .columns.columns-resources-savings .columns-item-content {
+  background: #fff;
+}
+
+/* Tighten savings card copy: drop the 30px bottom margin on the body line
+   above the button, the Sign Up Now button line, and the "Already have a
+   savings card?" line. */
+body main .section .columns.columns-resources-savings .columns-item-content > p:nth-child(2),
+body main .section .columns.columns-resources-savings .columns-item-content > p:nth-child(3),
+body main .section .columns.columns-resources-savings .columns-item-content > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Space between the savings card and the disclaimer below it. */
+body main .section:is(.resources-community, #communityresources) .columns-wrapper:has(.columns-resources-savings) {
+  margin-bottom: 32px;
+}
+
+/* Trailing savings disclaimer (*Maximum savings limit…) sits in the community
+   section's last default-content-wrapper; force dark grey too. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:last-child p {
+  color: #4d4d4f;
+}
+
+/* ── Patient-stories video card (community section) ──
+   Live shows the video on the off-white section with no purple band, dark
+   text, a light-purple title bar, and a purple "More Videos Like This" CTA. */
+
+/* Drop the full-bleed purple band the .grid carousel paints by default, and
+   cap the video to its live ~600px width, centered (single player, not the
+   homepage 3-up grid). */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist.grid {
+  background: transparent;
+  width: 100%;
+}
+
+/* The carousel block is a flex container that shrink-wraps to its card's
+   content width, so cap + center the wrapper at the live ~600px instead. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Hear REAL Patient Stories" heading → dark purple, 32px/30px. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper h2 {
+  color: #422e83;
+  line-height: 30px;
+}
+
+/* Intro copy above the video → dark grey, 14px, 620px max, centered. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:has(h2) p {
+  color: #4d4d4f;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: normal;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Hear their real stories:" lead-in is dark purple on live. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:has(h2) p strong {
+  color: #422e83;
+}
+
+/* Single video player (one column), not the homepage 3-up card grid. The
+   grid wrapper is flex, so the single cvp-grid item must stretch to fill
+   (otherwise it collapses to the card's content width). */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist.grid .cvp-grid {
+  grid-template-columns: 1fr;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* Copy below the video sits in a default-content-wrapper with no h2, so the
+   rule above misses it — it would otherwise read white. Force dark grey,
+   14px, 620px max, centered to match live. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper + .default-content-wrapper > p:first-child {
+  color: #4d4d4f;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: normal;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Video title bar: light-purple band with dark-purple text. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist .cvp-name-banner {
+  background: #d9d7f9;
+  color: #422e83;
+}
+
+/* "More Videos Like This" CTA: purple background, white text. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper + .default-content-wrapper a.button,
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper a.button {
+  background: #422e83;
+  color: #fff;
+}
+
+/* Explore band panel titles (matches live 24px/700 Lato) */
+body main .section .cards-grid.resources-explore.cards-grid-icon-image-card .heading-2 {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card p {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  color: #fff;
+}
+
+/* The base .carousel-video-playlist-container .cards-grid .cta rule hides the
+   CTA row (display:none); the community cards DO show a "Learn More" pill, so
+   re-enable it. */
+body main .section .cards-grid.resources-community .cta {
+  display: block;
+  text-align: center;
+}
+
+body main .section .cards-grid.resources-community .abbv-image-text-content-v2 a,
+body main .section .cards-grid.resources-community a.abbv-button-primary {
+  display: inline-block;
+  background: #fff;
+  color: #422e83;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 48px 12px 32px;
+  margin-top: 16px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-community a.abbv-button-primary:hover,
+body main .section .cards-grid.resources-community a.abbv-button-primary:focus {
+  background: #fff;
+  color: #422e83;
+}
+
+/* Mobile/tablet: stack all card grids single column, 32px headings */
+@media (width < 986px) {
+  .section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2),
+  .section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  body main .section .columns.columns-resources-gutcheck {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section-card headings drop to 18px on mobile/tablet to match live */
+  body main .section .columns.columns-resources-gutcheck p strong,
+  body main .section .columns.columns-resources-savings p strong,
+  body main .section .cards-grid.resources-explore.cards-grid-icon-image-card .heading-2,
+  body main .section .cards-grid.resources-community.cards-grid-icon-image-card .heading-2 {
+    font-size: 18px;
+  }
+}
+
+@media (width < 768px) {
+  body main .section .cards-grid.resources-articles .flexboxitem-v2,
+  body main .section .cards-grid.resources-community .flexboxitem-v2 {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }

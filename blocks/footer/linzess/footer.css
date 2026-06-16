@@ -1003,9 +1003,29 @@
   --header-submenu-link-font-size: 1.28rem;
   --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
   --icon-svg-home: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEwIDIwdi02aDR2Nmg1di04aDNMMTIgMyAyIDEyaDN2OHoiLz48L3N2Zz4=");
+  /* ---- Header: No-hero arc ---- */
+  --header-z-index: 10;
+  --header-overlay-gradient: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --no-hero-arc-height: 80px;
+  --no-hero-h1-font-size: 40px;
+  --no-hero-h1-line-height: 36px;
+  --no-hero-h1-margin-bottom: 40px;
+  --no-hero-h1-font-size-mobile: 28px;
+  --no-hero-h1-line-height-mobile: 30px;
+  --no-hero-divider-width: 64px;
+  --no-hero-divider-height: var(--hero-divider-height);
+  --no-hero-divider-margin-bottom: 24px;
+
   /* ---- Cards Grid Block ---- */
   --linz-heading2-font-size: var(--font-size-h2);
   --linz-body-font-size: var(--font-size-body);
+
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
 
   /* ---- Hero: Linzess-specific ---- */
   --hero-behind-nav-min-height: 52rem;
@@ -1074,9 +1094,11 @@
      the bottom row (small, equal heights, separated by a vertical divider). */
   --footer-logo-partner-height: var(--spacing-24);
 
-  /* Arc top decoration height — matches live `.abbv-footer:before { height: 255px }`.
-     Block-scoped raw value (precedent: `--footer-content-max-width: 1200px` in base). */
-  --footer-arc-height: var(--spacing-255);
+  /* Arc top decoration — matches live `.abbv-footer:before`. Block-scoped
+     explicit px (precedent: `--footer-content-max-width: 1200px` in base). */
+  --footer-arc-height: 255px;
+  --footer-arc-overlap: 10px;
+  --footer-arc-offset: 60px;
 }
 
 /* Curved arc top decoration — replicates the live `.abbv-footer:before`.
@@ -1085,19 +1107,21 @@
 
 .footer {
   overflow: visible;
+  margin-top: calc(-1 * var(--footer-arc-overlap));
+  position: relative;
+  z-index: 0;
 }
 
 .footer::before {
   content: '';
   position: absolute;
-  top: -60px;
+  top: calc(-1 * var(--footer-arc-offset));
   left: 50%;
+  width: 130vw;
   transform: translateX(-50%);
-  width: 100.1%;
-  height: 75px;
+  height: var(--footer-arc-height);
   background-color: var(--footer-color-bg);
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
+  border-radius: 100% 100% 0 0;
   z-index: -1;
 }
 

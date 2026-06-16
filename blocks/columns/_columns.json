@@ -94,6 +94,21 @@
           "name": "imageAlt",
           "value": "",
           "label": "Image Alt"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "mobileImage",
+          "label": "Column Image (Mobile)",
+          "description": "Optional. Shown on screens ≤767px; falls back to Column Image if empty.",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mobileImageAlt",
+          "value": "",
+          "label": "Mobile Image Alt"
         }
       ]
     }

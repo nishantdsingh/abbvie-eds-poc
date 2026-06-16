@@ -10,22 +10,13 @@ import { applyCommonProps } from '../../scripts/utils.js';
 export default function decorate(block) {
   applyCommonProps(block);
   const rows = [...block.children];
-  // Strip the leading placeholder rows (variant/blockId/language/analytics).
-  // md2jcr routes the variant + common props to the block class attribute, so
-  // the delivered placeholders are bare markers ('-', 'none', or empty). Only
-  // remove rows that are genuine placeholders — never a real content item.
-  // (A blanket "row lacks nested content" check wrongly dropped the first
-  // content item when it was paragraph-only, e.g. the text-two-columns EASI 75
-  // column whose markup has no heading/list/nested div.)
   const parentRowCount = 4;
-  const isPlaceholder = (row) => {
-    const text = row.textContent.trim();
-    if (text === '' || text === '-' || text.toLowerCase() === 'none') return true;
-    return /^(id|lang):/i.test(text);
-  };
   for (let i = 0; i < Math.min(parentRowCount, rows.length); i += 1) {
     const row = rows[i];
-    if (isPlaceholder(row)) {
+    const innerDiv = row.querySelector(':scope > div');
+    const content = innerDiv || row;
+    const hasItemContent = content.querySelector('div, h1, h2, h3, h4, h5, h6, ul, ol, table, picture');
+    if (!hasItemContent) {
       row.remove();
     }
   }

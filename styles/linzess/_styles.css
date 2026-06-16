@@ -1,0 +1,2241 @@
+/* stylelint-disable no-descending-specificity, no-duplicate-selectors */
+
+/* ============================================================
+   LINZESS DTC — Theme Overrides
+   Primary: Purple #422E83 | Accent: Orange #FAA633
+   Display Font: Bebas Neue (headings)
+   Body Font: Lato
+   Legal Font: BasicCommercialLT
+   Rounded corners: 16px standard, 8px small
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: var(--font-size-h1-hero);
+  line-height: var(--line-height-h1-hero);
+}
+
+h2 {
+  font-size: var(--font-size-h2-hero);
+  line-height: var(--line-height-h2-hero);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--body-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+h3 { font-size: var(--font-size-h3); }
+
+/* ---- Links ---- */
+a { color: var(--link-color); }
+a:hover { color: var(--color-brand-primary-light); }
+
+/* ---- Buttons ---- */
+.button-container a,
+a.button.primary {
+  color: var(--button-primary-color);
+  background-color: var(--button-primary-bg);
+  border: none;
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-extra-bold);
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition-button);
+}
+
+.button-container a:hover,
+a.button.primary:hover {
+  background-color: #e8941e;
+}
+
+a.button.secondary {
+  color: var(--color-brand-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-brand-primary);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-extra-bold);
+  text-decoration: none;
+}
+
+a.button.secondary:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Header ---- */
+header {
+  background-color: var(--background-color);
+}
+
+header nav a {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-on-dark);
+}
+
+footer a {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-footer);
+}
+
+/* ---- Hero Section ---- */
+.section.hero-container {
+  position: relative;
+}
+
+.section.hero-container h1 {
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family);
+  text-transform: uppercase;
+}
+
+
+/* ---- Safety Bar ---- */
+.isi-container {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-safety-bar);
+  box-shadow: var(--shadow-safety-bar);
+}
+
+/* ---- ISI / Legal Text ---- */
+.isi-container p,
+.legal-text {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  line-height: var(--line-height-legal);
+}
+
+.isi-container strong {
+  font-family: var(--font-family-legal-bold);
+}
+
+/* ---- Accordion (FAQ) ---- */
+.accordion {
+  border-radius: var(--linz-rounded-corner-sm);
+}
+
+.accordion summary {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---- Cards ---- */
+.cards .cards-card-body {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+}
+
+/* ---- Video Player ---- */
+.embed.embed-brightcove {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+}
+
+/* ---- Tabs ---- */
+.tabs .tabs-tab {
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+  border-bottom: 3px solid transparent;
+}
+
+.tabs .tabs-tab.active,
+.tabs .tabs-tab[aria-selected="true"] {
+  color: var(--color-brand-primary);
+  border-bottom-color: var(--color-brand-primary);
+}
+
+/* ---- Section Backgrounds ---- */
+.section.off-white-bg { background-color: var(--color-background-light); }
+
+.section.purple-bg,
+body main .section.dark {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+.section.purple-bg h1, .section.purple-bg h2, .section.purple-bg h3,
+body main .section.dark h1, body main .section.dark h2, body main .section.dark h3,
+body main .section.dark p, body main .section.dark strong,
+body main .section.dark a:not(.button) { color: var(--color-text-on-dark); }
+.section.light-purple-bg { background-color: var(--linz-light-purple); }
+
+/* ---- Savings Card Disclaimer ---- */
+main > .section:has(.columns-homepage-savings) > .default-content-wrapper:last-child p {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-body);
+  line-height: normal;
+  color: var(--linz-grey);
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WHY LINZESS PAGE — Section-specific styles
+   Scoped to section-metadata classes to prevent cross-page conflicts
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Hero height constraint */
+.hero.linzess-behind-nav,
+.hero.linzess-behind-nav-linzess-editorial-hero {
+  max-height: 768px;
+}
+
+/* Hero eyebrow — match source: 12px/800/uppercase with 24px margin-bottom
+   Scoped to editorial heroes only; homepage CTA hero uses 16px/400/none */
+.section.hero-container .default-content-wrapper > p:first-child,
+.section.hero-container .hero:not(.linzess-behind-nav-linzess-cta-hero) p:first-of-type {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Section-nav overlaps bottom of hero */
+.section.section-nav-container {
+  margin-top: -80px;
+  margin-bottom: 17px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile: the hero image is only ~384px tall, so the -80px overlap lifted the
+   JUMP TO bar fully onto the photo. Live straddles the image's bottom edge
+   (bar bottom sits just below it), so reduce the overlap here. */
+@media (width < 768px) {
+  .section.section-nav-container {
+    margin-top: -36px;
+  }
+}
+
+/* ---- "How LINZESS Can Help" Section ---- */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) {
+  text-align: center;
+  padding: 80px 24px 60px;
+  max-width: 1046px;
+  margin: 0 auto;
+}
+
+/* Intro copy block matches live's 928px text column (narrower than the
+   998px stat-card grid below it). */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child {
+  max-width: 928px;
+  margin-inline: auto;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2),
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the section heading. */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(n+3) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.6rem;
+  color: var(--linz-grey);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:last-child a {
+  background-color: var(--color-brand-primary);
+  color: var(--linz-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: var(--font-weight-extra-bold);
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-top: 40px;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:last-child a::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+/* Symptom cards (columns block - two-column layout) */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms {
+  margin-top: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Symptom cards — reset homepage fallback + two separate cards */
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms {
+  display: block;
+  background-color: transparent;
+  border-radius: 0;
+  max-width: 1030px;
+  margin: 60px auto 0;
+  padding: 0;
+  overflow: visible;
+}
+
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > .columns-item,
+body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  overflow: visible;
+  padding-top: 60px;
+  padding-bottom: 0;
+  background: transparent;
+  align-items: stretch;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content {
+  padding: 60px 32px 40px;
+  text-align: left;
+  position: relative;
+  border-radius: var(--linz-rounded-corner);
+}
+
+/* IBS-C card (left) — off-white bg */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:first-child {
+  background-color: var(--linz-off-white);
+}
+
+/* CIC card (right) — light purple bg, stretch to match IBS-C height */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:last-child {
+  background-color: var(--linz-light-purple);
+  align-self: stretch;
+  min-height: 100%;
+}
+
+/* Circle badges — overlap the top of each card */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content > p:first-child strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  background-color: rgb(217 215 249 / 60%);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  margin: -100px auto 24px;
+  display: block;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content:last-child > p:first-child strong {
+  background-color: var(--linz-off-white);
+}
+
+/* Checkmark list items */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms li {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  padding-left: 36px;
+  position: relative;
+}
+
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: url("https://www.linzess.com/content/dam/linzess/images/icon-checkmark.svg") no-repeat center;
+  background-size: contain;
+}
+
+/* Footnote */
+.section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms .columns-item-content > p:last-child {
+  font-size: var(--linz-card-footnote-size);
+  color: var(--linz-grey);
+  margin-top: 24px;
+  font-weight: var(--font-weight-body);
+}
+
+@media (width <= 599px) {
+  body main .section:has(.cards-grid-stat-card.whylinzess-symptoms) .columns.whylinzess-symptoms > .columns-item {
+    flex-direction: column;
+  }
+}
+
+/* Mechanism card text colour in the dark "How LINZESS Works" section.
+   Card background/radius/padding live on the block in columns.css; the
+   columns-item (> div) must stay padding-free so card height matches live. */
+body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card li {
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ---- "How LINZESS Works" Section (dark purple with arc) ---- */
+.section:has(.whylinzess-timeline) {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  padding: 34px 24px 80px;
+  text-align: center;
+  max-width: none;
+  margin: 0;
+  margin-top: -20px;
+  position: relative;
+}
+
+.section:has(.whylinzess-timeline)::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-brand-primary);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+/* Bottom inward curve — an off-white dome rising into the dark section, carving
+   the transition down to the off-white Side Effects section below. The dome
+   colour must match that section (not pure white) so there's no visible gap. */
+.section:has(.whylinzess-timeline)::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-background-light);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper,
+.section:has(.whylinzess-timeline) > .columns-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-timeline) p,
+.section:has(.whylinzess-timeline) li,
+.section:has(.whylinzess-timeline) h2 {
+  color: var(--color-text-on-dark);
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the "How LINZESS Works" heading. */
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* Footnote "*Abdominal symptoms…" (first <p> of the post-cards wrapper) — remove
+   its bottom margin so the *…/†… footnote lines sit tight, like live. */
+.section:has(.whylinzess-timeline) > .columns-wrapper + .default-content-wrapper > p:first-child {
+  margin-bottom: 0;
+}
+
+/* Add bottom spacing below the second mechanism card (gut card) in this section. */
+.section:has(.whylinzess-timeline) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+  margin-bottom: 20px;
+}
+
+.section:has(.whylinzess-timeline) ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-timeline) li {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.section:has(.whylinzess-timeline) li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.section:has(.whylinzess-timeline) h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+/* "When Can I Expect" sub-heading with divider — targets 2nd default-content-wrapper, 2nd child */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) strong {
+  font-weight: var(--font-weight-body);
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ---- Gradient Overlays ---- */
+.section.hero-container::after {
+  background: var(--gradient-hero-overlay);
+}
+
+/* Why LINZESS — "When Can I Expect" sub-heading */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin: 60px auto 24px;
+  max-width: 700px;
+  text-align: center;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) strong {
+  font-weight: var(--font-weight-body);
+}
+
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Footnote (*Abdominal symptoms… / †animal studies) above the "When Can I
+   Expect" heading is 12px on live, not the inherited 18px. */
+body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:not(:has(strong)) {
+  font-size: 12px;
+}
+
+
+/* Post-timeline wrapper (after the IBS-C/CIC cards): "If you stop taking
+   LINZESS…" is 16px body copy and the "*Abdominal symptoms…" footnote below
+   it is 12px on live, with a 40px gap between them. */
+body main .section:has(.whylinzess-timeline).cards-grid-container.carousel-video-playlist-container > .cards-grid-wrapper + .default-content-wrapper > p:first-child {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+body main .section:has(.whylinzess-timeline).cards-grid-container.carousel-video-playlist-container > .cards-grid-wrapper + .default-content-wrapper > p:nth-child(2) {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* ---- "Side Effects" Section (off-white bg, centered) ---- */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)),
+main > .section.dark + .section.columns-container.whylinzess-sideeffects {
+  background-color: var(--color-background-light);
+  padding: 40px 24px 150px;
+  text-align: center;
+  max-width: none;
+  position: relative;
+
+  /* Full-bleed: the off-white background spans the viewport on live, not the
+     base 5.5rem section inset. Pull the section edge-to-edge (the inner content
+     keeps its own gutters). */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+/* Bottom inward curve — a white dome rising into the off-white Side Effects
+   section, carving the transition down to the white Patient Experiences
+   section below (matches live). */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline))::after,
+main > .section.dark + .section.columns-container.whylinzess-sideeffects::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--background-color);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper,
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+/* Divider sits between the eyebrow and the section heading. */
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(3) {
+  font-size: 16px;
+  color: var(--linz-grey);
+  margin-bottom: 19px;
+}
+
+/* Side effects cards: 1st and 3rd = dark purple, 2nd = light purple */
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--color-brand-primary);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card strong,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card li {
+  color: var(--color-text-on-dark);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--linz-light-purple);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  background: var(--color-brand-primary);
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card p,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card strong {
+  color: var(--color-text-on-dark);
+}
+
+/* FDA reporting paragraph — 690px wide, centered, bold. */
+.section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:last-child > p:last-child {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin: 40px auto 0;
+  max-width: 690px;
+  text-align: center;
+}
+
+/* "Hear from real patients" heading in How Works section.
+   Extra container classes raise specificity above the competing global
+   desktop h2 size rule so 40px wins without !important. */
+body main .section.cards-grid-container.carousel-video-playlist-container:has(.whylinzess-timeline) h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--color-text-on-dark);
+}
+
+body main .section:has(.whylinzess-timeline) h2::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+/* Center video playlist in How Works section */
+body main .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+/* "Our panel of real people…" intro under the "Hear from real patients"
+   heading is 720px / 16px centered on live, not the 928px / 14px default. */
+body main .section.cards-grid-container.carousel-video-playlist-container:has(.whylinzess-timeline) > .default-content-wrapper:has(h2) > p:last-child {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
+}
+
+/* Featured patient-experiences playlist sits in a wider 998px frame to match
+   live (player ~692px). The default-content header keeps the 928px width. */
+.section:has(.carousel-video-playlist.featured) > .carousel-video-playlist-wrapper {
+  max-width: 998px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The off-white Side Effects section's inward arc already supplies visual
+   space below it, so the Patient Experiences section needs less top padding
+   (the heading was sitting too far below the curve). */
+body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+  padding-top: 24px;
+}
+
+/* Desktop: the patient-experiences band is full-bleed on live (white bg spans
+   the viewport edge-to-edge) with the player, thumbnails, savings card, and
+   disclaimer centered at their own max-widths. The base section margin (~55px
+   each side) was insetting the whole band, shrinking the player/thumbnails and
+   stopping the background short of the edges. Override to full width and let
+   the inner wrappers center. */
+@media (width >= 986px) {
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Reduce the gap between the intro copy and the featured video player to
+   match live (~39px). The header wrapper's default 48px bottom margin was
+   pushing the player too far down. */
+body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper:first-child {
+  margin-bottom: 16px;
+}
+
+/* Center video items within the playlist */
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist {
+  justify-content: center;
+}
+
+/* Force Linzess brand font tokens (override base styles.css) */
+:root {
+  --body-font-family: 'Lato', sans-serif;
+  --heading-font-family: 'Bebas Neue', sans-serif;
+  --heading-font-family-bold: 'Bebas Neue', sans-serif;
+}
+
+/* ---- Non-hero pages: purple header + reverse arc ---- */
+body.no-hero header {
+  background-color: var(--color-brand-primary);
+}
+
+body.no-hero main > .section:first-child {
+  position: relative;
+  padding-top: 80px;
+}
+
+body.no-hero main > .section:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-brand-primary);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  z-index: 0;
+}
+
+body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-brand-primary);
+  margin-bottom: 40px;
+}
+
+body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+/* Mobile responsive overrides */
+@media (width < 768px) {
+  /* Live's mobile section heading ("LINZESS CAN HELP RELIEVE SYMPTOMS…") is
+     32px/30px. Include the inner strong so it doesn't keep the 40px desktop
+     size set by the more-specific `p:nth-child(2) strong` rule above. */
+  .section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2),
+  .section:has(.cards-grid-stat-card.whylinzess-symptoms) > .default-content-wrapper > p:nth-child(2) strong,
+  .section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2),
+  .section:has(.whylinzess-timeline) > .default-content-wrapper:first-child > p:nth-child(2) strong,
+  body.no-hero main > .section:first-child > .default-content-wrapper:first-child > h1 {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* Live's mobile top dome is a tall, round arc (border-radius 100% 100% with a
+     130%-wide centered shape), not the shallow full-width ellipse used at
+     desktop. Match it so the purple section's curved top reads the same. */
+  .section:has(.whylinzess-timeline)::before {
+    left: 50%;
+    right: auto;
+    width: 130%;
+    transform: translateX(-50%);
+
+    /* Live's mobile dome is shorter (75px tall, -60px offset): a taller dome
+       crowds the CTA above and pushes the arc crest up toward the eyebrow. */
+    height: 75px;
+    top: -60px;
+    border-radius: 100% 100% 0 0;
+  }
+
+  /* Mobile: live's bottom inward arc is a shallower dome (30% vertical radius),
+     and the band leaves less purple below the last video before the curve. */
+  .section:has(.whylinzess-timeline) {
+    padding-bottom: 40px;
+  }
+
+  .section:has(.whylinzess-timeline)::after {
+    border-radius: 50% 50% 0 0 / 30% 30% 0 0;
+  }
+
+  .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper,
+  .section:has(.carousel-video-playlist.featured) > .carousel-video-playlist-wrapper {
+    max-width: 100%;
+  }
+
+  /* Mobile: live leaves far less purple below the last video before the bottom
+     arc. The 100px desktop margin pushes the video ~150px above the dome — trim
+     it so the video sits close to the curve. */
+  body main .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper {
+    margin-bottom: 24px;
+  }
+
+  /* Featured carousel sections: drop the 24px side padding on mobile so the
+     player spans nearly the full viewport width (matching live). The intro
+     copy keeps its own breathing room via the wrapper below. */
+  body main .section:has(.carousel-video-playlist.featured) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Patient Experiences section: also zero the side margins on mobile. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Side Effects bottom arc: the 80px full-width dome is too deep/pointed on a
+     390px viewport. Live uses a shallow gentle curve — reduce the height.
+     Match both the mechanism-card and the higher-specificity sideeffects
+     selectors so neither base rule keeps the 80px height. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline))::after,
+  body main > .section.dark + .section.columns-container.whylinzess-sideeffects::after,
+  body main .section.columns-container.whylinzess-sideeffects::after {
+    height: 40px;
+  }
+
+  /* Side Effects section: the off-white background must span the full viewport
+     width on mobile (live is edge-to-edge). Zero any side margin; the inner
+     content keeps its 24px gutter via the section's own padding. */
+  body main .section.whylinzess-sideeffects,
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* FDA reporting footnote: live sits it close under the last card with a
+     14px/regular size and a small 14px top gap (vs the 16px/700, 40px-gap
+     desktop treatment). */
+  .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:last-child > p:last-child {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 14px;
+  }
+
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Heading "Hear From Real Patients…" 28→32px to match live. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(2),
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* Intro copy "If you're experiencing…" 16px/tight → 14px/normal (live)
+     so the lines stop overlapping. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients > .default-content-wrapper > p:nth-child(3) {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  body main .section:has(.whylinzess-timeline) .carousel-video-playlist {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .default-content-wrapper:first-child > p:nth-child(2) {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  /* "When Can I Expect…" heading: 40→32px / 36→30px to match live mobile. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* "When LINZESS is taken daily…" intro: 24px/tight → 18px/normal so the
+     lines no longer overlap (live uses 18px, normal line-height). */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+    font-size: 18px;
+    line-height: normal;
+  }
+
+  /* Footnote "*Abdominal…/†This was seen…" left-aligned on mobile too (it
+     inherits center from the dark section otherwise). Matches live. */
+  body main .section:has(.whylinzess-timeline) > .columns-wrapper + .default-content-wrapper > p:first-child {
+    text-align: left;
+  }
+
+  /* Mechanism-card body copy: live uses 14px bold (the source wraps the copy in
+     <b>), not the 16px desktop size. Keep the bold weight from the top-of-file
+     rule and only shrink the size on mobile. */
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-content p {
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+/* Tablet (768–985): live uses the same smaller "When Can I Expect" heading
+   (32px) and 18px intro as mobile, and left-aligns the *…/†… footnote — but
+   our tablet range otherwise falls back to the 40px/24px desktop sizes. */
+@media (width >= 768px) and (width < 986px) {
+  /* Heading uses the full content width on live's tablet (not the 700px desktop
+     cap), so it wraps to two balanced lines. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) {
+    font-size: 32px;
+    line-height: 30px;
+    max-width: none;
+  }
+
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:has(strong) + p {
+    font-size: 18px;
+    line-height: normal;
+    max-width: none;
+  }
+
+  /* Footnote "*Abdominal…/†This was seen…" left-aligned to match live. */
+  body main .section:has(.whylinzess-timeline) > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:first-child {
+    text-align: left;
+  }
+
+  /* Patient Experiences band runs near-full-width on live's tablet (16px
+     gutters), not the base 70px section inset. Pull the side margins in so the
+     savings card and its left-aligned disclaimer span the viewport like live. */
+  body main .section:has(.carousel-video-playlist.featured).whylinzess-patients {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Homepage savings + gut-check bands also run near-full-width on live's
+     tablet (16px gutters → ~736px cards), not the base 70px section inset.
+     Scoped to the homepage savings & gut-check columns so why-linzess and
+     resources columns sections are untouched. */
+  body main .section.columns-container:has(.columns-homepage-savings),
+  body main .section.columns-container:has(.columns-homepage-gutcheck),
+  body main .section.columns-container:has(.columns-homepage-promo) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  /* "How LINZESS Works" content cards band also runs near-full-width on live's
+     tablet (16px gutters → ~736px cards). Pull in the 70px section inset. */
+  body main .section.cards-grid-container:has(.cards-grid-homepage-content) {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+/* Video playlist cards in How Works section */
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item {
+  border-radius: var(--linz-rounded-corner);
+  overflow: hidden;
+  max-width: 420px;
+  flex: 1;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item-meta {
+  padding: 16px 20px;
+  background-color: var(--background-color);
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist .carousel-video-playlist-item-title {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+}
+
+/* Homepage video playlist cards */
+body main .carousel-video-playlist .carousel-video-playlist-item {
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1;
+  max-width: 420px;
+  background-color: var(--background-color);
+}
+
+body main .carousel-video-playlist .carousel-video-playlist-item-meta {
+  padding: 16px 20px;
+  background-color: var(--background-color);
+}
+
+body main .carousel-video-playlist .carousel-video-playlist-item-title {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-brand-primary);
+}
+
+/* Static inline ISI section above the footer — default content + Section
+   Metadata style "isi" (same pattern as the transcript pages). White bg,
+   BasicCommercialLT, purple 16px headings, grey 14px body. */
+.section.isi,
+main > .section:has(> .default-content-wrapper > h3:first-child) {
+  max-width: 100%;
+  margin: 0 0 20px;
+  padding: 0 20px 80px;
+  background-color: #fff;
+  font-family: var(--font-family-legal);
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* White top-dome that rises into the purple Explore band above, carving the
+   curved purple→white transition. Matches the live/reference arc mechanism: a
+   dome behind the content (z-index:-5), not a shallow forward dome. The dome is
+   shallow on small screens (75px) and deepens to 255px at >=900px, mirroring
+   the reference. */
+.section.isi::before,
+main > .section:has(> .default-content-wrapper > h3:first-child)::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 75px;
+  background-color: #fff;
+  border-radius: 100% 100% 0 0;
+  z-index: -5;
+}
+
+@media (width >= 900px) {
+  .section.isi::before,
+  main > .section:has(> .default-content-wrapper > h3:first-child)::before {
+    top: -150px;
+    height: 255px;
+  }
+}
+
+/* At >=1440px live insets the ISI body to a 1240px content column (100px each
+   side). Match that with wider horizontal padding so the legal copy doesn't run
+   full-bleed. */
+@media (width >= 1440px) {
+  .section.isi,
+  main > .section:has(> .default-content-wrapper > h3:first-child) {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+/* USES, IMPORTANT RISK INFORMATION, "Before you take...", "Side Effects"
+   are all bold purple headings (BasicCommercialLT-Black). */
+.section.isi h3,
+.section.isi h4,
+.section.isi h5,
+main > .section:has(> .default-content-wrapper > h3:first-child) h3,
+main > .section:has(> .default-content-wrapper > h3:first-child) h4,
+main > .section:has(> .default-content-wrapper > h3:first-child) h5 {
+  margin: 10px 0 0;
+  font-family: var(--font-family-legal-bold);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  color: #422e83;
+}
+
+.section.isi p,
+.section.isi li,
+main > .section:has(> .default-content-wrapper > h3:first-child) p,
+main > .section:has(> .default-content-wrapper > h3:first-child) li {
+  font-family: var(--font-family-legal);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #555;
+}
+
+.section.isi p,
+main > .section:has(> .default-content-wrapper > h3:first-child) p {
+  margin: 10px 0;
+}
+
+.section.isi ul,
+main > .section:has(> .default-content-wrapper > h3:first-child) ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.section.isi li,
+main > .section:has(> .default-content-wrapper > h3:first-child) li {
+  margin-bottom: 4px;
+}
+
+.section.isi a,
+main > .section:has(> .default-content-wrapper > h3:first-child) a {
+  color: #422e83;
+  text-decoration: underline;
+}
+
+/* why-linzess page only (identified by the How-LINZESS-Works timeline block):
+   last paragraph in each block gets a 20px bottom margin, except CTA buttons. */
+main:has(.whylinzess-timeline) p:not(.button-container):last-child {
+  margin-bottom: 20px;
+}
+
+/* why-linzess pixel parity: Patient Experiences carousel section headings
+   ("Hear From Real Patients…" / "HEAR THE CONSTIPATION CONVERSATION") are
+   40px on live, not the 32px carousel default. */
+body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p:first-child strong,
+body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p:nth-child(2) strong {
+  font-size: 40px;
+}
+
+/* Mobile: those carousel headings shrink to 32px/30px (live) to stop the
+   overlapping lines. Placed after the 40px rule so it wins by source order. */
+@media (width < 768px) {
+  /* The section heading is always the 2nd paragraph (the eyebrow kicker is the
+     1st and must stay 12px). Only size p:nth-child(2) — targeting p:first-child
+     here wrongly blew up the "Linzess Patient Experiences" eyebrow to 32px.
+     :not(:last-child) excludes the savings-card disclaimer wrapper. */
+  body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper:not(:last-child) > p:nth-child(2),
+  body main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper:not(:last-child) > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+}
+
+/* Savings card inherits the homepage columns-homepage-savings styling
+   verbatim (982-wide, 55% image, 18px title, 14px body) — no why-linzess
+   overrides, so it renders identically to the homepage card. */
+
+/* Tighten the gap between the body copy and the Sign Up CTA. */
+main:has(.whylinzess-timeline) .columns.columns-homepage-savings .columns-item-content > p:has(+ .button-container) {
+  margin-bottom: 8px;
+}
+
+/* Reduce card height: the image column drives the row height, so cap it to
+   match live (~300px) rather than the taller default. */
+body main:has(.whylinzess-timeline) .section.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) {
+  max-height: 300px;
+}
+
+body main:has(.whylinzess-timeline) .section.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) img {
+  max-height: 300px;
+}
+
+/* Savings disclaimer "Program Terms, Conditions, Privacy Notice, and
+   Eligibility Criteria" link is underlined on live across all breakpoints.
+   Target it by href so it stays underlined wherever the anchor is present
+   (why-linzess, resources, homepage). NOTE: on the homepage this phrase was
+   imported as plain text with no anchor, so CSS cannot underline it there —
+   that requires re-importing the content with the link intact. */
+main a[href*="savings-and-support#expand"] {
+  text-decoration: underline;
+}
+
+/* Savings disclaimer footnote: EDS auto-converts this standalone link
+   paragraph into a button. Revert it to plain grey legal text (matching
+   the homepage disclaimer), since here the link has no surrounding copy. */
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container {
+  text-align: left;
+}
+
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container a.button {
+  display: inline;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-body);
+  line-height: normal;
+  color: var(--linz-grey);
+  text-decoration: underline;
+}
+
+main:has(.whylinzess-timeline) .section.carousel-video-playlist-container > .default-content-wrapper > p.button-container a.button::after {
+  content: none;
+}
+
+/* Explore cards (Check My Symptoms / Understanding Constipation): title 24px
+   white on live, not 18px purple. */
+main:has(.whylinzess-timeline) .cards-grid .abbv-stretched-card-body p.heading-2 {
+  font-size: 24px;
+  color: var(--linz-white);
+}
+
+/* why-linzess page: uniform 1.6rem line-height for body copy. Headings
+   (and their inline <strong>) keep their own larger line-height so the
+   40px multi-line titles don't overlap. */
+main:has(.whylinzess-timeline) :is(p, li, a):not(:has(strong)) {
+  line-height: 1.6rem;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESOURCES PAGE — scoped to .resources-* variants only so the homepage
+   and why-linzess pages are never affected. Explicit px per the Linzess
+   CSS-isolation rule. Breakpoints: mobile <768, tablet 768-985, desktop >=986.
+   Live facts: all 3 sections have white/transparent bg; cards are
+   light-purple (#d9d7f9) 16px-radius. Article cards 3-up (300px, image-top);
+   tip cards stacked full-width (670px, icon-top + bullet list).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) {
+  text-align: center;
+  padding: 60px 24px;
+  max-width: none;
+  margin: 0;
+}
+
+/* Center inner content wrappers since the section itself is now full-bleed */
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > div {
+  max-width: 1046px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wellness Tips = full-bleed dark-purple band with white header text */
+body main .section:is(.resources-wellness-tips, #wellnesstips) {
+  background: #422e83;
+  position: relative;
+  padding-bottom: 140px;
+}
+
+/* Top inward curve — a purple dome rising into the white Healthy Routines
+   section above, so the band's top edge reads as an arch (matches live). */
+body main .section:is(.resources-wellness-tips, #wellnesstips)::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 133px;
+  background-color: #422e83;
+  border-radius: 100% 100% 0 0;
+  z-index: 0;
+}
+
+/* Keep header + content above the top dome. */
+body main .section:is(.resources-wellness-tips, #wellnesstips) > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom inward curve — an off-white dome rising into the dark Wellness Tips
+   band, carving the transition down to the off-white Community section below.
+   The dome colour matches that section (#f4f6fb) so there's no visible seam. */
+body main .section:is(.resources-wellness-tips, #wellnesstips)::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #f4f6fb;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+
+/* Community Resources = full-bleed off-white band. Pull it up under the dome
+   of the dark Wellness Tips section above so the curved transition overlaps
+   correctly (matches live). */
+body main .section:is(.resources-community, #communityresources),
+body main .section.resources-community.cards-grid-container.carousel-video-playlist-container {
+  background: #f4f6fb;
+  margin-top: -40px !important;
+
+  /* Sit above the wellness band's bottom dome (::after z-index:1); without this
+     the dome paints over the eyebrow, leaving a white bar on the published page. */
+  position: relative;
+
+  /* z-index intentionally omitted: raising it here clips the explorer arc. */
+}
+
+/* Savings-card disclaimer footnote (last loose paragraph in the community band):
+   live renders it 12px/400, left-aligned, in a centered 920px column. */
+body main .section:has(.cards-grid.resources-community) > .default-content-wrapper:last-child > p {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  color: #4d4d4f;
+  text-align: left;
+  max-width: 920px;
+  margin: 12px auto;
+}
+
+/* Section header: eyebrow → divider → heading → intro */
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+  color: #422e83;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 32px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2),
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #422e83;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  color: #4d4d4f;
+  text-align: center;
+  max-width: 998px;
+  margin: 0 auto;
+}
+
+/* Intro line that precedes the wellness article grid — live renders it as the
+   block's 24px/700 heading-2, centered, full container width. */
+.section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:not(:first-child) > p {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  color: #fff;
+  text-align: center;
+  max-width: 998px;
+  margin: 24px auto;
+}
+
+/* Wellness Tips dark band: eyebrow, heading and intro are white */
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:first-child,
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(2),
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(2) strong,
+body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  color: #fff;
+}
+
+/* ── Article cards (Healthy Routines 3-up, Wellness 5-up wrapping) ──
+   300px light-purple cards, image-top 174px, 3 per row, gap 16px. */
+body main .section .cards-grid.resources-articles .abbv-flex-container-v2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  max-width: 998px;
+  margin: 40px auto 0;
+}
+
+/* Base rule forces nowrap on .flexbox-cards:has(.col-2-card) at >=986px;
+   keep the resources article grids wrapping (3-up, then 2). */
+@media (width >= 986px) {
+  body main .section .cards-grid.resources-articles .abbv-flex-container-v2.flexbox-cards {
+    flex-wrap: wrap;
+  }
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 {
+  flex: 0 0 300px;
+  max-width: 300px;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 {
+  background: #d9d7f9;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: left;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Card is a full-height flex column: image+text block on top, the CTA row
+   (a separate .cta sibling) pinned to the bottom so "Read the article" aligns
+   across cards whose body copy differs in length (matches live). */
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 {
+  display: flex;
+  flex-direction: column;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 > .image-text-v2 {
+  flex: 0 0 auto;
+}
+
+body main .section .cards-grid.resources-articles .flexboxitem-v2 .abbv-flex-item-v2 > .cta {
+  margin-top: auto;
+  padding: 0 24px 24px;
+}
+
+/* Force card inner layout to a full-width column (image top, text below) */
+body main .section .cards-grid.resources-articles .image-text-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-v2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-content-container-v2 {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+/* Base .cards-grid-icon-image-card pulls the image up -50px (icon overlap);
+   the article-card images are full photos, so cancel that to show them fully. */
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 {
+  margin-top: 0;
+}
+
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 picture,
+body main .section .cards-grid.resources-articles.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+  object-fit: fill;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2,
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 p {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2 {
+  padding: 0 24px;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 .heading-2 {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-display-v2 p:not(.heading-2) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  color: #4d4d4f;
+  margin-bottom: 20px;
+}
+
+body main .section .cards-grid.resources-articles .abbv-image-text-content-v2 a,
+body main .section .cards-grid.resources-articles a.abbv-button-primary {
+  display: inline-block;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: normal;
+  color: #422e83;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-articles a.abbv-button-primary.i-a::after,
+body main .section .cards-grid.resources-articles a.abbv-button-primary.i-b::before {
+  content: none;
+  display: none;
+}
+
+body main .section .cards-grid.resources-articles a.abbv-button-primary:hover,
+body main .section .cards-grid.resources-articles a.abbv-button-primary:focus {
+  background: transparent;
+  color: #422e83;
+}
+
+/* ── Tip cards (3 stacked light-purple boxes: icon left, text right) ── */
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns-wrapper:has(.columns.resources-tips) {
+  width: 100%;
+  max-width: none;
+}
+
+/* Stack the 3 tip cards centered on the page with a 20px gap between them
+   (matches live: 670px-wide cards, centered, 20px vertical gap). */
+body main .section:is(.resources-wellness-tips, #wellnesstips).columns-container .columns.resources-tips.block {
+  background: transparent;
+  border-radius: 0;
+  padding: 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: none;
+}
+
+body main .section .columns.resources-tips .columns-item {
+  width: 670px;
+  max-width: 670px;
+  margin: 0;
+  align-self: center !important;
+}
+
+body main .section .columns.resources-tips .columns-item > div {
+  background: #d9d7f9;
+  border-radius: 16px;
+  padding: 16px 24px;
+  text-align: left;
+  width: auto;
+}
+
+/* Second tip card ("Drink More Water") uses an off-white background on live. */
+body main .section .columns.resources-tips .columns-item:nth-child(2) > div {
+  background: #f4f6fb;
+}
+
+/* Icon-left layout (matches live): the icon's white circle overhangs the card's
+   left edge by ~45px and is vertically centered beside the title + bullet list.
+   A 2-column grid (icon zone + content); the icon is pulled left out of the card
+   via a negative margin so its circle pokes past the rounded-card edge. */
+body main .section .columns.resources-tips .columns-item .columns-item-image {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+
+  /* Flexible spacer rows top & bottom so the title + list block centers
+     vertically against the taller icon (matches live), instead of pinning to
+     the top on shorter cards. */
+  grid-template-rows: 1fr auto auto 1fr;
+  column-gap: 0;
+  align-items: start;
+  width: auto;
+}
+
+/* Icon spans all rows and is vertically centered against the title+list. */
+body main .section .columns.resources-tips .columns-item .columns-item-image p:has(picture) {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  align-self: center;
+  margin: 0;
+  overflow: visible;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image p:not(:has(picture)) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image ul {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+body main .section .columns.resources-tips .columns-item .columns-item-image picture {
+  display: block;
+  width: 120px;
+  margin-left: -69px;
+}
+
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns.resources-tips > .columns-item:has(.columns-item-image) .columns-item-image img,
+body main .section:is(.resources-wellness-tips, #wellnesstips) .columns.resources-tips > .columns-item:has(.columns-item-image) picture img {
+  width: 120px;
+  height: auto;
+  max-width: 120px;
+  min-height: 0;
+  margin: 0;
+  display: block;
+  object-fit: contain;
+}
+
+/* Tip-card title paragraph: 16px, no inherited 3rem bottom margin (the base
+   `p { margin-bottom: 3rem }` rule otherwise opens a big gap before the list). */
+body main .section .columns.resources-tips .columns-item-image p:not(:has(picture)) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  margin: 0;
+}
+
+body main .section .columns.resources-tips p strong {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+body main .section .columns.resources-tips ul {
+  text-align: left;
+  font-family: var(--body-font-family);
+  font-size: 14.4px;
+  line-height: normal;
+  color: #4d4d4f;
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+body main .section .columns.resources-tips ul li {
+  font-size: 14.4px;
+  line-height: normal;
+  color: #4d4d4f;
+  margin-bottom: 10px;
+}
+
+body main .section .columns.resources-tips ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Mobile: wellness section + tip cards (matches live /resources) ──
+   Less top space above the eyebrow, and tip cards switch from icon-left to a
+   centered column with the icon straddling the card's top edge. */
+@media (width < 768px) {
+  /* Reduce the gap between the top arc and the Wellness Tips eyebrow. */
+  body main .section:is(.resources-wellness-tips, #wellnesstips) {
+    padding-top: 24px;
+  }
+
+  /* Cards fit the viewport instead of the 670px desktop width. */
+  body main .section .columns.resources-tips .columns-item {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Stack icon-on-top, content centered below. */
+  body main .section .columns.resources-tips .columns-item .columns-item-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Icon centered, overlapping the card's top edge. */
+  body main .section .columns.resources-tips .columns-item .columns-item-image p:has(picture) {
+    order: -1;
+    margin: -65px 0 0;
+  }
+
+  body main .section .columns.resources-tips .columns-item .columns-item-image picture {
+    margin-left: 0;
+  }
+
+  body main .section .columns.resources-tips .columns-item > div {
+    padding-top: 0;
+  }
+
+  /* Bullet list stays left-aligned within the centered card. */
+  body main .section .columns.resources-tips ul {
+    text-align: left;
+  }
+
+  /* "Check out some articles…" intro: 18px and tighter vertical margin. */
+  body main .section:is(.resources-wellness-tips, #wellnesstips) > .default-content-wrapper:not(:first-child) > p {
+    font-size: 18px;
+    margin: 18px auto;
+  }
+}
+
+/* ── Gut-check promo banner (image left + copy right, off-white card) ──
+   The block authors as two sibling .columns-item cells (image + content). Make
+   the .columns block the rounded card: a 440px image column + flexible content
+   column (matches live's 998px card). Card height is driven by the copy, and
+   the image stretches to fill its cell (cover) so it never sticks out. */
+body main .section.columns-container .columns.columns-resources-gutcheck {
+  display: grid !important;
+  grid-template-columns: 440px 1fr;
+  align-items: stretch;
+  height: 299px;
+  min-height: 299px !important;
+  max-width: 998px;
+  margin: 60px auto 0;
+  background: #f4f6fb;
+  border-radius: 16px;
+  overflow: visible;
+}
+
+body main .section .columns.columns-resources-gutcheck > .columns-item {
+  width: auto;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Image column: live renders a 440×324 photo that overhangs the card top by
+   25px and ends flush at the bottom, so the photo (not the copy) sets the
+   visible height. The image is bottom-aligned so its taller-than-card height
+   pushes the top above the card edge — a base rule zeroes any negative
+   margin-top, so we use align-self:end instead. The image carries the curved
+   right edge. */
+body main .section .columns.columns-resources-gutcheck .columns-item-image {
+  align-self: start;
+  height: auto;
+}
+
+body main .section .columns.columns-resources-gutcheck .columns-item-image,
+body main .section .columns.columns-resources-gutcheck .columns-item-image img {
+  width: 100%;
+  display: block;
+}
+
+body main .section .columns.columns-resources-gutcheck .columns-item-image img {
+  position: relative;
+  top: -25px;
+  height: 324px;
+  object-fit: cover;
+  border-radius: 0 60px 60px 0;
+}
+
+/* Content column: no vertical padding (live uses padding-left only) and the
+   copy is vertically centered against the taller image column. */
+body main .section .columns.columns-resources-gutcheck .columns-item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px 0 56px;
+  text-align: left;
+}
+
+body main .section .columns.columns-resources-gutcheck p strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+body main .section .columns.columns-resources-gutcheck p {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: normal;
+  color: #4d4d4f;
+  margin: 0 0 14px;
+}
+
+/* Body copy: tighter spacing above the CTA (matches live). */
+body main .section .columns.columns-resources-gutcheck .columns-item-content p:nth-child(2) {
+  margin: 0 0 24px;
+}
+
+/* CTA → dark-purple pill (matches live: 16px radius, arrow on the right). */
+body main .section .columns.columns-resources-gutcheck .columns-item-content a {
+  display: inline-block;
+  background: #422e83;
+  color: #fff;
+  border-radius: 16px;
+  padding: 16px 48px 16px 32px;
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* ── Community cards (2 dark-purple cards, white text, white "Learn More" pill) ── */
+body main .section .cards-grid.resources-community .abbv-flex-container-v2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+body main .section .cards-grid.resources-community .flexboxitem-v2 {
+  flex: 0 0 491px;
+  max-width: 491px;
+}
+
+body main .section .cards-grid.resources-community .abbv-flex-item-v2 {
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  height: auto;
+}
+
+/* Live: 1st card (IBSPatient.org) is dark purple with white copy; 2nd card
+   (PatientsLikeMe.com) is light purple with dark copy. Because this section is
+   a carousel-video-playlist-container and the flex container carries
+   .savings-card-cards, the homepage stats-card rules recolour these cards
+   (off-white on the 2nd item). Match that exact structure so these win. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) .abbv-flex-item-v2 {
+  background: #422e83;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .abbv-flex-item-v2 {
+  background: #d9d7f9;
+}
+
+/* Icon overhangs the card top by -50px (matches live). The icon asset already
+   includes its own circular badge, so the container has NO background/circle —
+   just centre the 105px icon and let it overlap the card's top edge. */
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 {
+  margin: -50px auto 0;
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  text-align: center;
+}
+
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card .icon-image-card .abbv-image-content-container-v2 img {
+  width: 105px;
+  height: auto;
+  margin: -25px auto 0;
+  display: inline-block;
+}
+
+/* The card TITLE (p.heading-2) is otherwise turned into a 136px circle by the
+   homepage stats-circle rule (this section is a carousel-video-playlist-container
+   and the flex container carries .savings-card-cards). Reset both cards' titles
+   back to plain headings — match the .savings-card-cards .flexboxitem-v2
+   structure so this beats the stats-circle + nth-child(2) overrides. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2 .heading-2 {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 12px;
+  border-radius: 0;
+  background: none;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  word-spacing: normal;
+  text-transform: none;
+}
+
+/* Card 1 (dark) → white title + body; Card 2 (light) → dark-purple title,
+   dark-grey body. */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) .heading-2,
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(1) p:not(.heading-2) {
+  color: #fff;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .heading-2 {
+  color: #422e83;
+}
+
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) p:not(.heading-2) {
+  color: #4d4d4f;
+}
+
+/* Card 2 (light) "Learn More" → dark-purple pill with white text (card 1's
+   white pill is set further below). */
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) a.abbv-button-primary,
+body main .section .cards-grid.resources-community .savings-card-cards .flexboxitem-v2:nth-child(2) .abbv-image-text-content-v2 a {
+  background: #422e83;
+  color: #fff;
+}
+
+/* Savings card heading (matches live 24px/700 Lato, dark purple) */
+body main .section .columns.columns-resources-savings p strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  line-height: normal;
+  font-weight: 700;
+  color: #422e83;
+  text-transform: none;
+}
+
+/* Savings card body copy + "Already have a savings card?" line: dark grey on
+   the light-purple card (the community section otherwise inherits white text,
+   which made this copy invisible). */
+body main .section .columns.columns-resources-savings .columns-item-content p,
+body main .section .columns.columns-resources-savings .columns-item-content {
+  color: #4d4d4f;
+}
+
+/* The whole savings card is a single white rounded card (matches live). The
+   tout image carries its own light-purple panel, so the image cell stays
+   transparent and the card background reads white across both halves.
+   Scoped through the community section so it beats the section's #f4f6fb
+   band that would otherwise show through the card. */
+body main .section:is(.resources-community, #communityresources) .columns.columns-resources-savings {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Content side of the savings card sits on the white card. */
+body main .section .columns.columns-resources-savings .columns-item-content {
+  background: #fff;
+}
+
+/* Tighten savings card copy: drop the 30px bottom margin on the body line
+   above the button, the Sign Up Now button line, and the "Already have a
+   savings card?" line. */
+body main .section .columns.columns-resources-savings .columns-item-content > p:nth-child(2),
+body main .section .columns.columns-resources-savings .columns-item-content > p:nth-child(3),
+body main .section .columns.columns-resources-savings .columns-item-content > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Space between the savings card and the disclaimer below it. */
+body main .section:is(.resources-community, #communityresources) .columns-wrapper:has(.columns-resources-savings) {
+  margin-bottom: 32px;
+}
+
+/* Trailing savings disclaimer (*Maximum savings limit…) sits in the community
+   section's last default-content-wrapper; force dark grey too. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:last-child p {
+  color: #4d4d4f;
+}
+
+/* ── Patient-stories video card (community section) ──
+   Live shows the video on the off-white section with no purple band, dark
+   text, a light-purple title bar, and a purple "More Videos Like This" CTA. */
+
+/* Drop the full-bleed purple band the .grid carousel paints by default, and
+   cap the video to its live ~600px width, centered (single player, not the
+   homepage 3-up grid). */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist.grid {
+  background: transparent;
+  width: 100%;
+}
+
+/* The carousel block is a flex container that shrink-wraps to its card's
+   content width, so cap + center the wrapper at the live ~600px instead. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Hear REAL Patient Stories" heading → dark purple, 32px/30px. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper h2 {
+  color: #422e83;
+  line-height: 30px;
+}
+
+/* Intro copy above the video → dark grey, 14px, 620px max, centered. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:has(h2) p {
+  color: #4d4d4f;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: normal;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Hear their real stories:" lead-in is dark purple on live. */
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper:has(h2) p strong {
+  color: #422e83;
+}
+
+/* Single video player (one column), not the homepage 3-up card grid. The
+   grid wrapper is flex, so the single cvp-grid item must stretch to fill
+   (otherwise it collapses to the card's content width). */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist.grid .cvp-grid {
+  grid-template-columns: 1fr;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+/* Copy below the video sits in a default-content-wrapper with no h2, so the
+   rule above misses it — it would otherwise read white. Force dark grey,
+   14px, 620px max, centered to match live. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper + .default-content-wrapper > p:first-child {
+  color: #4d4d4f;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: normal;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Video title bar: light-purple band with dark-purple text. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist .cvp-name-banner {
+  background: #d9d7f9;
+  color: #422e83;
+}
+
+/* "More Videos Like This" CTA: purple background, white text. */
+body main .section:is(.resources-community, #communityresources) .carousel-video-playlist-wrapper + .default-content-wrapper a.button,
+body main .section:is(.resources-community, #communityresources) > .default-content-wrapper a.button {
+  background: #422e83;
+  color: #fff;
+}
+
+/* Explore band panel titles (matches live 24px/700 Lato) */
+body main .section .cards-grid.resources-explore.cards-grid-icon-image-card .heading-2 {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-community.cards-grid-icon-image-card p {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  color: #fff;
+}
+
+/* The base .carousel-video-playlist-container .cards-grid .cta rule hides the
+   CTA row (display:none); the community cards DO show a "Learn More" pill, so
+   re-enable it. */
+body main .section .cards-grid.resources-community .cta {
+  display: block;
+  text-align: center;
+}
+
+body main .section .cards-grid.resources-community .abbv-image-text-content-v2 a,
+body main .section .cards-grid.resources-community a.abbv-button-primary {
+  display: inline-block;
+  background: #fff;
+  color: #422e83;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 48px 12px 32px;
+  margin-top: 16px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: none;
+}
+
+body main .section .cards-grid.resources-community a.abbv-button-primary:hover,
+body main .section .cards-grid.resources-community a.abbv-button-primary:focus {
+  background: #fff;
+  color: #422e83;
+}
+
+/* Mobile/tablet: stack all card grids single column, 32px headings */
+@media (width < 986px) {
+  .section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2),
+  .section:is(.resources-healthy-routines, .resources-wellness-tips, .resources-community, #healthyroutines, #wellnesstips, #communityresources) > .default-content-wrapper:first-child > p:nth-child(2) strong {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  body main .section .columns.columns-resources-gutcheck {
+    grid-template-columns: 1fr;
+  }
+
+  /* Section-card headings drop to 18px on mobile/tablet to match live */
+  body main .section .columns.columns-resources-gutcheck p strong,
+  body main .section .columns.columns-resources-savings p strong,
+  body main .section .cards-grid.resources-explore.cards-grid-icon-image-card .heading-2,
+  body main .section .cards-grid.resources-community.cards-grid-icon-image-card .heading-2 {
+    font-size: 18px;
+  }
+}
+
+@media (width < 768px) {
+  body main .section .cards-grid.resources-articles .flexboxitem-v2,
+  body main .section .cards-grid.resources-community .flexboxitem-v2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
