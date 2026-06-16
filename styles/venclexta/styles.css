@@ -2,3 +2,31 @@
 @import 'fonts.css';
 
 /* VENCLEXTA DTC — Brand-specific style overrides */
+
+/* ============================================================
+   what-is-aml "What is AML?" intro columns section
+   Custom section class (style_customClass: aml-intro-columns)
+   Match live venclexta.com font-size / margin / letter-spacing.
+   ============================================================ */
+.section.aml-intro-columns h2 {
+  font-size: 24px;
+  font-weight: var(--font-weight-700);
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.section.aml-intro-columns h3 {
+  font-size: 16px;
+  font-weight: var(--font-weight-700);
+  line-height: normal;
+  letter-spacing: normal;
+  color: var(--text-color);
+}
+
+.section.aml-intro-columns p {
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: normal;
+  margin: 16px 0;
+  color: var(--text-color);
+}

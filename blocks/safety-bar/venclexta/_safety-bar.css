@@ -1,38 +1,124 @@
 @import '../safety-bar.css';
 @import '../../../styles/venclexta/tokens.css';
 
-/* Venclexta — Safety Bar Brand Overrides
-   Collapsed: white bg, brand teal top border, teal headings + toggle
-   Expanded:  white bg, teal headings, Graphik Bold font
-*/
+/* Venclexta — Safety Bar Brand Overrides */
+.safety-bar-section {
+  max-width: 100vw;
+  width: 100%;
+}
 
 .safety-bar {
-  background-color: var(--background-color);
-  border-top: 3px solid var(--color-border-brand);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
+  position: relative;
+  width: 100%;
+  max-width: none;
+  background-color: #fff;
+  border-top: 2px solid #999;
+  color: #404040;
+  font-family: 'Red Hat Display', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.safety-bar .safety-bar-abbreviated {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10px 50px 10px 20px;
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+/* Collapsed-state fade overlay — solid #f3f3f3 at bottom fading to
+   transparent at top, matching live venclexta.com floating safety bar. */
+.safety-bar:not(.is-expanded) .safety-bar-abbreviated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  background: linear-gradient(to top, #f3f3f3 0%, rgb(255 255 255 / 0%) 100%);
+  pointer-events: none;
+}
+
+.safety-bar .safety-bar-abbreviated>div {
+  flex: 1;
+}
+
+.safety-bar .safety-bar-full {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+
+.safety-bar h3 {
+  font-size: 18.72px;
+  font-weight: 700;
+  color: #005272;
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.safety-bar h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #005272;
+  line-height: normal;
+}
+
+.safety-bar p {
+  font-size: 14.4px;
+  font-weight: 400;
+  color: #404040;
+  line-height: 20.8px;
+  margin-bottom: 0;
 }
 
 .safety-bar-abbreviated h2,
 .safety-bar-abbreviated h3,
 .safety-bar-abbreviated strong,
 .safety-bar-abbreviated b {
-  color: var(--color-brand-primary);
+  color: #005272;
 }
 
 .safety-bar-toggle {
-  border-color: var(--color-brand-primary);
-  color: var(--color-brand-primary);
+  border-color: #005272;
+  color: #005272;
 }
 
 .safety-bar.is-expanded .safety-bar-full h2,
 .safety-bar.is-expanded .safety-bar-full h3 {
-  color: var(--color-brand-primary);
-  font-family: var(--heading-font-family);
-  font-weight: var(--font-weight-heading);
+  color: #005272;
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700;
 }
 
 .safety-bar.is-expanded .safety-bar-full strong,
 .safety-bar.is-expanded .safety-bar-full b {
-  color: var(--color-brand-primary);
+  color: #005272;
+}
+
+.safety-bar.split.block {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+@media (width < 730px) {
+  .safety-bar.split .safety-bar-abbreviated {
+    grid-template-columns: 1fr;
+  }
+
+  .safety-bar-col1 {
+    display: none;
+  }
+
+  .safety-bar.split.block {
+    padding: 0 15px;
+  }
+}
+
+@media (width >=1024px) {
+  .safety-bar.split .safety-bar-abbreviated {
+    max-height: 140px;
+  }
 }

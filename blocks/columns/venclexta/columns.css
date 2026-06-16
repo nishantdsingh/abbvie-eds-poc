@@ -1,0 +1,250 @@
+/* ============================================================
+   Columns Block
+   DOM: .columns > .columns-item > .columns-item-image | .columns-item-content
+   .columns lives inside .abbvie-container which sets:
+     - display: grid (12 cols)
+     - all descendant divs: grid-column: 1 / span 12
+   We override that on .columns-item so the columns grid places them naturally.
+   Variants: columns-offset, columns-flush, columns-reverse
+   ============================================================ */
+
+.columns {
+  --columns-gap: var(--spacing-24);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--columns-gap);
+}
+
+/* Override global .abbvie-container div { grid-column: 1 / span 12 } */
+
+.columns > .columns-item {
+  grid-column: auto;
+}
+
+.columns > .columns-item > .columns-item-image img {
+  width: 100%;
+  display: block;
+}
+
+/* reverse: swap column order on mobile only; desktop stacks naturally */
+
+.columns.columns-reverse > .columns-item:first-child {
+  order: 2;
+}
+
+.columns.columns-reverse > .columns-item:last-child {
+  order: 1;
+}
+
+/* Desktop: equal columns — count driven by number of authored column items */
+
+@media (width >= 768px) {
+  .columns {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  /* offset: first column 33%, second column 66% */
+  .columns.columns-offset {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* reverse: swap column order on mobile only; desktop stacks naturally */
+  .columns.columns-reverse > .columns-item:first-child {
+    order: 1;
+  }
+
+  .columns.columns-reverse > .columns-item:last-child {
+    order: 2;
+  }
+}
+
+/* flush: zero gap */
+
+.columns.columns-flush {
+  --columns-gap: var(--spacing-00);
+}
+
+/* Venclexta — Base columns alignment */
+
+.section.columns-container {
+  padding-top: 50px;
+}
+
+.columns>div {
+  align-items: center;
+}
+
+.columns>div>div img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Venclexta — Teal nav cards (section.teal-bg) */
+
+.section.teal-bg .columns-wrapper {
+  max-width: calc(83.333% - 30px);
+  margin: 0 135px;
+  padding: 0;
+}
+
+.section.teal-bg .columns>div.columns-item {
+  flex: 1;
+  margin: 10px 30px;
+  padding: 5px;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section.teal-bg .columns>div.columns-item .columns-item-content p {
+  margin: 0;
+}
+
+.section.teal-bg .columns>div.columns-item .columns-item-content .button-container {
+  margin-top: 0;
+  padding: 0;
+}
+
+.section.teal-bg .columns>div.columns-item .columns-item-content a {
+  border: none;
+  display: block;
+  background: #ffce00;
+  color: #000;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 42px 5px 20px;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0 0 14px 14px;
+  position: relative;
+  white-space: normal;
+  width: auto;
+}
+
+.section.teal-bg .columns>div.columns-item .columns-item-content a::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #000;
+  border-top: 2px solid #000;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.section.teal-bg .columns>div.columns-item .columns-item-content h3 a,
+.section.teal-bg .columns>div.columns-item .columns-item-content p:first-child a {
+  background: #fff;
+  color: #005272;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: normal;
+  padding: 10px;
+  border-radius: 14px 14px 0 0;
+}
+
+.section.teal-bg .columns>div.columns-item .columns-item-content h3 a::after,
+.section.teal-bg .columns>div.columns-item .columns-item-content p:first-child a::after {
+  display: none;
+}
+
+/* Bone marrow images side by side in right column */
+
+.columns>.columns-item>.columns-item-image {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 8px 16px;
+  background-color: #f2f2f2;
+  padding: 20px 40px;
+  border-radius: 8px;
+}
+
+.columns>.columns-item>.columns-item-image h3:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.columns>.columns-item>.columns-item-image p:nth-of-type(1) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.columns>.columns-item>.columns-item-image h3:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.columns>.columns-item>.columns-item-image p:nth-of-type(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.columns>.columns-item>.columns-item-image h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #005272;
+  margin: 0;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.columns>.columns-item>.columns-item-image p {
+  margin: 0;
+  text-align: center;
+}
+
+.columns>.columns-item>.columns-item-image img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile: stack columns */
+
+@media (width < 744px) {
+  .section.teal-bg .columns {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  .section.teal-bg .columns>div.columns-item {
+    margin: 10px 0;
+  }
+}
+
+.section.teal-bg .columns-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section.teal-bg .columns-wrapper .columns.block {
+  gap: 0;
+}
+
+.section .columns-container #what-is-aml,
+h2 {
+  color: #005272;
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+@media (width < 780px) {
+  .columns.block {
+    display: block;
+  }
+}

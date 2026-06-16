@@ -1,1 +1,200 @@
 @import './tabs.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* Venclexta — Tabs brand overrides */
+.section.tabs-container {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.tabs .tabs-list {
+  border-bottom: 2px solid #ccc;
+  gap: 0;
+}
+
+.tabs .tabs-list button {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #005272;
+  background: #eaeaea;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 12px 20px;
+  margin-right: 4px;
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+  background: #fff;
+  color: #005272;
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
+  margin-bottom: -2px;
+}
+
+.tabs-panel {
+  border: none;
+  padding: 30px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.tabs-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.tabs-panel:first-of-type::after,
+.tabs-panel[id*="1"]::after {
+  background-image: url('https://www.venclexta.com/content/dam/venclexta/images/callouts/couple-reading-ipad_desktop.jpg');
+}
+
+.tabs-panel:nth-of-type(2)::after,
+.tabs-panel[id*="2"]::after {
+  background-image: url('https://www.venclexta.com/content/dam/venclexta/images/callouts/woman-and-girl-hug_desktop.jpg');
+}
+
+.tabs-panel .section {
+  max-width: 50%;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tabs-panel .section .rich-text-wrapper,
+.tabs-panel .section .cta-wrapper {
+  max-width: 100%;
+}
+
+@media (width < 768px) {
+  .tabs-panel::after {
+    display: none;
+  }
+
+  .tabs-panel .section {
+    max-width: 100%;
+  }
+}
+
+/* ============================================================
+   Variant: pill — gold active fill.
+   Desktop: content-width pills, left-aligned.
+   Mobile/Tablet (<1024px): two equal-width pills filling the row.
+   ============================================================ */
+.tabs-container .tabs.pill .tabs-list {
+  border-bottom: none;
+  gap: 0;
+}
+
+.tabs-container .tabs.pill .tabs-list button.tabs-tab {
+  flex: 0 0 auto;
+  max-width: none;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #404040;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.1;
+  text-align: center;
+  padding: 21px;
+}
+
+.tabs-container .tabs.pill .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: #ffce00;
+  color: #404040;
+  font-weight: 700;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.tabs-container:has(.tabs.pill) ~ .tabs-panel {
+  border: none;
+  background: #f5f5f5;
+}
+
+/* Desktop: pull the panel up so its gray bg + right-half image sit behind
+   the pill row, matching live (pills appear inside the image panel). */
+@media (width >= 1024px) {
+  .tabs-container .tabs.pill .tabs-list {
+    position: relative;
+    z-index: 2;
+  }
+
+  .tabs-container:has(.tabs.pill) ~ .tabs-panel {
+    margin-top: -110px;
+    padding-top: 140px;
+  }
+}
+
+@media (width < 1024px) {
+  .tabs-container .tabs.pill {
+    width: 100%;
+  }
+
+  .tabs-container .tabs.pill .tabs-list {
+    width: 100%;
+  }
+
+  .tabs-container .tabs.pill .tabs-list button.tabs-tab {
+    flex: 1 1 0;
+  }
+}
+
+/* Genentech logo in tab panels */
+.tabs-panel .rich-text img,
+.section .rich-text img[alt="Genentech logo"] {
+  max-width: 250px;
+  height: auto;
+}
+
+.tabs-panel > .section.abbvie-container {
+  width: 50%;
+}
+
+.tabs-panel > .section[data-tabs-grid].abbvie-container > div.cta-wrapper {
+  width: fit-content;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+
+.tabs-panel > .section[data-tabs-grid].abbvie-container .cta.abbv-button-tertiary .abbv-cta {
+  border: solid 1px #ccc;
+  font-size: 16px;
+}
+
+.tabs-panel > .section[data-tabs-grid].abbvie-container .rich-text h3 {
+  font-size: 16px;
+  line-height: normal;
+  color: #404040;
+}
+
+.tabs-container .tabs.pill .tabs-list button.tabs-tab[aria-selected='false'] {
+  background: white;
+}
+
+.tabs-panel .section.abbvie-container.rich-text-container.cta-container .rich-text-wrapper:nth-child(1) .rich-text p:not(strong) {
+  font-size: 16px;
+}
+
+.tabs-panel .section.abbvie-container.rich-text-container.cta-container .rich-text-wrapper:nth-child(1) {
+  margin-top: 30px;
+}
+

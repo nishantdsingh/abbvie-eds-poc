@@ -132,13 +132,26 @@
     display: none;
 }
 
-/* Icon row — inline images with text labels */
+/* Icon row — horizontal grid of icons with text labels */
 .accordion .accordion-item-body p img {
     display: inline-block;
     vertical-align: middle;
-    width: var(--spacing-40);
-    height: var(--spacing-40);
-    margin-right: var(--spacing-08);
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion .accordion-item-body p:has(img) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 32px;
+    margin: 24px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #404040;
 }
 
 /* Content cards — paragraphs with strong headings get card treatment */
@@ -168,13 +181,106 @@
     margin-bottom: var(--spacing-16);
 }
 
-/* Expand all button */
-.accordion .accordion-expand-all {
-    color: var(--accordion-ven-text-color);
-    font-family: var(--body-font-family);
-    font-weight: var(--font-weight-medium);
+
+/* stylelint-disable-next-line no-duplicate-selectors, no-descending-specificity */
+.accordion summary, .accordion .accordion-item-label {
+    border: 1px solid silver;
+    padding: 32px;
+    margin-bottom: 18px;
 }
 
-.accordion .accordion-expand-all:focus {
-    border-color: var(--accordion-ven-text-color);
+.accordion.block, .accordion-wrapper {
+    margin: 0;
+}
+
+.section.abbvie-container.accordion-container .accordion-wrapper{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   Fragment-loaded accordion content — icon lists + condition cards
+   (what-is-aml symptoms / risk-factors / diagnosis fragments)
+   The md2jcr import strips authored classes and restructures each
+   <li> into <p><picture></p> + <p>label</p> (icons) or <h3> + <p>
+   (cards). Target the published structure via :has() instead of the
+   authored .accordion-icon-list / .accordion-card-list classes.
+   Matches live venclexta.com: icon+label pairs flow inline and wrap;
+   conditions are transparent centered columns.
+   ============================================================ */
+
+/* Icon list — a <ul> whose items contain a picture */
+.accordion .accordion-item-body ul:has(> li picture) {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 32px;
+    margin: 24px 0;
+    padding: 0;
+}
+
+.accordion .accordion-item-body ul:has(> li picture) > li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 0 0 auto;
+    font-size: 14.4px;
+    font-weight: 700;
+    color: #404040;
+}
+
+/* icon cell <p> and label <p> — strip default paragraph spacing */
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion .accordion-item-body ul:has(> li picture) > li p {
+    margin: 0;
+    font-size: 14.4px;
+    font-weight: 700;
+    color: #404040;
+}
+
+.accordion .accordion-item-body ul:has(> li picture) > li picture,
+.accordion .accordion-item-body ul:has(> li picture) > li img {
+    width: 30px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+/* Condition cards — a <ul> whose items contain an <h3> */
+.accordion .accordion-item-body ul:has(> li h3) {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0;
+    padding: 0;
+}
+
+.accordion .accordion-item-body ul:has(> li h3) > li {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion .accordion-item-body ul:has(> li h3) > li h3 {
+    color: var(--color-brand-primary);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0 0 5px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion .accordion-item-body ul:has(> li h3) > li p {
+    font-size: 14.4px;
+    font-weight: 400;
+    line-height: normal;
+    color: #3f3f3f;
+    margin: 0;
+}
+
+@media (width >= 768px) {
+    .accordion .accordion-item-body ul:has(> li h3) {
+        flex-direction: row;
+        gap: 30px;
+    }
 }

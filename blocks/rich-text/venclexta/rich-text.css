@@ -235,51 +235,6 @@
   margin-bottom: var(--spacing-08);
 }
 
-/* Venclexta section backgrounds (loaded via rich-text block CSS) */
-
-.section.gray-bg {
-  background-color: #eaeaea;
-  padding: 40px 20px;
-  max-width: 100vw;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: 0;
-  margin-bottom: 0;
-}
-
-.section.gray-bg .rich-text-wrapper {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-/* Phone CTA button - transparent bg, bordered, with arrow icon */
-
-.rich-text a[href^="tel:"] {
-  display: inline-block;
-  background: transparent;
-  color: #005272;
-  border: 2px solid #555;
-  border-radius: 10px;
-  padding: 16px 70px 16px 24px;
-  font-size: 18px;
-  font-weight: 700;
-  text-decoration: none;
-  position: relative;
-}
-
-.rich-text a[href^="tel:"]::after {
-  content: '';
-  position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid #005272;
-  border-top: 2px solid #005272;
-  transform: translateY(-50%) rotate(45deg);
-}
-
 /* Venclexta rich-text brand overrides */
 
 .rich-text h1,
@@ -294,19 +249,23 @@
 }
 
 .rich-text h2 {
-  font-size: 30px;
+  font-size: 24px;
   line-height: normal;
   letter-spacing: normal;
+  margin-bottom: 0;
 }
 
 .rich-text h3 {
   font-size: 18.72px;
   line-height: normal;
+  margin-bottom: 0;
 }
 
 .rich-text h4 {
   font-size: 16px;
   line-height: normal;
+  margin-bottom: 0;
+  padding-top: 10px;
 }
 
 .rich-text p,
@@ -315,6 +274,14 @@
   font-size: 16px;
   line-height: normal;
   color: #404040;
+}
+
+.rich-text p {
+  margin: 16px 0;
+}
+
+.rich-text li {
+  margin: 0;
 }
 
 .rich-text strong {
@@ -329,14 +296,116 @@
   color: #005272;
 }
 
-.rich-text a[href^="tel:"] {
+/* VEN ZONE signup section with background image */
+
+main .section[data-background].ven-zone {
+  background-size: contain;
+}
+
+.section.ven-zone {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+  min-height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section.ven-zone .rich-text-wrapper {
+  flex: 1 1 50%;
+  position: relative;
+  z-index: 1;
+}
+
+.section.ven-zone .rich-text.block {
+  margin: 0;
+}
+
+.section.ven-zone .cta-wrapper {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section.ven-zone .rich-text p {
+  color: #fff;
   font-family: 'Red Hat Display', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  margin-left: 60%;
+}
+
+.section.ven-zone .cta .abbv-cta {
+  background: #fff !important;
+  color: #000 !important;
+  border: none !important;
+  border-radius: 10px;
+  width: 208px;
+  height: 64px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 14.4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide unprocessed metadata section on aem.live (last section, no block wrappers) */
+
+main>.section.safety-bar-container~.section:not([class*="-container"]),
+main>.section:last-of-type:not([class*="-container"], .nav-cards, .gray-bg, .ven-zone)>.default-content-wrapper:only-child {
+  display: none;
+}
+
+.rich-text img[alt="Genentech logo"] {
+  max-width: 250px;
+  height: auto;
+  margin: 40px 0 20px;
+}
+
+/* Phone CTA button - transparent bg, bordered, with arrow icon */
+
+.rich-text a[href^="tel:"] {
+  display: inline-block;
+  background: transparent;
   color: #005272;
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 16px 70px 16px 24px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+}
+
+.rich-text a[href^="tel:"]::after {
+  content: '';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #005272;
+  border-top: 2px solid #005272;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .rich-text.footnote {
   border-top-color: #ccc;
 }
+
+/* stylelint-disable-next-line no-descending-specificity */
 
 .rich-text.footnote p {
   font-size: 11px;
@@ -344,8 +413,428 @@
   color: #404040;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
+
 .rich-text.legal p {
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: normal;
+  margin: 16px 0;
   color: #404040;
+}
+
+/* Venclexta section spacing and content width */
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section:not(.gray-bg, .hero-container, .safety-bar-section, .brochure-cta) {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.section.hero-container {
+  margin-bottom: 0;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* Venclexta section — yellow-bg stat banner */
+
+.section.yellow-bg {
+  background-color: #ffce00;
+  padding: 15px 20px;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.section.yellow-bg .flexbox-wrapper {
+  max-width: 1130px;
+  margin: 0 auto;
+}
+
+.section.yellow-bg .flexbox .flexbox-item:nth-child(1) {
+  flex: 2;
+  text-align: right;
+}
+
+.section.yellow-bg .flexbox .flexbox-item:nth-child(2) {
+  flex: none;
+  text-align: center;
+}
+
+.section.yellow-bg .flexbox .flexbox-item:nth-child(3) {
+  flex: 4;
+  text-align: left;
+}
+
+.section.yellow-bg .flexbox .flexbox-item:nth-child(4) {
+  flex: 3;
+  text-align: left;
+}
+
+.section.yellow-bg .flexbox .flexbox-item .flexbox-item-content p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #003b52;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.section.yellow-bg .flexbox .flexbox-item:last-child .flexbox-item-content p {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.section.yellow-bg .flexbox .flexbox-item .flexbox-item-image img {
+  max-height: 80px;
+  width: auto;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Venclexta section backgrounds — teal nav */
+
+.section.teal-bg {
+  background-color: #003b52;
+  padding: 20px 0;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.section.gray-bg {
+  background-color: #eaeaea;
+  padding: 40px 20px;
+  max-width: 100vw;
+  width: 100vw;
+  margin: 60px 0 50px calc(50% - 50vw);
+}
+
+.section.gray-bg .rich-text-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* Gray-bg section font overrides (24px / 35px line-height per live site) */
+
+.section.gray-bg .rich-text p {
+  font-size: 24px;
+  line-height: 35px;
+  color: #404040;
+  margin: 24px 0 0;
+}
+
+.section.gray-bg .rich-text p:last-child {
+  font-size: 15px;
+  line-height: 20px;
+  margin-top: 15px;
+}
+
+.section.gray-bg .rich-text h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #005272;
+  margin-bottom: 0;
+}
+
+.section.gray-bg .rich-text strong {
+  font-weight: 700;
+}
+
+/* Phone CTA row - text left, button right */
+
+.section.gray-bg .rich-text:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.section.gray-bg .rich-text:first-child h2,
+.section.gray-bg .rich-text:first-child>p:nth-of-type(1),
+.section.gray-bg .rich-text:first-child>p:nth-of-type(2),
+.section.gray-bg .rich-text:first-child>p:nth-of-type(3) {
+  width: 100%;
+}
+
+.section.gray-bg .rich-text:first-child>p:nth-last-of-type(2) {
+  flex: 0 0 auto;
+  max-width: 400px;
+  margin-bottom: 0;
+}
+
+.section.gray-bg .rich-text:first-child>p:last-of-type {
+  flex: 0 0 auto;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+
+.section.gray-bg .rich-text:first-child>p:has(a[href^="tel:"]) {
+  flex: 0 0 auto;
+  margin-left: 0;
+  padding-left: 15px;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Patient brochure CTA section with background image */
+
+.section.brochure-cta {
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  padding: 100px 20px;
+  min-height: 550px;
+  max-width: 1180px;
+  margin-inline: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section.brochure-cta .rich-text-wrapper,
+.section.brochure-cta .cta-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section.brochure-cta .rich-text h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #404040;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section.brochure-cta .rich-text h2 {
+  font-size: 26px;
+  color: #404040;
+  margin-top: 0;
+  font-weight: 700;
+}
+
+/* Nav card section: CTA row layout — side by side 50/50 */
+
+.section.nav-cards {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.section.nav-cards .rich-text-wrapper {
+  width: 100%;
+  flex: 0 0 100%;
+}
+
+.section.nav-cards .cta-wrapper {
+  flex: 1 1 calc(50% - 16px);
+  max-width: calc(50% - 8px);
+}
+
+.section.nav-cards .cta .abbv-cta {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section .cta.abbv-button-secondary .abbv-cta {
+  background: #f5f5f5;
+  color: #404040;
+  border: none;
+  border-left: 4px solid #ffce00;
+  border-radius: 0;
+  padding: 18px 50px 18px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 250px;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+
+.section .cta.abbv-button-secondary .abbv-cta::after {
+  border-color: #404040;
+}
+
+/* Mobile/Tablet: stack CTA and text vertically */
+
+@media (width < 1024px) {
+  .section.gray-bg .rich-text:first-child>p:nth-last-of-type(2) {
+    max-width: 100%;
+  }
+
+  .section.gray-bg .rich-text:first-child>p:last-of-type {
+    margin-left: 0;
+  }
+
+  .section.gray-bg .rich-text:first-child>p:has(a[href^="tel:"]) {
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 20px;
+  }
+}
+
+@media (width < 1024px) {
+  .section.nav-cards .cta-wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .section.ven-zone {
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100vw;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-inline: 0 !important;
+    padding: 38% 34px 35px;
+    border-radius: 0;
+    background-image: url('https://www.venclexta.com/content/dam/venclexta/images/homepage/previously-untreated-cll/about-cll-sll/what-is-cll-sll/global-venzone-2x_r4_mobile.png') !important;
+    background-size: 100% 100%;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+
+  /* Override the higher-specificity [data-background] contain rule */
+  main .section[data-background].ven-zone {
+    background-size: 100% 100%;
+  }
+
+  .section.ven-zone .rich-text-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .section.ven-zone .rich-text p {
+    margin: 0;
+    padding-left: 0;
+    font-size: 16px;
+    text-align: left;
+    color: #fff;
+  }
+
+  .section.ven-zone .cta-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+    text-align: left;
+  }
+
+  .section.ven-zone .cta .abbv-cta {
+    width: 240px;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 9px;
+    font-size: 18px;
+    color: #444 !important;
+  }
+
+  .section.brochure-cta {
+    padding: 50px 20px;
+    min-height: 350px;
+  }
+}
+
+.section .cta.abbv-button-secondary .abbv-cta {
+  font-weight: 700;
+  color: #444;
+  font-size: 16px;
+  border-left: 10px solid #ffce00;
+}
+
+.rich-text a {
+  color: #008481;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+@media (width < 974px) {
+  .section:not(.gray-bg, .hero-container, .safety-bar-section, .brochure-cta) {
+    margin-inline: unset;
+  }
+}
+
+.nav-wrapper .section:not(.gray-bg, .hero-container, .safety-bar-section, .brochure-cta) {
+  max-width: unset;
+}
+
+.section.abbvie-container.yellow-bg.flexbox-container {
+  max-height: 116px;
+  margin-top: 53px;
+}
+
+.section.yellow-bg .flexbox .flexbox-item .flexbox-item-image img {
+  max-height: 146px;
+  transform: translateY(-32px);
+}
+
+#section-bg-3 .rich-text-wrapper {
+  margin: 12px 12px 0;
+  padding-inline: 48px;
+}
+
+#section-bg-3 .cta-wrapper {
+  margin: 0;
+  padding-inline: 59px;
+}
+
+@media (width < 1024px) {
+  .section.gray-bg .rich-text:first-child>p:nth-last-of-type(2) {
+    max-width: revert-rule;
+  }
+
+  .section.abbvie-container.yellow-bg.flexbox-container {
+    max-height: fit-content;
+    margin: 0 35px;
+    width: auto;
+  }
+
+  .section.abbvie-container.yellow-bg.flexbox-container .flexbox.center.align-stretch.no-wrap.block {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .section.yellow-bg .flexbox .flexbox-item:nth-child(1) {
+    text-align: left;
+  }
+
+  .section.yellow-bg .flexbox .flexbox-item .flexbox-item-image img {
+    max-height: 146px;
+    transform: rotate(-90deg) translateY(-21px);
+    margin-top: -35px;
+  }
+
+  .section.yellow-bg .flexbox .flexbox-item:nth-child(3) {
+    margin-top: -28px;
+  }
+
+  .section.yellow-bg .flexbox .flexbox-item:nth-child(1) .flexbox-item-content p {
+    display: inline-block;
+  }
 }
