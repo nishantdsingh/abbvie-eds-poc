@@ -88,6 +88,10 @@
   font-style: normal;
 }
 
+.hero .break {
+  display: block;
+}
+
 /* Eyebrow pipe decoration */
 .hero .hero-eyebrow {
   display: flex;
@@ -167,6 +171,25 @@
 .hero.full {
   min-height: var(--hero-full-min-height);
   align-items: stretch;
+}
+
+.hero.full > div:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.hero.full > div:first-child picture,
+.hero.full > div:first-child img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero.full::after {
@@ -288,7 +311,8 @@
   border: 1px solid var(--color-brand-accent);
 }
 
-.hero>div:first-child {
+/* stylelint-disable-next-line no-descending-specificity */
+.hero > div:first-child {
   min-height: unset;
 }
 
@@ -380,13 +404,17 @@
    These rules take cascade priority over all base rules above.
    ============================================================ */
 
-/* Full hero: constrain content stack to 1180px max width */
+/* Full hero: constrain content stack to 1180px max width, vertically center */
 .hero.full>.hero-content-stack {
   max-width: var(--cdp-max-width);
   width: 100%;
   padding: var(--spacing-20) var(--spacing-20) var(--spacing-30);
   margin: 0 auto;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--hero-full-min-height);
 }
 
 /* No-padding hero: remove fixed min-height */
@@ -407,6 +435,7 @@
 }
 
 /* No-padding hero: unset absolute positioning on image/picture/img */
+/* stylelint-disable-next-line no-descending-specificity */
 .hero.no-padding img {
   border-radius: 0;
   min-height: unset;
@@ -456,4 +485,51 @@
   .hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
     align-items: flex-start;
   }
+}
+
+/* ============================================================
+   VENCLEXTA — Homepage hero CTA pill buttons
+   Horizontal row, white bg, gold left border, no max-width
+   ============================================================ */
+
+.hero.full .cmp-container-x-large {
+  max-width: none;
+}
+
+.hero.full .button-container {
+  display: inline-block;
+  padding: 0;
+  margin: 0 var(--spacing-08) var(--spacing-08) 0;
+}
+
+.hero.full :where(a).button {
+  display: inline-block;
+  background: var(--color-white);
+  color: var(--text-color);
+  border: none;
+  border-left: 5px solid var(--color-brand-accent);
+  border-radius: 0;
+  padding: 20px 42px 20px 20px;
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-500);
+  text-decoration: none;
+  text-transform: none;
+  text-align: left;
+  position: relative;
+}
+
+.hero.full :where(a).button::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-brand-accent);
+  border-bottom: 2px solid var(--color-brand-accent);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.hero.full :where(a).button:hover {
+  background: var(--color-background-light);
 }

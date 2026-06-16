@@ -88,3 +88,19 @@
   cursor: pointer;
   z-index: 2;
 }
+
+/* ── Icons in content headings — render at natural SVG size ── */
+.image-text .image-text-content h3 span.icon {
+  display: inline-block;
+  width: 60px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.image-text .image-text-content h3 span.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

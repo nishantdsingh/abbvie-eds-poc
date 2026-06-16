@@ -674,9 +674,9 @@ color: inherit;
   opacity: 1;
 }
 /* stylelint-disable-next-line no-descending-specificity */
-.hero.full :where(a).button { color: var(--color-text-on-dark, #fff); }
+.hero.full :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
 /* stylelint-disable-next-line no-descending-specificity */
-.hero.solid :where(a).button { color: var(--color-text-on-dark, #fff); }
+.hero.solid :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
 /* =====================================================
    Hero Dual-CTA Variant — two side-by-side CTAs
    Authoring: use block name "Hero (dual-cta)"
@@ -699,7 +699,7 @@ color: inherit;
    ===================================================== */
 .hero .hero-eyebrow {
   display: block;
-  font-size: var(--font-size-body-small, 11px);
+  font-size: var(--font-size-body-small, 0.6875rem);
   font-family: var(--body-font-family);
   font-weight: var(--font-weight-heading);
   text-transform: uppercase;
@@ -717,7 +717,7 @@ color: inherit;
   background-color: var(--hero-indication-bg);
   color: var(--color-white);
   padding: var(--spacing-16, 1rem) var(--spacing-24, 1.5rem);
-  font-size: var(--font-size-body-small, 13px);
+  font-size: var(--font-size-body-small, 0.8125rem);
   line-height: 1.5;
   text-align: center;
   box-sizing: border-box;
@@ -734,7 +734,7 @@ color: inherit;
   position: absolute;
   bottom: var(--spacing-08, 0.8rem);
   right: var(--spacing-08, 0.8rem);
-  font-size: var(--font-size-body-small, 11px);
+  font-size: var(--font-size-body-small, 0.6875rem);
   color: var(--color-text-on-dark-80);
   font-style: italic;
   pointer-events: none;
@@ -760,7 +760,7 @@ color: inherit;
 .hero.text-light h3,
 .hero.text-light p,
 .hero.text-light .hero-eyebrow {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
 }
 .hero.text-dark h1,
 .hero.text-dark h2,
@@ -829,7 +829,7 @@ color: inherit;
   display: block;
 }
 .hero.full h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   font-size: var(--font-size-h1-hero, var(--font-size-h1, 2.6rem));
   line-height: var(--line-height-h1-hero, var(--line-height-h1, 2.8rem));
 }
@@ -916,7 +916,7 @@ color: inherit;
   display: block;
 }
 .hero.compact h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   font-size: var(--font-size-h2, 2rem);
   line-height: var(--line-height-h2, 2.5rem);
 }
@@ -1064,7 +1064,7 @@ color: inherit;
   display: block;
 }
 .hero.centered h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   text-align: center;
 }
 .hero.centered p {
@@ -1160,7 +1160,7 @@ color: inherit;
 .hero.video .hero-text-container {
   display: block;
 }
-.hero.video h1 { color: var(--color-text-on-dark, #fff); }
+.hero.video h1 { color: var(--color-text-on-dark, var(--color-white)); }
 .hero.video p {
   color: var(--color-text-on-dark-90);
 }
@@ -1171,10 +1171,6 @@ color: inherit;
 @media (width < 744px) {
   .hero.video {
     min-height: var(--hero-video-min-height-mobile);
-  }
-
-  .hero.video .hero-video-bg {
-    display: none;
   }
 
   .hero.video > :where(div):nth-child(2) {
@@ -1238,7 +1234,7 @@ color: inherit;
 }
 .hero.solid h1,
 .hero.solid h2 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
 }
 .hero.solid p {
   color: var(--color-text-on-dark-90);
@@ -1330,6 +1326,12 @@ color: inherit;
   --color-charcoal: #25282a;
   --color-text-compliance: #6c757d;
   --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-border-light: #ddd;
+  --color-focus: var(--link-color);
+  --color-white-85: rgb(255 255 255 / 85%);
+  --color-shadow-sm: rgb(0 0 0 / 12%);
+  --color-gray-400: #999;
 
   /* Background Colors for Style Field Values */
   --color-white: #fff;
@@ -1354,6 +1356,8 @@ color: inherit;
   --error-color: #cf451c;
   --warning-color: #f2dede;
   --success-color: #2f9ece;
+  --color-warning-bg: #fff4c2;
+  --color-warning-border: #fc3;
 
   /* Fonts */
   --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
@@ -1420,12 +1424,15 @@ color: inherit;
   --space-token-xxxl: calc(104 * var(--px-to-rem));
 
   /* Generalized Spacing Tokens */
+  --spacing-01: 0.1rem;
   --spacing-02: 0.2rem;
   --spacing-03: 0.3rem;
   --spacing-04: 0.4rem;
   --spacing-05: 0.5rem;
   --spacing-06: 0.6rem;
+  --spacing-07: 0.7rem;
   --spacing-08: 0.8rem;
+  --spacing-09: 0.9rem;
   --spacing-10: 1rem;
   --spacing-12: 1.2rem;
   --spacing-14: 1.4rem;
@@ -1441,7 +1448,9 @@ color: inherit;
   --spacing-26: 2.6rem;
   --spacing-27: 2.7rem;
   --spacing-275: 2.75rem;
+  --spacing-28: 2.8rem;
   --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
   --spacing-32: 3.2rem;
   --spacing-34: 3.4rem;
   --spacing-35: 3.5rem;
@@ -1451,6 +1460,7 @@ color: inherit;
   --spacing-40: 4rem;
   --spacing-42: 4.2rem;
   --spacing-44: 4.4rem;
+  --spacing-45: 4.5rem;
   --spacing-46: 4.6rem;
   --spacing-48: 4.8rem;
   --spacing-50: 5rem;
@@ -1476,9 +1486,11 @@ color: inherit;
   --spacing-168: 16.8rem;
   --spacing-180: 18rem;
   --spacing-200: 20rem;
+  --spacing-225: 22.5rem;
   --spacing-255: 25.5rem;
   --spacing-288: 28.8rem;
   --spacing-300: 30rem;
+  --spacing-full: 100%;
   --spacing-320: 32rem;
   --spacing-375: 37.5rem;
   --spacing-420: 42rem;
@@ -1510,6 +1522,12 @@ color: inherit;
   /* Border Radius */
   --border-radius-base: 0.4rem;
   --border-radius-m: 0.8rem;
+  --border-radius-l: 1.6rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
 
   /* z-index */
   --z-index-negative: -1;
@@ -1518,11 +1536,18 @@ color: inherit;
   --z-index-2 : 2;
   --z-index-3 : 3;
   --z-index-10: 10;
+  --z-index-60: 60;
+
+  /* Opacity */
+  --opacity-full: 1;
+  --z-index-anchor-nav: 100;
+  --z-index-safety-bar: 500;
 
   /* Flex/Grid order */
   --order-first: -1;
   --order-0: 0;
   --order-1: 1;
+  --order-2: 2;
   --order-unset: unset;
 
   /* Layout */
@@ -1530,6 +1555,7 @@ color: inherit;
   --content-max-width-narrow: 110rem;
   --content-max-width-medium: 90rem;
   --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
   --icon-size: 2.4rem;
 
   /* Font Weight */
@@ -1540,6 +1566,7 @@ color: inherit;
   --font-weight-650: 650;
   --font-weight-700: 700;
   --font-weight-800: 800;
+  --font-weight-900: 900;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -1565,6 +1592,7 @@ color: inherit;
   --line-height-26: 2.6rem;
   --line-height-28: 2.8rem;
   --line-height-30: 3rem;
+  --line-height-31-2: 3.12rem;
   --line-height-32: 3.2rem;
   --line-height-34: 3.4rem;
   --line-height-35: 3.5rem;
@@ -1574,13 +1602,20 @@ color: inherit;
   --line-height-68: 6.8rem;
   --line-height-64: 6.4rem;
   --line-height-84: 8.4rem;
+  --line-height-icon: 0.55;
   --line-height-tight: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.6;
 
   /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
   --transition-duration-fast: 0.2s;
   --transition-duration-medium: 0.3s;
+  --transition-duration-slow: 0.8s;
   --transition-easing-standard: ease;
   --transition-easing-emphasized: ease-out;
+  --transition-easing-in-out: ease-in-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-safety-bar: 0 -2px 8px rgb(0 0 0 / 10%);
   --surface-background-default: var(--background-color);
   --border-subtle: var(--separator-height-1) solid var(--container-border-color);
   --text-subtle: var(--color-gray-dark);
@@ -1702,8 +1737,9 @@ color: inherit;
   --color-brand-primary-light: #e8edef;
 
   /* ---- Color: Brand Accent ---- */
-  --color-brand-accent: #ffd100;
+  --color-brand-accent: #ffce00;
   --color-brand-accent-teal: #005272;
+  --color-accent-gold: #f6c741;
 
   /* ---- Color: Named Palette (shared AbbVie framework) ---- */
   --color-plum: #90124a;
@@ -1718,11 +1754,12 @@ color: inherit;
   --color-venclexta-navy: #071d49;
 
   /* ---- Color: Text ---- */
-  --text-color: #46484a;
-  --color-text-heading: #25282a;
+  --color-text-callout: #3f3f3f;
+  --text-color: #404040;
+  --color-text-heading: #005272;
   --color-text-heading-brand: #005272;
   --color-text-on-dark: #fff;
-  --color-text-link: #90124a;
+  --color-text-link: #005272;
   --color-text-legal: #404040;
   /* Live venclexta.com renders footer link text in off-white (#e8edef) */
   --color-text-footer-link: var(--color-brand-primary-light);
@@ -1732,12 +1769,12 @@ color: inherit;
   --color-background-light: #f5f5f5;
   /* Live venclexta.com footer bg is dark teal #003b52, not pure black */
   --color-background-footer: var(--color-brand-primary-dark);
-  --color-background-safety-bar: #f5f5f5;
+  --color-background-safety-bar: #fff;
   --color-background-container: #003b52;
 
   /* ---- Color: Border ---- */
   --color-border-brand: #005272;
-  --color-border-safety: #ffd100;
+  --color-border-safety: #999;
   --color-border-default: #ccc;
 
   /* ---- Color: Shadow ---- */
@@ -1746,10 +1783,10 @@ color: inherit;
   --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
 
   /* ---- Font: Family ---- */
-  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --body-font-family: 'Red Hat Display', sans-serif;
+  --heading-font-family: 'Red Hat Display', sans-serif;
+  --heading-font-family-bold: 'Red Hat Display', sans-serif;
+  --font-family-medium: 'Red Hat Display', sans-serif;
   --font-family-brand: 'Red Hat Display', sans-serif;
   --icon-font-family: 'abbv-iconFont';
 
@@ -1757,10 +1794,12 @@ color: inherit;
   --font-size-body: 16px;
   --font-size-body-small: 11px;
   --font-size-nav: 16px;
+  --font-size-nav-button: 1.44rem;
   --font-size-footer: 16px;
-  --font-size-h1: 26px;
-  --font-size-h2: 20px;
-  --font-size-h3: 14px;
+  --font-size-h1: 40px;
+  --font-size-h1-inner: 25px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18.72px;
   --font-size-h4-brand: 16px;
   --font-size-h5-brand: 17.6px;
   --font-size-h-xl: 35.2px;
@@ -1768,7 +1807,7 @@ color: inherit;
 
   /* ---- Font: Weight ---- */
   --font-weight-body: 400;
-  --font-weight-heading: 600;
+  --font-weight-heading: 700;
   --font-weight-button: 700;
   --font-weight-brand-heading: 700;
 
@@ -1808,8 +1847,8 @@ color: inherit;
   /* ---- Button: Tertiary ---- */
   --button-tertiary-bg: transparent;
   --button-tertiary-color: #404040;
-  --button-tertiary-border: #ccc;
-  --button-tertiary-padding: 12px 42px 12px 12px;
+  --button-tertiary-border: #555;
+  --button-tertiary-padding: 16px 70px 16px 24px;
   --button-tertiary-font-size: 18px;
   --button-tertiary-hover-bg: #005272;
   --button-tertiary-hover-color: #fff;
@@ -1825,8 +1864,48 @@ color: inherit;
   --toggle-thumb-color: #fff;
 
   /* ---- Link ---- */
-  --link-color: #90124a;
+  --link-color: #005272;
 
+  /* ---- Opacity ---- */
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.5;
+
+  /* ---- Header block ---- */
+  --nav-height-mobile: var(--spacing-60);
+  --header-nav-item-height-mobile: 7.6rem;
+  --header-logo-width: 30rem;
+  --header-logo-width-mobile: 20rem;
+  --header-content-max-width: 118rem;
+  --header-submenu-width: 22rem;
+  --header-nav-line-height: 1.3;
+  --header-nav-separator: rgb(0 0 0 / 10%);
+  --header-nav-separator-on-dark: rgb(255 255 255 / 20%);
+  --header-mobile-nav-padding: var(--spacing-16) var(--spacing-20);
+  --icon-svg-plus-circle: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1.5'><circle cx='12' cy='12' r='10'/><line x1='12' y1='7' x2='12' y2='17'/><line x1='7' y1='12' x2='17' y2='12'/></svg>");
+  --icon-svg-minus-circle: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1.5'><circle cx='12' cy='12' r='10'/><line x1='7' y1='12' x2='17' y2='12'/></svg>");
+  --header-mobile-icon-size: var(--spacing-24);
+  --header-scroll-bg: rgb(255 255 255 / 92%);
+
+  /* ---- Header: Utility bar colors ---- */
+  --color-utility-link: #c4c1bf;
+  --color-accent-yellow: #ffce00;
+  --color-dropdown-hover-text: #404040;
+  --color-dropdown-hover-bg: #f2f2f2;
+
+  /* ---- Header: Nav submenu ---- */
+  --color-submenu-hover-bg: #fff4c4;
+  --color-nav-item-hover-bg: #ffce00;
+  --border-radius-submenu: 0.2rem;
+  --header-submenu-z-index: 102;
+  --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
+
+  /* ---- Header: Search panel ---- */
+  --header-search-panel-top: 45%;
+  --header-search-panel-left: 74%;
+  --header-search-panel-radius: 0.5rem;
+  --header-search-panel-min-height: 6.2rem;
+  --header-search-z-index: 99;
+  --header-search-input-min-width: 28rem;
   /* ---- Hero: Venclexta-specific ---- */
   --hero-full-min-height: 56rem;
   --hero-full-min-height-tablet: 64rem;
@@ -1941,6 +2020,9 @@ color: inherit;
   color: var(--color-brand-accent);
   font-style: normal;
 }
+.hero .break {
+  display: block;
+}
 /* Eyebrow pipe decoration */
 .hero .hero-eyebrow {
   display: flex;
@@ -2009,6 +2091,23 @@ color: inherit;
 .hero.full {
   min-height: var(--hero-full-min-height);
   align-items: stretch;
+}
+.hero.full > div:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+.hero.full > div:first-child picture,
+.hero.full > div:first-child img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .hero.full::after {
   background: var(--hero-overlay-gradient-full);
@@ -2114,7 +2213,8 @@ color: inherit;
   background: var(--hero-indication-bg);
   border: 1px solid var(--color-brand-accent);
 }
-.hero>div:first-child {
+/* stylelint-disable-next-line no-descending-specificity */
+.hero > div:first-child {
   min-height: unset;
 }
 @media (width >=744px) {
@@ -2201,13 +2301,17 @@ color: inherit;
    VENCLEXTA — Custom hero overrides
    These rules take cascade priority over all base rules above.
    ============================================================ */
-/* Full hero: constrain content stack to 1180px max width */
+/* Full hero: constrain content stack to 1180px max width, vertically center */
 .hero.full>.hero-content-stack {
   max-width: var(--cdp-max-width);
   width: 100%;
   padding: var(--spacing-20) var(--spacing-20) var(--spacing-30);
   margin: 0 auto;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: var(--hero-full-min-height);
 }
 /* No-padding hero: remove fixed min-height */
 .hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) {
@@ -2225,6 +2329,7 @@ color: inherit;
   min-height: auto;
 }
 /* No-padding hero: unset absolute positioning on image/picture/img */
+/* stylelint-disable-next-line no-descending-specificity */
 .hero.no-padding img {
   border-radius: 0;
   min-height: unset;
@@ -2269,4 +2374,45 @@ color: inherit;
   .hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
     align-items: flex-start;
   }
+}
+/* ============================================================
+   VENCLEXTA — Homepage hero CTA pill buttons
+   Horizontal row, white bg, gold left border, no max-width
+   ============================================================ */
+.hero.full .cmp-container-x-large {
+  max-width: none;
+}
+.hero.full .button-container {
+  display: inline-block;
+  padding: 0;
+  margin: 0 var(--spacing-08) var(--spacing-08) 0;
+}
+.hero.full :where(a).button {
+  display: inline-block;
+  background: var(--color-white);
+  color: var(--text-color);
+  border: none;
+  border-left: 5px solid var(--color-brand-accent);
+  border-radius: 0;
+  padding: 20px 42px 20px 20px;
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-500);
+  text-decoration: none;
+  text-transform: none;
+  text-align: left;
+  position: relative;
+}
+.hero.full :where(a).button::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-brand-accent);
+  border-bottom: 2px solid var(--color-brand-accent);
+  transform: translateY(-50%) rotate(-45deg);
+}
+.hero.full :where(a).button:hover {
+  background: var(--color-background-light);
 }

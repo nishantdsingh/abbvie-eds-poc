@@ -224,6 +224,18 @@
     ]
   },
   {
+    "id": "text",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "button",
     "fields": [
       {
@@ -2396,19 +2408,6 @@
         "name": "overview"
       },
       {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "Variant",
-        "description": "Visual layout variant for the brand explorer.",
-        "options": [
-          {
-            "name": "Default (Full explorer with therapeutic filter tabs)",
-            "value": ""
-          }
-        ]
-      },
-      {
         "component": "text",
         "valueType": "string",
         "name": "anchorId",
@@ -2420,7 +2419,7 @@
         "component": "text",
         "valueType": "string",
         "name": "barLabel",
-        "value": "Explore AbbVie",
+        "value": "",
         "label": "Bar Label",
         "description": "Text shown on the fixed bottom bar trigger button."
       },
@@ -2440,44 +2439,44 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "navLink1Text",
-        "value": "Contact Medical Info",
-        "label": "Contact Medical Info Label"
+        "name": "navLink1Label",
+        "value": "",
+        "label": "Nav Link 1 Label"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "navLink1Url",
-        "value": "#",
-        "label": "Contact Medical Info URL"
+        "value": "",
+        "label": "Nav Link 1 URL"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "navLink2Text",
-        "value": "Full Prescribing Information",
-        "label": "Full Prescribing Info Label"
+        "name": "navLink2Label",
+        "value": "",
+        "label": "Nav Link 2 Label"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "navLink2Url",
-        "value": "https://www.rxabbvie.com/pdf/skyrizi_pi.pdf",
-        "label": "Full Prescribing Info URL"
+        "value": "",
+        "label": "Nav Link 2 URL"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "navLink3Text",
-        "value": "Patient Site",
-        "label": "Patient Site Label"
+        "name": "navLink3Label",
+        "value": "",
+        "label": "Nav Link 3 Label"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "navLink3Url",
-        "value": "https://www.skyrizi.com",
-        "label": "Patient Site URL"
+        "value": "",
+        "label": "Nav Link 3 URL"
       },
       {
         "component": "tab",
@@ -2629,7 +2628,7 @@
         "name": "brand"
       },
       {
-        "component": "aem-content",
+        "component": "reference",
         "valueType": "string",
         "name": "logo",
         "label": "Brand Logo",
@@ -2639,7 +2638,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "logoAlt",
+        "name": "logoAccessibleName",
         "value": "",
         "label": "Logo Alt Text"
       },
@@ -2683,7 +2682,7 @@
       {
         "component": "richtext",
         "valueType": "string",
-        "name": "safetyText",
+        "name": "safetyContent",
         "value": "",
         "label": "Safety Text",
         "description": "Safety disclaimer shown below the brand logo."
@@ -4101,6 +4100,10 @@
         "label": "Patient Quote"
       }
     ]
+  },
+  {
+    "id": "carousel",
+    "fields": []
   },
   {
     "id": "carousel-item",
@@ -5598,110 +5601,6 @@
     ]
   },
   {
-    "id": "flexbox",
-    "fields": [
-      {
-        "component": "multiselect",
-        "valueType": "string",
-        "name": "classes",
-        "label": "Layout Variant",
-        "options": [
-          { "name": "Column direction", "value": "column" },
-          { "name": "Row reverse", "value": "row-reverse" },
-          { "name": "Column reverse", "value": "column-reverse" },
-          { "name": "Center (justify + align)", "value": "center" },
-          { "name": "Space between", "value": "space-between" },
-          { "name": "No wrap", "value": "no-wrap" },
-          { "name": "Align stretch", "value": "align-stretch" },
-          { "name": "Align top", "value": "align-top" },
-          { "name": "Align bottom", "value": "align-bottom" }
-        ]
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "anchorId",
-        "value": "",
-        "label": "Anchor ID"
-      }
-    ]
-  },
-  {
-    "id": "flexbox-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Item Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt Text"
-      },
-      {
-        "component": "richtext",
-        "name": "content",
-        "value": "",
-        "label": "Item Content",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "itemClasses",
-        "value": "",
-        "label": "Item Width",
-        "options": [
-          { "name": "Auto (equal flex)", "value": "" },
-          { "name": "Full (100%)", "value": "full" },
-          { "name": "Sixty (60%)", "value": "sixty" },
-          { "name": "Half (50%)", "value": "half" },
-          { "name": "Third (33%)", "value": "third" },
-          { "name": "Thirty (30%)", "value": "thirty" },
-          { "name": "Quarter (25%)", "value": "quarter" }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "parallax",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt Text"
-      },
-      {
-        "component": "richtext",
-        "name": "content",
-        "value": "",
-        "label": "Overlay Content",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "anchorId",
-        "value": "",
-        "label": "Anchor ID"
-      }
-    ]
-  },
-  {
     "id": "dismiss",
     "fields": [
       {
@@ -6516,6 +6415,59 @@
     ]
   },
   {
+    "id": "efficacy-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Variant",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "efficacy-tabs-row",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "rowType",
+        "label": "Row Type",
+        "value": "text",
+        "options": [
+          {
+            "name": "Outer tab",
+            "value": "outer"
+          },
+          {
+            "name": "Intro",
+            "value": "intro"
+          },
+          {
+            "name": "Inner tab",
+            "value": "inner"
+          },
+          {
+            "name": "Chart",
+            "value": "chart"
+          },
+          {
+            "name": "Text",
+            "value": "text"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "content",
+        "value": "",
+        "label": "Content"
+      }
+    ]
+  },
+  {
     "id": "embed-form",
     "fields": [
       {
@@ -7154,6 +7106,125 @@
     ]
   },
   {
+    "id": "flexbox",
+    "fields": [
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Layout Variant",
+        "options": [
+          {
+            "name": "Column direction",
+            "value": "column"
+          },
+          {
+            "name": "Row reverse",
+            "value": "row-reverse"
+          },
+          {
+            "name": "Column reverse",
+            "value": "column-reverse"
+          },
+          {
+            "name": "Center (justify + align)",
+            "value": "center"
+          },
+          {
+            "name": "Space between",
+            "value": "space-between"
+          },
+          {
+            "name": "No wrap",
+            "value": "no-wrap"
+          },
+          {
+            "name": "Align stretch",
+            "value": "align-stretch"
+          },
+          {
+            "name": "Align top",
+            "value": "align-top"
+          },
+          {
+            "name": "Align bottom",
+            "value": "align-bottom"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "anchorId",
+        "value": "",
+        "label": "Anchor ID"
+      }
+    ]
+  },
+  {
+    "id": "flexbox-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Item Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt Text"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "value": "",
+        "label": "Item Content",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "itemClasses",
+        "value": "",
+        "label": "Item Width",
+        "options": [
+          {
+            "name": "Auto (equal flex)",
+            "value": ""
+          },
+          {
+            "name": "Full (100%)",
+            "value": "full"
+          },
+          {
+            "name": "Sixty (60%)",
+            "value": "sixty"
+          },
+          {
+            "name": "Half (50%)",
+            "value": "half"
+          },
+          {
+            "name": "Third (33%)",
+            "value": "third"
+          },
+          {
+            "name": "Thirty (30%)",
+            "value": "thirty"
+          },
+          {
+            "name": "Quarter (25%)",
+            "value": "quarter"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
@@ -7628,10 +7699,10 @@
         "valueType": "string"
       },
       {
-        "component": "richtext",
+        "component": "reference",
         "name": "layers",
         "value": "",
-        "label": "Layers (Multilayer variant — one image ref per layer; add data-buddy-state via custom class)",
+        "label": "Badge / Layers Image",
         "valueType": "string"
       },
       {
@@ -8428,30 +8499,17 @@
           {
             "name": "Stretched Link (entire card clickable)",
             "value": "image-text-stretched"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "classes_imageSize",
-        "value": "",
-        "label": "Image Size",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default (50/50)",
-            "value": ""
           },
           {
-            "name": "Large (60% image)",
+            "name": "Large image (60%)",
             "value": "image-text-image-large"
           },
           {
-            "name": "Medium (40% image)",
+            "name": "Medium image (40%)",
             "value": "image-text-image-medium"
           },
           {
-            "name": "Small (33% image)",
+            "name": "Small image (33%)",
             "value": "image-text-image-small"
           }
         ]
@@ -9951,7 +10009,6 @@
         "component": "text",
         "name": "content_searchIcon",
         "label": "Search Icon",
-        "value": ":icon-search:",
         "condition": {
           "in": [
             {
@@ -10174,7 +10231,6 @@
         "component": "select",
         "name": "content_eyebrowPosition",
         "label": "Eyebrow Position",
-        "value": "top",
         "condition": {
           "in": [
             {
@@ -10230,7 +10286,6 @@
         "component": "text",
         "name": "content_floatingIsiExpandLabel",
         "label": "Expand button label",
-        "value": "See Full ISI",
         "condition": {
           "in": [
             {
@@ -10246,7 +10301,6 @@
         "component": "text",
         "name": "content_floatingIsiCollapseLabel",
         "label": "Collapse button label",
-        "value": "Collapse ISI",
         "condition": {
           "in": [
             {
@@ -13169,6 +13223,10 @@
     ]
   },
   {
+    "id": "stock-ticker",
+    "fields": []
+  },
+  {
     "id": "story-card",
     "fields": [
       {
@@ -13687,7 +13745,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "tabTitle",
+        "name": "tabName",
         "value": "",
         "label": "Tab Name",
         "required": true,
@@ -13902,6 +13960,13 @@
         "component": "tab",
         "label": "Styles",
         "name": "styles"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "classes_customDynamicClass",
+        "label": "Custom Dynamic Class",
+        "description": "Comma-separated list of custom CSS classes"
       },
       {
         "component": "select",
@@ -14214,6 +14279,13 @@
             "value": "lang:uk"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "analytics_id",
+        "label": "Analytics ID",
+        "description": "Analytics tracking identifier"
       }
     ]
   },

@@ -62,14 +62,11 @@
 .section-nav.sticky.is-stuck {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: none;
+  box-shadow: var(--shadow-section-nav-stuck);
   left: 50%;
   right: auto;
   transform: translateX(-50%);
   width: var(--section-nav-mobile-width);
-  z-index: 5;
-  top: 0;
-  background-color: transparent;
 }
 
 /* ── Mobile menu: hide hamburger + generic toggle label ──────────────── */
@@ -218,7 +215,7 @@
     background-color: var(--section-nav-bg);
     border-radius: var(--section-nav-radius);
     max-width: fit-content;
-    padding: 0;
+    padding: 0 var(--spacing-08);
   }
 
   /* Flatten top corners of pill when stuck — live-site pattern */
@@ -227,11 +224,9 @@
     border-top-right-radius: 0;
   }
 
-  /* Links: 16px / 800 base weight (matches live) / line-height 50px for vertical centering */
+  /* Links: 600 base weight */
   .section-nav a {
-    font-size: 16px;
-    font-weight: var(--font-weight-extra-bold);
-    line-height: 50px;
+    font-weight: var(--font-weight-semibold);
     opacity: 1;
   }
 
@@ -278,10 +273,8 @@
     border-bottom: none;
     color: var(--section-nav-text);
     display: inline-block;
-    font-size: 16px;
     font-weight: var(--font-weight-semibold);
-    line-height: 50px;
-    padding: 0 25px;
+    padding: var(--spacing-12) var(--spacing-24);
     text-align: unset;
     width: auto;
   }

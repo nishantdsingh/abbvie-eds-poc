@@ -598,33 +598,3 @@ header.has-sticky-scrollback.show-nav.sticky-scrollback .header nav .nav-section
 
   header.hide-nav .nav-wrapper:hover { background: var(--color-nav-dark); }
 }
-
-/* ── Header overlays hero ── */
-/* stylelint-disable-next-line no-descending-specificity */
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
-}
-
-/* stylelint-disable-next-line no-descending-specificity */
-header nav a {
-  color: var(--color-text-on-dark);
-}
-
-/* Hide ISI toggle controls (top/See Full ISI/Collapse ISI) */
-header .nav-indication {
-  display: none;
-}
-
-/* Non-hero pages: solid purple header background (linzess only) */
-body.no-hero header {
-  background-color: var(--color-brand-primary);
-}
-
-body.no-hero header .nav-wrapper {
-  background-color: var(--color-brand-primary);
-}

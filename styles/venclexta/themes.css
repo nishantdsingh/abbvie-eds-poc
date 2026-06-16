@@ -77,7 +77,7 @@ a.button.secondary:hover {
 }
 
 /* ---- Header / Footer ---- */
-header { background-color: #000; }
+header { background-color: #fff; }
 footer { background-color: var(--color-background-footer); color: var(--text-color); }
 
 /* ---- Hero Section ---- */
@@ -138,6 +138,7 @@ footer { background-color: var(--color-background-footer); color: var(--text-col
 
 /* ---- Section Backgrounds ---- */
 .section.glacier-bg { background-color: var(--color-glacier); }
+.section.gray-bg { background-color: #eaeaea; padding: 40px 20px; }
 .section.dark-bg { background-color: var(--color-background-footer); color: var(--color-text-on-dark); }
 .section.dark-bg h1, .section.dark-bg h2, .section.dark-bg h3 { color: var(--color-text-on-dark); }
 

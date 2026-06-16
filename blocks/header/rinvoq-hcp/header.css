@@ -1993,8 +1993,12 @@ header.has-sticky-scrollback.sticky-scrollback .header {
 /* Nav wrapper — black */
 
 header .nav-wrapper {
-  background-color: var(--color-background-footer);
+  background-color: #000;
   position: relative;
+}
+
+header {
+  height: auto;
 }
 
 header:has(.nav-utility ul) {
@@ -2018,10 +2022,9 @@ header .nav-wrapper nav {
   width: 100%;
 }
 
-/* Logo row — explicit black so it stays dark when nav is expanded */
+/* Logo row */
 
 header nav .nav-brand {
-  background-color: var(--color-background-footer);
   padding: var(--spacing-16) var(--spacing-20);
 }
 
@@ -2029,6 +2032,29 @@ header nav .nav-brand img {
   height: auto;
   max-width: unset;
   width: var(--header-logo-width);
+}
+
+/* Indication text — inline with logo at all viewports */
+
+.nav-brand-indication-text {
+  color: #fff;
+  font-family: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1;
+  text-align: right;
+  margin-left: 48px;
+}
+
+header nav .nav-brand .default-content-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand-indication-text sup {
+  font-size: 8px;
+  vertical-align: super;
 }
 
 /* Utility bar — not present on RINVOQ HCP */
@@ -2149,6 +2175,7 @@ header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(1) { 
 
 header nav .nav-item-level-0 .default-content-wrapper > ul > li > button {
   color: var(--color-charcoal);
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-700);
   padding: var(--spacing-00);
@@ -2170,6 +2197,7 @@ header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::before
 
 header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
   color: var(--color-charcoal);
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-weight: var(--font-weight-700);
 }
 
@@ -2228,7 +2256,8 @@ header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='t
 
 header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li a {
   color: var(--color-charcoal);
-  font-weight: var(--font-weight-700);
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-weight: 600;
 }
 
 /* Search — mobile: always visible in gold bar */
@@ -2267,6 +2296,22 @@ header nav .nav-search .search-toggle { display: none; }
 ══════════════════════════════════════════════ */
 
 @media (width >= 1024px) {
+  /* Indication text — visible on desktop next to logo */
+  header nav .nav-brand .default-content-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-brand-indication-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+    margin-left: 48px;
+    padding: 0;
+    max-width: 500px;
+  }
+
   /* Show nav-search in the brand row (overrides mobile hide) */
   header nav .nav-search {
     align-items: center;
@@ -2365,7 +2410,6 @@ header nav .nav-search .search-toggle { display: none; }
 
   /* Brand row — logo padding */
   header nav .nav-brand {
-    background-color: var(--color-background-footer);
     padding: var(--spacing-20) var(--spacing-24) var(--spacing-20) var(--spacing-35);
   }
 
@@ -2415,6 +2459,7 @@ header nav .nav-search .search-toggle { display: none; }
   header nav .nav-item-level-0 .default-content-wrapper > ul > li > button,
   header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
     color: var(--color-charcoal);
+    font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
     font-size: var(--font-size-16);
     font-weight: var(--font-weight-600);
     height: 100%;
@@ -2454,6 +2499,7 @@ header nav .nav-search .search-toggle { display: none; }
     flex-direction: column;
     gap: var(--spacing-08);
     padding: var(--spacing-00);
+    margin-left: 14px !important;
   }
 
   header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link {
@@ -2499,7 +2545,11 @@ header nav .nav-search .search-toggle { display: none; }
   header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
     background-color: var(--color-gold);
     position: absolute;
-    width: var(--header-submenu-width);
+    width: auto;
+    min-width: 280px;
+    right: auto;
+    margin-left: 0;
+    overflow: hidden;
   }
 
   /* Submenu item row padding and hover */
@@ -2509,6 +2559,24 @@ header nav .nav-search .search-toggle { display: none; }
 
   .navigation-item.navigation-item-level-1:hover { background: var(--color-butter); }
 
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li {
+    display: block;
+    margin-left: -14px;
+    padding-left: 14px;
+    width: calc(100% + 14px);
+    box-sizing: border-box;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li a {
+    display: inline-block;
+    padding: 10px 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li:hover {
+    background-color: var(--color-butter);
+  }
+
   /* stylelint-disable-next-line no-descending-specificity */
   .navigation-item-level-1 > a,
   .navigation-item-level-1 .level-two-link-adjustment {
@@ -2516,3 +2584,39 @@ header nav .nav-search .search-toggle { display: none; }
     padding: var(--spacing-00);
   }
 }
+
+/* Brand-specific: active nav link */
+
+.nav-sections .default-content-wrapper > ul > li > a.nav-active,
+.nav-sections .default-content-wrapper > ul > li > button.nav-active {
+  padding-top: 10px;
+  border-bottom: 4px solid var(--color-brand-primary, #90124a);
+  font-family: 'Graphik Black', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-style: normal;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li a.nav-active {
+  padding-bottom: 10px;
+  border-bottom: 4px solid var(--color-brand-primary, #90124a);
+  font-family: 'Graphik Black', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-style: normal;
+  display: inline-block;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li.nav-submenu-ref-moderate {
+  position: relative;
+  padding-top: 28px;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li.nav-submenu-ref-moderate::before {
+  content: 'Refractory, Moderate to Severe';
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  color: var(--color-charcoal, #25282a);
+  font-size: 14px;
+  white-space: pre;
+  font-family: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-style: normal;
+}
+

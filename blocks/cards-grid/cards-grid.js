@@ -56,6 +56,53 @@ function unwrapDirectParagraph(span) {
   lineP.remove();
 }
 
+function splitIndicationItems(span) {
+  const frag = document.createDocumentFragment();
+  const children = [...span.childNodes];
+  let i = 0;
+  while (i < children.length) {
+    const node = children[i];
+    if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'P') {
+      const link = node.querySelector(':scope > a');
+      if (link) {
+        const textAfter = node.textContent.replace(link.textContent, '').replace(/^\s*[—–-]\s*/, '').trim();
+        frag.append(link.cloneNode(true));
+        if (textAfter) {
+          const p = document.createElement('p');
+          p.textContent = textAfter;
+          frag.append(p);
+        }
+      } else {
+        frag.append(node.cloneNode(true));
+      }
+    } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'A') {
+      frag.append(node.cloneNode(true));
+      const next = children[i + 1];
+      if (next && next.nodeType === Node.TEXT_NODE) {
+        const text = next.nodeValue.replace(/^\s*[—–-]\s*/, '').trim();
+        if (text) {
+          const p = document.createElement('p');
+          p.textContent = text;
+          frag.append(p);
+        }
+        i += 1;
+      }
+    } else if (node.nodeType === Node.TEXT_NODE) {
+      const text = node.nodeValue.replace(/^\s*[—–-]\s*/, '').trim();
+      if (text) {
+        const p = document.createElement('p');
+        p.textContent = text;
+        frag.append(p);
+      }
+    } else {
+      frag.append(node.cloneNode(true));
+    }
+    i += 1;
+  }
+  span.innerHTML = '';
+  span.append(frag);
+}
+
 function decorateLine2(card) {
   if (!card) return;
   const lineDiv = [...card.children].find((el) => el.tagName === 'DIV');
@@ -67,6 +114,7 @@ function decorateLine2(card) {
   }
   lineDiv.replaceWith(span);
   unwrapDirectParagraph(span);
+  splitIndicationItems(span);
 }
 
 function decodePlatformCSupTags(container) {
@@ -128,6 +176,9 @@ function decorateLine4(card) {
   }
   lineDiv.replaceWith(span);
   unwrapDirectParagraph(span);
+  // Pediatric indication group continues the line-2 list, so it needs the same
+  // link/description split (<a></a><p></p>) for consistent structure & styling.
+  splitIndicationItems(span);
 }
 
 function removeLeadingEmptyLineDivs(container) {

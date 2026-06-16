@@ -985,6 +985,12 @@
     column-gap: 0;
   }
 
+  /* Live: each link <li> has padding-right: 20px for horizontal spacing */
+  .footer .footer-links-primary li,
+  .footer .footer-links-primary li:not(:last-child) {
+    padding-right: var(--spacing-20);
+  }
+
   /* Live: .abbv-footer .logo { padding: 48px 0 0 } */
   .footer .footer-bottom > p:has(picture),
   .footer .footer-bottom > p:has(img) {

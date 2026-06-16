@@ -1,0 +1,51 @@
+/* Efficacy Tabs — base structure (brand styling lives in {brand}/_efficacy-tabs.css) */
+
+.efficacy-tabs-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.efficacy-tabs-tab {
+  flex: 1;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: center;
+}
+
+.efficacy-tabs-panel[hidden] {
+  display: none;
+}
+
+.efficacy-tabs-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.efficacy-tabs-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Desktop: 60/40 chart-left, text-right */
+@media (width >= 985px) {
+  .efficacy-tabs-flex {
+    flex-direction: row;
+    gap: 29px;
+    align-items: flex-start;
+  }
+
+  .efficacy-tabs-image {
+    flex: 0 0 740px;
+    max-width: 740px;
+  }
+
+  .efficacy-tabs-text {
+    flex: 1;
+  }
+}

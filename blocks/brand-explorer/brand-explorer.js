@@ -320,12 +320,12 @@ function buildContent(brands, projectNumber) {
     }
     blade.append(bladeLink);
 
+    const subtitle = document.createElement('div');
+    subtitle.className = 'brand-explorer-subtitle';
     if (brand.safetyText) {
-      const subtitle = document.createElement('div');
-      subtitle.className = 'brand-explorer-subtitle';
       subtitle.innerHTML = brand.safetyText;
-      blade.append(subtitle);
     }
+    blade.append(subtitle);
 
     const brandSlugColor = brandSlug; // declared at line 305 in this forEach
 

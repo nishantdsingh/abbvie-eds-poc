@@ -55,8 +55,17 @@ export default function decorate(block) {
   const isSplit = block.classList.contains('split');
   const { collapsed, collapsedCol2, expanded } = extractContentFields(block, isSplit);
 
-  // Hide the source section — it only feeds the sticky bar, not rendered in-page
-  block.closest('.section').hidden = true;
+  // Hide the source block — it only feeds the sticky bar, not rendered in-page.
+  // If safety-bar is the only block in its section, hide the entire section.
+  // Otherwise, hide only the block wrapper to avoid hiding sibling blocks.
+  const section = block.closest('.section');
+  const blockWrappers = section.querySelectorAll(':scope > div[class*="-wrapper"]');
+  if (blockWrappers.length <= 1) {
+    section.hidden = true;
+  } else {
+    block.closest('.safety-bar-wrapper')?.remove();
+    section.classList.remove('safety-bar-container');
+  }
 
   // Build the sticky floating bar
   const stickySection = document.createElement('div');
@@ -69,6 +78,8 @@ export default function decorate(block) {
   const syncExpandedContent = (isExpanded) => {
     if (!expanded) return;
 
+    const overlayEl = document.querySelector('.safety-bar-overlay');
+
     if (isExpanded) {
       if (!fullEl) {
         fullEl = document.createElement('div');
@@ -80,10 +91,16 @@ export default function decorate(block) {
       if (!stickyBlock.contains(fullEl)) {
         stickyBlock.append(fullEl);
       }
+      overlayEl?.classList.add('is-visible');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       return;
     }
 
     fullEl?.remove();
+    overlayEl?.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   };
 
   const abbrevEl = document.createElement('div');
@@ -108,25 +125,61 @@ export default function decorate(block) {
   stickyBlock.append(buildToggle(stickyBlock, syncExpandedContent));
 
   stickySection.append(stickyBlock);
-  document.body.append(stickySection);
 
-  // Hide the bar when the footer is visible; reveal it when footer scrolls away.
-  // Footer loads async in EDS, so fall back to a MutationObserver if not yet in DOM.
-  const footerObserver = new IntersectionObserver(([entry]) => {
-    stickySection.classList.toggle('is-hidden', entry.isIntersecting);
+  const overlay = document.createElement('div');
+  overlay.className = 'safety-bar-overlay';
+  document.body.append(overlay);
+
+  overlay.addEventListener('click', () => {
+    stickyBlock.classList.remove('is-expanded');
+    overlay.classList.remove('is-visible');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    syncExpandedContent(false);
+    const toggle = stickyBlock.querySelector('.safety-bar-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
 
-  const footer = document.querySelector('footer');
-  if (footer) {
-    footerObserver.observe(footer);
-  } else {
-    const mo = new MutationObserver(() => {
-      const el = document.querySelector('footer');
-      if (el) {
-        mo.disconnect();
-        footerObserver.observe(el);
-      }
-    });
-    mo.observe(document.body, { childList: true });
-  }
+  document.body.append(stickySection);
+
+  // Footer visibility is handled by the scroll-based check below.
+  // No separate IntersectionObserver needed (it conflicts with scrollCheck
+  // by hiding the bar on initial load when footer is in viewport).
+
+  // Hide the bar when inline ISI is 200px into viewport (matches live site logic).
+  // Throttled scroll check — same approach as live site's safetyBarScrollCheck.
+  const isiSection = document.querySelector('.section.isi');
+  let ticking = false;
+  const scrollCheck = () => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const footerEl = document.querySelector('footer');
+    const footerTop = footerEl
+      ? footerEl.getBoundingClientRect().top + scrollTop
+      : Infinity;
+    const footerVisible = (scrollTop + windowHeight) > footerTop;
+
+    let isiVisible = false;
+    if (isiSection) {
+      const isiTop = isiSection.getBoundingClientRect().top + scrollTop;
+      isiVisible = (scrollTop + windowHeight) > (isiTop + 200);
+    }
+
+    if (isiVisible || footerVisible) {
+      stickySection.classList.add('is-hidden');
+    } else {
+      stickySection.classList.remove('is-hidden');
+    }
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        scrollCheck();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+  scrollCheck();
 }

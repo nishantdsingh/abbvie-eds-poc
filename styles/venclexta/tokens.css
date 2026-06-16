@@ -14,7 +14,7 @@
   --color-brand-primary-light: #e8edef;
 
   /* ---- Color: Brand Accent ---- */
-  --color-brand-accent: #ffd100;
+  --color-brand-accent: #ffce00;
   --color-brand-accent-teal: #005272;
   --color-accent-gold: #f6c741;
 
@@ -32,11 +32,11 @@
 
   /* ---- Color: Text ---- */
   --color-text-callout: #3f3f3f;
-  --text-color: #46484a;
-  --color-text-heading: #25282a;
+  --text-color: #404040;
+  --color-text-heading: #005272;
   --color-text-heading-brand: #005272;
   --color-text-on-dark: #fff;
-  --color-text-link: #90124a;
+  --color-text-link: #005272;
   --color-text-legal: #404040;
   /* Live venclexta.com renders footer link text in off-white (#e8edef) */
   --color-text-footer-link: var(--color-brand-primary-light);
@@ -46,12 +46,12 @@
   --color-background-light: #f5f5f5;
   /* Live venclexta.com footer bg is dark teal #003b52, not pure black */
   --color-background-footer: var(--color-brand-primary-dark);
-  --color-background-safety-bar: #f5f5f5;
+  --color-background-safety-bar: #fff;
   --color-background-container: #003b52;
 
   /* ---- Color: Border ---- */
   --color-border-brand: #005272;
-  --color-border-safety: #ffd100;
+  --color-border-safety: #999;
   --color-border-default: #ccc;
 
   /* ---- Color: Shadow ---- */
@@ -60,10 +60,10 @@
   --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
 
   /* ---- Font: Family ---- */
-  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
-  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --body-font-family: 'Red Hat Display', sans-serif;
+  --heading-font-family: 'Red Hat Display', sans-serif;
+  --heading-font-family-bold: 'Red Hat Display', sans-serif;
+  --font-family-medium: 'Red Hat Display', sans-serif;
   --font-family-brand: 'Red Hat Display', sans-serif;
   --icon-font-family: 'abbv-iconFont';
 
@@ -73,9 +73,10 @@
   --font-size-nav: 16px;
   --font-size-nav-button: 1.44rem;
   --font-size-footer: 16px;
-  --font-size-h1: 26px;
-  --font-size-h2: 20px;
-  --font-size-h3: 14px;
+  --font-size-h1: 40px;
+  --font-size-h1-inner: 25px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18.72px;
   --font-size-h4-brand: 16px;
   --font-size-h5-brand: 17.6px;
   --font-size-h-xl: 35.2px;
@@ -83,7 +84,7 @@
 
   /* ---- Font: Weight ---- */
   --font-weight-body: 400;
-  --font-weight-heading: 600;
+  --font-weight-heading: 700;
   --font-weight-button: 700;
   --font-weight-brand-heading: 700;
 
@@ -123,8 +124,8 @@
   /* ---- Button: Tertiary ---- */
   --button-tertiary-bg: transparent;
   --button-tertiary-color: #404040;
-  --button-tertiary-border: #ccc;
-  --button-tertiary-padding: 12px 42px 12px 12px;
+  --button-tertiary-border: #555;
+  --button-tertiary-padding: 16px 70px 16px 24px;
   --button-tertiary-font-size: 18px;
   --button-tertiary-hover-bg: #005272;
   --button-tertiary-hover-color: #fff;
@@ -140,7 +141,7 @@
   --toggle-thumb-color: #fff;
 
   /* ---- Link ---- */
-  --link-color: #90124a;
+  --link-color: #005272;
 
   /* ---- Opacity ---- */
   --opacity-hover: 0.85;

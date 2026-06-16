@@ -219,3 +219,71 @@
     text-underline-offset: var(--spacing-20);
   }
 }
+
+/* ── Tablet 601–984px: keep the mobile toggle layout (matches live) ──────
+   Base + brand switch to the desktop horizontal nav at 744px, but live keeps
+   the "ON THIS PAGE:" + gold OPEN/CLOSE toggle through tablet. Re-assert the
+   mobile-menu layout for this range; placed after the desktop block so it
+   wins by source order. Desktop (≥985px) is unaffected. */
+@media (width >= 601px) and (width <= 984px) {
+  .section-nav.sticky.is-stuck {
+    box-shadow: none;
+  }
+
+  .section-nav.mobile-menu {
+    overflow-x: visible;
+  }
+
+  .section-nav.mobile-menu nav {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  /* Hide the desktop "ON THIS PAGE:" prefix — the toggle::before provides it */
+  .section-nav.mobile-menu nav::before {
+    display: none;
+  }
+
+  /* Show the gold toggle (with ::before label + ::after OPEN/CLOSE button) */
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: flex;
+  }
+
+  /* Collapsed list by default; expands when open */
+  .section-nav.mobile-menu nav ul {
+    border-top: none;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .section-nav.mobile-menu.is-open nav ul {
+    display: flex;
+  }
+
+  .section-nav.mobile-menu nav ul li {
+    display: flex;
+  }
+
+  /* Full-width stacked links */
+  .section-nav.mobile-menu nav a {
+    border-bottom: none;
+    display: block;
+    margin: 0;
+    padding: var(--spacing-08) var(--spacing-24) var(--spacing-12);
+    text-align: unset;
+    width: 100%;
+  }
+
+  /* Active: plum underline (text-width only), no left border */
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom: none;
+    border-left: none;
+    color: var(--section-nav-link-color);
+    padding-left: var(--spacing-24);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active-color);
+    text-decoration-thickness: var(--spacing-04);
+    text-underline-offset: var(--spacing-06);
+  }
+}
