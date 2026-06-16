@@ -5,11 +5,15 @@
  * encoded as a FLAT table where each row's first cell is a directive keyword and
  * the second cell is its content:
  *
- *   | outer  | H2H                         |  → start an outer tab (label = cell 2)
- *   | intro  | <flag img + header copy>    |  → content shown above the inner tabs
- *   | inner  | Week 16                     |  → start an inner tab within current outer
- *   | chart  | <picture>                   |  → left (60%) chart image of the 60/30 row
- *   | text   | <rich text + callout + CTAs>|  → right (30%) descriptive column
+ * Each row is: | rowKind | image | imageAlt | content |
+ * The image cell carries any <picture> (kept out of the richtext `content`
+ * field so md2jcr maps cleanly); content holds the remaining copy.
+ *
+ *   | outer  |        |  | H2H                         |  → start an outer tab (label = content)
+ *   | intro  | <flag> |  | header copy + objective     |  → content above the inner tabs
+ *   | inner  |        |  | Week 16                     |  → start an inner tab within current outer
+ *   | chart  | <pic>  |  | header + footnotes          |  → left (60%) chart of the 60/30 row
+ *   | text   |        |  | rich text + callout + CTAs  |  → right (30%) descriptive column
  *
  * Multiple inner tabs may follow one outer; each inner takes one chart + one text.
  */
@@ -54,25 +58,41 @@ export default function decorate(block) {
   let currentOuter = null;
   let currentInner = null;
 
+  // Pull the row's <picture> (lives in its own image cell now, kept out of the
+  // richtext `content` field so md2jcr maps cleanly).
+  const pictureOf = (imageCell) => {
+    const pic = imageCell?.querySelector('picture, img');
+    return pic ? (pic.closest('picture') || pic) : null;
+  };
+
   rows.forEach((row) => {
     const cells = [...row.children];
     const key = (cells[0]?.textContent || '').trim().toLowerCase();
-    const content = cells[1];
-    if (!content) return;
+    // cells: [rowKind, image, content] — imageAlt collapses into image (Alt
+    // suffix) so it does NOT get its own cell.
+    const picture = pictureOf(cells[1]);
+    const contentCell = cells[2];
+    const label = (contentCell?.textContent || '').trim();
 
     if (key === 'outer') {
-      currentOuter = { label: content.textContent.trim(), intro: null, inners: [] };
+      currentOuter = {
+        label, intro: null, introImage: null, inners: [],
+      };
       currentInner = null;
       outers.push(currentOuter);
     } else if (key === 'intro' && currentOuter) {
-      currentOuter.intro = content;
+      currentOuter.intro = contentCell;
+      currentOuter.introImage = picture;
     } else if (key === 'inner' && currentOuter) {
-      currentInner = { label: content.textContent.trim(), chart: null, text: null };
+      currentInner = {
+        label, chart: null, chartImage: null, text: null,
+      };
       currentOuter.inners.push(currentInner);
     } else if (key === 'chart' && currentInner) {
-      currentInner.chart = content;
+      currentInner.chart = contentCell;
+      currentInner.chartImage = picture;
     } else if (key === 'text' && currentInner) {
-      currentInner.text = content;
+      currentInner.text = contentCell;
     }
   });
 
@@ -85,10 +105,15 @@ export default function decorate(block) {
     panel.setAttribute('role', 'tabpanel');
     panel.hidden = oi !== 0;
 
-    if (outer.intro) {
+    if (outer.intro || outer.introImage) {
       const intro = document.createElement('div');
       intro.className = 'efficacy-tabs-intro';
-      intro.append(...outer.intro.childNodes);
+      if (outer.introImage) {
+        const p = document.createElement('p');
+        p.append(outer.introImage);
+        intro.append(p);
+      }
+      if (outer.intro) intro.append(...outer.intro.childNodes);
       panel.append(intro);
     }
 
@@ -99,16 +124,22 @@ export default function decorate(block) {
       ipanel.setAttribute('role', 'tabpanel');
       ipanel.hidden = ii !== 0;
 
-      // The chart cell leads with header copy (full-width, above the grid on
-      // live), then the chart <picture>, then any footnotes. Split the leading
-      // header paragraphs out so they span the panel and the chart image top-
-      // aligns with the text column.
+      // The chart cell holds header copy (full-width, above the grid on live)
+      // followed by footnotes; the chart <picture> lives in its own image cell
+      // (inner.chartImage). Header copy = paragraphs before the first footnote;
+      // footnotes follow the image in the chart column.
       const chartNodes = inner.chart ? [...inner.chart.childNodes] : [];
-      const firstFigureIdx = chartNodes.findIndex(
-        (n) => n.nodeType === 1 && n.querySelector && n.querySelector('img,picture'),
+      const firstFootnoteIdx = chartNodes.findIndex(
+        (n) => n.nodeType === 1 && n.classList && n.classList.contains('footnote'),
       );
-      const headerNodes = firstFigureIdx > 0 ? chartNodes.slice(0, firstFigureIdx) : [];
-      const figureNodes = firstFigureIdx > 0 ? chartNodes.slice(firstFigureIdx) : chartNodes;
+      let headerNodes = [];
+      let footnoteNodes = [];
+      if (firstFootnoteIdx > 0) {
+        headerNodes = chartNodes.slice(0, firstFootnoteIdx);
+        footnoteNodes = chartNodes.slice(firstFootnoteIdx);
+      } else {
+        headerNodes = chartNodes;
+      }
 
       if (headerNodes.length) {
         const header = document.createElement('div');
@@ -122,7 +153,12 @@ export default function decorate(block) {
 
       const imgCol = document.createElement('div');
       imgCol.className = 'efficacy-tabs-image';
-      imgCol.append(...figureNodes);
+      if (inner.chartImage) {
+        const p = document.createElement('p');
+        p.append(inner.chartImage);
+        imgCol.append(p);
+      }
+      imgCol.append(...footnoteNodes);
 
       const textCol = document.createElement('div');
       textCol.className = 'efficacy-tabs-text';
