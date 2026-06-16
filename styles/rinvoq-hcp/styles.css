@@ -3914,6 +3914,15 @@ main > .section.level-up-overview.columns-container:not(.dark):not(.navy):not(.p
   border-radius: 10px;
 }
 
+/* Mobile / tablet: the gray card stays inset from the viewport edges (matches
+   live's 20px side gutter) instead of running edge-to-edge. */
+@media (width < 985px) {
+  main > .section.level-up-overview.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight),
+  .section.level-up-overview {
+    margin-inline: 20px;
+  }
+}
+
 /* Even vertical rhythm between the card's direct children (study card, loose
    paragraphs, indication card) — 24px gap, none trailing the last one. */
 .section.level-up-overview > .columns-wrapper,
@@ -3927,9 +3936,11 @@ main > .section.level-up-overview.columns-container:not(.dark):not(.navy):not(.p
 }
 
 /* Clinical-decisions loose paragraph sits below the LEFT column only (~2/3 width,
-   matches live 741px), not full width. */
-.section.level-up-overview > .default-content-wrapper {
-  max-width: 66%;
+   matches live 741px) on DESKTOP. On mobile/tablet it spans the full inner width. */
+@media (width >= 985px) {
+  .section.level-up-overview > .default-content-wrapper {
+    max-width: 66%;
+  }
 }
 
 /* §5 Study card — transparent (sits on the card surface); left column wider. */
@@ -3938,9 +3949,59 @@ main > .section.level-up-overview.columns-container:not(.dark):not(.navy):not(.p
   max-width: 100%;
 }
 
-@media (width >= 768px) {
+/* Mobile / tablet: force single column. The base columns block sets
+   `grid-template-columns: repeat(auto-fit, minmax(0,1fr))` at >=768px, which
+   would split these cards at tablet — live keeps them stacked until 985px. */
+@media (width < 985px) {
+  .section.level-up-overview .columns.level-up-study-card,
+  .section.level-up-overview .columns.level-up-indication-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Desktop only: study card splits into 2 columns. Below 985px (mobile/tablet)
+   it stays single-column / full width, matching live. */
+@media (width >= 985px) {
   .section.level-up-overview .columns.level-up-study-card {
     grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Mobile / tablet: live interleaves the loose "Clinical decisions…" paragraph
+   BETWEEN the study description and the Conclusions/Study Details block. Flatten
+   the study card (display: contents) so its two items become flex children of
+   the section, then order: description → clinical paragraph → conclusions. */
+@media (width < 985px) {
+  .section.level-up-overview {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .section.level-up-overview > .columns-wrapper:first-of-type,
+  .section.level-up-overview .columns.level-up-study-card {
+    display: contents;
+  }
+
+  .section.level-up-overview > .columns-wrapper,
+  .section.level-up-overview > .default-content-wrapper {
+    margin-bottom: 0;
+  }
+
+  .section.level-up-overview .level-up-study-card .columns-item:first-child {
+    order: 1;
+  }
+
+  .section.level-up-overview > .default-content-wrapper {
+    order: 2;
+  }
+
+  .section.level-up-overview .level-up-study-card .columns-item:nth-child(2) {
+    order: 3;
+  }
+
+  .section.level-up-overview > .columns-wrapper:last-of-type {
+    order: 4;
   }
 }
 
@@ -3961,9 +4022,10 @@ main > .section.level-up-overview.columns-container:not(.dark):not(.navy):not(.p
   padding: 24px;
 }
 
-/* Force exactly 2 columns; the 3rd item (trailing ISI paragraphs) spans both.
-   Tighten the inter-column gap so each column gets more text width (matches live). */
-@media (width >= 768px) {
+/* Desktop only: indication card splits into 2 columns; the 3rd item (trailing
+   ISI paragraphs) spans both. Below 985px (mobile/tablet) it stays single-column
+   / full width, matching live which stacks RINVOQ above DUPIXENT. */
+@media (width >= 985px) {
   .section.level-up-overview .columns.level-up-indication-card {
     grid-template-columns: 1fr 1fr;
     column-gap: 16px;
@@ -4327,11 +4389,60 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   }
 }
 
+/* Mobile only: the "HIGHER-LEVEL" handwriting em shrinks 64px → 58px to match
+   live (tablet keeps the 64px from the base rule). */
+@media (width < 768px) {
+  .section.level-up-disease-control .dc-title em {
+    font-size: 58px;
+    line-height: 46.4px;
+  }
+}
+
+/* Tablet (744–984px): the base rules apply margin-inline: 7rem (~70px, from
+   `main > .section`) AND padding-inline: 5.5rem on columns-container, giving
+   far-too-wide side gutters. Live uses a single 20px gutter — zero the margin
+   and set a 20px padding gutter. */
+@media (width >= 744px) and (width < 985px) {
+  main > .section.level-up-disease-control,
+  main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight) {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 /* Efficacy section — constrain the tabs block to the same 1180px centered
    content column as the sections above, so the tabs left edge aligns. */
 .section.level-up-efficacy .efficacy-tabs-wrapper {
   max-width: 1180px;
   margin-inline: auto;
+}
+
+/* Tablet (744–984px): the base rules apply margin-inline: 7rem (~70px) plus
+   columns-container padding, leaving the efficacy tabs squeezed with huge side
+   gutters. Live runs the tabs full-bleed at tablet — zero the margin/padding. */
+@media (width >= 744px) and (width < 985px) {
+  main > .section.level-up-efficacy,
+  main > .section.level-up-efficacy.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight) {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Mobile (<744px): live keeps a 20px side gutter around the gray tabs card
+   (left:20/right:370 on a 390 viewport) — zero the base margin and use a 20px
+   padding gutter so the card doesn't run edge-to-edge or crop. */
+@media (width < 744px) {
+  main > .section.level-up-efficacy,
+  main > .section.level-up-efficacy.columns-container:not(.dark):not(.navy):not(.purple):not(.highlight) {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 /* ── Safety Considerations section (live: 1180px centered, 48px top margin) ── */
@@ -4343,6 +4454,28 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 .section.level-up-safety-considerations .default-content-wrapper {
   max-width: 1180px;
   margin-inline: auto;
+}
+
+/* Tablet/mobile (<985px): the base `main > .section { margin-inline: 7rem }`
+   rule (≥744px) gives too-wide side gutters and crops content on mobile. Live
+   uses a 20px gutter at these breakpoints — zero the margin, add 20px padding. */
+@media (width < 985px) {
+  main > .section.level-up-safety-considerations {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* The section is a grid container; its content wrapper is a grid item whose
+     default min-width:auto lets it grow to the intrinsic text width and overflow
+     (cropping on the left). Pin it to the grid track so it wraps within the
+     20px gutter. */
+  .section.level-up-safety-considerations > .default-content-wrapper {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
 }
 
 /* Heading — Graphik 24px/600 + brushstroke underline */
@@ -4415,20 +4548,75 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 
 /* ── §9 AE comparison section — 60/30 flex: data table (left) + gold-brush
    callouts & footnotes (right). Matches live levelUp adverse-events block. */
-.section.ae-comparison-table > .default-content-wrapper,
-.section.ae-comparison-table > .flexbox-wrapper {
+/* Heading section (brushstroke h2) sits OUTSIDE the gray card */
+.section.ae-comparison-heading > .default-content-wrapper {
   max-width: 1140px;
   margin-inline: auto;
 }
 
-/* Section heading + chart-header lead-in */
-.section.ae-comparison-table h2 {
-  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
-  font-size: 24px;
-  line-height: 28px;
+/* (2) The whole AE data section is one gray rounded card — chart-header,
+   table, callouts, footnotes, and CTAs all inside (matches live data-heavy). */
+.section.ae-comparison-table {
+  max-width: 1140px;
+  margin-inline: auto;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  padding: 24px 20px;
+  outline: 1px solid #c9c9ca;
+}
+
+.section.ae-comparison-table > .default-content-wrapper,
+.section.ae-comparison-table > .flexbox-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+/* Trailing content block (the 2nd default-content-wrapper, after the flexbox)
+   sits 32px below the flex; its paragraphs get a 2rem bottom gap (matches live). */
+.section.ae-comparison-table > .default-content-wrapper:last-of-type {
+  margin-top: 32px;
+}
+
+.section.ae-comparison-table > .default-content-wrapper:last-of-type > p:not(.button-container) {
+  margin-bottom: 2rem;
+}
+
+/* First CTA ("Level Up Study Details") spacing — it's the first of the two
+   consecutive .button-container paragraphs at the end of the wrapper. */
+.section.ae-comparison-table > .default-content-wrapper:last-of-type > p.button-container:not(:last-child) {
+  margin: 3rem 0 1rem;
+}
+
+/* Second CTA ("See Long-Term Safety Data") sits flush — no margin. */
+.section.ae-comparison-table > .default-content-wrapper:last-of-type > p.button-container:last-child {
+  margin: 0;
+}
+
+/* (2) Inner left column — white card with light-gray border around the table */
+.section.ae-comparison-table .flexbox-item[data-width='sixty'] .flexbox-item-content {
+  background-color: #fff;
+  border: 1px solid rgb(209, 211, 212);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* Section heading — 32px Graphik Semibold on the gold brushstroke band.
+   Negative left margin offsets the 32px left padding so the text still
+   aligns to the section's left edge (matches live). */
+.section.ae-comparison-heading h2 {
+  display: inline-block;
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 32px;
+  line-height: 40px;
   font-weight: 600;
   color: rgb(37, 40, 42);
-  margin: 0 0 16px;
+  margin: 0 0 16px -32px;
+  padding: 12px 32px;
+  background-image: url('/content/dam/abbvie-eds-poc/stroke--heading-back-small.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .section.ae-comparison-table .chart-header-consistent {
@@ -4460,6 +4648,7 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 
   .section.ae-comparison-table .flexbox-item[data-width='thirty'] {
     flex: 1;
+    margin-top: 86px;
   }
 }
 
@@ -4472,7 +4661,9 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   margin: 0 0 8px;
 }
 
-/* The data table */
+/* The data table — fills the white card (live: 718px table in a 744px card).
+   table-layout:fixed forces the table to honor the 100% width instead of
+   expanding to the headers' intrinsic min-content width (which overflowed). */
 .section.ae-comparison-table table {
   width: 718px;
   max-width: 100%;
@@ -4480,21 +4671,66 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   font-size: 14px;
 }
 
-/* Group header band (All Subjects / LEVEL UP H2H / Switch) */
+/* Constrain the column header text so auto-layout keeps columns near live's
+   widths (otherwise the long headers blow the columns out). */
+.section.ae-comparison-table thead tr:nth-child(2) th span {
+  display: block;
+}
+
+/* Explicit per-column widths matching live (table 718px). Applied to BOTH the
+   sub-header row and the first body row so auto-layout settles on these.
+   1=128 label, 2=16 sp, 3=76 gray, 4=4 sp, 5=76 gold, 6=4 sp, 7=76 banana,
+   8=16 divider-sp, 9=84 gold, 10=4 sp, 11=88 blue, 12=16 divider-sp, 13=129 gold */
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(1) { width: 128px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(2) { width: 16px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(3) { width: 76px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(4) { width: 4px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(5) { width: 76px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(6) { width: 4px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(7) { width: 76px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(8) { width: 16px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(9) { width: 84px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(10) { width: 4px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(11) { width: 88px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(12) { width: 16px; }
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(13) { width: 129px; }
+
+/* Lock the spacer/divider columns so auto-layout can't expand them */
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(2),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(4),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(6),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(8),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(10),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(12) {
+  padding: 0;
+}
+
+/* Group header band (All Subjects / LEVEL UP H2H / Switch) — Graphik Semibold
+   16px/24px weight 400, plum-gray (matches live). */
 .section.ae-comparison-table thead tr:first-child th {
-  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  line-height: 24px;
+  font-weight: 400;
   color: rgb(70, 72, 74);
   text-align: center;
   padding: 16px 6px;
   vertical-align: bottom;
 }
 
-/* Column sub-headers (Placebo, RINVOQ 15 mg, …) */
+/* (1) The 3 group-header cells (with colspan) get a 16px transparent gap below
+   plus a 2px gray underline rule (matches live's inset box-shadow). */
+.section.ae-comparison-table thead tr:first-child th:not(:empty) {
+  border-bottom: 16px solid transparent;
+  box-shadow: inset 0 -2px rgb(209, 211, 212);
+}
+
+/* Column sub-headers (Placebo, RINVOQ 15 mg, …) — Graphik 12px/12.8px */
 .section.ae-comparison-table thead tr:nth-child(2) th {
-  font-size: 16px;
-  font-weight: 700;
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 12.8px;
+  font-weight: 400;
   color: rgb(37, 40, 42);
   text-align: center;
   vertical-align: middle;
@@ -4505,33 +4741,66 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   display: block;
 }
 
-/* Cell-heading rows (INFECTIONS, MORTALITY …) — gray band */
-.section.ae-comparison-table tbody tr:has(> th strong) th {
+/* Cell-heading rows (INFECTIONS, MORTALITY …) — full-width gray band with NO
+   horizontal gaps (every cell in the row, including spacers, goes gray).
+   `:has()` + `:nth-child()` raises specificity above the colored-column rules. */
+.section.ae-comparison-table tbody tr:has(> th strong) th,
+.section.ae-comparison-table tbody tr:has(> th strong) td:nth-child(n) {
   background-color: rgb(233, 233, 233);
-  font-size: 14px;
+}
+
+.section.ae-comparison-table tbody tr:has(> th strong) th {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 12.8px;
   font-weight: 600;
   color: rgb(37, 40, 42);
   text-align: left;
   padding: 10.5px 5.25px 10.5px 12px;
 }
 
+.section.ae-comparison-table tbody tr:has(> th strong) td {
+  padding: 0;
+}
+
 .section.ae-comparison-table tbody tr:has(> th strong) th strong {
   font-weight: 600;
 }
 
-/* Row-label cells (left column) */
-.section.ae-comparison-table tbody th {
+/* Row-label cells (left column) — Graphik Semibold 14px/14px, capped at 128px
+   like live so the long labels wrap and the data columns keep their width. */
+.section.ae-comparison-table tbody tr {
   background-color: rgb(249, 249, 249);
+}
+
+.section.ae-comparison-table tbody th {
+  position: relative;
+  width: 128px;
+  max-width: 128px;
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-size: 14px;
+  line-height: 18px;
   font-weight: 600;
   color: rgb(37, 40, 42);
   text-align: left;
   padding: 10.5px 5.25px 10.5px 20px;
 }
 
-/* Data cells */
+/* (3) Dotted divider beneath each data-row label (not the gray heading rows) */
+.section.ae-comparison-table tbody tr:not(:has(> th strong)) th::after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  right: 5px;
+  bottom: 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+/* Data cells — Graphik 14px/14px; the leading value is Graphik Semibold 400 */
 .section.ae-comparison-table tbody td {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
   font-size: 14px;
+  line-height: 14px;
   color: rgb(37, 40, 42);
   text-align: center;
   padding: 10.5px 5.25px;
@@ -4539,18 +4808,40 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 }
 
 .section.ae-comparison-table tbody td strong {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-weight: 400;
 }
 
 /* Colored data columns — recreated with explicit spacer columns matching live.
    13 cols: 1 label, 2 sp, 3 gray, 4 sp, 5 gold, 6 sp, 7 banana, 8 sp,
-   9 gold, 10 sp, 11 blue, 12 sp, 13 gold. */
+   9 gold, 10 sp, 11 blue, 12 sp, 13 gold. The colored band runs through the
+   (4,6) sub-header row AND every data row, so target both thead row 2 + tbody. */
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(3),
 .section.ae-comparison-table tbody td:nth-child(3) { background-color: rgb(233, 233, 233); }
-.section.ae-comparison-table tbody td:nth-child(5) { background-color: rgb(255, 209, 0); }
-.section.ae-comparison-table tbody td:nth-child(7) { background-color: rgb(255, 241, 179); }
-.section.ae-comparison-table tbody td:nth-child(9) { background-color: rgb(255, 209, 0); }
-.section.ae-comparison-table tbody td:nth-child(11) { background-color: rgb(208, 223, 228); }
+
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(5),
+.section.ae-comparison-table tbody td:nth-child(5),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(9),
+.section.ae-comparison-table tbody td:nth-child(9),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(13),
 .section.ae-comparison-table tbody td:nth-child(13) { background-color: rgb(255, 209, 0); }
+
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(7),
+.section.ae-comparison-table tbody td:nth-child(7) { background-color: rgb(255, 241, 179); }
+
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(11),
+.section.ae-comparison-table tbody td:nth-child(11) { background-color: rgb(208, 223, 228); }
+
+/* (3) Rounded top corners on the colored column header cells (sub-header row) */
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(3),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(5),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(7),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(9),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(11),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(13) {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
 /* Spacer columns (2,4,6,8,10,12) stay transparent and narrow */
 .section.ae-comparison-table tbody td:nth-child(2),
@@ -4564,6 +4855,31 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   width: 8px;
 }
 
+/* (5) Black vertical dividers between the 3 subject groups — centered in the
+   wide spacer columns that sit BETWEEN groups: col 8 (after the MEASURE UP
+   group, cols 3-7) and col 12 (after the H2H group, cols 9-11). A centered
+   border via box-shadow keeps the 2px line in the middle of the 8px spacer. */
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(8),
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(12),
+.section.ae-comparison-table tbody td:nth-child(8),
+.section.ae-comparison-table tbody td:nth-child(12) {
+  position: relative;
+}
+
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(8)::before,
+.section.ae-comparison-table thead tr:nth-child(2) th:nth-child(12)::before,
+.section.ae-comparison-table tbody td:nth-child(8)::before,
+.section.ae-comparison-table tbody td:nth-child(12)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: #000;
+  transform: translateX(-50%);
+}
+
 /* Gold-brushstroke callout boxes in the right column */
 .section.ae-comparison-table .dc-callout-gold {
   background-image: url('/content/dam/abbvie-eds-poc/stroke--heading-back-small.svg');
@@ -4573,6 +4889,7 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   margin: 0 0 16px;
   font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
   font-size: 16px;
+  font-weight: 600;
   line-height: 22px;
   color: rgb(37, 40, 42);
 }
@@ -4585,8 +4902,8 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 /* Right-column body + footnote text */
 .section.ae-comparison-table .flexbox-item[data-width='thirty'] p {
   font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 16px;
+  line-height: 22px;
   color: rgb(70, 72, 74);
   margin: 0 0 12px;
 }
@@ -4600,6 +4917,7 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
 /* Full-width body emphasis below the flex */
 .section.ae-comparison-table > .default-content-wrapper > p strong {
   font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
   font-weight: 400;
   color: rgb(70, 72, 74);
 }
@@ -4654,52 +4972,277 @@ main > .section.level-up-disease-control.columns-container:not(.dark):not(.navy)
   background-size: contain;
 }
 
-/* §10 Label highlights table — live: 1140px, GOLD header row rgb(255,209,0) */
+/* §10 Label highlights — heading sits in its own section OUTSIDE the gray card
+   (live: separate title block above the data-heavy container, with 48px top /
+   24px bottom margin). */
+.section.label-highlights-heading {
+  max-width: 1330px;
+  margin: 48px auto 24px;
+  padding: 0 48px;
+}
+
+.section.label-highlights-heading > .default-content-wrapper {
+  max-width: 100%;
+  margin-inline: 0;
+}
+
+/* Heading wraps to ~2 lines like live, left-aligned at the content edge.
+   Constrain to ~720px so "…RINVOQ and DUPIXENT¹,⁵" wraps onto a second line. */
+.section.label-highlights-heading h2 {
+  display: block;
+  width: fit-content;
+  max-width: 1010px;
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  color: rgb(37, 40, 42);
+  margin: 0;
+  padding: 12px 32px;
+  background-image: url('/content/dam/abbvie-eds-poc/stroke--heading-back-small.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+/* The table section is the gray rounded card (live data-heavy container:
+   #f5f5f5, radius 10px, padding 24px 20px). */
+.section.label-highlights-table {
+  max-width: 1140px;
+  margin-inline: auto;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  padding: 42px 20px 24px;
+  outline: 1px solid #c9c9ca;
+}
+
+.section.label-highlights-table > .table-wrapper {
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+/* Table — 1140px, header row colored per drug column (gold / blue), 12px top
+   radius; data cells 14px, vertical-align top, dashed row dividers. */
 .section.label-highlights-table .table table {
   width: 100%;
-  max-width: 1140px;
+  max-width: 100%;
   border-collapse: collapse;
   font-size: 16px;
 }
 
-.section.label-highlights-table .table th {
-  background-color: var(--color-gold, #ffd100);
-  color: rgb(37, 40, 42);
+/* 4-column layout: 1 Element(250) | 2 RINVOQ gold(380) | 3 spacer(130) |
+   4 DUPIXENT blue(380). Fixed layout so the spacer holds its width. */
+.section.label-highlights-table .table table {
+  table-layout: fixed;
+}
+
+.section.label-highlights-table .table th:nth-child(1),
+.section.label-highlights-table .table td:nth-child(1) { width: 22%; }
+.section.label-highlights-table .table th:nth-child(2),
+.section.label-highlights-table .table td:nth-child(2) { width: 33.5%; }
+.section.label-highlights-table .table th:nth-child(3),
+.section.label-highlights-table .table td:nth-child(3) { width: 11%; }
+.section.label-highlights-table .table th:nth-child(4),
+.section.label-highlights-table .table td:nth-child(4) { width: 33.5%; }
+
+/* Header row: col1 (Element) transparent, col2 (RINVOQ) gold, col4 (DUPIXENT)
+   blue, col3 spacer transparent. */
+.section.label-highlights-table .table thead th {
+  font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
   font-weight: 400;
   font-size: 16px;
-  padding: 16px 6px;
-  text-align: left;
-}
-
-.section.label-highlights-table .table td {
-  font-size: 14px;
-  padding: 12px 8px;
-  vertical-align: top;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.section.label-highlights-table .table th:first-child,
-.section.label-highlights-table .table td:first-child {
-  font-weight: 700;
-}
-
-/* §11 Engagement CTA — default content (icon + heading + body) on light accent,
-   centered. Live had no button. */
-.section.level-up-cta {
+  line-height: 24px;
+  color: rgb(37, 40, 42);
   text-align: center;
-  background-color: var(--color-light-gold, rgba(255, 209, 0, 0.55));
-  padding: 48px 20px;
+  padding: 16px 6px;
+  vertical-align: middle;
+}
+
+.section.label-highlights-table .table thead th:nth-child(2),
+.section.label-highlights-table .table thead th:nth-child(4) {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* Override base table dividers: no top border on header, dashed bottoms */
+.section.label-highlights-table .table thead tr {
+  border-top: 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.section.label-highlights-table .table tbody tr {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+/* Drug-name header text — 12px (RINVOQ / DUPIXENT) */
+.section.label-highlights-table .table thead th:nth-child(2),
+.section.label-highlights-table .table thead th:nth-child(4),
+.section.label-highlights-table .table thead th:nth-child(2) p,
+.section.label-highlights-table .table thead th:nth-child(4) p {
+  font-size: 12px;
+}
+
+.section.label-highlights-table .table thead th:nth-child(2) {
+  background-color: rgb(255, 209, 0);
+}
+
+.section.label-highlights-table .table thead th:nth-child(4) {
+  background-color: rgb(208, 223, 228);
+  color: rgb(70, 72, 74);
+}
+
+/* Spacer column stays empty/transparent */
+.section.label-highlights-table .table th:nth-child(3),
+.section.label-highlights-table .table td:nth-child(3) {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/* Data cells — Graphik 14px/14px, #000, top-aligned, pad 10.5px 5.25px */
+.section.label-highlights-table .table tbody td {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000;
+  padding: 10.5px 5.25px;
+  vertical-align: top;
+}
+
+/* Row-label cells (first column) — Graphik 16px/24px regular, #000, left, top */
+.section.label-highlights-table .table tbody td:first-child,
+.section.label-highlights-table .table tbody td:first-child p {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  text-align: left;
+  vertical-align: top;
+}
+
+.section.label-highlights-table .table tbody td:first-child {
+  padding: 12px 6px;
+}
+
+/* Dashed row divider — border-top on every cell of rows after the first */
+.section.label-highlights-table .table tbody tr + tr td {
+  border-top: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+/* Paragraph copy inside data cells — 14px */
+.section.label-highlights-table .table tbody td p {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+/* Bulleted lists inside data cells (Boxed Warnings, Warnings & Precautions, …) */
+.section.label-highlights-table .table tbody td ul {
+  margin: 4px 0 0;
+  padding-left: 24px;
+  list-style: disc;
+}
+
+.section.label-highlights-table .table tbody td li {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+/* Only the first list in the table (Boxed Warnings row) uses Graphik Semibold */
+.section.label-highlights-table .table tbody tr:nth-child(3) td ul li {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+}
+
+/* Underlined sub-labels (e.g. "Serious Infections:") — first span in a cell/li */
+.section.label-highlights-table .table tbody td li > span:first-child,
+.section.label-highlights-table .table tbody td > span:first-child {
+  border-bottom: 1px solid #000;
+}
+
+/* Footer "Please see…" rich-text below the table */
+.section.label-highlights-table > .default-content-wrapper {
+  max-width: 100%;
+  margin: 16px 0 0;
+}
+
+.section.label-highlights-table > .default-content-wrapper p {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(37, 40, 42);
+  margin: 0 0 4px;
+}
+
+.section.label-highlights-table > .default-content-wrapper a {
+  font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #90124a;
+  text-decoration: none;
+  border-bottom: 1px solid currentcolor;
+}
+
+/* §11 Engagement CTA — full-bleed gold band with torn brushstroke top/bottom
+   edges (stroke--section-back.svg, gold #ffd100), centered chat icon + heading
+   + body. Matches live's .section-bg-brushstroke gold callout. */
+.section.level-up-cta {
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(-50vw + 50%);
+  margin-block: 32px;
+  padding: 96px 24px;
+  text-align: center;
+}
+
+.section.level-up-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url('/content/dam/abbvie-eds-poc/stroke--section-back.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
 }
 
 .section.level-up-cta .default-content-wrapper {
-  max-width: 1180px;
+  max-width: 864px;
   margin-inline: auto;
 }
 
 .section.level-up-cta picture img {
-  width: 48px;
+  width: 104px;
   height: auto;
-  margin: 0 auto;
+  display: block;
+  margin: 0 auto 12px;
+}
+
+.section.level-up-cta h2 {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  color: rgb(37, 40, 42);
+  text-transform: none;
+  margin: 0;
+}
+
+.section.level-up-cta p {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 28.8px;
+  font-weight: 600;
+  color: rgb(37, 40, 42);
+  margin: 8px 0 0;
+}
+
+.section.level-up-cta p:has(img) {
+  margin: 0;
 }
 
 /* §6/§7/§15/§16 efficacy chart images — live caps the wide superiority chart

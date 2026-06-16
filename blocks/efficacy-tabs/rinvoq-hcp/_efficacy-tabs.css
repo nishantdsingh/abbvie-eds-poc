@@ -275,3 +275,24 @@
     flex: 0 1 378px;
   }
 }
+
+/* Mobile (<768px): the inner tabs' fixed 200px min-width + 40px side padding
+   force the panel wider than the viewport (content crops on the left). Let the
+   two inner tabs share the row and shrink to fit, and reduce the outer panel
+   padding so the gray card fits inside the section's 20px mobile gutter. */
+@media (width < 768px) {
+  .efficacy-tabs .efficacy-tabs-panel--outer {
+    padding: 20px;
+  }
+
+  .efficacy-tabs .efficacy-tabs-list--inner {
+    display: flex;
+    width: 100%;
+  }
+
+  .efficacy-tabs .efficacy-tabs-list--inner .efficacy-tabs-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 12px;
+  }
+}
