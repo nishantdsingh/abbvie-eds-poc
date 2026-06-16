@@ -1,5 +1,3 @@
-@import 'tokens.css';
-@import 'fonts.css';
 
 /* ============================================================
    LINZESS DTC — Theme Overrides
@@ -16,6 +14,7 @@ body {
   color: var(--text-color);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
+  overflow-x: hidden;
 }
 
 h1, h2 {
@@ -176,9 +175,381 @@ footer a {
 
 /* ---- Section Backgrounds ---- */
 .section.off-white-bg { background-color: var(--color-background-light); }
-.section.purple-bg { background-color: var(--color-brand-primary); color: var(--color-text-on-dark); }
-.section.purple-bg h1, .section.purple-bg h2, .section.purple-bg h3 { color: var(--color-text-on-dark); }
+.section.purple-bg,
+body main .section.dark { background-color: var(--color-brand-primary); color: var(--color-text-on-dark); }
+
+.section.purple-bg h1, .section.purple-bg h2, .section.purple-bg h3,
+body main .section.dark h1, body main .section.dark h2, body main .section.dark h3,
+body main .section.dark p, body main .section.dark strong,
+body main .section.dark a:not(.button) { color: var(--color-text-on-dark); }
 .section.light-purple-bg { background-color: var(--linz-light-purple); }
+
+/* Hide raw metadata section (brand/nav/footer not consumed by framework) */
+main > .section[class="section abbvie-container"]:last-of-type {
+  display: none !important;
+}
+
+/* ---- Savings Card Section ---- */
+main > .section:has(.columns-homepage-savings) {
+  padding-top: 48px;
+}
+
+main > .section:has(.columns-homepage-savings) > .default-content-wrapper:last-child p {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-body);
+  line-height: normal;
+  color: var(--linz-grey);
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WHY LINZESS PAGE — Section-specific styles
+   Scoped to section-metadata classes to prevent cross-page conflicts
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Hero height constraint */
+.hero.linzess-behind-nav,
+.hero.linzess-behind-nav-linzess-editorial-hero {
+  max-height: 768px;
+}
+
+/* Section-nav overlaps bottom of hero */
+.section.section-nav-container {
+  margin-top: -80px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---- "How LINZESS Can Help" Section ---- */
+.section.whylinzess-help {
+  text-align: center;
+  padding: 80px 24px 60px;
+  max-width: 928px;
+  margin: 0 auto;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-brand-primary);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:first-child::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  color: var(--color-brand-primary);
+  margin-bottom: 24px;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:nth-child(n+3) {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  color: var(--linz-grey);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:last-child a {
+  background-color: var(--color-brand-primary);
+  color: var(--linz-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: var(--font-weight-extra-bold);
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  margin-top: 40px;
+}
+
+.section.whylinzess-help > .default-content-wrapper > p:last-child a::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+/* Symptom cards (columns block - two-column layout) */
+.section.whylinzess-help .columns.whylinzess-symptoms {
+  margin-top: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Symptom cards — reset homepage fallback + two separate cards */
+body main .section.whylinzess-help .columns.whylinzess-symptoms {
+  display: block;
+  background-color: transparent;
+  border-radius: 0;
+  max-width: 1030px;
+  margin: 60px auto 0;
+  padding: 0;
+  overflow: visible;
+}
+
+body main .section.whylinzess-help .columns.whylinzess-symptoms > .columns-item,
+body main .section.whylinzess-help .columns.whylinzess-symptoms > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  overflow: visible;
+  padding-top: 60px;
+  padding-bottom: 0;
+  background: transparent;
+  align-items: stretch;
+}
+
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content {
+  padding: 60px 32px 40px;
+  text-align: left;
+  position: relative;
+  border-radius: var(--linz-rounded-corner);
+}
+
+/* IBS-C card (left) — off-white bg */
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content:first-child {
+  background-color: var(--linz-off-white);
+}
+
+/* CIC card (right) — light purple bg, stretch to match IBS-C height */
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content:last-child {
+  background-color: var(--linz-light-purple);
+  align-self: stretch;
+  min-height: 100%;
+}
+
+/* Circle badges — overlap the top of each card */
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content > p:first-child strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  background-color: rgb(217 215 249 / 60%);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  margin: -100px auto 24px;
+  display: block;
+}
+
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content:last-child > p:first-child strong {
+  background-color: var(--linz-off-white);
+}
+
+/* Checkmark list items */
+.section.whylinzess-help .columns.whylinzess-symptoms ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.section.whylinzess-help .columns.whylinzess-symptoms li {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  padding-left: 36px;
+  position: relative;
+}
+
+.section.whylinzess-help .columns.whylinzess-symptoms li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTIiIGZpbGw9IiM0MjJFODMiLz4KPHBhdGggZD0iTTE4LjUgOUwxMSAxN0w3LjAwMDAyIDEzIiBzdHJva2U9IiNGQUE2MzMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=") no-repeat center;
+  background-size: contain;
+}
+
+/* Footnote */
+.section.whylinzess-help .columns.whylinzess-symptoms .columns-item-content > p:last-child {
+  font-size: var(--linz-card-footnote-size);
+  color: var(--linz-grey);
+  margin-top: 24px;
+  font-weight: var(--font-weight-body);
+}
+
+@media (max-width: 599px) {
+  body main .section.whylinzess-help .columns.whylinzess-symptoms > .columns-item {
+    flex-direction: column;
+  }
+}
+
+/* Mechanism card backgrounds — high specificity to override block CSS */
+body main .section.dark.whylinzess-works .columns-wrapper .columns.whylinzess-mechanism-card > div {
+  border-radius: var(--linz-rounded-corner);
+  padding: 32px 40px;
+}
+
+body main .section.dark.whylinzess-works .columns.whylinzess-mechanism-card > div {
+  background: var(--linz-off-white);
+}
+
+body main .section.dark.whylinzess-works .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card > div {
+  background: var(--linz-light-purple);
+}
+
+body main .section.dark.whylinzess-works .columns.whylinzess-mechanism-card p,
+body main .section.dark.whylinzess-works .columns.whylinzess-mechanism-card li {
+  color: var(--color-brand-primary);
+}
+
+/* ---- "How LINZESS Works" Section (dark purple with arc) ---- */
+.section.whylinzess-works {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  padding: 80px 24px;
+  text-align: center;
+  max-width: none;
+  margin: 0;
+  position: relative;
+}
+
+.section.whylinzess-works::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: var(--color-brand-primary);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.section.whylinzess-works > .default-content-wrapper,
+.section.whylinzess-works > .columns-wrapper {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section.whylinzess-works p,
+.section.whylinzess-works li,
+.section.whylinzess-works h2 {
+  color: var(--color-text-on-dark);
+}
+
+.section.whylinzess-works > .default-content-wrapper:first-child > p:first-child {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-extra-bold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.section.whylinzess-works > .default-content-wrapper:first-child > p:first-child::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+.section.whylinzess-works > .default-content-wrapper:first-child > p:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  margin-bottom: 24px;
+}
+
+.section.whylinzess-works > .default-content-wrapper:first-child > p:nth-child(n+3) {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.section.whylinzess-works ul {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section.whylinzess-works li {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.section.whylinzess-works li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+}
+
+.section.whylinzess-works h2 {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+/* "When Can I Expect" sub-heading with divider — targets 2nd default-content-wrapper, 2nd child */
+body main .section.whylinzess-works > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+  margin-top: 60px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+body main .section.whylinzess-works > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:nth-child(2)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+body main .section.whylinzess-works > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:nth-child(2) strong {
+  font-weight: var(--font-weight-body);
+}
+
+body main .section.whylinzess-works > .default-content-wrapper + .columns-wrapper + .columns-wrapper + .default-content-wrapper > p:nth-child(3) {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 40px;
+  text-align: center;
+}
 
 /* ---- Gradient Overlays ---- */
 .section.hero-container::after {

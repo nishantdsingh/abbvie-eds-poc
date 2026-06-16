@@ -112,7 +112,7 @@ function mergeMobileImage(imageCell, mobileImageRow) {
 
   const combined = document.createElement('picture');
   const source = document.createElement('source');
-  source.media = '(min-width: 985px)';
+  source.media = '(min-width: 744px)';
   source.srcset = desktopImg.src;
   combined.appendChild(source);
   combined.appendChild(mobileImg.cloneNode(true));
@@ -285,13 +285,31 @@ export default async function decorate(block) {
     textContainer.classList.add('hero-text-container');
     textCell.classList.add('cmp-container-x-large');
 
-    // Brand-agnostic: any variation ending in 'editorial-hero' moves the third row's
-    // <p> into the text cell (e.g. the Linzess behind-nav editorial-hero layout).
+    // Brand-agnostic: any variation ending in 'editorial-hero' lifts the eyebrow
+    // (the first plain-text row above the H1 — e.g. "WHY LINZESS") into the text
+    // cell as a <p> so detectEyebrow tags it .hero-eyebrow above the headline.
+    // Without this the bare-text row is otherwise captured as the right-floating
+    // .hero-image-caption. The row index varies (empty filler rows precede it),
+    // so scan for the first row whose only content is plain text.
     const isEditorialHero = [...block.classList].some((c) => c.endsWith('editorial-hero'));
     if (isEditorialHero) {
-      const thirdRow = Array.from(block.children)[2];
-      const p = thirdRow?.querySelector('p');
-      if (p) textCell.prepend(p);
+      const eyebrowRow = Array.from(block.children).find((row) => {
+        if (row === imageRow || row === mobileImageRow || row === textRow
+          || row === videoRow) return false;
+        const cell = row.firstElementChild;
+        const text = cell?.textContent?.trim();
+        return text && !cell.querySelector('h1,h2,h3,h4,h5,h6,picture,img,a[href]');
+      });
+      if (eyebrowRow) {
+        const eyebrow = document.createElement('p');
+        eyebrow.textContent = eyebrowRow.firstElementChild.textContent.trim();
+        textCell.prepend(eyebrow);
+        // Clear the source cell rather than removing the row: extractRows may have
+        // already captured this same row as captionRow, and createCaption reads the
+        // node's text later — emptying it makes createCaption return null so the
+        // eyebrow isn't also rendered as the right-floating .hero-image-caption.
+        eyebrowRow.firstElementChild.textContent = '';
+      }
     }
   }
 

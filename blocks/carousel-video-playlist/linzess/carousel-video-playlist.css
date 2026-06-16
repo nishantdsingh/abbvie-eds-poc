@@ -612,9 +612,9 @@
   border-radius: 50%;
   border: none;
   background:
-    rgb(255 255 255 / 90%)
+    rgb(244 246 251 / 80%)
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23422e83'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E")
-    center / 24px no-repeat;
+    center / 34px no-repeat;
   cursor: pointer;
   font-size: 0;
   z-index: 2;
@@ -622,7 +622,7 @@
 }
 
 .carousel-video-playlist .cvp-play-btn:hover {
-  background-color: rgb(255 255 255 / 30%);
+  background-color: rgb(244 246 251 / 50%);
 }
 
 .carousel-video-playlist .cvp-transcript-toggle {
@@ -661,6 +661,53 @@
   background: var(--color-brand-primary);
   color: var(--color-text-on-dark);
   padding: 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop: the heading/description live in the dark section above, so the
+   grid's own header is empty — collapse it and reduce the grid's top padding
+   to tighten the "Hear from real patients" to first-video gap (~45px, live). */
+
+@media (width >= 768px) {
+  .carousel-video-playlist.grid {
+    padding-top: 16px;
+  }
+
+  .carousel-video-playlist.grid .cvp-header:empty {
+    margin-bottom: 0;
+  }
+
+  /* why-linzess "Hear from real patients" band sits the videos ~45px below the
+     intro (vs ~60px with the 16px grid padding). Trim it for this band. */
+  body main:has(.whylinzess-timeline) .carousel-video-playlist.grid {
+    padding-top: 0;
+  }
+}
+
+.carousel-video-playlist.grid .cvp-card .cvp-player-wrap {
+  min-height: 0;
+}
+
+/* Authored poster image fills the frame — no letterbox.
+   Sits above the Brightcove video-js box (z-index 1) until play. */
+
+.carousel-video-playlist.grid .cvp-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.carousel-video-playlist.grid .cvp-poster,
+.carousel-video-playlist.grid .cvp-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-video-playlist.grid .cvp-poster[hidden] {
+  display: none;
 }
 
 /* Section header */
@@ -674,7 +721,7 @@
   display: block;
   width: 60px;
   height: 3px;
-  background: var(--color-accent-gold);
+  background: #faa633;
   margin: 0 auto 16px;
 }
 
@@ -709,6 +756,69 @@
   grid-column: auto;
 }
 
+/* why-linzess "Hear from real patients" grid has only 2 cards: center them
+   (live centers, not left-aligned in a 3-col track) and equalize card +
+   footer heights so both footers match even when one title wraps. Scoped to
+   the timeline section so the homepage's 3-card grid is untouched. */
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-grid {
+  grid-template-columns: repeat(2, 300px);
+  justify-content: center;
+  align-items: stretch;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card {
+  height: 100%;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card-footer {
+  flex: 1 0 auto;
+}
+
+/* Space above the "HEAR THE CONSTIPATION CONVERSATION" heading — a
+   default-content-wrapper sitting between the two featured carousels in the
+   patient-experiences section (live leaves a clear gap above it). */
+
+body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper {
+  margin-top: 24px;
+}
+
+/* Footnote paragraph (‡Estimated IBS-C/CIC sufferers…) is the first <p> in that
+   wrapper — live renders it as 12px grey legal text, centered. The dark-section
+   body rule inflates it to 18px, so scope it back down here. */
+
+body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper > p:first-child {
+  font-size: 12px;
+  line-height: normal;
+  margin: 0 0 136px;
+}
+
+/* "Many people spend years…" description below the eyebrow — live is 16px,
+   normal line-height, centered, capped at 852px (parent is 998px). The dark
+   section body rule inflates it to 18px / 16px line-height, so reset here. */
+
+body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper > p:has(strong) + p {
+  max-width: 852px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: normal;
+  text-align: center;
+}
+
+/* Orange eyebrow divider above "HEAR THE CONSTIPATION CONVERSATION". The footnote
+   occupies p:first-child, so the heading is the p:has(strong) — the standard
+   eyebrow rule (p:first-child strong::before) misses it. Add it here. */
+
+body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper > p:has(strong)::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
 /* Max visible cards — hide cards beyond the authored limit */
 
 .carousel-video-playlist.grid[data-max-visible="1"] .cvp-card:nth-child(n+2) { display: none; }
@@ -726,7 +836,7 @@
 .carousel-video-playlist.grid .cvp-card {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
   grid-column: auto;
 }
@@ -753,28 +863,33 @@
   overflow: hidden !important;
 }
 
-/* Card footer — white bg, dark text, matching site */
+/* Card footer — light-purple bg, dark text, rounded bottom corners */
 
 .carousel-video-playlist.grid .cvp-card-footer {
-  background: var(--linz-white, #fff);
+  background: var(--linz-light-purple, #d9d7f9);
   padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   min-height: 44px;
+  border-radius: 0 0 16px 16px;
 }
 
 .carousel-video-playlist.grid .cvp-title {
   color: var(--color-brand-primary);
-  font-family: var(--heading-font-family);
+  font-family: var(--body-font-family);
   font-weight: var(--font-weight-bold, 700);
-  font-size: var(--font-size-body, 14px);
-  text-transform: uppercase;
+  font-size: 14px;
+  text-transform: none;
   line-height: 1.2;
 }
 
-.carousel-video-playlist.grid .cvp-transcript-toggle {
+.carousel-video-playlist.grid .cvp-transcript-toggle,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:link,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:visited,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:hover,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:active {
   color: var(--color-brand-primary);
   font-family: var(--body-font-family);
   font-size: var(--font-size-body-small, 12px);
@@ -814,6 +929,43 @@
   background: var(--background-color);
   color: var(--text-color);
   padding: 48px 24px;
+  max-width: 1046px;
+  margin: 0 auto;
+}
+
+/* Patient Experiences: the intro copy already sits in the dark section header
+   above with its own spacing, so collapse the featured block's top padding to
+   tighten the intro-text → first-video gap to match live (~40px, not ~88px). */
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.featured,
+body main .section.whylinzess-patients .carousel-video-playlist.featured {
+  padding-top: 0;
+}
+
+/* Patient Experiences section (carousel + columns, no cards-grid): live keeps a
+   ~39px gap between the intro/eyebrow copy and the first video of each featured
+   carousel. Collapse the intro wrapper's trailing margin and drive the gap with
+   the featured block's top padding so both carousels match (live = 39px). */
+
+body main .section.carousel-video-playlist-container.columns-container:not(.cards-grid-container) .carousel-video-playlist.featured {
+  padding-top: 39px;
+}
+
+body main .section.carousel-video-playlist-container.columns-container:not(.cards-grid-container) > .default-content-wrapper:has(+ .carousel-video-playlist-wrapper) {
+  margin-bottom: 0;
+}
+
+body main .section.carousel-video-playlist-container.columns-container:not(.cards-grid-container) > .default-content-wrapper:has(+ .carousel-video-playlist-wrapper) > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Savings disclaimer (§Maximum savings limit applies…) — live caps it at 928px
+   and centers it within the section track (text stays left-aligned). */
+
+body main .section.carousel-video-playlist-container.columns-container:not(.cards-grid-container) > .default-content-wrapper:last-child > p {
+  max-width: 928px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Featured row: video (70%) + quote panel (30%) */
@@ -825,8 +977,16 @@
 }
 
 .carousel-video-playlist.featured .cvp-featured-player {
-  flex: 0 0 70%;
+  flex: 0 0 75%;
   position: relative;
+}
+
+/* The player + quote panel form one rounded rectangle (live, r=16px): the
+   player rounds its LEFT corners, the quote panel rounds its RIGHT corners,
+   and they sit flush with no gap between them. */
+
+.carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap {
+  border-radius: 16px 0 0 16px;
 }
 
 /* Hide name banner on featured player — title shown below via footer */
@@ -857,11 +1017,50 @@
   height: 100%;
 }
 
+/* Featured player's play button is larger on live (98px circle, ~58px
+   triangle) than the 56px thumbnail buttons. */
+
+.carousel-video-playlist.featured .cvp-featured-player .cvp-play-btn {
+  width: 98px;
+  height: 98px;
+  background-size: 58px;
+}
+
+/* Video/poster cover the frame so the Brightcove black letterbox doesn't show
+   as a dark border around the player and thumbnails. */
+
+.carousel-video-playlist .cvp-player-wrap video,
+.carousel-video-playlist .cvp-player-wrap .vjs-tech,
+.carousel-video-playlist .cvp-thumb-wrap video,
+.carousel-video-playlist .cvp-thumb-wrap .vjs-tech {
+  object-fit: cover !important;
+}
+
+/* The Brightcove poster is a background-image (object-fit has no effect), and
+   the video-js root + tech default to a black background that shows as a dark
+   border when the media letterboxes. Cover the poster and brand-tint the
+   player so no black edge appears. */
+
+.carousel-video-playlist .cvp-player-wrap .vjs-poster,
+.carousel-video-playlist .cvp-thumb-wrap .vjs-poster {
+  background-size: cover !important;
+  background-position: center !important;
+  background-color: transparent !important;
+}
+
+.carousel-video-playlist .cvp-player-wrap .video-js,
+.carousel-video-playlist .cvp-player-wrap video-js,
+.carousel-video-playlist .cvp-thumb-wrap .video-js,
+.carousel-video-playlist .cvp-thumb-wrap video-js {
+  background-color: var(--color-brand-primary) !important;
+}
+
 /* Quote panel */
 
 .carousel-video-playlist.featured .cvp-quote-panel {
-  flex: 0 0 30%;
-  background: var(--color-lavender);
+  flex: 0 0 25%;
+  background: #d9d7f9;
+  border-radius: 0 16px 16px 0;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -869,28 +1068,36 @@
   gap: 16px;
 }
 
+/* Quote: 18px bold; name: bold; prescribed: italic — all left-aligned (live). */
+
 .carousel-video-playlist.featured .cvp-quote {
   font-family: var(--body-font-family);
-  font-size: var(--font-size-quote, 1.3125rem);
-  font-weight: var(--font-weight-bold, 700);
+  font-size: 18px;
+  font-weight: 700;
   font-style: normal;
   color: var(--color-brand-primary);
   line-height: 1.3;
+  text-align: left;
   margin: 0 0 auto;
 }
 
 .carousel-video-playlist.featured .cvp-patient-name {
   font-family: var(--body-font-family);
-  font-weight: var(--font-weight-bold, 700);
-  font-size: var(--font-size-body, 14px);
+  font-weight: 700;
+  font-size: 14.4px;
+  line-height: 19.2px;
+  text-align: left;
   color: var(--color-brand-primary);
   margin: 0 0 4px;
 }
 
 .carousel-video-playlist.featured .cvp-prescribed {
   font-family: var(--body-font-family);
-  font-size: var(--font-size-body, 14px);
+  font-size: 14.4px;
+  font-weight: 400;
   font-style: italic;
+  line-height: 19.2px;
+  text-align: left;
   color: var(--color-brand-primary);
   margin: 0 0 8px;
 }
@@ -916,7 +1123,7 @@
 }
 
 .carousel-video-playlist.featured .cvp-transcript-panel {
-  background: var(--color-lavender-light);
+  background: #ecebfb;
   border-radius: 4px;
   padding: 0 16px;
   font-size: var(--font-size-body-small, 12px);
@@ -984,7 +1191,7 @@
 
 .carousel-video-playlist.featured .cvp-thumb {
   flex-shrink: 0;
-  width: 180px;
+  width: 271px;
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;
@@ -998,7 +1205,7 @@
 }
 
 .carousel-video-playlist.featured .cvp-thumb.active {
-  border-color: var(--color-accent-gold);
+  border-color: #faa633;
 }
 
 .carousel-video-playlist.featured .cvp-thumb-wrap {
@@ -1049,10 +1256,10 @@
 /* Small play icon on thumbnails */
 
 .carousel-video-playlist.featured .cvp-thumbnails .cvp-play-btn {
-  width: 32px;
-  height: 32px;
+  width: 56px;
+  height: 56px;
   border-width: 2px;
-  background-size: 14px;
+  background-size: 28px;
 }
 
 .carousel-video-playlist.featured .cvp-thumb-title {
@@ -1061,28 +1268,43 @@
   font-size: var(--font-size-body-small, 12px);
   text-transform: uppercase;
   color: var(--color-brand-primary);
-  background: var(--color-lavender);
+  background: #d9d7f9;
   margin: 0;
   padding: 8px 10px;
   line-height: 1.2;
   text-align: left;
 }
 
+/* The brand's whylinzess-timeline rule
+   (main:has(.whylinzess-timeline) p:not(.button-container):last-child)
+   adds margin-bottom:20px to the last <p>; the thumbnail title is a <p>, so
+   override it back to 0 for the thumbnail footer only. */
+
+main:has(.whylinzess-timeline) .carousel-video-playlist.featured .cvp-thumb-title:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
 @media (width < 768px) {
+  /* Drop horizontal padding so the card player spans the section content width
+     (~342px), matching live's ~338px player; 16:9 widens the height to match. */
   .carousel-video-playlist.grid {
-    padding: 32px 16px;
+    padding: 16px 0 32px;
   }
 
-  /* Mobile: horizontal scroll carousel */
+  /* The heading/description live in the dark section above, so the grid's own
+     header is empty — collapse it to tighten the "Hear from real patients"
+     to first-video gap to match live (~41px). */
+  .carousel-video-playlist.grid .cvp-header:empty {
+    margin-bottom: 0;
+  }
+
+  /* Mobile: stack vertically */
   .carousel-video-playlist.grid .cvp-grid {
     display: flex;
+    flex-direction: column;
     grid-template-columns: unset;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     gap: 16px;
     padding-bottom: 8px;
   }
@@ -1092,12 +1314,14 @@
   }
 
   .carousel-video-playlist.grid .cvp-card {
-    flex: 0 0 82%;
-    scroll-snap-align: start;
+    flex: 1 1 auto;
+    width: 100%;
   }
 
+  /* Drop the featured block's side padding on mobile so the player spans the
+     full content column (live's player is near full-width). */
   .carousel-video-playlist.featured {
-    padding: 32px 16px;
+    padding: 32px 0;
   }
 
   /* Stack featured row vertically on mobile */
@@ -1111,8 +1335,176 @@
     width: 100%;
   }
 
+  /* Live hides the quote text/name on mobile but KEEPS the "View Transcript"
+     link below the player. Collapse the quote panel's padding/background and
+     hide only the quote copy, leaving the transcript link visible. */
+  .carousel-video-playlist.featured .cvp-quote-panel {
+    background: transparent;
+    padding: 8px 16px 0;
+    border-radius: 0;
+    text-align: right;
+  }
+
+  .carousel-video-playlist.featured .cvp-quote,
+  .carousel-video-playlist.featured .cvp-patient-name,
+  .carousel-video-playlist.featured .cvp-prescribed {
+    display: none;
+  }
+
+  /* Push the transcript link to the right edge. Block-level link won't honor
+     text-align, so use margin-left:auto in a flex/inline context. */
+  .carousel-video-playlist.featured .cvp-quote-panel .cvp-view-transcript {
+    display: inline-block;
+    margin-left: auto;
+  }
+
+  /* The player's left corners were rounded for the flush desktop pairing;
+     on mobile (no quote panel beside it) round all four corners. */
+  .carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap {
+    border-radius: 16px;
+  }
+
+  /* Featured play button shrinks to 64px on mobile to match live. */
+  .carousel-video-playlist.featured .cvp-featured-player .cvp-play-btn {
+    width: 64px;
+    height: 64px;
+    background-size: 38px;
+  }
+
+  /* Live keeps the thumbnails in a 2-column grid that scrolls vertically
+     (fixed height, not all visible at once). Hide paging arrows. */
+  .carousel-video-playlist.featured .cvp-thumbnails {
+    flex-wrap: wrap;
+    overflow: hidden auto;
+    max-height: 320px;
+    gap: 8px;
+    scrollbar-width: thin;
+  }
+
+  .carousel-video-playlist.featured .cvp-prev,
+  .carousel-video-playlist.featured .cvp-next {
+    display: none;
+  }
+
   .carousel-video-playlist.featured .cvp-thumb {
-    width: 140px;
+    width: calc(50% - 4px);
+    flex-shrink: 0;
+  }
+}
+
+/* Tablet (768–985): the how-it-works video grid (FINDING RELIEF / SEEKING)
+   shows 2×300px cards. Live stacks them full-width, one per row. The grid block
+   is a flex child that otherwise shrink-wraps its 300px tracks, so force it
+   (and its wrapper) to fill the content column, then stack the cards in a flex
+   column at 100% width (mirroring the <768 mobile rule). */
+
+@media (width >= 768px) and (width < 986px) {
+  body main .section:has(.whylinzess-timeline) > .carousel-video-playlist-wrapper,
+  body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
+    gap: 16px;
+    width: 100%;
+  }
+
+  body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card {
+    width: 100%;
+  }
+}
+
+/* Tablet (768–985): the HOMEPAGE patient-experiences video grid stacks the
+   three cards full-width vertically on live (not a cramped 3-up row). Scoped
+   to the homepage grid (NOT the why-linzess timeline section) so why-linzess
+   keeps its own tablet rules. */
+@media (width >= 768px) and (width < 986px) {
+  body main .section:not(:has(.whylinzess-timeline)) .carousel-video-playlist.grid .cvp-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
+    gap: 16px;
+    width: 100%;
+  }
+
+  body main .section:not(:has(.whylinzess-timeline)) .carousel-video-playlist.grid .cvp-card {
+    width: 100%;
+  }
+}
+
+/* Tablet (768–1023): the featured patient-experiences carousel is 998px wide
+   and overflows the viewport. Live stacks the player full-width with a 2-column
+   thumbnail grid below (same as mobile), so reuse that layout here. The .grid
+   (how-it-works) carousel already fits at this width and is left untouched. */
+
+@media (width >= 768px) and (width < 1024px) {
+  /* Force the featured carousel and its wrapper to span the section content
+     width. Without an explicit width the wrapper shrink-wraps to its content,
+     so the second (4-thumbnail) carousel collapsed to ~489px while the first
+     (with a quote panel) filled the row. Both must be full-width like live. */
+  body main .section.whylinzess-patients > .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .carousel-video-playlist.featured {
+    width: 100%;
+    max-width: 100%;
+    padding: 32px 0;
+  }
+
+  .carousel-video-playlist.featured .cvp-featured-row {
+    flex-direction: column;
+  }
+
+  .carousel-video-playlist.featured .cvp-featured-player,
+  .carousel-video-playlist.featured .cvp-quote-panel {
+    flex: unset;
+    width: 100%;
+  }
+
+  .carousel-video-playlist.featured .cvp-quote-panel {
+    background: transparent;
+    padding: 8px 16px 0;
+    border-radius: 0;
+    text-align: right;
+  }
+
+  .carousel-video-playlist.featured .cvp-quote,
+  .carousel-video-playlist.featured .cvp-patient-name,
+  .carousel-video-playlist.featured .cvp-prescribed {
+    display: none;
+  }
+
+  .carousel-video-playlist.featured .cvp-quote-panel .cvp-view-transcript {
+    display: inline-block;
+    margin-left: auto;
+  }
+
+  .carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap {
+    border-radius: 16px;
+  }
+
+  .carousel-video-playlist.featured .cvp-thumbnails {
+    flex-wrap: wrap;
+    overflow: hidden auto;
+    max-height: 320px;
+    gap: 8px;
+    scrollbar-width: thin;
+  }
+
+  .carousel-video-playlist.featured .cvp-prev,
+  .carousel-video-playlist.featured .cvp-next {
+    display: none;
+  }
+
+  .carousel-video-playlist.featured .cvp-thumb {
+    width: calc(50% - 4px);
+    flex-shrink: 0;
   }
 }
 

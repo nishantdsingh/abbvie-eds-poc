@@ -57,6 +57,60 @@ const LINZESS_ARTICLE_FLEX_CONTAINER_CLASS = (
 
 const LINZESS_ARTICLE_FLEX_ITEM_CLASS = 'abbv-flex-item-v2 background-light-purple rounded-corners';
 
+function buildLinzessStatCardColumn(wrapper) {
+  // cells: [0]=link (unused), [1]=image (optional icon), [2]=heading, [3]=body
+  const directDivs = [...wrapper.children].filter((c) => c.tagName === 'DIV');
+  const [, imageDiv, headingDiv, bodyDiv] = directDivs.length >= 4
+    ? directDivs
+    : [null, null, directDivs[0], directDivs[1]];
+
+  const card = document.createElement('div');
+  card.className = 'linz-stat-card';
+
+  const picture = imageDiv?.querySelector('picture');
+  const loneImg = imageDiv?.querySelector(':scope > img');
+  if (picture || loneImg) {
+    const imgWrap = document.createElement('div');
+    imgWrap.className = 'linz-stat-card-icon';
+    imgWrap.append(picture || loneImg);
+    card.append(imgWrap);
+  }
+
+  const headingP = headingDiv?.querySelector('p') || headingDiv;
+  const headingText = headingP?.textContent?.trim();
+  if (headingText) {
+    const h = document.createElement('p');
+    h.className = 'linz-stat-card-heading';
+    const strong = document.createElement('strong');
+    strong.textContent = headingText;
+    h.append(strong);
+    card.append(h);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'linz-stat-card-body';
+  if (bodyDiv) {
+    [...bodyDiv.children].forEach((node) => {
+      if (node.tagName === 'P' || node.tagName === 'UL' || node.tagName === 'OL') {
+        const clone = node.cloneNode(true);
+        if (clone.tagName === 'P') {
+          fixLinzessEncodedBoldInParagraph(clone);
+          fixEncodedSupInParagraph(clone);
+        } else {
+          clone.querySelectorAll('p').forEach((p) => {
+            fixLinzessEncodedBoldInParagraph(p);
+            fixEncodedSupInParagraph(p);
+          });
+        }
+        body.append(clone);
+      }
+    });
+  }
+  card.append(body);
+
+  return card;
+}
+
 function resolveLinzessArticleCta(ctaDiv) {
   if (!ctaDiv) return { href: '#', label: 'Read the article' };
   const a = ctaDiv.querySelector('a[href]');
@@ -237,7 +291,19 @@ function buildLinzessIconImageCardColumn(wrapper, columnIndex) {
     const h = document.createElement('p');
     h.className = headingClass;
     h.classList.add('text-align-center');
-    h.textContent = titleP.textContent?.trim() || '';
+    const titleText = titleP.textContent?.trim() || '';
+    // Stat cards render a large leading number + smaller unit ("11.5 million").
+    // Match live by wrapping the leading numeric token in a sized span.
+    const statMatch = titleText.match(/^([\d.,]+)\s+(.+)$/);
+    if (statMatch) {
+      const [, statNumber, statUnit] = statMatch;
+      const numSpan = document.createElement('span');
+      numSpan.className = 'linz-stat-number';
+      numSpan.textContent = statNumber;
+      h.append(numSpan, document.createElement('br'), document.createTextNode(statUnit));
+    } else {
+      h.textContent = titleText;
+    }
     bodyStretch.append(h);
   }
 
@@ -274,6 +340,18 @@ function buildLinzessIconImageCardColumn(wrapper, columnIndex) {
 }
 
 export default function decorate(block) {
+  if (block.classList.contains('cards-grid-stat-card')) {
+    const wrappers = [...block.querySelectorAll(':scope > div')];
+    if (wrappers.length === 0) return false;
+
+    wrappers.forEach((wrapper) => {
+      block.append(buildLinzessStatCardColumn(wrapper));
+      wrapper.remove();
+    });
+
+    return true;
+  }
+
   if (block.classList.contains('cards-grid-icon-image-card')) {
     const wrappers = [...block.querySelectorAll(':scope > div')];
     if (wrappers.length === 0) return false;
