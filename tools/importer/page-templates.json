@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "savings-card-landing",
+      "urls": [
+        "https://www.linzess.com/savings-card"
+      ],
+      "description": "Linzess savings card main landing page with program overview and CTA",
+      "blocks": [
+        {
+          "name": "accordion",
+          "instances": [".abbv-accordion.savings-accordion.abbv-accordion-single"]
+        },
+        {
+          "name": "form",
+          "instances": [".forms-embed .cmp-adaptiveform-container"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1-hero",
+          "name": "Hero heading section",
+          "selector": "body.background-dark-purple",
+          "style": "dark-purple",
+          "blocks": [],
+          "defaultContent": [
+            ".abbv-rich-text.text-align-center.c-linz-dark-purple .divider",
+            ".abbv-rich-text.text-align-center.c-linz-dark-purple .heading-1"
+          ]
+        },
+        {
+          "id": "section-2-main",
+          "name": "Main content area",
+          "selector": ".abbv-container.linzess-container.background-white-arc",
+          "style": "white-arc",
+          "blocks": ["accordion", "form"],
+          "defaultContent": [
+            ".bottom-text"
+          ]
+        },
+        {
+          "id": "section-3-isi",
+          "name": "Important Safety Information",
+          "selector": ".abbv-inline-use-isi",
+          "style": "isi",
+          "blocks": [],
+          "defaultContent": [
+            ".abbv-inline-use .abbv-rich-text",
+            ".linzess-isi-iri"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "savings-card-subpage",
+      "urls": [
+        "https://www.linzess.com/savings-card/terms",
+        "https://www.linzess.com/savings-card/activate",
+        "https://www.linzess.com/savings-card/savings"
+      ],
+      "description": "Linzess savings card sub-pages including terms, activation, and savings details",
+      "blocks": []
+    }
+  ]
+}

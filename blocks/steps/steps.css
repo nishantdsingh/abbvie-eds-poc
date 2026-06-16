@@ -1,0 +1,93 @@
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  padding: 4rem 2rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  counter-reset: step;
+}
+
+.steps .step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 2.4rem 1.6rem;
+}
+
+.steps .step::before {
+  counter-increment: step;
+  content: counter(step);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
+  background: var(--steps-number-bg, var(--color-brand-primary, #422e83));
+  color: var(--steps-number-color, #fff);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+  flex-shrink: 0;
+}
+
+.steps .step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 4.8rem;
+  left: calc(50% + 3.2rem);
+  width: calc(100% - 6.4rem);
+  height: 2px;
+  background: var(--steps-connector-color, var(--color-border-default, #c2c2c2));
+}
+
+.steps .step h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.8rem;
+  color: var(--steps-label-color, var(--color-brand-primary, #422e83));
+}
+
+.steps .step p {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--steps-text-color, var(--text-color, #555));
+}
+
+@media (width < 744px) {
+  .steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 2.4rem 1.6rem;
+  }
+
+  .steps .step {
+    flex-direction: row;
+    text-align: left;
+    gap: 1.6rem;
+    padding: 1.2rem;
+  }
+
+  .steps .step::before {
+    margin-bottom: 0;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+
+  .steps .step:not(:last-child)::after {
+    display: none;
+  }
+
+  .steps .step h3 {
+    margin: 0;
+  }
+}
