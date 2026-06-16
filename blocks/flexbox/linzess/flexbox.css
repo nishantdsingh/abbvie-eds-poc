@@ -88,3 +88,899 @@
 /* No-wrap: don't stack on mobile */
 
 .flexbox.no-wrap .flexbox-item { flex: 1; }
+
+/* ====================================================
+   Linzess: From The Gut — intro heading above the
+   icon-feature cards. The section style class is dropped
+   on this project, so scope via the contained block.
+   "Support Your Ongoing Treatment Plan" — Bebas Neue 32px.
+   ==================================================== */
+
+/* Full-bleed white background + curved arc cap for the cards section, matching
+   live's .background-white .background-white-arc. The section box is inside the
+   constrained .abbvie-container grid, so paint the colour with two full-viewport
+   pseudo-elements behind the content (same pattern as columns/linzess section
+   backgrounds): ::after = flat fill (100vw), ::before = curved cap (130vw).
+   z-index:-5/-6 keeps both behind the content. */
+main .section:has(.flexbox.column) {
+  position: relative;
+  z-index: 0;
+  overflow: visible;
+}
+
+/* Full-bleed flat white fill behind the cards */
+main .section:has(.flexbox.column)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  background: var(--linz-white, #fff);
+  z-index: -6;
+  pointer-events: none;
+}
+
+main .section:has(.flexbox.column)::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  margin-left: -65vw;
+  width: 130vw;
+  height: 75px;
+  background: var(--linz-white, #fff);
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+  z-index: -5;
+  pointer-events: none;
+}
+
+@media screen and (width >= 900px) {
+  main .section:has(.flexbox.column)::before {
+    height: 255px;
+  }
+}
+
+main .section:has(.flexbox.column) .default-content-wrapper {
+  text-align: center;
+}
+
+main .section:has(.flexbox.column) .default-content-wrapper h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 36px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--linz-dark-purple, #422e83);
+  margin: 20px 0 0;
+}
+
+@media (width < 744px) {
+  main .section:has(.flexbox.column) .default-content-wrapper h2 {
+    font-size: 32px;
+    line-height: 30px;
+  }
+}
+
+/* Gold divider arc above the intro heading (matches live) */
+main .section:has(.flexbox.column) .default-content-wrapper h2::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 5px;
+  margin: 0 auto 1.5rem;
+  background: url("https://www.linzess.com/content/dam/linzess/images/divider.svg") center / contain no-repeat;
+}
+
+main .section:has(.flexbox.column) .default-content-wrapper p {
+  font-family: var(--body-font-family, "Lato", sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--linz-grey, #4d4d4f);
+  margin: 2rem auto 0;
+  max-width: 760px;
+}
+
+/* ====================================================
+   Linzess: Icon Feature Cards (column variant)
+   Stacked full-width cards with icon left, text right,
+   alternating dark/light purple backgrounds.
+   ==================================================== */
+
+/* Breathing room between the intro copy and the first card (matches live;
+   the intro default-content-wrapper sits flush against the card stack). */
+main .section:has(.flexbox.column) .flexbox-wrapper {
+  margin-top: 2.5rem;
+}
+
+.flexbox.column .flexbox-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--color-brand-primary, #3c1053);
+  border-radius: 12px;
+  padding: 24px 32px;
+  gap: 24px;
+  width: 690px;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
+.flexbox.column .flexbox-item:nth-child(even) {
+  background-color: var(--color-brand-light, #e8e0f3);
+}
+
+.flexbox.column .flexbox-item-image {
+  flex: 0 0 100px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  padding: 16px;
+  margin-left: -50px;
+  box-shadow: 0 2px 8px rgba(0 0 0 / 10%);
+}
+
+/* From-the-gut cards: live floats the round icon so ~half of it sits OUTSIDE
+   the card's left edge (icon center on the border). The base -50px margin is
+   cancelled by the card's 32px left padding, leaving the icon almost fully
+   inside. Pull it out by half the icon width plus the card padding so 50%
+   overhangs. Scoped to the from-the-gut page (.columns.ftgsignup only exists
+   there) so other .flexbox.column usages are unchanged.
+   icon 100px, card padding-left 32px → -(50 + 32) = -82px. */
+main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image {
+  margin-left: -82px;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* From-the-gut desktop: live's icon graphic includes its own pale inner circle
+   and fills the disc edge-to-edge; padding leaves a white ring. Let it fill the
+   100px disc. Scoped to the from-the-gut page so other usages keep 64px. */
+main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image img {
+  width: auto;
+  height: 100px;
+}
+
+.flexbox.column .flexbox-item-image img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.flexbox.column .flexbox-item-content {
+  flex: 1;
+  color: #fff;
+  text-align: left;
+}
+
+.flexbox.column .flexbox-item-content h2,
+.flexbox.column .flexbox-item-content h3 {
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 5px;
+  line-height: 1.3;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.flexbox.column .flexbox-item-content p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Even cards (light bg): dark text */
+.flexbox.column .flexbox-item:nth-child(even) .flexbox-item-content {
+  color: var(--color-brand-primary, #3c1053);
+}
+
+.flexbox.column .flexbox-item:nth-child(even) .flexbox-item-content h2,
+.flexbox.column .flexbox-item:nth-child(even) .flexbox-item-content h3 {
+  color: var(--color-brand-primary, #3c1053);
+}
+
+.flexbox.column .flexbox-item:nth-child(even) .flexbox-item-content p {
+  color: var(--text-color, #333);
+}
+
+/* Tablet: slightly smaller cards */
+@media (width < 768px) {
+  .flexbox.column .flexbox-item {
+    padding: 20px 28px;
+    gap: 16px;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .flexbox.column .flexbox-item-image {
+    flex: 0 0 80px;
+    width: 80px;
+    height: 80px;
+    margin-left: -40px;
+  }
+
+  /* From-the-gut: 50% overhang. icon 80px, card padding-left 32px → -(40+32). */
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image {
+    margin-left: -72px;
+    padding: 0;
+  }
+
+  /* Icon fills the 80px disc by height (auto width preserves aspect) to match live. */
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image img {
+    width: auto;
+    height: 80px;
+  }
+}
+
+/* Mobile: smaller icons */
+@media (width < 480px) {
+  .flexbox.column .flexbox-item {
+    padding: 16px 20px 16px 48px;
+    gap: 12px;
+  }
+
+  .flexbox.column .flexbox-item-image {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 60px;
+    margin-left: -36px;
+  }
+
+  /* From-the-gut: live shows a ~76px icon disc sitting fully visible just left
+     of the card. Our section has less side margin than live, so a full 50%
+     overhang would clip the disc off the viewport's left edge. Enlarge the disc
+     to match live's scale and pull it left only enough to overhang the card
+     while staying on-screen. Scoped to the from-the-gut page so other
+     .flexbox.column usages are unaffected. */
+  /* Live's container is transparent — each icon SVG carries its own pale circle.
+     Our base adds a white disc + shadow, which shows as a ring behind the wider
+     strawberry whose baked circle is narrower. Make the ftg disc transparent so
+     only the icon's own circle renders, matching live. */
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image {
+    flex: 0 0 76px;
+    width: 76px;
+    height: 76px;
+    margin-left: -64px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .flexbox.column .flexbox-item-image img {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Live's icon graphic includes its own pale inner circle that fills the disc
+     by HEIGHT; any padding leaves a white ring. The strawberry/carrot asset is
+     wider than square, so forcing it square squished it. Size by height with
+     auto width (preserving aspect like live) so each icon's baked circle fills
+     the disc and the wider strawberry shows its full carrot without distortion. */
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-image img {
+    width: auto;
+    height: 76px;
+    object-fit: contain;
+  }
+
+  .flexbox.column .flexbox-item-content h2,
+  .flexbox.column .flexbox-item-content h3 {
+    font-size: 16px;
+  }
+
+  .flexbox.column .flexbox-item-content p {
+    font-size: 14px;
+  }
+
+  /* From-the-gut cards: live keeps the card titles at 18px on mobile (the
+     generic 16px reduction above shrinks them). Scoped to the from-the-gut
+     page (.columns.ftgsignup only exists there) so other .flexbox.column
+     usages keep 16px. */
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-content h2,
+  main:has(.columns.ftgsignup) .flexbox.column .flexbox-item-content h3 {
+    font-size: 18px;
+  }
+
+  /* Live leaves a 43px gap between the intro paragraph and the first card;
+     ours is 25px. Add the 18px shortfall above the cards block. Scoped to the
+     from-the-gut page so other .flexbox.column usages are unaffected. */
+  main:has(.columns.ftgsignup) .flexbox.column.block {
+    margin-top: 18px;
+  }
+}
+
+/* ====================================================
+   Linzess: Sign-up cards (3-up) & Financial cards (2-up)
+   Horizontal row of equal cards, icon on top, centered
+   text + CTA button. Alternating purple backgrounds.
+   Matches linzess.com/savings-and-support sign-up + support cards.
+   ==================================================== */
+
+.flexbox.signup-cards,
+.flexbox.financial-cards {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 998px;
+  margin: 2rem auto 0;
+}
+
+.flexbox.signup-cards .flexbox-item,
+.flexbox.financial-cards .flexbox-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 16px;
+  padding: 0 2rem 2.5rem;
+  margin-top: 70px;
+  box-sizing: border-box;
+}
+
+.flexbox.signup-cards .flexbox-item {
+  flex: 1 1 0;
+}
+
+.flexbox.financial-cards .flexbox-item {
+  flex: 1 1 calc(50% - 12px);
+}
+
+/* Alternating backgrounds: odd = light purple, even = dark purple */
+.flexbox.signup-cards .flexbox-item:nth-child(odd),
+.flexbox.financial-cards .flexbox-item:nth-child(even) {
+  background-color: var(--linz-light-purple, #d9d7f9);
+}
+
+.flexbox.signup-cards .flexbox-item:nth-child(even),
+.flexbox.financial-cards .flexbox-item:nth-child(odd) {
+  background-color: var(--linz-dark-purple, #422e83);
+}
+
+/* Icon — colored icon (baked into SVG) sits in a tight white circular notch
+   straddling the card top. The colored circle nearly fills the white backing
+   (hairline ring), so it reads as overlapping the card edge — not floating in
+   a white halo. Matches linzess.com sign-up cards. */
+.flexbox.signup-cards .flexbox-item-image,
+.flexbox.financial-cards .flexbox-item-image {
+  width: 104px;
+  height: 104px;
+  margin-top: -52px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--linz-white, #fff);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.flexbox.signup-cards .flexbox-item-image img,
+.flexbox.financial-cards .flexbox-item-image img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+}
+
+/* Headings + text */
+.flexbox.signup-cards .flexbox-item-content h2,
+.flexbox.financial-cards .flexbox-item-content h2 {
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 0.75rem;
+}
+
+.flexbox.signup-cards .flexbox-item-content p,
+.flexbox.financial-cards .flexbox-item-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+/* Dark cards: white text */
+.flexbox.signup-cards .flexbox-item:nth-child(even) .flexbox-item-content,
+.flexbox.signup-cards .flexbox-item:nth-child(even) .flexbox-item-content h2,
+.flexbox.signup-cards .flexbox-item:nth-child(even) .flexbox-item-content p,
+.flexbox.financial-cards .flexbox-item:nth-child(odd) .flexbox-item-content,
+.flexbox.financial-cards .flexbox-item:nth-child(odd) .flexbox-item-content h2,
+.flexbox.financial-cards .flexbox-item:nth-child(odd) .flexbox-item-content p {
+  color: var(--linz-white, #fff);
+}
+
+/* Light cards: purple heading, grey body */
+.flexbox.signup-cards .flexbox-item:nth-child(odd) .flexbox-item-content h2,
+.flexbox.financial-cards .flexbox-item:nth-child(even) .flexbox-item-content h2 {
+  color: var(--linz-dark-purple, #422e83);
+}
+
+.flexbox.signup-cards .flexbox-item:nth-child(odd) .flexbox-item-content p,
+.flexbox.financial-cards .flexbox-item:nth-child(even) .flexbox-item-content p {
+  color: var(--linz-grey, #4d4d4f);
+}
+
+/* Support-cards section (Insurance Coverage Support / MyAbbVie Assist): live
+   renders heading 24px, body 16px, and the inline link at body size (16px) with
+   weight 800, dark-purple, underlined. Our defaults leave the heading at 18px,
+   the body at 1rem (=10px on this 10px-root project), and the link oversized and
+   unstyled. Scoped to .support-cards-section so the Text/Call/Click signup cards
+   keep their own sizing. */
+.section.support-cards-section .flexbox.financial-cards .flexbox-item-content h2 {
+  font-size: 24px;
+}
+
+.section.support-cards-section .flexbox.financial-cards .flexbox-item-content p {
+  font-size: 16px;
+}
+
+.section.support-cards-section .flexbox.financial-cards .flexbox-item-content a {
+  font-size: inherit;
+  font-weight: 800;
+  color: var(--linz-dark-purple, #422e83);
+  text-decoration: underline;
+}
+
+/* CTA buttons (sign-up cards) */
+.flexbox.signup-cards a.button:any-link {
+  background-color: var(--linz-dark-purple, #422e83);
+  color: var(--linz-white, #fff);
+  border: none;
+  border-radius: 16px;
+  padding: 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.flexbox.signup-cards a.button::after {
+  content: "❯";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.flexbox.signup-cards a.button:hover {
+  background-color: var(--linz-purple, #60579e);
+}
+
+/* Even card (dark-purple background, e.g. "Call") — inverted white button */
+.flexbox.signup-cards .flexbox-item:nth-child(even) a.button:any-link {
+  background-color: var(--linz-white, #fff);
+  color: var(--linz-dark-purple, #422e83);
+}
+
+.flexbox.signup-cards .flexbox-item:nth-child(even) a.button:hover {
+  background-color: var(--linz-light-purple, #d9d7f9);
+}
+
+.flexbox.signup-cards .flexbox-item-content,
+.flexbox.financial-cards .flexbox-item-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  text-align: center;
+}
+
+/* Tablet/mobile: stack cards */
+@media (width < 768px) {
+  .flexbox.signup-cards,
+  .flexbox.financial-cards {
+    flex-direction: column;
+  }
+
+  .flexbox.signup-cards .flexbox-item,
+  .flexbox.financial-cards .flexbox-item {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+/* Index savings-and-support: the Text/Call/Click sign-up cards render their
+   title at 24px and body copy at 16px on live (root font-size is 62.5%, so
+   the base 18px title / 1rem=10px body are too small here). Scoped to the
+   index page's signup-section so other pages' signup/financial cards keep
+   their existing sizing. */
+main .section.signup-section .flexbox.signup-cards .flexbox-item-content h2 {
+  font-size: 24px;
+}
+
+main .section.signup-section .flexbox.signup-cards .flexbox-item-content p {
+  font-size: 16px;
+}
+
+/* ====================================================
+   Linzess Homepage: Feature cards (2-up) — icon + heading
+   + text + CTA, white cards on off-white section.
+   ==================================================== */
+
+.flexbox.home-feature-cards {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 998px;
+  margin: 2rem auto 0;
+}
+
+.flexbox.home-feature-cards .flexbox-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 calc(50% - 12px);
+  background: var(--linz-white, #fff);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
+  box-sizing: border-box;
+}
+
+.flexbox.home-feature-cards .flexbox-item-image {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 1rem;
+}
+
+.flexbox.home-feature-cards .flexbox-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.flexbox.home-feature-cards .flexbox-item-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.flexbox.home-feature-cards .flexbox-item-content h2 {
+  color: var(--linz-dark-purple, #422e83);
+  font-family: var(--body-font-family);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+}
+
+.flexbox.home-feature-cards .flexbox-item-content p {
+  color: var(--linz-grey, #4d4d4f);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.flexbox.home-feature-cards a.button:any-link {
+  background-color: var(--linz-dark-purple, #422e83);
+  color: var(--linz-white, #fff);
+  border: none;
+  border-radius: 16px;
+  padding: 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.flexbox.home-feature-cards a.button::after {
+  content: "❯";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.flexbox.home-feature-cards a.button:hover {
+  background-color: var(--linz-purple, #60579e);
+}
+
+/* ====================================================
+   Linzess Homepage: Stat cards (3-up) — big number + label
+   ==================================================== */
+
+.flexbox.home-stat-cards {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 998px;
+  margin: 2.5rem auto 0;
+}
+
+.flexbox.home-stat-cards .flexbox-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--linz-light-purple, #d9d7f9);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.flexbox.home-stat-cards .flexbox-item-content {
+  width: 100%;
+}
+
+.flexbox.home-stat-cards .stat-number {
+  color: var(--linz-dark-purple, #422e83);
+  font-family: var(--heading-font-family, "Bebas Neue", sans-serif);
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+}
+
+.flexbox.home-stat-cards .stat-number span {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.flexbox.home-stat-cards .flexbox-item-content p:not(.stat-number) {
+  color: var(--linz-grey, #4d4d4f);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (width < 768px) {
+  .flexbox.home-feature-cards,
+  .flexbox.home-stat-cards {
+    flex-direction: column;
+  }
+
+  .flexbox.home-feature-cards .flexbox-item,
+  .flexbox.home-stat-cards .flexbox-item {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+/* ====================================================
+   Linzess Resources: Wellness icon cards (3-up)
+   icon on top, heading + bullet list, light card.
+   ==================================================== */
+
+.flexbox.wellness-cards {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 998px;
+  margin: 2rem auto 0;
+}
+
+.flexbox.wellness-cards .flexbox-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--linz-white, #fff);
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
+  box-sizing: border-box;
+}
+
+.flexbox.wellness-cards .flexbox-item-image {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 1rem;
+}
+
+.flexbox.wellness-cards .flexbox-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.flexbox.wellness-cards .flexbox-item-content h2 {
+  color: var(--linz-dark-purple, #422e83);
+  font-family: var(--body-font-family);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 0.75rem;
+}
+
+.flexbox.wellness-cards .flexbox-item-content ul {
+  text-align: left;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.flexbox.wellness-cards .flexbox-item-content li {
+  color: var(--linz-grey, #4d4d4f);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+/* ====================================================
+   Linzess Resources/Find Relief: text-only cards
+   (community-cards, talk-steps, prescribed-cards)
+   No icon — heading + text + optional CTA, light cards.
+   ==================================================== */
+
+.flexbox.community-cards,
+.flexbox.talk-steps,
+.flexbox.prescribed-cards {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  max-width: 998px;
+  margin: 2rem auto 0;
+}
+
+.flexbox.community-cards .flexbox-item,
+.flexbox.talk-steps .flexbox-item,
+.flexbox.prescribed-cards .flexbox-item {
+  flex: 1 1 calc(50% - 12px);
+  display: flex;
+  flex-direction: column;
+  background: var(--linz-white, #fff);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0 0 0 / 8%);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.flexbox.talk-steps .flexbox-item {
+  flex: 1 1 calc(25% - 18px);
+}
+
+.flexbox.community-cards .flexbox-item-content,
+.flexbox.talk-steps .flexbox-item-content,
+.flexbox.prescribed-cards .flexbox-item-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.flexbox.community-cards h2,
+.flexbox.talk-steps h2,
+.flexbox.prescribed-cards h2 {
+  color: var(--linz-dark-purple, #422e83);
+  font-family: var(--body-font-family);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 0.75rem;
+}
+
+.flexbox.community-cards p,
+.flexbox.talk-steps p,
+.flexbox.prescribed-cards p {
+  color: var(--linz-grey, #4d4d4f);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.flexbox.community-cards a.button:any-link {
+  background-color: var(--linz-dark-purple, #422e83);
+  color: var(--linz-white, #fff);
+  border: none;
+  border-radius: 16px;
+  padding: 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.flexbox.community-cards a.button::after {
+  content: "❯";
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.flexbox.community-cards a.button:hover {
+  background-color: var(--linz-purple, #60579e);
+}
+
+/* ====================================================
+   Linzess Find Relief: Instruction steps (4-up)
+   blue icon on top, heading + text, light purple card.
+   ==================================================== */
+
+.flexbox.instruction-steps {
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 2rem auto 0;
+}
+
+.flexbox.instruction-steps .flexbox-item {
+  flex: 1 1 calc(25% - 15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--linz-light-purple, #d9d7f9);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.flexbox.instruction-steps .flexbox-item-image {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+
+.flexbox.instruction-steps .flexbox-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.flexbox.instruction-steps .flexbox-item-content h2 {
+  color: var(--linz-dark-purple, #422e83);
+  font-family: var(--body-font-family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: normal;
+  margin: 0 0 0.75rem;
+}
+
+.flexbox.instruction-steps .flexbox-item-content p {
+  color: var(--linz-grey, #4d4d4f);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0 0 0.5rem;
+}
+
+@media (width < 900px) {
+  .flexbox.wellness-cards,
+  .flexbox.talk-steps,
+  .flexbox.prescribed-cards,
+  .flexbox.community-cards,
+  .flexbox.instruction-steps {
+    flex-direction: column;
+  }
+
+  .flexbox.wellness-cards .flexbox-item,
+  .flexbox.talk-steps .flexbox-item,
+  .flexbox.prescribed-cards .flexbox-item,
+  .flexbox.community-cards .flexbox-item,
+  .flexbox.instruction-steps .flexbox-item {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}

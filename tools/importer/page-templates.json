@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "linzess-faq",
+      "urls": [
+        "https://www.linzess.com/savings-and-support/faqs"
+      ],
+      "description": "FAQ page with grouped accordion-style Q&A sections, hero banner, and CTA cards",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [".savings-faq-hero"]
+        },
+        {
+          "name": "accordion",
+          "instances": [".abbv-accordion-container"]
+        },
+        {
+          "name": "columns",
+          "instances": [".abbv-flex-container-v2"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": ".savings-faq-hero",
+          "style": "dark-purple",
+          "blocks": ["hero"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "FAQ Group 1 - IBS-C, CIC & Chronic Constipation",
+          "selector": ".abbv-container.background-white.background-white-arc.mb24",
+          "style": "white",
+          "blocks": ["accordion"],
+          "defaultContent": [".heading-1.c-linz-dark-purple.margin-bottom-24"]
+        },
+        {
+          "id": "section-3",
+          "name": "FAQ Group 2 - What LINZESS Does & How It Can Help",
+          "selector": ".abbv-container.background-off-white.background-off-white-arc.accordion-white-blades.mb24",
+          "style": "off-white",
+          "blocks": ["accordion"],
+          "defaultContent": [".heading-1.c-linz-dark-purple"]
+        },
+        {
+          "id": "section-4",
+          "name": "FAQ Group 3 - Getting Treatment & More Resources",
+          "selector": [".abbv-container.background-white.background-white-arc.mb24"],
+          "style": "white",
+          "blocks": ["accordion"],
+          "defaultContent": [".heading-1.c-linz-dark-purple"]
+        },
+        {
+          "id": "section-5",
+          "name": "FAQ Group 4 - Your LINZESS Prescription",
+          "selector": [".abbv-container.background-off-white.background-off-white-arc.accordion-white-blades.mb24"],
+          "style": "off-white",
+          "blocks": ["accordion"],
+          "defaultContent": ["h2.heading-1.c-linz-dark-purple"]
+        },
+        {
+          "id": "section-6",
+          "name": "CTA Section",
+          "selector": ".abbv-container.background-dark-purple.background-dark-purple-arc.bottom-nav",
+          "style": "dark-purple",
+          "blocks": ["columns"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "ISI Section",
+          "selector": ".abbv-inline-use-isi",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [".abbv-inline-use-isi", ".linzess-isi-iri"]
+        }
+      ]
+    },
+    {
+      "name": "linzess-from-the-gut",
+      "urls": [
+        "https://www.linzess.com/savings-and-support/from-the-gut"
+      ],
+      "description": "Email signup and wellness content page for the From the Gut program with icon callouts and image-text blocks",
+      "blocks": []
+    },
+    {
+      "name": "linzess-community-support",
+      "urls": [
+        "https://www.linzess.com/savings-and-support/community-support"
+      ],
+      "description": "Community support and resources page with promotional sections and resource cards",
+      "blocks": []
+    },
+    {
+      "name": "linzess-how-to-take",
+      "urls": [
+        "https://www.linzess.com/savings-and-support/how-to-take-linzess"
+      ],
+      "description": "Medication guidance page with step-by-step instructional content and dosage information",
+      "blocks": []
+    }
+  ]
+}
