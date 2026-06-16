@@ -288,12 +288,16 @@ header.has-sticky-scrollback.show-nav.sticky-scrollback .header nav .nav-section
     background-color: var(--color-brand-primary-lighter);
     border-radius: var(--border-radius-button-primary);
     color: var(--color-brand-primary);
-    font-size: var(--font-size-body-small);
-    font-weight: var(--font-weight-600);
-    padding: var(--spacing-09) var(--spacing-24);
     text-decoration: none;
-    text-transform: uppercase;
-    width: var(--header-mobile-cta-width);
+
+    /* Match live: mixed-case label, 12px/800, ~121px pill that wraps to two
+       lines (not a forced single-line uppercase chip). */
+    width: 121px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: none;
+    line-height: normal;
+    padding: var(--spacing-09) var(--spacing-15);
     margin-right: var(--spacing-15);
   }
 
@@ -597,4 +601,34 @@ header.has-sticky-scrollback.show-nav.sticky-scrollback .header nav .nav-section
   }
 
   header.hide-nav .nav-wrapper:hover { background: var(--color-nav-dark); }
+}
+
+/* ── Header overlays hero ── */
+/* stylelint-disable-next-line no-descending-specificity */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav a {
+  color: var(--color-text-on-dark);
+}
+
+/* Hide ISI toggle controls (top/See Full ISI/Collapse ISI) */
+header .nav-indication {
+  display: none;
+}
+
+/* Non-hero pages: solid purple header background (linzess only) */
+body.no-hero header {
+  background-color: var(--color-brand-primary);
+}
+
+body.no-hero header .nav-wrapper {
+  background-color: var(--color-brand-primary);
 }

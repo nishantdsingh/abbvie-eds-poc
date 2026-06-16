@@ -126,6 +126,25 @@ export default function decorate(block) {
 
   block.replaceChildren(nav);
 
+  // Ensure each nav target is addressable. Migrated content applies section
+  // style-classes but no anchor IDs, so links like #sideeffects have no target —
+  // the click-scroll and active-tracking observers below both rely on
+  // getElementById. Map each link to the section that follows this nav in
+  // document order, assigning the link's ID only when it's missing and the
+  // section has no ID of its own (so authored IDs are never overwritten).
+  const navSection = block.closest('.section');
+  if (navSection) {
+    const following = [];
+    for (let sib = navSection.nextElementSibling; sib; sib = sib.nextElementSibling) {
+      if (sib.classList?.contains('section')) following.push(sib);
+    }
+    items.forEach((item, i) => {
+      const id = item.href.slice(1);
+      const sec = following[i];
+      if (id && sec && !sec.id && !document.getElementById(id)) sec.id = id;
+    });
+  }
+
   // --header-height resolves to a rem value (e.g. "7.2rem"); parseInt would give 7, not 72.
   // Multiply by root font-size to get the correct pixel value.
   const getCssPx = (varName) => {

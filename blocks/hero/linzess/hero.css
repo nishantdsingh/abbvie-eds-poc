@@ -1,26 +1,31 @@
+/* stylelint-disable no-duplicate-selectors, no-descending-specificity */
+
 /* Hero container witdht */
 .section.abbvie-container.hero-container {
   max-width: none;
   width: 100%;
   background: transparent;
-  margin: var(--spacing-00);
 }
+
 /* AbbVie Hero — White overlap panel on hero image */
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: var(--spacing-00);
 }
+
 /* Navy-overlap hero: pull wrapper into section padding so bg image shows */
 .hero-navy {
   padding-bottom: var(--spacing-00);
   margin-bottom: var(--spacing-32);
   background-color: var(--color-white);
 }
+
 .hero-navy .hero-wrapper {
   margin: var(--spacing-n40) -3.5rem var(--spacing-00);
   max-width: none;
   overflow: hidden;
 }
+
 @media (width >= 744px) {
   .hero-navy .hero-wrapper {
     margin: -5.6rem -7rem var(--spacing-00);
@@ -31,6 +36,7 @@
     margin-bottom: var(--spacing-80);
   }
 }
+
 @media (width >= 1024px) {
   .hero-navy .hero-wrapper {
     margin: -8rem -5.5rem 0;
@@ -40,11 +46,13 @@
    border-top-left-radius: var(--spacing-80);
   }
 }
+
 /* Height-tall variant — taller hero image area matching live site .height-tall */
 .height-tall .hero > :where(div):first-child {
   min-height: var(--hero-tall-image-container-height);
   padding: var(--spacing-00);
 }
+
 .height-tall .hero > :where(div):first-child :where(img) {
   position: absolute;
   inset: var(--spacing-00);
@@ -53,10 +61,12 @@
   max-height: none;
   object-fit: cover;
 }
+
 /* Breadcrumbs inside hero text panel */
 .hero .hero-breadcrumbs {
   margin-bottom: var(--spacing-32);
 }
+
 .hero-breadcrumbs :where(ol) {
   display: flex;
   flex-flow: wrap;
@@ -66,6 +76,7 @@
   gap: var(--spacing-08);
   align-items: baseline;
 }
+
 .hero-breadcrumbs :where(ol li) {
   font-family: var(--roboto-bold-font-family);
   font-size: var(--font-size-14);
@@ -77,6 +88,7 @@
   display: flex;
   align-items: flex-end;
 }
+
 /* Chevron separator — scaled to match text cap height and vertically centred */
 .hero-breadcrumbs :where(ol li):not(:last-child)::after {
   content: '\203A';
@@ -86,26 +98,31 @@
   vertical-align: middle;
   line-height: 1;
 }
+
 .hero-breadcrumbs :where(li a) {
   color: var(--text-color);
   font-weight: var(--font-weight-700);
   font-size: inherit;
   text-decoration: none;
 }
+
 /* Current page — muted gray, no link */
 .hero-breadcrumbs :where(ol li)[aria-current] {
   color: var(--color-gray-dark);
   font-weight: var(--font-weight-700);
 }
+
 .hero {
   position: relative;
   display: flex;
   flex-direction: column;
 }
+
 /* Remove gradient overlay — AbbVie uses white panel instead */
 .hero::after {
   display: none;
 }
+
 /* Image container — natural flow, not absolute */
 .hero > div:first-child {
   position: relative;
@@ -116,17 +133,21 @@
   padding-left: var(--spacing-55);
   padding-right: var(--spacing-55);
 }
+
 .section-wide .hero > :where(div):first-child {
     margin: 0;
     padding-left: 0;
     padding-right: 0;
 }
+
 .hero.no-padding > :where(div):first-child{
   padding: var(--spacing-00);
 }
+
 .hero picture {
   display: block;
 }
+
 .hero img {
   object-fit: cover;
   width: 100%;
@@ -135,6 +156,7 @@
   border-top-left-radius: var(--border-top-left-radius);
   max-height: var(--hero-image-container-height);
 }
+
 /* Text container — white overlap panel */
 .hero > div:nth-child(2) {
  /*  display: flex;
@@ -147,6 +169,7 @@
   padding-bottom: var(--spacing-00);
   max-width: calc(100vw - var(--spacing-40));
 }
+
 /* font-weight: inherit prevents browser UA bold, defers to F37 Lineca Medium's own weight */
 .hero h1 {
   margin: var(--spacing-00) var(--spacing-00) var(--spacing-08);
@@ -155,15 +178,18 @@
   color: var(--text-color);
   font-family: var(--heading-font-family-bold);
 }
+
 /* Roboto Small (300 light) for all hero paragraphs */
 .hero p {
   margin: var(--spacing-00);
   padding-bottom: var(--spacing-16);
 }
+
 .navy-overlap .hero:where(:not(.body-unica-32-reg)) :where(p) {
     font-size: var(--font-size-16);
     line-height: var(--line-height-22);
 }
+
 /* Height-tall hero paragraph — larger font matching body-unica-32-reg scale
    Uses higher specificity to override navy-overlap when both are present */
 .navy-overlap.height-tall .hero :where(p),
@@ -172,10 +198,12 @@
   line-height: var(--line-height-26);
   margin-top: var(--spacing-08);
 }
+
 .hero.light-font p {
   font-family: var(--roboto-light-font-family);
   font-weight: var(--font-weight-300);
 }
+
 .hero a.button {
   background: none;
   font-family: var(--roboto-bold-font-family);
@@ -191,11 +219,13 @@
   margin: var(--spacing-16) 0 0;
   border: 0;
 }
+
 .hero :where(a).button:hover {
   color: var(--link-hover-color);
   cursor: pointer;
   background: none;
 }
+
 @media (width >= 744px) {
   .hero > div:first-child {
     min-height: var(--hero-image-container-height);
@@ -244,6 +274,7 @@
     line-height: var(--line-height-40);
   }
 }
+
 @media (width >= 1024px) {
     .hero > div:first-child {
       min-height: var(--hero-image-container-height);
@@ -285,16 +316,19 @@
     line-height: 4rem;
   }
 }
+
 /* =====================================================
    Hero Profile Variant — no hero image, navy band
    Authoring: use block name "Hero (profile)"
    ===================================================== */
+
 /* Section override — full-width so navy band spans edge-to-edge */
 .hero-container,
 .hero-profile-section {
   max-width: var(--content-max-width-wide);
   margin-bottom: var(--spacing-32);
 }
+
 /* Profile breadcrumbs — uppercase, 14px to match live site */
 .hero.profile .hero-breadcrumbs :where(ol li) {
   font-size: var(--font-size-14);
@@ -302,10 +336,13 @@
   text-transform: uppercase;
   font-weight: var(--font-weight-700);
 }
+
 .profile .hero-breadcrumbs :where(ol li)[aria-current] {
   font-weight: var(--font-weight-700);
 }
+
 /* Profile breadcrumb separator — inherits base styling */
+
 /* Navy background band replaces hero image */
 .hero.profile > :where(div):first-child {
   background-color: var(--color-navy-dark);
@@ -314,29 +351,36 @@
    min-height: var(--hero-profile-container-height);
    margin: var(--spacing-00);
 }
+
 .profile.purple-overlap > :where(div):first-child {
  background-color: var(--color-accent-purple);
 }
+
 .large-radius .hero > :where(div):first-child {
  border-top-left-radius: var(--border-top-radius);
 }
+
 .medium-radius .hero > :where(div):first-child {
   border-top-left-radius: var(--border-top-radius-medium);
 }
+
 .hero.profile > :where(div):first-child :where(picture),
 .hero.profile > :where(div):first-child :where(img) {
   display: none;
 }
+
 /* White overlap card — profile spacing */
 .hero.profile > :where(div):nth-child(2) {
   margin-top: var(--spacing-n48);
   padding: var(--spacing-32) var(--spacing-20) var(--spacing-00);
 }
+
 /* Subtitle — Roboto Small, weight 300 (matches --roboto-small-font-family) */
 .hero.profile.light-font :where(p) {
   font-family: var(--roboto-small-font-family);
   font-weight: var(--font-weight-300);
 }
+
 @media (width >= 744px) {
 .hero.profile > :where(div):nth-child(2) {
   margin-top: var(--spacing-n64);
@@ -347,6 +391,7 @@
 margin-bottom: var(--spacing-80);
 }
 }
+
 @media (width >= 1024px) {
   .hero-profile-section {
     margin-bottom: var(--spacing-00);
@@ -367,6 +412,7 @@ margin-bottom: var(--spacing-80);
     max-width: 85%;
   }
 }
+
 /* hero grid */
 .hero .hero-text-container {
   width: 100%;
@@ -375,9 +421,11 @@ margin-bottom: var(--spacing-80);
   grid-template-columns: repeat(6, 1fr);
   align-self: center;
 }
+
 .hero .cmp-container-x-large {
   grid-column: 1 / span 6;
 }
+
 @media (width >= 744px) {
 .hero .hero-text-container {
     grid-template-columns: repeat(8, 1fr);
@@ -388,6 +436,7 @@ margin-bottom: var(--spacing-80);
   grid-column: 1 / span 8;
 }
 }
+
 @media (width >= 1024px) {
 .hero .hero-text-container {
     grid-template-columns: repeat(12, 1fr);
@@ -397,11 +446,13 @@ margin-bottom: var(--spacing-80);
   grid-column: 2 / span 10;
 }
 }
+
 /* =====================================================
    Hero Landing Variant — full-bleed image with gradient overlay
    Authoring: use block name "Hero (landing)"
    Matches abbvie.com homepage hero 1:1 across breakpoints
    ===================================================== */
+
 /* Section override — edge-to-edge, no bottom margin */
 .hero-landing-section {
   max-width: var(--content-max-width-wide);
@@ -410,18 +461,22 @@ margin-bottom: var(--spacing-80);
   margin-bottom: var(--spacing-00);
   padding: var(--spacing-00);
 }
+
 .hero-landing-section:where(:has(.fragment-wrapper)) {
   margin-bottom: var(--spacing-32);
 }
+
 .fragment-wrapper .hero-landing-section {
     margin-right: auto;
     margin-left: auto;
 }
+
 .hero-landing-section .hero-wrapper {
   margin: var(--spacing-00);
   max-width: none;
   overflow: hidden;
 }
+
 /* Block root — min-height for hero image area; grows with press-releases content */
 .hero.landing {
   position: relative;
@@ -431,6 +486,7 @@ margin-bottom: var(--spacing-80);
   min-height: var(--hero-landing-container-height);
   border-top-left-radius: var(--border-top-left-radius);
 }
+
 /* Re-enable gradient overlay via ::after — fixed height covers image area only */
 .hero.landing::after {
   display: block;
@@ -445,6 +501,7 @@ margin-bottom: var(--spacing-80);
   pointer-events: none;
   border-top-left-radius: var(--border-top-left-radius);
 }
+
 /* Image container — fixed height covers image area only */
 .hero.landing > :where(div):first-child {
   position: absolute;
@@ -459,6 +516,7 @@ margin-bottom: var(--spacing-80);
   z-index: var(--z-index-0);
   border-top-left-radius: var(--border-top-left-radius);
 }
+
 .hero.landing picture {
   position: absolute;
   inset: var(--spacing-00);
@@ -466,6 +524,7 @@ margin-bottom: var(--spacing-80);
   width: 100%;
   height: 100%;
 }
+
 .hero.landing img {
   position: absolute;
   inset: var(--spacing-00);
@@ -477,11 +536,13 @@ margin-bottom: var(--spacing-80);
   border-top-left-radius: var(--border-radius-00);
   max-height: none;
 }
+
 /* Disable grid for landing — use direct padding for text offset */
 .hero.landing .hero-text-container {
   display: block;
   align-self: stretch;
 }
+
 /* Text container — positioned over image, text starts at padding-top */
 .hero.landing > :where(div):nth-child(2) {
   position: relative;
@@ -494,6 +555,7 @@ margin-bottom: var(--spacing-80);
   display: block;
   box-sizing: border-box;
 }
+
 /* Text colours — white on dark overlay */
 .hero.landing h1 {
   color: var(--color-white);
@@ -501,14 +563,17 @@ margin-bottom: var(--spacing-80);
   line-height: var(--line-height-34);
   margin-bottom: var(--spacing-16);
 }
+
 .hero.landing p {
   color: var(--color-white);
   margin-bottom: var(--spacing-16);
 }
+
 /* CTA link — blue, uppercase, no background */
 .hero.landing .button-container {
 padding: var(--spacing-00);
 }
+
 .hero.landing :where(a).button {
   color: var(--hero-button-color);
   background: none;
@@ -523,20 +588,25 @@ padding: var(--spacing-00);
   padding: var(--spacing-00) var(--spacing-02) var(--spacing-03);
   margin: var(--spacing-00);
 }
+
 .hero.landing :where(a.button):hover {
   color: var(--hero-button-hover-color);
   background: none;
 }
+
 /* Landing breadcrumbs — white text on dark overlay */
 .hero.landing .hero-breadcrumbs :where(ol li) {
   color: var(--color-white);
 }
+
 .hero.landing .hero-breadcrumbs :where(li a) {
   color: var(--color-white);
 }
+
 .landing .hero-breadcrumbs :where(ol li)[aria-current] {
   color: var(--color-text-on-dark-60);
 }
+
 /* ---- Tablet (>=744px) ---- */
 @media (width >= 744px) {
 .hero-landing-section:where(:has(.fragment-wrapper)) {
@@ -571,6 +641,7 @@ padding: var(--spacing-00);
   font-size: var(--font-size-14)
   }
 }
+
 /* ---- Desktop (>=1024px) ---- */
 @media (width >= 1024px) {
   .hero-landing-section {
@@ -601,11 +672,13 @@ padding: var(--spacing-00);
     line-height: var(--line-height-24);
     }
 }
+
 /* =====================================================
    Landing hero — Press-releases wrapper (white overlap box)
    Matches abbvie.com .homepage-overlap > .cmp-container
    Uses same margin/width pattern as profile variant text panel
    ===================================================== */
+
 /* ---- Mobile (base) ---- */
 .hero.landing .hero-press-releases-container {
   background-color: var(--color-white);
@@ -615,9 +688,11 @@ padding: var(--spacing-00);
   position: relative;
   color: var(--text-color);
 }
+
 .hero.landing .hero-press-releases-container :where(p) {
 color: inherit;
 }
+
 /* ---- Tablet (>=744px) ---- */
 @media (width >= 744px) {
   .hero.landing .hero-press-releases-container {
@@ -626,6 +701,7 @@ color: inherit;
     padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
   }
 }
+
 /* ---- Desktop (>=1024px) — profile-like auto centering ---- */
 @media (width >= 1024px) {
   .hero.landing .hero-press-releases-container {
@@ -634,6 +710,7 @@ color: inherit;
     padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
   }
 }
+
 /* =====================================================
    Hero Stat-Overlay Variant — oversized stat number on image
    Authoring: use block name "Hero (stat-overlay)"
@@ -641,6 +718,7 @@ color: inherit;
 .hero.stat-overlay > :where(div):nth-child(2) {
   overflow: visible;
 }
+
 .hero.stat-overlay .hero-stat-number {
   display: block;
   font-family: var(--heading-font-family-bold);
@@ -649,6 +727,7 @@ color: inherit;
   line-height: var(--hero-stat-line-height, 0.9);
   margin-bottom: var(--spacing-16);
 }
+
 /* =====================================================
    Hero Multilayer Variant — buddy-state layer switching
    Authoring: use block name "Hero (multilayer)"
@@ -658,6 +737,7 @@ color: inherit;
 .hero.multilayer > :where(div):first-child {
   position: relative;
 }
+
 .hero.multilayer .hero-layer {
   position: absolute;
   inset: 0;
@@ -665,18 +745,19 @@ color: inherit;
   transition: var(--hero-layer-transition);
   pointer-events: none;
 }
+
 .hero.multilayer .hero-layer.is-active {
   opacity: 1;
   pointer-events: auto;
 }
+
 .hero.multilayer .hero-layer:first-child {
   position: relative;
   opacity: 1;
 }
-/* stylelint-disable-next-line no-descending-specificity */
-.hero.full :where(a).button { color: var(--color-text-on-dark, #fff); }
-/* stylelint-disable-next-line no-descending-specificity */
-.hero.solid :where(a).button { color: var(--color-text-on-dark, #fff); }
+.hero.full :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
+.hero.solid :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
+
 /* =====================================================
    Hero Dual-CTA Variant — two side-by-side CTAs
    Authoring: use block name "Hero (dual-cta)"
@@ -687,19 +768,22 @@ color: inherit;
   gap: var(--spacing-16, 1.6rem);
   align-items: center;
 }
+
 .hero.dual-cta .button-container :where(a).button:first-child {
   margin-top: var(--spacing-16);
 }
+
 .hero.dual-cta .button-container :where(a).button:not(:first-child) {
   margin-top: var(--spacing-16);
 }
+
 /* =====================================================
    Hero Eyebrow Text
    Detected by JS: first <p> before <h1>/<h2> with no links
    ===================================================== */
 .hero .hero-eyebrow {
   display: block;
-  font-size: var(--font-size-body-small, 11px);
+  font-size: var(--font-size-body-small, 0.6875rem);
   font-family: var(--body-font-family);
   font-weight: var(--font-weight-heading);
   text-transform: uppercase;
@@ -707,6 +791,7 @@ color: inherit;
   margin-bottom: var(--spacing-08, 0.8rem);
   color: inherit;
 }
+
 /* Indication banner: ISI header — absolutely pinned to top of hero, above overlay */
 .hero .hero-indication {
   position: absolute;
@@ -717,28 +802,32 @@ color: inherit;
   background-color: var(--hero-indication-bg);
   color: var(--color-white);
   padding: var(--spacing-16, 1rem) var(--spacing-24, 1.5rem);
-  font-size: var(--font-size-body-small, 13px);
+  font-size: var(--font-size-body-small, 0.8125rem);
   line-height: 1.5;
   text-align: center;
   box-sizing: border-box;
 }
+
 .hero .hero-indication p {
   margin: 0;
   color: inherit;
 }
+
 .hero .hero-indication strong {
   font-weight: 700;
 }
+
 /* Image caption: "Actor portrayal." etc — bottom-right corner of image cell */
 .hero .hero-image-caption {
   position: absolute;
   bottom: var(--spacing-08, 0.8rem);
   right: var(--spacing-08, 0.8rem);
-  font-size: var(--font-size-body-small, 11px);
+  font-size: var(--font-size-body-small, 0.6875rem);
   color: var(--color-text-on-dark-80);
   font-style: italic;
   pointer-events: none;
 }
+
 /* =====================================================
    Text Alignment Modifiers
    ===================================================== */
@@ -747,11 +836,13 @@ color: inherit;
 .hero.text-center p {
   text-align: center;
 }
+
 .hero.text-right > :where(div):nth-child(2),
 .hero.text-right h1,
 .hero.text-right p {
   text-align: right;
 }
+
 /* =====================================================
    Text Color Override Modifiers
    ===================================================== */
@@ -760,8 +851,9 @@ color: inherit;
 .hero.text-light h3,
 .hero.text-light p,
 .hero.text-light .hero-eyebrow {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
 }
+
 .hero.text-dark h1,
 .hero.text-dark h2,
 .hero.text-dark h3,
@@ -769,6 +861,7 @@ color: inherit;
 .hero.text-dark .hero-eyebrow {
   color: var(--text-color);
 }
+
 /* =====================================================
    Hero Full Variant — full-bleed image, tall, white text overlay
    Authoring: use block name "Hero (full)"
@@ -780,6 +873,7 @@ color: inherit;
   align-items: center;
   overflow: hidden;
 }
+
 .hero.full > :where(div):first-child {
   position: absolute;
   inset: 0;
@@ -789,6 +883,7 @@ color: inherit;
   overflow: hidden;
   z-index: 0;
 }
+
 .hero.full picture {
   position: absolute;
   inset: 0;
@@ -796,6 +891,7 @@ color: inherit;
   width: 100%;
   height: 100%;
 }
+
 .hero.full img {
   position: absolute;
   inset: 0;
@@ -806,6 +902,7 @@ color: inherit;
   border-radius: 0;
   max-height: unset;
 }
+
 /* Dark left-to-transparent overlay for legibility */
 .hero.full::after {
   display: block;
@@ -816,6 +913,7 @@ color: inherit;
   z-index: 2;
   pointer-events: none;
 }
+
 .hero.full > :where(div):nth-child(2) {
   position: relative;
   z-index: 2;
@@ -825,20 +923,25 @@ color: inherit;
   padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
   max-width: var(--hero-content-max-width-full);
 }
+
 .hero.full .hero-text-container {
   display: block;
 }
+
 .hero.full h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   font-size: var(--font-size-h1-hero, var(--font-size-h1, 2.6rem));
   line-height: var(--line-height-h1-hero, var(--line-height-h1, 2.8rem));
 }
+
 .hero.full p {
   color: var(--color-text-on-dark-90);
 }
+
 .hero.full .hero-eyebrow {
   color: var(--color-text-on-dark-80);
 }
+
 @media (width < 744px) {
   .hero.full {
     min-height: var(--hero-full-min-height-mobile);
@@ -849,6 +952,7 @@ color: inherit;
     padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
   }
 }
+
 @media (width >= 1024px) {
   .hero.full {
     min-height: var(--hero-full-min-height-desktop);
@@ -858,6 +962,7 @@ color: inherit;
     max-width: var(--hero-content-max-width-full-desktop);
   }
 }
+
 /* =====================================================
    Hero Compact Variant — short interior-page hero
    Authoring: use block name "Hero (compact)"
@@ -869,6 +974,7 @@ color: inherit;
   align-items: center;
   overflow: hidden;
 }
+
 .hero.compact > :where(div):first-child {
   position: absolute;
   inset: 0;
@@ -878,6 +984,7 @@ color: inherit;
   overflow: hidden;
   z-index: 0;
 }
+
 .hero.compact picture {
   position: absolute;
   inset: 0;
@@ -885,6 +992,7 @@ color: inherit;
   width: 100%;
   height: 100%;
 }
+
 .hero.compact img {
   position: absolute;
   inset: 0;
@@ -894,6 +1002,7 @@ color: inherit;
   border-radius: 0;
   max-height: unset;
 }
+
 .hero.compact::after {
   display: block;
   content: '';
@@ -903,6 +1012,7 @@ color: inherit;
   z-index: 1;
   pointer-events: none;
 }
+
 .hero.compact > :where(div):nth-child(2) {
   position: relative;
   z-index: 2;
@@ -912,20 +1022,25 @@ color: inherit;
   padding: var(--spacing-40, 4rem) var(--spacing-55, 5.5rem);
   max-width: var(--hero-content-max-width-compact);
 }
+
 .hero.compact .hero-text-container {
   display: block;
 }
+
 .hero.compact h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   font-size: var(--font-size-h2, 2rem);
   line-height: var(--line-height-h2, 2.5rem);
 }
+
 .hero.compact p {
   color: var(--color-text-on-dark-90);
 }
+
 .hero.compact .hero-eyebrow {
   color: var(--color-text-on-dark-80);
 }
+
 @media (width < 744px) {
   .hero.compact {
     min-height: var(--hero-compact-min-height-mobile);
@@ -936,6 +1051,7 @@ color: inherit;
     padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
   }
 }
+
 @media (width >= 744px) {
   .hero.compact {
     min-height: var(--hero-compact-min-height-tablet);
@@ -946,6 +1062,7 @@ color: inherit;
     line-height: var(--line-height-h1, 2.8rem);
   }
 }
+
 /* =====================================================
    Hero Split Variant — 50/50 image + text side by side
    Authoring: use block name "Hero (split)"
@@ -957,6 +1074,7 @@ color: inherit;
   align-items: center;
   overflow: hidden;
 }
+
 .hero.split > :where(div):first-child {
   position: relative;
   min-height: unset;
@@ -966,10 +1084,12 @@ color: inherit;
   align-items: center;
   justify-content: center;
 }
+
 .hero.split picture {
   display: block;
   width: 100%;
 }
+
 .hero.split img {
   max-width: 100%;
   height: auto;
@@ -979,6 +1099,7 @@ color: inherit;
   position: static;
   display: block;
 }
+
 .hero.split > :where(div):nth-child(2) {
   background: transparent;
   border-radius: 0;
@@ -986,9 +1107,11 @@ color: inherit;
   padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
   max-width: unset;
 }
+
 .hero.split .hero-text-container {
   display: block;
 }
+
 @media (width < 744px) {
   .hero.split {
     grid-template-columns: 1fr;
@@ -1004,6 +1127,7 @@ color: inherit;
     padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
   }
 }
+
 /* =====================================================
    Hero Centered Variant — centered text over image or color bg
    Authoring: use block name "Hero (centered)"
@@ -1016,6 +1140,7 @@ color: inherit;
   justify-content: center;
   overflow: hidden;
 }
+
 .hero.centered > :where(div):first-child {
   position: absolute;
   inset: 0;
@@ -1025,6 +1150,7 @@ color: inherit;
   overflow: hidden;
   z-index: 0;
 }
+
 .hero.centered picture {
   position: absolute;
   inset: 0;
@@ -1032,6 +1158,7 @@ color: inherit;
   width: 100%;
   height: 100%;
 }
+
 .hero.centered img {
   position: absolute;
   inset: 0;
@@ -1041,6 +1168,7 @@ color: inherit;
   border-radius: 0;
   max-height: unset;
 }
+
 .hero.centered::after {
   display: block;
   content: '';
@@ -1050,6 +1178,7 @@ color: inherit;
   z-index: 1;
   pointer-events: none;
 }
+
 .hero.centered > :where(div):nth-child(2) {
   position: relative;
   z-index: 2;
@@ -1060,18 +1189,22 @@ color: inherit;
   max-width: var(--hero-content-max-width-centered);
   text-align: center;
 }
+
 .hero.centered .hero-text-container {
   display: block;
 }
+
 .hero.centered h1 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
   text-align: center;
 }
+
 .hero.centered p {
   color: var(--color-text-on-dark-90);
   text-align: center;
 }
 .hero.centered .hero-eyebrow { color: var(--color-text-on-dark-80); }
+
 @media (width < 744px) {
   .hero.centered {
     min-height: var(--hero-centered-min-height-mobile);
@@ -1082,6 +1215,7 @@ color: inherit;
     max-width: 90%;
   }
 }
+
 /* =====================================================
    Hero Video Variant — Brightcove background video
    Authoring: use block name "Hero (video)"
@@ -1096,6 +1230,7 @@ color: inherit;
   align-items: center;
   overflow: hidden;
 }
+
 .hero.video > :where(div):first-child {
   position: absolute;
   inset: 0;
@@ -1105,6 +1240,7 @@ color: inherit;
   overflow: hidden;
   z-index: 0;
 }
+
 .hero.video picture {
   position: absolute;
   inset: 0;
@@ -1112,6 +1248,7 @@ color: inherit;
   width: 100%;
   height: 100%;
 }
+
 .hero.video img {
   position: absolute;
   inset: 0;
@@ -1121,12 +1258,14 @@ color: inherit;
   border-radius: 0;
   max-height: unset;
 }
+
 .hero.video .hero-video-bg {
   position: absolute;
   inset: 0;
   overflow: hidden;
   z-index: 1;
 }
+
 .hero.video .hero-video-bg .video-js,
 .hero.video .hero-video-bg video {
   position: absolute;
@@ -1139,6 +1278,7 @@ color: inherit;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+
 .hero.video::after {
   display: block;
   content: '';
@@ -1148,6 +1288,7 @@ color: inherit;
   z-index: 2;
   pointer-events: none;
 }
+
 .hero.video > :where(div):nth-child(2) {
   position: relative;
   z-index: 3;
@@ -1157,24 +1298,24 @@ color: inherit;
   padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
   max-width: var(--hero-content-max-width-full);
 }
+
 .hero.video .hero-text-container {
   display: block;
 }
-.hero.video h1 { color: var(--color-text-on-dark, #fff); }
+.hero.video h1 { color: var(--color-text-on-dark, var(--color-white)); }
+
 .hero.video p {
   color: var(--color-text-on-dark-90);
 }
+
 .hero.video .hero-eyebrow {
   color: var(--color-text-on-dark-80);
 }
+
 /* Mobile: hide video, show fallback poster image only */
 @media (width < 744px) {
   .hero.video {
     min-height: var(--hero-video-min-height-mobile);
-  }
-
-  .hero.video .hero-video-bg {
-    display: none;
   }
 
   .hero.video > :where(div):nth-child(2) {
@@ -1182,6 +1323,7 @@ color: inherit;
     padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
   }
 }
+
 @media (width >= 1024px) {
   .hero.video {
     min-height: var(--hero-video-min-height-desktop);
@@ -1191,6 +1333,7 @@ color: inherit;
     max-width: var(--hero-content-max-width-full-desktop);
   }
 }
+
 /* =====================================================
    Hero Solid Variant — solid brand color background, no image required
    Authoring: use block name "Hero (solid)"
@@ -1203,6 +1346,7 @@ color: inherit;
   align-items: center;
   background-color: var(--hero-solid-bg, var(--color-brand-primary, var(--hero-solid-bg-fallback)));
 }
+
 .hero.solid > :where(div):first-child {
   position: relative;
   min-height: unset;
@@ -1211,12 +1355,15 @@ color: inherit;
   display: flex;
   align-items: center;
 }
+
 .hero.solid > :where(div):first-child:empty {
   display: none;
 }
+
 .hero.solid picture {
   display: block;
 }
+
 .hero.solid img {
   max-height: var(--hero-solid-img-max-height);
   width: auto;
@@ -1226,6 +1373,7 @@ color: inherit;
   position: static;
   height: auto;
 }
+
 .hero.solid > :where(div):nth-child(2) {
   background: transparent;
   border-radius: 0;
@@ -1233,19 +1381,24 @@ color: inherit;
   padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
   max-width: var(--hero-content-max-width-solid);
 }
+
 .hero.solid .hero-text-container {
   display: block;
 }
+
 .hero.solid h1,
 .hero.solid h2 {
-  color: var(--color-text-on-dark, #fff);
+  color: var(--color-text-on-dark, var(--color-white));
 }
+
 .hero.solid p {
   color: var(--color-text-on-dark-90);
 }
+
 .hero.solid .hero-eyebrow {
   color: var(--color-text-on-dark-80);
 }
+
 @media (width < 744px) {
   .hero.solid {
     min-height: var(--hero-solid-min-height-mobile);
@@ -1261,11 +1414,13 @@ color: inherit;
     padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
   }
 }
+
 @media (width >= 1024px) {
   .hero.solid {
     min-height: var(--hero-solid-min-height-desktop);
   }
 }
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -1277,11 +1432,13 @@ color: inherit;
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
+
 /* Media Query Breakpoints (min-width, mobile-first)
    Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
 @custom-media --bp-tablet (min-width: 744px);
 @custom-media --bp-desktop (min-width: 1024px);
 @custom-media --bp-wide (min-width: 1440px);
+
 :root {
 /* -----------------------------------------------------------
    PX → REM Conversion Helper
@@ -1330,6 +1487,12 @@ color: inherit;
   --color-charcoal: #25282a;
   --color-text-compliance: #6c757d;
   --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-border-light: #ddd;
+  --color-focus: var(--link-color);
+  --color-white-85: rgb(255 255 255 / 85%);
+  --color-shadow-sm: rgb(0 0 0 / 12%);
+  --color-gray-400: #999;
 
   /* Background Colors for Style Field Values */
   --color-white: #fff;
@@ -1354,6 +1517,8 @@ color: inherit;
   --error-color: #cf451c;
   --warning-color: #f2dede;
   --success-color: #2f9ece;
+  --color-warning-bg: #fff4c2;
+  --color-warning-border: #fc3;
 
   /* Fonts */
   --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
@@ -1420,12 +1585,15 @@ color: inherit;
   --space-token-xxxl: calc(104 * var(--px-to-rem));
 
   /* Generalized Spacing Tokens */
+  --spacing-01: 0.1rem;
   --spacing-02: 0.2rem;
   --spacing-03: 0.3rem;
   --spacing-04: 0.4rem;
   --spacing-05: 0.5rem;
   --spacing-06: 0.6rem;
+  --spacing-07: 0.7rem;
   --spacing-08: 0.8rem;
+  --spacing-09: 0.9rem;
   --spacing-10: 1rem;
   --spacing-12: 1.2rem;
   --spacing-14: 1.4rem;
@@ -1441,7 +1609,9 @@ color: inherit;
   --spacing-26: 2.6rem;
   --spacing-27: 2.7rem;
   --spacing-275: 2.75rem;
+  --spacing-28: 2.8rem;
   --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
   --spacing-32: 3.2rem;
   --spacing-34: 3.4rem;
   --spacing-35: 3.5rem;
@@ -1451,6 +1621,7 @@ color: inherit;
   --spacing-40: 4rem;
   --spacing-42: 4.2rem;
   --spacing-44: 4.4rem;
+  --spacing-45: 4.5rem;
   --spacing-46: 4.6rem;
   --spacing-48: 4.8rem;
   --spacing-50: 5rem;
@@ -1476,9 +1647,11 @@ color: inherit;
   --spacing-168: 16.8rem;
   --spacing-180: 18rem;
   --spacing-200: 20rem;
+  --spacing-225: 22.5rem;
   --spacing-255: 25.5rem;
   --spacing-288: 28.8rem;
   --spacing-300: 30rem;
+  --spacing-full: 100%;
   --spacing-320: 32rem;
   --spacing-375: 37.5rem;
   --spacing-420: 42rem;
@@ -1510,6 +1683,12 @@ color: inherit;
   /* Border Radius */
   --border-radius-base: 0.4rem;
   --border-radius-m: 0.8rem;
+  --border-radius-l: 1.6rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
 
   /* z-index */
   --z-index-negative: -1;
@@ -1518,11 +1697,18 @@ color: inherit;
   --z-index-2 : 2;
   --z-index-3 : 3;
   --z-index-10: 10;
+  --z-index-60: 60;
+
+  /* Opacity */
+  --opacity-full: 1;
+  --z-index-anchor-nav: 100;
+  --z-index-safety-bar: 500;
 
   /* Flex/Grid order */
   --order-first: -1;
   --order-0: 0;
   --order-1: 1;
+  --order-2: 2;
   --order-unset: unset;
 
   /* Layout */
@@ -1530,6 +1716,7 @@ color: inherit;
   --content-max-width-narrow: 110rem;
   --content-max-width-medium: 90rem;
   --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
   --icon-size: 2.4rem;
 
   /* Font Weight */
@@ -1540,6 +1727,7 @@ color: inherit;
   --font-weight-650: 650;
   --font-weight-700: 700;
   --font-weight-800: 800;
+  --font-weight-900: 900;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -1565,6 +1753,7 @@ color: inherit;
   --line-height-26: 2.6rem;
   --line-height-28: 2.8rem;
   --line-height-30: 3rem;
+  --line-height-31-2: 3.12rem;
   --line-height-32: 3.2rem;
   --line-height-34: 3.4rem;
   --line-height-35: 3.5rem;
@@ -1574,13 +1763,20 @@ color: inherit;
   --line-height-68: 6.8rem;
   --line-height-64: 6.4rem;
   --line-height-84: 8.4rem;
+  --line-height-icon: 0.55;
   --line-height-tight: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.6;
 
   /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
   --transition-duration-fast: 0.2s;
   --transition-duration-medium: 0.3s;
+  --transition-duration-slow: 0.8s;
   --transition-easing-standard: ease;
   --transition-easing-emphasized: ease-out;
+  --transition-easing-in-out: ease-in-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-safety-bar: 0 -2px 8px rgb(0 0 0 / 10%);
   --surface-background-default: var(--background-color);
   --border-subtle: var(--separator-height-1) solid var(--container-border-color);
   --text-subtle: var(--color-gray-dark);
@@ -1675,6 +1871,7 @@ color: inherit;
   --cdp-max-width: 1180px;
   --cdp-letter-spacing-title: 0.02em;
 }
+
 @media (--bp-tablet) {
   :root {
     --border-top-radius: 6.4rem;
@@ -1682,6 +1879,7 @@ color: inherit;
     --hero-tall-image-container-height: 41.6rem;
   }
 }
+
 @media (--bp-desktop) {
   :root {
     --border-top-radius: 8rem;
@@ -1689,6 +1887,7 @@ color: inherit;
     --hero-tall-image-container-height: 60.8rem;
   }
 }
+
 /* ============================================================
    LINZESS DTC — Brand Token Overrides
    Source: linzess.com (Platform C)
@@ -1734,8 +1933,8 @@ color: inherit;
   --color-border-muted: #b8b8b8;
 
   /* ---- Color: Overlay ---- */
-  --color-overlay-dark: rgba(0, 0, 0, 0.8);
-  --color-overlay-muted: rgba(115, 133, 159, 0.75);
+  --color-overlay-dark: rgb(0 0 0 / 80%);
+  --color-overlay-muted: rgb(115 133 159 / 75%);
 
   /* ---- Font: Family ---- */
   --body-font-family: 'Lato', sans-serif;
@@ -1834,17 +2033,77 @@ color: inherit;
   --modal-close-font-size: 1.25rem;
 
   /* ---- Shadow ---- */
-  --shadow-safety-bar: rgba(0, 0, 0, 0.25) 0 0 10px 0;
+  --shadow-safety-bar: rgb(0 0 0 / 25%) 0 0 10px 0;
+  --shadow-section-nav-stuck: 0 4px 12px rgb(0 0 0 / 25%);
 
   /* ---- Gradient ---- */
-  --gradient-hero-overlay: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0));
-  --gradient-section-fade: linear-gradient(-180deg, #fff 88%, rgb(115, 133, 159) 100%);
+  --gradient-hero-overlay: linear-gradient(rgb(0 0 0 / 80%), rgb(255 255 255 / 0%));
+  --gradient-section-fade: linear-gradient(-180deg, #fff 88%, rgb(115 133 159) 100%);
   --gradient-hero-nav-wrapper: linear-gradient(180deg, rgb(40 26 77 / 80%) 0%, rgb(40 26 77 / 42%) 58%, rgb(40 26 77 / 0%) 100%);
   --gradient-hero-overlay-dual: linear-gradient(90deg, rgb(33 20 53 / 72%) 0%, rgb(33 20 53 / 36%) 26%, rgb(33 20 53 / 0%) 58%),
     linear-gradient(180deg, rgb(26 15 44 / 48%) 0%, rgb(26 15 44 / 18%) 18%, rgb(26 15 44 / 0%) 42%);
 
   /* ---- Transition ---- */
   --transition-button: background 0.3s ease-in-out, border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* ---- Opacity ---- */
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.4;
+
+  /* ---- Header block ---- */
+  --color-nav-dark: #231d1d;
+  --header-logo-width: 14.8rem;
+  --header-logo-height: 7.2rem;
+  --header-logo-filter: brightness(0) invert(1);
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 20.2rem;
+  --header-nav-line-height: 1.2;
+  --header-nav-letter-spacing: 0.05em;
+  --header-eyebrow-bg: var(--linz-purple);
+  --header-eyebrow-line-height: 1.4;
+  --header-utility-height: 28px;
+  --header-nav-separator: rgb(255 255 255 / 20%);
+  --header-utility-border: rgb(247 248 245 / 20%);
+  --header-scroll-bg: rgb(35 29 29 / 95%);
+  --header-eyebrow-gradient: linear-gradient(180deg, rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --header-cta-margin-top: -1rem;
+  --header-nav-max-width: 100rem;
+  --header-chevron-size: var(--spacing-20);
+  --header-hamburger-bar-width: 3.1rem;
+  --header-hamburger-transform-origin: 1.1rem 0.1rem;
+  --header-nav-mobile-padding: var(--spacing-15) var(--spacing-20);
+  --header-nav-item-line-height-mobile: 5.8rem;
+  --header-nav-item-before-top: 30%;
+  --header-mobile-cta-width: 12.1rem;
+  --header-submenu-item-min-height: 5rem;
+  --header-submenu-item-line-height: 5rem;
+  --header-submenu-link-font-size: 1.28rem;
+  --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
+  --icon-svg-home: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEwIDIwdi02aDR2Nmg1di04aDNMMTIgMyAyIDEyaDN2OHoiLz48L3N2Zz4=");
+
+  /* ---- Header: No-hero arc ---- */
+  --header-z-index: 10;
+  --header-overlay-gradient: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --no-hero-arc-height: 80px;
+  --no-hero-h1-font-size: 40px;
+  --no-hero-h1-line-height: 36px;
+  --no-hero-h1-margin-bottom: 40px;
+  --no-hero-h1-font-size-mobile: 28px;
+  --no-hero-h1-line-height-mobile: 30px;
+  --no-hero-divider-width: 64px;
+  --no-hero-divider-height: var(--hero-divider-height);
+  --no-hero-divider-margin-bottom: 24px;
+
+  /* ---- Cards Grid Block ---- */
+  --linz-heading2-font-size: var(--font-size-h2);
+  --linz-body-font-size: var(--font-size-body);
+
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
 
   /* ---- Hero: Linzess-specific ---- */
   --hero-behind-nav-min-height: 52rem;
@@ -1882,9 +2141,11 @@ color: inherit;
   --hero-mobile-curve-height: 3.8rem;
   --hero-mobile-min-height: 420px;
 }
+
 /* ============================================================
    LINZESS DTC — Hero Block Overrides (XWalk/UE preview)
    ============================================================ */
+
 /* Heading: Bebas Neue, uppercase, purple */
 .hero h1 {
   color: var(--color-text-heading);
@@ -1893,19 +2154,23 @@ color: inherit;
   line-height: var(--line-height-h1-hero);
   text-transform: uppercase;
 }
+
 .hero h2,
 .hero h3 {
   font-family: var(--heading-font-family);
   text-transform: uppercase;
 }
+
 /* Body: Lato */
 .hero p {
   font-family: var(--body-font-family);
 }
+
 /* Profile band: purple */
 .hero.profile > :where(div):first-child {
   background-color: var(--color-brand-primary);
 }
+
 /* Profile text panel: white text on purple band */
 .hero.profile h1,
 .hero.profile h2,
@@ -1913,32 +2178,39 @@ color: inherit;
 .hero.profile p {
   color: var(--color-text-on-dark);
 }
+
 .hero.profile .hero-breadcrumbs :where(ol li),
 .hero.profile .hero-breadcrumbs :where(li a) {
   color: var(--color-text-on-dark);
 }
+
 /* CTA button: orange accent */
 .hero :where(a).button {
   color: var(--color-brand-accent);
 }
+
 .hero.landing :where(a).button,
 .hero.full :where(a).button,
 .hero.video :where(a).button {
   color: var(--color-brand-accent);
 }
+
 /* Landing/full gradient: dark-to-transparent overlay from tokens */
 .hero.landing::after,
 .hero.full::after,
 .hero.video::after {
   background: var(--gradient-hero-overlay);
 }
+
 /* Solid background: purple */
 .hero.solid {
   background-color: var(--color-brand-primary);
 }
+
 .hero.solid :where(a).button {
   color: var(--color-brand-accent);
 }
+
 /* ============================================================
    LINZESS nav-overlap heroes
    Custom classes:
@@ -1950,26 +2222,31 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   background: var(--gradient-hero-nav-wrapper);
   box-shadow: none;
 }
+
 /* Nav hamburger: transparent bg + white text (lower specificity — must come first) */
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-hamburger button {
   background-color: transparent;
   color: var(--color-text-on-dark);
 }
+
 /* Nav text: white on dark overlay */
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-brand a,
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-sections > .default-content-wrapper > ul > li > button,
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-tools > .default-content-wrapper > ul > li > button {
   color: var(--color-text-on-dark);
 }
+
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-hamburger button > span {
   background: var(--color-text-on-dark);
 }
+
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after,
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus::after,
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus-visible::after,
 body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button[aria-expanded='true']::after {
   background: var(--color-brand-accent);
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
   position: relative;
   display: flex;
@@ -1979,9 +2256,11 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   overflow: hidden;
   min-height: var(--hero-behind-nav-min-height);
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):has(> div:empty) {
   display: none;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child {
   position: relative;
   inset: 0;
@@ -1990,11 +2269,13 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   padding: 0;
   z-index: 0;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child picture,
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child img {
   width: 100%;
   height: 100%;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child img {
   position: relative;
   inset: 0;
@@ -2002,6 +2283,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   border-radius: 0;
   max-height: none;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)::after {
   display: block;
   content: '';
@@ -2011,6 +2293,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   z-index: 1;
   pointer-events: none;
 }
+
 /* h1/h2/h3/p: white text on dark overlay — comes before more specific p rules */
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h1,
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h2,
@@ -2018,17 +2301,18 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) p {
   color: var(--color-text-on-dark);
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
   margin: 0 0 var(--spacing-20);
   font-size: var(--font-size-h1-hero);
   font-weight: var(--font-weight-body);
   line-height: 90%;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) p {
   font-size: var(--hero-body-font-size);
   line-height: var(--hero-body-line-height);
 }
-/* stylelint-disable-next-line no-descending-specificity */
 /* stylelint-disable-next-line selector-not-notation */
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container):not(:first-child):has(> div > p) p {
   margin: 0;
@@ -2050,6 +2334,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   width: var(--spacing-64);
   height: var(--hero-divider-height);
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
   position: relative;
   z-index: 2;
@@ -2060,10 +2345,12 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   background: transparent;
   max-width: none;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
   grid-column: auto;
   max-width: var(--hero-cmp-max-width);
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow {
   display: inline-block;
   padding: 0;
@@ -2076,6 +2363,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   line-height: var(--hero-eyebrow-line-height);
   text-transform: capitalize;
 }
+
 .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-image-caption {
   position: absolute;
   right: 0;
@@ -2095,24 +2383,98 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   text-align: right;
   text-shadow: var(--hero-caption-text-shadow);
 }
+
 .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
   min-height: var(--hero-cta-min-height);
 }
+
 .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
   padding-bottom: var(--hero-cta-padding-bottom);
 }
+
 .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .cmp-container-x-large {
   max-width: var(--hero-cta-text-max-width);
 }
+
 .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) h1 {
   font-size: var(--font-size-40);
-  line-height: 0.95;
+  line-height: 0.9;
+  letter-spacing: 0;
   max-width: none;
   width: 100%;
 }
+
+/* Resources hero headline wraps to two lines like live
+   ("Helpful Information To Help" / "You Get Started"). */
+@media (width >= 1024px) {
+  .hero.resources-hero h1 {
+    max-width: 400px;
+    width: auto;
+  }
+}
+
+/* Hero band height tracks the active image's aspect-ratio (object-fit:fill) so
+   the photo scales fluidly and never over-zooms — instead of a fixed min-height.
+   The hero block (mergeMobileImage) swaps the picture source at 744px: mobile
+   image (750x738) below, desktop image (2048x874) at/above. Match live. */
+@media (width < 744px) {
+  .hero.linzess-behind-nav-linzess-editorial-hero {
+    min-height: 0;
+    aspect-ratio: 750 / 738;
+  }
+
+  .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child picture,
+  .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child img {
+    min-height: 0;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  /* Live mobile headline is 32px/30px (not the 40px desktop size). */
+  .hero.linzess-behind-nav-linzess-editorial-hero h1 {
+    font-size: 32px;
+    line-height: 30px;
+  }
+}
+
+/* Tablet (744–1023): the migrated content only ships the wide desktop image,
+   so the 2048/874 ratio would squash the band to ~328px. Live keeps a tall
+   hero (~756px) here, so use a fixed tall min-height and crop the wide image
+   with object-fit:cover instead of stretching it. */
+@media (width >= 744px) and (width < 1024px) {
+  /* .section.hero-container prefix raises specificity above the later
+     @media(>=744px) rules that set min-height:auto on these heroes. */
+  .section.hero-container .hero.linzess-behind-nav-linzess-editorial-hero {
+    min-height: 756px;
+    aspect-ratio: auto;
+  }
+
+  .section.hero-container .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child picture,
+  .section.hero-container .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child img {
+    min-height: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero.linzess-behind-nav-linzess-editorial-hero {
+    min-height: 0;
+    aspect-ratio: 2048 / 874;
+  }
+
+  .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child picture,
+  .hero.linzess-behind-nav-linzess-editorial-hero > div:first-child img {
+    min-height: 0;
+    height: 100%;
+    object-fit: fill;
+  }
+}
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) {
   min-height: auto;
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
   position: absolute;
   left: -5%;
@@ -2124,25 +2486,30 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   content: '';
 }
-/* stylelint-disable-next-line no-descending-specificity */
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) p {
   margin-top: 1.6rem;
   font-size: var(--font-size-legal-large);
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
   font-size: var(--font-size-40);
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
   width: min(100%, 72rem);
   padding-bottom: 7.6rem;
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
   max-width: var(--hero-cta-text-max-width-tablet);
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .button-container {
   padding-bottom: 0;
   margin-top: 0;
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button {
   min-width: var(--hero-cta-btn-min-width);
   padding: var(--hero-cta-btn-padding);
@@ -2157,6 +2524,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   text-transform: none;
   margin-top: 0;
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button::after {
   display: inline-block;
   margin-left: var(--hero-cta-btn-arrow-margin);
@@ -2164,10 +2532,12 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   font-size: var(--hero-cta-btn-arrow-font-size);
   line-height: 1;
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button:hover {
   background: var(--color-brand-accent-hover);
   color: var(--color-brand-primary);
 }
+
 .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
   position: absolute;
   display: flex;
@@ -2178,6 +2548,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   padding: 0;
   margin-inline: auto;
 }
+
 .hero.linzess-behind-nav-linzess-editorial-hero .hero-eyebrow {
   position: relative;
   z-index: 2;
@@ -2194,6 +2565,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   font-weight: var(--font-weight-body);
   text-transform: uppercase;
 }
+
 .hero.linzess-behind-nav-linzess-editorial-hero p.hero-eyebrow::after {
   display: block;
   margin-top: var(--spacing-24);
@@ -2202,6 +2574,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
   width: var(--spacing-64);
   height: var(--hero-divider-height);
 }
+
 @media (width < 744px) {
   .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) picture img {
     min-height: var(--hero-mobile-min-height);
@@ -2218,6 +2591,25 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
     padding: var(--spacing-20);
     justify-content: center;
     height: 100%;
+  }
+
+  /* Editorial hero: live positions the eyebrow + headline in the lower half of
+     the banner so they sit BELOW the overlaid logo (header is ~152px tall).
+     Centering put the eyebrow at ~94px, overlapping the logo. Anchor the copy
+     to the bottom and clear the header with top padding. */
+  .hero.linzess-behind-nav-linzess-editorial-hero .hero-text-container {
+    justify-content: flex-end;
+    padding-top: 152px;
+    padding-bottom: var(--spacing-40);
+  }
+
+  /* Homepage CTA hero: same overlap as the editorial hero — vertically centered
+     copy collided with the overlaid logo. Anchor copy to the bottom and clear
+     the ~152px header. */
+  .hero.linzess-behind-nav-linzess-cta-hero .hero-text-container {
+    justify-content: flex-end;
+    padding-top: 152px;
+    padding-bottom: var(--spacing-40);
   }
 
   .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
@@ -2238,6 +2630,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
     font-size: var(--font-size-body);
   }
 }
+
 @media (width >= 744px) {
   .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
     min-height: auto;
@@ -2273,6 +2666,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
     display: none;
   }
 }
+
 @media (width >= 1024px) {
   .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
     min-height: var(--hero-behind-nav-min-height-desktop);
@@ -2344,5 +2738,59 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
 
   .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
     display: block;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HOMEPAGE HERO FIX — match live linzess.com computed styles
+   Desktop H1: 56px / line-height 50.4px (live source getComputedStyle)
+   Desktop eyebrow: 16px / weight 400 / no uppercase (live source)
+   Mobile H1: 40px / 36px (live source)
+   Mobile eyebrow: 14px / weight 400 / no uppercase (live source)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Desktop (>= 1024px): H1 = 56px to match live; widen text container to ~960px */
+@media (width >= 1024px) {
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+    font-size: 56px;
+    line-height: 50.4px;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* All viewports: eyebrow fix — sentence case, 16px, normal weight */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* Override the generic p rule that forces 12px/800/uppercase on eyebrow divs */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* Hide divider after eyebrow on CTA hero (live homepage has no divider on eyebrow) */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p::after {
+  display: none;
+}
+
+@media (width < 744px) {
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+    font-size: 40px;
+    line-height: 36px;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow,
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
   }
 }

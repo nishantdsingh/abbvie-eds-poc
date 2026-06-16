@@ -317,7 +317,11 @@
   --color-text-compliance: #6c757d;
   --color-border-tabs: #dde1e6;
   --color-border: #e0e0e0;
+  --color-border-light: #ddd;
   --color-focus: var(--link-color);
+  --color-white-85: rgb(255 255 255 / 85%);
+  --color-shadow-sm: rgb(0 0 0 / 12%);
+  --color-gray-400: #999;
 
   /* Background Colors for Style Field Values */
   --color-white: #fff;
@@ -342,6 +346,8 @@
   --error-color: #cf451c;
   --warning-color: #f2dede;
   --success-color: #2f9ece;
+  --color-warning-bg: #fff4c2;
+  --color-warning-border: #fc3;
 
   /* Fonts */
   --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
@@ -408,12 +414,15 @@
   --space-token-xxxl: calc(104 * var(--px-to-rem));
 
   /* Generalized Spacing Tokens */
+  --spacing-01: 0.1rem;
   --spacing-02: 0.2rem;
   --spacing-03: 0.3rem;
   --spacing-04: 0.4rem;
   --spacing-05: 0.5rem;
   --spacing-06: 0.6rem;
+  --spacing-07: 0.7rem;
   --spacing-08: 0.8rem;
+  --spacing-09: 0.9rem;
   --spacing-10: 1rem;
   --spacing-12: 1.2rem;
   --spacing-14: 1.4rem;
@@ -429,7 +438,9 @@
   --spacing-26: 2.6rem;
   --spacing-27: 2.7rem;
   --spacing-275: 2.75rem;
+  --spacing-28: 2.8rem;
   --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
   --spacing-32: 3.2rem;
   --spacing-34: 3.4rem;
   --spacing-35: 3.5rem;
@@ -439,6 +450,7 @@
   --spacing-40: 4rem;
   --spacing-42: 4.2rem;
   --spacing-44: 4.4rem;
+  --spacing-45: 4.5rem;
   --spacing-46: 4.6rem;
   --spacing-48: 4.8rem;
   --spacing-50: 5rem;
@@ -464,9 +476,11 @@
   --spacing-168: 16.8rem;
   --spacing-180: 18rem;
   --spacing-200: 20rem;
+  --spacing-225: 22.5rem;
   --spacing-255: 25.5rem;
   --spacing-288: 28.8rem;
   --spacing-300: 30rem;
+  --spacing-full: 100%;
   --spacing-320: 32rem;
   --spacing-375: 37.5rem;
   --spacing-420: 42rem;
@@ -498,6 +512,7 @@
   /* Border Radius */
   --border-radius-base: 0.4rem;
   --border-radius-m: 0.8rem;
+  --border-radius-l: 1.6rem;
 
   /* Border Width */
   --border-width-thin: 1px;
@@ -511,12 +526,18 @@
   --z-index-2 : 2;
   --z-index-3 : 3;
   --z-index-10: 10;
+  --z-index-60: 60;
+
+  /* Opacity */
+  --opacity-full: 1;
   --z-index-anchor-nav: 100;
+  --z-index-safety-bar: 500;
 
   /* Flex/Grid order */
   --order-first: -1;
   --order-0: 0;
   --order-1: 1;
+  --order-2: 2;
   --order-unset: unset;
 
   /* Layout */
@@ -535,6 +556,7 @@
   --font-weight-650: 650;
   --font-weight-700: 700;
   --font-weight-800: 800;
+  --font-weight-900: 900;
   --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
@@ -560,6 +582,7 @@
   --line-height-26: 2.6rem;
   --line-height-28: 2.8rem;
   --line-height-30: 3rem;
+  --line-height-31-2: 3.12rem;
   --line-height-32: 3.2rem;
   --line-height-34: 3.4rem;
   --line-height-35: 3.5rem;
@@ -569,14 +592,20 @@
   --line-height-68: 6.8rem;
   --line-height-64: 6.4rem;
   --line-height-84: 8.4rem;
+  --line-height-icon: 0.55;
   --line-height-tight: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.6;
 
   /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
   --transition-duration-fast: 0.2s;
   --transition-duration-medium: 0.3s;
+  --transition-duration-slow: 0.8s;
   --transition-easing-standard: ease;
   --transition-easing-emphasized: ease-out;
+  --transition-easing-in-out: ease-in-out;
   --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-safety-bar: 0 -2px 8px rgb(0 0 0 / 10%);
   --surface-background-default: var(--background-color);
   --border-subtle: var(--separator-height-1) solid var(--container-border-color);
   --text-subtle: var(--color-gray-dark);
@@ -705,6 +734,7 @@
 
   /* ---- Color: Brand Accent ---- */
   --color-brand-accent: #faa633;
+  --color-brand-accent-hover: #f2a94b;
 
   /* ---- Color: Named Palette (from CSS vars) ---- */
   --linz-dark-purple: #422e83;
@@ -839,9 +869,106 @@
   /* ---- Gradient ---- */
   --gradient-hero-overlay: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0));
   --gradient-section-fade: linear-gradient(-180deg, #fff 88%, rgb(115, 133, 159) 100%);
+  --gradient-hero-nav-wrapper: linear-gradient(180deg, rgb(40 26 77 / 80%) 0%, rgb(40 26 77 / 42%) 58%, rgb(40 26 77 / 0%) 100%);
+  --gradient-hero-overlay-dual: linear-gradient(90deg, rgb(33 20 53 / 72%) 0%, rgb(33 20 53 / 36%) 26%, rgb(33 20 53 / 0%) 58%),
+    linear-gradient(180deg, rgb(26 15 44 / 48%) 0%, rgb(26 15 44 / 18%) 18%, rgb(26 15 44 / 0%) 42%);
 
   /* ---- Transition ---- */
   --transition-button: background 0.3s ease-in-out, border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* ---- Opacity ---- */
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.4;
+
+  /* ---- Header block ---- */
+  --color-nav-dark: #231d1d;
+  --header-logo-width: 14.8rem;
+  --header-logo-height: 7.2rem;
+  --header-logo-filter: brightness(0) invert(1);
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 20.2rem;
+  --header-nav-line-height: 1.2;
+  --header-nav-letter-spacing: 0.05em;
+  --header-eyebrow-bg: var(--linz-purple);
+  --header-eyebrow-line-height: 1.4;
+  --header-utility-height: 28px;
+  --header-nav-separator: rgb(255 255 255 / 20%);
+  --header-utility-border: rgb(247 248 245 / 20%);
+  --header-scroll-bg: rgb(35 29 29 / 95%);
+  --header-eyebrow-gradient: linear-gradient(180deg, rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --header-cta-margin-top: -1rem;
+  --header-nav-max-width: 100rem;
+  --header-chevron-size: var(--spacing-20);
+  --header-hamburger-bar-width: 3.1rem;
+  --header-hamburger-transform-origin: 1.1rem 0.1rem;
+  --header-nav-mobile-padding: var(--spacing-15) var(--spacing-20);
+  --header-nav-item-line-height-mobile: 5.8rem;
+  --header-nav-item-before-top: 30%;
+  --header-mobile-cta-width: 12.1rem;
+  --header-submenu-item-min-height: 5rem;
+  --header-submenu-item-line-height: 5rem;
+  --header-submenu-link-font-size: 1.28rem;
+  --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
+  --icon-svg-home: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEwIDIwdi02aDR2Nmg1di04aDNMMTIgMyAyIDEyaDN2OHoiLz48L3N2Zz4=");
+  /* ---- Header: No-hero arc ---- */
+  --header-z-index: 10;
+  --header-overlay-gradient: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --no-hero-arc-height: 80px;
+  --no-hero-h1-font-size: 40px;
+  --no-hero-h1-line-height: 36px;
+  --no-hero-h1-margin-bottom: 40px;
+  --no-hero-h1-font-size-mobile: 28px;
+  --no-hero-h1-line-height-mobile: 30px;
+  --no-hero-divider-width: 64px;
+  --no-hero-divider-height: var(--hero-divider-height);
+  --no-hero-divider-margin-bottom: 24px;
+
+  /* ---- Cards Grid Block ---- */
+  --linz-heading2-font-size: var(--font-size-h2);
+  --linz-body-font-size: var(--font-size-body);
+
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
+
+  /* ---- Hero: Linzess-specific ---- */
+  --hero-behind-nav-min-height: 52rem;
+  --hero-behind-nav-min-height-desktop: 62rem;
+  --hero-text-max-width: 64rem;
+  --hero-text-max-width-tablet: 72rem;
+  --hero-text-max-width-desktop: 92rem;
+  --hero-cmp-max-width: 34rem;
+  --hero-cmp-max-width-tablet: 38rem;
+  --hero-cmp-max-width-cta: 44rem;
+  --hero-eyebrow-margin-bottom: 2.4rem;
+  --hero-eyebrow-font-size: 1.2rem;
+  --hero-eyebrow-line-height: 1.2;
+  --hero-body-font-size: 1.8rem;
+  --hero-body-line-height: 1.35;
+  --hero-caption-max-width: 1000px;
+  --hero-caption-font-size: var(--font-size-legal-large);
+  --hero-caption-text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  --hero-caption-line-height: 1.2;
+  --hero-divider-height: 5px;
+  --hero-cta-min-height: 68.4rem;
+  --hero-cta-padding-bottom: 10.4rem;
+  --hero-cta-text-max-width: 40rem;
+  --hero-cta-text-max-width-tablet: 42rem;
+  --hero-cta-text-max-width-desktop: 44rem;
+  --hero-cta-curve-bottom: -6.4rem;
+  --hero-cta-curve-height: 12.8rem;
+  --hero-cta-btn-min-width: 23.8rem;
+  --hero-cta-btn-padding: 1.6rem 2.4rem;
+  --hero-cta-btn-font-size: 1.6rem;
+  --hero-cta-btn-line-height: 1.2;
+  --hero-cta-btn-arrow-margin: 1.4rem;
+  --hero-cta-btn-arrow-font-size: 1.8rem;
+  --hero-mobile-curve-bottom: -1.4rem;
+  --hero-mobile-curve-height: 3.8rem;
+  --hero-mobile-min-height: 420px;
 }
 
 /* LINZESS — Section Nav Brand Overrides
@@ -860,13 +987,17 @@
   --section-nav-dropdown-bg: var(--background-color);
   --section-nav-dropdown-text: var(--linz-dark-purple);
   --section-nav-radius: var(--linz-rounded-corner);
-  --section-nav-mobile-width: 70vw;
+  --section-nav-mobile-width: 80vw;
 
   border-bottom: none;
   border-radius: var(--section-nav-radius);
   margin: 0 auto;
   overflow: visible;
   width: var(--section-nav-mobile-width);
+
+  /* Mobile pill: dark-purple bar background (matches live). Desktop (>=744px)
+     re-asserts its own background below. */
+  background-color: var(--section-nav-bg);
 }
 
 /* ── Links (mobile base) ─────────────────────────────────────────────── */
@@ -906,11 +1037,14 @@
 .section-nav.sticky.is-stuck {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  box-shadow: var(--shadow-section-nav-stuck);
+  box-shadow: none;
   left: 50%;
   right: auto;
   transform: translateX(-50%);
   width: var(--section-nav-mobile-width);
+  z-index: 5;
+  top: 0;
+  background-color: var(--section-nav-bg);
 }
 
 /* ── Mobile menu: hide hamburger + generic toggle label ──────────────── */
@@ -1048,12 +1182,15 @@
     width: 100%;
   }
 
-  /* Restore base full-width stuck behaviour (undo mobile transform/width) */
+  /* Restore base full-width stuck behaviour (undo mobile transform/width).
+     Keep the wrapper transparent — the purple pill lives on the nav element,
+     so the wrapper must NOT inherit the mobile stuck background. */
   .section-nav.sticky.is-stuck {
     left: 0;
     right: 0;
     transform: none;
     width: 100%;
+    background-color: transparent;
   }
 
   /* Content-width dark-purple pill, centered via margin: 0 auto from base */
@@ -1061,7 +1198,7 @@
     background-color: var(--section-nav-bg);
     border-radius: var(--section-nav-radius);
     max-width: fit-content;
-    padding: 0 var(--spacing-08);
+    padding: 0;
   }
 
   /* Flatten top corners of pill when stuck — live-site pattern */
@@ -1070,9 +1207,11 @@
     border-top-right-radius: 0;
   }
 
-  /* Links: 600 base weight */
+  /* Links: 16px / 800 base weight (matches live) / line-height 50px for vertical centering */
   .section-nav a {
-    font-weight: var(--font-weight-semibold);
+    font-size: 16px;
+    font-weight: var(--font-weight-extra-bold);
+    line-height: 50px;
     opacity: 1;
   }
 
@@ -1119,8 +1258,10 @@
     border-bottom: none;
     color: var(--section-nav-text);
     display: inline-block;
+    font-size: 16px;
     font-weight: var(--font-weight-semibold);
-    padding: var(--spacing-12) var(--spacing-24);
+    line-height: 50px;
+    padding: 0 25px;
     text-align: unset;
     width: auto;
   }

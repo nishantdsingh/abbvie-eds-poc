@@ -1,0 +1,2136 @@
+/* ============================================================
+   Columns Block
+   DOM: .columns > .columns-item > .columns-item-image | .columns-item-content
+   .columns lives inside .abbvie-container which sets:
+     - display: grid (12 cols)
+     - all descendant divs: grid-column: 1 / span 12
+   We override that on .columns-item so the columns grid places them naturally.
+   Variants: columns-offset, columns-flush, columns-reverse
+   ============================================================ */
+
+.columns {
+  --columns-gap: var(--spacing-24);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--columns-gap);
+}
+
+/* Override global .abbvie-container div { grid-column: 1 / span 12 } */
+
+.columns > .columns-item {
+  grid-column: auto;
+}
+
+.columns > .columns-item > .columns-item-image img {
+  width: 100%;
+  display: block;
+}
+
+/* reverse: swap column order on mobile only; desktop stacks naturally */
+
+.columns.columns-reverse > .columns-item:first-child {
+  order: 2;
+}
+
+.columns.columns-reverse > .columns-item:last-child {
+  order: 1;
+}
+
+/* Desktop: equal columns — count driven by number of authored column items */
+
+@media (width >= 768px) {
+  .columns {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  /* offset: first column 33%, second column 66% */
+  .columns.columns-offset {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* reverse: swap column order on mobile only; desktop stacks naturally */
+  .columns.columns-reverse > .columns-item:first-child {
+    order: 1;
+  }
+
+  .columns.columns-reverse > .columns-item:last-child {
+    order: 2;
+  }
+}
+
+/* flush: zero gap */
+
+.columns.columns-flush {
+  --columns-gap: var(--spacing-00);
+}
+
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+
+@custom-media --bp-tablet (min-width: 744px);
+
+@custom-media --bp-desktop (min-width: 1024px);
+
+@custom-media --bp-wide (min-width: 1440px);
+
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --color-black: #000;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-light: rgb(255 255 255 / 80%);
+  --color-charcoal: #25282a;
+  --color-text-compliance: #6c757d;
+  --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-border-light: #ddd;
+  --color-focus: var(--link-color);
+  --color-white-85: rgb(255 255 255 / 85%);
+  --color-shadow-sm: rgb(0 0 0 / 12%);
+  --color-gray-400: #999;
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-text-on-dark: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+  --color-warning-bg: #fff4c2;
+  --color-warning-border: #fc3;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-01: 0.1rem;
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-07: 0.7rem;
+  --spacing-08: 0.8rem;
+  --spacing-09: 0.9rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-28: 2.8rem;
+  --spacing-30: 3rem;
+  --spacing-31: 3.1rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-45: 4.5rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-200: 20rem;
+  --spacing-225: 22.5rem;
+  --spacing-255: 25.5rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-full: 100%;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+  --border-radius-l: 1.6rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+  --z-index-60: 60;
+
+  /* Opacity */
+  --opacity-full: 1;
+  --z-index-anchor-nav: 100;
+  --z-index-safety-bar: 500;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-2: 2;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-900: 900;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-31-2: 3.12rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-icon: 0.55;
+  --line-height-tight: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.6;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-duration-slow: 0.8s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --transition-easing-in-out: ease-in-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-safety-bar: 0 -2px 8px rgb(0 0 0 / 10%);
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+
+  /* ---- Brand Explorer Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --be-color-bg: var(--background-color);
+  --be-color-text: var(--text-color);
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-color-bar-text: #fff;
+  --be-color-border: #d8d8d8;
+  --be-color-border-mobile: #e0e0e0;
+  --be-color-separator: #ccc;
+  --be-color-muted: #50535c;
+  --be-color-btn-hover: #1c2d49;
+  --be-color-btn-no-border: #555;
+  --be-color-btn-no-hover: #f5f5f5;
+  --be-color-overlay: rgb(0 0 0 / 60%);
+  --be-font-body: var(--body-font-family);
+  --be-font-size-body: 14px;
+  --be-font-size-small: 11px;
+  --be-font-size-bar: 0.9rem;
+  --be-font-weight-bold: var(--font-weight-700);
+  --be-font-weight-normal: var(--font-weight-400);
+  --be-line-height-body: 16px;
+  --be-line-height-small: 14px;
+
+  /* ---- Clinical Data Panel Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --cdp-color-text: var(--text-color);
+  --cdp-color-heading: var(--text-color);
+  --cdp-color-accent: var(--link-color);
+  --cdp-color-muted: var(--color-text-muted);
+  --cdp-color-border: var(--container-border-color);
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: var(--font-size-22);
+  --cdp-font-size-callout: var(--font-size-26);
+  --cdp-font-size-body: var(--font-size-14);
+  --cdp-font-size-small: var(--font-size-13);
+  --cdp-font-weight-bold: var(--font-weight-700);
+  --cdp-font-weight-normal: var(--font-weight-400);
+  --cdp-line-height-callout: var(--line-height-30);
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: var(--line-height-16);
+  --cdp-spacing-sm: var(--spacing-08);
+  --cdp-spacing-md: var(--spacing-16);
+  --cdp-spacing-lg: var(--spacing-24);
+  --cdp-max-width: 1180px;
+  --cdp-letter-spacing-title: 0.02em;
+}
+
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+
+/* ============================================================
+   LINZESS DTC — Brand Token Overrides
+   Source: linzess.com (Platform C)
+   Display Font: Bebas Neue
+   Body Font: Lato
+   Legal Font: BasicCommercialLT
+   ============================================================ */
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #422e83;
+  --color-brand-primary-dark: #321f63;
+  --color-brand-primary-light: #60579e;
+  --color-brand-primary-lighter: #d9d7f9;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #faa633;
+  --color-brand-accent-hover: #f2a94b;
+
+  /* ---- Color: Named Palette (from CSS vars) ---- */
+  --linz-dark-purple: #422e83;
+  --linz-purple: #60579e;
+  --linz-light-purple: #d9d7f9;
+  --linz-orange: #faa633;
+  --linz-grey: #4d4d4f;
+  --linz-off-white: #f4f6fb;
+  --linz-white: #fff;
+  --linz-black: #000;
+
+  /* ---- Color: Text ---- */
+  --text-color: #4d4d4f;
+  --color-text-heading: #422e83;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #555;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f4f6fb;
+  --color-background-footer: #422e83;
+  --color-background-footer-dark: #151b17;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #c2c2c2;
+  --color-border-muted: #b8b8b8;
+
+  /* ---- Color: Overlay ---- */
+  --color-overlay-dark: rgba(0, 0, 0, 0.8);
+  --color-overlay-muted: rgba(115, 133, 159, 0.75);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Lato', sans-serif;
+  --heading-font-family: 'Bebas Neue', sans-serif;
+  --heading-font-family-bold: 'Bebas Neue', sans-serif;
+  --font-family-legal: 'BasicCommercialLT-Roman', sans-serif;
+  --font-family-legal-bold: 'BasicCommercialLT-Black', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 14px;
+  --font-size-body-small: 12px;
+  --font-size-body-xs: 0.75rem;
+  --font-size-legal: 14px;
+  --font-size-legal-large: 16px;
+  --font-size-nav: 14.4px;
+  --font-size-footer: 14.4px;
+  --font-size-h1: 2rem;
+  --font-size-h1-hero: 56px;
+  --font-size-h2: 1.125rem;
+  --font-size-h2-hero: 32px;
+  --font-size-h3: 14px;
+  --font-size-h-xl: 2.0625rem;
+  --font-size-button: 14.4px;
+  --font-size-eyebrow: 0.75rem;
+  --font-size-md: 1.0625rem;
+  --font-size-quote: 1.3125rem;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: normal;
+  --line-height-h1: 1.875rem;
+  --line-height-h1-hero: 50.4px;
+  --line-height-h2-hero: 30px;
+  --line-height-legal: 16px;
+  --line-height-legal-large: 20px;
+
+  /* ---- Border: Radius ---- */
+  --linz-rounded-corner: 16px;
+  --linz-rounded-corner-sm: 8px;
+  --border-radius-button-primary: 16px;
+  --border-radius-safety-bar: 16px 16px 0 0;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #fff;
+  --button-primary-bg: #422e83;
+  --button-primary-border: transparent;
+  --button-primary-padding: 16px 59px 16px 24px;
+  --button-primary-font-size: 0.9rem;
+  --button-primary-font-weight: 800;
+  --button-primary-hover-bg: #f4f6fb;
+  --button-primary-hover-color: #422e83;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: #fff;
+  --button-secondary-color: #422e83;
+  --button-secondary-border: transparent;
+  --button-secondary-padding: 16px 59px 16px 24px;
+  --border-radius-button-secondary: 16px;
+  --button-secondary-hover-bg: #d9d7f9;
+  --button-secondary-hover-color: #422e83;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: #d9d7f9;
+  --button-tertiary-color: #422e83;
+  --button-tertiary-border: transparent;
+  --button-tertiary-padding: 12px 42px 12px 24px;
+  --button-tertiary-font-size: 12px;
+  --border-radius-button-tertiary: 16px;
+  --button-tertiary-hover-bg: #fff;
+  --button-tertiary-hover-color: #422e83;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #422e83;
+  --button-plain-weight: 800;
+  --button-plain-hover-color: #222;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #b8b8b8;
+  --toggle-bg-on: #422e83;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #422e83;
+
+  /* ---- Modal ---- */
+  --modal-dialog-max-width: 720px;
+  --modal-dialog-padding: 40px;
+  --modal-dialog-border: 1px solid var(--color-border-default);
+  --modal-dialog-border-radius: 0;
+  --modal-close-size: 28px;
+  --modal-close-font-size: 1.25rem;
+
+  /* ---- Shadow ---- */
+  --shadow-safety-bar: rgba(0, 0, 0, 0.25) 0 0 10px 0;
+  --shadow-section-nav-stuck: 0 4px 12px rgb(0 0 0 / 25%);
+
+  /* ---- Gradient ---- */
+  --gradient-hero-overlay: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0));
+  --gradient-section-fade: linear-gradient(-180deg, #fff 88%, rgb(115, 133, 159) 100%);
+  --gradient-hero-nav-wrapper: linear-gradient(180deg, rgb(40 26 77 / 80%) 0%, rgb(40 26 77 / 42%) 58%, rgb(40 26 77 / 0%) 100%);
+  --gradient-hero-overlay-dual: linear-gradient(90deg, rgb(33 20 53 / 72%) 0%, rgb(33 20 53 / 36%) 26%, rgb(33 20 53 / 0%) 58%),
+    linear-gradient(180deg, rgb(26 15 44 / 48%) 0%, rgb(26 15 44 / 18%) 18%, rgb(26 15 44 / 0%) 42%);
+
+  /* ---- Transition ---- */
+  --transition-button: background 0.3s ease-in-out, border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* ---- Opacity ---- */
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.4;
+
+  /* ---- Header block ---- */
+  --color-nav-dark: #231d1d;
+  --header-logo-width: 14.8rem;
+  --header-logo-height: 7.2rem;
+  --header-logo-filter: brightness(0) invert(1);
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 20.2rem;
+  --header-nav-line-height: 1.2;
+  --header-nav-letter-spacing: 0.05em;
+  --header-eyebrow-bg: var(--linz-purple);
+  --header-eyebrow-line-height: 1.4;
+  --header-utility-height: 28px;
+  --header-nav-separator: rgb(255 255 255 / 20%);
+  --header-utility-border: rgb(247 248 245 / 20%);
+  --header-scroll-bg: rgb(35 29 29 / 95%);
+  --header-eyebrow-gradient: linear-gradient(180deg, rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --header-cta-margin-top: -1rem;
+  --header-nav-max-width: 100rem;
+  --header-chevron-size: var(--spacing-20);
+  --header-hamburger-bar-width: 3.1rem;
+  --header-hamburger-transform-origin: 1.1rem 0.1rem;
+  --header-nav-mobile-padding: var(--spacing-15) var(--spacing-20);
+  --header-nav-item-line-height-mobile: 5.8rem;
+  --header-nav-item-before-top: 30%;
+  --header-mobile-cta-width: 12.1rem;
+  --header-submenu-item-min-height: 5rem;
+  --header-submenu-item-line-height: 5rem;
+  --header-submenu-link-font-size: 1.28rem;
+  --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
+  --icon-svg-home: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEwIDIwdi02aDR2Nmg1di04aDNMMTIgMyAyIDEyaDN2OHoiLz48L3N2Zz4=");
+  /* ---- Header: No-hero arc ---- */
+  --header-z-index: 10;
+  --header-overlay-gradient: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --no-hero-arc-height: 80px;
+  --no-hero-h1-font-size: 40px;
+  --no-hero-h1-line-height: 36px;
+  --no-hero-h1-margin-bottom: 40px;
+  --no-hero-h1-font-size-mobile: 28px;
+  --no-hero-h1-line-height-mobile: 30px;
+  --no-hero-divider-width: 64px;
+  --no-hero-divider-height: var(--hero-divider-height);
+  --no-hero-divider-margin-bottom: 24px;
+
+  /* ---- Cards Grid Block ---- */
+  --linz-heading2-font-size: var(--font-size-h2);
+  --linz-body-font-size: var(--font-size-body);
+
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
+
+  /* ---- Hero: Linzess-specific ---- */
+  --hero-behind-nav-min-height: 52rem;
+  --hero-behind-nav-min-height-desktop: 62rem;
+  --hero-text-max-width: 64rem;
+  --hero-text-max-width-tablet: 72rem;
+  --hero-text-max-width-desktop: 92rem;
+  --hero-cmp-max-width: 34rem;
+  --hero-cmp-max-width-tablet: 38rem;
+  --hero-cmp-max-width-cta: 44rem;
+  --hero-eyebrow-margin-bottom: 2.4rem;
+  --hero-eyebrow-font-size: 1.2rem;
+  --hero-eyebrow-line-height: 1.2;
+  --hero-body-font-size: 1.8rem;
+  --hero-body-line-height: 1.35;
+  --hero-caption-max-width: 1000px;
+  --hero-caption-font-size: var(--font-size-legal-large);
+  --hero-caption-text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  --hero-caption-line-height: 1.2;
+  --hero-divider-height: 5px;
+  --hero-cta-min-height: 68.4rem;
+  --hero-cta-padding-bottom: 10.4rem;
+  --hero-cta-text-max-width: 40rem;
+  --hero-cta-text-max-width-tablet: 42rem;
+  --hero-cta-text-max-width-desktop: 44rem;
+  --hero-cta-curve-bottom: -6.4rem;
+  --hero-cta-curve-height: 12.8rem;
+  --hero-cta-btn-min-width: 23.8rem;
+  --hero-cta-btn-padding: 1.6rem 2.4rem;
+  --hero-cta-btn-font-size: 1.6rem;
+  --hero-cta-btn-line-height: 1.2;
+  --hero-cta-btn-arrow-margin: 1.4rem;
+  --hero-cta-btn-arrow-font-size: 1.8rem;
+  --hero-mobile-curve-bottom: -1.4rem;
+  --hero-mobile-curve-height: 3.8rem;
+  --hero-mobile-min-height: 420px;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROMO CARD: "Are You Eligible to Save on LINZESS?"
+   Variant: columns-homepage-promo (fallback: first columns after hero)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.columns.columns-homepage-promo,
+.hero-container + .columns-container .columns {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: var(--linz-light-purple);
+  border-radius: var(--linz-rounded-corner);
+  max-width: 802px;
+  min-height: 173px;
+  margin: 24px auto 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+  gap: 0;
+}
+
+.columns.columns-homepage-promo > .columns-item,
+.hero-container + .columns-container .columns > .columns-item {
+  padding: 0;
+  grid-column: auto;
+}
+
+.columns.columns-homepage-promo > .columns-item:not(:has(img, strong, a)),
+.hero-container + .columns-container .columns > .columns-item:not(:has(img, strong, a)) {
+  display: none;
+}
+
+.columns.columns-homepage-promo > .columns-item:has(.columns-item-image),
+.hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) {
+  flex: 0 0 50%;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Image visually on LEFT (order -1) */
+
+.columns.columns-homepage-promo > .columns-item .columns-item-image,
+.hero-container + .columns-container .columns > .columns-item .columns-item-image {
+  order: -1;
+}
+
+/* Make the columns-item a flex row when it has both image + content */
+
+.columns.columns-homepage-promo > .columns-item:has(.columns-item-image):has(.columns-item-content),
+.hero-container + .columns-container .columns > .columns-item:has(.columns-item-image):has(.columns-item-content) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.columns.columns-homepage-promo > .columns-item:has(.columns-item-image) picture,
+.hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) picture {
+  display: block;
+  height: 100%;
+}
+
+.columns.columns-homepage-promo > .columns-item:has(.columns-item-image) img,
+.hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.columns.columns-homepage-promo > .columns-item:has(.columns-item-content:not(:empty)),
+.hero-container + .columns-container .columns > .columns-item:has(.columns-item-content:not(:empty)) {
+  flex: 1;
+  padding: 0 16px;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.columns.columns-homepage-promo .columns-item-content p strong,
+.hero-container + .columns-container .columns .columns-item-content p strong {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-heading-size);
+  font-weight: 700;
+  color: var(--linz-dark-purple);
+}
+
+.columns.columns-homepage-promo .button-container a.button,
+.hero-container + .columns-container .columns .button-container a.button {
+  background-color: var(--linz-dark-purple);
+  color: var(--linz-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+/* Keep the dark-purple fill on hover/focus (a generic button:hover was turning
+   it white). */
+
+.columns.columns-homepage-promo .button-container a.button:hover,
+.columns.columns-homepage-promo .button-container a.button:focus,
+.hero-container + .columns-container .columns .button-container a.button:hover,
+.hero-container + .columns-container .columns .button-container a.button:focus {
+  background-color: var(--linz-dark-purple);
+  color: var(--linz-white);
+}
+
+.columns.columns-homepage-promo .button-container a.button::after,
+.hero-container + .columns-container .columns .button-container a.button::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+/* Desktop: match live — left-aligned text, logo image contained (not stretched
+   to fill the card), and tighter content spacing so the card is ~173px tall
+   instead of being forced taller by cover-fit image + large margins. */
+
+@media (width >= 768px) {
+  /* Fixed-width image column (matches live's 322px) so the logo fills it and
+     the text sits closer to center rather than being pushed far right. */
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) {
+    flex: 0 0 322px;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image) img,
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    max-height: 180px;
+    display: block;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-content:not(:empty)),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1;
+    place-content: center flex-start;
+    text-align: left;
+  }
+
+  .columns.columns-homepage-promo .button-container a.button,
+  .hero-container + .columns-container .columns .button-container a.button {
+    padding-left: 32px;
+  }
+
+  .columns.columns-homepage-promo .columns-item-content,
+  .hero-container + .columns-container .columns .columns-item-content {
+    text-align: left;
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+
+  .columns.columns-homepage-promo .columns-item-content > p,
+  .hero-container + .columns-container .columns .columns-item-content > p {
+    margin-bottom: 0;
+  }
+
+  .columns.columns-homepage-promo .columns-item-content > p:first-child,
+  .hero-container + .columns-container .columns .columns-item-content > p:first-child {
+    margin-bottom: 16px;
+  }
+}
+
+/* Tablet (768-985): live's promo card is taller (~245px) with an 18px heading,
+   not the 24px desktop size. Match live's card height + image and dial the
+   heading back to 18px. */
+@media (width >= 768px) and (width < 986px) {
+  .columns.columns-homepage-promo,
+  .hero-container + .columns-container .columns {
+    min-height: 245px;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) {
+    flex: 0 0 361px;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image) img,
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) img {
+    max-height: 245px;
+  }
+
+  .columns.columns-homepage-promo .columns-item-content p strong,
+  .hero-container + .columns-container .columns .columns-item-content p strong {
+    font-size: 18px;
+  }
+}
+
+@media (width < 768px) {
+  .columns.columns-homepage-promo,
+  .hero-container + .columns-container .columns {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) {
+    flex: 1 1 100%;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image) img,
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image) img {
+    margin-top: 0;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-content:not(:empty)),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1 1 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* Tighten the content spacing so the stacked card is ~316px tall like live
+     (the 30px heading + button margins otherwise push it ~31px taller). */
+  .columns.columns-homepage-promo .columns-item-content > p:first-child,
+  .hero-container + .columns-container .columns .columns-item-content > p:first-child {
+    margin-bottom: 16px;
+  }
+
+  .columns.columns-homepage-promo .columns-item-content > p:last-child,
+  .hero-container + .columns-container .columns .columns-item-content > p:last-child {
+    margin-bottom: 10px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SAVINGS $30 CARD: "YOU COULD PAY AS LITTLE AS $30"
+   Variant: columns-homepage-savings (fallback: last columns section)
+   Same approach as promo card — light purple bg, image cover, overflow hidden
+   ═══════════════════════════════════════════════════════════════════ */
+
+.columns.columns-homepage-savings,
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: var(--linz-off-white);
+  border-radius: var(--linz-rounded-corner);
+  max-width: 982px;
+  min-height: 336.6px;
+  margin: 20px auto 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+  gap: 0;
+}
+
+.columns.columns-homepage-savings > .columns-item,
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item {
+  padding: 0;
+  grid-column: auto;
+}
+
+.columns.columns-homepage-savings > .columns-item:not(:has(img, strong, a)),
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:not(:has(img, strong, a)) {
+  display: none;
+}
+
+.columns.columns-homepage-savings > .columns-item:has(.columns-item-image),
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:has(.columns-item-image) {
+  flex: 0 0 55%;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  align-self: stretch;
+}
+
+/* Image visually on LEFT (order -1) */
+
+.columns.columns-homepage-savings > .columns-item .columns-item-image,
+.columns-container:not(.hero-container + .columns-container) .columns > .columns-item .columns-item-image {
+  order: -1;
+}
+
+/* Make the columns-item a flex row when it has both image + content */
+
+.columns.columns-homepage-savings > .columns-item:has(.columns-item-image):has(.columns-item-content),
+.columns-container:not(.hero-container + .columns-container) .columns > .columns-item:has(.columns-item-image):has(.columns-item-content) {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.columns.columns-homepage-savings > .columns-item:has(.columns-item-image) picture,
+.columns-container:not(.hero-container + .columns-container) .columns > .columns-item:has(.columns-item-image) picture {
+  display: block;
+  height: 100%;
+}
+
+main > .section.dark + .section.columns-container:not(.dark, .navy, .purple) .columns.columns-homepage-savings > div > div:first-child img,
+.columns.columns-homepage-savings > .columns-item:has(.columns-item-image) img,
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:has(.columns-item-image) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-top: 0;
+}
+
+.columns.columns-homepage-savings > .columns-item:has(.columns-item-content:not(:empty)),
+.columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:has(.columns-item-content:not(:empty)) {
+  flex: 1;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-size: var(--linz-card-body-size);
+}
+
+/* Savings card content: tighter bottom padding (savings variant only).
+   Matches the shared rule's specificity (container context) so it wins, while
+   the .columns-homepage-savings class keeps it scoped to the savings card. */
+
+.columns-container:not(.hero-container + .columns-container) .columns.columns-homepage-savings > .columns-item:has(.columns-item-content:not(:empty)) {
+  padding: 30px 40px 15px;
+}
+
+.columns.columns-homepage-savings .columns-item-content p {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-body-size);
+}
+
+.columns.columns-homepage-savings .columns-item-content p strong {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-heading-size);
+  font-weight: 700;
+  color: var(--linz-dark-purple);
+  line-height: 1.3;
+}
+
+.columns.columns-homepage-savings .button-container a.button,
+.columns-container:not(.hero-container + .columns-container) .columns .button-container a.button {
+  background-color: var(--linz-dark-purple);
+  color: var(--linz-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.columns.columns-homepage-savings .button-container a.button::after,
+.columns-container:not(.hero-container + .columns-container) .columns .button-container a.button::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+.columns.columns-homepage-savings .button-container a.button:hover,
+.columns-container:not(.hero-container + .columns-container) .columns .button-container a.button:hover {
+  background-color: var(--linz-off-white);
+  color: var(--linz-dark-purple);
+}
+
+/* Homepage savings: white ::before fill over the off-white concave dome left by
+   the patient-experiences band above. That band's ::after dome was recolored to
+   #f4f6fb for the resources page, which shows as a seam on the homepage (white
+   savings section). Cover it with a white strip — homepage savings only. */
+
+.section.columns-container:has(.columns-homepage-savings) {
+  position: relative;
+}
+
+.section.columns-container:has(.columns-homepage-savings)::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: #fff;
+  z-index: 2;
+}
+
+/* Section heading "YOU COULD PAY AS LITTLE AS $30" */
+
+.columns-homepage-savings-container > .default-content-wrapper,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper {
+  text-align: center;
+}
+
+.columns-homepage-savings-container > .default-content-wrapper p strong,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper p strong,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper p strong {
+  font-family: var(--heading-font-family);
+  font-size: var(--linz-section-heading-size);
+  font-weight: 400;
+  color: var(--linz-dark-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* Orange divider arc */
+
+.columns-homepage-savings-container > .default-content-wrapper p:first-child strong::before,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper p:first-child strong::before,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper p:first-child strong::before {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 5px;
+  background: url("/icons/divider.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 auto 24px;
+}
+
+/* Gap between the "YOU COULD PAY..." eyebrow and the savings card (live ~47px). */
+
+.columns-homepage-savings-container > .default-content-wrapper:first-child,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper:first-child,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:first-child {
+  margin-bottom: 27px;
+}
+
+/* Disclaimer */
+
+.columns-homepage-savings-container > .default-content-wrapper:last-child,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper:last-child,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:last-child {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-footnote-size);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--linz-grey);
+  margin-top: 24px;
+  text-align: left;
+}
+
+/* Disclaimer link ("Program Terms…") — match the surrounding footnote text
+   (grey, same size) with an underline, like live. */
+
+.columns-homepage-savings-container > .default-content-wrapper:last-child a,
+.carousel-video-playlist-container ~ .columns-container > .default-content-wrapper:last-child a,
+.section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:last-child a {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+}
+
+/* why-linzess savings card: the section carries carousel-video-playlist-container
+   (it follows the patient-experiences carousel) — the homepage savings section
+   does NOT, so this is why-linzess-only. Match live exactly: the card is 998px
+   wide with a fixed 440px image column that the badge fills (no whitespace), and
+   the card height tracks the 299px image rather than over-tall padding. */
+
+.section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings {
+  max-width: 998px;
+  min-height: 299px;
+}
+
+.section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) {
+  flex: 0 0 440px;
+}
+
+.section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Desktop: match live savings card typography & spacing. */
+
+@media (width >= 986px) {
+  /* Heading 24px, body 16px (was 14px). */
+  .columns.columns-homepage-savings .columns-item-content p strong {
+    font-size: 24px;
+  }
+
+  .columns.columns-homepage-savings .columns-item-content p {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* Tighten the gap between the body copy and the "Sign Up Now" button. */
+  .columns.columns-homepage-savings .columns-item-content .button-container {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  /* "Activate now" link bold + underlined like live. */
+  .columns.columns-homepage-savings .columns-item-content p:last-child a {
+    font-weight: 800;
+    text-decoration: underline;
+  }
+
+  /* "YOU COULD PAY AS LITTLE…" band heading matches live's desktop type:
+     40px Bebas Neue, 36px line-height, no extra tracking. */
+  .columns-homepage-savings-container > .default-content-wrapper p strong,
+  .carousel-video-playlist-container ~ .columns-container > .default-content-wrapper p strong,
+  .section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper p strong {
+    font-size: 40px;
+    line-height: 36px;
+    letter-spacing: normal;
+  }
+
+  /* More space between the eyebrow heading and the card (~75px live). */
+  .columns-homepage-savings-container > .default-content-wrapper:first-child,
+  .carousel-video-playlist-container ~ .columns-container > .default-content-wrapper:first-child,
+  .section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:first-child {
+    margin-bottom: 48px;
+  }
+
+  /* Disclaimer constrained to the card width and centered, tighter to card. */
+  .columns-homepage-savings-container > .default-content-wrapper:last-child,
+  .carousel-video-playlist-container ~ .columns-container > .default-content-wrapper:last-child,
+  .section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:last-child {
+    max-width: 982px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+  }
+
+  /* Homepage only: give the disclaimer a fixed height so the full footnote is
+     visible (the shared rule above also covers the why-linzess card via the
+     carousel sibling selector, so height is applied here to homepage selectors
+     only — why-linzess and resources are untouched). */
+  .columns-homepage-savings-container > .default-content-wrapper:last-child,
+  .section.columns-container:has(.columns-homepage-savings) > .default-content-wrapper:last-child {
+    height: 150px;
+  }
+}
+
+/* Tablet (768-985): live stacks the why-linzess savings card (image on top,
+   text below) until the 986px desktop breakpoint — it only goes side-by-side at
+   >=986px. The base card is flex-row, so force it to wrap/stack here. Scoped to
+   the why-linzess card (carousel-video-playlist-container) so the homepage card
+   is untouched. */
+
+@media (width >= 768px) and (width < 986px) {
+  .section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings {
+    flex-wrap: wrap;
+  }
+
+  .section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) {
+    flex: 1 1 100%;
+    order: -1;
+  }
+
+  .section.carousel-video-playlist-container.columns-container .columns.columns-homepage-savings > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1 1 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* Homepage savings card stacks the same way on live's tablet (image on top,
+     centered copy below). The base card is a flex row, so wrap it and make both
+     the image + content cells full-width. Scoped to the homepage savings card
+     in a plain columns-container (not the why-linzess carousel one above). */
+  .section.columns-container:has(.columns-homepage-savings) .columns.columns-homepage-savings {
+    flex-wrap: wrap;
+  }
+
+  .section.columns-container:has(.columns-homepage-savings) .columns.columns-homepage-savings > .columns-item:has(.columns-item-image) {
+    flex: 1 1 100%;
+    order: -1;
+  }
+
+  .section.columns-container:has(.columns-homepage-savings) .columns.columns-homepage-savings > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1 1 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* Tighten the gap between the "Sign Up Now" CTA and the "Already have a
+     savings card?" line (live ~14px; the base button-container margin was too
+     large). */
+  .section.columns-container:has(.columns-homepage-savings) .columns.columns-homepage-savings .columns-item-content .button-container {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+}
+
+@media (width < 768px) {
+  .columns.columns-homepage-savings,
+  .columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .columns.columns-homepage-savings > .columns-item:has(.columns-item-image),
+  .columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:has(.columns-item-image) {
+    flex: 1 1 100%;
+    order: -1;
+  }
+
+  .columns.columns-homepage-savings > .columns-item:has(.columns-item-content:not(:empty)),
+  .columns-container:not(.hero-container + .columns-container) .columns:not(.whylinzess-symptoms, .whylinzess-timeline, .whylinzess-mechanism-card) > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1 1 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* Tighten the gap below the "Sign Up Now" button to the "Already have a
+     savings card?" line to match live (~14px). */
+  .section.columns-container:has(.columns-homepage-savings) .columns-item-content p.button-container:has(a[href*="savings-card"]) {
+    margin-bottom: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   GUT CHECK QUIZ CARD: "Take the Gut Check Quiz"
+   Variant: columns-homepage-gutcheck
+   Off-white bg, image left, text right, button disabled
+   ═══════════════════════════════════════════════════════════════════ */
+
+.columns-wrapper:has(.columns-homepage-gutcheck) {
+  padding-bottom: 155px;
+}
+
+.columns.columns-homepage-gutcheck {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: var(--linz-off-white);
+  border-radius: var(--linz-rounded-corner);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+  gap: 0;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item {
+  padding: 0;
+  grid-column: auto;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:not(:has(img, strong, a)) {
+  display: none;
+}
+
+/* When image + text are in SAME columns-item */
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image):has(.columns-item-content) {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1 1 100%;
+  align-items: stretch;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) .columns-item-image {
+  flex: 0 0 50%;
+  order: -1;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) .columns-item-image picture {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) .columns-item-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) .columns-item-content {
+  flex: 1;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* When image + text are in SEPARATE columns-items */
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image):not(:has(.columns-item-content)) {
+  flex: 0 0 50%;
+  order: -1;
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image):not(:has(.columns-item-content)) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Desktop: cap the image so the row height matches live (~300px) rather
+   than stretching tall from the 55% image column. */
+
+@media (width >= 986px) {
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image),
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) img {
+    max-height: 300px;
+  }
+}
+
+.columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-content:not(:empty)):not(:has(.columns-item-image)) {
+  flex: 1;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+}
+
+.columns.columns-homepage-gutcheck .columns-item-content p strong {
+  font-family: var(--body-font-family);
+  font-size: var(--linz-card-heading-size);
+  font-weight: 700;
+  color: var(--linz-dark-purple);
+  line-height: 1.3;
+}
+
+/* Tighten content spacing to match live (heading flush, body 24px, no
+   trailing gap after the CTA) so the card isn't over-tall. */
+
+.columns.columns-homepage-gutcheck .columns-item-content > p {
+  margin-bottom: 24px;
+}
+
+.columns.columns-homepage-gutcheck .columns-item-content > p:first-child {
+  margin-bottom: 16px;
+}
+
+.columns.columns-homepage-gutcheck .columns-item-content > p:last-child {
+  margin-bottom: 0;
+}
+
+.columns.columns-homepage-gutcheck .button-container a.button,
+.columns.columns-homepage-gutcheck .columns-item-content a {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  border-radius: var(--linz-rounded-corner);
+  padding: 16px 59px 16px 24px;
+  font-weight: 800;
+  font-size: 14.4px;
+  font-family: var(--body-font-family);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.columns.columns-homepage-gutcheck .button-container a.button::after {
+  content: '\203A';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+}
+
+/* Desktop: match live — promo/gut-check headings 24px, gut-check body 16px,
+   and the gut-check card height capped to ~299px (the shared homepage min-height
+   of 336.6px made it too tall). Mobile keeps the smaller sizes. */
+
+@media (width >= 768px) {
+  .columns.columns-homepage-gutcheck .columns-item-content p strong {
+    font-size: 24px;
+  }
+
+  .columns.columns-homepage-gutcheck .columns-item-content > p:not(:first-child) {
+    font-size: 16px;
+  }
+}
+
+@media (width >= 986px) {
+  /* Promo heading is 18px through tablet (matching live) and only grows to 24px
+     on desktop. */
+  .hero-container + .columns-container .columns .columns-item-content p strong,
+  .columns.columns-homepage-promo .columns-item-content p strong {
+    font-size: 24px;
+  }
+
+  .columns-container:not(.hero-container + .columns-container) .columns.columns-homepage-gutcheck {
+    min-height: 299px;
+  }
+
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image),
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) img {
+    max-height: 299px;
+  }
+
+  /* Match the gut-check card to the full width of the two content cards above
+     it (live aligns both edges). The content row is capped at 1038px by its
+     .demo-wrap; widen this card to the same. Higher specificity to beat the
+     982px cap on the generic columns rule. */
+  body main .section.columns-container .columns.columns-homepage-gutcheck.block {
+    max-width: 1038px;
+  }
+}
+
+@media (width < 768px) {
+  .columns.columns-homepage-gutcheck {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-image) {
+    flex: 1 1 100%;
+    order: -1;
+  }
+
+  .columns.columns-homepage-gutcheck > .columns-item:has(.columns-item-content:not(:empty)) {
+    flex: 1 1 100%;
+    padding: 16px;
+    text-align: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WHY LINZESS — Symptom cards override
+   ═══════════════════════════════════════════════════════════════════ */
+
+.columns.whylinzess-symptoms {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  max-width: 100%;
+  margin: 60px auto 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.columns.whylinzess-symptoms > .columns-item,
+.columns.whylinzess-symptoms > .columns-item:has(.columns-item-content) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 60px 0 0;
+  background: transparent;
+  align-items: stretch;
+}
+
+.columns.whylinzess-symptoms .columns-item-content {
+  padding: 60px 32px 40px;
+  text-align: left;
+  position: relative;
+  border-radius: var(--linz-rounded-corner);
+}
+
+.columns.whylinzess-symptoms .columns-item-content:first-child {
+  background-color: var(--linz-off-white);
+}
+
+.columns.whylinzess-symptoms .columns-item-content:last-child {
+  background-color: var(--linz-light-purple);
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.columns.whylinzess-symptoms .columns-item-content > p:first-child strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  background-color: rgb(217 215 249 / 60%);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  margin: -100px auto 24px;
+  display: block;
+}
+
+.columns.whylinzess-symptoms .columns-item-content:last-child > p:first-child strong {
+  background-color: var(--linz-off-white);
+}
+
+.columns.whylinzess-symptoms ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 24px 0;
+}
+
+.columns.whylinzess-symptoms li {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  margin-bottom: 16px;
+  line-height: 1.4;
+  padding-left: 36px;
+  position: relative;
+}
+
+.columns.whylinzess-symptoms li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  background: url("https://www.linzess.com/content/dam/linzess/images/icon-checkmark.svg") no-repeat center;
+  background-size: contain;
+}
+
+.columns.whylinzess-symptoms .columns-item-content > p:last-child {
+  font-size: var(--linz-card-footnote-size);
+  color: var(--linz-grey);
+  margin-top: 24px;
+  font-weight: var(--font-weight-body);
+}
+
+/* WHY LINZESS — Mechanism cards. Image + text are authored as two separate
+   column rows (so md2jcr keeps both). The BLOCK is the flex card:
+   icon-left, text-right. */
+
+body main .section .columns.whylinzess-mechanism-card {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  position: relative;
+  max-width: 670px;
+  margin: 20px auto 0;
+  padding: 15px 5px;
+  border-radius: 16px;
+  background: var(--linz-off-white);
+  overflow: visible;
+}
+
+/* How-it-works timeline cards: equalize heights so the shorter pill card (card 1)
+   matches the taller gut card, like live. */
+
+body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card {
+  min-height: 150px;
+}
+
+body main .section .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+  background: var(--linz-light-purple);
+}
+
+/* Standalone "Common Side Effects" section (NOT the how-it-works timeline):
+   live paints the whole card as ONE rounded box (1st & 3rd dark, 2nd light),
+   not the inner items. The brand styles.css colors the inner .columns-item,
+   which left a wrong-colored rounded frame around square inner boxes. Color
+   the wrapper per position and force the inner items transparent so the card
+   is a single rounded fill. */
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card {
+  background: var(--color-brand-primary);
+  min-height: 150px;
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+  background: var(--linz-light-purple);
+}
+
+/* 2nd side-effect card: bold body text + list items (matches live emphasis). */
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card .columns-item-content p,
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card .columns-item-content li {
+  font-weight: 700;
+}
+
+/* The 3rd (longest) card: dark bg + 24px vertical padding (vs 15px on the
+   others) so it reads ~197px tall like live. */
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+  background: var(--color-brand-primary);
+  padding: 24px 5px;
+}
+
+body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item {
+  background: transparent !important;
+}
+
+/* Live parity: the last "How LINZESS Works" card (gut) gets 24px vertical
+   padding on desktop vs 15px on the others (.how-linz-works last-child). */
+
+@media (width >= 986px) {
+  body main .section:has(.whylinzess-timeline) .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+    padding: 24px 5px;
+  }
+}
+
+body main .section .columns.whylinzess-mechanism-card > .columns-item {
+  padding: 0;
+  background: transparent;
+}
+
+/* image row → fixed-width icon column; text row → fills remaining space */
+
+body main .section .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+  flex: 0 0 auto;
+}
+
+body main .section .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-content) {
+  flex: 1;
+}
+
+body main .section .columns.whylinzess-mechanism-card .columns-item-image {
+  flex: 0 0 55px;
+  width: 55px;
+  align-self: stretch;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* The 105px icon must not dictate the card height (live keeps the card at
+   text height ~87px and lets the icon overflow above/below). Absolutely
+   center it in the icon column so it's fully out of flow. */
+
+body main .section .columns.whylinzess-mechanism-card .columns-item-image img {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  transform: translateY(-50%);
+  width: 105px;
+  max-width: none;
+  height: 105px;
+  object-fit: contain;
+}
+
+.columns.whylinzess-mechanism-card .columns-item-content {
+  flex: 1;
+  padding: 0 50px 0 33px;
+  text-align: left;
+}
+
+.columns.whylinzess-mechanism-card .columns-item-content p {
+  color: var(--color-brand-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* The brand's main:has(.whylinzess-timeline) p:not(.button-container):last-child
+   rule adds margin-bottom:20px to the card's last paragraph, padding the card
+   ~20px taller than live. Zero it inside these cards. */
+
+main:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-content p:last-child {
+  margin-bottom: 0;
+}
+
+.columns.whylinzess-mechanism-card .columns-item-content ul {
+  list-style: disc;
+  padding-left: 18px;
+  margin: 0;
+  color: var(--color-brand-primary);
+  display: flex;
+  gap: 50px;
+}
+
+.columns.whylinzess-mechanism-card .columns-item-content li {
+  color: var(--color-brand-primary);
+  font-size: 14.4px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+/* Remove the duplicate ::before bullet — these list items already render a
+   native disc marker, so the dark-section li::before adds a second dot. */
+
+.columns.whylinzess-mechanism-card .columns-item-content li::before {
+  content: none;
+}
+
+/* WHY LINZESS — Timeline cards (same pattern as symptom cards) */
+
+.columns.whylinzess-timeline {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+  max-width: 1030px;
+  margin: 40px auto 0;
+  padding: 0;
+  overflow: visible;
+}
+
+.columns.whylinzess-timeline > .columns-item,
+.columns.whylinzess-timeline > .columns-item:has(.columns-item-content) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 60px 0 0;
+  background: transparent;
+  align-items: stretch;
+}
+
+.columns.whylinzess-timeline .columns-item-content {
+  flex: 1;
+  background-color: var(--linz-off-white);
+  border-radius: var(--linz-rounded-corner);
+  padding: 60px 40px 40px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.columns.whylinzess-timeline .columns-item-content:last-child {
+  background-color: var(--linz-light-purple);
+}
+
+.columns.whylinzess-timeline .columns-item-content p {
+  color: var(--color-brand-primary);
+  font-size: 16px;
+}
+
+.columns.whylinzess-timeline .columns-item-content > p:first-child strong {
+  font-family: var(--body-font-family);
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-primary);
+  background-color: var(--linz-light-purple);
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  line-height: 140px;
+  text-align: center;
+  margin: -100px auto 24px;
+  display: block;
+}
+
+.columns.whylinzess-timeline .columns-item-content:last-child > p:first-child strong {
+  background-color: var(--linz-off-white);
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* stylelint-disable no-descending-specificity */
+
+/* Mobile: stack symptom cards and timeline cards vertically */
+
+@media (width < 768px) {
+  .columns.whylinzess-symptoms > .columns-item,
+  .columns.whylinzess-symptoms > .columns-item:has(.columns-item-content) {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .columns.whylinzess-timeline > .columns-item,
+  .columns.whylinzess-timeline > .columns-item:has(.columns-item-content) {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  /* HOW LINZESS WORKS (timeline section): keep live's row/overlap layout —
+     icon half-outside the card on the left, text left-aligned — but shrink
+     the icon 105→96px and pull its offset inboard so it doesn't clip off the
+     left viewport edge. */
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card > .columns-item {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-image img {
+    left: -28px;
+    width: 96px;
+    height: 96px;
+  }
+
+  /* Live's 2nd card body wraps to fewer lines (so the card is ~195px, not
+     ~222px): its text column is wider than ours. Trim the content's right
+     padding and tighten the bullet gap so the copy wraps like live. */
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-content {
+    padding-right: 16px;
+  }
+
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card .columns-item-content ul {
+    gap: 10px;
+  }
+
+  /* Narrow the timeline cards so there's left/right space like live (live card
+     ~331px in a 425 viewport vs our full content width); margin:auto centers. */
+  body main .section:has(.whylinzess-timeline) .columns.whylinzess-mechanism-card {
+    max-width: 331px;
+  }
+
+  /* SIDE EFFECTS section (non-timeline): live centers the icon overlapping the
+     card's TOP edge (top half on the off-white section bg, bottom half on the
+     purple card) with centered text below. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card {
+    position: relative;
+    margin-top: 64px;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Collapse the image column out of flow so it doesn't reserve a row, then
+     center the icon and pull it up to straddle the card's top edge. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+    position: absolute;
+    top: -48px;
+    left: 0;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-image {
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-image img {
+    position: static;
+    left: auto;
+    transform: none;
+    margin: 0 auto;
+    width: 96px;
+    height: 96px;
+  }
+
+  /* Make room at the top of the card for the lower half of the overlapping
+     icon (48px) plus breathing room. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-content) {
+    padding-top: 41px;
+  }
+
+  /* Live drops the card's own vertical padding to 0 (the icon-overlap space is
+     handled by the content's padding-top above), so the cards aren't ~30-48px
+     taller than live. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card,
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  /* Card body copy: live uses 14px regular (not 16px/700-900). Match the
+     2nd-card bold and 3rd-card strong overrides too. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-content p,
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-content p strong {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Stack the "Calms pain-sensing nerves / Accelerates bowel movements"
+     bullets in a single column on mobile (live does); the side-by-side
+     row was forcing the card wider than the viewport. */
+  .columns.whylinzess-mechanism-card .columns-item-content ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* 2nd side-effects card (Gas/belly/distension list) is shorter than live
+     (~201px). Raise its min-height to match; cards 1 & 3 already match live. */
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) > .columns-wrapper + .columns-wrapper .columns.whylinzess-mechanism-card {
+    min-height: 201px;
+  }
+}
+
+/* Tablet (768–985): live uses the same single-column card layout as mobile for
+   the Side Effects section — icon centered, straddling the card's top edge,
+   with centered text below and stacked bullets. The desktop icon-on-left row
+   only applies at >=986px. */
+
+@media (width >= 768px) and (width < 986px) {
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card {
+    position: relative;
+    margin-top: 64px;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-image) {
+    position: absolute;
+    top: -48px;
+    left: 0;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-image {
+    flex: 0 0 auto;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card .columns-item-image img {
+    position: static;
+    left: auto;
+    transform: none;
+    margin: 0 auto;
+    width: 96px;
+    height: 96px;
+  }
+
+  body main .section:has(.whylinzess-mechanism-card):not(:has(.whylinzess-timeline)) .columns.whylinzess-mechanism-card > .columns-item:has(.columns-item-content) {
+    padding-top: 56px;
+  }
+
+  .columns.whylinzess-mechanism-card .columns-item-content ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Mobile: promo card — stack image above text. */
+
+@media (width < 768px) {
+  .columns.columns-homepage-promo,
+  .hero-container + .columns-container .columns {
+    margin-top: 24px;
+  }
+
+  .columns.columns-homepage-promo > .columns-item:has(.columns-item-image):has(.columns-item-content),
+  .hero-container + .columns-container .columns > .columns-item:has(.columns-item-image):has(.columns-item-content) {
+    flex-direction: column;
+  }
+}
