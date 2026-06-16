@@ -1,0 +1,60 @@
+@import '../modal.css';
+
+/* stylelint-disable no-descending-specificity */
+
+/* Linzess DTC modal — Lato body, Bebas headings, purple/orange palette */
+
+.modal-overlay {
+  --modal-close-color-default: var(--color-brand-primary, #422e83);
+  --modal-close-hover-color-default: var(--color-brand-primary-dark, #321f63);
+  --modal-information-accent-color: var(--color-brand-accent, #faa633);
+}
+
+/* Dialog heading */
+.modal-content h2 {
+  color: var(--text-color, #4d4d4f);
+  font-family: var(--body-font-family, sans-serif);
+  font-weight: var(--font-weight-body, 400);
+  font-size: var(--font-size-h2, 1.75rem);
+  line-height: 1.3;
+  margin: 0 0 var(--spacing-16, 16px);
+}
+
+/* Body text */
+.modal-content p {
+  color: var(--text-color, #4d4d4f);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.875rem);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-12, 12px);
+}
+
+/* Button container — make link paragraphs inline */
+.modal-dialog .modal-content .button-container,
+.modal-dialog .modal-content p:has(a[href]) {
+  display: inline;
+}
+
+/* Links inside modal styled as buttons */
+.modal-dialog .modal-content a[href] {
+  display: inline-block;
+  padding: var(--spacing-12, 12px) var(--spacing-28, 28px);
+  border-radius: var(--border-radius-button-primary, 16px);
+  font-weight: var(--font-weight-bold, 700);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.875rem);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: var(--spacing-12, 12px);
+  margin-top: var(--spacing-16, 16px);
+  transition: background 0.2s, border-color 0.2s;
+  background: transparent;
+  color: var(--color-brand-primary, #422e83);
+  border: var(--border-width-button, 2px) solid var(--color-brand-primary, #422e83);
+}
+
+.modal-overlay .modal-dialog .modal-content a[href]:hover {
+  background: var(--color-brand-primary, #422e83);
+  color: var(--color-text-on-dark, #fff);
+  opacity: 1;
+}

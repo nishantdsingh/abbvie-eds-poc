@@ -1,0 +1,920 @@
+/* ============================================================
+   Safety Bar - Base Styles
+   Variants: default (left-aligned), center, split (2-col collapsed)
+   All variants: bottom sticky, expandable with + / - toggle
+   ============================================================ */
+
+
+/* === Fixed section wrapper === */
+
+
+.safety-bar-section {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-index-safety-bar);
+  pointer-events: none;
+  transition: transform var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+
+/* Hide the authored in-page safety bar source block at all times.
+   JS reads its content and renders the sticky clone separately. */
+
+
+.safety-bar-container {
+  display: none;
+}
+
+
+.safety-bar-section.is-hidden {
+  transform: translateY(110%);
+}
+
+
+/* === Core block - auto-sizes to content, no fixed height === */
+
+
+.safety-bar {
+  /* Block-scoped token defaults — override in brand _safety-bar.css */
+  --safety-bar-bg: var(--background-color);
+  --safety-bar-border: var(--color-border);
+  --safety-bar-toggle-bg: var(--background-color);
+  --safety-bar-toggle-color: currentcolor;
+  --safety-bar-toggle-expanded-bg: var(--color-navy-dark);
+  --safety-bar-toggle-expanded-color: var(--color-text-on-dark);
+  --safety-bar-max-height-expanded: 60vh;
+  --safety-bar-max-height-expanded-desktop: 50vh;
+
+  pointer-events: all;
+  background-color: var(--safety-bar-bg);
+  border-top: var(--border-width-thick) solid var(--safety-bar-border);
+  position: relative;
+  box-shadow: var(--shadow-safety-bar);
+}
+
+
+/* === Collapsed / abbreviated area === */
+
+
+.safety-bar-abbreviated {
+  padding: var(--spacing-12) var(--spacing-50) var(--spacing-12) var(--spacing-24);
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-relaxed);
+  position: relative;
+  text-align: left;
+}
+
+
+/* === Full ISI / expanded content === */
+
+
+.safety-bar-full {
+  padding: var(--spacing-16) var(--spacing-24);
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-loose);
+  display: none;
+  text-align: left;
+  max-height: var(--safety-bar-max-height-expanded);
+  overflow-y: auto;
+}
+
+
+/* === Toggle button: top-right, circle === */
+
+
+.safety-bar-toggle {
+  position: absolute;
+  top: var(--spacing-12);
+  right: var(--spacing-12);
+  background-color: var(--safety-bar-toggle-bg);
+  border: var(--border-width-default) solid var(--safety-bar-toggle-color);
+  color: var(--safety-bar-toggle-color);
+  cursor: pointer;
+  font-size: var(--spacing-18);
+  width: var(--spacing-18);
+  height: var(--spacing-18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+  line-height: 1;
+}
+
+
+/* Expanded: filled navy circle, white - */
+
+
+.safety-bar-toggle[aria-expanded='true'] {
+  background-color: var(--safety-bar-toggle-expanded-bg);
+  border-color: var(--safety-bar-toggle-expanded-bg);
+  color: var(--safety-bar-toggle-expanded-color);
+}
+
+
+.safety-bar-toggle::after {
+  align-self: end;
+  color: var(--color-background-footer);
+  content: '+';
+}
+
+
+.safety-bar-toggle[aria-expanded='true']::after {
+  color: var(--color-text-on-dark);
+  content: '-';
+  display: inline-block;
+  transform: scaleX(2);
+}
+
+
+/* ============================================================
+   Inline ISI - in-page instance shows only full ISI content
+   ============================================================ */
+
+
+.safety-bar-inline .safety-bar {
+  transform: none;
+  box-shadow: none;
+  position: static;
+}
+
+
+.safety-bar-inline .safety-bar-toggle {
+  display: none;
+}
+
+
+.safety-bar-inline .safety-bar-full {
+  display: block;
+  max-height: none;
+  overflow-y: visible;
+}
+
+
+.safety-bar-inline .safety-bar-abbreviated {
+  display: none;
+}
+
+
+.safety-bar-inline .safety-bar-abbreviated-col2 {
+  display: none;
+}
+
+
+.safety-bar-inline .safety-bar-abbreviated-col2-row {
+  display: none;
+}
+
+
+.safety-bar-inline.safety-bar-section {
+  position: static;
+}
+
+
+/* ============================================================
+   Variant: center - collapsed content is center aligned
+   ============================================================ */
+
+
+.safety-bar.center .safety-bar-abbreviated {
+  text-align: center;
+}
+
+
+/* ============================================================
+   Variant: split - collapsed is two-column grid
+   ============================================================ */
+
+
+.safety-bar.split .safety-bar-abbreviated {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-24);
+  text-align: left;
+  padding-right: var(--spacing-50);
+}
+
+
+.safety-bar.split .safety-bar-col1,
+.safety-bar.split .safety-bar-col2 {
+  min-width: 0;
+}
+
+
+.safety-bar.is-expanded .safety-bar-full {
+  display: block;
+}
+
+
+.safety-bar.is-expanded .safety-bar-abbreviated {
+  display: none;
+}
+
+
+.safety-bar.split.is-expanded .safety-bar-abbreviated {
+  display: none;
+}
+
+
+/* ============================================================
+   Responsive breakpoints
+   ============================================================ */
+
+
+@media (width >= 1024px) {
+  .safety-bar-abbreviated {
+    padding: var(--spacing-16) var(--spacing-60) var(--spacing-16) var(--spacing-55);
+  }
+
+  .safety-bar-toggle {
+    right: var(--spacing-16);
+  }
+
+  .safety-bar-full {
+    padding: var(--spacing-20) var(--spacing-55);
+    max-height: var(--safety-bar-max-height-expanded-desktop);
+  }
+
+  .safety-bar.split .safety-bar-abbreviated {
+    padding: var(--spacing-16) var(--spacing-60) var(--spacing-16) var(--spacing-55);
+  }
+}
+
+
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+
+
+@custom-media --bp-tablet (min-width: 744px);
+
+
+@custom-media --bp-desktop (min-width: 1024px);
+
+
+@custom-media --bp-wide (min-width: 1440px);
+
+
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --color-black: #000;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-light: rgb(255 255 255 / 80%);
+  --color-charcoal: #25282a;
+  --color-text-compliance: #6c757d;
+  --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-focus: var(--link-color);
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-text-on-dark: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-200: 20rem;
+  --spacing-255: 25.5rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+  --z-index-anchor-nav: 100;
+  --z-index-safety-bar: 500;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-tight: 1.25;
+  --line-height-relaxed: 1.5;
+  --line-height-loose: 1.6;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --shadow-safety-bar: 0 -2px 8px rgb(0 0 0 / 10%);
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+
+  /* ---- Brand Explorer Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --be-color-bg: var(--background-color);
+  --be-color-text: var(--text-color);
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-color-bar-text: #fff;
+  --be-color-border: #d8d8d8;
+  --be-color-border-mobile: #e0e0e0;
+  --be-color-separator: #ccc;
+  --be-color-muted: #50535c;
+  --be-color-btn-hover: #1c2d49;
+  --be-color-btn-no-border: #555;
+  --be-color-btn-no-hover: #f5f5f5;
+  --be-color-overlay: rgb(0 0 0 / 60%);
+  --be-font-body: var(--body-font-family);
+  --be-font-size-body: 14px;
+  --be-font-size-small: 11px;
+  --be-font-size-bar: 0.9rem;
+  --be-font-weight-bold: var(--font-weight-700);
+  --be-font-weight-normal: var(--font-weight-400);
+  --be-line-height-body: 16px;
+  --be-line-height-small: 14px;
+
+  /* ---- Clinical Data Panel Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --cdp-color-text: var(--text-color);
+  --cdp-color-heading: var(--text-color);
+  --cdp-color-accent: var(--link-color);
+  --cdp-color-muted: var(--color-text-muted);
+  --cdp-color-border: var(--container-border-color);
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: var(--font-size-22);
+  --cdp-font-size-callout: var(--font-size-26);
+  --cdp-font-size-body: var(--font-size-14);
+  --cdp-font-size-small: var(--font-size-13);
+  --cdp-font-weight-bold: var(--font-weight-700);
+  --cdp-font-weight-normal: var(--font-weight-400);
+  --cdp-line-height-callout: var(--line-height-30);
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: var(--line-height-16);
+  --cdp-spacing-sm: var(--spacing-08);
+  --cdp-spacing-md: var(--spacing-16);
+  --cdp-spacing-lg: var(--spacing-24);
+  --cdp-max-width: 1180px;
+  --cdp-letter-spacing-title: 0.02em;
+}
+
+
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+
+
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+
+
+/* ============================================================
+   VENCLEXTA DTC — Brand Token Overrides
+   Source: venclexta.com/aml (Platform C)
+   Framework Font: Graphik family
+   Brand Font: Red Hat Display (brand-specific elements)
+   ============================================================ */
+
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+  --color-brand-accent-teal: #005272;
+
+  /* ---- Color: Named Palette (shared AbbVie framework) ---- */
+  --color-plum: #90124a;
+  --color-gold: #ffd100;
+  --color-charcoal: #25282a;
+  --color-iron: #46484a;
+  --color-glacier: #f5f5f5;
+
+  /* ---- Color: Venclexta-specific ---- */
+  --color-venclexta-teal: #005272;
+  --color-venclexta-teal-dark: #003b52;
+  --color-venclexta-navy: #071d49;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-heading-brand: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-link: #90124a;
+  --color-text-legal: #404040;
+  /* Live venclexta.com renders footer link text in off-white (#e8edef) */
+  --color-text-footer-link: var(--color-brand-primary-light);
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+  /* Live venclexta.com footer bg is dark teal #003b52, not pure black */
+  --color-background-footer: var(--color-brand-primary-dark);
+  --color-background-safety-bar: #f5f5f5;
+  --color-background-container: #003b52;
+
+  /* ---- Color: Border ---- */
+  --color-border-brand: #005272;
+  --color-border-safety: #ffd100;
+  --color-border-default: #ccc;
+
+  /* ---- Color: Shadow ---- */
+  --shadow-card: rgb(85, 85, 85) 0px 3px 10px 1px;
+  --shadow-table: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-brand: 'Red Hat Display', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 11px;
+  --font-size-nav: 16px;
+  --font-size-footer: 16px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 14px;
+  --font-size-h4-brand: 16px;
+  --font-size-h5-brand: 17.6px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-heading: 600;
+  --font-weight-button: 700;
+  --font-weight-brand-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 24px;
+  --line-height-h1: 27.625px;
+  --line-height-h2: 25px;
+  --line-height-h3: 16.8px;
+  --line-height-h5-brand: 22px;
+  --line-height-h-xl: 52.8px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 8px;
+  --border-radius-button-secondary: 10px;
+  --border-radius-button-tertiary: 10px;
+  --border-radius-card: 10px;
+  --border-radius-card-corner: 14px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-bg: #005570;
+  --button-primary-color: #fff;
+  --button-primary-border: #005570;
+  --button-primary-padding: 10px 30px 10px 15px;
+  --button-primary-font-size: 18px;
+  --button-primary-font-weight: 400;
+  --button-primary-hover-bg: #003d50;
+  --button-primary-hover-color: #fff;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: #ffce00;
+  --button-secondary-color: #404040;
+  --button-secondary-border: transparent;
+  --button-secondary-padding: 12px 20px;
+  --button-secondary-hover-bg: #e6b900;
+  --button-secondary-hover-color: #404040;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-color: #404040;
+  --button-tertiary-border: #ccc;
+  --button-tertiary-padding: 12px 42px 12px 12px;
+  --button-tertiary-font-size: 18px;
+  --button-tertiary-hover-bg: #005272;
+  --button-tertiary-hover-color: #fff;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #005272;
+  --button-plain-weight: 500;
+  --button-plain-hover-color: #008481;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #ccc;
+  --toggle-bg-on: #005272;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+
+  /* ---- Hero: Venclexta-specific ---- */
+  --hero-full-min-height: 56rem;
+  --hero-full-min-height-tablet: 64rem;
+  --hero-full-min-height-mobile: 58rem;
+  --hero-full-text-max-width: 72rem;
+  --hero-full-text-max-width-tablet: 82rem;
+  --hero-full-text-max-width-desktop: 68rem;
+  --hero-full-text-margin-top: 15rem;
+  --hero-full-text-margin-top-tablet: 19.6rem;
+  --hero-full-content-max-width: 61rem;
+  --hero-full-content-max-width-desktop: 62rem;
+  --hero-full-text-padding: 0 2rem 5.6rem;
+  --hero-full-text-padding-tablet: 0 7rem 6.4rem;
+  --hero-overlay-gradient-full: linear-gradient(90deg,
+      rgb(0 0 0 / 96%) 0%,
+      rgb(0 0 0 / 86%) 22%,
+      rgb(0 0 0 / 58%) 46%,
+      rgb(0 0 0 / 12%) 72%,
+      rgb(0 0 0 / 0%) 100%);
+  --hero-overlay-gradient-full-mobile: linear-gradient(180deg,
+      rgb(0 0 0 / 55%) 0%,
+      rgb(0 0 0 / 45%) 24%,
+      rgb(0 0 0 / 88%) 100%);
+  --hero-no-padding-min-height: 56rem;
+  --hero-indication-bg: rgb(0 0 0 / 45%);
+  --hero-eyebrow-gap: 0.5em;
+  --hero-divider-width: 3px;
+  --hero-caret-width: 0.4rem;
+  --hero-caret-height: 2.6rem;
+  --hero-caption-bottom: 2rem;
+  --hero-h1-font-size: 2rem;
+  --hero-h1-line-height: 1.18;
+  --hero-h1-font-size-large: clamp(2rem, 2.8vw, 2.7rem);
+  --hero-h1-line-height-large: 1.08;
+  --hero-p-font-size: 1.8rem;
+  --hero-p-line-height: 1.28;
+  --hero-p-font-size-mobile: 1.7rem;
+  --hero-p-line-height-mobile: 1.24;
+  --hero-link-decoration-thickness: 0.12rem;
+}
+
+
+/* Venclexta — Safety Bar Brand Overrides
+   Collapsed: white bg, brand teal top border, teal headings + toggle
+   Expanded:  white bg, teal headings, Graphik Bold font
+*/
+
+
+.safety-bar {
+  background-color: var(--background-color);
+  border-top: 3px solid var(--color-border-brand);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+}
+
+
+.safety-bar-abbreviated h2,
+.safety-bar-abbreviated h3,
+.safety-bar-abbreviated strong,
+.safety-bar-abbreviated b {
+  color: var(--color-brand-primary);
+}
+
+
+.safety-bar-toggle {
+  border-color: var(--color-brand-primary);
+  color: var(--color-brand-primary);
+}
+
+
+.safety-bar.is-expanded .safety-bar-full h2,
+.safety-bar.is-expanded .safety-bar-full h3 {
+  color: var(--color-brand-primary);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-heading);
+}
+
+
+.safety-bar.is-expanded .safety-bar-full strong,
+.safety-bar.is-expanded .safety-bar-full b {
+  color: var(--color-brand-primary);
+}

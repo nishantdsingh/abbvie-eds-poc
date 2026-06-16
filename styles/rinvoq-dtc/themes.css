@@ -1,0 +1,99 @@
+@import 'tokens.css';
+@import 'fonts.css';
+
+/* ============================================================
+   RINVOQ DTC — Theme Overrides
+   Shares RINVOQ design system with HCP but consumer-friendly.
+   Primary: Plum #90124A | Accent: Gold #FFD100
+   Font: Graphik family
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-heading);
+}
+
+h1 { font-size: var(--font-size-h1); line-height: var(--line-height-h1); }
+h2 { font-size: var(--font-size-h2); line-height: var(--line-height-h2); }
+h3 { font-size: var(--font-size-h3); line-height: var(--line-height-h3); }
+
+/* ---- Links ---- */
+a { color: var(--link-color); }
+a:hover { color: var(--color-brand-primary-dark); }
+
+/* ---- Buttons ---- */
+.button-container a,
+a.button.primary {
+  color: var(--button-primary-color);
+  background-color: var(--button-primary-bg);
+  border: none;
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--font-family-medium);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.button-container a:hover,
+a.button.primary:hover {
+  background-color: #7a0f3f;
+}
+
+a.button.secondary {
+  color: var(--color-brand-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-brand-primary);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--font-family-medium);
+  font-weight: var(--font-weight-button);
+  text-decoration: none;
+}
+
+a.button.secondary:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Header / Footer ---- */
+header { background-color: #000; }
+header nav a { font-family: var(--font-family-semibold); }
+footer { background-color: var(--color-background-footer); color: var(--text-color); }
+
+/* ---- Hero ---- */
+.section.hero-container h1 { color: var(--color-text-on-dark); }
+
+/* ---- Safety Bar ---- */
+.isi-container {
+  background-color: var(--color-background-safety-bar);
+  border-top: 3px solid var(--color-border-safety);
+}
+
+/* ---- Accordion (FAQ) ---- */
+.accordion summary {
+  color: var(--color-text-heading);
+  font-family: var(--heading-font-family);
+}
+
+/* ---- Before-After Gallery (DTC-specific) ---- */
+.before-after-gallery {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ---- Section Backgrounds ---- */
+.section.glacier-bg { background-color: var(--color-glacier); }
+.section.dark-bg { background-color: var(--color-charcoal); color: var(--color-text-on-dark); }
+.section.dark-bg h1, .section.dark-bg h2, .section.dark-bg h3 { color: var(--color-text-on-dark); }

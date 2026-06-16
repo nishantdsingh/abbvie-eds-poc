@@ -1,0 +1,31 @@
+@import '../brand-explorer.css';
+
+/* Skyrizi HCP — brand-explorer bar background */
+.brand-explorer-section {
+  background: var(--be-color-bar-bg, #25282a);
+}
+
+.brand-explorer-bar {
+  background: var(--be-color-bar-bg, #25282a);
+}
+
+/* Skyrizi HCP — content panel text color */
+.brand-explorer-content {
+  color: var(--cdp-color-cta, #071d49);
+}
+
+/* Skyrizi HCP — bar links */
+.brand-explorer .brand-explorer-browse,
+.brand-explorer-bar a:any-link {
+  font-size: var(--font-size-13, 1.3rem);
+  font-weight: var(--font-weight-400, 400);
+  max-width: var(--spacing-100, 10rem);
+}
+
+@media (width >= 900px) {
+  .brand-explorer .brand-explorer-browse,
+  .brand-explorer-bar a:any-link {
+    font-size: var(--font-size-14, 1.44rem);
+    max-width: none;
+  }
+}

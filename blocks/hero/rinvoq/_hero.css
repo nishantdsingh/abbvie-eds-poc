@@ -1,0 +1,181 @@
+@import '../hero.css';
+@import '../../../styles/rinvoq-dtc/tokens.css';
+
+/* ============================================================
+   RINVOQ DTC — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+/* Heading + body: Graphik */
+.hero h1 {
+  color: var(--color-text-heading);
+  font-family: var(--heading-font-family);
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--heading-font-family);
+}
+
+.hero p {
+  font-family: var(--body-font-family);
+}
+
+/* Profile band: charcoal */
+.hero.profile> :where(div):first-child {
+  background-color: var(--color-charcoal);
+}
+
+/* Profile text panel: white text on dark band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* Multilayer transition: slower cross-fade for patient state switching */
+.hero.multilayer .hero-layer {
+  transition: var(--hero-multilayer-transition);
+}
+
+/* Stat numbers: gold accent */
+.hero.stat-overlay .hero-stat-number {
+  color: var(--color-brand-accent);
+}
+
+/* CTA button: plum filled pill with right arrow */
+.hero :where(a).button {
+  position: relative;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-bg);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+}
+
+.hero :where(a).button::after {
+  content: var(--hero-button-icon-content);
+  position: absolute;
+  right: var(--spacing-20);
+  top: var(--hero-button-icon-top);
+  transform: var(--hero-button-icon-transform);
+  font-size: var(--hero-button-icon-font-size);
+  line-height: var(--line-height-body);
+}
+
+/* Dark variants: same plum pill — button stays on-brand regardless of bg */
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button,
+.hero.solid :where(a).button {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-bg);
+}
+
+/* Solid background: charcoal */
+.hero.solid {
+  background-color: var(--color-charcoal);
+}
+
+.hero> :where(div):has(> div:empty) {
+  display: var(--hero-display-hidden);
+}
+
+.hero> :where(div):first-child {
+  min-height: var(--hero-auto-value);
+  padding: var(--hero-reset-value);
+  margin: var(--hero-reset-value);
+}
+
+.hero::before {
+  position: absolute;
+  bottom: var(--hero-reset-value);
+  content: var(--hero-brushstroke-content);
+  background: var(--hero-brushstroke-image) var(--hero-brushstroke-repeat) var(--hero-brushstroke-position) / var(--hero-brushstroke-size);
+  height: var(--spacing-40);
+  width: var(--hero-full-width);
+  z-index: var(--hero-layer-index);
+}
+
+.hero.video::before {
+  bottom: var(--hero-video-brushstroke-bottom);
+}
+
+.hero,
+.hero img,
+.hero.video,
+.hero video {
+  min-height: var(--hero-min-height-mobile);
+  border-radius: var(--hero-border-radius-reset);
+}
+
+.hero.video::after {
+  display: var(--hero-display-hidden);
+}
+
+.hero.video .hero-text-container .cmp-container-x-large {
+  display: var(--hero-display-grid);
+  grid-template-columns: var(--hero-video-grid-columns);
+  grid-auto-rows: var(--hero-grid-rows-mobile);
+  align-items: var(--hero-video-grid-align-items);
+  place-content: var(--hero-video-grid-place-content);
+}
+
+.hero.video :where(a).button {
+  color: var(--color-brand-primary);
+  background: var(--background-color);
+  padding: var(--hero-video-btn-padding);
+  border: var(--hero-video-btn-border-style) var(--hero-video-btn-border-width) var(--color-brand-primary);
+  border-radius: var(--hero-video-btn-border-radius);
+  font-size: var(--hero-video-btn-font-size);
+  text-transform: var(--hero-video-btn-text-transform);
+  width: var(--hero-video-btn-width);
+  text-align: var(--hero-video-btn-text-align);
+}
+
+.hero.no-padding> :where(div):first-child {
+  min-height: var(--hero-auto-value);
+}
+
+.hero.video .hero-text-container {
+  min-height: var(--hero-auto-value);
+}
+
+@media (width >= 744px) {
+  .hero,
+  .hero img,
+  .hero.video,
+  .hero video {
+    min-height: var(--hero-min-height-tablet);
+  }
+
+  .hero.video .hero-text-container .cmp-container-x-large {
+    grid-auto-rows: var(--hero-grid-rows-tablet);
+  }
+
+  .hero.video .hero-text-container .cmp-container-x-large p.button-container {
+    grid-column: var(--hero-video-button-grid-column);
+    text-align: var(--hero-video-btn-text-align);
+  }
+}
+
+@media (width >= 1024px) {
+  .hero,
+  .hero img,
+  .hero.video,
+  .hero video {
+    min-height: var(--hero-min-height-desktop);
+  }
+
+  .hero.video .hero-text-container .cmp-container-x-large {
+    grid-auto-rows: var(--hero-grid-rows-desktop);
+  }
+}

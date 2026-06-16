@@ -1,0 +1,390 @@
+@import '../find-provider.css';
+
+/* Mavyret find-provider overrides */
+.find-provider {
+  /* Mapped to existing brand/common tokens */
+  --find-provider-color-btn-bg: var(--color-indication-bg);
+  --find-provider-color-btn-bg-hover: var(--color-green-primary);
+  --find-provider-color-btn-text: var(--color-text-on-dark);
+  --find-provider-color-border: var(--color-border-default);
+
+  /* find-provider-specific tokens (no matching brand/common token) */
+  --fp-mavyret-orange: var(--color-fire, #e35b25);
+  --fp-mavyret-text: var(--color-text, #4a4a4a);
+  --fp-mavyret-text-dark: var(--color-text-dark, #1a1a1a);
+  --fp-mavyret-link: var(--color-link, #005bbb);
+  --fp-mavyret-directions-link: var(--color-link-default, #00e);
+  --fp-mavyret-submit-bg: var(--color-indication-bg, #508118);
+  --fp-mavyret-checkbox-border: var(--color-border-default, #c7c7c7);
+  --fp-mavyret-disabled-text: var(--color-text-disabled, #b9c4cb);
+  --fp-mavyret-separator: var(--color-border-default, #c2c2c2);
+  --fp-mavyret-shadow-color: rgb(0 0 0 / 50%);
+  --fp-mavyret-shadow-light: rgb(204 204 204 / 100%);
+  --fp-mavyret-hover-bg: rgb(0 0 0 / 4%);
+  --fp-mavyret-max-width: var(--spacing-1000, 1000px);
+  --fp-mavyret-input-max-width: var(--spacing-300, 300px);
+  --fp-mavyret-submit-max-width: var(--spacing-320, 320px);
+  --fp-mavyret-submit-font-size: var(--spacing-19, 19px);
+  --fp-mavyret-submit-line-height: var(--spacing-18, 18px);
+  --fp-mavyret-font-size-15: var(--body-font-size-xs, 15px);
+  --fp-mavyret-pagination-btn-size: var(--spacing-28, 28px);
+  --fp-mavyret-pagination-radius: var(--spacing-03, 3px);
+  --fp-mavyret-map-min-height: var(--spacing-540, 540px);
+  --fp-mavyret-results-row-height: var(--spacing-570, 570px);
+  --fp-mavyret-results-panel-inline: var(--spacing-30);
+  --fp-mavyret-line-height-1-4: 1.4;
+  --fp-mavyret-line-height-1-6: 1.6;
+  --fp-mavyret-submit-shadow: 0 var(--spacing-02) var(--spacing-04) var(--fp-mavyret-shadow-color);
+  --fp-mavyret-input-shadow: 0 0 var(--spacing-04) var(--fp-mavyret-shadow-light);
+
+  padding: 0;
+  font-family: var(--font-family-paragraph);
+  font-size: var(--spacing-16);
+  color: var(--fp-mavyret-text);
+}
+
+@media (width >= 744px) {
+  .find-provider {
+    padding: var(--spacing-40);
+  }
+}
+
+.find-provider p a,
+.find-provider .find-provider-terms-text p,
+.find-provider .find-provider-terms-text p a {
+  font-size: var(--spacing-16);
+  color: var(--fp-mavyret-text);
+}
+
+.find-provider-search-row {
+  align-items: center;
+}
+
+.find-provider .find-provider-form {
+  gap: var(--spacing-20);
+  max-width: var(--fp-mavyret-max-width);
+  margin-inline: auto;
+  margin-block-end: 0;
+}
+
+.find-provider-search-row .find-provider-search-input {
+  flex: 1;
+  inline-size: auto;
+  max-width: var(--fp-mavyret-input-max-width);
+  padding: var(--spacing-10) var(--spacing-15);
+  border: var(--border-width-thin) solid var(--fp-mavyret-text);
+  box-shadow: var(--fp-mavyret-input-shadow);
+  background: var(--color-white);
+  border-radius: var(--spacing-02);
+  font-size: var(--spacing-16);
+  line-height: var(--fp-mavyret-line-height-1-6);
+}
+
+.find-provider .find-provider-label {
+  font-weight: var(--font-weight-400);
+  color: inherit;
+}
+
+.find-provider .find-provider-terms-label {
+  align-items: center;
+  font-size: inherit;
+}
+
+.find-provider-search-row .find-provider-geo-btn {
+  margin: 0;
+  height: stretch;
+  border: var(--border-width-thin) solid var(--fp-mavyret-text);
+  box-shadow: var(--fp-mavyret-input-shadow);
+  font-family: inherit;
+}
+
+/* Geo button (non-search-row variant) matches input border style */
+.find-provider .find-provider-geo-btn {
+  border-color: var(--color-border-default);
+  color: var(--text-color);
+}
+
+/* Actions column + full-width submit */
+.find-provider .find-provider-actions {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.find-provider .find-provider-submit {
+  inline-size: 100%;
+  max-width: var(--fp-mavyret-submit-max-width);
+  padding: var(--spacing-14) var(--spacing-60);
+  font-weight: var(--font-weight-700);
+  background: var(--fp-mavyret-submit-bg);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0;
+  box-shadow: var(--fp-mavyret-submit-shadow);
+  font-size: var(--fp-mavyret-submit-font-size);
+  line-height: var(--fp-mavyret-submit-line-height);
+  text-align: center;
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+  transition: background-color var(--transition-duration-fast) var(--transition-easing-standard);
+}
+
+.find-provider .find-provider-form-wrap {
+  margin-right: calc(-50vw + 50%);
+  margin-left: calc(-50vw + 50%);
+  padding-right: calc(50vw - 50%);
+  padding-left: calc(50vw - 50%);
+  background: var(--color-background-light, #f2f2f2);
+  padding-block: var(--spacing-40);
+}
+
+.find-provider .find-provider-submit:hover,
+.find-provider .find-provider-submit:focus-visible {
+  background-color: var(--find-provider-color-btn-bg-hover);
+}
+
+.find-provider .find-provider-terms-checkbox {
+  background-color: var(--color-white);
+  box-shadow: none;
+  outline: 0;
+  border: var(--border-width-thin) solid var(--fp-mavyret-checkbox-border);
+  height: var(--spacing-26);
+  width: var(--spacing-26);
+}
+
+/* ---------- Results panel: pixel-perfect design ---------- */
+.find-provider .find-provider-result {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.find-provider .find-provider-result-body {
+  padding: 0;
+  color: var(--fp-mavyret-text);
+  font-size: var(--fp-mavyret-font-size-15);
+}
+
+/* Pin: orange teardrop with white letter; accent + text dial in mavyret colors */
+.find-provider .find-provider-results-panel {
+  --find-provider-color-pin-bg: var(--fp-mavyret-orange);
+  --find-provider-color-pin-text: var(--color-white);
+  --find-provider-color-accent: var(--fp-mavyret-link);
+  --find-provider-color-text: var(--fp-mavyret-text);
+
+  padding-inline: var(--fp-mavyret-results-panel-inline);
+}
+
+.find-provider .find-provider-result-pin {
+  inline-size: var(--spacing-24);
+  block-size: var(--spacing-32);
+  font-size: var(--spacing-14);
+  padding-block-start: var(--spacing-04);
+}
+
+/* Title styled as paragraph (no h2 look), radius hidden */
+.find-provider .find-provider-results-header {
+  display: block;
+  padding: 0;
+  margin-block-end: var(--spacing-20);
+}
+
+.find-provider .find-provider-results-title {
+  font-size: var(--spacing-16);
+  font-weight: var(--font-weight-600);
+  color: var(--fp-mavyret-text);
+  line-height: var(--fp-mavyret-line-height-1-4);
+  max-width: 50ch;
+  font-family: var(--font-family-paragraph);
+}
+
+.find-provider .find-provider-results-radius {
+  display: none;
+}
+
+/* Provider name: dark, slightly larger */
+.find-provider .find-provider-result-name {
+  color: var(--fp-mavyret-text-dark);
+  font-size: var(--spacing-18);
+  font-weight: var(--font-weight-700);
+}
+
+.find-provider .find-provider-result-address span,
+.find-provider .find-provider-result-distance {
+  color: var(--fp-mavyret-text);
+}
+
+/* Phone in blue */
+.find-provider .find-provider-result-phone {
+  color: var(--fp-mavyret-link);
+  font-weight: var(--font-weight-500);
+  font-size: var(--spacing-16);
+  margin-top: var(--spacing-16);
+}
+
+/* Get Directions: blue link with car icon (replaces base chevron) */
+.find-provider .find-provider-result-directions {
+  color: var(--fp-mavyret-directions-link);
+  font-weight: var(--font-weight-500);
+  gap: var(--spacing-06);
+  font-size: var(--spacing-16);
+}
+
+.find-provider .find-provider-result-directions::before {
+  content: '';
+  display: inline-block;
+  inline-size: var(--spacing-18);
+  block-size: var(--spacing-14);
+  border: 0;
+  transform: none;
+  font-size: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23005bbb'><path d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Show all practice details: triangle before, no plus after */
+.find-provider .find-provider-result-details {
+  color: var(--fp-mavyret-text);
+  font-size: var(--spacing-16);
+  display: flex;
+}
+
+.find-provider .find-provider-result-details-icon {
+  display: none;
+}
+
+.find-provider .find-provider-result-details::before {
+  content: '▶';
+  font-size: var(--spacing-14);
+  margin-inline-end: var(--spacing-02);
+  color: var(--fp-mavyret-text);
+}
+
+/* Results column wrapper: pagination at top + header + list */
+.find-provider .find-provider-results-right {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+/* ---------- Pagination: orange active, gray arrows in boxes ---------- */
+
+/* TODO: pagination buttons are visual-only — click handlers not wired up yet */
+
+.find-provider .find-provider-pagination {
+  padding: 0;
+  margin: 0;
+  gap: var(--spacing-06);
+  justify-content: flex-end;
+}
+
+.find-provider .find-provider-results-right .find-provider-pagination {
+  margin-block-end: var(--spacing-24);
+}
+
+/* Arrow buttons: light bordered boxes */
+.find-provider .find-provider-pagination-btn {
+  background-color: var(--color-white);
+  border-radius: var(--fp-mavyret-pagination-radius);
+  inline-size: var(--fp-mavyret-pagination-btn-size);
+  block-size: var(--fp-mavyret-pagination-btn-size);
+  padding: 0;
+  color: var(--fp-mavyret-text-dark);
+  border: 0;
+}
+
+.find-provider .find-provider-pagination-btn:disabled {
+  border-color: var(--color-border);
+  color: var(--fp-mavyret-disabled-text);
+  cursor: not-allowed;
+}
+
+/* Override base ::before chevron with text glyphs */
+.find-provider .find-provider-pagination-prev::before,
+.find-provider .find-provider-pagination-next::before,
+.find-provider .find-provider-pagination-first::before,
+.find-provider .find-provider-pagination-last::before {
+  content: '';
+  inline-size: auto;
+  block-size: auto;
+  border: 0;
+  transform: none;
+  display: inline;
+  font-size: var(--spacing-14);
+  font-weight: var(--font-weight-700);
+  line-height: 1;
+  color: currentcolor;
+}
+
+.find-provider .find-provider-pagination-prev::before { content: '\2039'; }
+.find-provider .find-provider-pagination-next::before { content: '\203A'; }
+.find-provider .find-provider-pagination-first::before { content: '\AB'; }
+.find-provider .find-provider-pagination-last::before { content: '\BB'; }
+
+/* Numeric pages: plain dark text */
+.find-provider .find-provider-pagination-page {
+  color: var(--fp-mavyret-text-dark);
+  font-weight: var(--font-weight-500);
+  font-size: var(--fp-mavyret-font-size-15);
+  padding: var(--spacing-04) var(--spacing-06);
+  min-inline-size: var(--spacing-22);
+  text-decoration: none;
+  border-radius: var(--fp-mavyret-pagination-radius);
+}
+
+.find-provider .find-provider-pagination-page:hover {
+  text-decoration: none;
+  background-color: var(--fp-mavyret-hover-bg);
+}
+
+/* Active page: orange filled rounded square */
+.find-provider .find-provider-pagination-page.is-active {
+  background-color: var(--fp-mavyret-orange);
+  color: var(--color-white);
+  font-weight: var(--font-weight-700);
+  text-decoration: none;
+  padding: var(--spacing-04) var(--spacing-10);
+}
+
+.find-provider .find-provider-pagination-page.is-active:hover {
+  background-color: var(--fp-mavyret-orange);
+  text-decoration: none;
+}
+
+.find-provider .find-provider-pagination-sep {
+  color: var(--fp-mavyret-separator);
+}
+
+/* ---------- Desktop layout: map left full-height, right column with paginations ---------- */
+@media (width >= 744px) {
+  .find-provider .find-provider-results-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    grid-auto-rows: var(--fp-mavyret-results-row-height);
+  }
+
+  .find-provider .find-provider-results-right {
+    grid-column: 2;
+  }
+
+  .find-provider .find-provider-map-container {
+    grid-column: 1;
+    block-size: 100%;
+    min-block-size: var(--fp-mavyret-map-min-height);
+  }
+
+  .find-provider.find-provider-map .find-provider-map-container {
+    grid-column: 1;
+    block-size: 100%;
+    min-block-size: var(--fp-mavyret-map-min-height);
+  }
+
+  /* Bottom pagination: align right under results column only */
+  .find-provider > .find-provider-results-panel > .find-provider-pagination {
+    justify-content: flex-end;
+    inline-size: 50%;
+    margin-inline-start: auto;
+    padding-inline-start: var(--spacing-24);
+  }
+}

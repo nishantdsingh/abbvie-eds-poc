@@ -1,0 +1,630 @@
+@import '../header.css';
+
+/* ──────────────────────────────────────────
+   LINZESS DTC — Header Brand Overrides
+   Source: linzess.com (Platform C)
+   - Eyebrow bar: linz-purple (#60579e), white text, centered
+   - Utility bar: dark (#231d1d), white text, centered, | separators
+   - Main header/nav: dark (#231d1d), white text
+   - Logo: full-color LINZESS (no filter)
+   - Nav items: white uppercase, small font, bold, letter-spacing
+   - CTA: "Check My Symptoms" — white rounded button, pushed far right
+   - Submenu: light-purple bg
+   - Mobile open: white bg, dark purple text, full-color logo
+────────────────────────────────────────── */
+
+/* Override eyebrow bg token — purple instead of inheriting dark utility bg */
+:root {
+  --nav-eyebrow-bg: var(--header-eyebrow-bg);
+  --nav-eyebrow-text: var(--color-text-on-dark);
+  --nav-utility-bg: var(--color-nav-dark);
+  --nav-utility-text: var(--color-text-on-dark);
+  --nav-utility-height: var(--header-utility-height);
+  --nav-utility-link-hover: var(--color-text-on-dark);
+}
+
+header .nav-eyebrow a,
+header .nav-eyebrow p { font-size: var(--font-size-11); }
+
+header .nav-eyebrow a { text-decoration: underline; }
+
+/* Nav wrapper — dark charcoal */
+header .nav-wrapper {
+  background-color: transparent;
+  position: relative;
+}
+
+header:has(.nav-utility ul) {
+  background: var(--header-eyebrow-gradient);
+  height: auto;
+}
+
+/* Nav text — white */
+header nav {
+  color: var(--color-text-on-dark);
+}
+
+/* Utility bar — dark bg, bottom border separator */
+header .nav-utility {
+  background-color: transparent;
+  border-bottom: var(--separator-height-1) solid var(--header-utility-border);
+}
+
+header .nav-utility:has(ul) {
+  display: block;
+}
+
+/* Strip global a.button styles */
+header .nav-utility a,
+header .nav-utility a.button {
+  background: none;
+  border: none;
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-400);
+  padding: var(--spacing-04) var(--spacing-10) var(--spacing-04) var(--spacing-12);
+  text-decoration: none;
+  text-transform: none;
+}
+
+header .nav-utility a:hover,
+header .nav-utility a.button:hover { 
+  text-decoration: underline;
+}
+
+/* Must precede more-specific hamburger button selector */
+header .nav-utility button {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-body-small);
+}
+
+header .nav-utility ul[role="menubar"] { justify-content: center; }
+header .nav-utility li:nth-child(n+3) { display: none; }
+
+/* Pipe separator — hidden on Linzess */
+header .nav-utility li + li::before { display: none; }
+
+/* Hamburger — white bars on dark header */
+header nav .nav-hamburger button {
+  background: transparent;
+  border: none;
+}
+
+header nav .nav-hamburger button > span {
+  background: var(--color-text-on-dark);
+  transform: translateX(0);
+  width: var(--header-hamburger-bar-width);
+}
+
+header nav .nav-hamburger button > span:last-child { transform: translateX(0); }
+
+header nav .nav-hamburger button > span:nth-child(2) {
+  display: none;
+  opacity: 0;
+}
+
+/* Logo — full-color, fixed width */
+header nav .nav-brand img {
+  filter: var(--header-logo-filter);
+  height: var(--header-logo-height);
+  max-width: unset;
+  width: var(--header-logo-width);
+}
+
+/* Primary nav — dark bg, white text */
+header nav .nav-sections {
+  background-color: var(--color-nav-dark);
+  color: var(--color-text-on-dark);
+}
+
+/* Nav buttons — white uppercase small bold */
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li > button {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--header-nav-letter-spacing);
+  padding: 0 var(--spacing-20);
+  text-transform: capitalize;
+  white-space: normal;
+}
+
+/* Nav tools — hide entirely (Linzess has no search block) */
+header nav .nav-tools { display: none; }
+
+/* Home nav item — show house icon, hide text */
+header nav .nav-sections .default-content-wrapper > ul > li.menu-home > a.nav-item-link {
+  align-items: center;
+  display: inline-flex;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li.menu-home > a.nav-item-link span {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: var(--spacing-01);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: var(--spacing-01);
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li.menu-home > a.nav-item-link::before {
+  background-color: var(--color-text-on-dark);
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  height: var(--spacing-20);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask: var(--icon-svg-home) no-repeat center / contain;
+  mask: var(--icon-svg-home) no-repeat center / contain;
+  width: var(--spacing-20);
+}
+
+/* "Check My Symptoms" CTA button — white bg, linzess-purple text, rounded */
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > a.nav-item-link,
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > button {
+  background-color: var(--color-brand-primary-lighter);
+  border-radius: var(--border-radius-button-primary);
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-body-small);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--header-nav-letter-spacing);
+  line-height: var(--line-height-20);
+  margin-top: var(--header-cta-margin-top);
+  padding: var(--spacing-12) var(--spacing-24);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > a.nav-item-link:hover,
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > button:hover {
+  background-color: var(--background-color);
+  color: var(--color-brand-primary);
+  opacity: var(--opacity-full);
+}
+
+/* Remove underline hover indicator for CTA button */
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > a.nav-item-link::after {
+  background-color: var(--color-brand-accent);
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  height: var(--header-chevron-size);
+  mask: var(--icon-svg-chevron-right) no-repeat center / contain;
+  position: static;
+  transition: transform var(--transition-duration, 0.2s) ease;
+  width: var(--header-chevron-size);
+}
+
+/* Submenu — white bg, dark text */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+  background: var(--color-background-light);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--text-color);
+  height: auto;
+  margin: 0;
+  position: unset;
+  width: 100%;
+  display: none;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul {
+  background: transparent;
+  padding: var(--spacing-10) 0;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li {
+  min-height: var(--header-submenu-item-min-height);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li:not(:last-child) {
+  border-bottom: var(--separator-height-1) solid var(--color-brand-primary-lighter);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 a {
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-14);
+  line-height: var(--header-submenu-item-line-height);
+  padding-left: var(--spacing-20);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 a:hover {
+  color: var(--color-brand-primary);
+  font-weight: var(--font-weight-700);
+  text-decoration: none;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded="true"] .submenu-level-1 { display: block; }
+
+/* Nav separator — subtle white on dark */
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-sections .default-content-wrapper > ul > li {
+  border-bottom-color: var(--header-nav-separator);
+}
+
+/* Mobile CTA clone — shown in header row on mobile (replaces CTA inside hidden nav-sections) */
+header nav .mobile-cta-clone {
+  display: none;
+}
+
+/* Mobile utility clone — shown at bottom of open nav */
+header nav .nav-sections .mobile-utility-clone {
+  display: none;
+}
+
+header.has-sticky-scrollback.show-nav.sticky-scrollback .header {
+  background: var(--color-text-on-dark);
+  border-bottom-left-radius: var(--border-radius-l);
+  border-bottom-right-radius: var(--border-radius-l);
+  transition: background var(--transition-duration-medium) var(--transition-easing-in-out),
+    color var(--transition-duration-medium) var(--transition-easing-in-out);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header.has-sticky-scrollback.show-nav.sticky-scrollback .header ul li a,
+/* stylelint-disable-next-line no-descending-specificity */
+header.has-sticky-scrollback.show-nav.sticky-scrollback .header ul li button {
+  color: var(--color-brand-primary);
+}
+
+header.has-sticky-scrollback.show-nav.sticky-scrollback .header nav .nav-brand img {
+  filter: brightness(1) invert(0);
+}
+
+header.has-sticky-scrollback.show-nav.sticky-scrollback .header nav .nav-sections .default-content-wrapper > ul > li.menu-home > a.nav-item-link::before {
+  background-color: var(--color-brand-primary);
+}
+
+/* ── Mobile open state — white bg, dark purple text, full-color logo ── */
+@media (width < 1024px) {
+  /* CTA clone — visible in header row on mobile */
+  header nav .mobile-cta-clone {
+    display: flex;
+  }
+
+  header nav .mobile-cta-clone > a.nav-item-link,
+  header nav .mobile-cta-clone > button {
+    background-color: var(--color-brand-primary-lighter);
+    border-radius: var(--border-radius-button-primary);
+    color: var(--color-brand-primary);
+    font-size: var(--font-size-body-small);
+    font-weight: var(--font-weight-600);
+    padding: var(--spacing-09) var(--spacing-24);
+    text-decoration: none;
+    text-transform: uppercase;
+    width: var(--header-mobile-cta-width);
+    margin-right: var(--spacing-15);
+  }
+
+  /* Utility clone — visible at bottom of open nav */
+  header nav[aria-expanded='true'] .nav-sections .mobile-utility-clone {
+    display: block;
+    border-bottom: none;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .mobile-utility-clone ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .mobile-utility-clone li { border-bottom: none; }
+
+  header nav[aria-expanded='true'] .nav-sections .mobile-utility-clone a {
+    color: var(--color-brand-primary);
+    font-size: var(--font-size-body-small);
+    font-weight: var(--font-weight-400);
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .mobile-utility-clone a:hover { text-decoration: underline; }
+
+  header nav[aria-expanded='false'] {
+    padding: var(--header-nav-mobile-padding);
+    align-items: center;
+  }
+
+  header nav.second-level-active .nav-brand {
+    display: block;
+  }
+
+  header nav[aria-expanded='true'] {
+    background-color: var(--background-color);
+    padding: var(--spacing-15) 0;
+    position: relative;
+    align-items: center;
+  }
+
+  /* Logo — full-color (remove dark filter) */
+  header nav[aria-expanded='true'] .nav-brand {
+    padding-left: var(--spacing-20);
+  }
+
+  header nav[aria-expanded='true'] .nav-brand img { filter: none; }
+
+  /* Hamburger bars — dark purple */
+  header nav[aria-expanded='true'] .nav-hamburger {
+    padding-right: var(--spacing-20);
+  }
+
+  header nav[aria-expanded='true'] .nav-hamburger button > span {
+    background: var(--color-brand-primary);
+    transform-origin: var(--header-hamburger-transform-origin);
+  }
+
+  /* Nav sections — white bg */
+  header nav[aria-expanded='true'] .nav-sections {
+    background-color: var(--background-color);
+    color: var(--color-brand-primary);
+    padding: 0;
+    top: 0;
+  }
+
+  /* Nav item buttons and links — dark purple */
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li {
+    border: none;
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-home,
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms { display: none; }
+
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li > button {
+    color: var(--color-brand-primary);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-700);
+    min-height: var(--spacing-60);
+    padding: 0 var(--spacing-20);
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li > button::before {
+    right: var(--spacing-20);
+    top: var(--header-nav-item-before-top);
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li > a.nav-item-link {
+    color: var(--color-brand-primary);
+    font-weight: var(--font-weight-700);
+  }
+
+  /* Home icon — dark purple mask */
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-home > a.nav-item-link::before {
+    background-color: var(--color-brand-primary);
+  }
+
+  /* CTA button — dark purple bg, white text */
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > a.nav-item-link,
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > button {
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-on-dark);
+  }
+
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > a.nav-item-link:hover,
+  header nav[aria-expanded='true'] .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms > button:hover {
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-on-dark);
+    opacity: var(--opacity-hover);
+  }
+}
+
+/* ── Desktop ── */
+@media (width >= 1024px) {
+  /* Single-row flex layout — logo left, sections right */
+
+  /* CTA clone and utility clone not needed on desktop */
+  header nav .mobile-cta-clone { display: none; }
+
+  header nav .nav-sections .mobile-utility-clone { display: none; }
+
+  header .nav-eyebrow a,
+  header .nav-eyebrow p { font-size: var(--font-size-14); }
+
+  header .nav-wrapper nav {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    height: auto;
+    margin: 0 auto;
+    max-width: var(--header-nav-max-width);
+    padding: var(--spacing-20) 0;
+    justify-content: center;
+  }
+
+  header .nav-wrapper .nav-utility nav {
+    padding: 0;
+  }
+
+  /* Logo — vertical centering in single nav row */
+  header nav .nav-brand {
+    flex-shrink: 0;
+    margin-right: var(--spacing-50);
+    padding: 0;
+  }
+
+  /* Sections — flex-fill, align right */
+  header .nav-wrapper nav .nav-sections {
+    align-items: center;
+    background: transparent;
+    display: flex;
+    flex: 1 1 auto;
+    height: auto;
+    margin-left: 0;
+    min-height: auto;
+    opacity: var(--opacity-full);
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    visibility: visible;
+    z-index: var(--z-index-60);
+  }
+
+  header .nav-wrapper nav .nav-sections .default-content-wrapper { width: 100%; }
+
+  /* Nav button padding */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
+    color: var(--color-text-on-dark);
+    line-height: var(--header-nav-line-height);
+    padding: var(--spacing-14) 0;
+  }
+
+  /* Submenu desktop styling */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    min-height: auto;
+    position: absolute;
+    border-radius: var(--border-radius-button-primary);
+    background-color: var(--color-brand-primary-lighter);
+    min-width: var(--header-submenu-width);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-wrapper {
+    background: var(--background-color);
+    border-radius: 0;
+    display: block;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: var(--spacing-20);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-left {
+    display: block;
+    grid-column: auto;
+    margin: 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-card { display: none; }
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .close-btn { display: none; }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    grid-template-columns: unset;
+    padding: 0;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li {
+    margin-bottom: var(--spacing-04);
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    text-align: center;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li a { padding-left: 0; }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group .navigation-item-level-2 .navigation-item-link {
+    color: var(--color-brand-primary);
+    display: block;
+    font-size: var(--font-size-body-small);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height-20);
+    text-decoration: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group .navigation-item-level-2 .navigation-item-link:hover {
+    color: var(--color-brand-accent);
+    text-decoration: underline;
+  }
+
+  /* Nav items — flex row, push CTA to far right */
+  header nav .nav-sections .default-content-wrapper > ul {
+    align-items: center;
+    display: flex;
+    gap: 0 !important;
+    justify-content: flex-start;
+    margin: 0;
+  }
+
+  /* "Check My Symptoms" — pushed to far right via auto left-margin */
+  header nav .nav-sections .default-content-wrapper > ul > li.menu-check-my-symptoms { margin-left: auto; }
+
+  /* Active/hovered nav button — white underline indicator */
+  header nav .nav-sections .default-content-wrapper > ul > li > button:hover,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button {
+    color: var(--color-text-on-dark);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-600);
+    opacity: var(--opacity-hover);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > button:hover::after,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button::after {
+    background: var(--color-text-on-dark);
+  }
+
+  /* Dropdown chevron on buttons with submenus — centered below text */
+  header nav .nav-sections .default-content-wrapper > ul > li > button[aria-haspopup="true"] {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: var(--spacing-04);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > button[aria-haspopup="true"]::after {
+    background-color: var(--color-brand-accent);
+    content: "";
+    display: block;
+    flex-shrink: 0;
+    height: var(--header-chevron-size);
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-mask: var(--icon-svg-chevron-down) no-repeat center / contain;
+    mask: var(--icon-svg-chevron-down) no-repeat center / contain;
+    position: static;
+    transition: transform var(--transition-duration, 0.2s) ease;
+    width: var(--header-chevron-size);
+  }
+
+  /* Keep chevron accent color on hover/expanded */
+  header nav .nav-sections .default-content-wrapper > ul > li > button[aria-haspopup="true"]:hover::after,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button[aria-haspopup="true"]::after {
+    background-color: var(--color-brand-accent);
+  }
+
+  /* Rotate chevron up when submenu is open */
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button[aria-haspopup="true"]::after {
+    transform: rotate(180deg);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-utility ul li:nth-child(n+3) { display: flex; }
+
+  /* Scrolled state — dark maintained */
+  header.hide-nav .nav-wrapper {
+    background: var(--header-scroll-bg);
+  }
+
+  header.hide-nav .nav-wrapper:hover { background: var(--color-nav-dark); }
+}
+
+/* ── Header overlays hero ── */
+/* stylelint-disable-next-line no-descending-specificity */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav a {
+  color: var(--color-text-on-dark);
+}
+
+/* Hide ISI toggle controls (top/See Full ISI/Collapse ISI) */
+header .nav-indication {
+  display: none;
+}
+
+/* Non-hero pages: solid purple header background (linzess only) */
+body.no-hero header {
+  background-color: var(--color-brand-primary);
+}
+
+body.no-hero header .nav-wrapper {
+  background-color: var(--color-brand-primary);
+}

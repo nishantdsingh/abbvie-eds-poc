@@ -1,0 +1,50 @@
+@import '../safety-bar.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* Rinvoq HCP — Safety Bar Brand Overrides
+   Collapsed: charcoal bg, gold top border, white text, gold toggle
+   Expanded:  white bg, brush-stroke h5, charcoal h4, plum h4.plum-strong
+*/
+
+.safety-bar {
+  background-color: var(--color-charcoal);
+  border-top: 4px solid var(--color-brand-accent);
+  color: var(--color-text-on-dark);
+  font-family: var(--body-font-family);
+}
+
+.safety-bar-toggle {
+  border-color: var(--color-brand-accent);
+  color: var(--color-brand-accent);
+}
+
+.safety-bar.is-expanded {
+  background-color: var(--background-color);
+  color: var(--color-text-heading);
+}
+
+.safety-bar.is-expanded .safety-bar-full h4 {
+  color: var(--color-plum);
+  font-family: var(--heading-font-family);
+  font-size: 1.375rem;
+}
+
+.safety-bar.is-expanded .safety-bar-full h4.plum-strong {
+  color: var(--color-plum);
+}
+
+.safety-bar.is-expanded .safety-bar-full h5 {
+  background-image: url('/content/dam/rinvoqhcpivy/images/brushstrokes/stroke--heading.svg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  color: var(--color-charcoal);
+  display: inline-block;
+  padding: 2px 32px 16px 48px;
+}
+
+.safety-bar.is-expanded .safety-bar-toggle {
+  background-color: var(--safety-bar-toggle-bg, #fff);
+  border-color: var(--color-text-heading);
+  color: var(--color-text-heading);
+}

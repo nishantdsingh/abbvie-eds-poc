@@ -1,0 +1,111 @@
+/* SkyriziHCP formulary-lookup — pixel-matched to skyrizihcp.com/dermatology/coverage-access */
+
+.formulary-lookup {
+  --formulary-text-color: var(--color-formulary-text, #21406d);
+  --formulary-text-align: center;
+
+  /* Heading — uppercase navy, bold */
+  --formulary-heading-font-size: 16px;
+  --formulary-heading-font-weight: 700;
+  --formulary-heading-color: var(--color-formulary-heading, #21406d);
+  --formulary-heading-margin-bottom: 12px;
+  --formulary-heading-line-height: 22px;
+  --formulary-heading-text-transform: uppercase;
+
+  /* Input */
+  --formulary-input-max-width: 600px;
+  --formulary-input-height: 44px;
+  --formulary-input-border: 1px solid var(--color-border-input, #ccc);
+  --formulary-input-border-radius: 2px;
+  --formulary-input-padding: 12px 15px;
+  --formulary-input-font-size: 14px;
+
+  /* Label — visually hidden (placeholder serves as label) */
+  --formulary-label-font-size: 13px;
+  --formulary-label-font-weight: 400;
+  --formulary-label-color: var(--color-formulary-label, #21406d);
+
+  /* Submit button — navy pill with search icon, uppercase */
+  --formulary-submit-bg: var(--color-formulary-submit-bg, #071d49);
+  --formulary-submit-border: 1px solid var(--color-formulary-submit-border, #071d49);
+  --formulary-submit-border-radius: 30px;
+  --formulary-submit-height: 44px;
+  --formulary-submit-padding: 14px 50px 14px 30px;
+  --formulary-submit-font-size: 12px;
+  --formulary-submit-font-weight: 700;
+  --formulary-submit-icon-display: inline-block;
+  --formulary-submit-icon-right: 20px;
+
+  /* Form max-width */
+  --formulary-form-max-width: 600px;
+
+  /* Error */
+  --formulary-error-color: var(--color-error, #d62a24);
+
+  /* reCAPTCHA notice */
+  --formulary-captcha-font-size: 10px;
+
+  /* Results */
+  --formulary-results-border-radius: 4px;
+  --formulary-results-box-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+  --formulary-results-header-font-weight: 700;
+}
+
+/* Hide ZIP label visually — placeholder serves as visible label */
+.formulary-lookup .formulary-lookup-zip-form > .formulary-lookup-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Input group — inline flex row with gap */
+.formulary-lookup .formulary-lookup-input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ZIP input takes remaining space */
+.formulary-lookup .formulary-lookup-zip-input {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Submit button uppercase + letter-spacing */
+.formulary-lookup .formulary-lookup-submit {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Disclaimer text — regular weight, left-aligned, matching live site */
+.formulary-lookup .formulary-lookup-disclaimer {
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: left;
+  color: var(--color-formulary-text, #21406d);
+  margin-top: 32px;
+}
+
+/* reCAPTCHA notice — small, matching live skyrizihcp.com */
+.formulary-lookup .formulary-lookup-recaptcha-notice {
+  font-size: var(--formulary-recaptcha-size, 11px);
+  font-style: normal;
+  color: var(--color-text-muted, #696969);
+  margin-top: var(--spacing-8, 8px);
+}
+
+.formulary-lookup .formulary-lookup-recaptcha-notice a {
+  color: var(--color-text-muted, #696969);
+  text-decoration: underline;
+}

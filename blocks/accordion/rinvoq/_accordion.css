@@ -1,0 +1,166 @@
+@import '../accordion.css';
+@import '../../../styles/rinvoq/tokens.css';
+
+/* Rinvoq DTC accordion — gold-accent style matching rinvoq.com/faq */
+
+.accordion {
+    --accordion-rinvoq-color-primary: var(--color-brand-primary);
+    --accordion-rinvoq-color-accent: var(--color-brand-accent);
+    --accordion-rinvoq-color-text: var(--color-text-heading);
+    --accordion-rinvoq-color-body: var(--text-color);
+    --accordion-rinvoq-color-label: var(--color-text-heading);
+    --accordion-rinvoq-color-hover-bg: var(--color-brand-accent-butter);
+    --footer-seperator-color: var(--color-brand-accent);
+    --highlight-dark-background-color: transparent;
+    --accordion-rinvoq-icon-size: 2rem;
+    --accordion-rinvoq-summary-line-height: 1.3;
+    --accordion-rinvoq-body-line-height: 1.6;
+
+    background: transparent;
+    overflow-x: hidden;
+}
+
+/* Item — white bg, gold left border, gap between items */
+.accordion .accordion-item {
+    border: var(--border-01, 1px) solid var(--color-border-default, #e3e3e3);
+    border-left: var(--spacing-05, 5px) solid var(--accordion-rinvoq-color-accent);
+    background: var(--background-color);
+    margin-bottom: var(--spacing-16);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+/* Summary — circle icon left, text follows, compact height */
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-08) var(--spacing-16);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--spacing-10);
+    background: var(--background-color);
+    color: var(--accordion-rinvoq-color-text);
+    overflow: hidden;
+    font-size: var(--body-font-size-s);
+    line-height: var(--accordion-rinvoq-summary-line-height);
+}
+
+/* Focus */
+.accordion summary:focus-visible {
+    outline: var(--spacing-02) solid var(--accordion-rinvoq-color-accent);
+    outline-offset: var(--spacing-02);
+}
+
+/* Label text — dark gold, bold */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-rinvoq-color-label);
+    font-family: var(--heading-font-family);
+    font-size: var(--body-font-size-m);
+    font-weight: var(--font-weight-heading);
+    text-transform: none;
+    letter-spacing: normal;
+    padding-right: 0;
+    margin: 0;
+}
+
+/* Plum circle + icon on LEFT (collapsed) */
+.accordion summary::before {
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    width: var(--accordion-rinvoq-icon-size);
+    height: var(--accordion-rinvoq-icon-size);
+    min-width: var(--accordion-rinvoq-icon-size);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%2390124a'/%3E%3Cpath d='M12 7v10M7 12h10' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Plum circle − icon (expanded) */
+.accordion .accordion-item[open] summary::before {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%2390124a'/%3E%3Cpath d='M7 12h10' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Hover — no background or font change */
+.accordion .accordion-item:hover summary {
+    background: var(--background-color);
+}
+
+.accordion .accordion-item-label.open .accordion-item-label-text,
+.accordion .accordion-item-label .accordion-item-label-text:hover,
+.accordion .accordion-item:hover .accordion-item-label p,
+.accordion .accordion-item:hover .accordion-item-label-text {
+    font-family: var(--heading-font-family) !important;
+    font-size: var(--body-font-size-m) !important;
+    font-weight: var(--font-weight-heading) !important;
+    color: var(--accordion-rinvoq-color-label) !important;
+}
+
+/* Open state — bright gold header, no left border so expanded item aligns flush */
+.accordion .accordion-item[open] {
+    border-left: none;
+}
+
+.accordion .accordion-item[open] summary,
+.accordion .accordion-item[open]:hover summary {
+    background: var(--accordion-rinvoq-color-accent);
+}
+
+/* Hide icon-font icons */
+.accordion .item-icon-plus::after,
+.accordion .item-icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+    display: none !important;
+}
+
+/* Body — glacier gray, standard padding */
+.accordion .accordion-item-body {
+    background: var(--color-glacier) !important;
+    padding: var(--spacing-16) var(--spacing-20) var(--spacing-24);
+}
+
+.accordion .accordion-item-body .accordion-item-body-text {
+    color: var(--accordion-rinvoq-color-body);
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-s);
+    line-height: var(--accordion-rinvoq-body-line-height);
+}
+
+/* Body links — plum */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--accordion-rinvoq-color-primary);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+    transition: color var(--transition-duration-fast) var(--transition-easing-standard);
+}
+
+.accordion .accordion-item-body a:hover,
+.accordion .accordion-item-body a.button:hover {
+    background: none;
+    color: var(--color-brand-primary-light);
+}
+
+/* Suppress external-link ::after glyph */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+
+/* Expand all button */
+.accordion .accordion-expand-all {
+    color: var(--accordion-rinvoq-color-primary);
+    font-family: var(--heading-font-family);
+    font-weight: var(--font-weight-heading);
+}
+
+.accordion .accordion-expand-all:focus {
+    border-color: var(--accordion-rinvoq-color-accent);
+    border-radius: var(--border-radius-s);
+}

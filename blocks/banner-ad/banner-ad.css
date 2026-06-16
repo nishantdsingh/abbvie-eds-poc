@@ -1,0 +1,30 @@
+.banner-ad {
+  /* Block is intentionally unstyled — ad networks control their own dimensions.
+     Contain overflow so ads can't break the layout. */
+  overflow: hidden;
+}
+
+.banner-ad-slot,
+.banner-ad-embed {
+  display: flex;
+  justify-content: center;
+}
+
+/* Placeholder shimmer before the ad loads */
+.banner-ad-slot:empty {
+  background: linear-gradient(
+    90deg,
+    var(--light-color, #f4f4f4) 25%,
+    #e8e8e8 50%,
+    var(--light-color, #f4f4f4) 75%
+  );
+  background-size: 200% 100%;
+  animation: banner-ad-shimmer 1.5s infinite;
+  min-height: 90px;
+  border-radius: 2px;
+}
+
+@keyframes banner-ad-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

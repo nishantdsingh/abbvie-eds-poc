@@ -1,0 +1,241 @@
+.section-nav {
+  --section-nav-bg: var(--background-color);
+  --section-nav-border: var(--color-border);
+  --section-nav-link-color: var(--text-color);
+  --section-nav-link-hover: var(--link-color);
+  --section-nav-active-color: var(--link-color);
+
+  background-color: var(--section-nav-bg);
+  border-bottom: var(--border-width-thin) solid var(--section-nav-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.section-nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Sticky variant ─────────────────────────────────────────────────────── */
+
+.section-nav.sticky {
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-index-anchor-nav);
+}
+
+/* When the sentinel leaves viewport, switch to fixed so the nav persists
+   across sections (position:sticky only sticks within its own section height) */
+.section-nav.sticky.is-stuck {
+  box-shadow: var(--shadow-nav-stuck);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: var(--header-height);
+}
+
+/* Zero-height sentinel used to detect sticky state; JS sets height when stuck
+   to reserve the layout space the nav vacates when it becomes position:fixed */
+.section-nav-sentinel {
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Nav inner layout ───────────────────────────────────────────────────── */
+
+.section-nav nav {
+  display: flex;
+  gap: 0;
+  margin: 0 auto;
+  max-width: var(--section-max-width);
+  padding: 0 var(--spacing-24);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+
+.section-nav a {
+  border-bottom: var(--border-width-default) solid transparent;
+  color: var(--section-nav-link-color);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-12) var(--spacing-16);
+  text-decoration: none;
+  transition: border-color var(--transition-duration-fast) var(--transition-easing-standard),
+    color var(--transition-duration-fast) var(--transition-easing-standard);
+  white-space: nowrap;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--section-nav-link-hover);
+  outline: none;
+}
+
+.section-nav a:focus-visible {
+  outline: var(--border-width-default) solid var(--color-focus);
+  outline-offset: calc(var(--spacing-02) * -1);
+}
+
+.section-nav a.is-active {
+  border-bottom-color: var(--section-nav-active-color);
+  color: var(--section-nav-link-hover);
+}
+
+/* ── Mobile Menu variant — base = mobile (toggle visible, list collapsed) ── */
+
+.section-nav.mobile-menu {
+  overflow-x: visible;
+}
+
+.section-nav.mobile-menu nav {
+  flex-direction: column;
+  padding: 0;
+}
+
+/* Toggle button — visible by default (mobile base) */
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--section-nav-link-color);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-semibold);
+  gap: var(--spacing-08);
+  justify-content: space-between;
+  padding: var(--spacing-12) var(--spacing-24);
+  width: 100%;
+}
+
+.section-nav.mobile-menu .section-nav-toggle:focus-visible {
+  outline: var(--border-width-default) solid var(--color-focus);
+  outline-offset: calc(var(--spacing-02) * -1);
+}
+
+/* Hamburger icon (3 bars via box-shadow trick) */
+.section-nav-hamburger {
+  background-color: currentcolor;
+  border-radius: var(--spacing-02);
+  display: block;
+  height: var(--spacing-02);
+  position: relative;
+  transition: background-color var(--transition-duration-fast) var(--transition-easing-standard);
+  width: var(--spacing-20);
+}
+
+.section-nav-hamburger::before,
+.section-nav-hamburger::after {
+  background-color: currentcolor;
+  border-radius: var(--spacing-02);
+  content: '';
+  display: block;
+  height: var(--spacing-02);
+  left: 0;
+  position: absolute;
+  transition: transform var(--transition-duration-fast) var(--transition-easing-standard);
+  width: 100%;
+}
+
+.section-nav-hamburger::before { top: calc(var(--spacing-06) * -1); }
+.section-nav-hamburger::after  { top: var(--spacing-06); }
+
+/* Animate to × when menu is open */
+.section-nav.mobile-menu.is-open .section-nav-hamburger {
+  background-color: transparent;
+}
+
+.section-nav.mobile-menu.is-open .section-nav-hamburger::before {
+  transform: translateY(var(--spacing-06)) rotate(45deg);
+}
+
+.section-nav.mobile-menu.is-open .section-nav-hamburger::after {
+  transform: translateY(calc(var(--spacing-06) * -1)) rotate(-45deg);
+}
+
+/* Collapsible link list — hidden by default on mobile */
+.section-nav.mobile-menu nav ul {
+  border-top: var(--border-width-thin) solid var(--section-nav-border);
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.section-nav.mobile-menu.is-open nav ul {
+  display: flex;
+}
+
+.section-nav.mobile-menu nav ul li {
+  align-items: center;
+  border-bottom: var(--border-width-thin) solid var(--section-nav-border);
+  display: flex;
+}
+
+.section-nav.mobile-menu nav ul li:last-child {
+  border-bottom: none;
+}
+
+.section-nav.mobile-menu nav a {
+  border-bottom: none;
+  display: block;
+  padding: var(--spacing-12) var(--spacing-24);
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: none;
+  border-left: var(--border-width-thick) solid var(--section-nav-active-color);
+  padding-left: calc(var(--spacing-24) - var(--spacing-03));
+}
+
+/* ── Desktop ≥768px: horizontal flex list, toggle hidden ─────────────────── */
+
+@media (width >= 744px) {
+  .section-nav.mobile-menu {
+    overflow-x: auto;
+  }
+
+  .section-nav.mobile-menu nav {
+    flex-direction: row;
+    padding: 0 var(--spacing-24);
+  }
+
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  .section-nav.mobile-menu nav ul {
+    border-top: none;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
+  .section-nav.mobile-menu nav ul li {
+    align-items: center;
+    border-bottom: none;
+    display: flex;
+  }
+
+  .section-nav.mobile-menu nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  .section-nav.mobile-menu nav a {
+    border-bottom: var(--border-width-default) solid transparent;
+    display: inline-block;
+    padding: var(--spacing-12) var(--spacing-16);
+    width: auto;
+  }
+
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom-color: var(--section-nav-active-color);
+    border-left: none;
+    padding-left: var(--spacing-16);
+  }
+}

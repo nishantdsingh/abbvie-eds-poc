@@ -1,0 +1,164 @@
+@import '../hero.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* ============================================================
+   RINVOQ HCP — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+/* Heading + body: Graphik */
+.hero h1 {
+  color: var(--color-text-heading);
+  font-family: var(--heading-font-family);
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--heading-font-family);
+}
+
+.hero p {
+  font-family: var(--body-font-family);
+}
+
+/* Profile band: charcoal */
+.hero.profile > :where(div):first-child {
+  background-color: var(--color-charcoal);
+}
+
+/* Profile text panel: white text on dark band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* Stat numbers: gold accent */
+.hero.stat-overlay .hero-stat-number {
+  color: var(--color-brand-accent);
+}
+
+/* CTA: plum on light bg, gold on dark bg */
+.hero :where(a).button {
+  color: var(--color-text-link);
+}
+
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* Solid background: charcoal */
+.hero.solid {
+  background-color: var(--color-charcoal);
+}
+
+.hero.solid :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+.hero img {
+  max-height: none;
+  border-radius: 0;
+  object-fit: cover;
+  width: auto;
+  height: var(--hero-img-height-mobile);
+  display: block;
+}
+
+.hero > :where(div):has(> div:empty) {
+  display: none;
+}
+
+.hero.no-padding > :where(div):first-child {
+  min-height: var(--hero-no-padding-min-height);
+}
+
+.hero.no-padding .hero-text-container {
+  position: absolute;
+  width: 100%;
+  max-width: var(--hero-text-max-width);
+  display: block;
+  margin-top: var(--hero-text-margin-top);
+  bottom: 0;
+  top: 0;
+  padding: var(--hero-text-padding);
+}
+
+.hero.no-padding .hero-text-container .cmp-container-x-large h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--hero-h1-line-height);
+  font-family: var(--heading-font-family);
+  font-style: normal;
+  margin-bottom: 0;
+  color: var(--color-text-heading);
+  position: relative;
+  width: fit-content;
+}
+
+.hero.no-padding .hero-text-container .cmp-container-x-large h1 em {
+  font-size: var(--hero-em-font-size-mobile);
+  font-family: var(--font-family-handwriting);
+  font-style: normal;
+  display: inline;
+  margin: 0;
+  color: var(--color-brand-accent);
+  font-weight: var(--font-weight-300);
+  letter-spacing: var(--hero-em-letter-spacing);
+  line-height: var(--hero-em-line-height);
+  text-shadow: 0 2px 0 var(--color-gold-dark);
+}
+
+.hero.no-padding .hero-text-container .cmp-container-x-large h1:has(em) + h1::after {
+  position: absolute;
+  z-index: var(--z-index-1);
+  bottom: var(--hero-stroke-bottom-offset);
+  left: 0;
+  display: block;
+  width: 100%;
+  height: var(--hero-stroke-height);
+  background-image: url('/icons/stroke.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  content: '';
+}
+
+@media (width >= 1024px) {
+  .hero.no-padding > :where(div):first-child {
+    min-height: var(--hero-no-padding-min-height);
+  }
+
+  .hero img {
+    max-height: none;
+    border-radius: 0;
+    width: var(--hero-img-width-desktop);
+    object-fit: cover;
+    margin-inline: auto;
+    height: auto;
+  }
+
+  .hero.no-padding .hero-text-container .cmp-container-x-large h1 {
+    font-size: var(--hero-h1-font-size-desktop);
+  }
+
+  .hero.no-padding .hero-text-container .cmp-container-x-large h1 em {
+    font-size: var(--hero-em-font-size-desktop);
+    line-height: var(--hero-h1-line-height);
+  }
+
+  .hero.no-padding .hero-text-container {
+    position: absolute;
+    width: 100%;
+    max-width: var(--hero-text-max-width);
+    display: flex;
+    margin-inline: auto;
+    padding: var(--hero-text-padding);
+  }
+}

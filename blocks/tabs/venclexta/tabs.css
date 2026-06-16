@@ -1,0 +1,138 @@
+@import '../tabs.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* ============================================================
+   VENCLEXTA — Tabs brand overrides
+   Live: venclexta.com/aml/resources-and-support
+   Style: Gold active tab, transparent inactive, flat buttons
+   ============================================================ */
+
+/* ── Tab container ── */
+.section.tabs-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ── Tab controls wrapper ── */
+.tabs-container .tabs-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+  z-index: var(--z-index-1);
+}
+
+/* ── Tab list — flat row ── */
+.tabs-container .tabs .tabs-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
+  width: auto;
+}
+
+/* ── Tab buttons (inactive) — transparent, dark text, compact ── */
+.tabs-container .tabs .tabs-list button.tabs-tab {
+  padding: var(--spacing-06) var(--spacing-08);
+  background: transparent;
+  color: var(--color-text-heading);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-body);
+  font-style: normal;
+  border: none;
+  border-radius: 0;
+  white-space: normal;
+  max-width: var(--spacing-140, 14rem);
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  line-height: var(--line-height-body);
+  transition:
+    background-color var(--transition-duration-medium) var(--transition-easing-standard),
+    color var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+/* Hover */
+.tabs-container .tabs .tabs-list button.tabs-tab:hover {
+  background: var(--color-glacier);
+}
+
+/* ── Active tab — gold background ── */
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: var(--color-brand-accent);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-heading);
+  z-index: var(--z-index-1);
+}
+
+/* ── Panel wrapper ── */
+.tabs-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  background: var(--background-color);
+  border: none;
+  padding: var(--spacing-30) var(--spacing-16);
+  margin: 0;
+  position: relative;
+}
+
+/* ── Sections inside panel — reset to stacked ── */
+.tabs-panel > .section.abbvie-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.tabs-panel > .section.abbvie-container > div {
+  grid-column: unset;
+}
+
+/* Single section → full width */
+.tabs-panel > .section:only-child {
+  grid-column: 1 / -1;
+}
+
+/* ── Tablet (600px+) ── */
+@media (width >= 600px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-14);
+    padding: var(--spacing-10) var(--spacing-16);
+    max-width: var(--spacing-288);
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-40) var(--spacing-24);
+  }
+
+  .tabs-panel:has(> .section:first-child:nth-last-child(2)) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) {
+    grid-column: span 6;
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) ~ .section {
+    grid-column: span 6;
+  }
+}
+
+/* ── Desktop (900px+) ── */
+@media (width >= 900px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-16);
+    padding: var(--spacing-14) var(--spacing-24);
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-48) var(--spacing-30);
+  }
+}

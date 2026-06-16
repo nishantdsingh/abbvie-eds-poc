@@ -1,0 +1,536 @@
+/* ----------Hero Section---------- */
+.section[data-identifier="Hero Section"] {
+  max-width: var(--content-max-width-wide);
+  margin: 0 auto;
+  border-top-left-radius: var(--border-top-radius);
+  min-height: var(--hero-section-height);
+}
+
+.section[data-identifier="Hero Section"] .fragment-wrapper {
+  padding: 0;
+}
+
+/* Background Color Styles for Section Model Values */
+.section[data-identifier="Hero Section"][data-bg-color="ffffff"],
+.section.bg-ffffff {
+  background-color: var(--color-white);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="071d49"],
+.section.bg-071d49 {
+  background-color: var(--color-navy-dark);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="a6b5e0"],
+.section.bg-a6b5e0 {
+  background-color: var(--color-blue-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="f1f3ff"],
+.section.bg-f1f3ff {
+  background-color: var(--color-blue-very-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="fafbff"],
+.section.bg-fafbff {
+  background-color: var(--color-blue-ultra-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="a6b5e0"],
+.section.bg-666b7a {
+  background-color: var(--color-gray-dark);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="b9b4b4"],
+.section.bg-b9b4b4 {
+  background-color: var(--color-gray-medium);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="f4f4f4"],
+.section.bg-f4f4f4 {
+  background-color: var(--color-gray-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="fafafa"],
+.section.bg-fafafa {
+  background-color: var(--color-gray-extra-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="8a2ecc"],
+.section.bg-8a2ecc {
+  background-color: var(--color-purple-primary);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="a86bde"],
+.section.bg-a86bde {
+  background-color: var(--color-purple-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="0066f5"],
+.section.bg-0066f5 {
+  background-color: var(--color-blue-primary);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="479ff8"],
+.section.bg-479ff8 {
+  background-color: var(--color-blue-secondary);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="cf451c"],
+.section.bg-cf451c {
+  background-color: var(--color-orange-dark);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="f7634f"],
+.section.bg-f7634f {
+  background-color: var(--color-orange-light);
+}
+
+.section[data-identifier="Hero Section"][data-bg-color="338700"],
+.section.bg-338700 {
+  background-color: var(--color-green-primary);
+}
+
+.section[data-identifier="Hero Section"]:has(.fragment-wrapper) {
+  padding: 0;
+  background-color: transparent;
+}
+
+:where(html.adobe-ue-edit) .section[data-background] {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+}
+
+:where(html.adobe-ue-edit) .section[data-background] > .section-background-media {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-index-negative);
+}
+
+:where(html.adobe-ue-edit) .section[data-background] > .section-background-media :where(picture, img) {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Styled section variants based on section color classes */
+.section.bg-ffffff,
+.section.bg-071d49,
+.section.bg-a6b5e0,
+.section.bg-f1f3ff,
+.section.bg-fafbff,
+.section.bg-666b7a,
+.section.bg-b9b4b4,
+.section.bg-f4f4f4,
+.section.bg-fafafa,
+.section.bg-8a2ecc,
+.section.bg-a86bde,
+.section.bg-0066f5,
+.section.bg-479ff8,
+.section.bg-cf451c,
+.section.bg-f7634f,
+.section.bg-338700 {
+  border-top-left-radius: var(--border-top-radius-medium);
+  overflow: hidden;
+  margin: auto;
+  padding: var(--spacing-40) var(--spacing-35) var(--spacing-80);
+}
+
+.section.bg-ffffff.no-radius,
+.section.bg-071d49.no-radius,
+.section.bg-a6b5e0.no-radius,
+.section.bg-f1f3ff.no-radius,
+.section.bg-fafbff.no-radius,
+.section.bg-666b7a.no-radius,
+.section.bg-b9b4b4.no-radius,
+.section.bg-f4f4f4.no-radius,
+.section.bg-fafafa.no-radius,
+.section.bg-8a2ecc.no-radius,
+.section.bg-a86bde.no-radius,
+.section.bg-0066f5.no-radius,
+.section.bg-479ff8.no-radius,
+.section.bg-cf451c.no-radius,
+.section.bg-f7634f.no-radius,
+.section.bg-338700.no-radius {
+  border-top-left-radius: unset;
+}
+
+.section.bg-071d49,
+.section.bg-666b7a,
+.section.bg-8a2ecc,
+.section.bg-a86bde,
+.section.bg-0066f5,
+.section.bg-cf451c,
+.section.bg-338700 {
+  color: var(--background-color);
+}
+
+.section.bg-071d49 :is(h1, h2, h3, h4, h5, h6),
+.section.bg-666b7a :is(h1, h2, h3, h4, h5, h6),
+.section.bg-8a2ecc :is(h1, h2, h3, h4, h5, h6),
+.section.bg-a86bde :is(h1, h2, h3, h4, h5, h6),
+.section.bg-0066f5 :is(h1, h2, h3, h4, h5, h6),
+.section.bg-cf451c :is(h1, h2, h3, h4, h5, h6),
+.section.bg-338700 :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--background-color);
+}
+
+.section.bg-071d49 :where(p, li, a:not(.button)),
+.section.bg-666b7a :where(p, li, a:not(.button)),
+.section.bg-8a2ecc :where(p, li, a:not(.button)),
+.section.bg-a86bde :where(p, li, a:not(.button)),
+.section.bg-0066f5 :where(p, li, a:not(.button)),
+.section.bg-cf451c :where(p, li, a:not(.button)),
+.section.bg-338700 :where(p, li, a:not(.button)) {
+  color: var(--background-color);
+}
+
+.section.bg-071d49 :where(.button):any-link,
+.section.bg-666b7a :where(.button):any-link,
+.section.bg-8a2ecc :where(.button):any-link,
+.section.bg-a86bde :where(.button):any-link,
+.section.bg-0066f5 :where(.button):any-link,
+.section.bg-cf451c :where(.button):any-link,
+.section.bg-338700 :where(.button):any-link {
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+.section.bg-071d49 :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-navy-dark);
+}
+
+.section.bg-666b7a :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-gray-dark);
+}
+
+.section.bg-8a2ecc :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-purple-primary);
+}
+
+.section.bg-a86bde :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-purple-light);
+}
+
+.section.bg-0066f5 :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-blue-primary);
+}
+
+.section.bg-cf451c :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-orange-dark);
+}
+
+.section.bg-338700 :where(.button):hover {
+  background-color: var(--background-color);
+  color: var(--color-green-primary);
+}
+
+@media (width >= 744px) {
+  .section.bg-ffffff,
+  .section.bg-071d49,
+  .section.bg-a6b5e0,
+  .section.bg-f1f3ff,
+  .section.bg-fafbff,
+  .section.bg-666b7a,
+  .section.bg-b9b4b4,
+  .section.bg-f4f4f4,
+  .section.bg-fafafa,
+  .section.bg-8a2ecc,
+  .section.bg-a86bde,
+  .section.bg-0066f5,
+  .section.bg-479ff8,
+  .section.bg-cf451c,
+  .section.bg-f7634f,
+  .section.bg-338700 {
+    padding: var(--spacing-56) var(--spacing-70) var(--spacing-80);
+    min-height: 26rem;
+  }
+
+}
+
+@media (width >=1024px) {
+  .section.bg-ffffff,
+  .section.bg-071d49,
+  .section.bg-a6b5e0,
+  .section.bg-f1f3ff,
+  .section.bg-fafbff,
+  .section.bg-666b7a,
+  .section.bg-b9b4b4,
+  .section.bg-f4f4f4,
+  .section.bg-fafafa,
+  .section.bg-8a2ecc,
+  .section.bg-a86bde,
+  .section.bg-0066f5,
+  .section.bg-479ff8,
+  .section.bg-cf451c,
+  .section.bg-f7634f,
+  .section.bg-338700 {
+    padding: var(--spacing-80) var(--spacing-55);
+    max-width: var(--content-max-width-wide);
+    min-height: 32rem;
+  }
+
+}
+
+@media (width >=1440px) {
+  .section.bg-ffffff>div,
+  .section.bg-071d49>div,
+  .section.bg-a6b5e0>div,
+  .section.bg-f1f3ff>div,
+  .section.bg-fafbff>div,
+  .section.bg-666b7a>div,
+  .section.bg-b9b4b4>div,
+  .section.bg-f4f4f4>div,
+  .section.bg-fafafa>div,
+  .section.bg-8a2ecc>div,
+  .section.bg-a86bde>div,
+  .section.bg-0066f5>div,
+  .section.bg-479ff8>div,
+  .section.bg-cf451c>div,
+  .section.bg-f7634f>div,
+  .section.bg-338700>div {
+    max-width: var(--content-max-width-wide);
+    margin: var(--spacing-00) auto;
+  }
+}
+
+.section.linear-gradient,
+.section.semi-transparent {
+  isolation: isolate;
+  position: relative;
+}
+
+.section.linear-gradient::after {
+  content: '';
+  background: linear-gradient(0deg, rgb(0 0 0 / 90%) 42.91%, transparent);
+  height: 100%;
+  left: var(--spacing-00);
+  pointer-events: none;
+  position: absolute;
+  top: var(--spacing-00);
+  width: 100%;
+  z-index: var(--z-index-negative);
+}
+
+.section.semi-transparent::after {
+  content: '';
+  background: var(--semi-transparent-color);
+  height: 100%;
+  left: var(--spacing-00);
+  pointer-events: none;
+  position: absolute;
+  top: var(--spacing-00);
+  width: 100%;
+  z-index: var(--z-index-negative);
+}
+
+.section.no-bottom-margin {
+  margin-bottom: var(--spacing-00);
+}
+
+
+.section.no-padding {
+  padding: var(--spacing-00);
+}
+
+.section.section-bottom-margin {
+  margin-bottom: var(--spacing-80);
+}
+
+.section.align-left {
+  text-align: left;
+}
+
+.section.align-right {
+  text-align: right;
+}
+
+.section.align-center {
+  text-align: center;
+}
+
+/* ---------- Content Width ---------- */
+
+.section.content-regular {
+  max-width: var(--content-max-width); /* 133rem */
+}
+
+.section.content-wide {
+  max-width: var(--content-max-width-wide); /* 144rem */
+}
+
+/* ---------- Grid Container ---------- */
+
+.section.grid-container {
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-20, 1rem);
+}
+
+.section.grid-container.small-padding {
+  padding: 2rem 2rem 3.2rem;
+}
+
+.section.grid-container.regular-padding {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  padding-top: 3.2rem;
+}
+
+@media (width >= 744px) {
+  .section.grid-container.regular-padding {
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 5.6rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .section.grid-container.regular-padding {
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
+    padding-top: 8rem;
+  }
+}
+
+/* ---------- Grid Section ---------- */
+
+/* On mobile every grid-section stacks to full width */
+.grid-container > .section {
+  grid-column: span 12;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  overflow: clip;
+  display: block;
+}
+
+/* Column span variants — applied at tablet and above */
+@media (width >= 744px) {
+  .section.grid-container > :where(.section.grid-cols-1)  { grid-column: span 1; }
+  .section.grid-container > :where(.section.grid-cols-2)  { grid-column: span 2; }
+  .section.grid-container > :where(.section.grid-cols-3)  { grid-column: span 3; }
+  .section.grid-container > :where(.section.grid-cols-4)  { grid-column: span 4; }
+  .section.grid-container > :where(.section.grid-cols-5)  { grid-column: span 5; }
+  .section.grid-container > :where(.section.grid-cols-6)  { grid-column: span 6; }
+  .section.grid-container > :where(.section.grid-cols-7)  { grid-column: span 7; }
+  .section.grid-container > :where(.section.grid-cols-8)  { grid-column: span 8; }
+  .section.grid-container > :where(.section.grid-cols-9)  { grid-column: span 9; }
+  .section.grid-container > :where(.section.grid-cols-10) { grid-column: span 10; }
+  .section.grid-container > :where(.section.grid-cols-11) { grid-column: span 11; }
+  .section.grid-container > :where(.section.grid-cols-12) { grid-column: span 12; }
+}
+
+/* ---- Section Desktop Width (12-column grid system) ---- */
+@media (width >= 1024px) {
+  .section.section-xxl,
+  .section.section-xl,
+  .section.section-l,
+  .section.section-m,
+  .section.section-s,
+  .section.section-xs {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gap-20);
+  }
+
+  /* Default (centered) grid columns for each size */
+  .section.section-xxl > div {
+    grid-column: 1 / -1;
+  }
+
+  .section.section-xl > div {
+    grid-column: 3 / 11;
+  }
+
+  .section.section-l > div {
+    grid-column: 4 / 11;
+  }
+
+  .section.section-m > div {
+    grid-column: 4 / 10;
+  }
+
+  .section.section-s > div {
+    grid-column: 5 / 10;
+  }
+
+  .section.section-xs > div {
+    grid-column: 5 / 9;
+  }
+
+  /* LEFT aligned: start at column 1 */
+  .section.section-xl.align-left > :where(div) {
+    grid-column: 1 / 9;
+  }
+
+  .section.section-l.align-left > :where(div) {
+    grid-column: 1 / 8;
+  }
+
+  .section.section-m.align-left > :where(div) {
+    grid-column: 1 / 7;
+  }
+
+  .section.section-s.align-left > :where(div) {
+    grid-column: 1 / 6;
+  }
+
+  .section.section-xs.align-left > :where(div) {
+    grid-column: 1 / 5;
+  }
+
+  /* RIGHT aligned: end at last column */
+  .section.section-xl.align-right > :where(div) {
+    grid-column: 5 / -1;
+  }
+
+  .section.section-l.align-right > :where(div) {
+    grid-column: 6 / -1;
+  }
+
+  .section.section-m.align-right > :where(div) {
+    grid-column: 7 / -1;
+  }
+
+  .section.section-s.align-right > :where(div) {
+    grid-column: 8 / -1;
+  }
+
+  .section.section-xs.align-right > :where(div) {
+    grid-column: 9 / -1;
+  }
+
+  /* CENTER aligned: explicit centered positions */
+  .section.section-xl.align-center > :where(div) {
+    grid-column: 3 / 11;
+  }
+
+  .section.section-l.align-center > :where(div) {
+    grid-column: 3 / 10;
+  }
+
+  .section.section-m.align-center > :where(div) {
+    grid-column: 4 / 10;
+  }
+
+  .section.section-s.align-center > :where(div) {
+    grid-column: 4 / 9;
+  }
+
+  .section.section-xs.align-center > :where(div) {
+    grid-column: 5 / 9;
+  }
+}

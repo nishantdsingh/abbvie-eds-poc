@@ -1,0 +1,198 @@
+@import 'tokens.css';
+@import 'fonts.css';
+
+/* ============================================================
+   MAVYRET HCP — Theme Overrides
+   Primary: Navy #21406D | Accent: Cyan #1BA2DA
+   Font: Univers LT W01 Condensed
+   Button: Pill-shaped (30px radius), navy background
+   Unique: Radial gradient hero, fiesta accent palette
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-heading);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  color: var(--color-brand-primary);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+}
+
+/* ---- Links ---- */
+a { color: var(--link-color); }
+a:hover { text-decoration: underline; }
+
+/* ---- Buttons ---- */
+.button-container a,
+a.button.primary {
+  color: var(--button-primary-color);
+  background-color: var(--button-primary-bg);
+  border: 2px solid var(--button-primary-border);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+  line-height: var(--line-height-button);
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.button-container a:hover,
+a.button.primary:hover {
+  background-color: #0a2a5e;
+}
+
+a.button.secondary {
+  color: var(--button-secondary-color);
+  background-color: var(--button-secondary-bg);
+  border: 2px solid var(--button-secondary-border);
+  border-radius: var(--border-radius-button-secondary);
+  padding: var(--button-secondary-padding);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+  text-decoration: none;
+}
+
+a.button.secondary:hover {
+  background-color: #0a2a5e;
+}
+
+/* ---- Header ---- */
+header {
+  background-color: var(--background-color);
+}
+
+header nav a {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  color: var(--color-brand-primary);
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-footer);
+}
+
+footer a {
+  color: var(--color-text-footer);
+  font-size: var(--font-size-footer);
+}
+
+/* ---- Hero Section ---- */
+.section.hero-container {
+  background: var(--gradient-hero);
+}
+
+.section.hero-container h1 {
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Safety Bar ---- */
+.isi-container {
+  background-color: var(--color-background-safety-bar);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Tabs ---- */
+.tabs .tabs-tab {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-tab);
+  line-height: var(--line-height-tab);
+  color: var(--color-brand-primary);
+  border-radius: var(--border-radius-tab);
+}
+
+.tabs .tabs-tab.active,
+.tabs .tabs-tab[aria-selected="true"] {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Accordion (Fiesta style) ---- */
+.accordion summary {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-accordion);
+}
+
+/* ---- Data Tables ---- */
+table th {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family-bold);
+}
+
+table td {
+  border-bottom: 1px solid var(--color-border-default);
+  font-family: var(--body-font-family);
+}
+
+/* ---- Cards ---- */
+.cards .cards-card-body {
+  border-radius: var(--border-radius-card);
+}
+
+/* ---- Section Backgrounds ---- */
+.section.navy-bg {
+  background-color: var(--color-brand-primary-dark);
+  color: var(--color-text-on-dark);
+}
+
+.section.navy-bg h1,
+.section.navy-bg h2,
+.section.navy-bg h3 {
+  color: var(--color-text-on-dark);
+}
+
+.section.mid-navy-bg {
+  background-color: var(--color-background-section);
+  color: var(--color-text-on-dark);
+}
+
+.section.light-blue-bg {
+  background: var(--gradient-section-light);
+}
+
+.section.light-bg {
+  background-color: var(--color-background-light);
+}
+
+/* ---- Factoid Component ---- */
+.factoid {
+  font-family: var(--heading-font-family-bold);
+  color: var(--color-brand-accent);
+}
+
+/* ---- Flex Icon Cards ---- */
+.columns.icon-cards .columns-col {
+  padding: var(--spacing-card-padding);
+}

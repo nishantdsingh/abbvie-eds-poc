@@ -1,0 +1,172 @@
+@import '../carousel.css';
+
+/* Rinvoq — Full-width hero carousel (mobile-first)
+   Uses .carousel.carousel for specificity over base rules */
+
+.carousel.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+}
+
+/* Height: responsive */
+.carousel.carousel .carousel-slide {
+  min-height: var(--carousel-slide-min-height, 280px);
+  height: var(--carousel-slide-height, 25vw);
+  max-height: var(--carousel-slide-max-height, 500px);
+}
+
+/* Image fills entire slide */
+.carousel.carousel .carousel-slide .carousel-slide-image {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel.carousel .carousel-slide .carousel-slide-image picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel.carousel .carousel-slide .carousel-slide-image picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--carousel-image-position, center top);
+}
+
+/* Content overlay — mobile base */
+.carousel.carousel .carousel-slide .carousel-slide-content {
+  background: none;
+  background-color: transparent;
+  color: var(--carousel-content-color, #fff);
+  margin: 0;
+  padding: var(--spacing-24, 24px);
+  max-width: 100%;
+  width: auto;
+  text-shadow: var(--carousel-content-text-shadow, 0 1px 4px rgb(0 0 0 / 30%));
+}
+
+.carousel.carousel .carousel-slide .carousel-slide-content h1,
+.carousel.carousel .carousel-slide .carousel-slide-content h2 {
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--carousel-content-color, #fff);
+  margin: 0;
+}
+
+/* Navigation arrows — mobile: always visible, smaller */
+.carousel.carousel .carousel-navigation-buttons {
+  left: var(--carousel-nav-inset, 8px);
+  right: var(--carousel-nav-inset, 8px);
+  z-index: 3;
+  visibility: visible;
+}
+
+.carousel.carousel .carousel-navigation-buttons button {
+  width: var(--carousel-nav-button-width-mobile, 40px);
+  height: var(--carousel-nav-button-height-mobile, 60px);
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.carousel.carousel .carousel-navigation-buttons button:hover {
+  background: none;
+}
+
+/* Arrow glyph — mobile size */
+.carousel.carousel .carousel-navigation-buttons .slide-prev::after,
+.carousel.carousel .carousel-navigation-buttons .slide-next::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-bottom: var(--carousel-arrow-weight, 5px) solid var(--carousel-arrow-color, #fff);
+  border-left: var(--carousel-arrow-weight, 5px) solid var(--carousel-arrow-color, #fff);
+  background: none;
+  border-radius: 0;
+  transform: translate(-30%, -50%) rotate(45deg);
+}
+
+.carousel.carousel .carousel-navigation-buttons .slide-next::after {
+  border-bottom: 0;
+  border-left: 0;
+  border-top: var(--carousel-arrow-weight, 5px) solid var(--carousel-arrow-color, #fff);
+  border-right: var(--carousel-arrow-weight, 5px) solid var(--carousel-arrow-color, #fff);
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+
+/* Hide base ::before */
+.carousel.carousel .carousel-navigation-buttons .slide-prev::before,
+.carousel.carousel .carousel-navigation-buttons .slide-next::before {
+  content: none;
+}
+
+/* Dot indicators */
+.carousel.carousel .carousel-slide-indicators {
+  background: transparent;
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: var(--spacing-12, 12px);
+  gap: var(--spacing-08, 8px);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel.carousel .carousel-slide-indicator button {
+  width: var(--carousel-dot-size, 10px);
+  height: var(--carousel-dot-size, 10px);
+  background-color: var(--carousel-dot-inactive-bg, #fff);
+  border: var(--carousel-dot-border-width, 1px) solid var(--carousel-dot-color, var(--color-brand-primary));
+}
+
+.carousel.carousel .carousel-slide-indicator button:disabled,
+.carousel.carousel .carousel-slide-indicator button:hover,
+.carousel.carousel .carousel-slide-indicator button:focus-visible {
+  background-color: var(--carousel-dot-color, var(--color-brand-primary));
+  border-color: var(--carousel-dot-active-border, #fff);
+}
+
+/* Desktop */
+@media (width >= 768px) {
+  .carousel.carousel .carousel-slide .carousel-slide-content {
+    padding: var(--carousel-content-padding, 32px 100px);
+    max-width: var(--carousel-content-max-width, 60%);
+  }
+
+  .carousel.carousel .carousel-navigation-buttons {
+    left: var(--carousel-nav-inset, 20px);
+    right: var(--carousel-nav-inset, 20px);
+    visibility: hidden;
+  }
+
+  .carousel.carousel:hover .carousel-navigation-buttons {
+    visibility: visible;
+  }
+
+  .carousel.carousel .carousel-navigation-buttons button {
+    width: var(--carousel-nav-button-width, 70px);
+    height: var(--carousel-nav-button-height, 120px);
+  }
+
+  .carousel.carousel .carousel-navigation-buttons .slide-prev::after,
+  .carousel.carousel .carousel-navigation-buttons .slide-next::after {
+    width: var(--carousel-arrow-size, 30px);
+    height: var(--carousel-arrow-size, 30px);
+  }
+}

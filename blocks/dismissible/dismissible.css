@@ -1,0 +1,51 @@
+.dismissible {
+  background-color: var(--dismissible-bg, var(--light-color, #f4f4f4));
+  border-bottom: 1px solid var(--dismissible-border, #e0e0e0);
+  position: relative;
+  padding: var(--spacing-12, 12px) var(--spacing-48, 48px) var(--spacing-12, 12px) var(--spacing-24, 24px);
+  font-size: var(--body-font-size-s, 0.875rem);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.dismissible.sticky {
+  position: sticky;
+  top: var(--nav-height, 64px);
+  z-index: var(--z-index-dismissible, 90);
+}
+
+.dismissible.is-closing {
+  opacity: 0;
+}
+
+.dismissible-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: var(--spacing-16, 16px);
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+}
+
+.dismissible-close::before,
+.dismissible-close::after {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 2px;
+  background: currentcolor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.dismissible-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.dismissible-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

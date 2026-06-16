@@ -1,0 +1,52 @@
+@import '../brand-explorer.css';
+
+/* Rinvoq HCP — brand-explorer overrides (matching rinvoqhcp.com) */
+
+/* Only the bar area is black — section provides full-width bg for bar */
+.brand-explorer-section {
+  background: var(--color-black, #000);
+}
+
+/* Block wrapper white (content area) */
+.brand-explorer {
+  background: var(--color-white, #fff);
+}
+
+/* Bar is black */
+.brand-explorer-bar {
+  background: var(--color-black, #000);
+}
+
+/* Rinvoq HCP — bar links */
+.brand-explorer-bar a:any-link {
+  max-width: var(--spacing-100, 10rem);
+}
+
+@media (width >= 900px) {
+  .brand-explorer-bar a:any-link {
+    max-width: none;
+  }
+}
+
+.brand-explorer .brand-explorer-browse,
+.brand-explorer-bar a:any-link {
+  font-size: var(--font-size-13, 1.3rem);
+  font-weight: var(--font-weight-500, 500);
+}
+
+@media (width >= 900px) {
+  .brand-explorer .brand-explorer-browse,
+  .brand-explorer-bar a:any-link {
+    font-size: var(--font-size-14, 1.44rem);
+  }
+}
+
+/* Rinvoq HCP — content link color */
+.brand-explorer-content a:any-link {
+  color: var(--be-color-navy);
+}
+
+/* Rinvoq HCP — disease name underlines on hover (not ::before label) */
+.brand-explorer .brand-explorer-indication:hover {
+  text-decoration: underline;
+}

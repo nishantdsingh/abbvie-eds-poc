@@ -1,0 +1,343 @@
+@import '../footer.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* ============================================================
+   LINZESS DTC — Footer brand overrides
+   Live: www.linzess.com
+   - Dark purple bg (--color-background-footer #422e83) edge-to-edge
+   - Curved arc top decoration (transition from light page bg into footer)
+   - 6-column heading-based grid with callout columns 6–8 stacked into col 6
+   - White headings (extra-bold) and white links (12px regular)
+   - Footer-bottom: horizontal sub-links separated by purple `|`,
+     two legal paragraphs, AbbVie + Ironwood logos with vertical divider,
+     copyright text, indication code bottom-right
+   - Centering (1200px max-width) inherited from base
+   ============================================================ */
+
+/* Brand token overrides */
+.footer-wrapper {
+  --footer-color-bg: var(--color-background-footer);
+  --footer-color-text: var(--color-text-on-dark);
+  --footer-color-link: var(--color-text-on-dark);
+  --footer-color-separator: var(--color-brand-primary-light);
+  --footer-font-family: var(--body-font-family);
+  --footer-font-size: var(--font-size-body-small);
+  --footer-font-weight: var(--font-weight-body);
+  --footer-font-weight-bold: var(--font-weight-extra-bold);
+  --footer-line-height: var(--line-height-body);
+
+  /* Footer-logos box dimensions for the AbbVie + Ironwood partner logos in
+     the bottom row (small, equal heights, separated by a vertical divider). */
+  --footer-logo-partner-height: var(--spacing-24);
+
+  /* Arc top decoration — matches live `.abbv-footer:before`. Block-scoped
+     explicit px (precedent: `--footer-content-max-width: 1200px` in base). */
+  --footer-arc-height: 255px;
+  --footer-arc-overlap: 10px;
+  --footer-arc-offset: 60px;
+}
+
+/* Curved arc top decoration — replicates the live `.abbv-footer:before`.
+   The pseudo expands beyond the footer's left/right edges so the rounded
+   top doesn't taper off awkwardly at the viewport edges. */
+.footer {
+  overflow: visible;
+  margin-top: calc(-1 * var(--footer-arc-overlap));
+  position: relative;
+  z-index: 0;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--footer-arc-offset));
+  left: 50%;
+  width: 130vw;
+  transform: translateX(-50%);
+  height: var(--footer-arc-height);
+  background-color: var(--footer-color-bg);
+  border-radius: 100% 100% 0 0;
+  z-index: -1;
+}
+
+/* ── Heading-based grid — mobile + tablet 2 cols (matches live
+   `.abbv-col { width: 50% }`); desktop 6 cols below. ── */
+.footer .footer-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-32);
+  margin: 0;
+}
+
+@media (width >= 1024px) {
+  /* Desktop: 6 visual columns. Authored columns 1–5 each occupy one column;
+     authored columns 6–8 stack vertically into the 6th visual column. */
+  .footer .footer-columns {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow: row;
+  }
+
+  .footer .footer-column-6,
+  .footer .footer-column-7,
+  .footer .footer-column-8 {
+    grid-column: 6;
+  }
+}
+
+/* Each column — left-aligned vertical list */
+.footer .footer-column {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Column heading — uppercase, extra-bold, white (matches the `lato-extrabold`
+   first-link styling in live abbv-footer columns). Same font-size as body
+   links so the visual rhythm stays tight. */
+.footer .footer-column h1,
+.footer .footer-column h2,
+.footer .footer-column h3,
+.footer .footer-column h4,
+.footer .footer-column h5,
+.footer .footer-column h6 {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight-bold);
+  line-height: var(--footer-line-height);
+  text-transform: uppercase;
+  margin: 0 0 var(--spacing-16) 0;
+}
+
+/* Inline <br> hidden on mobile — matches live's `<br class="desktop-only">`.
+   Inserted by block-config.js#applyLineBreaks for headings/links flagged
+   `desktopOnly: true` in the LINE_BREAKS map. */
+.footer .footer-br-desktop {
+  display: none;
+}
+
+@media (width >= 1024px) {
+  .footer .footer-br-desktop {
+    display: inline;
+  }
+}
+
+/* Heading-only callout columns (CHECK MY SYMPTOMS, FAQs, SIGN UP FOR UPDATES)
+   — anchor inside H5 inherits the heading style instead of the global link
+   color, matching the partner-link pattern used in Venclexta's footer. */
+.footer .footer-column h1 a,
+.footer .footer-column h2 a,
+.footer .footer-column h3 a,
+.footer .footer-column h4 a,
+.footer .footer-column h5 a,
+.footer .footer-column h6 a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  text-transform: inherit;
+}
+
+.footer .footer-column h1 a:hover,
+.footer .footer-column h2 a:hover,
+.footer .footer-column h3 a:hover,
+.footer .footer-column h4 a:hover,
+.footer .footer-column h5 a:hover,
+.footer .footer-column h6 a:hover {
+  text-decoration: underline;
+}
+
+/* Vertical sub-link list — no bullets, gap-separated */
+.footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.footer .footer-column li {
+  margin: 0;
+  padding: 0;
+}
+
+/* `.footer-wrapper` prefix raises specificity above the heading-anchor
+   `:hover` rules above so stylelint's no-descending-specificity passes. */
+.footer-wrapper .footer .footer-column li a,
+.footer-wrapper .footer .footer-column ul li a {
+  color: var(--footer-color-link);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  text-decoration: none;
+  white-space: normal;
+}
+
+.footer-wrapper .footer .footer-column li a:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer bottom: sub-links + legal text + partner logos + copyright ── */
+.footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+
+  /* reset base: base footer-bottom has top-border + padding which we don't want */
+  border: none;
+  padding: 0;
+  margin-top: var(--spacing-40);
+}
+
+/* Horizontal sub-links UL — always row-wrap (mobile through desktop) so items
+   flow naturally across the available width. Matches live's
+   `.abbv-link-list ul li:after` `|` separator pattern.
+   Top border = separator between section 1 columns and section 2 sub-links. */
+.footer .footer-bottom ul {
+  list-style: none;
+  padding: var(--spacing-24) 0 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+
+  /* row-gap spaces wrapped lines; column-gap stays 0 (margin-right per <li>
+     handles the inline spacing so the `|` separator can sit between items). */
+  gap: var(--spacing-12) 0;
+  border-top: var(--separator-height-1) solid var(--footer-color-separator);
+}
+
+/* `|` separator after every item except the last */
+.footer .footer-bottom ul li:not(:last-child) {
+  margin-right: var(--spacing-24);
+  position: relative;
+}
+
+.footer .footer-bottom ul li:not(:last-child)::after {
+  content: '|';
+  position: absolute;
+  right: calc(-1 * var(--spacing-16));
+  color: var(--footer-color-separator);
+}
+
+/* `.footer-wrapper` prefix lifts specificity above column rules (same
+   pattern used in Venclexta to keep no-descending-specificity passing). */
+/* stylelint-disable no-descending-specificity */
+.footer-wrapper .footer .footer-bottom ul li,
+.footer-wrapper .footer .footer-bottom ul li a {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  text-decoration: underline;
+}
+/* stylelint-enable no-descending-specificity */
+
+.footer-wrapper .footer .footer-bottom ul li a:hover {
+  text-decoration: none;
+}
+
+/* Legal text paragraphs — small, light text */
+.footer .footer-bottom p {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  margin: 0;
+  text-align: left;
+}
+
+/* Logo paragraphs sit inside the .footer-bottom-logos wrapper (created by
+   the Linzess decorator). Strip default block layout so the picture/img
+   sits inline alongside the sibling logo. */
+.footer .footer-bottom-logos > p {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+}
+
+.footer .footer-bottom-logos img {
+  height: var(--footer-logo-partner-height);
+  width: auto;
+}
+
+/* Ironwood logo (2nd partner logo) — left-pad it off the divider and
+   white-out the source image (matches live `li.ironwood-logo img` rules:
+   `padding-left: 15px; filter: brightness(0) invert(1)`). */
+.footer .footer-bottom-logos > p:nth-child(2) img {
+  padding-left: var(--spacing-15);
+  filter: brightness(0) invert(1);
+}
+
+/* Vertical divider after the first partner logo (AbbVie | Ironwood) */
+.footer .footer-bottom-logos > p:first-child {
+  padding-right: var(--spacing-16);
+  border-right: var(--separator-height-1) solid var(--footer-color-separator);
+}
+
+/* Stack copyright + indication code in the texts wrapper.
+   Mobile: paragraphs flow as a single inline text block. */
+.footer .footer-bottom-texts {
+  display: block;
+  text-align: left;
+}
+
+/* `.footer-wrapper` prefix raises specificity above `.footer-bottom-logos > p:first-child`
+   so the no-descending-specificity rule passes without disable comments. */
+.footer-wrapper .footer .footer-bottom-texts > p {
+  display: inline;
+  margin: 0;
+}
+
+@media (width >= 744px) {
+  /* Restore flex layout for the texts wrapper */
+  .footer .footer-bottom-texts {
+    display: flex;
+    gap: var(--spacing-24);
+  }
+
+  .footer-wrapper .footer .footer-bottom-texts > p {
+    display: block;
+  }
+
+  /* Section 2 grid: sublinks + 2 legal paragraphs full-width on stacked rows;
+     bottom row puts the .footer-bottom-logos wrapper on the left and the
+     .footer-bottom-texts wrapper on the right, separated by a 1fr spacer. */
+  .footer .footer-bottom {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      'sublinks sublinks sublinks'
+      'legal1   legal1   legal1'
+      'legal2   legal2   legal2'
+      'logos    .        texts';
+    gap: var(--spacing-24) var(--spacing-16);
+    align-items: center;
+  }
+
+  .footer .footer-bottom > ul {
+    grid-area: sublinks;
+  }
+
+  /* Trademarks paragraph (1st P among siblings — UL is not a P) */
+  .footer .footer-bottom > p:nth-of-type(1) {
+    grid-area: legal1;
+  }
+
+  /* US-residents disclaimer + bottom separator above the logo/text row */
+  .footer .footer-bottom > p:nth-of-type(2) {
+    grid-area: legal2;
+    border-bottom: var(--separator-height-1) solid var(--footer-color-separator);
+    padding-bottom: var(--spacing-24);
+  }
+
+  .footer .footer-bottom > .footer-bottom-logos {
+    grid-area: logos;
+  }
+
+  .footer .footer-bottom > .footer-bottom-texts {
+    grid-area: texts;
+  }
+}

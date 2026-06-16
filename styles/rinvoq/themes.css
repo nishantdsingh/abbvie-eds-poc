@@ -1,0 +1,27 @@
+@import 'tokens.css';
+@import 'fonts.css';
+
+/* ============================================================
+   RINVOQ — Theme Overrides
+   Shares RINVOQ design system with HCP but consumer-friendly.
+   Primary: Plum #90124A | Accent: Gold #FFD100
+   Font: "Helvetica Neue LT W05_55 Roman"
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+  font-weight: var(--font-weight-heading);
+}
+
+h1 { font-size: var(--font-size-h1); line-height: var(--line-height-h1); }
+h2 { font-size: var(--font-size-h2); line-height: var(--line-height-h2); }
+h3 { font-size: var(--font-size-h3); line-height: var(--line-height-h3); }

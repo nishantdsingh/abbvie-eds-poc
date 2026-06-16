@@ -1,0 +1,33 @@
+/* Brand-specific font overrides */
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Disp W0595Bl';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/NHaasGroteskDSW05-95Bl.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT W05_65 Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/NHaasGroteskDSW05-65Md.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT W05_75 Bold';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/NHaasGroteskDSW05-75Bd.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue LT W05_55 Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/HelveticaNeueLTW05-55Roman.woff2') format('woff2');
+}

@@ -1,0 +1,163 @@
+@import '../tabs.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* ============================================================
+   RINVOQ HCP — Tabs brand overrides
+   Live: rinvoqhcp.com/atopic-dermatitis/efficacy
+   ============================================================ */
+
+/* ── Tab container — collapse spacing, align with panel ── */
+.section.tabs-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-left: var(--spacing-15);
+  margin-right: var(--spacing-15);
+}
+
+.section.tabs-container .tabs-wrapper {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ── Tab controls wrapper — left-aligned ── */
+.tabs-container .tabs-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+/* ── Tab list ── */
+.tabs-container .tabs .tabs-list {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--spacing-06);
+  background: transparent;
+  border: none;
+  border-bottom: none;
+  padding: var(--spacing-10) 0 0;
+  margin: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* ── Tab buttons (inactive) ── */
+.tabs-container .tabs .tabs-list button.tabs-tab {
+  padding: var(--spacing-05) var(--spacing-08);
+  background: var(--color-ash);
+  color: var(--color-charcoal);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-body);
+  font-style: normal;
+  border: var(--separator-height-1) solid var(--color-border-default);
+  border-bottom: none;
+  border-radius: var(--spacing-04) var(--spacing-04) 0 0;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  align-self: flex-end;
+  transition:
+    background-color var(--transition-duration-medium) var(--transition-easing-standard),
+    box-shadow var(--transition-duration-medium) var(--transition-easing-standard),
+    border-color var(--transition-duration-medium) var(--transition-easing-standard),
+    transform var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+/* ── Active tab — pops up via transform (no layout shift) ── */
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+  padding: var(--spacing-05) var(--spacing-08);
+  transform: translateY(calc(-1 * var(--spacing-03)));
+  background: var(--color-glacier);
+  color: var(--color-charcoal);
+  font-weight: var(--font-weight-heading);
+  font-style: normal;
+  z-index: var(--z-index-1);
+  border-color: var(--color-border-default);
+  border-bottom: var(--separator-height-1) solid var(--color-glacier);
+  margin-bottom: calc(-1 * var(--separator-height-1));
+}
+
+/* ── Panel wrapper — flush with tab list edges ── */
+.tabs-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  background: var(--color-glacier);
+  border: var(--separator-height-1) solid var(--color-border-default);
+  border-top: none;
+  padding: var(--spacing-10) var(--spacing-16);
+  margin: 0;
+  margin-left: var(--spacing-15);
+  margin-right: var(--spacing-15);
+  min-height: var(--spacing-500);
+  position: relative;
+}
+
+/* ── Sections inside panel — reset to stacked ── */
+.tabs-panel > .section.abbvie-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.tabs-panel > .section.abbvie-container > div {
+  grid-column: unset;
+}
+
+/* ── Safety callout (right sidebar section only) — bordered white card ── */
+.tabs-panel > .section:first-child:nth-last-child(2) ~ .section .text-container-text {
+  margin-top: var(--spacing-74);
+  max-width: var(--spacing-320);
+  padding: var(--spacing-24);
+  border: var(--separator-height-1) solid var(--color-silver);
+  background: var(--background-color);
+  border-radius: var(--spacing-10);
+  box-shadow: var(--shadow-default);
+}
+
+.tabs-panel > .section:first-child:nth-last-child(2) ~ .section .text-container-text p {
+  margin-bottom: 0;
+}
+
+/* Single section → full width */
+.tabs-panel > .section:only-child {
+  grid-column: 1 / -1;
+}
+
+/* ── Tablet (600px+): larger font + padding + 2-section grid ── */
+@media (width >= 600px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-12);
+    padding: var(--spacing-08) var(--spacing-15);
+  }
+
+  .tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+    transform: translateY(calc(-1 * var(--spacing-04)));
+  }
+
+  .tabs-panel:has(> .section:first-child:nth-last-child(2)) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) {
+    grid-column: span 8;
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) ~ .section {
+    grid-column: span 4;
+  }
+}
+
+/* ── Desktop (900px+): larger font + padding ── */
+@media (width >= 900px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-14);
+    padding: var(--spacing-08) var(--spacing-15);
+  }
+
+  .tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+    transform: translateY(calc(-1 * var(--spacing-05)));
+  }
+}

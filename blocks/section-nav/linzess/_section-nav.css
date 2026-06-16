@@ -1,0 +1,306 @@
+@import '../section-nav.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* LINZESS — Section Nav Brand Overrides
+   Desktop:        content-width dark-purple rounded pill, centered; active = weight 800, no underline
+   Mobile (base):  dark-purple pill with "JUMP TO: [current]" + chevron toggle
+   Mobile open:    purple toggle bar (top radius) + white dropdown (bottom radius)
+   Source:         linzess.com/find-relief section-navigation pattern
+*/
+
+/* ── Block-scoped tokens ─────────────────────────────────────────────── */
+
+.section-nav {
+  --section-nav-bg: var(--linz-dark-purple);
+  --section-nav-text: var(--color-text-on-dark);
+  --section-nav-active: var(--linz-orange);
+  --section-nav-dropdown-bg: var(--background-color);
+  --section-nav-dropdown-text: var(--linz-dark-purple);
+  --section-nav-radius: var(--linz-rounded-corner);
+  --section-nav-mobile-width: 70vw;
+
+  border-bottom: none;
+  border-radius: var(--section-nav-radius);
+  margin: 0 auto;
+  overflow: visible;
+  width: var(--section-nav-mobile-width);
+}
+
+/* ── Links (mobile base) ─────────────────────────────────────────────── */
+
+.section-nav a {
+  color: var(--section-nav-text);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+.section-nav a:hover {
+  color: var(--section-nav-text);
+  opacity: 0.85;
+}
+
+.section-nav a:focus-visible {
+  color: var(--section-nav-text);
+  opacity: 0.85;
+  outline: var(--border-width-default) solid var(--section-nav-text);
+  outline-offset: var(--spacing-02);
+}
+
+.section-nav a.is-active {
+  border-bottom: none;
+  color: var(--section-nav-text);
+  font-weight: var(--font-weight-extra-bold);
+  text-decoration: none;
+}
+
+/* ── Sticky stuck ────────────────────────────────────────────────────── */
+
+/* On mobile, position:fixed with left:0/right:0 (base) spans full viewport.
+   Override to keep the pill at --section-nav-mobile-width, centred. */
+.section-nav.sticky.is-stuck {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: none;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: var(--section-nav-mobile-width);
+  z-index: 5;
+  top: 0;
+  background-color: transparent;
+}
+
+/* ── Mobile menu: hide hamburger + generic toggle label ──────────────── */
+
+.section-nav.mobile-menu .section-nav-hamburger,
+.section-nav.mobile-menu .section-nav-toggle-label {
+  display: none;
+}
+
+/* Ensure nav fills block width so toggle + chevron never overflow screen */
+.section-nav.mobile-menu nav {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* ── Current section label ───────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-current-label {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Toggle button ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: var(--section-nav-radius);
+  color: var(--section-nav-text);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-bold);
+  justify-content: flex-start;
+  margin: 0;
+  padding: var(--spacing-12) var(--spacing-16) var(--spacing-12) var(--spacing-24);
+  width: 100%;
+}
+
+/* When open, toggle loses bottom radius (dropdown continues below) */
+.section-nav.mobile-menu.is-open .section-nav-toggle {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ── "JUMP TO: " static prefix ───────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::before {
+  content: 'JUMP TO:\00a0';
+  flex-shrink: 0;
+}
+
+/* ── Chevron icon ────────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  height: var(--spacing-24);
+  margin-left: auto;
+  width: var(--spacing-24);
+}
+
+.section-nav.mobile-menu.is-open .section-nav-toggle::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z'/%3E%3C/svg%3E");
+}
+
+/* ── Dropdown list ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu nav ul {
+  background-color: var(--section-nav-dropdown-bg);
+  border-bottom-left-radius: var(--section-nav-radius);
+  border-bottom-right-radius: var(--section-nav-radius);
+  border-top: none;
+  overflow: hidden;
+  padding: var(--spacing-08) 0;
+}
+
+.section-nav.mobile-menu nav ul li {
+  border-bottom: none;
+  display: block;
+}
+
+.section-nav.mobile-menu nav ul li + li::before {
+  display: none;
+}
+
+.section-nav.mobile-menu nav a {
+  border-bottom: none;
+  color: var(--section-nav-dropdown-text);
+  display: block;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-12) var(--spacing-24);
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav a:hover,
+.section-nav.mobile-menu nav a:focus-visible {
+  color: var(--section-nav-dropdown-text);
+  opacity: 0.8;
+}
+
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: none;
+  border-left: none;
+  color: var(--section-nav-dropdown-text);
+  font-weight: var(--font-weight-extra-bold);
+  padding-left: var(--spacing-24);
+  text-decoration: none;
+}
+
+/* ── Desktop ≥744px ──────────────────────────────────────────────────── */
+
+@media (width >= 744px) {
+  /* Outer wrapper: transparent, full-width — pill lives on the nav element */
+  .section-nav {
+    background-color: transparent;
+    border-radius: 0;
+    overflow-x: visible;
+    width: 100%;
+  }
+
+  /* Restore base full-width stuck behaviour (undo mobile transform/width) */
+  .section-nav.sticky.is-stuck {
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+  }
+
+  /* Content-width dark-purple pill, centered via margin: 0 auto from base */
+  .section-nav nav {
+    background-color: var(--section-nav-bg);
+    border-radius: var(--section-nav-radius);
+    max-width: fit-content;
+    padding: 0;
+  }
+
+  /* Flatten top corners of pill when stuck — live-site pattern */
+  .section-nav.sticky.is-stuck nav {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* Links: 16px / 800 base weight (matches live) / line-height 50px for vertical centering */
+  .section-nav a {
+    font-size: 16px;
+    font-weight: var(--font-weight-extra-bold);
+    line-height: 50px;
+    opacity: 1;
+  }
+
+  /* Hover: weight 800 (visual zoom via boldness), colour stays white */
+  .section-nav a:hover,
+  .section-nav a:focus-visible {
+    color: var(--section-nav-text);
+    font-weight: var(--font-weight-extra-bold);
+    opacity: 1;
+  }
+
+  /* Active: weight 800, no underline */
+  .section-nav a.is-active {
+    border-bottom: none;
+    color: var(--section-nav-text);
+    font-weight: var(--font-weight-extra-bold);
+    text-decoration: none;
+  }
+
+  /* ── Mobile-menu: reset mobile-base overrides for desktop layout ── */
+
+  /* Hide toggle */
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  /* Horizontal list */
+  .section-nav.mobile-menu nav ul {
+    background-color: transparent;
+    border-radius: 0;
+    flex-direction: row;
+    overflow: visible;
+    padding: 0;
+    width: auto;
+  }
+
+  /* Flex li */
+  .section-nav.mobile-menu nav ul li {
+    display: flex;
+  }
+
+  /* Inline link — restore desktop padding and reset mobile overrides */
+  .section-nav.mobile-menu nav a {
+    border-bottom: none;
+    color: var(--section-nav-text);
+    display: inline-block;
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    line-height: 50px;
+    padding: 0 25px;
+    text-align: unset;
+    width: auto;
+  }
+
+  /* Override mobile hover rule (higher specificity bleeds through) */
+  .section-nav.mobile-menu nav a:hover,
+  .section-nav.mobile-menu nav a:focus-visible {
+    color: var(--section-nav-text);
+    font-weight: var(--font-weight-extra-bold);
+    opacity: 1;
+  }
+
+  /* Active on desktop: weight 800, no underline */
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom: none;
+    border-left: none;
+    color: var(--section-nav-text);
+    font-weight: var(--font-weight-extra-bold);
+    padding-left: var(--spacing-24);
+    text-decoration: none;
+  }
+}

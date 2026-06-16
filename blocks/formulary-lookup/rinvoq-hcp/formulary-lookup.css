@@ -1,0 +1,337 @@
+/* RinvoqHCP formulary-lookup — pixel-matched to rinvoqhcp.com/dermatology/access */
+
+.formulary-lookup {
+  --formulary-text-color: var(--color-charcoal);
+  --formulary-text-align: center;
+
+  /* Card variant */
+  --formulary-card-bg: var(--background-color);
+  --formulary-card-border-radius: var(--formulary-card-radius, 10px);
+  --formulary-card-box-shadow: var(--formulary-card-shadow, rgb(0 0 0 / 15%) 0 2px 12px 0);
+  --formulary-card-padding: 48px 40px 40px;
+
+  /* Heading */
+  --formulary-heading-font-size: var(--formulary-heading-size, 24px);
+  --formulary-heading-font-weight: var(--formulary-heading-weight, 700);
+  --formulary-heading-color: var(--color-charcoal);
+  --formulary-heading-margin-bottom: var(--formulary-heading-spacing, 32px);
+  --formulary-heading-line-height: var(--formulary-heading-lh, 1.3);
+
+  /* Gold underline accent */
+  --formulary-heading-accent-content: "";
+  --formulary-heading-accent-display: block;
+  --formulary-heading-accent-height: var(--formulary-heading-accent-h, 8px);
+  --formulary-heading-accent-bg: var(--color-formulary-accent);
+  --formulary-heading-accent-bottom: var(--formulary-heading-accent-offset, -14px);
+  --formulary-heading-accent-left: 0;
+  --formulary-heading-accent-width: 100%;
+  --formulary-heading-accent-margin: 0;
+
+  /* Form max-width */
+  --formulary-form-max-width: var(--formulary-form-width, 520px);
+
+  /* Input */
+  --formulary-input-max-width: var(--formulary-input-width, 520px);
+  --formulary-input-height: 56px;
+  --formulary-input-border: 1px solid var(--color-silver);
+  --formulary-input-border-radius: var(--formulary-input-radius, 10px);
+  --formulary-input-padding: 18px 16px;
+  --formulary-input-margin-bottom: var(--formulary-input-spacing, 24px);
+  --formulary-input-font-size: var(--formulary-input-size, 18px);
+
+  /* Floating label */
+  --formulary-label-position: absolute;
+  --formulary-label-display: block;
+  --formulary-label-font-size: var(--formulary-label-size, 12px);
+  --formulary-label-font-weight: var(--formulary-label-weight, 400);
+  --formulary-label-bg: var(--background-color);
+  --formulary-label-padding: 0 4px;
+  --formulary-label-top: -8px;
+  --formulary-label-left: 12px;
+  --formulary-label-z-index: 1;
+  --formulary-label-line-height: 16px;
+  --formulary-label-color: var(--color-iron);
+  --formulary-label-margin-bottom: 0;
+
+  /* Submit button — plum pill with search icon */
+  --formulary-submit-bg: var(--color-formulary-submit-bg);
+  --formulary-submit-color: var(--color-text-on-dark);
+  --formulary-submit-border: none;
+  --formulary-submit-border-radius: 100px;
+  --formulary-submit-height: 56px;
+  --formulary-submit-padding: 14px 60px 14px 32px;
+  --formulary-submit-font-size: var(--formulary-submit-size, 18px);
+  --formulary-submit-font-weight: var(--formulary-submit-weight, 700);
+  --formulary-submit-icon-display: inline-block;
+  --formulary-submit-icon-right: 24px;
+  --formulary-submit-width: auto;
+
+  /* Error */
+  --formulary-error-color: var(--color-error);
+  --formulary-error-font-size: var(--formulary-label-size, 12px);
+
+  /* reCAPTCHA notice */
+  --formulary-captcha-font-size: var(--formulary-recaptcha-size, 12px);
+
+  /* Results */
+  --formulary-results-border-radius: var(--formulary-results-radius, 8px);
+  --formulary-results-box-shadow: var(--formulary-results-shadow, rgb(0 0 0 / 10%) 0 2px 8px 0);
+}
+
+/* Header — icon + heading side by side */
+.formulary-lookup .formulary-lookup-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.formulary-lookup .formulary-lookup-header .formulary-lookup-icon {
+  flex-shrink: 0;
+}
+
+.formulary-lookup .formulary-lookup-header .formulary-lookup-icon img {
+  width: 56px;
+  height: auto;
+}
+
+.formulary-lookup .formulary-lookup-header .formulary-lookup-heading {
+  text-align: left;
+  font-family: var(--heading-font-family);
+}
+
+/* Input group — stacked vertically */
+.formulary-lookup .formulary-lookup-input-group {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  max-width: 520px;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* ZIP input full width */
+.formulary-lookup .formulary-lookup-zip-input {
+  width: 100%;
+  max-width: 520px;
+  flex: none;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-charcoal);
+}
+
+/* Center the zip form */
+.formulary-lookup .formulary-lookup-zip-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 0;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* Input group as positioning context for floating label */
+.formulary-lookup .formulary-lookup-input-group {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin-top: 8px;
+}
+
+/* Floating label positioning — sits on top border of input (fieldset-legend style) */
+.formulary-lookup .formulary-lookup-zip-form > .formulary-lookup-label {
+  position: relative;
+  left: 16px;
+  top: 0;
+  background: var(--background-color, #fff);
+  padding: 0 6px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-iron, #46484a);
+  z-index: 2;
+  line-height: 16px;
+  align-self: flex-start;
+  margin-bottom: calc(-0.5 * 16px);
+  transform: translateY(50%);
+}
+
+/* Filter — matches input width */
+.formulary-lookup .formulary-lookup-filter {
+  max-width: 520px;
+  margin-inline: auto;
+  margin-bottom: 24px;
+}
+
+.formulary-lookup .formulary-lookup-filter-anchor {
+  height: 56px;
+  border-radius: 10px;
+  border: 1px solid var(--color-silver);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body, 16px);
+  padding: 18px 16px;
+}
+
+.formulary-lookup .formulary-lookup-filter-panel {
+  border-radius: 0 0 10px 10px;
+}
+
+.formulary-lookup .formulary-lookup-filter-option:has(input:checked) {
+  background: var(--color-formulary-highlight);
+}
+
+.formulary-lookup .formulary-lookup-filter-option input[type="checkbox"] {
+  accent-color: var(--color-formulary-accent);
+}
+
+.formulary-lookup .formulary-lookup-filter-clear {
+  color: var(--color-formulary-filter-clear);
+}
+
+.formulary-lookup .formulary-lookup-filter-clear[hidden] {
+  display: none;
+}
+
+/* Plum circle chevron icon on filter */
+.formulary-lookup .formulary-lookup-filter-anchor::after {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--color-formulary-submit-bg);
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-size: 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Indications — left-aligned matching live site */
+.formulary-lookup .formulary-lookup-indications {
+  max-width: 520px;
+  margin-inline: auto;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.formulary-lookup .formulary-lookup-indications-heading {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color-charcoal);
+}
+
+.formulary-lookup .formulary-lookup-indications-group input[type="radio"] {
+  accent-color: var(--color-formulary-submit-bg);
+  width: 16px;
+  height: 16px;
+}
+
+.formulary-lookup .formulary-lookup-indications-group label {
+  font-family: var(--body-font-family);
+  font-size: 15px;
+  color: var(--color-charcoal);
+}
+
+/* Submit — centered pill */
+.formulary-lookup .formulary-lookup-submit {
+  margin: 24px auto;
+  display: block;
+  font-family: var(--heading-font-family);
+  letter-spacing: 0.02em;
+}
+
+.formulary-lookup .formulary-lookup-submit:hover {
+  background: var(--color-formulary-submit-hover);
+}
+
+/* Disclaimer — left-aligned */
+.formulary-lookup .formulary-lookup-disclaimer {
+  font-size: 14px;
+  max-width: 520px;
+  margin-inline: auto;
+  font-family: var(--body-font-family);
+  text-align: left;
+  font-weight: 700;
+}
+
+/* reCAPTCHA links — centered, matching live rinvoqhcp.com */
+.formulary-lookup .formulary-lookup-recaptcha-notice {
+  font-family: var(--body-font-family);
+  font-size: var(--formulary-recaptcha-size, 12px);
+  color: var(--color-text-muted, #696969);
+  text-align: center;
+  margin-top: var(--spacing-16, 16px);
+}
+
+.formulary-lookup .formulary-lookup-recaptcha-notice a {
+  color: var(--color-formulary-link, #820043);
+  text-decoration: underline;
+}
+
+/* Error tooltip — floating over the form, matching live rinvoqhcp.com */
+.formulary-lookup .formulary-lookup-error-tooltip {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  border-radius: var(--formulary-input-radius, 10px);
+  background: var(--background-color, #fff);
+  box-shadow: var(--formulary-card-shadow, rgb(0 0 0 / 15%) 0 2px 12px 0);
+  padding: var(--spacing-24, 24px) 56px var(--spacing-24, 24px) 28px;
+  max-width: 280px;
+  font-size: var(--body-font-size-s, 0.875rem);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--color-charcoal, #25282a);
+}
+
+/* Pink/muted fade behind form when error tooltip is showing */
+.formulary-lookup .formulary-lookup-form:has(.formulary-lookup-error-tooltip) .formulary-lookup-zip-form,
+.formulary-lookup .formulary-lookup-form:has(.formulary-lookup-error-tooltip) .formulary-lookup-filter,
+.formulary-lookup .formulary-lookup-form:has(.formulary-lookup-error-tooltip) .formulary-lookup-indications,
+.formulary-lookup .formulary-lookup-form:has(.formulary-lookup-error-tooltip) .formulary-lookup-submit {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.formulary-lookup .formulary-lookup-form:has(.formulary-lookup-error-tooltip)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(255 220 220 / 30%);
+  border-radius: 10px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.formulary-lookup .formulary-lookup-error-tooltip-close {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  color: var(--color-charcoal, #25282a);
+  font-size: 20px;
+  font-weight: 300;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.formulary-lookup .formulary-lookup-error-tooltip-close:hover {
+  color: var(--color-black, #000);
+}

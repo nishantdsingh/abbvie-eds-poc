@@ -1,0 +1,111 @@
+/* stylelint-disable selector-class-pattern */
+
+.social-share {
+  --social-share-gap: var(--spacing-12);
+  --social-share-icon-size: var(--spacing-32);
+  --social-share-svg-size: var(--spacing-24);
+  --social-share-icon-color: var(--text-color);
+  --social-share-icon-bg: transparent;
+  --social-share-icon-bg-hover: var(--color-gray-light);
+  --social-share-icon-color-hover: var(--link-color);
+  --social-share-icon-radius: var(--spacing-08);
+  --social-share-focus-color: var(--color-focus);
+  --social-share-focus-offset: var(--spacing-02);
+  --social-share-transition: var(--transition-duration-fast) var(--transition-easing-standard);
+  --social-share-toast-bg: var(--color-text-primary, var(--color-charcoal));
+  --social-share-toast-color: var(--color-neutral-white, var(--color-white));
+  --social-share-toast-radius: var(--spacing-04);
+  --social-share-toast-padding: var(--spacing-08) var(--spacing-16);
+}
+
+.social-share .social-share-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--social-share-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-share.social-share-vertical .social-share-list {
+  flex-flow: column nowrap;
+}
+
+.social-share .social-share-item {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.social-share .social-share-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--social-share-icon-size);
+  height: var(--social-share-icon-size);
+  padding: 0;
+  background: var(--social-share-icon-bg);
+  border: none;
+  border-radius: var(--social-share-icon-radius);
+  color: var(--social-share-icon-color);
+  cursor: pointer;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--social-share-transition),
+    color var(--social-share-transition);
+}
+
+.social-share .social-share-link:hover {
+  background: var(--social-share-icon-bg-hover);
+  color: var(--social-share-icon-color-hover);
+}
+
+.social-share .social-share-link:focus-visible {
+  background: var(--social-share-icon-bg-hover);
+  color: var(--social-share-icon-color-hover);
+  outline: var(--social-share-focus-offset) solid var(--social-share-focus-color);
+  outline-offset: var(--social-share-focus-offset);
+}
+
+.social-share .social-share-link svg {
+  width: var(--social-share-svg-size);
+  height: var(--social-share-svg-size);
+  flex-shrink: 0;
+  fill: currentcolor;
+}
+
+.social-share .social-share-visually-hidden {
+  position: absolute;
+  width: var(--spacing-02);
+  height: var(--spacing-02);
+  padding: 0;
+  margin: calc(-1 * var(--spacing-02));
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Copy-link success toast */
+.social-share-copy-toast {
+  position: fixed;
+  top: var(--spacing-24);
+  left: 50%;
+  z-index: var(--z-index-anchor-nav);
+  padding: var(--social-share-toast-padding);
+  background: var(--social-share-toast-bg);
+  border-radius: var(--social-share-toast-radius);
+  color: var(--social-share-toast-color);
+  font-size: var(--body-font-size-s, 0.875rem);
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-200%);
+  transition: transform var(--transition-duration-fast) var(--transition-easing-standard);
+  white-space: nowrap;
+}
+
+.social-share-copy-toast.social-share-copy-toast-visible {
+  transform: translateX(-50%) translateY(0);
+}

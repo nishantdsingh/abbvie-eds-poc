@@ -1,0 +1,173 @@
+@import '../modal.css';
+
+/* stylelint-disable no-descending-specificity */
+
+/* Rinvoq HCP modal — wide study details with tabs, Graphik font */
+
+.modal-overlay {
+  --modal-close-color-default: var(--color-charcoal, #25282a);
+  --modal-close-hover-color-default: var(--color-brand-primary, #90124a);
+  --modal-information-accent-color: var(--color-brand-accent, #ffd100);
+  --modal-dialog-max-width: var(--modal-rinvoq-hcp-max-width, 900px);
+  --modal-dialog-padding: var(--spacing-32, 32px);
+  --modal-dialog-border: none;
+  --modal-dialog-border-radius: var(--modal-rinvoq-hcp-border-radius, 0);
+  --modal-close-size: var(--modal-rinvoq-hcp-close-size, 36px);
+  --modal-close-font-size: var(--font-size-h2, 28px);
+}
+
+/* Close button */
+.modal-header .modal-close {
+  font-weight: var(--font-weight-light, 300);
+}
+
+/* Dialog heading */
+.modal-content h2 {
+  color: var(--color-charcoal, #25282a);
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-h3, 1.5rem);
+  line-height: 1.3;
+  margin: 0 0 var(--spacing-20, 20px);
+  text-transform: uppercase;
+}
+
+/* Body text */
+.modal-content p {
+  color: var(--text-color, #46484a);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.875rem);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-12, 12px);
+}
+
+/* Subheadings inside modal content */
+.modal-content h3 {
+  color: var(--color-charcoal, #25282a);
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-h4, 1.1rem);
+  margin: var(--spacing-20, 20px) 0 var(--spacing-08, 8px);
+}
+
+/* Bold underline labels (Primary endpoint, etc.) */
+.modal-content strong,
+.modal-content b {
+  font-family: var(--font-family-semibold, var(--heading-font-family));
+}
+
+/* Lists inside modal */
+.modal-content ul,
+.modal-content ol {
+  padding-left: var(--spacing-20, 20px);
+  margin: var(--spacing-08, 8px) 0 var(--spacing-16, 16px);
+  font-size: var(--font-size-body, 0.875rem);
+  line-height: 1.6;
+  color: var(--text-color, #46484a);
+}
+
+/* Compliance code */
+.modal-content p:last-of-type {
+  font-size: var(--font-size-body-xs, 0.6875rem);
+  color: var(--color-text-compliance, #636366);
+  margin-top: var(--spacing-20, 20px);
+}
+
+/* Links styled as buttons — HCP gate modals */
+.modal-dialog .modal-content a[href] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-08, 8px);
+  min-width: var(--modal-button-min-width, 140px);
+  padding: var(--spacing-14, 14px) var(--spacing-36, 36px);
+  border-radius: var(--border-radius-button-primary, 100px);
+  font-weight: var(--font-weight-bold, 700);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.9375rem);
+  text-decoration: none;
+  margin-right: var(--spacing-16, 16px);
+  margin-top: var(--spacing-12, 12px);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  background: var(--button-primary-bg, #90124a);
+  color: var(--button-primary-color, #fff);
+  border: var(--border-width-button, 2px) solid var(--button-primary-bg, #90124a);
+}
+
+.modal-dialog .modal-content a[href]::after {
+  content: '›';
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+.modal-dialog .modal-content a[href]:last-of-type {
+  background: transparent;
+  color: var(--color-brand-primary, #90124a);
+  border: var(--border-width-button, 2px) solid var(--color-brand-primary, #90124a);
+}
+
+.modal-overlay .modal-dialog .modal-content a[href]:hover {
+  opacity: 0.85;
+}
+
+/* ---- Media variant: wider modal for study details with tabs ---- */
+
+.modal-overlay.modal-media .modal-dialog {
+  max-width: var(--modal-media-max-width, 1000px);
+}
+
+.modal-overlay.modal-media .modal-content {
+  padding: 0 var(--spacing-32, 32px) var(--spacing-32, 32px);
+}
+
+/* Tabs inside media modal — override tab block styles for modal context */
+.modal-overlay.modal-media .modal-content .tabs {
+  margin: 0;
+}
+
+.modal-overlay.modal-media .modal-content .tabs-list {
+  border-bottom: 2px solid var(--color-border-tabs, #ccc);
+  margin-bottom: var(--spacing-24, 24px);
+  gap: 0;
+}
+
+.modal-overlay.modal-media .modal-content .tabs-list button {
+  padding: var(--spacing-12, 12px) var(--spacing-24, 24px);
+  font-family: var(--font-family-semibold, var(--body-font-family));
+  font-size: var(--font-size-body, 0.875rem);
+  color: var(--text-color, #46484a);
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.modal-overlay.modal-media .modal-content .tabs-list button[aria-selected="true"],
+.modal-overlay.modal-media .modal-content .tabs-list button.active {
+  color: var(--color-brand-primary, #90124a);
+  border-bottom-color: var(--color-brand-primary, #90124a);
+}
+
+.modal-overlay.modal-media .modal-content .tabs-panel {
+  padding: 0;
+}
+
+/* Don't style links as buttons inside media/study detail modals */
+.modal-overlay.modal-media .modal-dialog .modal-content a[href] {
+  display: inline;
+  padding: 0;
+  border-radius: 0;
+  font-weight: var(--font-weight-regular, 400);
+  font-size: inherit;
+  color: var(--color-brand-primary, #90124a);
+  border: none;
+  margin: 0;
+  text-decoration: underline;
+  background: none;
+  min-width: 0;
+}
+
+.modal-overlay.modal-media .modal-dialog .modal-content a[href]::after {
+  content: none;
+}

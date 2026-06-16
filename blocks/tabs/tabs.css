@@ -1,0 +1,114 @@
+.tabs {
+  --tabs-gap: var(--spacing-05);
+  --tabs-border-color: var(--container-border-color);
+  --tabs-active-bg: var(--background-color);
+  --tabs-inactive-bg: var(--light-color);
+}
+
+.tabs .tabs-list {
+  display: flex;
+  gap: var(--tabs-gap);
+  max-width: 100%;
+  font-size: var(--body-font-size-xs);
+  overflow-x: auto;
+}
+
+@media (width >= 600px) {
+  .tabs .tabs-list {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+@media (width >= 900px) {
+  .tabs .tabs-list {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+.tabs .tabs-list button {
+  flex: 0 0 max-content;
+  margin: 0;
+  border: var(--separator-height-1) solid var(--tabs-border-color);
+  border-radius: 0;
+  padding: var(--spacing-05);
+  background-color: var(--tabs-inactive-bg);
+  color: initial;
+  font-weight: bold;
+  line-height: unset;
+  text-align: initial;
+  text-overflow: unset;
+  overflow: unset;
+  white-space: unset;
+  transition: background-color var(--transition-duration-fast);
+}
+
+.tabs .tabs-list button p {
+  margin: 0;
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+  border-bottom-color: var(--tabs-active-bg);
+  background-color: var(--tabs-active-bg);
+  cursor: initial;
+}
+
+.tabs .tabs-list button:focus-visible {
+  outline: var(--spacing-02) solid var(--link-color);
+  outline-offset: var(--spacing-02);
+}
+
+/* Hidden tab items (kept in DOM for UE content tree) */
+.tabs .tabs-item-hidden {
+  display: none;
+}
+
+/* Tab panels — prevent layout shift */
+.tabs-panel {
+  min-height: var(--spacing-300);
+  contain: layout;
+}
+
+/* Tab panels — hidden when inactive */
+.tabs-panel[aria-hidden='true'] {
+  display: none;
+}
+
+/* Prevent CLS: sections awaiting tab assignment stay hidden without shift */
+.section[data-section-status='loaded']:not(.tabs-container):has(+ .tabs-panel) {
+  display: none;
+}
+
+/* Tab panel — sections inside use 12-column grid */
+.tabs-panel > .section[data-tabs-grid] {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  margin: 0;
+  min-width: 0;
+}
+
+/* Override abbvie-container grid-column on block wrappers */
+.tabs-panel > .section[data-tabs-grid].abbvie-container > div {
+  grid-column: unset;
+  min-width: 0;
+}
+
+@media (width >= 600px) {
+  .tabs-panel > .section[data-tabs-grid] {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  /* 1 block → spans all 12 columns */
+  .tabs-panel > .section[data-tabs-grid].abbvie-container > div:only-child {
+    grid-column: span 12;
+  }
+
+  /* 2 blocks → first 4 columns, second 8 columns */
+  .tabs-panel > .section[data-tabs-grid].abbvie-container > div:first-child:nth-last-child(2) {
+    grid-column: span 4;
+  }
+
+  .tabs-panel > .section[data-tabs-grid].abbvie-container > div:first-child:nth-last-child(2) ~ div {
+    grid-column: span 8;
+  }
+}

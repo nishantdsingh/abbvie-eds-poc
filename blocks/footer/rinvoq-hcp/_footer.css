@@ -1,0 +1,126 @@
+@import '../footer.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* ============================================================
+   RINVOQ HCP — Footer brand overrides
+   Live: www.rinvoqhcp.com/dermatology
+   - Muted gray text (--color-silver #c9c9ca)
+   - Padding-based spacing (matches live `.abbv-footer-horizontal`)
+   - 48px gap between legal text and legal-number/logo row
+   - Border-top separator between link rows
+   ============================================================ */
+
+
+/* Brand token overrides */
+.footer-wrapper {
+  /* Live: .abbv-footer ul.abbv-footer-horizontal li a { color: var(--silver); } */
+  --footer-color-text: var(--color-silver);
+
+  /* Live footer bg is pure black (not the brand --color-background-footer #17181b) */
+  --footer-color-bg: var(--color-black);
+
+  /* Live: font-family: "Graphik Semibold", "Helvetica Neue", arial, helvetica, sans-serif */
+  --footer-font-family: var(--font-family-semibold);
+}
+
+/* Live: .abbv-footer { padding: 0 20px } — no top vertical padding;
+   add bottom padding so logo/legal-number don't touch the footer's bottom edge.
+   Centering (max-width + padding-inline max()) is inherited from base. */
+.footer {
+  padding-block: 0 var(--spacing-20);
+}
+
+/* Live: each <ul> has padding: 24px 0 + margin: 4px 0 0;
+   mobile row-wrap centers links within --footer-links-max-width */
+.footer .footer-links-primary ul {
+  padding: var(--spacing-24) 0;
+  margin: var(--spacing-04) 0 0;
+  flex-flow: row wrap;
+  justify-content: center;
+  max-width: var(--footer-links-max-width);
+  margin-inline: auto;
+  column-gap: var(--spacing-16);
+}
+
+/* Reset the column's flex gap — UL padding handles vertical spacing */
+.footer .footer-links-primary {
+  gap: 0;
+}
+
+/* Border separator on second UL (matches live `abbv-footer-border-top`) */
+.footer .footer-links-primary ul + ul {
+  border-top: var(--separator-height-1) solid var(--color-steel);
+}
+
+/* Footer bottom: grid layout — smaller font, legal/logo in two-column row */
+.footer .footer-bottom {
+  /* Live: .abbv-legal-text { font-size: 0.75rem } = 12px */
+  --footer-font-size: var(--footer-font-size-small);
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  row-gap: var(--spacing-24);
+  align-items: center;
+  margin-top: 0;
+}
+
+/* Indication code left + logo right in same row via grid */
+.footer .footer-bottom > p:has(picture),
+.footer .footer-bottom > p:has(img) {
+  grid-column: 2;
+  padding-top: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Compact line-height on first legal paragraph (matches live 1.2rem) */
+.footer .footer-bottom > p:first-of-type {
+  line-height: var(--spacing-12);
+}
+
+.footer .footer-bottom > p:not(:has(picture), :has(img), .legal-number, :nth-last-child(2)) {
+  grid-column: 1 / -1;
+}
+
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  grid-column: 1;
+  text-align: left;
+  padding-top: 0;
+}
+
+/* ── Desktop (≥ 768px): reset mobile-only overrides ────────── */
+@media (width >= 768px) {
+  /* Remove 335px mobile constraint; base CSS handles row-wrap for links */
+  .footer .footer-links-primary ul {
+    max-width: none;
+    margin-inline: 0;
+    column-gap: 0;
+  }
+
+  /* Live: .abbv-footer .logo { padding: 48px 0 0 } */
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    display: block;
+    padding-top: var(--spacing-48);
+  }
+
+  /* Restore default line-height */
+  .footer .footer-bottom > p:first-of-type {
+    line-height: var(--footer-line-height);
+  }
+
+  /* Reset mobile row-gap and align-items; base CSS handles grid layout */
+  .footer .footer-bottom {
+    row-gap: 0;
+    align-items: normal;
+  }
+
+  /* Live: .abbv-legal-number { padding: 48px 0 0 } */
+  .footer .footer-bottom > p.legal-number,
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+    padding-top: var(--spacing-48);
+  }
+}

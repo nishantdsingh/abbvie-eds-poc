@@ -1,0 +1,21 @@
+@import '../tabs.css';
+
+/* Brand-specific overrides for tabs block */
+
+.tabs {
+  .tabs-panel {
+    background-color: var(--light-color);
+  }
+
+  &.reverse {
+    .tabs-list button {
+      background-color: blueviolet;
+    } 
+
+    .tabs-panel {
+      background-color: blueviolet;
+      color: var(--light-color);
+    }
+  }
+}
+

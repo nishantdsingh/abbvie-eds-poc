@@ -1,0 +1,65 @@
+.doctor-locator-heading {
+  margin-bottom: var(--spacing-24, 24px);
+}
+
+.doctor-locator-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8, 8px);
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.doctor-locator-input {
+  border: 1px solid var(--doctor-locator-border, #ccc);
+  border-radius: 4px;
+  font-size: var(--body-font-size-m, 1rem);
+  padding: var(--spacing-8, 8px) var(--spacing-12, 12px);
+  flex: 1;
+  min-width: 150px;
+}
+
+.doctor-locator-geo {
+  background: none;
+  border: 1px solid var(--doctor-locator-border, #ccc);
+  border-radius: 4px;
+  color: var(--link-color, #0057cc);
+  cursor: pointer;
+  font-size: var(--body-font-size-s, 0.875rem);
+  padding: var(--spacing-8, 8px) var(--spacing-12, 12px);
+}
+
+.doctor-locator-status {
+  color: var(--text-color, #111);
+  font-size: var(--body-font-size-s, 0.875rem);
+  min-height: 1.5em;
+}
+
+.doctor-locator-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16, 16px);
+}
+
+.doctor-locator-result {
+  border: 1px solid var(--doctor-locator-border, #e0e0e0);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--spacing-16, 16px);
+}
+
+.doctor-locator-name {
+  font-size: var(--body-font-size-m, 1rem);
+}
+
+.doctor-locator-address,
+.doctor-locator-distance {
+  color: var(--doctor-locator-muted, #666);
+  font-size: var(--body-font-size-s, 0.875rem);
+}
+
+/* Botox doctor-locator overrides */

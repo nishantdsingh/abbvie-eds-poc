@@ -1,0 +1,459 @@
+@import '../hero.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* ============================================================
+   VENCLEXTA DTC — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+/* Heading: Red Hat Display brand font, teal */
+
+.hero {
+  overflow: hidden;
+  font-family: var(--font-family-brand);
+}
+
+.hero .hero-image-caption {
+  width: 100%;
+  max-width: var(--cdp-max-width);
+  display: block;
+  text-align: end;
+  margin: 0 auto;
+  font-size: var(--font-size-14);
+  left: 0;
+  right: 0;
+  font-style: normal;
+}
+
+.hero> :where(div):has(> div:empty) {
+  display: none;
+}
+
+.hero h1 {
+  color: var(--color-text-heading-brand);
+  font-family: var(--font-family-brand);
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--font-family-brand);
+}
+
+/* Profile band: dark teal container bg */
+.hero.profile> :where(div):first-child {
+  background-color: var(--color-background-container);
+}
+
+/* Profile text panel: white text on dark band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* CTA: plum link color */
+.hero :where(a).button {
+  color: var(--link-color);
+}
+
+/* Full/video/landing: white text on dark overlay */
+.hero.full h1,
+.hero.full h2,
+.hero.full h3,
+.hero.full p,
+.hero.video h1,
+.hero.video h2,
+.hero.video h3,
+.hero.video p,
+.hero.landing h1,
+.hero.landing h2,
+.hero.landing h3,
+.hero.landing p {
+  color: var(--color-text-on-dark);
+}
+
+/* Two-colour heading: italic span → gold accent */
+.hero.full h1 em,
+.hero.full h2 em,
+.hero.video h1 em,
+.hero.video h2 em,
+.hero.landing h1 em,
+.hero.landing h2 em {
+  color: var(--color-brand-accent);
+  font-style: normal;
+}
+
+/* Eyebrow pipe decoration */
+.hero .hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--hero-eyebrow-gap);
+  color: var(--color-text-on-dark);
+}
+
+.hero .hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: var(--hero-divider-width);
+  height: 1em;
+  background-color: var(--color-brand-accent);
+  flex-shrink: 0;
+}
+
+/* Landing/full/video CTA: white on dark overlay */
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-text-on-dark);
+}
+
+/* Landing gradient: dark teal left-to-right */
+.hero.landing::after {
+  background: linear-gradient(
+    to right,
+    var(--color-background-container) 0%,
+    color-mix(in srgb, var(--color-brand-primary-dark) 30%, transparent) 100%
+  );
+}
+
+/* Full/video overlay: teal gradient */
+.hero.full::after,
+.hero.video::after {
+  background: linear-gradient(
+    to right,
+    var(--color-background-container) 0%,
+    color-mix(in srgb, var(--color-brand-primary-dark) 25%, transparent) 60%,
+    transparent 100%
+  );
+}
+
+/* Solid background: light gray */
+.hero.solid {
+  background-color: var(--color-background-light);
+}
+
+.hero.solid h1,
+.hero.solid h2,
+.hero.solid h3 {
+  color: var(--color-text-heading-brand);
+}
+
+.hero.solid p {
+  color: var(--text-color);
+}
+
+.hero.solid .hero-eyebrow {
+  color: var(--color-text-heading-brand);
+}
+
+.hero.solid :where(a).button {
+  color: var(--link-color);
+}
+
+/* ============================================================
+   VENCLEXTA full hero override
+   Matches the AML reference composition:
+   - dark left overlay
+   - positioned text column
+   - top legal caption box
+   - bottom-right actor portrayal credit
+   ============================================================ */
+
+.hero.full {
+  min-height: var(--hero-full-min-height);
+  align-items: stretch;
+}
+
+.hero.full::after {
+  background: var(--hero-overlay-gradient-full);
+}
+
+.hero.full> :where(div):has(> div:empty) {
+  display: none;
+}
+
+.hero.full .hero-text-container {
+  position: relative;
+  z-index: 2;
+  display: block;
+  align-self: center;
+  width: min(100%, var(--hero-full-text-max-width));
+  margin: var(--hero-full-text-margin-top) 0 0;
+  padding: var(--hero-full-text-padding);
+}
+
+.hero.full .cmp-container-x-large,
+.hero.no-padding .cmp-container-x-large {
+  max-width: var(--hero-full-content-max-width);
+}
+
+.hero.full h1,
+.hero.no-padding h1 {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-40);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-44);
+  letter-spacing: -0.03em;
+}
+
+.hero.full h1+h1 {
+  margin-top: 0.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.hero.full h1 em {
+  color: var(--color-brand-accent);
+  font-style: normal;
+}
+
+.hero.full p {
+  max-width: var(--hero-full-content-max-width-desktop);
+  color: var(--color-text-on-dark);
+  font-size: var(--hero-h1-font-size);
+  line-height: var(--hero-h1-line-height);
+}
+
+.hero.full p strong {
+  font-size: var(--hero-h1-font-size-large);
+  line-height: var(--hero-h1-line-height-large);
+}
+
+.hero.full p a {
+  color: var(--color-brand-accent);
+  text-decoration: underline;
+  text-decoration-thickness: var(--hero-link-decoration-thickness);
+  text-underline-offset: 0.14em;
+  font-size: inherit;
+}
+
+.hero.full p:last-child,
+.hero.full p:nth-last-child(2),
+.hero.full p:nth-last-child(3),
+.hero.full p:nth-last-child(4) {
+  font-size: var(--hero-p-font-size);
+  line-height: var(--hero-p-line-height);
+}
+
+.hero.full .hero-indication {
+  position: relative;
+  display: flex;
+  inset: unset;
+  z-index: var(--z-index-3);
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  margin: var(--spacing-30) 0 var(--spacing-15);
+}
+
+.hero.full .hero-indication::before {
+  content: '';
+  width: var(--hero-caret-width);
+  height: var(--hero-caret-height);
+  background-color: var(--color-brand-accent);
+  flex-shrink: 0;
+  position: absolute;
+}
+
+.hero.full .hero-indication p {
+  margin: 0;
+  padding-left: var(--spacing-15);
+  font-size: var(--font-size-h5-brand);
+  font-weight: var(--font-weight-body);
+  line-height: 1.2;
+  color: var(--color-text-on-dark);
+  padding-bottom: 0;
+}
+
+.hero.full .hero-image-caption {
+  position: relative;
+  display: block;
+  padding: var(--spacing-18) var(--spacing-10);
+  margin: var(--spacing-15);
+  margin-left: 0;
+  inset: unset;
+  z-index: var(--z-index-2);
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-h5-brand);
+  line-height: 1.28;
+  font-style: normal;
+  text-align: center;
+  background: var(--hero-indication-bg);
+  border: 1px solid var(--color-brand-accent);
+}
+
+.hero>div:first-child {
+  min-height: unset;
+}
+
+@media (width >=744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-tablet);
+  }
+
+  .hero.full .hero-text-container {
+    width: min(100%, var(--hero-full-text-max-width-tablet));
+    margin-top: var(--hero-full-text-margin-top-tablet);
+    padding: var(--hero-full-text-padding-tablet);
+  }
+}
+
+@media (width >=1024px) {
+  .hero.full {
+    min-height: unset;
+  }
+
+  .hero.full .hero-text-container {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .hero.full .cmp-container-x-large,
+  .hero.no-padding .cmp-container-x-large {
+    max-width: var(--hero-full-text-max-width-desktop);
+  }
+
+  .hero.full p strong {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h2);
+  }
+
+  .hero.full .hero-image-caption {
+    width: 100%;
+  }
+}
+
+@media (width < 744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-mobile);
+    align-items: flex-end;
+  }
+
+  .hero.full::after {
+    background: var(--hero-overlay-gradient-full-mobile);
+  }
+
+  .hero.full .hero-indication p {
+    font-size: var(--font-size-h3);
+  }
+
+
+  .hero.full .hero-text-container {
+    width: 100%;
+    margin-top: var(--spacing-20);
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+
+  .hero.full .cmp-container-x-large,
+  .hero.no-padding .cmp-container-x-large {
+    max-width: 100%;
+  }
+
+  .hero.full h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+
+  .hero.no-padding h1 {
+    font-size: var(--font-size-33);
+    line-height: 1.09;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .hero.full p,
+  .hero.full p strong {
+    font-size: var(--hero-p-font-size-mobile);
+    line-height: var(--hero-p-line-height-mobile);
+  }
+}
+
+/* ============================================================
+   VENCLEXTA — Custom hero overrides
+   These rules take cascade priority over all base rules above.
+   ============================================================ */
+
+/* Full hero: constrain content stack to 1180px max width */
+.hero.full>.hero-content-stack {
+  max-width: var(--cdp-max-width);
+  width: 100%;
+  padding: var(--spacing-20) var(--spacing-20) var(--spacing-30);
+  margin: 0 auto;
+  z-index: 3;
+}
+
+/* No-padding hero: remove fixed min-height */
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) {
+  min-height: unset;
+}
+
+/* No-padding hero: text container as full-height flex overlay */
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  padding: var(--spacing-20);
+  max-width: var(--cdp-max-width);
+  width: 100%;
+  min-height: auto;
+}
+
+/* No-padding hero: unset absolute positioning on image/picture/img */
+.hero.no-padding img {
+  border-radius: 0;
+  min-height: unset;
+}
+
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child,
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child picture,
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child img {
+  position: unset;
+  min-height: var(--spacing-300);
+}
+
+/* Full hero: bottom footnote/legal row — centered with right-aligned text */
+  .hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) {
+  bottom: var(--hero-caption-bottom);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p)>div {
+  width: 100%;
+  max-width: var(--cdp-max-width);
+  padding-inline: var(--spacing-20);
+  text-align: right;
+}
+
+.hero.full > div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) p {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-brand-heading);
+  max-width: var(--cdp-max-width);
+}
+
+/* Full hero: mobile image caption font size */
+@media (width < 744px) {
+  .hero.full .hero-image-caption {
+    font-size: var(--font-size-h3);
+    line-height: var(--hero-h1-line-height, 1.34);
+    margin-inline: 0;
+  }
+
+  .hero.no-padding.text-left {
+    min-height: var(--spacing-300);
+  }
+
+  .hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
+    align-items: flex-start;
+  }
+}

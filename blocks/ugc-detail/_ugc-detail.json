@@ -1,0 +1,127 @@
+{
+  "definitions": [
+    {
+      "title": "UGC Detail",
+      "id": "ugc-detail",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "UGC Detail",
+              "model": "ugc-detail",
+              "blockId": "id:"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "ugc-detail",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Identity",
+          "name": "identity"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "portrait",
+          "label": "Portrait Photo",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "portraitAlt",
+          "value": "",
+          "label": "Portrait Alt Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "name",
+          "value": "",
+          "label": "Patient Name"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "value": "",
+          "label": "Condition / Title",
+          "description": "Secondary line shown below the name (e.g. 'Living with moderate plaque psoriasis')."
+        },
+        {
+          "component": "tab",
+          "label": "Story",
+          "name": "story"
+        },
+        {
+          "component": "richtext",
+          "name": "story",
+          "value": "",
+          "label": "Story Quote",
+          "description": "Patient quote or narrative. Rendered as a blockquote.",
+          "valueType": "string"
+        },
+        {
+          "component": "tab",
+          "label": "Before / After",
+          "name": "comparison"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "beforeImage",
+          "label": "Before Image",
+          "description": "Optional. Leave blank to hide the comparison section.",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "beforeImageAlt",
+          "value": "",
+          "label": "Before Image Alt Text"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "afterImage",
+          "label": "After Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "afterImageAlt",
+          "value": "",
+          "label": "After Image Alt Text"
+        },
+        {
+          "component": "tab",
+          "label": "Settings",
+          "name": "settings"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes_variant",
+          "label": "Layout",
+          "options": [
+            { "name": "Default (left-aligned)", "value": "" },
+            { "name": "Centered", "value": "centered" }
+          ]
+        },
+        {
+          "...": "../../models/_common-properties.json#/common-prop"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

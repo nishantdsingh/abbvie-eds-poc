@@ -1,0 +1,86 @@
+/* ── Chart block shell ────────────────────────────────────────────────────── */
+
+.chart-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── Title ────────────────────────────────────────────────────────────────── */
+
+.chart-title {
+  font-size: var(--chart-title-size, var(--heading-font-size-s, 1.25rem));
+  font-weight: var(--chart-title-weight, 600);
+  color: var(--chart-title-color, var(--text-color, #111));
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Canvas container ─────────────────────────────────────────────────────── */
+
+.chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+  max-width: var(--chart-max-width, 900px);
+  margin-inline: auto;
+}
+
+.chart-canvas-wrap canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: var(--chart-max-height, 480px);
+}
+
+/* ── Accessibility expandable table ───────────────────────────────────────── */
+
+.chart-a11y {
+  max-width: var(--chart-max-width, 900px);
+  margin-inline: auto;
+  border: 1px solid var(--chart-border-color, #ddd);
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.chart-a11y summary {
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  color: var(--chart-a11y-color, var(--link-color, #0057cc));
+  user-select: none;
+}
+
+.chart-a11y summary::-webkit-details-marker {
+  color: var(--chart-a11y-color, var(--link-color, #0057cc));
+}
+
+.chart-a11y table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.25rem;
+}
+
+.chart-a11y th,
+.chart-a11y td {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--chart-border-color, #ddd);
+  text-align: left;
+}
+
+.chart-a11y th {
+  background: var(--chart-th-bg, #f4f4f4);
+  font-weight: 600;
+}
+
+/* ── Brand CSS custom properties (override per brand) ─────────────────────── */
+
+/*
+  --chart-color-0 … --chart-color-7  palette slots
+  --chart-title-size
+  --chart-title-color
+  --chart-max-width
+  --chart-max-height
+  --chart-border-color
+  --chart-slice-border
+  --chart-a11y-color
+  --chart-th-bg
+*/

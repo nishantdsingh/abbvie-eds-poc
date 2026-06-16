@@ -1,0 +1,304 @@
+@import '../accordion.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* Skyrizi HCP accordion — matches skyrizihcp.com */
+
+.accordion {
+  --accordion-color-bg: var(--color-background);
+  --accordion-color-text: var(--color-text);
+  --accordion-color-border: var(--color-brand-primary);
+  --accordion-color-heading: var(--color-brand-primary);
+  --accordion-color-icon: var(--color-text);
+  --accordion-font-family: var(--font-family-body);
+  --accordion-font-size-heading: var(--body-font-size-m);
+  --accordion-font-weight-heading: var(--font-weight-bold);
+  --accordion-border-width: var(--border-02);
+  --accordion-padding-item: var(--spacing-16) var(--spacing-40) var(--spacing-24) 0;
+  --accordion-icon-size: var(--icon-size);
+
+  font-family: var(--accordion-font-family);
+  background: var(--accordion-color-bg);
+  color: var(--accordion-color-text);
+}
+
+/* Item separator */
+.accordion .accordion-item {
+  border-bottom: var(--accordion-border-width) solid var(--accordion-color-border);
+}
+
+/* Item heading — uppercase, brand color, bold */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+  color: var(--accordion-color-heading);
+  font-weight: var(--accordion-font-weight-heading);
+  font-size: var(--accordion-font-size-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Summary layout — flex row, text left / icon right, vertically centered */
+.accordion summary,
+.accordion .accordion-item-label {
+  padding: var(--accordion-padding-item);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+}
+
+/* Icon — circled plus/minus SVG (matches skyrizihcp.com ⊕/⊖) */
+.accordion-icon-font .icon-plus::after,
+.accordion-icon-font .icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+  content: '';
+
+  /* Remove base-CSS absolute positioning so icon sits as a flex item */
+  position: static;
+  top: auto;
+  right: auto;
+  display: block;
+  flex-shrink: 0;
+  width: var(--accordion-icon-size);
+  height: var(--accordion-icon-size);
+  min-width: var(--accordion-icon-size);
+  min-height: var(--accordion-icon-size);
+  font-family: inherit;
+  font-size: 0;
+  transform: none;
+}
+
+.accordion-icon-font .icon-plus::after,
+.accordion-icon-font .item-icon-plus::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23071d49'/%3E%3Cpath d='M12 7v10M7 12h10' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.accordion-icon-font .icon-minus::after,
+.accordion-icon-font .item-icon-minus::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23071d49'/%3E%3Cpath d='M7 12h10' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Focus */
+.accordion summary:focus-visible {
+  background: var(--color-background-subtle);
+  outline: none;
+}
+
+/* Hover — transparent */
+.accordion .accordion-item:hover summary {
+  background: transparent;
+}
+
+/* Open state — no background change */
+.accordion .accordion-item[open] summary {
+  background: transparent;
+}
+
+/* Expand All button */
+.accordion .accordion-expand-all {
+  font-family: var(--accordion-font-family);
+  color: var(--accordion-color-heading);
+}
+
+.accordion .accordion-expand-all:focus {
+  border: var(--accordion-border-width) solid var(--accordion-color-heading);
+  border-radius: var(--border-radius-s);
+  outline: none;
+}
+
+/* Body content — expanded state */
+.accordion .accordion-item-body {
+  padding: var(--spacing-08) var(--spacing-00) var(--spacing-24);
+}
+
+.accordion .accordion-item-body .accordion-item-body-text {
+  font-family: var(--accordion-font-family);
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-body);
+  color: var(--text-color);
+}
+
+/* Button-container paragraphs — remove margin to stack link rows tightly */
+.accordion .accordion-item-body .button-container {
+  margin: var(--spacing-00);
+}
+
+/* Links inside expanded body — full-width row with arrow at fixed position */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button,
+.accordion .accordion-item-body a.button.external-link {
+  background: none;
+  background-color: transparent;
+  color: var(--text-color);
+  text-decoration: none;
+  text-align: left;
+  white-space: normal;
+  border: none;
+  border-bottom: var(--border-01) solid var(--color-border-default);
+  border-radius: 0;
+  padding: var(--spacing-16) var(--spacing-08);
+  margin: var(--spacing-00);
+  display: grid;
+  grid-template-columns: 50% var(--spacing-16);
+  align-items: center;
+  gap: var(--spacing-08);
+  position: relative;
+  overflow: visible;
+  transition: background-color 0.2s ease;
+}
+
+.accordion .accordion-item-body a:hover,
+.accordion .accordion-item-body a.button:hover {
+  background: none;
+  background-color: var(--color-background-blue);
+  color: var(--text-color);
+}
+
+/* Remove border from last link (links are inside p tags) */
+.accordion .accordion-item-body p:last-child a {
+  border-bottom: none;
+}
+
+/* Arrow icon — dark navy triangle matching skyrizihcp.com */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+  content: '' !important;
+  display: block;
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  grid-column: 2;
+  font-family: inherit;
+  font-size: 0;
+  transform: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 4l9 8-9 8z' fill='%231C2D49'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---- Sub-items: nested accordion within an open accordion body ---- */
+
+/* Lighter separator for second-level items */
+.accordion .accordion-item-body .accordion .accordion-item {
+  border-bottom: var(--border-01) solid var(--color-border-muted);
+}
+
+/* Compact padding, top-align text and icon */
+.accordion .accordion-item-body .accordion summary,
+.accordion .accordion-item-body .accordion .accordion-item-label {
+  padding: var(--spacing-16) 0;
+  align-items: flex-start;
+}
+
+/* Sub-item headings — not uppercase, normal body size */
+.accordion .accordion-item-body .accordion .accordion-item-label p,
+.accordion .accordion-item-body .accordion .accordion-item-label h2,
+.accordion .accordion-item-body .accordion .accordion-item-label h3,
+.accordion .accordion-item-body .accordion .accordion-item-label h4,
+.accordion .accordion-item-body .accordion .accordion-item-label h5,
+.accordion .accordion-item-body .accordion .accordion-item-label h6 {
+  font-size: var(--body-font-size-s);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Sub-item icon — solid ▶ right-pointing arrow (matches skyrizihcp.com sub-items) */
+.accordion .accordion-item-body .accordion-icon-font .item-icon-plus::after,
+.accordion .accordion-item-body .accordion-icon-font .item-icon-minus::after {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpolygon points='8%2C4 20%2C12 8%2C20' fill='%23071d49'/%3E%3C/svg%3E") center / contain no-repeat;
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  min-width: var(--spacing-16);
+  min-height: var(--spacing-16);
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* ---- Dark variant: full-width teal bar (skyrizihcp.com PsA efficacy page) ---- */
+
+.accordion.accordion-dark {
+  background: transparent;
+  padding: var(--spacing-00);
+}
+
+.accordion.accordion-dark .accordion-item {
+  border-bottom: none;
+  background: transparent;
+  margin-bottom: var(--spacing-00);
+}
+
+.accordion.accordion-dark summary,
+.accordion.accordion-dark .accordion-item-label {
+  padding: var(--spacing-16) var(--spacing-24);
+  background: transparent;
+  color: var(--color-text-on-dark);
+}
+
+.accordion.accordion-dark .accordion-item-label p,
+.accordion.accordion-dark .accordion-item-label h2,
+.accordion.accordion-dark .accordion-item-label h3,
+.accordion.accordion-dark .accordion-item-label h4,
+.accordion.accordion-dark .accordion-item-label h5,
+.accordion.accordion-dark .accordion-item-label h6 {
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-heading);
+  font-size: var(--font-size-h2);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: var(--spacing-08);
+}
+/* stylelint-enable no-descending-specificity */
+
+/* Dark variant icon — white chevron down/up */
+.accordion.accordion-dark summary::after {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: var(--spacing-24);
+  height: var(--spacing-24);
+  min-width: var(--spacing-24);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5' fill='white'/%3E%3C/svg%3E") center / contain no-repeat;
+  font-family: inherit;
+  font-size: 0;
+  transform: none;
+  transition: transform 0.2s ease;
+}
+
+.accordion.accordion-dark .accordion-item[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Dark variant hover — no color change */
+.accordion.accordion-dark .accordion-item:hover summary {
+  background: transparent;
+}
+
+/* Dark variant open state */
+.accordion.accordion-dark .accordion-item[open] summary {
+  background: transparent;
+}
+
+/* Dark variant body — transparent, inherits section color */
+.accordion.accordion-dark .accordion-item-body {
+  padding: var(--spacing-24) var(--spacing-24) var(--spacing-32);
+  background: transparent;
+}
+
+.accordion.accordion-dark .accordion-item-body p {  /* stylelint-disable-line no-descending-specificity */
+  color: var(--color-text-on-dark);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-16);
+  line-height: 1.5;
+}
+
+/* Dark variant — prevent heading change on hover */
+.accordion.accordion-dark .accordion-item:hover .accordion-item-label p,
+.accordion.accordion-dark .accordion-item-label.open .accordion-item-label-text,
+.accordion.accordion-dark .accordion-item-label .accordion-item-label-text:hover {
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-heading);
+  font-size: var(--font-size-h2);
+}

@@ -1,0 +1,2272 @@
+/* Hero container witdht */
+.section.abbvie-container.hero-container {
+  max-width: none;
+  width: 100%;
+  background: transparent;
+  margin: var(--spacing-00);
+}
+/* AbbVie Hero — White overlap panel on hero image */
+.hero-container .hero-wrapper {
+  max-width: unset;
+  padding: var(--spacing-00);
+}
+/* Navy-overlap hero: pull wrapper into section padding so bg image shows */
+.hero-navy {
+  padding-bottom: var(--spacing-00);
+  margin-bottom: var(--spacing-32);
+  background-color: var(--color-white);
+}
+.hero-navy .hero-wrapper {
+  margin: var(--spacing-n40) -3.5rem var(--spacing-00);
+  max-width: none;
+  overflow: hidden;
+}
+@media (width >= 744px) {
+  .hero-navy .hero-wrapper {
+    margin: -5.6rem -7rem var(--spacing-00);
+  }
+
+  .hero-navy {
+    border-top-left-radius: var(--spacing-64);
+    margin-bottom: var(--spacing-80);
+  }
+}
+@media (width >= 1024px) {
+  .hero-navy .hero-wrapper {
+    margin: -8rem -5.5rem 0;
+  }
+
+  .hero-navy {
+   border-top-left-radius: var(--spacing-80);
+  }
+}
+/* Height-tall variant — taller hero image area matching live site .height-tall */
+.height-tall .hero > :where(div):first-child {
+  min-height: var(--hero-tall-image-container-height);
+  padding: var(--spacing-00);
+}
+.height-tall .hero > :where(div):first-child :where(img) {
+  position: absolute;
+  inset: var(--spacing-00);
+  height: 100%;
+  width: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+/* Breadcrumbs inside hero text panel */
+.hero .hero-breadcrumbs {
+  margin-bottom: var(--spacing-32);
+}
+.hero-breadcrumbs :where(ol) {
+  display: flex;
+  flex-flow: wrap;
+  list-style: none;
+  padding: var(--spacing-00);
+  margin: var(--spacing-00);
+  gap: var(--spacing-08);
+  align-items: baseline;
+}
+.hero-breadcrumbs :where(ol li) {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  line-height: var(--line-height-20);
+  text-transform: uppercase;
+  color: var(--text-color);
+  display: flex;
+  align-items: flex-end;
+}
+/* Chevron separator — scaled to match text cap height and vertically centred */
+.hero-breadcrumbs :where(ol li):not(:last-child)::after {
+  content: '\203A';
+  padding-left: var(--spacing-08);
+  font-size: var(--font-size-30);
+  font-weight: var(--font-weight-700);
+  vertical-align: middle;
+  line-height: 1;
+}
+.hero-breadcrumbs :where(li a) {
+  color: var(--text-color);
+  font-weight: var(--font-weight-700);
+  font-size: inherit;
+  text-decoration: none;
+}
+/* Current page — muted gray, no link */
+.hero-breadcrumbs :where(ol li)[aria-current] {
+  color: var(--color-gray-dark);
+  font-weight: var(--font-weight-700);
+}
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+/* Remove gradient overlay — AbbVie uses white panel instead */
+.hero::after {
+  display: none;
+}
+/* Image container — natural flow, not absolute */
+.hero > div:first-child {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: var(--hero-image-container-height);
+  margin: var(--spacing-00) var(--spacing-n20);
+  padding-left: var(--spacing-55);
+  padding-right: var(--spacing-55);
+}
+.section-wide .hero > :where(div):first-child {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.hero.no-padding > :where(div):first-child{
+  padding: var(--spacing-00);
+}
+.hero picture {
+  display: block;
+}
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top-left-radius: var(--border-top-left-radius);
+  max-height: var(--hero-image-container-height);
+}
+/* Text container — white overlap panel */
+.hero > div:nth-child(2) {
+ /*  display: flex;
+  flex-direction: column; */
+  background-color: var(--background-color);
+  border-top-left-radius: var(--border-top-radius-medium);
+  margin: var(--spacing-n48) var(--spacing-20) var(--spacing-00);
+  position: relative;
+  padding: var(--spacing-32) var(--spacing-20) var(--spacing-40);
+  padding-bottom: var(--spacing-00);
+  max-width: calc(100vw - var(--spacing-40));
+}
+/* font-weight: inherit prevents browser UA bold, defers to F37 Lineca Medium's own weight */
+.hero h1 {
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-08);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  color: var(--text-color);
+  font-family: var(--heading-font-family-bold);
+}
+/* Roboto Small (300 light) for all hero paragraphs */
+.hero p {
+  margin: var(--spacing-00);
+  padding-bottom: var(--spacing-16);
+}
+.navy-overlap .hero:where(:not(.body-unica-32-reg)) :where(p) {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-22);
+}
+/* Height-tall hero paragraph — larger font matching body-unica-32-reg scale
+   Uses higher specificity to override navy-overlap when both are present */
+.navy-overlap.height-tall .hero :where(p),
+.height-tall .hero p {
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-26);
+  margin-top: var(--spacing-08);
+}
+.hero.light-font p {
+  font-family: var(--roboto-light-font-family);
+  font-weight: var(--font-weight-300);
+}
+.hero a.button {
+  background: none;
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-style: normal;
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  padding: var(--spacing-05) 0;
+  color: var(--highlight-dark-background-color);
+  line-height: var(--line-height-20);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: var(--spacing-16) 0 0;
+  border: 0;
+}
+.hero :where(a).button:hover {
+  color: var(--link-hover-color);
+  cursor: pointer;
+  background: none;
+}
+@media (width >= 744px) {
+  .hero > div:first-child {
+    min-height: var(--hero-image-container-height);
+    width: 100%;
+    margin: var(--spacing-00) auto;
+    padding-left: var(--spacing-70);
+    padding-right: var(--spacing-70);
+  }
+
+  .hero > div:nth-child(2) {
+    border-top-left-radius: var(--spacing-40);
+    margin: var(--spacing-n64) var(--spacing-70) var(--spacing-00);
+    padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+    max-width: calc(100vw - var(--spacing-140));
+  }
+
+  .hero > div:first-child:has(picture) {
+      padding-left: var(--spacing-70);
+      padding-right: var(--spacing-70);
+    }
+
+    .hero.no-padding > :where(div):first-child{
+      padding: var(--spacing-00);
+    }
+
+  .hero img {
+    border-top-left-radius: var(--spacing-64);
+    max-height: var(--hero-image-container-height);
+  }
+
+
+  .hero h1 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    margin-bottom: var(--spacing-16);
+  }
+
+  .navy-overlap .hero:where(:not(.body-unica-32-reg)) :where(p) {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+  }
+
+  .navy-overlap.height-tall .hero :where(p),
+  .height-tall .hero p {
+    font-size: var(--font-size-32);
+    line-height: var(--line-height-40);
+  }
+}
+@media (width >= 1024px) {
+    .hero > div:first-child {
+      min-height: var(--hero-image-container-height);
+      margin: var(--spacing-00) auto;
+      width: 100%;
+      padding-left: var(--spacing-55);
+      padding-right: var(--spacing-55);
+    }
+
+  .hero > div:nth-child(2) {
+    border-top-left-radius: var(--spacing-40);
+    margin: var(--spacing-n112) auto var(--spacing-00);
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+    max-width: 78%;
+  }
+
+    .hero > div:first-child:has(picture) {
+      padding-left: var(--spacing-55);
+      padding-right: var(--spacing-55);
+    }
+
+    .hero.no-padding > :where(div):first-child{
+      padding: var(--spacing-00);
+    }
+
+  .hero img {
+    border-top-left-radius: var(--spacing-80);
+    max-height: var(--hero-image-container-height);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-64);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: var(--line-height-68);
+  }
+
+  .height-tall .hero p {
+    font-size: var(--font-size-32);
+    line-height: 4rem;
+  }
+}
+/* =====================================================
+   Hero Profile Variant — no hero image, navy band
+   Authoring: use block name "Hero (profile)"
+   ===================================================== */
+/* Section override — full-width so navy band spans edge-to-edge */
+.hero-container,
+.hero-profile-section {
+  max-width: var(--content-max-width-wide);
+  margin-bottom: var(--spacing-32);
+}
+/* Profile breadcrumbs — uppercase, 14px to match live site */
+.hero.profile .hero-breadcrumbs :where(ol li) {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-wide-06);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-700);
+}
+.profile .hero-breadcrumbs :where(ol li)[aria-current] {
+  font-weight: var(--font-weight-700);
+}
+/* Profile breadcrumb separator — inherits base styling */
+/* Navy background band replaces hero image */
+.hero.profile > :where(div):first-child {
+  background-color: var(--color-navy-dark);
+  height: var(--hero-section-height);
+  border-top-left-radius: var(--border-top-radius-medium);
+   min-height: var(--hero-profile-container-height);
+   margin: var(--spacing-00);
+}
+.profile.purple-overlap > :where(div):first-child {
+ background-color: var(--color-accent-purple);
+}
+.large-radius .hero > :where(div):first-child {
+ border-top-left-radius: var(--border-top-radius);
+}
+.medium-radius .hero > :where(div):first-child {
+  border-top-left-radius: var(--border-top-radius-medium);
+}
+.hero.profile > :where(div):first-child :where(picture),
+.hero.profile > :where(div):first-child :where(img) {
+  display: none;
+}
+/* White overlap card — profile spacing */
+.hero.profile > :where(div):nth-child(2) {
+  margin-top: var(--spacing-n48);
+  padding: var(--spacing-32) var(--spacing-20) var(--spacing-00);
+}
+/* Subtitle — Roboto Small, weight 300 (matches --roboto-small-font-family) */
+.hero.profile.light-font :where(p) {
+  font-family: var(--roboto-small-font-family);
+  font-weight: var(--font-weight-300);
+}
+@media (width >= 744px) {
+.hero.profile > :where(div):nth-child(2) {
+  margin-top: var(--spacing-n64);
+  padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+}
+
+.hero-profile-section {
+margin-bottom: var(--spacing-80);
+}
+}
+@media (width >= 1024px) {
+  .hero-profile-section {
+    margin-bottom: var(--spacing-00);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero.profile > :where(div):first-child {
+    height: var(--spacing-288);
+  }
+
+  .hero.profile > :where(div):nth-child(2) {
+    margin: var(--spacing-n112) auto -1px;
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+    width: 85%;
+    min-height: 44.8rem;
+    border-top-left-radius: var(--spacing-40);
+    max-width: 85%;
+  }
+}
+/* hero grid */
+.hero .hero-text-container {
+  width: 100%;
+  display: grid;
+  column-gap: var(--gap-20);
+  grid-template-columns: repeat(6, 1fr);
+  align-self: center;
+}
+.hero .cmp-container-x-large {
+  grid-column: 1 / span 6;
+}
+@media (width >= 744px) {
+.hero .hero-text-container {
+    grid-template-columns: repeat(8, 1fr);
+    min-height: var(--spacing-368);
+    }
+
+.hero .cmp-container-x-large {
+  grid-column: 1 / span 8;
+}
+}
+@media (width >= 1024px) {
+.hero .hero-text-container {
+    grid-template-columns: repeat(12, 1fr);
+    }
+
+.hero .cmp-container-x-large {
+  grid-column: 2 / span 10;
+}
+}
+/* =====================================================
+   Hero Landing Variant — full-bleed image with gradient overlay
+   Authoring: use block name "Hero (landing)"
+   Matches abbvie.com homepage hero 1:1 across breakpoints
+   ===================================================== */
+/* Section override — edge-to-edge, no bottom margin */
+.hero-landing-section {
+  max-width: var(--content-max-width-wide);
+  margin-left: var(--spacing-00);
+  margin-right: var(--spacing-00);
+  margin-bottom: var(--spacing-00);
+  padding: var(--spacing-00);
+}
+.hero-landing-section:where(:has(.fragment-wrapper)) {
+  margin-bottom: var(--spacing-32);
+}
+.fragment-wrapper .hero-landing-section {
+    margin-right: auto;
+    margin-left: auto;
+}
+.hero-landing-section .hero-wrapper {
+  margin: var(--spacing-00);
+  max-width: none;
+  overflow: hidden;
+}
+/* Block root — min-height for hero image area; grows with press-releases content */
+.hero.landing {
+  position: relative;
+  z-index: var(--z-index-0);
+  display: block;
+  overflow: visible;
+  min-height: var(--hero-landing-container-height);
+  border-top-left-radius: var(--border-top-left-radius);
+}
+/* Re-enable gradient overlay via ::after — fixed height covers image area only */
+.hero.landing::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: var(--spacing-00);
+  left: var(--spacing-00);
+  right: var(--spacing-00);
+  height: var(--hero-landing-container-height);
+  background: var(--hero-overlay-gradient);
+  z-index: var(--z-index-1);
+  pointer-events: none;
+  border-top-left-radius: var(--border-top-left-radius);
+}
+/* Image container — fixed height covers image area only */
+.hero.landing > :where(div):first-child {
+  position: absolute;
+  top: var(--spacing-00);
+  left: var(--spacing-00);
+  right: var(--spacing-00);
+  height: var(--hero-landing-container-height);
+  overflow: hidden;
+  min-height: var(--spacing-00);
+  margin: var(--spacing-00);
+  padding: var(--spacing-00);
+  z-index: var(--z-index-0);
+  border-top-left-radius: var(--border-top-left-radius);
+}
+.hero.landing picture {
+  position: absolute;
+  inset: var(--spacing-00);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero.landing img {
+  position: absolute;
+  inset: var(--spacing-00);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  display: block;
+  border-top-left-radius: var(--border-radius-00);
+  max-height: none;
+}
+/* Disable grid for landing — use direct padding for text offset */
+.hero.landing .hero-text-container {
+  display: block;
+  align-self: stretch;
+}
+/* Text container — positioned over image, text starts at padding-top */
+.hero.landing > :where(div):nth-child(2) {
+  position: relative;
+  z-index: var(--z-index-2);
+  background: none;
+  border-top-left-radius: var(--border-radius-00);
+  margin: var(--spacing-00);
+  padding: var(--spacing-88) var(--spacing-35) var(--spacing-40);
+  max-width: none;
+  display: block;
+  box-sizing: border-box;
+}
+/* Text colours — white on dark overlay */
+.hero.landing h1 {
+  color: var(--color-white);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  margin-bottom: var(--spacing-16);
+}
+.hero.landing p {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-16);
+}
+/* CTA link — blue, uppercase, no background */
+.hero.landing .button-container {
+padding: var(--spacing-00);
+}
+.hero.landing :where(a).button {
+  color: var(--hero-button-color);
+  background: none;
+  border: var(--border-00);
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  line-height: var(--line-height-20);
+  text-transform: var(--font-uppercase);
+  text-decoration: none;
+  padding: var(--spacing-00) var(--spacing-02) var(--spacing-03);
+  margin: var(--spacing-00);
+}
+.hero.landing :where(a.button):hover {
+  color: var(--hero-button-hover-color);
+  background: none;
+}
+/* Landing breadcrumbs — white text on dark overlay */
+.hero.landing .hero-breadcrumbs :where(ol li) {
+  color: var(--color-white);
+}
+.hero.landing .hero-breadcrumbs :where(li a) {
+  color: var(--color-white);
+}
+.landing .hero-breadcrumbs :where(ol li)[aria-current] {
+  color: var(--color-text-on-dark-60);
+}
+/* ---- Tablet (>=744px) ---- */
+@media (width >= 744px) {
+.hero-landing-section:where(:has(.fragment-wrapper)) {
+  margin-bottom: var(--spacing-80);
+}
+
+  .hero.landing {
+    border-top-left-radius: var(--border-top-left-radius-tablet);
+  }
+
+  .hero.landing::after,
+  .hero.landing > :where(div):first-child {
+    border-top-left-radius: var(--border-top-left-radius-tablet);
+  }
+
+  .hero.landing > :where(div):nth-child(2) {
+    padding: var(--spacing-192) var(--spacing-70) var(--spacing-40);
+  }
+
+  .hero.landing h1 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    margin-bottom: var(--spacing-24);
+  }
+
+  .hero.landing p {
+  margin-bottom: var(--spacing-24);
+  line-height: var(--line-height-22);
+  }
+
+  .hero.landing :where(a).button {
+  font-size: var(--font-size-14)
+  }
+}
+/* ---- Desktop (>=1024px) ---- */
+@media (width >= 1024px) {
+  .hero-landing-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero.landing {
+    border-top-left-radius: var(--border-top-left-radius-desktop);
+  }
+
+  .hero.landing::after,
+  .hero.landing > :where(div):first-child {
+    border-top-left-radius: var(--border-top-left-radius-desktop);
+  }
+
+  .hero.landing > :where(div):nth-child(2) {
+    padding: var(--spacing-312) var(--spacing-108) var(--spacing-40);
+  }
+
+  .hero.landing h1 {
+    font-size: var(--font-size-64);
+    line-height: var(--line-height-68);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+    .hero.landing p {
+    line-height: var(--line-height-24);
+    }
+}
+/* =====================================================
+   Landing hero — Press-releases wrapper (white overlap box)
+   Matches abbvie.com .homepage-overlap > .cmp-container
+   Uses same margin/width pattern as profile variant text panel
+   ===================================================== */
+/* ---- Mobile (base) ---- */
+.hero.landing .hero-press-releases-container {
+  background-color: var(--color-white);
+  border-top-left-radius: var(--border-top-left-radius-24);
+  margin: var(--spacing-88) var(--spacing-n15) var(--spacing-n40);
+  padding: var(--spacing-32) var(--spacing-35) var(--spacing-00);
+  position: relative;
+  color: var(--text-color);
+}
+.hero.landing .hero-press-releases-container :where(p) {
+color: inherit;
+}
+/* ---- Tablet (>=744px) ---- */
+@media (width >= 744px) {
+  .hero.landing .hero-press-releases-container {
+    border-top-left-radius: var(--border-top-left-radius-40);
+    margin: var(--spacing-118) var(--spacing-00) var(--spacing-n40);
+    padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+  }
+}
+/* ---- Desktop (>=1024px) — profile-like auto centering ---- */
+@media (width >= 1024px) {
+  .hero.landing .hero-press-releases-container {
+    border-top-left-radius: var(--border-top-left-radius-40);
+    margin: var(--spacing-41) auto var(--spacing-n40);
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+  }
+}
+/* =====================================================
+   Hero Stat-Overlay Variant — oversized stat number on image
+   Authoring: use block name "Hero (stat-overlay)"
+   ===================================================== */
+.hero.stat-overlay > :where(div):nth-child(2) {
+  overflow: visible;
+}
+.hero.stat-overlay .hero-stat-number {
+  display: block;
+  font-family: var(--heading-font-family-bold);
+  font-size: clamp(4rem, 10vw, 10rem);
+  color: var(--color-brand-accent, var(--color-brand-primary));
+  line-height: var(--hero-stat-line-height, 0.9);
+  margin-bottom: var(--spacing-16);
+}
+/* =====================================================
+   Hero Multilayer Variant — buddy-state layer switching
+   Authoring: use block name "Hero (multilayer)"
+   Each direct child of the image cell is a layer;
+   JS sets data-buddy-state and toggles .is-active.
+   ===================================================== */
+.hero.multilayer > :where(div):first-child {
+  position: relative;
+}
+.hero.multilayer .hero-layer {
+  position: absolute;
+  inset: 0;
+  opacity: var(--hero-layer-opacity-hidden);
+  transition: var(--hero-layer-transition);
+  pointer-events: none;
+}
+.hero.multilayer .hero-layer.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hero.multilayer .hero-layer:first-child {
+  position: relative;
+  opacity: 1;
+}
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.full :where(a).button { color: var(--color-text-on-dark, #fff); }
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.solid :where(a).button { color: var(--color-text-on-dark, #fff); }
+/* =====================================================
+   Hero Dual-CTA Variant — two side-by-side CTAs
+   Authoring: use block name "Hero (dual-cta)"
+   ===================================================== */
+.hero.dual-cta .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-16, 1.6rem);
+  align-items: center;
+}
+.hero.dual-cta .button-container :where(a).button:first-child {
+  margin-top: var(--spacing-16);
+}
+.hero.dual-cta .button-container :where(a).button:not(:first-child) {
+  margin-top: var(--spacing-16);
+}
+/* =====================================================
+   Hero Eyebrow Text
+   Detected by JS: first <p> before <h1>/<h2> with no links
+   ===================================================== */
+.hero .hero-eyebrow {
+  display: block;
+  font-size: var(--font-size-body-small, 11px);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide-06, 0.06em);
+  margin-bottom: var(--spacing-08, 0.8rem);
+  color: inherit;
+}
+/* Indication banner: ISI header — absolutely pinned to top of hero, above overlay */
+.hero .hero-indication {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: var(--hero-indication-bg);
+  color: var(--color-white);
+  padding: var(--spacing-16, 1rem) var(--spacing-24, 1.5rem);
+  font-size: var(--font-size-body-small, 13px);
+  line-height: 1.5;
+  text-align: center;
+  box-sizing: border-box;
+}
+.hero .hero-indication p {
+  margin: 0;
+  color: inherit;
+}
+.hero .hero-indication strong {
+  font-weight: 700;
+}
+/* Image caption: "Actor portrayal." etc — bottom-right corner of image cell */
+.hero .hero-image-caption {
+  position: absolute;
+  bottom: var(--spacing-08, 0.8rem);
+  right: var(--spacing-08, 0.8rem);
+  font-size: var(--font-size-body-small, 11px);
+  color: var(--color-text-on-dark-80);
+  font-style: italic;
+  pointer-events: none;
+}
+/* =====================================================
+   Text Alignment Modifiers
+   ===================================================== */
+.hero.text-center > :where(div):nth-child(2),
+.hero.text-center h1,
+.hero.text-center p {
+  text-align: center;
+}
+.hero.text-right > :where(div):nth-child(2),
+.hero.text-right h1,
+.hero.text-right p {
+  text-align: right;
+}
+/* =====================================================
+   Text Color Override Modifiers
+   ===================================================== */
+.hero.text-light h1,
+.hero.text-light h2,
+.hero.text-light h3,
+.hero.text-light p,
+.hero.text-light .hero-eyebrow {
+  color: var(--color-text-on-dark, #fff);
+}
+.hero.text-dark h1,
+.hero.text-dark h2,
+.hero.text-dark h3,
+.hero.text-dark p,
+.hero.text-dark .hero-eyebrow {
+  color: var(--text-color);
+}
+/* =====================================================
+   Hero Full Variant — full-bleed image, tall, white text overlay
+   Authoring: use block name "Hero (full)"
+   ===================================================== */
+.hero.full {
+  position: relative;
+  min-height: var(--hero-full-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero.full > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero.full picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero.full img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 0;
+  max-height: unset;
+}
+/* Dark left-to-transparent overlay for legibility */
+.hero.full::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-full);
+  z-index: 2;
+  pointer-events: none;
+}
+.hero.full > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-full);
+}
+.hero.full .hero-text-container {
+  display: block;
+}
+.hero.full h1 {
+  color: var(--color-text-on-dark, #fff);
+  font-size: var(--font-size-h1-hero, var(--font-size-h1, 2.6rem));
+  line-height: var(--line-height-h1-hero, var(--line-height-h1, 2.8rem));
+}
+.hero.full p {
+  color: var(--color-text-on-dark-90);
+}
+.hero.full .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+@media (width < 744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-mobile);
+  }
+
+  .hero.full > :where(div):nth-child(2) {
+    max-width: 90%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+@media (width >= 1024px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-desktop);
+  }
+
+  .hero.full > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-full-desktop);
+  }
+}
+/* =====================================================
+   Hero Compact Variant — short interior-page hero
+   Authoring: use block name "Hero (compact)"
+   ===================================================== */
+.hero.compact {
+  position: relative;
+  min-height: var(--hero-compact-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero.compact > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero.compact picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero.compact img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+.hero.compact::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-compact);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero.compact > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-40, 4rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-compact);
+}
+.hero.compact .hero-text-container {
+  display: block;
+}
+.hero.compact h1 {
+  color: var(--color-text-on-dark, #fff);
+  font-size: var(--font-size-h2, 2rem);
+  line-height: var(--line-height-h2, 2.5rem);
+}
+.hero.compact p {
+  color: var(--color-text-on-dark-90);
+}
+.hero.compact .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+@media (width < 744px) {
+  .hero.compact {
+    min-height: var(--hero-compact-min-height-mobile);
+  }
+
+  .hero.compact > :where(div):nth-child(2) {
+    max-width: 90%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+@media (width >= 744px) {
+  .hero.compact {
+    min-height: var(--hero-compact-min-height-tablet);
+  }
+
+  .hero.compact h1 {
+    font-size: var(--font-size-h1, 2.6rem);
+    line-height: var(--line-height-h1, 2.8rem);
+  }
+}
+/* =====================================================
+   Hero Split Variant — 50/50 image + text side by side
+   Authoring: use block name "Hero (split)"
+   ===================================================== */
+.hero.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: var(--hero-split-min-height);
+  align-items: center;
+  overflow: hidden;
+}
+.hero.split > :where(div):first-child {
+  position: relative;
+  min-height: unset;
+  margin: 0;
+  padding: var(--spacing-32, 3.2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero.split picture {
+  display: block;
+  width: 100%;
+}
+.hero.split img {
+  max-width: 100%;
+  height: auto;
+  max-height: var(--hero-split-img-max-height);
+  object-fit: contain;
+  border-radius: 0;
+  position: static;
+  display: block;
+}
+.hero.split > :where(div):nth-child(2) {
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: unset;
+}
+.hero.split .hero-text-container {
+  display: block;
+}
+@media (width < 744px) {
+  .hero.split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero.split > :where(div):first-child {
+    order: -1;
+    padding: var(--spacing-20, 2rem);
+  }
+
+  .hero.split > :where(div):nth-child(2) {
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+/* =====================================================
+   Hero Centered Variant — centered text over image or color bg
+   Authoring: use block name "Hero (centered)"
+   ===================================================== */
+.hero.centered {
+  position: relative;
+  min-height: var(--hero-centered-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero.centered > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero.centered picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero.centered img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+.hero.centered::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-centered);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero.centered > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0 auto;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-centered);
+  text-align: center;
+}
+.hero.centered .hero-text-container {
+  display: block;
+}
+.hero.centered h1 {
+  color: var(--color-text-on-dark, #fff);
+  text-align: center;
+}
+.hero.centered p {
+  color: var(--color-text-on-dark-90);
+  text-align: center;
+}
+.hero.centered .hero-eyebrow { color: var(--color-text-on-dark-80); }
+@media (width < 744px) {
+  .hero.centered {
+    min-height: var(--hero-centered-min-height-mobile);
+  }
+
+  .hero.centered > :where(div):nth-child(2) {
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+    max-width: 90%;
+  }
+}
+/* =====================================================
+   Hero Video Variant — Brightcove background video
+   Authoring: use block name "Hero (video)"
+   Last <p> in image cell = Brightcove video ID (numeric only)
+   Fallback poster image must be authored before the ID paragraph
+   Video suppressed on mobile; fallback image shown instead
+   ===================================================== */
+.hero.video {
+  position: relative;
+  min-height: var(--hero-video-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero.video > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero.video picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero.video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+.hero.video .hero-video-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+.hero.video .hero-video-bg .video-js,
+.hero.video .hero-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.hero.video::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-full);
+  z-index: 2;
+  pointer-events: none;
+}
+.hero.video > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-full);
+}
+.hero.video .hero-text-container {
+  display: block;
+}
+.hero.video h1 { color: var(--color-text-on-dark, #fff); }
+.hero.video p {
+  color: var(--color-text-on-dark-90);
+}
+.hero.video .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+/* Mobile: hide video, show fallback poster image only */
+@media (width < 744px) {
+  .hero.video {
+    min-height: var(--hero-video-min-height-mobile);
+  }
+
+  .hero.video .hero-video-bg {
+    display: none;
+  }
+
+  .hero.video > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-mobile);
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+@media (width >= 1024px) {
+  .hero.video {
+    min-height: var(--hero-video-min-height-desktop);
+  }
+
+  .hero.video > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-full-desktop);
+  }
+}
+/* =====================================================
+   Hero Solid Variant — solid brand color background, no image required
+   Authoring: use block name "Hero (solid)"
+   Background color defined by brand CSS override
+   ===================================================== */
+.hero.solid {
+  position: relative;
+  min-height: var(--hero-solid-min-height);
+  display: flex;
+  align-items: center;
+  background-color: var(--hero-solid-bg, var(--color-brand-primary, var(--hero-solid-bg-fallback)));
+}
+.hero.solid > :where(div):first-child {
+  position: relative;
+  min-height: unset;
+  margin: 0;
+  padding: var(--spacing-32, 3.2rem);
+  display: flex;
+  align-items: center;
+}
+.hero.solid > :where(div):first-child:empty {
+  display: none;
+}
+.hero.solid picture {
+  display: block;
+}
+.hero.solid img {
+  max-height: var(--hero-solid-img-max-height);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  position: static;
+  height: auto;
+}
+.hero.solid > :where(div):nth-child(2) {
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-solid);
+}
+.hero.solid .hero-text-container {
+  display: block;
+}
+.hero.solid h1,
+.hero.solid h2 {
+  color: var(--color-text-on-dark, #fff);
+}
+.hero.solid p {
+  color: var(--color-text-on-dark-90);
+}
+.hero.solid .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+@media (width < 744px) {
+  .hero.solid {
+    min-height: var(--hero-solid-min-height-mobile);
+    flex-direction: column;
+  }
+
+  .hero.solid > :where(div):first-child {
+    order: -1;
+  }
+
+  .hero.solid > :where(div):nth-child(2) {
+    max-width: 100%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+@media (width >= 1024px) {
+  .hero.solid {
+    min-height: var(--hero-solid-min-height-desktop);
+  }
+}
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+@custom-media --bp-tablet (min-width: 744px);
+@custom-media --bp-desktop (min-width: 1024px);
+@custom-media --bp-wide (min-width: 1440px);
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --color-black: #000;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-light: rgb(255 255 255 / 80%);
+  --color-charcoal: #25282a;
+  --color-text-compliance: #6c757d;
+  --color-border-tabs: #dde1e6;
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-text-on-dark: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-200: 20rem;
+  --spacing-255: 25.5rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-tight: 1.25;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+
+  /* ---- Brand Explorer Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --be-color-bg: var(--background-color);
+  --be-color-text: var(--text-color);
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-color-bar-text: #fff;
+  --be-color-border: #d8d8d8;
+  --be-color-border-mobile: #e0e0e0;
+  --be-color-separator: #ccc;
+  --be-color-muted: #50535c;
+  --be-color-btn-hover: #1c2d49;
+  --be-color-btn-no-border: #555;
+  --be-color-btn-no-hover: #f5f5f5;
+  --be-color-overlay: rgb(0 0 0 / 60%);
+  --be-font-body: var(--body-font-family);
+  --be-font-size-body: 14px;
+  --be-font-size-small: 11px;
+  --be-font-size-bar: 0.9rem;
+  --be-font-weight-bold: var(--font-weight-700);
+  --be-font-weight-normal: var(--font-weight-400);
+  --be-line-height-body: 16px;
+  --be-line-height-small: 14px;
+
+  /* ---- Clinical Data Panel Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --cdp-color-text: var(--text-color);
+  --cdp-color-heading: var(--text-color);
+  --cdp-color-accent: var(--link-color);
+  --cdp-color-muted: var(--color-text-muted);
+  --cdp-color-border: var(--container-border-color);
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: var(--font-size-22);
+  --cdp-font-size-callout: var(--font-size-26);
+  --cdp-font-size-body: var(--font-size-14);
+  --cdp-font-size-small: var(--font-size-13);
+  --cdp-font-weight-bold: var(--font-weight-700);
+  --cdp-font-weight-normal: var(--font-weight-400);
+  --cdp-line-height-callout: var(--line-height-30);
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: var(--line-height-16);
+  --cdp-spacing-sm: var(--spacing-08);
+  --cdp-spacing-md: var(--spacing-16);
+  --cdp-spacing-lg: var(--spacing-24);
+  --cdp-max-width: 1180px;
+  --cdp-letter-spacing-title: 0.02em;
+}
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+/* ============================================================
+   VENCLEXTA DTC — Brand Token Overrides
+   Source: venclexta.com/aml (Platform C)
+   Framework Font: Graphik family
+   Brand Font: Red Hat Display (brand-specific elements)
+   ============================================================ */
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+  --color-brand-accent-teal: #005272;
+
+  /* ---- Color: Named Palette (shared AbbVie framework) ---- */
+  --color-plum: #90124a;
+  --color-gold: #ffd100;
+  --color-charcoal: #25282a;
+  --color-iron: #46484a;
+  --color-glacier: #f5f5f5;
+
+  /* ---- Color: Venclexta-specific ---- */
+  --color-venclexta-teal: #005272;
+  --color-venclexta-teal-dark: #003b52;
+  --color-venclexta-navy: #071d49;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-heading-brand: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-link: #90124a;
+  --color-text-legal: #404040;
+  /* Live venclexta.com renders footer link text in off-white (#e8edef) */
+  --color-text-footer-link: var(--color-brand-primary-light);
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+  /* Live venclexta.com footer bg is dark teal #003b52, not pure black */
+  --color-background-footer: var(--color-brand-primary-dark);
+  --color-background-safety-bar: #f5f5f5;
+  --color-background-container: #003b52;
+
+  /* ---- Color: Border ---- */
+  --color-border-brand: #005272;
+  --color-border-safety: #ffd100;
+  --color-border-default: #ccc;
+
+  /* ---- Color: Shadow ---- */
+  --shadow-card: rgb(85, 85, 85) 0px 3px 10px 1px;
+  --shadow-table: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-brand: 'Red Hat Display', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 11px;
+  --font-size-nav: 16px;
+  --font-size-footer: 16px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 14px;
+  --font-size-h4-brand: 16px;
+  --font-size-h5-brand: 17.6px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-heading: 600;
+  --font-weight-button: 700;
+  --font-weight-brand-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 24px;
+  --line-height-h1: 27.625px;
+  --line-height-h2: 25px;
+  --line-height-h3: 16.8px;
+  --line-height-h5-brand: 22px;
+  --line-height-h-xl: 52.8px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 8px;
+  --border-radius-button-secondary: 10px;
+  --border-radius-button-tertiary: 10px;
+  --border-radius-card: 10px;
+  --border-radius-card-corner: 14px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-bg: #005570;
+  --button-primary-color: #fff;
+  --button-primary-border: #005570;
+  --button-primary-padding: 10px 30px 10px 15px;
+  --button-primary-font-size: 18px;
+  --button-primary-font-weight: 400;
+  --button-primary-hover-bg: #003d50;
+  --button-primary-hover-color: #fff;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: #ffce00;
+  --button-secondary-color: #404040;
+  --button-secondary-border: transparent;
+  --button-secondary-padding: 12px 20px;
+  --button-secondary-hover-bg: #e6b900;
+  --button-secondary-hover-color: #404040;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-color: #404040;
+  --button-tertiary-border: #ccc;
+  --button-tertiary-padding: 12px 42px 12px 12px;
+  --button-tertiary-font-size: 18px;
+  --button-tertiary-hover-bg: #005272;
+  --button-tertiary-hover-color: #fff;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #005272;
+  --button-plain-weight: 500;
+  --button-plain-hover-color: #008481;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #ccc;
+  --toggle-bg-on: #005272;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+
+  /* ---- Hero: Venclexta-specific ---- */
+  --hero-full-min-height: 56rem;
+  --hero-full-min-height-tablet: 64rem;
+  --hero-full-min-height-mobile: 58rem;
+  --hero-full-text-max-width: 72rem;
+  --hero-full-text-max-width-tablet: 82rem;
+  --hero-full-text-max-width-desktop: 68rem;
+  --hero-full-text-margin-top: 15rem;
+  --hero-full-text-margin-top-tablet: 19.6rem;
+  --hero-full-content-max-width: 61rem;
+  --hero-full-content-max-width-desktop: 62rem;
+  --hero-full-text-padding: 0 2rem 5.6rem;
+  --hero-full-text-padding-tablet: 0 7rem 6.4rem;
+  --hero-overlay-gradient-full: linear-gradient(90deg,
+      rgb(0 0 0 / 96%) 0%,
+      rgb(0 0 0 / 86%) 22%,
+      rgb(0 0 0 / 58%) 46%,
+      rgb(0 0 0 / 12%) 72%,
+      rgb(0 0 0 / 0%) 100%);
+  --hero-overlay-gradient-full-mobile: linear-gradient(180deg,
+      rgb(0 0 0 / 55%) 0%,
+      rgb(0 0 0 / 45%) 24%,
+      rgb(0 0 0 / 88%) 100%);
+  --hero-no-padding-min-height: 56rem;
+  --hero-indication-bg: rgb(0 0 0 / 45%);
+  --hero-eyebrow-gap: 0.5em;
+  --hero-divider-width: 3px;
+  --hero-caret-width: 0.4rem;
+  --hero-caret-height: 2.6rem;
+  --hero-caption-bottom: 2rem;
+  --hero-h1-font-size: 2rem;
+  --hero-h1-line-height: 1.18;
+  --hero-h1-font-size-large: clamp(2rem, 2.8vw, 2.7rem);
+  --hero-h1-line-height-large: 1.08;
+  --hero-p-font-size: 1.8rem;
+  --hero-p-line-height: 1.28;
+  --hero-p-font-size-mobile: 1.7rem;
+  --hero-p-line-height-mobile: 1.24;
+  --hero-link-decoration-thickness: 0.12rem;
+}
+/* ============================================================
+   VENCLEXTA DTC — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+/* Heading: Red Hat Display brand font, teal */
+.hero {
+  overflow: hidden;
+  font-family: var(--font-family-brand);
+}
+.hero .hero-image-caption {
+  width: 100%;
+  max-width: var(--cdp-max-width);
+  display: block;
+  text-align: end;
+  margin: 0 auto;
+  font-size: var(--font-size-14);
+  left: 0;
+  right: 0;
+  font-style: normal;
+}
+.hero> :where(div):has(> div:empty) {
+  display: none;
+}
+.hero h1 {
+  color: var(--color-text-heading-brand);
+  font-family: var(--font-family-brand);
+}
+.hero h2,
+.hero h3 {
+  font-family: var(--font-family-brand);
+}
+/* Profile band: dark teal container bg */
+.hero.profile> :where(div):first-child {
+  background-color: var(--color-background-container);
+}
+/* Profile text panel: white text on dark band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+/* CTA: plum link color */
+.hero :where(a).button {
+  color: var(--link-color);
+}
+/* Full/video/landing: white text on dark overlay */
+.hero.full h1,
+.hero.full h2,
+.hero.full h3,
+.hero.full p,
+.hero.video h1,
+.hero.video h2,
+.hero.video h3,
+.hero.video p,
+.hero.landing h1,
+.hero.landing h2,
+.hero.landing h3,
+.hero.landing p {
+  color: var(--color-text-on-dark);
+}
+/* Two-colour heading: italic span → gold accent */
+.hero.full h1 em,
+.hero.full h2 em,
+.hero.video h1 em,
+.hero.video h2 em,
+.hero.landing h1 em,
+.hero.landing h2 em {
+  color: var(--color-brand-accent);
+  font-style: normal;
+}
+/* Eyebrow pipe decoration */
+.hero .hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--hero-eyebrow-gap);
+  color: var(--color-text-on-dark);
+}
+.hero .hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: var(--hero-divider-width);
+  height: 1em;
+  background-color: var(--color-brand-accent);
+  flex-shrink: 0;
+}
+/* Landing/full/video CTA: white on dark overlay */
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-text-on-dark);
+}
+/* Landing gradient: dark teal left-to-right */
+.hero.landing::after {
+  background: linear-gradient(
+    to right,
+    var(--color-background-container) 0%,
+    color-mix(in srgb, var(--color-brand-primary-dark) 30%, transparent) 100%
+  );
+}
+/* Full/video overlay: teal gradient */
+.hero.full::after,
+.hero.video::after {
+  background: linear-gradient(
+    to right,
+    var(--color-background-container) 0%,
+    color-mix(in srgb, var(--color-brand-primary-dark) 25%, transparent) 60%,
+    transparent 100%
+  );
+}
+/* Solid background: light gray */
+.hero.solid {
+  background-color: var(--color-background-light);
+}
+.hero.solid h1,
+.hero.solid h2,
+.hero.solid h3 {
+  color: var(--color-text-heading-brand);
+}
+.hero.solid p {
+  color: var(--text-color);
+}
+.hero.solid .hero-eyebrow {
+  color: var(--color-text-heading-brand);
+}
+.hero.solid :where(a).button {
+  color: var(--link-color);
+}
+/* ============================================================
+   VENCLEXTA full hero override
+   Matches the AML reference composition:
+   - dark left overlay
+   - positioned text column
+   - top legal caption box
+   - bottom-right actor portrayal credit
+   ============================================================ */
+.hero.full {
+  min-height: var(--hero-full-min-height);
+  align-items: stretch;
+}
+.hero.full::after {
+  background: var(--hero-overlay-gradient-full);
+}
+.hero.full> :where(div):has(> div:empty) {
+  display: none;
+}
+.hero.full .hero-text-container {
+  position: relative;
+  z-index: 2;
+  display: block;
+  align-self: center;
+  width: min(100%, var(--hero-full-text-max-width));
+  margin: var(--hero-full-text-margin-top) 0 0;
+  padding: var(--hero-full-text-padding);
+}
+.hero.full .cmp-container-x-large,
+.hero.no-padding .cmp-container-x-large {
+  max-width: var(--hero-full-content-max-width);
+}
+.hero.full h1,
+.hero.no-padding h1 {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-40);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-44);
+  letter-spacing: -0.03em;
+}
+.hero.full h1+h1 {
+  margin-top: 0.2rem;
+  margin-bottom: 2.4rem;
+}
+.hero.full h1 em {
+  color: var(--color-brand-accent);
+  font-style: normal;
+}
+.hero.full p {
+  max-width: var(--hero-full-content-max-width-desktop);
+  color: var(--color-text-on-dark);
+  font-size: var(--hero-h1-font-size);
+  line-height: var(--hero-h1-line-height);
+}
+.hero.full p strong {
+  font-size: var(--hero-h1-font-size-large);
+  line-height: var(--hero-h1-line-height-large);
+}
+.hero.full p a {
+  color: var(--color-brand-accent);
+  text-decoration: underline;
+  text-decoration-thickness: var(--hero-link-decoration-thickness);
+  text-underline-offset: 0.14em;
+  font-size: inherit;
+}
+.hero.full p:last-child,
+.hero.full p:nth-last-child(2),
+.hero.full p:nth-last-child(3),
+.hero.full p:nth-last-child(4) {
+  font-size: var(--hero-p-font-size);
+  line-height: var(--hero-p-line-height);
+}
+.hero.full .hero-indication {
+  position: relative;
+  display: flex;
+  inset: unset;
+  z-index: var(--z-index-3);
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  margin: var(--spacing-30) 0 var(--spacing-15);
+}
+.hero.full .hero-indication::before {
+  content: '';
+  width: var(--hero-caret-width);
+  height: var(--hero-caret-height);
+  background-color: var(--color-brand-accent);
+  flex-shrink: 0;
+  position: absolute;
+}
+.hero.full .hero-indication p {
+  margin: 0;
+  padding-left: var(--spacing-15);
+  font-size: var(--font-size-h5-brand);
+  font-weight: var(--font-weight-body);
+  line-height: 1.2;
+  color: var(--color-text-on-dark);
+  padding-bottom: 0;
+}
+.hero.full .hero-image-caption {
+  position: relative;
+  display: block;
+  padding: var(--spacing-18) var(--spacing-10);
+  margin: var(--spacing-15);
+  margin-left: 0;
+  inset: unset;
+  z-index: var(--z-index-2);
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-h5-brand);
+  line-height: 1.28;
+  font-style: normal;
+  text-align: center;
+  background: var(--hero-indication-bg);
+  border: 1px solid var(--color-brand-accent);
+}
+.hero>div:first-child {
+  min-height: unset;
+}
+@media (width >=744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-tablet);
+  }
+
+  .hero.full .hero-text-container {
+    width: min(100%, var(--hero-full-text-max-width-tablet));
+    margin-top: var(--hero-full-text-margin-top-tablet);
+    padding: var(--hero-full-text-padding-tablet);
+  }
+}
+@media (width >=1024px) {
+  .hero.full {
+    min-height: unset;
+  }
+
+  .hero.full .hero-text-container {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .hero.full .cmp-container-x-large,
+  .hero.no-padding .cmp-container-x-large {
+    max-width: var(--hero-full-text-max-width-desktop);
+  }
+
+  .hero.full p strong {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h2);
+  }
+
+  .hero.full .hero-image-caption {
+    width: 100%;
+  }
+}
+@media (width < 744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-mobile);
+    align-items: flex-end;
+  }
+
+  .hero.full::after {
+    background: var(--hero-overlay-gradient-full-mobile);
+  }
+
+  .hero.full .hero-indication p {
+    font-size: var(--font-size-h3);
+  }
+
+
+  .hero.full .hero-text-container {
+    width: 100%;
+    margin-top: var(--spacing-20);
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+
+  .hero.full .cmp-container-x-large,
+  .hero.no-padding .cmp-container-x-large {
+    max-width: 100%;
+  }
+
+  .hero.full h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+  }
+
+  .hero.no-padding h1 {
+    font-size: var(--font-size-33);
+    line-height: 1.09;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .hero.full p,
+  .hero.full p strong {
+    font-size: var(--hero-p-font-size-mobile);
+    line-height: var(--hero-p-line-height-mobile);
+  }
+}
+/* ============================================================
+   VENCLEXTA — Custom hero overrides
+   These rules take cascade priority over all base rules above.
+   ============================================================ */
+/* Full hero: constrain content stack to 1180px max width */
+.hero.full>.hero-content-stack {
+  max-width: var(--cdp-max-width);
+  width: 100%;
+  padding: var(--spacing-20) var(--spacing-20) var(--spacing-30);
+  margin: 0 auto;
+  z-index: 3;
+}
+/* No-padding hero: remove fixed min-height */
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) {
+  min-height: unset;
+}
+/* No-padding hero: text container as full-height flex overlay */
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  padding: var(--spacing-20);
+  max-width: var(--cdp-max-width);
+  width: 100%;
+  min-height: auto;
+}
+/* No-padding hero: unset absolute positioning on image/picture/img */
+.hero.no-padding img {
+  border-radius: 0;
+  min-height: unset;
+}
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child,
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child picture,
+.hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered)> :where(div):first-child img {
+  position: unset;
+  min-height: var(--spacing-300);
+}
+/* Full hero: bottom footnote/legal row — centered with right-aligned text */
+.hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) {
+  bottom: var(--hero-caption-bottom);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p)>div {
+  width: 100%;
+  max-width: var(--cdp-max-width);
+  padding-inline: var(--spacing-20);
+  text-align: right;
+}
+.hero.full > div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) p {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-brand-heading);
+  max-width: var(--cdp-max-width);
+}
+/* Full hero: mobile image caption font size */
+@media (width < 744px) {
+  .hero.full .hero-image-caption {
+    font-size: var(--font-size-h3);
+    line-height: var(--hero-h1-line-height, 1.34);
+    margin-inline: 0;
+  }
+
+  .hero.no-padding.text-left {
+    min-height: var(--spacing-300);
+  }
+
+  .hero.no-padding:not(.full, .profile, .landing, .video, .compact, .split, .solid, .centered) .hero-text-container {
+    align-items: flex-start;
+  }
+}

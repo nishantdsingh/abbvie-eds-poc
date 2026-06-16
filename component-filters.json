@@ -1,0 +1,472 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section",
+      "hero-section",
+      "grid-section",
+      "grid-container"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "accordion",
+      "breadcrumb",
+      "button",
+      "story-cards",
+      "cards",
+      "carousel",
+      "social-media",
+      "columns",
+      "embed",
+      "fragment",
+      "press-releases",
+      "separator",
+      "story-card",
+      "form",
+      "hero",
+      "navigation-content",
+      "stock-ticker",
+      "eds-form",
+      "embed-form",
+      "image",
+      "quote",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "custom-title",
+      "text-container",
+      "rich-text",
+      "cta",
+      "linklist",
+      "brightcove-video",
+      "tag-utility-nav",
+      "fact-card",
+      "brightcove-podcast-player",
+      "custom-image",
+      "news-feed",
+      "pipeline-utility-nav",
+      "brand-explorer",
+      "section-nav",
+      "quick-poll",
+      "info-tree",
+      "tooltip",
+      "social-share",
+      "dismiss",
+      "flexbox",
+      "parallax",
+      "clinical-data-panel",
+      "safety-bar",
+      "promo-drawer",
+      "image-compare",
+      "modal",
+      "image-text",
+      "carousel-video-playlist",
+      "formulary-lookup",
+      "parallax",
+      "find-provider",
+      "search-input",
+      "chart",
+      "sticky-sidebar",
+      "doctor-locator",
+      "send-mail",
+      "drcom-widget"
+    ]
+  },
+  {
+    "id": "flexbox",
+    "components": [
+      "flexbox-item",
+      "accordion",
+      "breadcrumb",
+      "button",
+      "story-cards",
+      "cards",
+      "carousel",
+      "social-media",
+      "columns",
+      "embed",
+      "fragment",
+      "press-releases",
+      "separator",
+      "story-card",
+      "form",
+      "hero",
+      "navigation-content",
+      "stock-ticker",
+      "eds-form",
+      "embed-form",
+      "image",
+      "quote",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "custom-title",
+      "text-container",
+      "rich-text",
+      "cta",
+      "linklist",
+      "brightcove-video",
+      "tag-utility-nav",
+      "fact-card",
+      "brightcove-podcast-player",
+      "custom-image",
+      "news-feed",
+      "pipeline-utility-nav",
+      "brand-explorer",
+      "section-nav",
+      "quick-poll",
+      "info-tree",
+      "tooltip",
+      "social-share",
+      "dismiss",
+      "parallax",
+      "clinical-data-panel",
+      "safety-bar",
+      "promo-drawer",
+      "image-compare",
+      "modal",
+      "image-text",
+      "carousel-video-playlist",
+      "formulary-lookup",
+      "find-provider",
+      "search-input",
+      "chart",
+      "sticky-sidebar",
+      "doctor-locator",
+      "send-mail",
+      "drcom-widget"
+    ]
+  },
+  {
+    "id": "grid-section",
+    "components": [
+      "accordion",
+      "breadcrumb",
+      "button",
+      "story-cards",
+      "cards",
+      "carousel",
+      "social-media",
+      "columns",
+      "embed",
+      "fragment",
+      "press-releases",
+      "separator",
+      "story-card",
+      "form",
+      "hero",
+      "navigation-content",
+      "stock-ticker",
+      "eds-form",
+      "embed-form",
+      "image",
+      "quote",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "custom-title",
+      "text-container",
+      "rich-text",
+      "cta",
+      "linklist",
+      "brightcove-video",
+      "tag-utility-nav",
+      "fact-card",
+      "brightcove-podcast-player",
+      "news-feed",
+      "pipeline-utility-nav",
+      "image-compare",
+      "quick-poll",
+      "info-tree",
+      "tooltip",
+      "social-share",
+      "dismiss",
+      "clinical-data-panel",
+      "safety-bar",
+      "promo-drawer",
+      "modal",
+      "image-text",
+      "carousel-video-playlist",
+      "formulary-lookup",
+      "parallax",
+      "custom-image",
+      "brand-explorer",
+      "section-nav",
+      "find-provider",
+      "search-input",
+      "chart",
+      "sticky-sidebar",
+      "doctor-locator",
+      "send-mail",
+      "drcom-widget"
+    ]
+  },
+  {
+    "id": "grid-container",
+    "components": []
+  },
+  {
+    "id": "grid-section",
+    "components": [
+      "accordion",
+      "breadcrumb",
+      "button",
+      "story-cards",
+      "cards",
+      "carousel",
+      "social-media",
+      "columns",
+      "embed",
+      "fragment",
+      "press-releases",
+      "separator",
+      "story-card",
+      "form",
+      "hero",
+      "navigation-content",
+      "stock-ticker",
+      "eds-form",
+      "embed-form",
+      "image",
+      "quote",
+      "search",
+      "tabs",
+      "table",
+      "text",
+      "title",
+      "video",
+      "custom-title",
+      "text-container",
+      "rich-text",
+      "cta",
+      "linklist",
+      "brightcove-video",
+      "tag-utility-nav",
+      "fact-card",
+      "brightcove-podcast-player",
+      "news-feed",
+      "pipeline-utility-nav",
+      "image-compare",
+      "quick-poll",
+      "info-tree",
+      "tooltip",
+      "social-share",
+      "dismiss",
+      "clinical-data-panel",
+      "safety-bar",
+      "promo-drawer",
+      "modal",
+      "image-text",
+      "carousel-video-playlist",
+      "formulary-lookup",
+      "parallax",
+      "custom-image",
+      "brand-explorer",
+      "section-nav",
+      "find-provider",
+      "search-input",
+      "chart",
+      "sticky-sidebar",
+      "doctor-locator",
+      "send-mail",
+      "drcom-widget"
+    ]
+  },
+  {
+    "id": "grid-container",
+    "components": []
+  },
+  {
+    "id": "hero-section",
+    "components": [
+      "fragment"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
+    ]
+  },
+  {
+    "id": "anchor-nav",
+    "components": [
+      "anchor-nav-item"
+    ]
+  },
+  {
+    "id": "brand-explorer",
+    "components": [
+      "brand-explorer-item"
+    ]
+  },
+  {
+    "id": "breadcrumb",
+    "components": [
+      "breadcrumb-item"
+    ]
+  },
+  {
+    "id": "brightcove-podcast-player",
+    "components": []
+  },
+  {
+    "id": "brightcove-video",
+    "components": []
+  },
+  {
+    "id": "cards-grid",
+    "components": [
+      "grid-card"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "carousel-video-playlist",
+    "components": [
+      "carousel-video-playlist-item"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
+    ]
+  },
+  {
+    "id": "chart",
+    "components": [
+      "chart-item"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "custom-title",
+    "components": []
+  },
+  {},
+  {
+    "id": "hotspot",
+    "components": [
+      "hotspot-item"
+    ]
+  },
+  {
+    "id": "info-tree",
+    "components": [
+      "info-tree-item"
+    ]
+  },
+  {
+    "id": "linklist",
+    "components": [
+      "linklist-item"
+    ]
+  },
+  {
+    "id": "linklist-child-pages",
+    "components": []
+  },
+  {
+    "id": "press-releases",
+    "components": [
+      "press-release"
+    ]
+  },
+  {
+    "id": "press-release",
+    "components": [
+      "number"
+    ]
+  },
+  {
+    "id": "search-input",
+    "components": []
+  },
+  {
+    "id": "section-nav",
+    "components": [
+      "section-nav-item"
+    ]
+  },
+  {
+    "id": "social-media",
+    "components": [
+      "social-link"
+    ]
+  },
+  {
+    "id": "story-cards",
+    "components": [
+      "story-card-item"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row"
+    ]
+  },
+  {
+    "id": "table-2-columns",
+    "components": [
+      "table-col-2"
+    ]
+  },
+  {
+    "id": "table-3-columns",
+    "components": [
+      "table-col-3"
+    ]
+  },
+  {
+    "id": "table-4-columns",
+    "components": [
+      "table-col-4"
+    ]
+  },
+  {
+    "id": "tabs",
+    "components": [
+      "tab-item"
+    ]
+  },
+  {
+    "id": "tag-utility-nav",
+    "components": [
+      "tag-utility-nav-category"
+    ]
+  },
+  {
+    "id": "text-container",
+    "components": [
+      "text-container-image",
+      "text-container-text"
+    ]
+  },
+  {
+    "id": "video",
+    "components": []
+  }
+]

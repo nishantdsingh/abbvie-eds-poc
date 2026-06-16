@@ -1,0 +1,125 @@
+@import '../tokens.css';
+
+/* ============================================================
+   RINVOQ — Brand Token Overrides
+   Shared RINVOQ brand identity (plum / Graphik)
+   Audience-specific variants: see rinvoq-hcp/ and rinvoq-dtc/
+   ============================================================ */
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #90124a;
+  --color-brand-primary-dark: #6d0e38;
+  --color-brand-primary-light: #b15980;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+
+  /* ---- Color: Rinvoq-specific ---- */
+  --color-rinvoq-primary: #90124a;
+  --color-rinvoq-charcoal: #25282a;
+  --color-rinvoq-gold: #ffd100;
+  --color-rinvoq-gallery-bg: #666869;
+  --color-rinvoq-prompt-bg: rgb(51 51 51 / 85%);
+  --color-rinvoq-handle-circle: #25282a;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-on-dark: #fff;
+  --color-text-link: #90124a;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Helvetica Neue LT W05_55 Roman', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Neue Haas Grotesk Disp W0595Bl', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Neue Haas Grotesk Disp W0595Bl', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Helvetica Neue LT W05_65 Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-semibold: 'Helvetica Neue LT W05_75 Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 100px;
+
+  /* ---- z-index extensions ---- */
+  --z-index-4: 4;
+  --z-index-5: 5;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #fff;
+  --button-primary-bg: #90124a;
+  --button-primary-border: transparent;
+  --button-primary-padding: 16px 54px 16px 32px;
+  --button-primary-font-size: 0.875rem;
+  --button-primary-font-weight: 700;
+  --button-primary-hover-bg: #25282a;
+  --button-primary-hover-color: #fff;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: transparent;
+  --button-secondary-color: #90124a;
+  --button-secondary-border: #90124a;
+  --button-secondary-padding: 16px 54px 16px 32px;
+  --border-radius-button-secondary: 100px;
+  --button-secondary-hover-bg: #90124a;
+  --button-secondary-hover-color: #fff;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-color: #46484a;
+  --button-tertiary-border: #c9c9ca;
+  --button-tertiary-padding: 12px 24px;
+  --button-tertiary-font-size: 0.875rem;
+  --border-radius-button-tertiary: 100px;
+  --button-tertiary-hover-bg: #46484a;
+  --button-tertiary-hover-color: #fff;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #90124a;
+  --button-plain-weight: 600;
+  --button-plain-hover-color: #25282a;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+
+  /* ---- Info Tree ---- */
+  --info-tree-max-width: 94.5rem;
+  --info-tree-cta-border-radius: 0.5rem;
+
+  /* ---- Header: Nav Colors ---- */
+  --color-nav-dark: var(--color-rinvoq-charcoal);
+  --color-nav-active: var(--color-rinvoq-gold);
+  --color-nav-bg-scroll: rgb(37 40 42 / 90%);
+  --color-nav-eyebrow: var(--color-brand-primary);
+  --color-nav-utility: var(--color-brand-primary);
+  --color-nav-utility-bg: var(--form-background-hover-color);
+  --color-nav-utility-hover: var(--color-rinvoq-gold);
+  --font-family-bold: var(--heading-font-family-bold);
+
+  /* ---- Header block ---- */
+  --header-logo-width: 18.5rem;
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 22rem;
+  --header-submenu-indent: calc(-1 * var(--spacing-10));
+  --header-nav-sections-offset-top: -3rem;
+  --header-nav-sections-offset-left: 21rem;
+  --header-nav-indicator-width: var(--spacing-02);
+  --header-nav-indicator-height: var(--spacing-12);
+  --header-nav-indicator-offset: var(--spacing-08);
+  --header-nav-indicator-color: var(--color-nav-utility-hover);
+  --header-nav-home-icon-outer: var(--spacing-16);
+  --header-nav-home-icon-inner: 1.3rem;
+  --header-utility-dropdown-shadow: 0 var(--spacing-03) var(--spacing-05) 0 rgb(153 153 153);
+  --header-utility-divider-color: rgb(151 151 151);
+  --header-utility-item-min-height: var(--spacing-37-5);
+  --header-utility-link-padding: var(--spacing-05) var(--spacing-17);
+  --header-utility-nav-width: 126.4rem;
+  --color-brand-info-accent: #d7196e;
+  --header-hamburger-bar-width: var(--spacing-30);
+  --header-hamburger-transform-origin: var(--spacing-07) var(--spacing-01);
+  --header-brand-info-font-weight: var(--font-weight-900);
+  --header-submenu-max-height: 20rem;
+}

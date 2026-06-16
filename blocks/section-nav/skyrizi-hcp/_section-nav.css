@@ -1,0 +1,271 @@
+@import '../section-nav.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* Skyrizi HCP — Section Nav Brand Overrides
+   Mobile (base):  only shows when sticky+stuck — full-width dark-navy bar with toggle
+   Desktop ≥768px: floating dark-navy rounded pill (non-stuck), full-width bar (stuck)
+   Source:         skyrizihcp.com .risa-section-nav / .abbv-fixed pattern
+*/
+
+/* ── Block-scoped tokens ─────────────────────────────────────────────── */
+
+.section-nav {
+  --section-nav-text: var(--color-text-on-dark);
+  --section-nav-active: var(--color-nav-active);
+  --section-nav-separator: var(--color-nav-separator);
+  --section-nav-dropdown-bg: var(--color-nav-dropdown-bg);
+  --section-nav-bg: var(--color-background-footer);
+}
+
+/* ── Mobile: hide non-stuck sticky nav ───────────────────────────────── */
+
+.section-nav.sticky:not(.is-stuck) {
+  display: none;
+}
+
+/* ── Stuck: full-width dark-navy bar (mobile + desktop) ──────────────── */
+
+.section-nav.sticky.is-stuck {
+  background-color: var(--section-nav-bg);
+  box-shadow: var(--shadow-section-nav-stuck);
+  overflow-x: auto;
+  padding: 0;
+}
+
+/* Higher specificity (0,3,1) overrides desktop pill nav (0,1,1) */
+.section-nav.sticky.is-stuck nav {
+  background-color: transparent;
+  border-radius: 0;
+  max-width: var(--section-max-width);
+  padding: 0 var(--spacing-24);
+}
+
+/* ── Links ───────────────────────────────────────────────────────────── */
+
+.section-nav a {
+  border-bottom: var(--border-width-default) solid transparent;
+  color: var(--section-nav-text);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-nav);
+  padding: var(--spacing-10) var(--spacing-24);
+  text-transform: uppercase;
+  transition: border-color var(--transition-duration-fast) var(--transition-easing-standard),
+    color var(--transition-duration-fast) var(--transition-easing-standard);
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--section-nav-active);
+}
+
+/* Mobile active: full-width blue bottom border + blue text */
+.section-nav a.is-active {
+  border-bottom-color: var(--section-nav-active);
+  color: var(--section-nav-active);
+}
+
+/* ── Mobile menu: hide hamburger + generic label ─────────────────────── */
+
+.section-nav.mobile-menu .section-nav-hamburger,
+.section-nav.mobile-menu .section-nav-toggle-label {
+  display: none;
+}
+
+/* ── Mobile menu: stuck nav fills full viewport width ────────────────── */
+
+.section-nav.mobile-menu.sticky.is-stuck nav {
+  max-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+/* ── Toggle button ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--section-nav-text);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  justify-content: center;
+  letter-spacing: var(--letter-spacing-nav);
+  margin: 0;
+  padding: 0 var(--spacing-40) 0 var(--spacing-16);
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* ── Current section label: centred in collapsed bar ────────────────── */
+
+.section-nav.mobile-menu .section-nav-current-label {
+  display: block;
+  flex: 1;
+  line-height: var(--spacing-32);
+  text-align: center;
+}
+
+.section-nav.mobile-menu.is-open .section-nav-current-label {
+  visibility: hidden;
+}
+
+/* ── Toggle icon: add_circle — collapsed ─────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: var(--spacing-24);
+  position: absolute;
+  right: var(--spacing-12);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--spacing-24);
+}
+
+/* ── Toggle icon: close — expanded ───────────────────────────────────── */
+
+.section-nav.mobile-menu.is-open .section-nav-toggle::after {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  height: var(--spacing-30);
+  width: var(--spacing-24);
+}
+
+/* ── Dropdown list ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu nav ul {
+  background-color: var(--section-nav-dropdown-bg);
+  border-top: none;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav ul li + li::before {
+  display: none;
+}
+
+.section-nav.mobile-menu nav ul li {
+  border-bottom: none;
+  display: block;
+}
+
+.section-nav.mobile-menu nav a {
+  border-bottom: none;
+  display: block;
+  padding: var(--spacing-02) var(--spacing-24);
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: var(--border-width-default) solid var(--section-nav-active);
+  border-left: none;
+  color: var(--section-nav-active);
+  padding-left: var(--spacing-24);
+  text-decoration: none;
+}
+
+/* ── Desktop ≥768px: floating pill, separators, show in normal flow ──── */
+
+@media (width >= 744px) {
+  /* Show sticky nav in normal flow (floating pill) */
+  .section-nav.sticky:not(.is-stuck) {
+    display: block;
+  }
+
+  /* Transparent wrapper — pill background lives on the nav element */
+  .section-nav {
+    background-color: transparent;
+    border-bottom: none;
+    box-shadow: none;
+    overflow-x: visible;
+    padding: 0 var(--spacing-20);
+  }
+
+  /* Floating dark-navy pill */
+  .section-nav nav {
+    background-color: var(--section-nav-bg);
+    border-radius: var(--border-radius-nav);
+    justify-content: center;
+    max-width: fit-content;
+    padding: var(--spacing-06) 0;
+  }
+
+  /* Desktop active: underline decoration (border-bottom already transparent from base) */
+  .section-nav a.is-active {
+    border-bottom-color: transparent;
+    color: var(--section-nav-text);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active);
+    text-decoration-thickness: var(--border-width-default);
+    text-underline-offset: var(--spacing-05);
+  }
+
+  /* Pipe separators between adjacent links */
+  .section-nav nav a + a {
+    border-left: var(--border-width-thin) solid var(--section-nav-separator);
+    padding-left: var(--spacing-24);
+  }
+
+  /* ── Mobile-menu: reset mobile-base overrides for desktop layout ─────── */
+
+  /* Hide toggle — mobile-base sets display:flex which outlasts the base desktop hide */
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  /* Horizontal link list — mobile-base sets column/100% which outlasts base desktop row */
+  .section-nav.mobile-menu nav ul {
+    background-color: transparent;
+    flex-direction: row;
+    width: auto;
+  }
+
+  /* Flex li — mobile-base sets display:block which outlasts base desktop flex */
+  .section-nav.mobile-menu nav ul li {
+    display: flex;
+  }
+
+  /* Inline link — mobile-base sets block/full-width/center which outlasts base desktop */
+  .section-nav.mobile-menu nav a {
+    border-bottom: var(--border-width-default) solid transparent;
+    display: inline-block;
+    padding: var(--spacing-10) var(--spacing-24);
+    text-align: unset;
+    width: auto;
+  }
+
+  /* Pipe separators in mobile-menu variant (horizontal on desktop) */
+  .section-nav.mobile-menu nav ul li + li::before {
+    align-self: center;
+    background-color: var(--section-nav-separator);
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    height: var(--spacing-14);
+    width: var(--border-width-thin);
+  }
+
+  /* Mobile-menu active: underline on desktop (overrides mobile border-bottom) */
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom: none;
+    border-left: none;
+    color: var(--section-nav-text);
+    padding-left: var(--spacing-16);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active);
+    text-decoration-thickness: var(--border-width-default);
+    text-underline-offset: var(--spacing-05);
+  }
+}

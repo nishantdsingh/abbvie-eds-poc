@@ -1,0 +1,8 @@
+helix-importer-ui
+theme-tools/*
+gulpfile.js
+docs/*
+scripts/dompurify.min.js
+skills/**
+.agents/**
+.claude/**

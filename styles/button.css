@@ -1,0 +1,43 @@
+/* ----------buttons---------- */
+a.button:any-link,
+button {
+  box-sizing: border-box;
+  display: inline-block;
+  max-width: 100%;
+  margin: var(--spacing-12) 0;
+  border: var(--spacing-02) solid transparent;
+  border-radius: var(--spacing-24);
+  padding: var(--spacing-05) var(--spacing-12);
+  font-style: normal;
+  font-weight: var(--font-weight-500);
+  line-height: var(--line-height-tight);
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--link-color);
+  color: var(--background-color);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.button:hover,
+a.button:focus,
+button:hover,
+button:focus {
+  background-color: var(--link-hover-color);
+  cursor: pointer;
+}
+
+button:disabled,
+button:disabled:hover {
+  background-color: var(--light-color);
+  cursor: unset;
+}
+
+a.button.secondary,
+button.secondary {
+  background-color: transparent;
+  border: var(--spacing-02) solid currentcolor;
+  color: var(--highlight-background-color);
+}

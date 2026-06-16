@@ -1,0 +1,1191 @@
+/* Alignment Classes */
+.accordion,
+.accordion.accordion-center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-56);
+}
+.accordion.margin-0,
+.accordion.no-margin {
+    margin: var(--spacing-00);
+}
+.accordion.margin-bottom-0 {
+    margin-bottom: var(--spacing-00);
+}
+.accordion-block-heading-wrapper {
+ display: flex;
+ flex-direction: column;
+}
+/* block heading */
+.accordion-block-heading {
+    color: var(--bg-666b7a);
+    font-family: var(--roboto-bold-font-family);
+    font-size: var(--body-font-size-s);
+    font-weight: var(--font-weight-700);
+    letter-spacing: var(--letter-spacing-wide-06);
+    line-height: var(--line-height-20);
+    text-transform: var(--font-uppercase);
+    margin-bottom: var(--spacing-10);
+}
+/* Expand All / Collapse All button */
+.accordion .accordion-expand-all {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-10);
+    margin: var(--spacing-00);
+    padding: var(--spacing-00);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--roboto-bold-font-family);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-700);
+    color: var(--highlight-dark-background-color);
+    text-transform: var(--font-uppercase);
+    letter-spacing: var(--letter-spacing-wide-06);
+      overflow: visible;
+}
+.accordion-expand-all-wrapper picture {
+    margin: auto var(--spacing-00);
+}
+.accordion-expand-all-wrapper picture img {
+    max-height: var(--icon-size-010);
+}
+.expanded ~ .accordion-expand-all-image-icon {
+    display: none;
+}
+.accordion-collapse-all-image-icon {
+    display: none;
+}
+.expanded ~ .accordion-collapse-all-image-icon {
+    display: block;
+}
+.accordion-expand-all-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-10);
+}
+.accordion-icon-font .icon-minus::after {
+    content: "";
+    display: inline-block;
+    font-family: var(--icon-font-family);
+    font-size: var(--icon-size-010);
+    margin-left: var(--spacing-03);
+    color: inherit;
+}
+.accordion-icon-font .icon-plus::after {
+    content: "";
+        display: inline-block;
+        font-family: var(--icon-font-family);
+        font-size: var(--icon-size-010);
+        margin-left: var(--spacing-03);
+        color: inherit;
+}
+.accordion-dark .accordion-expand-all {
+    color: var(--light-color);
+}
+.accordion-light .accordion-expand-all {
+    color: var(--highlight-dark-background-color);
+}
+.accordion-expand-all:hover:not(:focus) {
+    text-decoration: none;
+    color: var(--text-color);
+}
+.accordion .accordion-expand-all:focus {
+    border: var(--border-02) solid var(--form-border-hover-color);
+    border-radius: var(--border-radius-00);
+    color: var(--text-color);
+}
+.accordion .accordion-item {
+    border-bottom: var(--accordion-border-01) solid
+        var(--footer-seperator-color);
+}
+.accordion .accordion-item-label p {
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: var(--heading-font-family);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-650);
+    line-height: var(--line-height-24);
+    padding-right: var(--spacing-30);
+    margin-bottom: var(--spacing-00);
+}
+.accordion .accordion-item-body .accordion-item-body-text {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-22);
+    color: var(--text-color);
+}
+.accordion-item-body p:last-child {
+    margin-bottom: var(--spacing-00);
+}
+.accordion-item-body a, .accordion-item-body a.button  {
+    background: linear-gradient(
+        180deg,
+        var(--highlight-dark-background-color) 50%,
+        var(--highlight-dark-background-color) 0
+    );
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: var(--spacing-02) var(--spacing-02);
+    color: inherit;
+    border-radius: var(--border-radius-00);
+    padding: var(--spacing-00) var(--spacing-02) var(--spacing-03);
+    margin: var(--spacing-00);
+    text-decoration: none;
+    transition:
+        background-size 0.1s ease,
+        color 0.1s ease;
+}
+.accordion-item-body a:hover {
+    background-size: 100% 100%;
+    color: var(--background-color);
+}
+.accordion-item-body .external-link::after {
+    color: inherit;
+    content: "";
+    display: inline-block;
+    font-family: var(--icon-font-family);
+    margin-left: var(--spacing-02);
+    transform: scale(.8);
+    transition: color .1s ease;
+}
+.accordion-item-body strong a.button {
+    font-family: var(--roboto-bold-font-family);
+    font-weight: var(--font-weight-700);
+    margin: var(--spacing-00);
+}
+.accordion summary {
+    position: relative;
+    padding: var(--spacing-32) var(--spacing-00);
+    cursor: pointer;
+    list-style: none;
+    overflow: auto;
+    font-family: var(--heading-font-family);
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+    font-weight: var(--font-weight-500);
+    color: var(--text-color);
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: space-between;
+}
+.accordion-container .custom-title .custom-title-heading {
+    margin-bottom: var(--spacing-52);
+}
+.accordion-dark .accordion-item-label p,
+.accordion-dark .accordion-item-label h2,
+.accordion-dark .accordion-item-label h3,
+.accordion-dark .accordion-item-label h4,
+.accordion-dark .accordion-item-label h5,
+.accordion-dark .accordion-item-label h6 {
+    color: var(--light-color);
+}
+.accordion-item-label.open .accordion-item-label-text,
+.accordion-item-label .accordion-item-label-text:hover {
+    font-family: var(--heading-font-family-bold);
+    font-weight: var(--font-weight-800);
+}
+.accordion summary::-webkit-details-marker {
+    display: none;
+}
+.accordion-collapse-image-icon {
+    display: none;
+}
+.open .accordion-collapse-image-icon , .accordion-expand-image-icon {
+    display: block;
+}
+.open .accordion-expand-image-icon {
+    display: none;
+}
+.accordion-icon-font .item-icon-plus::after {
+    content: "";
+    position: absolute;
+    top: 37%;
+    right: 0;
+    font-size: var(--font-size-20);
+    font-family: var(--icon-font-family);
+    font-weight: var(--font-weight-800);
+    transform: scale(0.75);
+}
+.accordion-icon-font .item-icon-minus::after {
+    content: "";
+    position: absolute;
+    top: 37%;
+    right: 0;
+    font-size: var(--font-size-20);
+    font-family: var(--icon-font-family);
+    font-weight: var(--font-weight-800);
+    transform: scale(0.75);
+}
+.accordion-dark .accordion-item-label {
+    color: var(--light-color);
+}
+.accordion-light .accordion-item-label {
+    color: var(--text-color);
+}
+.accordion .accordion-item-label:focus,
+.accordion .accordion-item-label:hover {
+    background-color: transparent;
+}
+.accordion .accordion-item-body {
+    padding: var(--spacing-24) var(--spacing-00) var(--spacing-24);
+}
+.accordion-item:not([open]) .accordion-item-body {
+    display: none;
+}
+.accordion-item[open] .accordion-item-body {
+    background-color: transparent;
+    border-top: none;
+}
+/* ---- Theme: Dark ---- */
+.accordion.accordion-dark {
+    color: var(--light-color);
+}
+.accordion-dark .accordion-item {
+    border-bottom-color: rgb(255 255 255 / 30%);
+}
+.accordion-dark .accordion-item-body .accordion-item-body-text {
+    color: var(--light-color);
+}
+.accordion-dark .accordion-expand-all::after {
+    border-color: var(--light-color);
+}
+.accordion-dark .accordion-expand-all:hover {
+    color: rgb(255 255 255 / 70%);
+}
+.accordion-dark .accordion-item-label::after {
+    color: var(--light-color);
+}
+.accordion-dark .accordion-item-body a {
+    background-image: linear-gradient(
+        180deg,
+        var(--light-color) 50%,
+        var(--light-color) 0
+    );
+}
+.accordion-dark .accordion-item-body :where(a:hover) {
+  color: var(--text-color);
+}
+/* ---- Theme: Light ---- */
+.accordion.accordion-light {
+    color: var(--text-color);
+}
+.accordion-light .accordion-item-label p,
+.accordion-light .accordion-item-label h2,
+.accordion-light .accordion-item-label h3,
+.accordion-light .accordion-item-label h4,
+.accordion-light .accordion-item-label h5,
+.accordion-light .accordion-item-label h6 {
+    color: var(--text-color);
+}
+.accordion-light .accordion-item-body .accordion-item-body-text {
+    color: var(--text-color);
+}
+.accordion-light .accordion-expand-all::after {
+    border-color: var(--highlight-dark-background-color);
+}
+.accordion-light .accordion-item-label::after {
+    color: var(--text-color);
+}
+.section.accordion-container {
+    padding-left: var(--spacing-55);
+    padding-right: var(--spacing-55);
+    padding-top: var(--spacing-32);
+}
+.abbvie-accoridian.accordion-container{
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.section.abbvie-accordian-no-title {
+    padding: 0;
+}
+.abbvie-container.abbvie-accoridian-col .accordion,
+.abbvie-container.abbvie-accoridian .accordion {
+    grid-column: 1 / -1;
+}
+@media (width >= 744px) {
+    .section.accordion-container {
+        /* padding-left: var(--spacing-100);
+        padding-right: var(--spacing-100); */
+        padding-top: var(--spacing-56);
+    }
+
+    .accordion {
+        margin-bottom: var(--spacing-80);
+    }
+
+
+.accordion-block-heading-wrapper {
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+/* block heading */
+.accordion-block-heading {
+    font-size: var(--body-font-size-xs);
+    margin-bottom: var(--spacing-00);
+}
+
+    .accordion .accordion-expand-all {
+        margin-left: auto;
+        font-size: var(--font-size-14);
+    }
+
+    .accordion .accordion-item-label::after {
+        font-size: var(--font-size-28);
+    }
+
+    .accordion .accordion-item-label p {
+        font-size: var(--font-size-28);
+        line-height: var(--line-height-32);
+    }
+
+    .accordion .accordion-item-label h2 {
+        font-size: var(--font-size-36);
+        line-height: var(--line-height-32);
+    }
+
+    .accordion .accordion-item-label h3 {
+        font-size: var(--font-size-32);
+        line-height: var(--line-height-36);
+    }
+
+    .accordion .accordion-item-label h4 {
+        font-size: var(--font-size-30);
+        line-height: var(--line-height-34);
+    }
+
+    .accordion .accordion-item-label h5 {
+        font-size: var(--font-size-28);
+        line-height: var(--line-height-32);
+    }
+
+    .accordion .accordion-item-label h6 {
+        font-size: var(--font-size-24);
+        line-height: var(--line-height-18);
+    }
+
+    .accordion .accordion-item-body .accordion-item-body-text {
+        font-size: var(--font-size-16);
+        line-height: var(--line-height-22);
+    }
+}
+@media (width >= 1024px) {
+    .section.accordion-container {
+        padding-left: var(--spacing-55);
+        padding-right: var(--spacing-55);
+        padding-top: var(--spacing-80);
+    }
+
+    .accordion-wrapper {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        width: 100%;
+        margin-top: var(--spacing-40);
+        gap: var(--gap-20);
+    }
+
+    /* Default (centered) grid columns for each size */
+    .accordion,
+    .accordion.accordion-xxxl {
+        grid-column: 1 / -1;
+    }
+
+    .accordion.accordion-xxl {
+        grid-column: 2 / 12;
+    }
+
+    .accordion.accordion-xl {
+        grid-column: 3 / 11;
+    }
+
+    .accordion.accordion-l {
+        grid-column: 4 / 11;
+    }
+
+    .accordion.accordion-m {
+        grid-column: 4 / 10;
+    }
+
+    .accordion.accordion-s {
+        grid-column: 5 / 10;
+    }
+
+    .accordion.accordion-xs {
+        grid-column: 5 / 9;
+    }
+
+    /* Alignment overrides for grid layout */
+
+    /* LEFT aligned: start at 1 */
+    .accordion.accordion-xxxl.accordion-left {
+        grid-column: 1 / -1;
+    }
+
+    .accordion.accordion-xxl.accordion-left {
+        grid-column: 1 / 11;
+    }
+
+    .accordion.accordion-xl.accordion-left {
+        grid-column: 1 / 9;
+    }
+
+    .accordion.accordion-l.accordion-left {
+        grid-column: 1 / 8;
+    }
+
+    .accordion.accordion-m.accordion-left {
+        grid-column: 1 / 7;
+    }
+
+    .accordion.accordion-s.accordion-left {
+        grid-column: 1 / 6;
+    }
+
+    .accordion.accordion-xs.accordion-left {
+        grid-column: 1 / 5;
+    }
+
+    /* RIGHT aligned: end at -1 */
+    .accordion.accordion-xxxl.accordion-right {
+        grid-column: 1 / -1;
+    }
+
+    .accordion.accordion-xxl.accordion-right {
+        grid-column: 3 / -1;
+    }
+
+    .accordion.accordion-xl.accordion-right {
+        grid-column: 5 / -1;
+    }
+
+    .accordion.accordion-l.accordion-right {
+        grid-column: 6 / -1;
+    }
+
+    .accordion.accordion-m.accordion-right {
+        grid-column: 7 / -1;
+    }
+
+    .accordion.accordion-s.accordion-right {
+        grid-column: 8 / -1;
+    }
+
+    .accordion.accordion-xs.accordion-right {
+        grid-column: 9 / -1;
+    }
+
+    /* CENTER aligned: explicit centered grid-column for each size */
+    .accordion.accordion-xxxl.accordion-center {
+        grid-column: 1 / -1;
+    }
+
+    .accordion.accordion-xxl.accordion-center {
+        grid-column: 2 / 12;
+    }
+
+    .accordion.accordion-xl.accordion-center {
+        grid-column: 3 / 11;
+    }
+
+    .accordion.accordion-l.accordion-center {
+        grid-column: 4 / 11;
+    }
+
+    .accordion.accordion-m.accordion-center {
+        grid-column: 4 / 10;
+    }
+
+    .accordion.accordion-s.accordion-center {
+        grid-column: 4 / 9;
+    }
+
+    .accordion.accordion-xs.accordion-center {
+        grid-column: 5 / 9;
+    }
+
+    .accordion-l.accordion-center, .accordion-s.accordion-center {
+        transform: translateX(calc(-1 * 100% / 14));
+    }
+
+    .accordion,
+    .accordion.accordion-center {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .accordion .accordion-item-label::after {
+        font-size: var(--font-size-32);
+    }
+
+  .accordion .accordion-item-label p {
+    font-size: var(--font-size-32);
+    line-height: var(--line-height-36);
+}
+
+    .accordion .accordion-item-label h2 {
+        font-size: var(--font-size-56);
+        line-height: var(--line-height-68);
+    }
+
+    .accordion .accordion-item-label h3 {
+        font-size: var(--font-size-48);
+        line-height: var(--line-height-52);
+    }
+
+    .accordion .accordion-item-label h4 {
+        font-size: var(--font-size-40);
+        line-height: var(--line-height-44);
+    }
+
+    .accordion .accordion-item-label h5 {
+        font-size: var(--font-size-32);
+        line-height: var(--line-height-36);
+    }
+
+    .accordion .accordion-item-label h6 {
+        font-size: var(--font-size-28);
+        line-height: var(--line-height-30);
+    }
+
+    .accordion .accordion-item-body .accordion-item-body-text {
+        font-size: var(--font-size-18);
+        line-height: var(--line-height-24);
+    }
+}
+@media (width >= 1440px) {
+    .section.accordion-container {
+        padding-left: var(--spacing-00);
+        padding-right: var(--spacing-00);
+    }
+}
+/* ---- Variant: centered — center-aligns blade labels and body text ---- */
+.accordion.accordion-centered .accordion-item-label,
+.accordion.accordion-centered summary {
+    justify-content: center;
+    text-align: center;
+}
+.accordion.accordion-centered .accordion-item-body {
+    text-align: center;
+}
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+@custom-media --bp-tablet (min-width: 744px);
+@custom-media --bp-desktop (min-width: 1024px);
+@custom-media --bp-wide (min-width: 1440px);
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-tight: 1.25;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+}
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+/* ============================================================
+   VENCLEXTA DTC — Brand Token Overrides
+   Source: venclexta.com/aml (Platform C)
+   Framework Font: Graphik family
+   Brand Font: Red Hat Display (brand-specific elements)
+   ============================================================ */
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+  --color-brand-accent-teal: #005272;
+
+  /* ---- Color: Named Palette (shared AbbVie framework) ---- */
+  --color-plum: #90124a;
+  --color-gold: #ffd100;
+  --color-charcoal: #25282a;
+  --color-iron: #46484a;
+  --color-glacier: #f5f5f5;
+
+  /* ---- Color: Venclexta-specific ---- */
+  --color-venclexta-teal: #005272;
+  --color-venclexta-teal-dark: #003b52;
+  --color-venclexta-navy: #071d49;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-heading-brand: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-link: #90124a;
+  --color-text-legal: #404040;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+  --color-background-footer: #000;
+  --color-background-safety-bar: #f5f5f5;
+  --color-background-container: #003b52;
+
+  /* ---- Color: Border ---- */
+  --color-border-brand: #005272;
+  --color-border-safety: #ffd100;
+  --color-border-default: #ccc;
+
+  /* ---- Color: Shadow ---- */
+  --shadow-card: rgb(85, 85, 85) 0px 3px 10px 1px;
+  --shadow-table: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-brand: 'Red Hat Display', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 11px;
+  --font-size-nav: 16px;
+  --font-size-footer: 16px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 14px;
+  --font-size-h4-brand: 16px;
+  --font-size-h5-brand: 17.6px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-heading: 600;
+  --font-weight-button: 700;
+  --font-weight-brand-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 24px;
+  --line-height-h1: 27.625px;
+  --line-height-h2: 25px;
+  --line-height-h3: 16.8px;
+  --line-height-h5-brand: 22px;
+  --line-height-h-xl: 52.8px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 100px;
+  --border-radius-card: 10px;
+  --border-radius-card-corner: 14px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #fff;
+  --button-primary-bg: #90124a;
+  --button-primary-padding: 16px 54px 16px 32px;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+}
+/* Venclexta DTC accordion — White BG variation matching venclexta.com */
+.accordion {
+    --accordion-ven-text-color: var(--color-brand-primary);
+    --accordion-ven-icon-color: var(--text-color);
+    --accordion-ven-bg: var(--background-color);
+    --accordion-ven-border: var(--color-border-default);
+    --footer-seperator-color: transparent;
+    --highlight-dark-background-color: transparent;
+
+    background: transparent;
+}
+/* Item — white bg, light border, spaced apart */
+.accordion .accordion-item {
+    border: var(--border-01) solid var(--accordion-ven-border);
+    border-radius: 0;
+    margin-bottom: var(--spacing-16);
+    background: var(--accordion-ven-bg);
+}
+/* Summary row */
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-16);
+    background: var(--accordion-ven-bg);
+}
+/* Heading text — brand teal, medium weight */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-h5-brand);
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+}
+/* Prevent heading change on hover/open */
+.accordion .accordion-item:hover .accordion-item-label p,
+.accordion .accordion-item:hover .accordion-item-label h2,
+.accordion .accordion-item:hover .accordion-item-label h3,
+.accordion .accordion-item:hover .accordion-item-label h4,
+.accordion .accordion-item:hover .accordion-item-label h5,
+.accordion .accordion-item:hover .accordion-item-label h6,
+.accordion .accordion-item-label.open .accordion-item-label-text,
+.accordion .accordion-item-label .accordion-item-label-text:hover {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-h5-brand);
+}
+/* Icon — outline circled +/− in dark gray via summary::after */
+.accordion summary::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: var(--spacing-24);
+    height: var(--spacing-24);
+    min-width: var(--spacing-24);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%23404040' stroke-width='1.5' fill='none'/%3E%3Cpath d='M12 7v10M7 12h10' stroke='%23404040' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    font-family: inherit;
+    font-size: 0;
+    transform: none;
+}
+.accordion .accordion-item[open] summary::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%23404040' stroke-width='1.5' fill='none'/%3E%3Cpath d='M7 12h10' stroke='%23404040' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* Hide icon-font duplicates */
+.accordion-icon-font .icon-plus::after,
+.accordion-icon-font .icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+    display: none !important;
+}
+/* Hover/Open — no background change */
+.accordion .accordion-item:hover summary,
+.accordion .accordion-item[open] summary {
+    background: var(--accordion-ven-bg);
+}
+/* Body content */
+.accordion .accordion-item-body {
+    padding: var(--spacing-16) var(--spacing-16) var(--spacing-24);
+    background: var(--accordion-ven-bg);
+}
+.accordion .accordion-item-body p.accordion-item-body-text,
+.accordion .accordion-item-body p { /* stylelint-disable-line no-descending-specificity */
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-body);
+    line-height: 1.5;
+}
+/* Body links */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+}
+.accordion .accordion-item-body a:hover {
+    background: none;
+    color: var(--color-brand-primary-dark);
+}
+/* Hide external link ::after */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+/* Icon row — inline images with text labels */
+.accordion .accordion-item-body p img {
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--spacing-40);
+    height: var(--spacing-40);
+    margin-right: var(--spacing-08);
+}
+/* Content cards — paragraphs with strong headings get card treatment */
+.accordion .accordion-item-body .columns {
+    display: flex;
+    gap: var(--spacing-16);
+    flex-wrap: wrap;
+    margin: var(--spacing-24) var(--spacing-00);
+}
+.accordion .accordion-item-body .columns > div {
+    flex: 1;
+    min-width: var(--spacing-200, 200px);
+    background: var(--background-color);
+    border: var(--border-01) solid var(--color-border-default);
+    border-radius: var(--spacing-08);
+    padding: var(--spacing-24);
+    text-align: center;
+}
+.accordion .accordion-item-body .columns > div h2, /* stylelint-disable-line no-descending-specificity */
+.accordion .accordion-item-body .columns > div h3, /* stylelint-disable-line no-descending-specificity */
+.accordion .accordion-item-body .columns > div h4 { /* stylelint-disable-line no-descending-specificity */
+    color: var(--color-brand-primary);
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-heading);
+    margin-bottom: var(--spacing-16);
+}
+/* Expand all button */
+.accordion .accordion-expand-all {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+}
+.accordion .accordion-expand-all:focus {
+    border-color: var(--accordion-ven-text-color);
+}

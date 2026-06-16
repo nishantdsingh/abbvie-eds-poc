@@ -1,0 +1,13 @@
+{
+  "project": "linzess",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Sidekick Library",
+      "environments": [
+        "edit"
+      ],
+      "url": "/linzess/tools/sidekick/library.html"
+    }
+  ]
+}

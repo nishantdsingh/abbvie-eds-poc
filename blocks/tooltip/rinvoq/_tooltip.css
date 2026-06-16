@@ -1,0 +1,30 @@
+@import '../tooltip.css';
+
+.tooltip,
+abbr.has-tooltip {
+  --tooltip-bg: var(--color-brand-primary, #90124a);
+  --tooltip-color: var(--color-text-on-dark, #fff);
+  --tooltip-focus-ring: var(--color-brand-primary, #90124a);
+  --tooltip-border-radius: var(--spacing-08, 0.8rem);
+  --tooltip-shadow: 0 calc(1 * var(--px-to-rem, 0.1rem)) var(--spacing-10, 1rem) calc(1 * var(--px-to-rem, 0.1rem)) var(--color-gray-medium, #b9b4b4);
+  --tooltip-panel-width: calc(247 * var(--px-to-rem, 0.1rem));
+  --tooltip-min-width: var(--spacing-100, 10rem);
+  --tooltip-panel-line-height: calc(17 * var(--px-to-rem, 0.1rem));
+  --tooltip-panel-min-height: var(--spacing-32, 3.2rem);
+  --tooltip-z-index: var(--z-index-anchor-nav, 100);
+  --tooltip-trigger-border-color: var(--color-rinvoq-charcoal, #25282a);
+  --tooltip-trigger-border-style: dotted;
+}
+
+.tooltip-trigger {
+  color: var(--color-rinvoq-charcoal, #25282a);
+}
+
+abbr.has-tooltip {
+  text-decoration-color: var(--color-rinvoq-charcoal, #25282a);
+  color: var(--color-rinvoq-charcoal, #25282a);
+}
+
+.tooltip.large .tooltip-panel {
+  width: var(--tooltip-panel-width-large, calc(400 * var(--px-to-rem, 0.1rem)));
+}

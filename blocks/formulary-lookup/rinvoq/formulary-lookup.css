@@ -1,0 +1,59 @@
+.formulary-lookup-heading {
+  margin-bottom: var(--spacing-8, 8px);
+}
+
+.formulary-lookup-description {
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.formulary-lookup-label {
+  display: block;
+  font-size: var(--body-font-size-s, 0.875rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-4, 4px);
+}
+
+.formulary-lookup-select {
+  border: 1px solid var(--formulary-border, #ccc);
+  border-radius: 4px;
+  font-size: var(--body-font-size-m, 1rem);
+  padding: var(--spacing-8, 8px) var(--spacing-12, 12px);
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.formulary-lookup-status {
+  font-size: var(--body-font-size-s, 0.875rem);
+  min-height: 1.5em;
+}
+
+.formulary-lookup-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12, 12px);
+  margin-top: var(--spacing-16, 16px);
+}
+
+.formulary-plan {
+  border: 1px solid var(--formulary-border, #e0e0e0);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px;
+  padding: var(--spacing-16, 16px);
+}
+
+.formulary-plan-name {
+  grid-column: 1 / -1;
+}
+
+.formulary-plan-tier {
+  background: var(--formulary-tier-bg, var(--link-color, #0057cc));
+  border-radius: 2px;
+  color: #fff;
+  font-size: var(--body-font-size-xs, 0.75rem);
+  padding: 2px 8px;
+}
+
+/* Rinvoq formulary-lookup overrides */

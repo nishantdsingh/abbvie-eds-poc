@@ -1,0 +1,158 @@
+@import '../hero.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* ============================================================
+   SKYRIZI HCP — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+.hero {
+  overflow: hidden;
+}
+
+.hero h1 em,
+.hero h1 strong {
+  font-family: 'Univers LT W01_67 Bold_1476016', sans-serif;
+}
+
+.hero h1 {
+  color: var(--color-text-heading);
+  font-family: 'Univers LT W01_57 Condensed', sans-serif;
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--heading-font-family);
+}
+
+.hero p {
+  font-family: var(--body-font-family);
+}
+
+/* Profile band: dark teal */
+.hero.profile > :where(div):first-child {
+  background-color: var(--color-background-footer);
+}
+
+/* Profile text panel: white text on dark band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* CTA button: yellow accent */
+.hero :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+.hero.landing :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* Landing gradient: dark teal left-to-right fade */
+.hero.landing::after {
+  background: var(--gradient-hero-landing);
+}
+
+/* Solid background: brand primary teal */
+.hero.solid {
+  background-color: var(--color-brand-primary);
+}
+
+.hero.solid :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* Full/video overlay: teal gradient */
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+.hero img {
+  height: auto;
+  min-height: var(--hero-img-min-height);
+  max-height: fit-content;
+  border-radius: 0;
+}
+
+.hero > :where(div):has(> div:empty) {
+  display: none;
+}
+
+/* Override gradient overlay — hidden for full/video on Skyrizi HCP */
+.hero.full::after,
+.hero.video::after {
+  background: var(--gradient-hero-full);
+  display: none;
+}
+
+.hero .hero-text-container {
+  position: absolute;
+  top: var(--hero-text-top-offset);
+}
+
+.hero .hero-text-container .cmp-container-x-large h1 {
+  font-size: var(--hero-h1-font-size-mobile);
+  line-height: var(--hero-h1-line-height);
+  color: var(--color-text-on-dark);
+  background: var(--hero-h1-bg);
+  padding: var(--hero-h1-padding);
+  border-right: var(--hero-h1-border-right-width) solid var(--hero-h1-border-right-color);
+}
+
+.hero .hero-text-container .cmp-container-x-large h1 strong {
+  font-size: var(--hero-h1-strong-font-size-mobile);
+}
+
+.hero .hero-text-container .cmp-container-x-large h1 em strong {
+  color: var(--hero-h1-em-color);
+  font-style: normal;
+}
+
+.hero.video .hero-video-bg {
+  display: block;
+}
+
+.hero.video {
+  min-height: var(--hero-video-min-height);
+}
+
+.hero.video .hero-video-bg video {
+  height: var(--hero-video-min-height);
+}
+
+@media (width >= 744px) {
+  .hero img {
+    min-height: auto;
+  }
+
+  .hero.video {
+    min-height: 100vh;
+  }
+
+  .hero.video .hero-video-bg video {
+    height: 100%;
+  }
+
+  .hero .hero-text-container .cmp-container-x-large h1 {
+    font-size: var(--hero-h1-font-size-tablet);
+    line-height: var(--hero-h1-line-height);
+    color: var(--color-text-on-dark);
+    background: var(--hero-h1-bg);
+    width: var(--hero-h1-width-tablet);
+    margin-left: auto;
+    padding: var(--hero-h1-padding);
+    border-right: var(--hero-h1-border-right-width) solid var(--hero-h1-border-right-color);
+  }
+
+  .hero .hero-text-container .cmp-container-x-large h1 strong {
+    font-size: var(--hero-h1-strong-font-size-tablet);
+  }
+}

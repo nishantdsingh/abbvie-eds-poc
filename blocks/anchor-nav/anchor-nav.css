@@ -1,0 +1,44 @@
+.anchor-nav {
+  background-color: var(--anchor-nav-bg, var(--background-color, #fff));
+  border-bottom: 1px solid var(--anchor-nav-border, #e0e0e0);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.anchor-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.anchor-nav.is-sticky {
+  position: sticky;
+  top: var(--nav-height, 64px);
+  z-index: var(--z-index-anchor-nav, 100);
+}
+
+.anchor-nav nav {
+  display: flex;
+  gap: 0;
+  margin: 0 auto;
+  max-width: var(--section-width, 1200px);
+  padding: 0 var(--spacing-24, 24px);
+}
+
+.anchor-nav a {
+  color: var(--anchor-nav-link-color, var(--text-color));
+  font-size: var(--body-font-size-s, 0.875rem);
+  font-weight: 600;
+  padding: var(--spacing-12, 12px) var(--spacing-16, 16px);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.anchor-nav a:hover {
+  color: var(--anchor-nav-link-hover, var(--link-color));
+}
+
+.anchor-nav a.is-active {
+  border-bottom-color: var(--anchor-nav-active-color, var(--link-color));
+  color: var(--anchor-nav-link-hover, var(--link-color));
+}

@@ -1,0 +1,602 @@
+/* =====================================================
+   Pipeline Utility Navigation Block
+   Matches: abbvie.com/science/pipeline.html
+   ===================================================== */
+
+:root {
+  --pipeline-nav-panel-max-height-expanded: 999.9rem;
+  --pipeline-nav-search-min-width: 21rem;
+}
+
+.pipeline-utility-nav {
+  padding: var(--spacing-10) var(--spacing-00);
+}
+
+.pipeline-nav {
+  max-width: var(--content-max-width);
+  margin: var(--spacing-00) auto;
+}
+
+/* ---- Eyebrow: title + date + search ---- */
+
+.pipeline-nav-eyebrow {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--spacing-08);
+  margin-bottom: var(--spacing-10);
+  border-bottom: var(--border-01) solid var(--color-gray-medium);
+}
+
+.pipeline-nav-title-container {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-08);
+  margin-bottom: var(--spacing-24);
+}
+
+.pipeline-nav-title {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-22);
+  color: var(--text-color);
+  margin: var(--spacing-00);
+  letter-spacing: normal;
+}
+
+.pipeline-nav-last-updated {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+  color: var(--color-gray-dark);
+  margin: var(--spacing-00);
+}
+
+.pipeline-nav-icon::before {
+  color: var(--form-border-hover-color);
+  font-size: var(--font-size-16);
+}
+
+/* Search */
+
+.pipeline-nav-search {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  width: 100%;
+}
+
+.pipeline-nav-search-icon {
+  width: var(--spacing-24);
+  height: var(--spacing-24);
+  flex-shrink: 0;
+}
+
+.pipeline-nav-search-input {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-16);
+  color: var(--color-gray-dark);
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  padding: var(--spacing-00);
+}
+
+.pipeline-nav-search-input::placeholder {
+  color: transparent;
+}
+
+.pipeline-nav-search-label {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-16);
+  color: var(--color-gray-dark);
+  position: absolute;
+  pointer-events: none;
+  transition: all 0.2s;
+}
+
+.pipeline-nav-search.has-value .pipeline-nav-search-label,
+.pipeline-nav-search.focused .pipeline-nav-search-label {
+  transform: translateY(-20px);
+  font-size: var(--font-size-14);
+  color: var(--color-gray-medium);
+}
+
+.pipeline-nav-search.focused .pipeline-nav-search-label {
+  color: var(--color-gray-dark);
+}
+
+.pipeline-nav-search:focus-within .pipeline-nav-search-label {
+  color: var(--color-gray-dark);
+}
+
+.pipeline-nav-search :where(form) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* ---- Sort / Filter row ---- */
+
+.pipeline-nav-sort-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.pipeline-nav-sort {
+  display: flex;
+  align-items: center;
+  margin-right: var(--spacing-40);
+  gap: var(--spacing-08);
+  position: relative;
+}
+
+.pipeline-nav-sort-icon {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+}
+
+.pipeline-nav-sort-label {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  color: var(--text-color);
+  letter-spacing: var(--letter-spacing-wide-84);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pipeline-nav-sort-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-04);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-00);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-14);
+  color: var(--color-gray-dark);
+  letter-spacing: var(--letter-spacing-wide-56);
+  border-radius: var(--border-radius-00);
+  margin: var(--spacing-00);
+}
+
+.pipeline-nav-sort-btn:hover,
+.pipeline-nav-sort-btn:focus {
+  background-color: transparent;
+  color: var(--color-gray-dark);
+  border-radius: var(--border-radius-00);
+}
+
+.pipeline-nav-sort-btn::after {
+  content: "";
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-06);
+  color: var(--color-gray-dark);
+  margin-left: var(--spacing-05);
+}
+
+.pipeline-nav-sort-btn[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.pipeline-nav-sort-modal {
+  position: absolute;
+  top: 100%;
+  left: var(--spacing-90);
+  z-index: var(--z-index-1);
+  background: var(--background-color);
+  border: var(--border-01) solid rgb(0 0 0 / 15%);
+  box-shadow: var(--spacing-00) var(--spacing-06) var(--spacing-12) rgb(0 0 0 / 18%);
+  list-style: none;
+  margin: var(--spacing-04) var(--spacing-00) var(--spacing-00);
+}
+
+.pipeline-nav-sort-modal :where(button) {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  display: block;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  padding: var(--spacing-10) var(--spacing-20);
+  text-transform: uppercase;
+  width: 100%;
+  margin: var(--spacing-00);
+  border-radius: var(--border-radius-00);
+  line-height: var(--line-height-21);
+}
+
+.pipeline-nav-sort-modal :where(button):hover,
+.pipeline-nav-sort-modal :where(button).selected {
+  background-color: var(--color-gray-medium);
+  color: inherit;
+}
+
+/* Filter button */
+
+.pipeline-nav-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-00);
+  margin: var(--spacing-00);
+  border-radius: var(--border-radius-00);
+}
+
+.pipeline-nav-filter-btn:hover,
+.pipeline-nav-filter-btn:focus {
+  background: transparent;
+  border-radius: var(--border-radius-00);
+}
+
+.pipeline-nav-filter-icon {
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+}
+
+.pipeline-nav-filter-label {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  color: var(--text-color);
+  letter-spacing: var(--letter-spacing-wide-84);
+  text-transform: uppercase;
+}
+
+.pipeline-nav-filter-btn::after {
+  color: var(--text-color);
+  transition: transform 0.3s;
+  content: "";
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-06);
+}
+
+.pipeline-nav-filter-btn[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+  color: var(--color-accent-blue);
+}
+
+.pipeline-nav-filter-btn.active,
+.pipeline-nav-filter-btn.active .pipeline-nav-filter-label {
+  color: var(--color-accent-blue);
+}
+
+/* ---- Filter Chips (in sort/filter bar) ---- */
+
+.pipeline-nav-chips {
+  display: flex;
+  flex: 1 1 75%;
+  align-items: center;
+  margin-left: var(--spacing-20);
+  gap: var(--spacing-04);
+  flex-wrap: wrap;
+}
+
+.pipeline-nav-chips-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-04);
+}
+
+.pipeline-nav-chip {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-gray-light);
+  border-width: var(--border-01);
+  border-style: solid;
+  border-radius: var(--spacing-03);
+  border-color: var(--form-secondary-text-color);
+  color: var(--color-gray-dark);
+  padding: var(--spacing-02) var(--spacing-07);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-16);
+  cursor: pointer;
+  margin: var(--spacing-00);
+}
+
+.pipeline-nav-chip:focus,
+.pipeline-nav-chip:hover {
+  color: var(--color-gray-dark);
+  border-color: var(--form-border-hover-color);
+  background-color: var(--color-gray-medium-light);
+}
+
+.pipeline-nav-chip::after {
+  content: "\e908";
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-07);
+  padding-left: var(--spacing-075);
+}
+
+.pipeline-nav-chips-clear {
+  display: none;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  color: var(--color-gray-dark);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-00);
+  white-space: nowrap;
+  margin: var(--spacing-00);
+  border-radius: var(--border-radius-00);
+}
+
+.pipeline-nav-chips-clear:hover,
+.pipeline-nav-chips-clear:focus {
+  color: var(--color-gray-dark);
+  background-color: inherit;
+}
+
+/* ---- Filter Panel ---- */
+
+.pipeline-nav-panel {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.8s ease;
+}
+
+.pipeline-nav-panel:not([hidden]) {
+  max-height: var(--pipeline-nav-panel-max-height-expanded);
+}
+
+.pipeline-nav-panel-inner {
+  background: var(--background-color);
+  padding: var(--spacing-20) var(--spacing-00);
+  position: relative;
+}
+
+.pipeline-nav-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--spacing-20);
+}
+
+/* Category containers */
+
+.pipeline-nav-panel-cat {
+  border-top: 1px solid var(--color-accent-blue);
+  padding-top: var(--spacing-16);
+  grid-column: 1 / span 12;
+}
+
+/* Category header (with select-all checkbox) */
+
+.pipeline-nav-panel-cat-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  margin-bottom: var(--spacing-16);
+}
+
+.pipeline-nav-panel-cat-title {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  color: var(--text-color);
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-16);
+  cursor: pointer;
+}
+
+.pipeline-nav-panel-cat-header .pipeline-nav-panel-cat-title {
+  margin-bottom: var(--spacing-00);
+}
+
+.pipeline-nav-panel-cat-header :where(i) {
+  font-style: normal;
+  color: var(--color-gray-dark);
+}
+
+/* Custom checkboxes — matching PROD */
+
+.pipeline-nav-panel-option,
+.pipeline-nav-panel-cat-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  margin-bottom: var(--spacing-08);
+}
+
+.pipeline-nav-panel :where(input[type="checkbox"]) {
+  appearance: none;
+  background-color: var(--background-color);
+  border: var(--border-01) solid var(--color-gray-dark);
+  border-radius: var(--border-radius-s);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  height: var(--spacing-16);
+  width: var(--spacing-16);
+  margin: var(--spacing-04);
+  flex-shrink: 0;
+}
+
+.pipeline-nav-panel :where(input[type="checkbox"])::before {
+  content: "\2713";
+  font-family: var(--icon-font-family);
+  background-color: var(--color-accent-blue);
+  border-radius: var(--border-radius-s);
+  color: var(--background-color);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-800);
+  width: var(--spacing-16);
+  height: var(--spacing-16);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transform: scale(0);
+  transition: transform 0.1s;
+  line-height: var(--line-height-1);
+  padding: var(--spacing-03);
+}
+
+.pipeline-nav-panel :where(input[type="checkbox"]):checked::before {
+  transform: scale(1);
+}
+
+/* Indeterminate state (select-all partial) */
+
+.pipeline-nav-panel :where(input[type="checkbox"]):indeterminate::before {
+  content: "-";
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-00);
+  padding-top: var(--spacing-01);
+  transform: scale(1);
+}
+
+.pipeline-nav-panel-option :where(label) {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-16);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Fieldset */
+
+.pipeline-nav-panel-fieldset {
+  border: none;
+  padding: var(--spacing-00);
+  margin: var(--spacing-00);
+}
+
+/* Dual sub-categories */
+
+.pipeline-nav-panel-dual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-20);
+}
+
+.pipeline-nav-panel-sub {
+  flex: 1;
+}
+
+.pipeline-nav-panel-sub-title {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  color: var(--color-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide-84);
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-12);
+}
+
+/* Panel buttons */
+
+.pipeline-nav-panel-buttons {
+  grid-column: 1 / span 12;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-20);
+  padding-top: var(--spacing-16);
+}
+
+.pipeline-nav-panel-clear {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  color: var(--color-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide-84);
+  background: transparent;
+  border: var(--border-01) solid transparent;
+  padding: var(--spacing-16) var(--spacing-40);
+  cursor: pointer;
+}
+
+.pipeline-nav-panel-clear:hover {
+  color: var(--text-color);
+}
+
+/* Close button */
+
+.pipeline-nav-panel-close {
+  position: absolute;
+  top: var(--spacing-20);
+  right: var(--spacing-00);
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.pipeline-nav-panel-close::after {
+  content: "\e908";
+  font-family: var(--icon-font-family);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: var(--spacing-00);
+  left: var(--spacing-00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Tablet (>= 744px) ---- */
+
+@media (width >= 744px) {
+  .pipeline-nav-eyebrow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pipeline-nav-title-container {
+    margin-bottom: var(--spacing-00);
+  }
+
+  .pipeline-nav-search {
+    width: auto;
+    min-width: var(--spacing-200);
+  }
+}
+
+/* ---- Desktop (>= 1024px) ---- */
+
+@media (width >= 1024px) {
+  .pipeline-nav-title {
+    font-size: var(--font-size-24);
+    line-height: var(--line-height-32);
+  }
+
+  .pipeline-nav-last-updated {
+    font-size: var(--font-size-14);
+  }
+
+  .pipeline-nav-search {
+    min-width: var(--pipeline-nav-search-min-width);
+  }
+
+  /* Inline panel — 3-column layout */
+  .pipeline-nav-panel-focus-area {
+    grid-column: 1 / span 2;
+  }
+
+  .pipeline-nav-panel-pharmaceuticals {
+    grid-column: 3 / span 5;
+  }
+
+  .pipeline-nav-panel-devices {
+    grid-column: 8 / span 5;
+  }
+
+  .pipeline-nav-panel-dual {
+    flex-direction: row;
+  }
+}

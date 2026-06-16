@@ -1,0 +1,21 @@
+@import '../../../styles/rinvoq-dtc/tokens.css';
+
+/* Rinvoq DTC — CTA brand overrides
+   Primary: White bg, plum border/text, 5px radius
+   Secondary: Transparent, plum border, 5px radius
+   Tertiary: Transparent, no border, 3px radius
+   Plain: Plum text
+   Font: Neue Haas Grotesk (primary), Helvetica Neue Bold (plain) */
+
+.cta.abbv-button-primary .abbv-cta,
+.cta.abbv-button-secondary .abbv-cta {
+  font-family: var(--font-family-button);
+}
+
+.cta.abbv-button-tertiary .abbv-cta {
+  font-family: var(--font-family-button-plain);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--font-family-button-plain);
+}

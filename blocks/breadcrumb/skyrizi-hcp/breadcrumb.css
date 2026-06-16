@@ -1,0 +1,98 @@
+@import url('../breadcrumb.css');
+
+/* Skyrizi HCP: transform breadcrumb into horizontal tab-style sub-nav bar */
+
+/* Mobile-first: hidden by default */
+.breadcrumb-wrapper {
+  display: none;
+}
+
+/* Desktop (>=897px): show the tab-style bar */
+@media (width >= 897px) {
+  .breadcrumb-wrapper {
+    display: block;
+  }
+
+  .breadcrumb .breadcrumb-drop-title {
+    display: none;
+  }
+
+  .breadcrumb {
+    background: var(--breadcrumb-color-bg);
+    border-radius: var(--breadcrumb-border-radius);
+    height: var(--breadcrumb-height);
+    max-width: var(--breadcrumb-max-width);
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .breadcrumb .breadcrumb-nav {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  .breadcrumb .breadcrumb-nav ol {
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+  }
+
+  .breadcrumb .breadcrumb-nav ol li {
+    font-family: var(--body-font-family);
+    font-size: var(--breadcrumb-font-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--breadcrumb-color-text);
+    letter-spacing: normal;
+    padding: var(--breadcrumb-item-padding);
+    margin: var(--breadcrumb-item-margin);
+    border-bottom: var(--breadcrumb-active-border-width) solid transparent;
+  }
+
+  .breadcrumb-nav ol li:not(:last-child)::after {
+    display: none;
+  }
+
+  .breadcrumb-nav li a {
+    color: var(--breadcrumb-color-text);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .breadcrumb-nav li a:hover {
+    color: var(--breadcrumb-color-text);
+    text-decoration: none;
+  }
+
+  /* Active link — bold + cyan underline (matches original flex-active pattern) */
+  .breadcrumb-nav li a.flex-active {
+    font-weight: var(--font-weight-heading);
+    color: var(--breadcrumb-color-text);
+    text-decoration: none;
+    border-bottom: var(--breadcrumb-active-border-width) solid var(--breadcrumb-color-active-border);
+    padding-bottom: var(--breadcrumb-item-padding);
+    line-height: var(--line-height-base, 1);
+  }
+
+  .breadcrumb-nav ol li[aria-current] {
+    font-weight: var(--font-weight-heading);
+    color: var(--breadcrumb-color-text);
+  }
+}
+
+/* Tablet (897px–1224px): narrower container, smaller font */
+@media (897px <= width < 1224px) {
+  .breadcrumb {
+    max-width: var(--breadcrumb-max-width-tablet);
+  }
+
+  .breadcrumb .breadcrumb-nav ol li {
+    font-size: var(--breadcrumb-font-size-tablet);
+  }
+}

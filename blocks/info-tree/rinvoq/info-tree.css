@@ -1,0 +1,94 @@
+@import url('../info-tree.css');
+@import url('../../../styles/rinvoq/tokens.css');
+
+/* Rinvoq info-tree brand overrides */
+
+.info-tree {
+  background: var(--color-background-light);
+  max-width: var(--info-tree-max-width);
+  margin: 0 auto;
+}
+
+.info-tree .info-tree-question {
+  font-family: var(--heading-font-family-bold);
+  font-weight: var(--font-weight-heading);
+  font-size: var(--heading-font-size-m);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-heading);
+}
+
+.info-tree .info-tree-option {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-heading);
+}
+
+.info-tree .info-tree-option::before {
+  border-color: var(--color-text-heading);
+}
+
+.info-tree .info-tree-option:hover::before {
+  border-color: var(--color-text-heading);
+  background: var(--color-brand-accent);
+  box-shadow: var(--background-color) 0 0 0 3px inset;
+}
+
+.info-tree .info-tree-result {
+  color: var(--color-text-heading);
+}
+
+.info-tree .info-tree-result h1,
+.info-tree .info-tree-result h2,
+.info-tree .info-tree-result h3,
+.info-tree .info-tree-result h4,
+.info-tree .info-tree-result h5,
+.info-tree .info-tree-result h6 {
+  font-family: var(--heading-font-family-bold);
+  font-size: 26px;
+  line-height: 30px;
+  margin: 0 0 10px;
+  color: var(--color-text-heading);
+}
+
+.info-tree .info-tree-result a:not(.info-tree-cta-btn) {
+  color: var(--color-brand-primary);
+  text-decoration: none;
+}
+
+.info-tree .info-tree-result a:not(.info-tree-cta-btn):hover {
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+.info-tree .info-tree-cta-btn {
+  padding: 7px 22px 7px 10px;
+  background: var(--background-color);
+  border: 2px solid var(--color-brand-primary);
+  border-radius: 5px;
+  color: var(--color-brand-primary);
+  font-size: var(--button-primary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  font-family: var(--heading-font-family-bold);
+}
+
+.info-tree .info-tree-cta-btn:hover {
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  border-color: var(--color-brand-primary);
+}
+
+.info-tree .info-tree-cta-icon {
+  margin-left: 6px;
+  font-size: var(--body-font-size-m);
+}
+
+.info-tree .info-tree-reset-btn {
+  color: var(--color-brand-primary);
+  font-size: var(--body-font-size-s);
+}
+
+.info-tree .info-tree-disclaimer {
+  font-size: var(--body-font-size-xs);
+  color: var(--text-color);
+}

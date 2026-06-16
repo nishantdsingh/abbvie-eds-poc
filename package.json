@@ -1,0 +1,55 @@
+{
+  "name": "@adobe/aem-boilerplate-multi-brand",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Starter project for EDS Multi-Brand and Theme Tools",
+  "scripts": {
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"blocks/**/*.css\" \"styles/*.css\"",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
+    "start": "concurrently \"npm run scaffold:start\" \"aem up\"",
+    "start:all": "concurrently \"npm run scaffold:start\" \"aem up\" \"npm run docs:start\"",
+    "build:json": "npm-run-all -p build:json:models build:json:definitions build:json:filters",
+    "build:json:models": "merge-json-cli -i \"models/_component-models.json\" -o \"component-models.json\"",
+    "build:json:definitions": "merge-json-cli -i \"models/_component-definition.json\" -o \"component-definition.json\"",
+    "build:json:filters": "merge-json-cli -i \"models/_component-filters.json\" -o \"component-filters.json\"",
+    "docs:start": "cd docs && npm start",
+    "docs:build": "cd docs && npm run build",
+    "docs:deploy": "cd docs && npm run deploy",
+    "scaffold:create": "plop component --plopfile theme-tools/plopfile.mjs",
+    "scaffold:create:log": "plop component --plopfile theme-tools/plopfile.mjs --verbose",
+    "scaffold:start": "NODE_OPTIONS='--max-old-space-size=4096' npx gulp createBrandCSS && npx gulp default",
+    "scaffold:build": "NODE_OPTIONS='--max-old-space-size=4096' npx gulp createBrandCSS",
+    "scaffold:build:block": "node theme-tools/build-scoped.js",
+    "scaffold:build:log": "NODE_OPTIONS='--max-old-space-size=4096' node theme-tools/generate-css.js --verbose",
+    "scaffold:remove": "plop remove --plopfile theme-tools/plopfile.mjs",
+    "scaffold:remove:log": "plop remove --plopfile theme-tools/plopfile.mjs --verbose",
+    "clean": "rm -f isolate-*.log"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adobe/aem-boilerplate.git"
+  },
+  "author": "Adobe",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/adobe/aem-boilerplate/issues"
+  },
+  "homepage": "https://github.com/adobe/aem-boilerplate#readme",
+  "devDependencies": {
+    "@babel/eslint-parser": "7.27.5",
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "eslint": "8.57.1",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.32.0",
+    "gulp": "^5.0.0",
+    "merge-json-cli": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "plop": "^4.0.1",
+    "postcss-import": "^16.1.0",
+    "stylelint": "16.21.0",
+    "stylelint-config-standard": "38.0.0"
+  }
+}

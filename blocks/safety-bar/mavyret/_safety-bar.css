@@ -1,0 +1,41 @@
+@import '../safety-bar.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* Mavyret — Safety Bar Brand Overrides
+   Collapsed: white bg, orange (fiesta) top border, green filled toggle
+   Expanded:  white bg, green flash headings, green scrollbar
+*/
+
+.safety-bar {
+  background-color: var(--background-color);
+  border-top: 4px solid var(--color-fiesta);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+}
+
+.safety-bar-toggle {
+  background-color: var(--color-green-flash);
+  border-color: var(--color-green-flash);
+  color: var(--color-brand-primary-dark);
+}
+
+.safety-bar.is-expanded .safety-bar-full h2,
+.safety-bar.is-expanded .safety-bar-full h3 {
+  color: var(--color-green-flash);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-heading);
+  text-transform: uppercase;
+}
+
+.safety-bar.is-expanded .safety-bar-full::-webkit-scrollbar {
+  width: 8px;
+}
+
+.safety-bar.is-expanded .safety-bar-full::-webkit-scrollbar-thumb {
+  background-color: var(--color-green-flash);
+  border-radius: 4px;
+}
+
+.safety-bar.is-expanded .safety-bar-full::-webkit-scrollbar-track {
+  background-color: var(--color-background-light);
+}

@@ -1,0 +1,53 @@
+@import '../cards-grid.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
+
+.cards-grid {
+  --cards-grid-rinvoq-accent: var(--color-rinvoq-primary);
+}
+
+.cards-grid.cards-grid-flex-row-cards .flexboxitem-v2.parbase {
+  max-width: var(--spacing-1200);
+  margin: 0 auto;
+}
+
+.cards-grid.cards-grid-flex-row-cards .abbv-flex-container-v2.flexbox--break-row-column {
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--spacing-24);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cards-grid.cards-grid-flex-row-cards .abbv-flex-container-v2.flexbox--break-row-column > .rich-text {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.cards-grid.cards-grid-flex-row-cards .abbv-rich-text-common p {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+}
+
+.cards-grid.cards-grid-flex-row-cards .section-padding-right {
+  padding-right: 0;
+}
+
+.cards-grid.cards-grid-flex-row-cards .rich-text .abbv-rich-text-common strong,
+.cards-grid.cards-grid-flex-row-cards .rich-text .abbv-rich-text-common b {
+  font-family: var(--font-family-semibold);
+  font-weight: 700;
+}
+
+@media (width >= 986px) {
+  .cards-grid.cards-grid-flex-row-cards .abbv-flex-container-v2.flexbox--break-row-column {
+    flex-direction: row;
+  }
+
+  .cards-grid.cards-grid-flex-row-cards .section-padding-right {
+    padding-right: var(--spacing-48);
+  }
+}
+
+/* stylelint-enable selector-class-pattern, no-descending-specificity */

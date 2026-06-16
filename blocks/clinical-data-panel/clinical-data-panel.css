@@ -1,0 +1,82 @@
+/* clinical-data-panel — responsive clinical chart with footnotes v1.0 */
+@import '../../styles/tokens.css';
+
+.clinical-data-panel {
+  max-width: var(--cdp-max-width);
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--cdp-font-body);
+  color: var(--cdp-color-text);
+}
+
+.clinical-data-panel-figure {
+  margin: 0;
+  padding: 0;
+}
+
+.clinical-data-panel-title {
+  font-family: var(--cdp-font-heading);
+  font-size: var(--cdp-font-size-title);
+  font-weight: var(--cdp-font-weight-bold);
+  color: var(--cdp-color-heading);
+  letter-spacing: var(--cdp-letter-spacing-title);
+  margin: 0 0 var(--cdp-spacing-md);
+  text-align: center;
+}
+
+.clinical-data-panel-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.clinical-data-panel-footnotes {
+  font-size: var(--cdp-font-size-body);
+  line-height: var(--cdp-line-height-default);
+  color: var(--cdp-color-muted);
+  margin-top: var(--cdp-spacing-md);
+  padding-top: var(--cdp-spacing-md);
+  border-top: 1px solid var(--cdp-color-border);
+}
+
+.clinical-data-panel-footnotes p {
+  margin: 0 0 var(--cdp-spacing-sm);
+}
+
+.clinical-data-panel-footnotes strong {
+  color: var(--cdp-color-text);
+}
+
+.clinical-data-panel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: var(--cdp-spacing-md);
+  font-family: var(--cdp-font-heading);
+  font-size: var(--cdp-font-size-body);
+  font-weight: var(--cdp-font-weight-bold);
+  color: var(--cdp-color-accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.clinical-data-panel-cta::after {
+  content: '>';
+  font-size: 1.2em;
+}
+
+.clinical-data-panel-cta:hover {
+  text-decoration: underline;
+}
+
+@media (width <= 600px) {
+  .clinical-data-panel-title {
+    font-size: var(--font-size-18);
+  }
+
+  .clinical-data-panel-footnotes {
+    font-size: var(--font-size-12);
+  }
+}

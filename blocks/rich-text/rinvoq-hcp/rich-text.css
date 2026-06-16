@@ -1,0 +1,236 @@
+.rich-text {
+  width: 100%;
+  margin-bottom: var(--spacing-16);
+}
+
+.rich-text.align-left { text-align: left; }
+
+.rich-text.align-center { text-align: center; }
+
+.rich-text.align-right { text-align: right; }
+
+.rich-text.theme-light { color: var(--text-color); }
+
+.rich-text.theme-dark { color: var(--light-color); }
+
+.rich-text.small {
+  font-size: var(--font-size-13, 0.8125rem);
+  line-height: var(--line-height-18, 1.125rem);
+}
+
+.rich-text.large {
+  font-size: var(--font-size-20, 1.25rem);
+  line-height: var(--line-height-28, 1.75rem);
+}
+
+.rich-text.legal,
+.rich-text.disclaimer {
+  font-size: var(--font-size-12);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-20, 1.25rem);
+}
+
+.rich-text.footnote {
+  font-size: var(--font-size-11);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-16, 1rem);
+  border-top: 1px solid var(--container-border-color);
+  padding-top: var(--spacing-10);
+  margin-top: var(--spacing-16);
+}
+
+.rich-text.boxed-warning {
+  border: 2px solid var(--color-black);
+  padding: var(--spacing-16);
+  margin: var(--spacing-16) 0;
+  font-size: var(--font-size-14);
+}
+
+/* VARIANT: Glossary — mobile-first (1 column base, 2 columns at 744px+) */
+
+.rich-text.glossary {
+  font-size: var(--font-size-12);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-18, 1.125rem);
+  columns: 1;
+}
+
+@media (width >= 744px) {
+  .rich-text.glossary {
+    columns: 2;
+    column-gap: var(--spacing-24);
+  }
+}
+
+/* Typography — base rules first, then overrides */
+
+.rich-text strong {
+  font-weight: var(--font-weight-700, 700);
+}
+
+.rich-text.boxed-warning strong:first-child {
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-08);
+}
+
+.rich-text em {
+  font-style: italic;
+}
+
+.rich-text u {
+  text-decoration: underline;
+}
+
+.rich-text s {
+  text-decoration: line-through;
+}
+
+.rich-text sup {
+  font-size: var(--font-size-sup, 0.7em);
+  vertical-align: super;
+  line-height: 0;
+}
+
+.rich-text sub {
+  font-size: var(--font-size-sup, 0.7em);
+  vertical-align: sub;
+  line-height: 0;
+}
+
+/* Lists — base rules before nested overrides and :last-child */
+
+.rich-text p,
+.rich-text ul,
+.rich-text ol {
+  margin-bottom: var(--spacing-16, 1rem);
+}
+
+.rich-text ul {
+  list-style: disc;
+  padding-left: var(--spacing-16);
+}
+
+.rich-text ol {
+  list-style: decimal;
+  padding-left: var(--spacing-16);
+}
+
+.rich-text ul ul,
+.rich-text ol ol,
+.rich-text ul ol,
+.rich-text ol ul {
+  margin-top: var(--spacing-06);
+  margin-bottom: var(--spacing-06);
+  padding-left: var(--spacing-16);
+}
+
+.rich-text p:last-child,
+.rich-text ul:last-child,
+.rich-text ol:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+
+.rich-text a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.rich-text a:hover {
+  text-decoration: none;
+}
+
+.rich-text a[href^="tel:"] {
+  font-family: var(--roboto-bold-font-family);
+  font-weight: var(--font-weight-700);
+  white-space: nowrap;
+}
+
+.rich-text a[href$=".pdf"]::after {
+  content: " (PDF)";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Tables */
+
+.rich-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-16) 0;
+  font-size: var(--font-size-14);
+}
+
+.rich-text th,
+.rich-text td {
+  padding: var(--spacing-08) var(--spacing-12);
+  border: 1px solid var(--container-border-color);
+  text-align: left;
+  vertical-align: top;
+}
+
+.rich-text th {
+  font-family: var(--roboto-bold-font-family);
+  font-weight: var(--font-weight-700);
+  background: var(--highlight-background-color);
+}
+
+.rich-text tr:nth-child(even) td {
+  background: var(--footer-background-color);
+}
+
+/* Blockquote */
+
+.rich-text blockquote {
+  border-left: 4px solid var(--highlight-dark-background-color);
+  padding: var(--spacing-12) var(--spacing-16);
+  margin: var(--spacing-16) 0;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* Horizontal rule */
+
+.rich-text hr {
+  border: none;
+  border-top: 1px solid var(--container-border-color);
+  margin: var(--spacing-24) 0;
+}
+
+/* Code */
+
+.rich-text code {
+  font-family: monospace;
+  font-size: var(--font-size-code, 0.875em);
+  background: var(--highlight-background-color);
+  padding: 0.125em 0.375em;
+  border-radius: 3px;
+}
+
+.rich-text pre {
+  font-family: monospace;
+  font-size: var(--font-size-14);
+  background: var(--highlight-background-color);
+  padding: var(--spacing-16);
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: var(--spacing-16) 0;
+}
+
+.rich-text pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Headings */
+
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4,
+.rich-text h5,
+.rich-text h6 {
+  margin-bottom: var(--spacing-08);
+}

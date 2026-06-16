@@ -1,0 +1,253 @@
+{
+  "definitions": [
+    {
+      "title": "Brand Explorer",
+      "id": "brand-explorer",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Brand Explorer",
+              "model": "brand-explorer",
+              "filter": "brand-explorer",
+              "blockId": "id:",
+              "barLabel": "Explore AbbVie",
+              "brand_explorer_rinvoq": {
+                "name": "Brand Explorer Item",
+                "model": "brand-explorer-item",
+                "brandName": "RINVOQ",
+                "brandUrl": "https://www.rinvoqhcp.com/",
+                "therapeuticArea": "Immunology",
+                "description": "Treatment for rheumatoid arthritis, psoriatic arthritis, and more.",
+                "safetyText": "<b>Please see Important Safety Information, including BOXED WARNING on Serious Infections, Mortality, Malignancies, Major Adverse Cardiovascular Events, and Thrombosis.</b>",
+                "indications": "Rheumatoid Arthritis|https://www.rinvoqhcp.com/rheumatoid-arthritis|moderate\nPsoriatic Arthritis|https://www.rinvoqhcp.com/psoriatic-arthritis|active\nAnkylosing Spondylitis|https://www.rinvoqhcp.com/axspa|active\nNon-radiographic Axial Spondyloarthritis|https://www.rinvoqhcp.com/axspa|active\nGiant Cell Arteritis|https://www.rinvoqhcp.com/giant-cell-arteritis|\nAtopic Dermatitis|https://www.rinvoqhcp.com/atopic-dermatitis|refractory\nUlcerative Colitis|https://www.rinvoqhcp.com/ulcerative-colitis|moderate\nCrohn's Disease|https://www.rinvoqhcp.com/crohns-disease|moderate"
+              },
+              "brand_explorer_skyrizi": {
+                "name": "Brand Explorer Item",
+                "model": "brand-explorer-item",
+                "brandName": "SKYRIZI",
+                "brandUrl": "https://www.skyrizihcp.com/",
+                "therapeuticArea": "Immunology",
+                "description": "Treatment for plaque psoriasis, psoriatic arthritis, and more.",
+                "indications": "Plaque Psoriasis|https://www.skyrizihcp.com/dermatology|moderate\nPsoriatic Arthritis|https://www.skyrizihcp.com/rheumatology|active\nUlcerative Colitis|https://www.skyrizihcp.com/gastroenterology/ulcerative-colitis|moderate\nCrohn's Disease|https://www.skyrizihcp.com/gastroenterology/crohns-disease|moderate"
+              },
+              "brand_explorer_humira": {
+                "name": "Brand Explorer Item",
+                "model": "brand-explorer-item",
+                "brandName": "HUMIRA",
+                "brandUrl": "https://www.humirapro.com/",
+                "therapeuticArea": "Immunology",
+                "description": "Treatment for multiple immunological conditions.",
+                "safetyText": "<b>Please see Important Safety Information, including BOXED WARNING on Serious Infections and Malignancy.</b>",
+                "indications": "Hidradenitis Suppurativa|https://www.humirapro.com/hidradenitis-suppurativa|moderate\nJuvenile Idiopathic Arthritis|https://www.humirapro.com/jia|moderate\nPediatric Crohn's Disease|https://www.humirapro.com/pediatric-crohns-disease|moderate\nPediatric Ulcerative Colitis|https://www.humirapro.com/pediatric-ulcerative-colitis|moderate\nPediatric Uveitis|https://www.humirapro.com/uveitis-pediatric|noninfectious\nUveitis (Adult)|https://www.humirapro.com/uveitis|noninfectious\nOther Indications|https://www.humirapro.com/|"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Brand Explorer Item",
+      "id": "brand-explorer-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Brand Explorer Item",
+              "model": "brand-explorer-item",
+              "brandName": "Brand Name",
+              "brandUrl": "https://example.com"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "brand-explorer",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Overview",
+          "name": "overview"
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Variant",
+          "description": "Visual layout variant for the brand explorer.",
+          "options": [
+            { "name": "Default (Full explorer with therapeutic filter tabs)", "value": "" }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "anchorId",
+          "value": "",
+          "label": "Anchor ID",
+          "description": "Optional anchor ID for deep linking to this block."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "barLabel",
+          "value": "Explore AbbVie",
+          "label": "Bar Label",
+          "description": "Text shown on the fixed bottom bar trigger button."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "projectNumber",
+          "value": "",
+          "label": "Project Number",
+          "description": "Regulatory project number displayed at the bottom of the panel (e.g., US-MULT-250253)."
+        },
+        {
+          "component": "tab",
+          "label": "Navigation",
+          "name": "navTab"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink1Text",
+          "value": "Contact Medical Info",
+          "label": "Contact Medical Info Label"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink1Url",
+          "value": "#",
+          "label": "Contact Medical Info URL"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink2Text",
+          "value": "Full Prescribing Information",
+          "label": "Full Prescribing Info Label"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink2Url",
+          "value": "https://www.rxabbvie.com/pdf/skyrizi_pi.pdf",
+          "label": "Full Prescribing Info URL"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink3Text",
+          "value": "Patient Site",
+          "label": "Patient Site Label"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "navLink3Url",
+          "value": "https://www.skyrizi.com",
+          "label": "Patient Site URL"
+        },
+        {
+          "...": "../../models/_common-properties.json#/common-prop"
+        }
+      ]
+    },
+    {
+      "id": "brand-explorer-item",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Brand",
+          "name": "brand"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "logo",
+          "label": "Brand Logo",
+          "description": "Brand logo image.",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "logoAlt",
+          "value": "",
+          "label": "Logo Alt Text"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "brandName",
+          "value": "",
+          "label": "Brand Name",
+          "description": "Brand display name."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "therapeuticArea",
+          "value": "",
+          "label": "Therapeutic Area",
+          "description": "Category for filter tabs (e.g., Immunology, Dermatology, Gastroenterology)."
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "description",
+          "value": "",
+          "label": "Description",
+          "description": "Brand short description."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "brandUrl",
+          "value": "",
+          "label": "Brand URL",
+          "description": "Link to brand site."
+        },
+        {
+          "component": "tab",
+          "label": "Safety",
+          "name": "safetyTab"
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "safetyText",
+          "value": "",
+          "label": "Safety Text",
+          "description": "Safety disclaimer shown below the brand logo."
+        },
+        {
+          "component": "tab",
+          "label": "Indications",
+          "name": "indicationsTab"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "indications",
+          "value": "",
+          "label": "Indications",
+          "description": "One per line: Name|URL|severity (moderate/active/refractory/noninfectious). Example: Rheumatoid Arthritis|https://www.rinvoqhcp.com/rheumatoid-arthritis|moderate"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "brand-explorer",
+      "components": ["brand-explorer-item"]
+    }
+  ]
+}

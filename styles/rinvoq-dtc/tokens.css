@@ -1,0 +1,162 @@
+@import '../tokens.css';
+
+/* ============================================================
+   RINVOQ DTC — Brand Token Overrides
+   Source: rinvoq.com/atopic-dermatitis (Platform C)
+   Font: Neue Haas Grotesk (headings) / Helvetica Neue LT W05 (body)
+   Note: DTC uses different fonts from HCP (Graphik); both share the
+         same color palette.
+   ============================================================ */
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #90124a;
+  --color-brand-primary-dark: #25282a;
+  --color-brand-primary-light: #b15980;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+  --color-brand-accent-butter: #fff1b3;
+  --color-brand-accent-lemon: #ffe673;
+
+  /* ---- Color: Named Palette ---- */
+  --color-plum: #90124a;
+  --color-mulberry: #b15980;
+  --color-heather: #d3a0b7;
+  --color-gold: #ffd100;
+  --color-charcoal: #25282a;
+  --color-iron: #46484a;
+  --color-steel: #87898a;
+  --color-pewter: #929495;
+  --color-silver: #c9c9ca;
+  --color-glacier: #f5f5f5;
+  --color-navy: #194560;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-on-dark: #fff;
+  --color-text-link: #90124a;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+  --color-background-footer: #17181b;
+  --color-background-safety-bar: #f5f5f5;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #c9c9ca;
+  --color-border-safety: #ffd100;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Helvetica Neue LT W05_55 Roman', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Neue Haas Grotesk Disp W0595Bl', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Neue Haas Grotesk Disp W0595Bl', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Neue Haas Grotesk Disp W0565Md', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-semibold: 'Neue Haas Grotesk Disp W0575Bd', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 14px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-heading: 600;
+  --font-weight-button: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 24px;
+  --line-height-h1: 27.625px;
+  --line-height-h2: 25px;
+  --line-height-h3: 16.8px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 5px;
+  --border-radius-button-secondary: 5px;
+  --border-radius-button-tertiary: 3px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-bg: #fff;
+  --button-primary-color: #90124a;
+  --button-primary-border: #90124a;
+  --button-primary-padding: 7px 42px 7px 10px;
+  --button-primary-font-size: 15px;
+  --button-primary-font-weight: 400;
+  --button-primary-hover-bg: #90124a;
+  --button-primary-hover-color: #fff;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: #90124a;
+  --button-secondary-color: #fff;
+  --button-secondary-border: #90124a;
+  --button-secondary-padding: 7px 42px 7px 10px;
+  --border-radius-button-secondary: 5px;
+  --button-secondary-hover-bg: #fff;
+  --button-secondary-hover-color: #90124a;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-color: #25282a;
+  --button-tertiary-border: transparent;
+  --button-tertiary-padding: 17px 0 17px 40px;
+  --button-tertiary-font-size: 16px;
+  --border-radius-button-tertiary: 3px;
+  --button-tertiary-hover-bg: transparent;
+  --button-tertiary-hover-color: #90124a;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #90124a;
+  --button-plain-weight: 400;
+  --button-plain-hover-color: #25282a;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #c9c9ca;
+  --toggle-bg-on: #90124a;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+
+  /* ---- Hero: Rinvoq-specific ---- */
+  --hero-multilayer-transition: opacity 0.8s ease-in-out;
+  --hero-video-btn-border-radius: 5px;
+  --hero-video-btn-font-size: 15px;
+  --hero-video-btn-width: 250px;
+  --hero-video-btn-padding: 7px 39px 7px 10px;
+  --hero-button-icon-content: '›';
+  --hero-button-icon-top: 50%;
+  --hero-button-icon-transform: translateY(-50%);
+  --hero-button-icon-font-size: 1.4em;
+  --hero-reset-value: 0;
+  --hero-auto-value: auto;
+  --hero-full-width: 100%;
+  --hero-layer-index: 1;
+  --hero-display-grid: grid;
+  --hero-display-hidden: none;
+  --hero-border-radius-reset: 0;
+  --hero-brushstroke-content: " ";
+  --hero-brushstroke-image: url("/icons/brushstroke.png");
+  --hero-brushstroke-repeat: no-repeat;
+  --hero-brushstroke-position: center center;
+  --hero-brushstroke-size: cover;
+  --hero-video-brushstroke-bottom: calc(-1 * var(--spacing-16));
+  --hero-video-grid-columns: 1fr 1fr;
+  --hero-video-grid-align-items: end;
+  --hero-video-grid-place-content: end start;
+  --hero-video-btn-border-style: solid;
+  --hero-video-btn-border-width: 2px;
+  --hero-video-btn-text-transform: none;
+  --hero-video-btn-text-align: left;
+  --hero-video-button-grid-column: -1/-2;
+  --hero-min-height-mobile: 260px;
+  --hero-min-height-tablet: 290px;
+  --hero-min-height-desktop: 430px;
+  --hero-grid-rows-mobile: 235px;
+  --hero-grid-rows-tablet: 256px;
+  --hero-grid-rows-desktop: 360px;
+}

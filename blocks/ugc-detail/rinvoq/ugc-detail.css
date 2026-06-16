@@ -1,0 +1,73 @@
+/* ── identity ─────────────────────────────────────────────────────────────── */
+.ugc-detail-identity {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-16, 16px);
+  margin-bottom: var(--spacing-24, 24px);
+}
+.ugc-detail-portrait-wrap {
+  flex-shrink: 0;
+  margin: 0;
+}
+.ugc-detail-portrait {
+  border-radius: 50%;
+  height: var(--ugc-detail-portrait-size, 80px);
+  object-fit: cover;
+  width: var(--ugc-detail-portrait-size, 80px);
+}
+.ugc-detail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ugc-detail-name {
+  font-size: var(--body-font-size-m, 1rem);
+}
+.ugc-detail-title {
+  color: var(--ugc-detail-title-color, #666);
+  font-size: var(--body-font-size-s, 0.875rem);
+}
+/* ── story ────────────────────────────────────────────────────────────────── */
+.ugc-detail-story {
+  border-left: 3px solid var(--ugc-detail-accent, var(--link-color, #0057cc));
+  font-size: var(--body-font-size-m, 1rem);
+  font-style: italic;
+  line-height: 1.7;
+  margin: 0 0 var(--spacing-24, 24px);
+  padding-left: var(--spacing-16, 16px);
+}
+/* ── before / after ──────────────────────────────────────────────────────── */
+.ugc-detail-comparison {
+  display: grid;
+  gap: var(--spacing-16, 16px);
+  grid-template-columns: 1fr 1fr;
+}
+.ugc-detail-comparison-item {
+  margin: 0;
+}
+.ugc-detail-comparison-item img {
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+.ugc-detail-comparison-item figcaption {
+  color: var(--ugc-detail-title-color, #666);
+  font-size: var(--body-font-size-xs, 0.75rem);
+  font-weight: 600;
+  padding-top: var(--spacing-4, 4px);
+  text-transform: uppercase;
+}
+/* ── centered variant ────────────────────────────────────────────────────── */
+.ugc-detail.centered .ugc-detail-identity {
+  flex-direction: column;
+  text-align: center;
+}
+.ugc-detail.centered .ugc-detail-story {
+  border-left: none;
+  border-top: 3px solid var(--ugc-detail-accent, var(--link-color, #0057cc));
+  padding-left: 0;
+  padding-top: var(--spacing-16, 16px);
+  text-align: center;
+}
+/* rinvoq ugc-detail overrides */

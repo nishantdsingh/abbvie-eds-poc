@@ -1,0 +1,104 @@
+@import '../modal.css';
+
+/* stylelint-disable no-descending-specificity */
+
+/* Rinvoq DTC modal — HCP Gate pattern matching rinvoq.com */
+
+.modal-overlay {
+  --modal-close-color-default: var(--color-charcoal, #25282a);
+  --modal-close-hover-color-default: var(--color-brand-primary-dark, #6d0e38);
+  --modal-information-accent-color: var(--color-brand-accent, #ffd100);
+  --modal-dialog-max-width: var(--modal-rinvoq-max-width, 640px);
+  --modal-dialog-padding: var(--spacing-40, 40px);
+  --modal-dialog-border: 1px solid var(--color-border-default, #ccc);
+  --modal-dialog-border-radius: var(--modal-rinvoq-border-radius, 0);
+  --modal-close-size: var(--modal-rinvoq-close-size, 36px);
+  --modal-close-font-size: var(--font-size-h2, 28px);
+}
+
+/* Close button — thin X */
+.modal-header .modal-close {
+  font-weight: var(--font-weight-light, 300);
+}
+
+/* Dialog heading — black, centered, large bold */
+.modal-content h2 {
+  color: var(--color-charcoal, #25282a);
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-h2, 1.75rem);
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-20, 20px);
+  text-align: center;
+}
+
+/* Body text */
+.modal-content p {
+  color: var(--text-color, #46484a);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.9375rem);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-16, 16px);
+}
+
+/* "I am a licensed healthcare professional..." — bold + centered */
+.modal-content p:nth-of-type(2) {
+  font-weight: var(--font-weight-bold, 700);
+  text-align: center;
+  color: var(--color-charcoal, #25282a);
+}
+
+/* Compliance code */
+.modal-content p:last-of-type {
+  font-size: var(--font-size-body-small, 0.75rem);
+  color: var(--color-text-compliance, #636366);
+  margin-top: var(--spacing-24, 24px);
+}
+
+/* Button paragraph — centered */
+.modal-dialog .modal-content p:has(a[href]) {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-16, 16px);
+  margin-top: var(--spacing-24, 24px);
+}
+
+/* Button links — both outlined, equal width, with chevron */
+.modal-dialog .modal-content a[href] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-08, 8px);
+  min-width: var(--modal-button-min-width, 160px);
+  padding: var(--spacing-14, 14px) var(--spacing-36, 36px);
+  border-radius: 0;
+  font-weight: var(--font-weight-bold, 700);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.9375rem);
+  text-decoration: none;
+  margin: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  background: transparent;
+  color: var(--color-brand-primary, #90124a);
+  border: var(--border-width-button, 2px) solid var(--color-brand-primary, #90124a);
+}
+
+/* Chevron after button text */
+.modal-dialog .modal-content a[href]::after {
+  content: '›';
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+/* Last button same style (both outlined) */
+.modal-dialog .modal-content a[href]:last-of-type {
+  background: transparent;
+  color: var(--color-brand-primary, #90124a);
+  border: var(--border-width-button, 2px) solid var(--color-brand-primary, #90124a);
+}
+
+.modal-overlay .modal-dialog .modal-content a[href]:hover {
+  background: var(--color-brand-primary, #90124a);
+  color: var(--color-text-on-dark, #fff);
+  opacity: 1;
+}

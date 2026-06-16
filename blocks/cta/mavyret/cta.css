@@ -1,0 +1,71 @@
+@import '../../../styles/mavyret/tokens.css';
+
+/* Mavyret HCP — CTA brand overrides
+   Primary: White bg, black text, gray border (#636366), GREEN glow shadow
+   Secondary: White bg, black text, orange border (#e65400), ORANGE glow shadow
+   Tertiary: White bg, black text, gray border, no shadow
+   Hover (all): Black bg, green (#76bd22) text
+   Font: Barlow Semi Condensed */
+
+.cta.abbv-button-primary .abbv-cta {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--button-primary-border);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--body-font-family);
+  font-size: var(--button-primary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-primary-shadow);
+}
+
+.cta.abbv-button-secondary .abbv-cta {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-border-orange);
+  border-radius: var(--border-radius-button-secondary);
+  padding: var(--button-secondary-padding);
+  font-family: var(--body-font-family);
+  font-size: var(--button-primary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-secondary-shadow);
+}
+
+.cta.abbv-button-tertiary .abbv-cta {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--button-tertiary-border);
+  border-radius: var(--border-radius-button-tertiary);
+  padding: var(--button-tertiary-padding);
+  font-family: var(--body-font-family);
+  font-size: var(--button-tertiary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-tertiary-shadow);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-plain-weight);
+}
+
+.cta.abbv-button-primary .abbv-cta:hover {
+  background-color: var(--color-black);
+  color: var(--button-primary-hover-color);
+  border-color: var(--button-primary-border);
+}
+
+.cta.abbv-button-secondary .abbv-cta:hover {
+  background-color: var(--button-secondary-hover-bg);
+  color: var(--color-border-orange);
+  border-color: var(--color-border-orange);
+}
+
+.cta.abbv-button-tertiary .abbv-cta:hover {
+  background-color: var(--button-tertiary-hover-bg);
+  color: var(--button-tertiary-hover-color);
+  border-color: var(--button-tertiary-border);
+}
+
+.cta.i-a .cta-icon {
+  right: var(--spacing-12);
+}

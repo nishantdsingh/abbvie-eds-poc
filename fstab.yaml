@@ -1,0 +1,5 @@
+mountpoints:
+  /:
+    url: "https://author-p160552-e1944799.adobeaemcloud.com/bin/franklin.delivery/nishant-adobe/abbvie-eds-poc/develop"
+    type: "markup"
+    suffix: ".html"

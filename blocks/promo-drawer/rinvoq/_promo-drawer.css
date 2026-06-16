@@ -1,0 +1,66 @@
+@import '../promo-drawer.css';
+
+/* Rinvoq promo-drawer overrides — matches rinvoqhcp.com */
+.promo-drawer {
+  --promo-drawer-color-handle-bg: #90124a;
+  --promo-drawer-color-panel-bg: #ffd100;
+  --promo-drawer-color-panel-text: #25282a;
+  --promo-drawer-color-cta-bg: #90124a;
+  --promo-drawer-color-cta-hover: #6d0d37;
+  --promo-drawer-color-cta-text: #fff;
+  --promo-drawer-size-panel-width: 537px;
+}
+
+.promo-drawer-handle {
+  font-family: Arial, sans-serif;
+  border-radius: 10px 0 0 10px;
+  width: 40px;
+  min-height: auto;
+  padding: 16px 10px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.promo-drawer-heading {
+  font-family: "Graphik Bold", "Helvetica Neue", arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0 0 8px;
+}
+
+.promo-drawer-panel {
+  font-family: Graphik, "Helvetica Neue", arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 24px;
+}
+
+.promo-drawer-panel p {
+  font-size: 16px;
+  line-height: 24px;
+  margin: 8px 0;
+}
+
+.promo-drawer-panel a {
+  font-family: "Graphik Medium", "Helvetica Neue", arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 48px 16px 16px;
+  border-radius: 0;
+  position: relative;
+}
+
+.promo-drawer-panel a::after {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+}

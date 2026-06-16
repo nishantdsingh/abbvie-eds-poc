@@ -1,0 +1,26 @@
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script>
+    const brandCode = [...document.head.querySelectorAll(`meta[name="brand"]`)]
+      .map((m) => m.content)
+      .join(', ');
+    const themeCode = [...document.head.querySelectorAll(`meta[name="theme"]`)]
+      .map((m) => m.content)
+      .join(', ');
+    const brandPath = `${(brandCode !== '') ? `${brandCode}/` : ''}`;
+    const themePath = `${(themeCode !== '') ? `themes/${themeCode}/` : ''}`;
+    // load tokens and styles
+    const stylesheets = [
+      `/styles/${brandPath}${themePath}tokens.css`,
+      `/styles/${brandPath}${themePath}styles.css`
+    ];
+    stylesheets.forEach(stylesheet => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = stylesheet;
+      link.type = "text/css";
+      document.head.appendChild(link);
+    });
+</script>
+<script src="/scripts/aem.js" type="module"></script>
+<script src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"/>

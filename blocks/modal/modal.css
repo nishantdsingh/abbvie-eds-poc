@@ -1,0 +1,303 @@
+/* Modal Block — overlay shell styles
+   Content inside the modal comes from an EDS fragment and is styled
+   by that fragment's own block CSS. Only the overlay, dialog frame,
+   close button, and trigger button are styled here.
+*/
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-slide-up {
+  from {
+    transform: translateY(var(--spacing-24, 24px));
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modal-slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ---- Overlay ---- */
+
+.modal-overlay {
+  --modal-close-color: var(--modal-close-color-default, currentcolor);
+  --modal-close-hover-color: var(--modal-close-hover-color-default, currentcolor);
+
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay-dark, rgb(0 0 0 / 60%));
+  z-index: var(--z-modal, 1000);
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+  animation: modal-fade-in 0.25s ease;
+}
+
+/* ---- Dialog ---- */
+
+.modal-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #fff);
+  border: var(--modal-dialog-border, none);
+  border-radius: var(--modal-dialog-border-radius, 8px) var(--modal-dialog-border-radius, 8px) 0 0;
+  max-width: 100%;
+  width: 100%;
+  max-height: 90vh;
+  font-family: var(--body-font-family, inherit);
+  animation: modal-slide-up 0.3s ease;
+}
+
+/* ---- Header row (contains close button, never scrolls) ---- */
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--modal-header-padding, 8px 8px 0);
+  flex-shrink: 0;
+}
+
+/* ---- Close button ---- */
+
+.modal-header .modal-close {
+  width: var(--modal-close-size, 32px);
+  height: var(--modal-close-size, 32px);
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--modal-close-font-size, 22px);
+  line-height: 1;
+  color: var(--modal-close-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  max-width: none;
+}
+
+.modal-header .modal-close:hover {
+  color: var(--modal-close-hover-color);
+}
+
+.modal-header .modal-close:focus-visible {
+  outline: var(--focus-ring-width, 2px) solid currentcolor;
+  outline-offset: var(--spacing-02, 2px);
+  border-radius: var(--border-radius-focus, 2px);
+}
+
+/* ---- Content — scrollable area ---- */
+
+.modal-content {
+  padding: var(--modal-dialog-padding-top, 8px) var(--modal-dialog-padding, 40px) var(--modal-dialog-padding, 40px);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-content .section {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content .button-container a {
+  margin: 0;
+}
+
+/* ---- Body scroll lock ---- */
+
+body.modal-is-open {
+  overflow: hidden;
+}
+
+/* ---- Loading / error states ---- */
+
+.modal-loading,
+.modal-error {
+  padding: var(--spacing-16, 1rem) 0;
+  color: var(--text-color, inherit);
+}
+
+/* ---- Trigger button ---- */
+
+.modal-trigger {
+  display: inline-block;
+  padding: var(--button-primary-padding, 12px 28px);
+  background: var(--button-primary-bg, var(--color-text, currentcolor));
+  color: var(--button-primary-color, var(--background-color, #fff));
+  border: none;
+  border-radius: var(--border-radius-button-primary, 4px);
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--body-font-size-m, 1rem);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-trigger:hover {
+  background: var(--button-primary-bg-hover, var(--color-text, currentcolor));
+}
+
+/* ==================================================================
+   VARIANT: small — narrow confirmation dialog
+   ================================================================== */
+
+.modal-overlay.modal-small .modal-dialog {
+  max-width: var(--modal-small-max-width, 480px);
+}
+
+/* ==================================================================
+   VARIANT: media — wide modal for video/image, no inner padding
+   ================================================================== */
+
+.modal-overlay.modal-media .modal-dialog {
+  max-width: 95%;
+  max-height: 90vh;
+}
+
+.modal-overlay.modal-media .modal-content {
+  padding: 0;
+}
+
+.modal-overlay.modal-media .modal-header .modal-close {
+  position: absolute;
+  top: var(--spacing-08, 8px);
+  right: var(--spacing-08, 8px);
+  z-index: var(--z-modal-close, 10);
+  background: var(--background-color, #fff);
+  border-radius: 50%;
+}
+
+/* ==================================================================
+   VARIANT: image — full-bleed image lightbox
+   ================================================================== */
+
+.modal-overlay.modal-image .modal-dialog {
+  max-width: none;
+  width: auto;
+  max-height: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.modal-overlay.modal-image .modal-content {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.modal-image .modal-content img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-overlay.modal-image .modal-header .modal-close {
+  position: fixed;
+  top: var(--spacing-16, 16px);
+  right: var(--spacing-16, 16px);
+  background: var(--color-overlay-light, rgb(255 255 255 / 80%));
+  border-radius: 50%;
+  width: var(--modal-close-size-image, 40px);
+  height: var(--modal-close-size-image, 40px);
+}
+
+/* ==================================================================
+   VARIANT: panel — slide-in side panel from right
+   ================================================================== */
+
+.modal-overlay.modal-panel {
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.modal-overlay.modal-panel .modal-dialog {
+  max-width: var(--modal-panel-max-width, 420px);
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  animation: modal-slide-in-right 0.3s ease;
+}
+
+/* ==================================================================
+   VARIANT: exit / exit-small — exit-intent modals
+   ================================================================== */
+
+.modal-overlay.modal-exit .modal-dialog {
+  max-width: var(--modal-exit-max-width, 600px);
+}
+
+.modal-overlay.modal-exit-small .modal-dialog {
+  max-width: var(--modal-exit-small-max-width, 420px);
+}
+
+/* ==================================================================
+   VARIANT: information — informational overlay with accent border
+   ================================================================== */
+
+.modal-overlay.modal-information .modal-dialog {
+  border-left: var(--modal-information-border-width, 4px) solid var(--modal-information-accent-color, var(--link-color, currentcolor));
+}
+
+/* ==================================================================
+   VARIANT: force — no backdrop dismiss, close button hidden
+   ================================================================== */
+
+.modal-overlay.modal-force .modal-header .modal-close {
+  display: none;
+}
+
+/* ==================================================================
+   Desktop: centred dialog
+   ================================================================== */
+
+@media (width >= 601px) {
+  .modal-overlay {
+    align-items: center;
+    padding: var(--spacing-24, 24px);
+  }
+
+  .modal-dialog {
+    max-width: var(--modal-dialog-max-width, 800px);
+    border-radius: var(--modal-dialog-border-radius, var(--border-radius-card, 8px));
+  }
+}
+
+/* Panel full-width on mobile */
+@media (width <= 600px) {
+  .modal-overlay.modal-panel .modal-dialog {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-overlay.modal-image .modal-content img {
+    max-width: 100vw;
+    max-height: 80vh;
+  }
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay.is-open,
+  .modal-dialog {
+    animation: none;
+  }
+}

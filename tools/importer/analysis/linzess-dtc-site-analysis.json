@@ -1,0 +1,482 @@
+{
+  "siteAnalysis": {
+    "brand": "linzess",
+    "domain": "www.linzess.com",
+    "platform": "C (abbv-*)",
+    "aemPlatform": "AEM 6.x with abbv-framework",
+    "analysisDate": "2026-04-23",
+    "totalPages": 34,
+    "pagesAnalyzed": 15
+  },
+
+  "siteArchitecture": {
+    "type": "Single-page sections with hash-based navigation",
+    "description": "Linzess.com uses a hybrid SPA/MPA architecture. Most sub-pages (e.g., /why-linzess/how-linzess-can-help) redirect via 301 to parent pages with hash anchors (e.g., /why-linzess#howlinzesscanhelp). Only top-level pages and a few standalone pages are actual separate pages.",
+    "rendering": "Heavily JavaScript-rendered. Most DOM structure is dynamically generated client-side via abbv-framework.js. Static HTML contains minimal class attributes.",
+    "contentDelivery": "Content served from /content/dam/linzess/ path (AEM DAM)"
+  },
+
+  "pageInventory": {
+    "actualPages": [
+      {
+        "url": "https://www.linzess.com/",
+        "title": "LINZESS (linaclotide) for IBS-C & CIC | Patient Information",
+        "type": "homepage",
+        "components": ["hero-banner", "icon-benefit-cards", "quiz-cta", "patient-stats", "video-testimonials", "savings-card-promo", "telemedicine-cta", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "Main landing page with full component suite"
+      },
+      {
+        "url": "https://www.linzess.com/why-linzess",
+        "title": "What is LINZESS & How Does It Work | LINZESS® (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "icon-cards", "video-player", "email-share-form", "modals", "cta-buttons", "isi", "sticky-isi"],
+        "hashSections": ["#howlinzesscanhelp", "#howlinzessworks", "#sideeffects", "#patientexperiences"],
+        "notes": "Long-scrolling page with 4 hash-anchored sections"
+      },
+      {
+        "url": "https://www.linzess.com/understanding-constipation",
+        "title": "Understanding Symptoms & Types of Constipation | LINZESS® (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "image-text-blocks", "svg-icons", "quiz-cta", "savings-promo", "isi", "sticky-isi"],
+        "hashSections": ["#typesofconstipation", "#ibsccic", "#treatmentoptions", "#pediatric"],
+        "notes": "Long-scrolling page with 4 hash-anchored sections including pediatric FC content"
+      },
+      {
+        "url": "https://www.linzess.com/find-relief",
+        "title": "Find Relief | LINZESS® (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "tabs", "image-text-blocks", "video-player", "sms-signup-form", "telemedicine-modal", "cta-buttons", "isi", "sticky-isi"],
+        "hashSections": ["#talktoadoctor", "#howtotake"],
+        "notes": "Tab-based navigation between Talk to Doctor and How to Take sections"
+      },
+      {
+        "url": "https://www.linzess.com/resources",
+        "title": "Resources & Helpful Information | LINZESS® (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "tabs", "article-cards-grid", "image-text-blocks", "email-share-form", "modals", "cta-buttons", "isi", "sticky-isi"],
+        "hashSections": ["#healthyroutines", "#wellnesstips", "#communityresources"],
+        "notes": "3-tab resource hub with article card grid layout"
+      },
+      {
+        "url": "https://www.linzess.com/savings-and-support",
+        "title": "Cost Savings & Financial Support | LINZESS (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "tabs", "savings-card", "insurance-table", "icon-cards", "cta-buttons", "isi", "sticky-isi"],
+        "hashSections": ["#savings", "#financialsupport"],
+        "notes": "Savings card activation and financial support info with insurance comparison table"
+      },
+      {
+        "url": "https://www.linzess.com/find-relief/gutcheck",
+        "title": "Gut Check Quiz for IBS-C & CIC | LINZESS® (linaclotide)",
+        "type": "interactive-tool",
+        "components": ["hero-banner", "adaptive-form-embed", "modals", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "5-question symptom assessment quiz using AEM adaptive forms (cmp-formsembed-widget, afsection)"
+      },
+      {
+        "url": "https://www.linzess.com/savings-and-support/faqs",
+        "title": "Frequently Asked Questions | LINZESS (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "accordion-faq", "cta-buttons", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "FAQ page with accordion-style expandable Q&A sections"
+      },
+      {
+        "url": "https://www.linzess.com/savings-and-support/from-the-gut",
+        "title": "Healthy Gut Tips, Recipes & More | LINZESS® (linaclotide)",
+        "type": "content-page",
+        "components": ["hero-banner", "adaptive-form-embed", "icon-callouts", "image-text-blocks", "modals", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "Email signup page for 'From the Gut' program using AEM adaptive forms"
+      },
+      {
+        "url": "https://www.linzess.com/search-results",
+        "title": "Search Request | LINZESS (linaclotide)",
+        "type": "utility-page",
+        "components": ["coveo-search", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "Coveo-powered search results page (coveoSearchHub: 'linzess-search')"
+      },
+      {
+        "url": "https://www.linzess.com/sitemap",
+        "title": "Sitemap | LINZESS (linaclotide)",
+        "type": "utility-page",
+        "components": ["link-list", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "HTML sitemap with all page links"
+      },
+      {
+        "url": "https://es.linzess.com/",
+        "title": "El tratamiento de marca más recetado para IBS-C y CIC | LINZESS (linaclotide)",
+        "type": "homepage-spanish",
+        "components": ["hero-banner", "symptom-checklist-icons", "educational-content", "patient-testimonial", "savings-promo", "modals", "isi", "sticky-isi"],
+        "hashSections": [],
+        "notes": "Spanish-language version on es.linzess.com subdomain. Does NOT use abbv-* classes."
+      }
+    ],
+
+    "redirectPages": {
+      "description": "These URLs redirect (301) to parent page with hash anchor - NOT separate pages",
+      "redirects": [
+        { "from": "/why-linzess/how-linzess-can-help", "to": "/why-linzess#howlinzesscanhelp" },
+        { "from": "/why-linzess/how-linzess-works", "to": "/why-linzess#howlinzessworks" },
+        { "from": "/why-linzess/side-effects", "to": "/why-linzess#sideeffects" },
+        { "from": "/why-linzess/what-to-expect", "to": "/why-linzess#whattoexpect" },
+        { "from": "/why-linzess/linzess-patient-experiences", "to": "/why-linzess#patientexperiences" },
+        { "from": "/understanding-constipation/types-of-constipation", "to": "/understanding-constipation#typesofconstipation" },
+        { "from": "/understanding-constipation/pediatric-functional-constipation", "to": "/understanding-constipation#pediatric" },
+        { "from": "/find-relief/talk-to-a-doctor", "to": "/find-relief#talktoadoctor" },
+        { "from": "/savings-and-support/savings", "to": "/savings-and-support#savings" },
+        { "from": "/espanol", "to": "https://es.linzess.com/" }
+      ]
+    },
+
+    "notFound": [
+      { "url": "/why-linzess/side-effects", "status": 404, "note": "Returns 404 when accessed directly (likely expects hash navigation)" },
+      { "url": "/savings-and-support/savings", "status": 404, "note": "Returns 404 when accessed directly" }
+    ]
+  },
+
+  "abbvClasses": {
+    "description": "All unique abbv-* CSS classes found across all analyzed pages",
+    "classes": [
+      "abbv-background-container-display",
+      "abbv-image-text-v1-1365362749-large",
+      "abbv-image-text-v1-1047397856-large",
+      "abbv-image-text-v1-305911841-large",
+      "abbv-image-text-v1-1894259743-large",
+      "abbv-target-prehide"
+    ],
+    "notes": "Very limited abbv-* classes in static HTML. Most component classes are dynamically injected at runtime by abbv-framework.js. The Spanish site (es.linzess.com) does NOT use abbv-* prefix classes at all."
+  },
+
+  "componentInventory": {
+    "hero-banner": {
+      "description": "Full-width hero section with background image and overlay text/CTA",
+      "foundOn": ["homepage", "why-linzess", "understanding-constipation", "find-relief", "resources", "savings-and-support", "gutcheck", "faqs", "from-the-gut"],
+      "implementation": "Uses #background-container-783970685 with .abbv-background-container-display, responsive media queries at 985px, 601-984px, max-600px breakpoints",
+      "images": {
+        "desktop": "/content/dam/linzess/images/homepage-d-doctor-home.png",
+        "mobile": "/content/dam/linzess/images/0.0-homepage-m-doctor-home.png",
+        "pageSpecific": {
+          "why-linzess": "why-linzess-hero-desktop.jpg",
+          "resources": "Resources-Hero-Desktop.jpg",
+          "savings": "savings-hero-desktop.jpg"
+        }
+      }
+    },
+
+    "image-text-blocks": {
+      "description": "Image-text combination components with responsive sizing",
+      "foundOn": "All pages",
+      "classes": [
+        "abbv-image-text-v1-1365362749-large",
+        "abbv-image-text-v1-305911841-large",
+        "abbv-image-text-v1-1047397856-large",
+        "abbv-image-text-v1-1894259743-large"
+      ],
+      "pattern": "abbv-image-text-v1-{numeric-id}-large"
+    },
+
+    "icon-cards": {
+      "description": "Icon-based benefit/feature cards with SVG icons and text",
+      "foundOn": ["homepage", "why-linzess", "understanding-constipation"],
+      "icons": [
+        "icon-pill.svg",
+        "icon-gut.svg",
+        "icon-legs.svg",
+        "icon-gut-hands.svg",
+        "icon-stethoscope-white.svg"
+      ]
+    },
+
+    "tabs": {
+      "description": "Hash-based tab navigation for section switching",
+      "foundOn": ["find-relief", "resources", "savings-and-support"],
+      "implementation": "Anchor-based hash routing, NOT ARIA role=tablist",
+      "examples": {
+        "find-relief": ["#talktoadoctor", "#howtotake"],
+        "resources": ["#healthyroutines", "#wellnesstips", "#communityresources"],
+        "savings": ["#savings", "#financialsupport"]
+      }
+    },
+
+    "accordion-faq": {
+      "description": "Expandable FAQ sections with question/answer pairs",
+      "foundOn": ["faqs"],
+      "implementation": "Accordion-style collapsed format"
+    },
+
+    "video-player": {
+      "description": "Brightcove video player for patient testimonials",
+      "foundOn": ["homepage", "why-linzess"],
+      "provider": "Brightcove",
+      "accounts": ["2157889328001"],
+      "features": ["View Transcript links", "Play/Pause controls"],
+      "content": "Patient experience videos (e.g., Dian's LINZESS Story)"
+    },
+
+    "adaptive-form-embed": {
+      "description": "AEM adaptive form widget for quizzes and signups",
+      "foundOn": ["gutcheck", "from-the-gut"],
+      "classes": ["cmp-formsembed-widget", "afsection"],
+      "implementation": "Dynamic form loaded via fetch from AEM forms URL"
+    },
+
+    "modals": {
+      "description": "Modal dialog overlays for various purposes",
+      "foundOn": "All pages",
+      "types": [
+        "Leave site confirmation (external link warning)",
+        "Telemedicine disclaimer",
+        "Privacy/cookie consent (OneTrust)",
+        "Email sharing",
+        "Exit modal"
+      ]
+    },
+
+    "savings-card": {
+      "description": "Promotional savings card component with activation CTA",
+      "foundOn": ["homepage", "savings-and-support"],
+      "image": "SavingsCard-Tout-SectionSymbol_Desktop.png"
+    },
+
+    "telemedicine-cta": {
+      "description": "Multi-step telemedicine connection flow",
+      "foundOn": ["homepage", "find-relief"],
+      "steps": [
+        { "step": 1, "image": "0.0-homepage-d-1-telemed-questions@2x.png", "label": "Answer questions" },
+        { "step": 2, "image": "0.0-homepage-d-2-connect-doctor@2x.png", "label": "Connect with doctor" },
+        { "step": 3, "image": "0.0-homepage-d-3-prescription@2x.png", "label": "Get prescription" }
+      ]
+    },
+
+    "coveo-search": {
+      "description": "Coveo-powered site search",
+      "foundOn": ["search-results"],
+      "config": "coveoSearchHub: 'linzess-search'"
+    },
+
+    "sticky-isi": {
+      "description": "Sticky/collapsible ISI bar at bottom of viewport",
+      "foundOn": "All pages",
+      "implementation": "Expandable bottom bar with 'Expand Safety Information' button. Contains abbreviated ISI with USES and IMPORTANT RISK INFORMATION headers."
+    }
+  },
+
+  "isiPattern": {
+    "description": "Important Safety Information structure consistent across all pages",
+    "structure": {
+      "inlineISI": {
+        "location": "Bottom of main content, above footer",
+        "sections": [
+          {
+            "heading": "USES",
+            "content": "LINZESS (linaclotide) indication statement for IBS-C (adults + children 7+), CIC (adults), FC (children 6+)"
+          },
+          {
+            "heading": "IMPORTANT RISK INFORMATION",
+            "content": [
+              "Contraindication: children < 2 years (Black Box Warning equivalent)",
+              "Contraindication: bowel blockage (intestinal obstruction)",
+              "Pre-treatment: pregnancy, breastfeeding disclosure",
+              "Drug interactions: all medicines disclosure",
+              "Side Effects heading",
+              "Diarrhea warning (most common, can be severe, onset within first 2 weeks)",
+              "Other common: gas, abdominal pain, distention",
+              "Emergency: severe abdominal pain with bloody/tarry stools",
+              "FDA reporting: www.fda.gov/medwatch, 1-800-FDA-1088",
+              "Patient assistance: AbbVie.com/PatientAccessSupport",
+              "Full PI + Medication Guide links"
+            ]
+          }
+        ],
+        "referenceCode": "US-LIN-250121"
+      },
+      "stickyISI": {
+        "location": "Fixed bottom bar on all pages",
+        "behavior": "Collapsed by default, expandable via button",
+        "content": "Abbreviated version of USES + beginning of IMPORTANT RISK INFORMATION"
+      }
+    }
+  },
+
+  "navigationStructure": {
+    "utilityBar": {
+      "description": "Top bar above header with savings message and phone number",
+      "content": ["Save on Linzess - Learn how", "1-855-226-3937"]
+    },
+    "utilityNav": {
+      "items": ["Prescribing Information (external PDF)", "Medication Guide (external PDF)"]
+    },
+    "primaryNav": {
+      "items": [
+        {
+          "label": "Why LINZESS",
+          "url": "/why-linzess",
+          "children": [
+            { "label": "How LINZESS Can Help", "url": "/why-linzess#howlinzesscanhelp" },
+            { "label": "How LINZESS Works", "url": "/why-linzess#howlinzessworks" },
+            { "label": "Side Effects of LINZESS", "url": "/why-linzess#sideeffects" },
+            { "label": "LINZESS Patient Experiences", "url": "/why-linzess#patientexperiences" }
+          ]
+        },
+        {
+          "label": "Understanding Constipation",
+          "url": "/understanding-constipation",
+          "children": [
+            { "label": "Types of Constipation", "url": "/understanding-constipation#typesofconstipation" },
+            { "label": "IBS-C & CIC", "url": "/understanding-constipation#ibsccic" },
+            { "label": "Constipation Treatment Options", "url": "/understanding-constipation#treatmentoptions" },
+            { "label": "Pediatric Functional Constipation", "url": "/understanding-constipation#pediatric" }
+          ]
+        },
+        {
+          "label": "Find Relief",
+          "url": "/find-relief",
+          "children": [
+            { "label": "Talk to a Doctor", "url": "/find-relief#talktoadoctor" },
+            { "label": "How to Take LINZESS", "url": "/find-relief#howtotake" }
+          ]
+        },
+        {
+          "label": "Resources",
+          "url": "/resources",
+          "children": [
+            { "label": "Healthy Routines", "url": "/resources#healthyroutines" },
+            { "label": "Wellness Tips", "url": "/resources#wellnesstips" },
+            { "label": "Community Resources", "url": "/resources#communityresources" }
+          ]
+        },
+        {
+          "label": "Savings & Support",
+          "url": "/savings-and-support",
+          "children": [
+            { "label": "Savings", "url": "/savings-and-support#savings" },
+            { "label": "Financial Support", "url": "/savings-and-support#financialsupport" }
+          ]
+        }
+      ]
+    },
+    "secondaryNav": {
+      "items": [
+        { "label": "Check My Symptoms", "url": "/find-relief/gutcheck" },
+        { "label": "FAQs", "url": "/savings-and-support/faqs" },
+        { "label": "Sign Up for Updates", "url": "/savings-and-support/from-the-gut" }
+      ]
+    },
+    "hamburgerMenu": true,
+    "searchEnabled": true,
+    "searchUrl": "/search-results"
+  },
+
+  "footerStructure": {
+    "columns": [
+      { "heading": "WHY LINZESS", "links": 4 },
+      { "heading": "UNDERSTANDING CONSTIPATION", "links": 4 },
+      { "heading": "FIND RELIEF", "links": 2 },
+      { "heading": "RESOURCES", "links": 3 },
+      { "heading": "SAVINGS & SUPPORT", "links": 2 },
+      { "heading": "Quick Links", "links": ["CHECK MY SYMPTOMS", "FAQs", "SIGN UP FOR UPDATES"] }
+    ],
+    "legalLinks": [
+      "Accessibility Statement",
+      "Contact Us",
+      "Terms of Use",
+      "Terms and Conditions",
+      "Privacy Notice",
+      "Consumer Health Data Privacy Notice",
+      "Cookies Settings",
+      "Sitemap",
+      "Your Privacy Choices"
+    ],
+    "trademarks": ["AbbVie", "Ironwood", "LINZESS", "From the Gut"],
+    "logos": ["abbvie-logo.png", "ironwood-logo.png"],
+    "copyrightOwners": ["AbbVie", "Ironwood Pharmaceuticals, Inc."],
+    "referenceCode": "US-LIN-250071"
+  },
+
+  "backgroundPatterns": {
+    "globalBackground": {
+      "containerId": "background-container-783970685",
+      "className": "abbv-background-container-display",
+      "breakpoints": {
+        "desktop": { "minWidth": "985px", "image": "/content/dam/linzess/images/homepage-d-doctor-home.png" },
+        "tablet": { "minWidth": "601px", "maxWidth": "984px", "image": "/content/dam/linzess/images/homepage-d-doctor-home.png" },
+        "mobile": { "maxWidth": "600px", "image": "/content/dam/linzess/images/0.0-homepage-m-doctor-home.png" }
+      }
+    },
+    "heroImages": [
+      { "page": "homepage", "image": "homepage-d-doctor-home.png" },
+      { "page": "why-linzess", "image": "why-linzess-hero-desktop.jpg" },
+      { "page": "resources", "image": "Resources-Hero-Desktop.jpg" },
+      { "page": "savings", "image": "savings-hero-desktop.jpg" }
+    ]
+  },
+
+  "thirdPartyIntegrations": {
+    "analytics": ["Adobe Launch/DTM", "Adobe Target (abbv-target-prehide)", "Google Analytics"],
+    "consent": ["OneTrust (cookie consent banner)"],
+    "search": ["Coveo (linzess-search hub)"],
+    "video": ["Brightcove"],
+    "forms": ["AEM Adaptive Forms (cmp-formsembed-widget)", "Google reCAPTCHA"],
+    "advertising": ["Facebook Pixel", "TikTok Pixel"],
+    "telemedicine": "External telemedicine partner (modal disclaimer required)"
+  },
+
+  "contentDAMPaths": {
+    "basePath": "/content/dam/linzess/",
+    "images": "/content/dam/linzess/images/",
+    "sampleAssets": [
+      "linzess-logo-nav.png",
+      "linzess-logo-footer.png",
+      "homepage-d-doctor-home.png",
+      "0.0-homepage-m-doctor-home.png",
+      "why-linzess-hero-desktop.jpg",
+      "Resources-Hero-Desktop.jpg",
+      "savings-hero-desktop.jpg",
+      "SavingsCard-Tout-SectionSymbol_Desktop.png",
+      "icon-pill.svg",
+      "icon-gut.svg",
+      "icon-legs.svg",
+      "icon-gut-hands.svg",
+      "icon-stethoscope-white.svg",
+      "abbvie-logo.png",
+      "ironwood-logo.png",
+      "0.0-homepage-d-1-telemed-questions@2x.png",
+      "0.0-homepage-d-2-connect-doctor@2x.png",
+      "0.0-homepage-d-3-prescription@2x.png"
+    ]
+  },
+
+  "migrationNotes": {
+    "keyFindings": [
+      "Site uses hash-based SPA navigation - many 'sub-pages' are actually sections within parent pages",
+      "Only ~12 actual unique pages exist (not 34 as originally estimated)",
+      "Most DOM is dynamically rendered by abbv-framework.js - static HTML has minimal class attributes",
+      "Platform C (abbv-*) signature confirmed but with very few static abbv-* classes (only 6 unique)",
+      "Spanish site on separate subdomain (es.linzess.com) with different architecture",
+      "ISI appears in two forms: inline full ISI and sticky collapsible bottom bar",
+      "AEM Adaptive Forms used for Gut Check quiz and From the Gut signup",
+      "Coveo search integration",
+      "Brightcove video for patient testimonials",
+      "OneTrust consent management",
+      "Background images use numeric ID-based containers with media query breakpoints"
+    ],
+    "actualPageCount": {
+      "uniquePages": 12,
+      "hashSections": 15,
+      "total": 27,
+      "spanishSite": "Separate subdomain (es.linzess.com) - may be separate migration scope"
+    },
+    "templateMapping": {
+      "homepage": 1,
+      "contentPageWithHashSections": 4,
+      "interactiveTool": 1,
+      "contentPageStandalone": 3,
+      "utilityPage": 2,
+      "spanishHomepage": 1
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.chart-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart-bar-rect {
+  fill: var(--chart-bar-color, var(--link-color, #0057cc));
+  transition: opacity 0.2s ease;
+}
+
+.chart-bar-rect:hover {
+  opacity: 0.8;
+}
+
+.chart-value-label {
+  font-size: 3px;
+  fill: var(--chart-label-color, var(--text-color, #111));
+}
+
+.chart-axis-label {
+  font-size: 3px;
+  fill: var(--chart-label-color, var(--text-color, #111));
+}
+
+.chart-pie-slice {
+  stroke: #fff;
+  stroke-width: 0.5;
+}
+
+.chart-slice-0 { fill: var(--chart-color-0, #0057cc); }
+
+.chart-slice-1 { fill: var(--chart-color-1, #f60); }
+
+.chart-slice-2 { fill: var(--chart-color-2, #00a651); }
+
+.chart-slice-3 { fill: var(--chart-color-3, #ffc107); }
+
+.chart-slice-4 { fill: var(--chart-color-4, #9c27b0); }
+
+.chart-slice-5 { fill: var(--chart-color-5, #e91e63); }
+
+.chart-data-table.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Abbvie chart overrides */

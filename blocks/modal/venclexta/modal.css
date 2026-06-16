@@ -1,0 +1,402 @@
+/* Modal Block — overlay shell styles
+   Content inside the modal comes from an EDS fragment and is styled
+   by that fragment's own block CSS. Only the overlay, dialog frame,
+   close button, and trigger button are styled here.
+*/
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-slide-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modal-slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ---- Overlay ---- */
+
+.modal-overlay {
+  --modal-close-color: var(--color-brand-primary, #333);
+  --modal-close-hover-color: var(--color-brand-primary-dark, #000);
+
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay-dark, rgb(0 0 0 / 60%));
+  z-index: var(--z-modal, 1000);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+  animation: modal-fade-in 0.25s ease;
+}
+
+/* ---- Dialog ---- */
+
+.modal-dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--background-color, #fff);
+  border: var(--modal-dialog-border, none);
+  border-radius: var(--modal-dialog-border-radius, var(--border-radius-card, 8px));
+  max-width: var(--modal-dialog-max-width, 800px);
+  width: 100%;
+  max-height: 90vh;
+  font-family: var(--body-font-family, inherit);
+  animation: modal-slide-up 0.3s ease;
+}
+
+/* ---- Header row (contains close button, never scrolls) ---- */
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 8px 0;
+  flex-shrink: 0;
+}
+
+/* ---- Close button ---- */
+
+.modal-header .modal-close {
+  width: var(--modal-close-size, 32px);
+  height: var(--modal-close-size, 32px);
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--modal-close-font-size, 22px);
+  line-height: 1;
+  color: var(--modal-close-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  max-width: none;
+}
+
+.modal-header .modal-close:hover {
+  color: var(--modal-close-hover-color);
+}
+
+.modal-header .modal-close:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---- Content — scrollable area ---- */
+
+.modal-content {
+  padding: var(--modal-dialog-padding-top, 8px) var(--modal-dialog-padding, 40px) var(--modal-dialog-padding, 40px);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-content .section {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content .button-container a {
+  margin: 0;
+}
+
+/* ---- Body scroll lock ---- */
+
+body.modal-is-open {
+  overflow: hidden;
+}
+
+/* ---- Loading / error states ---- */
+
+.modal-loading,
+.modal-error {
+  padding: 1rem 0;
+  color: var(--text-color, inherit);
+}
+
+/* ---- Trigger button ---- */
+
+.modal-trigger {
+  display: inline-block;
+  padding: var(--button-primary-padding, 12px 28px);
+  background: var(--button-primary-bg, #222);
+  color: var(--button-primary-color, #fff);
+  border: none;
+  border-radius: var(--border-radius-button-primary, 4px);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-trigger:hover {
+  background: var(--button-primary-bg-hover, #000);
+}
+
+/* ==================================================================
+   VARIANT: small — narrow confirmation dialog
+   ================================================================== */
+
+.modal-overlay.modal-small .modal-dialog {
+  max-width: 480px;
+}
+
+/* ==================================================================
+   VARIANT: media — wide modal for video/image, no inner padding
+   ================================================================== */
+
+.modal-overlay.modal-media .modal-dialog {
+  max-width: 95%;
+  max-height: 90vh;
+}
+
+.modal-overlay.modal-media .modal-content {
+  padding: 0;
+}
+
+.modal-overlay.modal-media .modal-header .modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background: var(--background-color, #fff);
+  border-radius: 50%;
+}
+
+/* ==================================================================
+   VARIANT: image — full-bleed image lightbox
+   ================================================================== */
+
+.modal-overlay.modal-image .modal-dialog {
+  max-width: none;
+  width: auto;
+  max-height: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.modal-overlay.modal-image .modal-content {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.modal-image .modal-content img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-overlay.modal-image .modal-header .modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: var(--color-overlay-light, rgb(255 255 255 / 80%));
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* ==================================================================
+   VARIANT: panel — slide-in side panel from right
+   ================================================================== */
+
+.modal-overlay.modal-panel {
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.modal-overlay.modal-panel .modal-dialog {
+  max-width: 420px;
+  height: 100vh;
+  max-height: 100vh;
+  border-radius: 0;
+  animation: modal-slide-in-right 0.3s ease;
+}
+
+/* ==================================================================
+   VARIANT: exit / exit-small — exit-intent modals
+   ================================================================== */
+
+.modal-overlay.modal-exit .modal-dialog {
+  max-width: 600px;
+}
+
+.modal-overlay.modal-exit-small .modal-dialog {
+  max-width: 420px;
+}
+
+/* ==================================================================
+   VARIANT: information — informational overlay with accent border
+   ================================================================== */
+
+.modal-overlay.modal-information .modal-dialog {
+  border-left: 4px solid var(--color-brand-accent, var(--color-brand-primary, #333));
+}
+
+/* ==================================================================
+   VARIANT: force — no backdrop dismiss, close button hidden
+   ================================================================== */
+
+.modal-overlay.modal-force .modal-header .modal-close {
+  display: none;
+}
+
+/* ==================================================================
+   Mobile: full-width, bottom-anchored (except panel)
+   ================================================================== */
+
+@media (width <= 600px) {
+  .modal-overlay:not(.modal-panel) {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .modal-overlay:not(.modal-panel) .modal-dialog {
+    max-width: 100%;
+    border-radius: var(--modal-dialog-border-radius, 8px) var(--modal-dialog-border-radius, 8px) 0 0;
+    max-height: 90vh;
+  }
+
+  .modal-overlay.modal-panel .modal-dialog {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-overlay.modal-image .modal-content img {
+    max-width: 100vw;
+    max-height: 80vh;
+  }
+}
+
+/* ---- Reduced motion ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay.is-open,
+  .modal-dialog {
+    animation: none;
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* Venclexta DTC modal — WoL (Warning on Leave) matching venclexta.com */
+
+.modal-overlay {
+  --modal-close-color: var(--text-color);
+  --modal-close-hover-color: var(--color-charcoal);
+  --modal-dialog-max-width: 680px;
+  --modal-dialog-padding: 40px;
+  --modal-dialog-border: 1px solid var(--color-border-default, #ccc);
+  --modal-dialog-border-radius: 0;
+  --modal-close-size: 36px;
+  --modal-close-font-size: var(--font-size-h2, 28px);
+}
+
+/* Close button — thin X, top right */
+
+.modal-header .modal-close {
+  font-weight: var(--font-weight-light, 300);
+  color: var(--modal-close-color);
+}
+
+/* Dialog heading — teal brand color */
+
+.modal-content h2 {
+  color: var(--color-brand-primary, #005272);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-heading, 700);
+  font-size: var(--font-size-h2, 24px);
+  line-height: 1.3;
+  margin: 0 0 20px;
+}
+
+/* Body text */
+
+.modal-content p {
+  color: var(--text-color, #46484a);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body, 16px);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+/* "Do you wish to leave this site?" — centered, bold */
+
+.modal-content p:nth-last-of-type(3) {
+  text-align: center;
+  margin-top: 24px;
+  font-weight: var(--font-weight-heading, 700);
+  font-size: var(--font-size-body, 16px);
+}
+
+/* Button paragraph — centered flex */
+
+.modal-dialog .modal-content p:has(a[href]) {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Compliance code at bottom */
+
+.modal-content p:last-of-type {
+  font-size: var(--font-size-body-small, 12px);
+  color: var(--color-text-compliance);
+  margin-top: 24px;
+}
+
+/* Links styled as equal-width outlined buttons — centered */
+
+.modal-dialog .modal-content a[href] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 12px 48px;
+  border-radius: 0;
+  font-weight: var(--font-weight-heading, 700);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body, 16px);
+  text-decoration: none;
+  margin: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  background: transparent;
+  color: var(--color-brand-primary, #005272) !important;
+  border: 1px solid var(--color-border-default, #ccc);
+}
+
+.modal-overlay .modal-dialog .modal-content a[href]:hover {
+  background: var(--color-brand-primary-light, #e8edef) !important;
+  border-color: var(--color-brand-primary, #005272);
+  opacity: 1;
+}
+
+.modal-dialog .modal-content a[href]:last-of-type {
+  background: transparent;
+  color: var(--color-brand-primary, #005272) !important;
+  border: 1px solid var(--color-border-default, #ccc);
+}

@@ -1,0 +1,88 @@
+{
+  "definitions": [
+    {
+      "title": "Banner Ad",
+      "id": "banner-ad",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Banner Ad",
+              "model": "banner-ad",
+              "blockId": "id:"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "banner-ad",
+      "fields": [
+        {
+          "component": "tab",
+          "label": "Google Ad Manager",
+          "name": "gpt"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "ad-unit",
+          "value": "",
+          "label": "Ad Unit Path",
+          "description": "Google Ad Manager ad unit path (e.g. /12345/brand/leaderboard). Leave blank if using HTML embed mode."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "width",
+          "value": "",
+          "label": "Ad Width (px)",
+          "description": "Slot width in pixels (e.g. 728). Leave blank for fluid sizing."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "height",
+          "value": "",
+          "label": "Ad Height (px)",
+          "description": "Slot height in pixels (e.g. 90). Leave blank for fluid sizing."
+        },
+        {
+          "component": "tab",
+          "label": "HTML Embed",
+          "name": "embed"
+        },
+        {
+          "component": "richtext",
+          "name": "embedCode",
+          "value": "",
+          "label": "Embed Code",
+          "description": "Paste third-party ad embed HTML here. Add variant class 'html' to the block to activate this mode instead of GPT.",
+          "valueType": "string"
+        },
+        {
+          "component": "tab",
+          "label": "Settings",
+          "name": "settings"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes_mode",
+          "label": "Ad Mode",
+          "options": [
+            { "name": "Google Ad Manager (GPT)", "value": "" },
+            { "name": "HTML Embed (third-party tag)", "value": "html" }
+          ]
+        },
+        {
+          "...": "../../models/_common-properties.json#/common-prop"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

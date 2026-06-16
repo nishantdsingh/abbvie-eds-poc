@@ -1,0 +1,198 @@
+@import '../accordion.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* Rinvoq HCP accordion — inline-toggle is the default style */
+.accordion {
+    --accordion-toggle-color-text: var(--color-accordion-text);
+    --accordion-toggle-color-chevron: var(--color-accordion-accent);
+    --accordion-toggle-color-separator: var(--color-accordion-separator);
+    --accordion-toggle-font-size: var(--body-font-size-s);
+    --accordion-toggle-tab-color-active: var(--color-accordion-text);
+    --accordion-toggle-tab-color-inactive: var(--color-accordion-tab-inactive);
+    --accordion-toggle-tab-color-indicator: var(--color-accordion-accent);
+    --footer-seperator-color: var(--color-brand-primary);
+    --highlight-dark-background-color: var(--color-brand-primary);
+
+    background: var(--background-color);
+    margin-bottom: var(--spacing-00);
+}
+
+.accordion .accordion-block-heading-wrapper {
+    display: none;
+}
+
+.accordion .accordion-item {
+    border-bottom: var(--border-01) solid var(--accordion-toggle-color-separator);
+}
+
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-10) var(--spacing-00);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-08);
+    background: none;
+    font-size: var(--accordion-toggle-font-size);
+    font-weight: var(--font-weight-medium);
+    color: var(--accordion-toggle-color-text);
+    justify-content: flex-start;
+}
+
+.accordion summary:focus-visible {
+    background: none;
+    outline: var(--border-02) solid var(--accordion-toggle-color-chevron);
+    outline-offset: var(--border-02);
+}
+
+/* Chevron ▼ before the label text */
+.accordion summary::before {
+    content: '';
+    display: inline-block;
+    flex-shrink: 0;
+    width: var(--spacing-08);
+    height: var(--spacing-08);
+    border-right: var(--border-02) solid var(--accordion-toggle-color-chevron);
+    border-bottom: var(--border-02) solid var(--accordion-toggle-color-chevron);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+    margin-top: var(--spacing-neg-03, -3px);
+}
+
+.accordion .accordion-item[open] summary::before {
+    transform: rotate(-135deg);
+    margin-top: var(--spacing-03, 3px);
+}
+
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-toggle-color-text);
+    font-size: var(--accordion-toggle-font-size);
+    font-weight: var(--font-weight-medium);
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+/* Hide icon-font based icons — replaced by CSS chevron */
+.accordion .item-icon-plus::after,
+.accordion .item-icon-minus::after {
+    display: none;
+}
+
+.accordion .accordion-item:hover summary,
+.accordion .accordion-item[open] summary {
+    background: none;
+}
+
+.accordion .accordion-expand-all {
+    color: var(--accordion-toggle-color-text);
+    font-family: var(--heading-font-family);
+}
+
+.accordion .accordion-expand-all:focus {
+    border-color: var(--accordion-toggle-color-chevron);
+}
+
+.accordion .accordion-item-body {
+    padding: var(--spacing-16) var(--spacing-00) var(--spacing-24);
+    background: var(--background-color);
+}
+
+/* Suppress external-link ::after glyph */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+
+/* Reset body link styles */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--accordion-toggle-color-text);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+    transition: color 0.1s ease;
+}
+
+.accordion .accordion-item-body a:hover,
+.accordion .accordion-item-body a.button:hover {
+    background: none;
+    color: var(--accordion-toggle-color-chevron);
+}
+
+/* ---- Nested tabs inside accordion body ---- */
+
+.accordion .accordion-item-body .tabs .tabs-list {
+    border-bottom: var(--border-02) solid var(--accordion-toggle-color-separator);
+    gap: var(--spacing-00);
+    margin-bottom: var(--spacing-16);
+}
+
+.accordion .accordion-item-body .tabs .tabs-list button {
+    background: none;
+    border: none;
+    border-bottom: var(--spacing-03, 3px) solid transparent;
+    margin-bottom: var(--spacing-neg-02, -2px);
+    padding: var(--spacing-08) var(--spacing-20) var(--spacing-10);
+    color: var(--accordion-toggle-tab-color-inactive);
+    font-size: var(--accordion-toggle-font-size);
+    font-weight: var(--font-weight-body);
+    transition:
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.accordion .accordion-item-body .tabs .tabs-list button:hover {
+    color: var(--accordion-toggle-tab-color-active);
+    background: none;
+}
+
+/* Active tab — bold, red underline indicator */
+.accordion .accordion-item-body .tabs .tabs-list button[aria-selected='true'] {
+    color: var(--accordion-toggle-tab-color-active);
+    font-weight: var(--font-weight-button);
+    border-bottom-color: var(--accordion-toggle-tab-color-indicator);
+    background: none;
+    cursor: default;
+}
+
+/* Tab panel — no border box */
+.accordion .accordion-item-body .tabs .tabs-panel {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Dark theme — Rinvoq HCP navy background */
+.accordion.accordion-dark {
+    background-color: var(--color-background-footer);
+    padding: var(--spacing-24) var(--spacing-32);
+}
+
+.accordion.accordion-dark .accordion-item {
+    border-bottom-color: rgb(255 255 255 / 20%);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion.accordion-dark summary,
+.accordion.accordion-dark .accordion-item-label {
+    color: var(--light-color);
+}
+
+.accordion.accordion-dark .accordion-item-label p,
+.accordion.accordion-dark .accordion-item-label h2,
+.accordion.accordion-dark .accordion-item-label h3,
+.accordion.accordion-dark .accordion-item-label h4,
+.accordion.accordion-dark .accordion-item-label h5,
+.accordion.accordion-dark .accordion-item-label h6 {
+    color: var(--light-color);
+}
+
+.accordion.accordion-dark .accordion-item[open] summary {
+    background-color: var(--color-brand-primary);
+}

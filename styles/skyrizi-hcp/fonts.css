@@ -1,0 +1,34 @@
+/* SKYRIZI HCP — Font Declarations
+   Primary: Univers LT W01_57 Condensed (loaded via Adobe Fonts / TypeKit) */
+
+@font-face {
+  font-family: 'Red Hat Display';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/skyrizi-hcp/RedHatDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/skyrizi-hcp/RedHatDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Univers LT W01_57 Condensed';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/univers-condensed.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Univers LT W01_67 Bold_1476016';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/univers-bold.woff2') format('woff2');
+}

@@ -1,0 +1,93 @@
+@import '../clinical-data-panel.css';
+
+/* Skyrizi HCP — clinical-data-panel brand overrides
+   Source: skyrizihcp.com/dermatology/psoriasis-efficacy/skyrizi-vs-cosentyx
+   --cdp-* tokens declared in styles/skyrizi-hcp/tokens.css */
+
+.clinical-data-panel {
+  padding: 0 20px;
+}
+
+/* ── footnotes ── */
+.clinical-data-panel-footnotes {
+  border-top: none;
+}
+
+.clinical-data-panel-footnotes p {
+  font-family: var(--cdp-font-heading);
+  font-size: var(--cdp-font-size-callout);
+  font-weight: var(--cdp-font-weight-normal);
+  line-height: var(--cdp-line-height-callout);
+  color: var(--cdp-color-heading);
+  margin: 0 0 4px;
+}
+
+.clinical-data-panel-footnotes p:first-child {
+  color: var(--cdp-color-accent);
+  margin-bottom: var(--cdp-spacing-sm);
+  margin-top: 4px;
+}
+
+.clinical-data-panel-footnotes p:nth-child(2) {
+  color: var(--cdp-color-heading);
+  margin-bottom: var(--cdp-spacing-sm);
+}
+
+.clinical-data-panel-footnotes p:nth-child(3) {
+  font-size: var(--cdp-font-size-body);
+  line-height: var(--cdp-line-height-default);
+  color: var(--cdp-color-accent);
+  margin-top: var(--cdp-spacing-md);
+  margin-bottom: var(--cdp-spacing-sm);
+}
+
+.clinical-data-panel-footnotes p:nth-child(4) {
+  font-family: var(--cdp-font-body);
+  font-size: var(--cdp-font-size-body);
+  font-weight: var(--cdp-font-weight-normal);
+  line-height: var(--cdp-line-height-body);
+  color: var(--cdp-color-heading);
+  margin-bottom: var(--cdp-spacing-sm);
+}
+
+.clinical-data-panel-footnotes p:last-child {
+  font-family: var(--cdp-font-body);
+  font-size: var(--cdp-font-size-small);
+  font-weight: var(--cdp-font-weight-normal);
+  line-height: var(--cdp-line-height-default);
+  color: var(--cdp-color-muted);
+  margin-top: var(--cdp-spacing-md);
+}
+
+.clinical-data-panel-footnotes u,
+.clinical-data-panel-footnotes .u {
+  text-decoration: underline;
+}
+
+.clinical-data-panel-footnotes strong {
+  color: var(--cdp-color-accent);
+  font-family: var(--cdp-font-heading);
+}
+
+/* ── CTA link ── */
+.clinical-data-panel .clinical-data-panel-cta {
+  color: var(--cdp-color-cta);
+  text-transform: none;
+  padding: 12px 42px 12px 0;
+  position: relative;
+  border-bottom: 2px solid transparent;
+  margin-top: var(--cdp-spacing-lg);
+}
+
+.clinical-data-panel .clinical-data-panel-cta:hover {
+  border-bottom-color: var(--cdp-color-cta);
+  text-decoration: none;
+}
+
+.clinical-data-panel .clinical-data-panel-cta::after {
+  content: '>';
+  position: absolute;
+  right: 20px;
+  font-size: 1.4em;
+  font-weight: var(--cdp-font-weight-normal);
+}

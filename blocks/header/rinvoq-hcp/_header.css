@@ -1,0 +1,520 @@
+@import '../header.css';
+
+/* ══════════════════════════════════════════════
+   RINVOQ HCP — Header Brand Overrides
+   Source: rinvoqhcp.com
+   Mobile-first: base = mobile, @media (width >= 1024px) = desktop
+   - Brand row: black (#17181b), RINVOQ logo
+   - Hamburger row: gold (#ffd100), MENU/CLOSE text label
+   - Nav overlay: gold bg, dark bold items, butter submenu
+══════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════
+   BASE — MOBILE (all viewports)
+═══════════════════════════════════════════ */
+
+/* Nav wrapper — black */
+header .nav-wrapper {
+  background-color: var(--color-background-footer);
+  position: relative;
+}
+
+header:has(.nav-utility ul) {
+  height: auto;
+}
+
+/* Mobile 3-row grid: logo row → hamburger row → sections row */
+header .nav-wrapper nav {
+  color: var(--color-text-on-dark);
+  display: grid;
+  grid-template:
+    'brand brand' auto
+    'hamburger hamburger' auto
+    'search search' auto
+    'sections sections' auto
+    / 1fr auto;
+  height: auto;
+  max-width: unset;
+  padding: var(--spacing-00);
+  width: 100%;
+}
+
+/* Logo row — explicit black so it stays dark when nav is expanded */
+header nav .nav-brand {
+  background-color: var(--color-background-footer);
+  padding: var(--spacing-16) var(--spacing-20);
+}
+
+header nav .nav-brand img {
+  height: auto;
+  max-width: unset;
+  width: var(--header-logo-width);
+}
+
+/* Utility bar — not present on RINVOQ HCP */
+header .nav-utility { display: none; }
+
+/* nav-brand-info has no grid-area — hide to prevent auto-placement disrupting grid */
+header .nav-wrapper nav .nav-brand-info { display: none; }
+
+/* ── Hamburger row — full-width gold strip ── */
+header nav .nav-hamburger {
+  align-items: center;
+  background-color: var(--color-gold);
+  display: flex;
+  height: auto;
+  justify-content: center;
+  padding: var(--spacing-14) var(--spacing-00);
+}
+
+header nav .nav-hamburger button {
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: var(--color-charcoal);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-06);
+  padding: var(--spacing-00);
+}
+
+/* Hide the 3 bar spans */
+header nav .nav-hamburger button > span { display: none; }
+
+/* Short bar above MENU/CLOSE text */
+header nav .nav-hamburger button::before {
+  background-color: var(--color-charcoal);
+  content: '';
+  display: block;
+  height: var(--spacing-02);
+  width: var(--spacing-50);
+}
+
+/* MENU label */
+header nav .nav-hamburger button::after {
+  color: var(--color-charcoal);
+  content: 'MENU';
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-04);
+  text-decoration: underline;
+  text-underline-offset: var(--spacing-03);
+}
+
+/* ── Nav sections — gold overlay ── */
+header nav .nav-sections {
+  background-color: var(--color-gold);
+  color: var(--color-charcoal);
+}
+
+/* ── Open state ── */
+header nav[aria-expanded='true'] {
+  min-height: auto;
+}
+
+/* Change to CLOSE when nav is open */
+header nav[aria-expanded='true'] .nav-hamburger button::after { content: 'CLOSE'; }
+
+/* Brand row stays black when nav is open */
+header nav[aria-expanded='true'] .nav-brand {
+  background-color: var(--color-background-footer);
+  display: flex;
+}
+
+/* Sections open state — in-grid flow (not absolute) */
+header nav[aria-expanded='true'] .nav-sections {
+  height: auto;
+  overflow: visible;
+  padding: var(--spacing-00) var(--spacing-20);
+  position: static;
+}
+
+/* rinvoq-hcp: search form always visible — override JS-set hidden attribute */
+header nav[aria-expanded='true'] .nav-search .search-expanded[hidden] {
+  align-items: center;
+  display: block;
+  gap: var(--spacing-08);
+  width: 100%;
+}
+
+/* ── Nav items — dark, bold ── */
+header nav .nav-sections .default-content-wrapper > ul {
+  height: auto;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li {
+  border: none;
+  padding: var(--spacing-18) var(--spacing-00);
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(2) { margin: 0; }
+
+header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(1) { border: none; }
+
+/* Nav item buttons and links */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button {
+  color: var(--color-charcoal);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  padding: var(--spacing-00);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::after {
+  background-color: currentcolor;
+  color: var(--text-color);
+  content: "";
+  display: inline-block;
+  height: 1em;
+  mask: var(--icon-svg-chevron-down) no-repeat center / contain;
+  position: static;
+  vertical-align: middle;
+  width: 1em;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::before { display: none; }
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
+  color: var(--color-charcoal);
+  font-weight: var(--font-weight-700);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link::after { display: none; }
+
+/* Chevron — hide for items without submenus */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li:not(:has(.submenu-level-1 .navigation-group)) > button::before { display: none; }
+
+/* ── Submenu — butter yellow, inline flow ── */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+  background-color: var(--color-butter);
+  border-top: none;
+  display: none;
+  height: auto;
+  margin: var(--spacing-00) calc(-1 * var(--spacing-20));
+  min-height: auto;
+  opacity: 1;
+  padding: var(--spacing-12) var(--spacing-20);
+  pointer-events: auto;
+  position: static;
+  transform: none;
+  transition: none;
+  visibility: visible;
+  width: auto;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul { padding: var(--spacing-00); }
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group {
+  background: transparent;
+  padding: var(--spacing-00);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link {
+  color: var(--color-charcoal);
+  display: block;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  padding: var(--spacing-10) var(--spacing-00);
+  text-decoration: none;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link:hover { text-decoration: underline; }
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='false'] .submenu-level-1 { display: none; }
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 {
+  display: block;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li {
+  padding: 0;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 ul li a {
+  color: var(--color-charcoal);
+  font-weight: var(--font-weight-700);
+}
+
+/* Search — mobile: always visible in gold bar */
+header nav .nav-search {
+  background-color: var(--color-gold);
+  display: block;
+  grid-area: auto;
+  padding: 0 var(--spacing-12);
+  width: 100%;
+}
+
+/* Input wrapper — no shadow (lower specificity; must precede .search-expanded .search-inner-wrapper) */
+header nav .nav-search .search-inner-wrapper {
+  box-shadow: none;
+}
+
+header nav .nav-search .search-inner-wrapper input[type="search"] {
+  border-radius: var(--border-radius-button-primary);
+  font-size: var(--font-size-16);
+  min-width: var(--spacing-300);
+  padding: var(--spacing-12) var(--spacing-35) var(--spacing-12) var(--spacing-15);
+}
+
+header nav .nav-search .search-inner-wrapper > span.icon-search {
+  position: absolute;
+  right: 1%;
+  top: 30%;
+}
+
+header nav .nav-search .search-toggle { display: none; }
+
+/* ══════════════════════════════════════════════
+   DESKTOP (width >= 1024px)
+══════════════════════════════════════════════ */
+
+@media (width >= 1024px) {
+  /* Show nav-search in the brand row (overrides mobile hide) */
+  header nav .nav-search {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    grid-area: tools;
+    justify-content: flex-end;
+  }
+
+  header nav .nav-search .search-expanded {
+    padding: var(--spacing-00) var(--spacing-14);
+  }
+
+  /* rinvoq-hcp: search form always visible — override JS-set hidden attribute */
+  header nav .nav-search .search-expanded[hidden] {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-08);
+  }
+
+  header nav .nav-search .search-expanded .search-inner-wrapper {
+    position: relative;
+  }
+
+  /* Search icon inside the input box — positioned at right side on desktop */
+  header nav .nav-search .search-expanded .search-inner-wrapper .icon-search {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    left: 90%;
+    pointer-events: none;
+    position: absolute;
+    top: var(--spacing-00);
+  }
+
+  header nav .nav-search .search-expanded .search-inner-wrapper .icon-search svg {
+    fill: var(--color-steel);
+    height: var(--spacing-16);
+    stroke: var(--color-steel);
+    width: var(--spacing-16);
+  }
+
+  header nav .nav-search .search-expanded .search-input {
+    background: var(--background-color);
+    border: var(--spacing-02) solid var(--color-border-default);
+    border-radius: var(--border-radius-button-primary);
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-16);
+    padding: var(--spacing-08) var(--spacing-16) var(--spacing-08) var(--spacing-40);
+    width: var(--header-search-pill-min-width);
+  }
+
+  /* Close (X) button — white X on dark bar */
+  header nav .nav-search .search-close {
+    color: var(--color-text-on-dark);
+    font-size: var(--font-size-20);
+    line-height: var(--spacing-20);
+    padding: var(--spacing-04) var(--spacing-08);
+  }
+
+  header nav .nav-search .search-close::before { content: '✕'; }
+
+  /* nav-tools has no content on rinvoq-hcp — keep hidden */
+  header nav .nav-tools { display: none; }
+
+  /* Hide any nav-tools that may appear inside nav-sections */
+  header .nav-sections .nav-tools { display: none !important; }
+
+  /* 2-row grid: black brand row + gold sections row */
+  header .nav-wrapper nav {
+    display: grid;
+    grid-template:
+      'brand tools hamburger' auto
+      'sections sections sections' auto
+      / auto 1fr auto;
+    height: auto;
+    margin: var(--spacing-00) auto;
+    max-width: var(--header-wrapper-max-width);
+    padding: var(--spacing-00);
+    width: 100%;
+  }
+
+  .section.nav-sections.nav-item-level-0::before {
+    background-color: var(--color-gold);
+    bottom: 0;
+    content: '';
+    height: var(--header-nav-sections-height);
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100vw;
+    z-index: 0;
+  }
+
+  /* Brand row — logo padding */
+  header nav .nav-brand {
+    background-color: var(--color-background-footer);
+    padding: var(--spacing-20) var(--spacing-24) var(--spacing-20) var(--spacing-35);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    border: none;
+    padding: var(--spacing-00);
+  }
+
+  /* Hide hamburger on desktop */
+  header nav .nav-hamburger { display: none; }
+
+  /* Gold nav sections — full-width second row */
+  header .nav-wrapper nav .nav-sections {
+    align-items: center;
+    background-color: var(--color-gold);
+    color: var(--color-charcoal);
+    display: flex;
+    height: auto;
+    margin-left: var(--spacing-00);
+    min-height: auto;
+    opacity: 1;
+    overflow: visible;
+    padding: var(--spacing-00) var(--spacing-35);
+    visibility: visible;
+    width: 100%;
+    z-index: var(--z-index-60);
+  }
+
+  header .nav-wrapper nav .nav-sections .default-content-wrapper {
+    margin: var(--spacing-00) auto;
+    max-width: var(--header-content-max-width);
+    width: 100%;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: 0 !important;
+    justify-content: space-between;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button[aria-expanded='true'] {
+    background-color: var(--color-butter);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-600);
+  }
+
+  /* Nav buttons — dark, semi-bold on gold */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
+    color: var(--color-charcoal);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-600);
+    height: 100%;
+    line-height: var(--header-nav-line-height);
+    padding: var(--spacing-14) var(--spacing-08);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus-visible {
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-600);
+  }
+
+  /* Active underline — dark on gold */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button[aria-expanded='true']::after { background: var(--color-charcoal); }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link:hover::after { display: none; }
+
+  /* Leaf link hover — butter bg */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link:hover,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] > button:hover { background: var(--color-butter); }
+
+  /* Submenu — white bg, gold top border separator */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    background: var(--background-color);
+    border-top: var(--header-submenu-border-width) solid var(--color-gold);
+    color: var(--color-charcoal);
+    margin: var(--spacing-00);
+    padding: var(--spacing-00);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-08);
+    padding: var(--spacing-00);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link {
+    color: var(--color-charcoal);
+    display: block;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-400);
+    text-decoration: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link:hover {
+    color: var(--color-charcoal);
+    text-decoration: underline;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li:hover { background-color: var(--color-lemon); }
+
+  /* Pre-seeded plain li > a links (from language-links block content) */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li > a:not(.navigation-item-link) {
+    color: var(--color-charcoal);
+    display: block;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-400);
+    padding: var(--spacing-10) var(--spacing-18);
+    text-decoration: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li > a:not(.navigation-item-link):hover {
+    color: var(--color-charcoal);
+    font-family: var(--body-font-family);
+    text-decoration: none;
+  }
+
+  /* Submenu list — remove default list indentation */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul { padding: var(--spacing-00); }
+
+  /* Submenu display — restore base absolute behavior */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='false'] .submenu-level-1 { display: none; }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded='true'] .submenu-level-1 { display: block; }
+
+  /* Submenu width — scoped to nav-sections only */
+  header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    background-color: var(--color-gold);
+    position: absolute;
+    width: var(--header-submenu-width);
+  }
+
+  /* Submenu item row padding and hover */
+  .navigation-item.navigation-item-level-1 {
+    padding: var(--spacing-10) var(--spacing-18);
+  }
+
+  .navigation-item.navigation-item-level-1:hover { background: var(--color-butter); }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .navigation-item-level-1 > a,
+  .navigation-item-level-1 .level-two-link-adjustment {
+    font-size: var(--font-size-16);
+    padding: var(--spacing-00);
+  }
+}

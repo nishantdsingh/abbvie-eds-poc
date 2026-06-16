@@ -1,0 +1,27 @@
+.sticky-sidebar-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-32, 32px);
+}
+
+@media (width >= 768px) {
+  .sticky-sidebar-layout {
+    grid-template-columns: 1fr 300px;
+    align-items: start;
+  }
+
+  .sticky-sidebar-side {
+    position: sticky;
+    top: calc(var(--nav-height, 64px) + var(--spacing-24, 24px));
+  }
+
+  .sticky-sidebar.left .sticky-sidebar-layout {
+    grid-template-columns: 300px 1fr;
+  }
+
+  .sticky-sidebar.left .sticky-sidebar-side {
+    order: -1;
+  }
+}
+
+/* Rinvoq sticky-sidebar overrides */

@@ -1,0 +1,66 @@
+@import '../carousel-video-playlist.css';
+
+/* Rinvoq DTC — override custom properties only, no hardcoded values */
+.carousel-video-playlist {
+  --cvp-color-text: var(--color-text, #25282a);
+  --cvp-color-active: var(--color-accent, #90124a);
+  --cvp-spacing-cards-gap: var(--spacing-cards-gap, 7px);
+  --cvp-play-icon-size: var(--icon-size-md, 40px);
+  --cvp-play-icon-bg-size: var(--icon-size-sm, 16px);
+  --cvp-play-icon-cards-size: var(--icon-size-md, 40px);
+  --cvp-play-icon-cards-bg-size: var(--icon-size-sm, 16px);
+  --cvp-font-size-title: var(--heading-font-size-s, 26px);
+  --cvp-font-weight-title: var(--font-weight-regular, 400);
+  --cvp-line-height-title: var(--heading-line-height, 30px);
+  --cvp-font-size-desc: var(--body-font-size-s, 14.4px);
+  --cvp-line-height-desc: var(--body-line-height, 22px);
+  --cvp-font-size-transcript: var(--body-font-size-xs, 10px);
+  --cvp-font-size-card-title: var(--body-font-size-m, 17px);
+  --cvp-font-weight-card-title: var(--font-weight-regular, 400);
+  --cvp-line-height-card-title: var(--body-line-height-tight, 20px);
+  --cvp-size-max-width: var(--content-max-width, 720px);
+  --cvp-font-family-body: var(--font-family-body, "Helvetica Neue", Arial, sans-serif);
+  --cvp-font-family-heading: var(--font-family-heading, "Neue Haas Grotesk Disp", Arial, sans-serif);
+
+  font-family: var(--cvp-font-family-body);
+  max-width: var(--cvp-size-max-width);
+}
+
+/* Player area: title + description ABOVE the video */
+.carousel-video-playlist .cvp-player-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-video-playlist .cvp-active-title {
+  font-family: var(--cvp-font-family-heading);
+  order: -2;
+}
+
+.carousel-video-playlist .cvp-active-desc {
+  font-family: var(--cvp-font-family-body);
+  order: -1;
+}
+
+.carousel-video-playlist .cvp-video-container {
+  order: 0;
+}
+
+.carousel-video-playlist .cvp-transcript-link {
+  font-family: var(--cvp-font-family-heading);
+  order: 1;
+  align-self: flex-end;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--cvp-color-active);
+  text-decoration: none;
+  margin-top: var(--spacing-08, 8px);
+}
+
+.carousel-video-playlist .cvp-transcript-link::after {
+  content: ' \203A';
+  font-size: 1.2em;
+}
+
+.carousel-video-playlist.cvp-layout-cards .cvp-playlist-overlay-title {
+  font-family: var(--cvp-font-family-body);
+}

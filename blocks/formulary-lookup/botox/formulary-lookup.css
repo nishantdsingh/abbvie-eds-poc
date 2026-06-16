@@ -1,0 +1,99 @@
+@import '../formulary-lookup.css';
+
+/* Botox HCP formulary-lookup overrides */
+
+.formulary-lookup {
+  --formulary-text-color: var(--color-black);
+  --formulary-text-align: center;
+
+  /* Input */
+  --formulary-input-max-width: var(--formulary-input-width);
+  --formulary-input-height: var(--formulary-input-height);
+  --formulary-input-border: 1px solid var(--color-border-input);
+  --formulary-input-border-radius: var(--formulary-input-radius);
+  --formulary-input-padding: var(--formulary-input-padding);
+  --formulary-input-font-size: var(--formulary-input-size);
+  --formulary-input-color: var(--color-black);
+
+  /* Heading */
+  --formulary-heading-font-size: var(--formulary-heading-size);
+  --formulary-heading-font-weight: var(--formulary-heading-weight);
+  --formulary-heading-color: var(--color-black);
+  --formulary-heading-margin-bottom: var(--formulary-heading-spacing);
+  --formulary-heading-line-height: var(--formulary-heading-line-height);
+
+  /* Label */
+  --formulary-label-font-size: var(--formulary-label-size);
+  --formulary-label-font-weight: var(--formulary-label-weight);
+
+  /* Submit button — green solid with > arrow */
+  --formulary-submit-bg: var(--color-formulary-submit-bg);
+  --formulary-submit-color: var(--color-white);
+  --formulary-submit-border: none;
+  --formulary-submit-border-radius: var(--formulary-submit-radius);
+  --formulary-submit-font-size: var(--formulary-submit-size);
+  --formulary-submit-font-weight: var(--formulary-submit-weight);
+  --formulary-submit-padding: var(--formulary-submit-padding);
+  --formulary-submit-height: auto;
+}
+
+/* Form — stacked column layout, narrow centered */
+.formulary-lookup .formulary-lookup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--formulary-form-width);
+  margin-inline: auto;
+}
+
+/* Label left-aligned within centered form */
+.formulary-lookup .formulary-lookup-label {
+  align-self: flex-start;
+}
+
+/* Select — full width of form, block display */
+.formulary-lookup .formulary-lookup-select {
+  display: block;
+  width: 100%;
+  max-width: var(--formulary-input-width);
+  margin-inline: auto;
+}
+
+/* Submit — matches select width, stacked below */
+.formulary-lookup .formulary-lookup-submit {
+  margin: var(--formulary-submit-spacing) auto;
+  display: block;
+  width: 100%;
+  max-width: var(--formulary-input-width);
+  position: relative;
+}
+
+.formulary-lookup .formulary-lookup-submit::after {
+  content: "\203A";
+  display: inline-block;
+  position: absolute;
+  right: var(--formulary-submit-arrow-offset);
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  background: none;
+  mask-image: none;
+  font-size: var(--formulary-submit-arrow-size);
+  color: inherit;
+  line-height: 1;
+}
+
+.formulary-lookup .formulary-lookup-submit:hover {
+  opacity: 1;
+  background: var(--color-formulary-submit-hover);
+  color: var(--color-white);
+}
+
+/* Disclaimer — constrained width */
+.formulary-lookup .formulary-lookup-disclaimer {
+  font-size: var(--formulary-disclaimer-size);
+  max-width: var(--formulary-form-width);
+  margin-inline: auto;
+  text-align: center;
+}

@@ -1,0 +1,781 @@
+@import '../header.css';
+
+/* ──────────────────────────────────────────
+   MAVYRET HCP — Header Brand Overrides
+   Source: mavyret.com/hcp
+   Mobile-first: base = mobile, @media (width >= 1024px) = desktop
+   - Closed mobile: white bg, rust 7px bottom border, green hamburger
+   - Open mobile: rust sections (top), white utility (bottom)
+   - Desktop: utility bar (white, top), logo row (white), rust nav row
+──────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════
+   BASE — MOBILE (all viewports, including mobile)
+═══════════════════════════════════════════ */
+
+/* Header wrapper — white bg, rust 7px bottom border (live: border-bottom: 7px solid #c23802) */
+header.header-wrapper {
+  background-color: var(--background-color);
+  border-bottom: var(--spacing-07) solid var(--color-background-footer);
+}
+
+/* Nav wrapper — white, flex column so utility can be ordered below nav on mobile */
+header .nav-wrapper {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+header:has(.nav-utility ul) {
+  height: auto;
+}
+
+/* Nav */
+header nav {
+  color: var(--color-brand-primary);
+  grid-template:
+    'brand hamburger' var(--nav-height-mobile)
+    'sections sections' auto
+    'tools tools' auto
+    'search search' auto / 1fr auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo */
+header nav .nav-brand {
+  padding-left: var(--spacing-20);
+}
+
+header nav .nav-brand img {
+  height: auto;
+  max-width: unset;
+  width: var(--header-logo-width);
+}
+
+/* ── Hamburger — green bars (live: background: #76bd22; height: 4px; width: 40px) ── */
+header nav .nav-hamburger button::before {
+  display: none;
+}
+
+header nav .nav-hamburger button > span {
+  background: var(--color-green-flash);
+  height: var(--spacing-04);
+  transform: none;
+  transform-origin: var(--spacing-08) var(--spacing-03);
+  width: var(--spacing-40);
+}
+
+header nav .nav-hamburger button > span:last-child {
+  transform: translateX(0);
+}
+
+/* ── Hamburger open state — rust tab behind button ── */
+header:has(nav[aria-expanded='true']) .nav-hamburger button::before,
+header:has(nav[aria-expanded='true']) .nav-hamburger button::after {
+  background: var(--color-background-footer);
+  content: "";
+  display: block;
+  height: var(--header-hamburger-tab-height);
+  position: absolute;
+  right: calc(-1 * var(--spacing-20));
+  top: calc(-1 * var(--spacing-15));
+  width: var(--spacing-80);
+  z-index: var(--z-index-0);
+}
+
+header:has(nav[aria-expanded='true']) .nav-hamburger button::after {
+  background: transparent;
+  border-bottom: var(--separator-height-1) solid var(--color-background-footer);
+  border-right: var(--header-hamburger-triangle-width) solid var(--color-background-footer);
+  border-top: var(--header-hamburger-tab-height) solid transparent;
+  right: var(--header-hamburger-triangle-offset);
+}
+
+.nav-tools .nav-cta-group .nav-cta-primary {
+  background: transparent;
+  border: var(--spacing-02) solid var(--color-border-grey);
+  border-radius: 0;
+  box-shadow: var(--shadow-green-glow);
+  color: var(--color-black);
+  font-size: var(--font-size-18);
+  font-style: normal;
+  font-weight: var(--font-weight-600);
+  line-height: var(--header-cta-line-height);
+  padding: var(--spacing-08) var(--spacing-16) var(--spacing-08) var(--spacing-15);
+  text-decoration: none;
+}
+
+.nav-tools .nav-cta-group .nav-cta-primary:hover {
+  background: var(--color-black);
+  color: var(--color-green-bright);
+}
+
+/* ── Eyebrow bar — lower spec than utility menubar a, must precede it ── */
+header .nav-eyebrow-top {
+  background-color: var(--color-eyebrow-bg);
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-body-small);
+  line-height: var(--header-eyebrow-line-height);
+  padding: var(--spacing-08) var(--spacing-24);
+  text-align: center;
+}
+
+header .nav-eyebrow-top a {
+  color: var(--color-text-on-dark);
+  font-weight: var(--font-weight-heading);
+  text-decoration: underline;
+}
+
+/* ── Utility bar — lower-specificity selectors before higher-specificity ones ── */
+
+/* Position utility below nav on mobile via flex order */
+header .nav-utility {
+  order: var(--order-2);
+}
+
+header .nav-utility:has(ul) {
+  background-color: transparent;
+}
+
+/* Separator between utility items */
+header .nav-utility li + li::before {
+  color: var(--color-brand-primary);
+  content: '›';
+  font-size: var(--font-size-body);
+  opacity: var(--opacity-muted);
+  padding: 0 var(--spacing-04);
+}
+
+/* Utility text (lower spec — must precede the menubar selector below) */
+header .nav-utility a,
+header .nav-utility a.button {
+  background: none;
+  border: none;
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-500);
+  text-decoration: none;
+}
+
+header .nav-utility button {
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-500);
+}
+
+/* Utility menubar alignment */
+header .nav-utility ul[role="menubar"] {
+  justify-content: flex-end;
+}
+
+/* Utility menubar link/button (higher spec — must follow lower-spec above) */
+header .nav-utility ul[role="menubar"] > li > a,
+header .nav-utility ul[role="menubar"] > li > button {
+  color: var(--color-brand-primary);
+  font-style: normal;
+  font-weight: var(--font-weight-500);
+  padding: var(--spacing-08) var(--spacing-04);
+  text-decoration: underline;
+}
+
+header .nav-utility ul[role="menubar"] > li:hover > a,
+header .nav-utility ul[role="menubar"] > li:hover > button {
+  text-decoration: underline;
+}
+
+/* "Request a Rep" — outlined on mobile, filled on desktop (overridden in MQ) */
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-utility a.nav-utility-cta {
+  background-color: transparent;
+  border: var(--separator-height-1) solid var(--color-brand-primary);
+  border-radius: var(--border-radius-base);
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-600);
+  line-height: var(--header-cta-line-height);
+  padding: var(--spacing-04) var(--spacing-15);
+  text-decoration: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-utility a.nav-utility-cta:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  opacity: var(--opacity-full);
+  text-decoration: none;
+}
+
+/* ── Submenus — white bg, dark navy text ── */
+
+/* nav-item-level-0 — lower spec than utility menubar hover; disable suppresses false positives */
+/* stylelint-disable no-descending-specificity */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+  background: var(--background-color);
+  color: var(--color-brand-primary);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button {
+  padding: var(--spacing-12) 0;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::before {
+  color: var(--color-text-on-dark);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li:not(:has(.submenu-level-1 .navigation-group)) > button::before {
+  display: none;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded="false"] .submenu-level-1 {
+  display: none;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li[aria-expanded="true"] .submenu-level-1 {
+  display: block;
+}
+/* stylelint-enable no-descending-specificity */
+
+header nav .nav-item-level-0 ul.navigation-group {
+  padding: 0;
+}
+
+/* Nav sections ul height */
+header nav .nav-sections .default-content-wrapper > ul {
+  height: auto;
+}
+
+/* Nav separator lines — lower spec: must precede :has() open-state block below */
+header nav .nav-sections .default-content-wrapper > ul > li {
+  border: none;
+  padding: var(--spacing-15) 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(1) {
+  border: none;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(2) {
+  margin-bottom: auto;
+}
+
+header nav.second-level-active .nav-brand {
+  display: flex;
+}
+
+/* ── Mobile utility clone — inside nav-sections for hamburger display ── */
+header .nav-sections .nav-utility-mobile {
+  display: none;
+}
+
+/* Open state — utility clone visible (higher spec due to :has — must follow lower-spec rules above) */
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile {
+  background-color: var(--background-color);
+  display: block;
+  height: auto;
+  line-height: normal;
+  margin: 0 calc(-1 * var(--spacing-20));
+  padding: 0 var(--spacing-20);
+}
+
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile nav {
+  flex-direction: column;
+  height: auto;
+  justify-content: flex-start;
+}
+
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile ul[role="menubar"] {
+  align-items: flex-start;
+  flex-direction: column;
+  height: auto;
+}
+
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile ul[role="menubar"] > li {
+  border-bottom: none;
+  height: auto;
+  padding: var(--spacing-20) 0;
+  width: 100%;
+}
+
+/* Hide › separators on mobile (items are stacked vertically) */
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile ul[role="menubar"] > li + li::before {
+  content: none;
+}
+
+/* ── Nav sections — rust/orange bg, white text ── */
+header nav .nav-sections {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-on-dark);
+}
+
+/* Mobile open state */
+header nav[aria-expanded='true'] {
+  background-color: var(--background-color);
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-on-dark);
+  height: auto;
+  overflow: visible;
+  padding: 0 var(--spacing-20);
+  position: static;
+  top: var(--spacing-70);
+}
+
+/* ── Home icon — flex align + size ── */
+header nav .nav-sections .default-content-wrapper > ul > li.nav-home-item > a {
+  align-items: center;
+  color: var(--color-text-on-dark);
+  display: flex;
+  padding: var(--spacing-12) 0;
+  text-decoration: none;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li.nav-home-item > a svg {
+  fill: var(--color-text-on-dark);
+  height: var(--spacing-20);
+  width: var(--spacing-20);
+}
+
+/* Nav section item text — white, semi-bold */
+header .nav-wrapper nav .nav-sections .default-content-wrapper > ul > li > button {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-600);
+  letter-spacing: 0;
+  padding: 0;
+  text-transform: none;
+}
+
+/* ── Hover/active — lower specificity before higher specificity ── */
+header nav .nav-item-level-0 .default-content-wrapper ul li button:hover,
+header nav .nav-item-level-0 .default-content-wrapper ul li a:hover,
+header nav .nav-item-level-0 .default-content-wrapper ul li button.active {
+  font-family: inherit;
+  font-weight: var(--font-weight-400);
+}
+
+/* Leaf nav item (no submenu — rendered as <a>) */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
+  color: var(--color-text-on-dark);
+  font-family: inherit;
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-600);
+  line-height: var(--line-height-40);
+  opacity: 1;
+}
+
+/* Nav sections hover/focus — white text at full opacity */
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > button:hover,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a:hover,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a:focus,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a:focus-visible,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link:hover,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link:focus,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link:focus-visible {
+  color: var(--color-text-on-dark);
+  font-family: inherit;
+  font-weight: var(--font-weight-600);
+  opacity: 1;
+}
+
+/* Hover underline */
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > a:hover::after,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after {
+  background: var(--color-text-on-dark);
+  bottom: 0;
+  box-shadow: var(--header-nav-hover-shadow);
+  content: "";
+  height: var(--spacing-02);
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+  height: auto;
+  margin-left: 0;
+  position: static;
+  width: 100%;
+}
+
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li {
+  padding: var(--spacing-10);
+}
+
+/* Lower-spec link color before higher-spec hover override */
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 a {
+  color: var(--color-brand-primary);
+  font-size: var(--font-size-18);
+  font-style: normal;
+  font-weight: var(--font-weight-600);
+  padding: 0;
+}
+
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li:hover a {
+  color: var(--color-brand-primary);
+  padding: 0;
+}
+
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li:hover,
+header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 li:hover a {
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* Utility clone link/button — bold, no underline (kept at original position after nav-sections rules) */
+/* stylelint-disable no-descending-specificity */
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile ul[role="menubar"] > li > a,
+header:has(nav[aria-expanded='true']) .nav-sections .nav-utility-mobile ul[role="menubar"] > li > button {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-40);
+  padding: 0;
+  text-decoration: none;
+}
+/* stylelint-enable no-descending-specificity */
+
+/* Search — mobile: always visible */
+header nav .nav-search {
+  background: var(--color-background-footer);
+  display: block;
+  grid-area: search;
+  padding: var(--spacing-20);
+  width: 100%;
+}
+
+header nav .nav-search .search-toggle {
+  display: none;
+}
+
+/* display: block wins over the initial flex value — merged from two original blocks */
+header nav .nav-search .search-expanded[hidden] {
+  align-items: center;
+  display: block;
+  gap: var(--spacing-08);
+  width: 100%;
+}
+
+header nav .nav-search .search-inner-wrapper input[type="search"] {
+  background: transparent;
+  border: var(--spacing-02) solid var(--color-white);
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+  font-style: normal;
+  font-weight: var(--font-weight-400);
+  padding: var(--spacing-08) var(--spacing-48) var(--spacing-08) var(--spacing-08);
+}
+
+header nav .nav-search .search-inner-wrapper > span.icon-search {
+  top: var(--spacing-08);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-search .search-inner-wrapper > span.icon-search svg {
+  fill: var(--color-white);
+  stroke: var(--color-white);
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+header nav .nav-search .search-inner-wrapper input[type="search"]::placeholder {
+  color: var(--color-white);
+}
+
+.nav-tools.nav-item-level-0 .default-content-wrapper .nav-cta-item {
+  display: block;
+  width: 100%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.nav-tools.nav-item-level-0 .default-content-wrapper .nav-cta-item a {
+  margin: 0;
+  width: 100%;
+}
+
+header nav[aria-expanded="false"] .nav-search .search-expanded[hidden],
+header nav[aria-expanded="false"] .nav-search,
+header nav[aria-expanded="false"] .nav-tools.nav-item-level-0 {
+  display: none;
+}
+
+header nav .nav-tools {
+  background: var(--background-color);
+  display: block;
+  padding: var(--spacing-20);
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════
+   DESKTOP (width >= 1024px)
+══════════════════════════════════════════════════ */
+
+@media (width >= 1024px) {
+  /* Remove mobile border — desktop has no bottom border on header */
+  header.header-wrapper { border-bottom: none; }
+
+  /* Restore nav-wrapper to block (removes mobile flex column) */
+  header .nav-wrapper { display: block; }
+
+  header .nav-utility {
+    /* Restore utility order — sits above nav in block flow */
+    order: var(--order-0);
+  }
+
+  header .nav-utility nav {
+    display: flex;
+    justify-content: flex-end;
+    max-width: var(--content-max-width, 1440px);
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  /* "Request a Rep" — rust-filled on desktop */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-utility a.nav-utility-cta {
+    background-color: var(--color-background-footer);
+    border-color: var(--color-background-footer);
+    color: var(--color-text-on-dark);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-600);
+    padding: var(--spacing-04) var(--spacing-15);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-utility a.nav-utility-cta:hover {
+    opacity: var(--opacity-hover);
+  }
+
+  /* Utility bar width constraint */
+  header .nav-utility:has(ul) {
+    margin: 0 auto;
+    max-width: var(--header-content-max-width);
+    width: calc(100% - var(--spacing-40));
+  }
+
+  /* 2-row nav grid: logo row (white) + sections row (rust, full-width) */
+  header .nav-wrapper > nav {
+    display: grid;
+    gap: var(--spacing-25);
+    grid-template:
+      'brand tools hamburger' auto
+      'sections sections sections' auto
+      / 1fr auto auto;
+    height: auto;
+    margin: 0 auto;
+    max-width: var(--header-content-max-width);
+    padding: var(--header-logo-row-padding-top) 0 var(--spacing-18);
+    position: relative;
+    width: calc(100% - var(--spacing-40));
+  }
+
+  /* Logo row padding */
+  header nav .nav-brand {
+    margin: 0 auto;
+    max-width: var(--header-content-max-width);
+    padding: 0;
+    width: calc(100% - var(--spacing-40));
+  }
+
+  /* Orange nav bar — full-width sections row */
+  header .nav-wrapper nav .nav-sections {
+    align-items: center;
+    background: var(--color-background-footer);
+    color: var(--color-text-on-dark);
+    display: flex;
+    height: auto;
+    margin-left: 0;
+    min-height: auto;
+    opacity: 1;
+    overflow: visible;
+    padding: 0 var(--spacing-35);
+    visibility: visible;
+    width: 100%;
+    z-index: var(--z-index-60);
+  }
+
+  header .nav-wrapper nav .nav-sections::before {
+    background-color: var(--color-background-footer);
+    content: '';
+    height: var(--header-sections-bg-height);
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: var(--gap-24);
+    justify-content: flex-start;
+    padding-right: calc(var(--nav-search-input-min-width) + var(--spacing-35) + var(--spacing-16));
+  }
+
+  /* Compact nav button sizing + submenu desktop layout */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > a.nav-item-link {
+    line-height: var(--header-nav-line-height);
+    padding: var(--spacing-10) 0;
+  }
+
+  /* Chevron for desktop dropdown items only */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li:has(.submenu-level-1 .navigation-group) > button {
+    align-items: center;
+    display: inline-flex;
+    gap: var(--spacing-06);
+    padding: var(--spacing-10) 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li:has(.submenu-level-1 .navigation-group) > button::before {
+    background-color: currentcolor;
+    content: "";
+    display: inline-block;
+    flex-shrink: 0;
+    height: var(--spacing-12);
+    mask: var(--icon-svg-chevron-down) no-repeat center / contain;
+    order: var(--order-1);
+    width: var(--spacing-12);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    min-height: auto;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-wrapper {
+    background: var(--background-color);
+    border-radius: 0;
+    display: block;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: var(--spacing-20);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-left {
+    display: block;
+    grid-column: auto;
+    margin: 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-card {
+    display: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    grid-template-columns: unset;
+    padding: 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li {
+    margin-bottom: var(--spacing-04);
+    overflow: visible;
+    position: relative;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-level-2:not(:last-child) {
+    margin-bottom: var(--spacing-04);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group .navigation-item-level-2 .navigation-item-link {
+    color: var(--color-brand-primary);
+    display: block;
+    font-size: var(--font-size-body-small);
+    font-weight: var(--font-weight-body);
+    line-height: var(--line-height-20);
+    text-decoration: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group .navigation-item-level-2 .navigation-item-link:hover {
+    color: var(--color-brand-accent);
+    text-decoration: underline;
+  }
+
+  header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    position: absolute;
+    width: var(--header-submenu-width);
+  }
+
+  /* stylelint-disable no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li { padding: 0; }
+
+  /* Home icon nav item */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-home-item > a {
+    align-items: center;
+    color: var(--color-text-on-dark);
+    display: flex;
+    padding: var(--spacing-10) 0;
+    text-decoration: none;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-home-item > a svg {
+    fill: var(--color-text-on-dark);
+    height: var(--spacing-20);
+    width: var(--spacing-20);
+  }
+
+  /* Active/hovered nav button */
+  header nav .nav-sections .default-content-wrapper > ul > li > button:hover,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button {
+    color: var(--color-text-on-dark);
+    opacity: var(--opacity-hover);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > button:hover::after,
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button::after {
+    background: var(--color-text-on-dark);
+  }
+  /* stylelint-enable no-descending-specificity */
+
+  /* Mobile utility clone — always hidden on desktop */
+  header .nav-sections .nav-utility-mobile { display: none !important; }
+
+  /* Scroll behavior */
+  header.hide-nav .nav-wrapper {
+    background: var(--header-scroll-bg);
+  }
+
+  header.hide-nav .nav-wrapper:hover {
+    background: var(--background-color);
+  }
+
+  header nav .nav-search {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    grid-area: sections;
+    padding: 0;
+    position: absolute;
+    right: var(--spacing-35);
+    top: 0;
+    width: auto;
+    z-index: var(--header-search-z-index);
+  }
+
+  header nav .nav-search .search-toggle {
+    display: none;
+  }
+
+  header nav[aria-expanded="false"] .nav-search {
+    display: flex;
+  }
+
+  header nav[aria-expanded="false"] .nav-search .search-expanded[hidden] {
+    display: flex;
+  }
+
+  header nav[aria-expanded="false"] .nav-tools.nav-item-level-0 {
+    display: flex;
+  }
+
+  header nav .nav-tools { padding: 0; }
+}
+
+@media (width >= 1440px) {
+  header nav .nav-sections .default-content-wrapper > ul {
+    gap: var(--gap-24) !important;
+  }
+}

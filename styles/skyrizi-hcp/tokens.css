@@ -1,0 +1,526 @@
+@import "../tokens.css";
+
+/* ============================================================
+   SKYRIZI HCP — Brand Token Overrides
+   Source: skyrizihcp.com/dermatology (Platform C)
+   Font: Univers LT W01_57 Condensed
+   ============================================================ */
+
+:root {
+    /* ---- Color: Brand Primary ---- */
+    --color-brand-primary: #005272;
+    --color-brand-primary-dark: #003b52;
+    --color-brand-primary-light: #e8edef;
+
+    /* ---- Color: Brand Accent ---- */
+    --color-brand-accent: #ffce00;
+    --color-brand-accent-teal: #008481;
+    --color-brand-accent-blue: #3860be;
+
+    /* ---- Color: Text ---- */
+    --text-color: #404040;
+    --color-text-heading: #005272;
+    --color-text-on-dark: #fff;
+    --color-text-muted: #696969;
+    --color-text-legal: #555;
+    --color-text-black: #071d49;
+    /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+    --color-text-footer: #e2e4e3;
+
+    /* ---- Color: Background ---- */
+    --background-color: #fff;
+    --color-background-light: #f8f8f8;
+    --color-background-tint: #e8edef;
+    --color-background-footer: #071d49;
+    --color-background-blue: #d3f3ff;
+
+    /* ---- Color: Nav ---- */
+    --color-nav-active: #1ba2da;
+    --color-nav-separator: rgb(255 255 255 / 30%);
+    --color-nav-dropdown-bg: #ccc;
+
+    /* ---- Color: Border ---- */
+    --color-border-default: #ccc;
+    --color-border-muted: #b3b3b3;
+    --color-border-dark: #555;
+
+    /* ---- Color: Overlay ---- */
+    --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+    /* ---- Color: ISI / Safety ---- */
+    --color-safety-bar-bg: #fff;
+    --color-safety-bar-border: #999;
+
+    /* ---- Font: Family ---- */
+    --body-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+    --heading-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+    --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+    --icon-font-family: 'abbv-iconFont';
+
+    /* ---- Font: Size ---- */
+    --font-size-body: 16px;
+    --font-size-body-small: 14.4px;
+    --font-size-body-xs: 13px;
+    --font-size-legal: 12.992px;
+    --font-size-nav: 14px;
+    --font-size-footer: 14px;
+    --letter-spacing-nav: 0.04em;
+    --font-size-h1: 32px;
+    --font-size-h1-hero: 25px;
+    --font-size-h2: 24px;
+    --font-size-h3: 18.72px;
+    --font-size-h4: 16px;
+    --font-size-h-xl: 35.2px;
+    --font-size-button: 17.6px;
+    --font-size-button-tertiary: 18px;
+    --font-size-eyebrow: 11px;
+
+    /* ---- Font: Weight ---- */
+    --font-weight-body: 400;
+    --font-weight-medium: 500;
+    --font-weight-heading: 700;
+
+    /* ---- Font: Line Height ---- */
+    --line-height-body: normal;
+    --line-height-nav: 22px;
+    --line-height-h1-hero: 24.992px;
+    --line-height-h2: 35px;
+    --line-height-legal: 19.488px;
+
+    /* ---- Border: Radius ---- */
+    --border-radius-button-primary: 30px;
+    --border-radius-button-secondary: 30px;
+    --border-radius-button-tertiary: 10px;
+    --border-radius-nav: 10px;
+    --border-radius-safety-bar: 5px;
+
+    /* ---- Button: Primary ---- */
+    --button-primary-bg: #071d49;
+    --button-primary-color: #fff;
+    --button-primary-border: transparent;
+    --button-primary-padding: 14px 60px 14px 30px;
+    --button-primary-font-size: 0.875rem;
+    --button-primary-font-weight: 400;
+    --button-primary-hover-bg: #1f448c;
+    --button-primary-hover-color: #fff;
+    --button-primary-hover-border: #1f448c;
+
+    /* ---- Button: Secondary ---- */
+    --button-secondary-bg: transparent;
+    --button-secondary-color: #071d49;
+    --button-secondary-border: #071d49;
+    --button-secondary-padding: 14px 30px;
+    --button-secondary-hover-bg: #1f448c;
+    --button-secondary-hover-color: #fff;
+    --button-secondary-hover-border: #1f448c;
+
+    /* ---- Button: Tertiary ---- */
+    --button-tertiary-bg: transparent;
+    --button-tertiary-color: #071d49;
+    --button-tertiary-border: #071d49;
+    --button-tertiary-padding: 14px 30px;
+    --button-tertiary-font-size: 18px;
+    --button-tertiary-hover-bg: #071d49;
+    --button-tertiary-hover-color: #fff;
+
+    /* ---- Button: Plain ---- */
+    --button-plain-color: #1ba2da;
+    --button-plain-weight: 700;
+    --button-plain-hover-color: #fff;
+
+    /* ---- Toggle ---- */
+    --toggle-bg-off: #b3b3b3;
+    --toggle-bg-on: #071d49;
+    --toggle-thumb-color: #fff;
+
+    /* ---- Link ---- */
+    --link-color: #005272;
+
+    /* ---- Gradient ---- */
+    --gradient-hero-landing: linear-gradient(to right, var(--color-background-footer) 0%, rgb(0 59 82 / 30%) 100%);
+  --gradient-hero-full: linear-gradient(to right, var(--color-background-footer) 0%, rgb(0 82 114 / 25%) 60%, transparent 100%);
+  --gradient-fade: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0) 0px,
+        rgb(243, 243, 243) 100%
+    );
+
+    /* ---- Brand Explorer Block ---- */
+    --be-color-text: #21406d;
+    --be-color-text-light: #21406d;
+    --be-color-bar-bg: #25282a;
+    --be-color-rinvoq: #ffd41d;
+    --be-color-rinvoq-hover: #b8860b;
+    --be-color-skyrizi: #00a8e1;
+    --be-color-skyrizi-hover: #0088b5;
+    --be-color-humira: #931947;
+    --be-font-body: "Univers LT W01_57 Condensed", sans-serif;
+    --be-font-heading: "Univers LT W01_57 Condensed", sans-serif;
+
+    /* ---- Formulary Lookup ---- */
+    --color-formulary-text: #21406d;
+    --color-formulary-heading: #21406d;
+    --color-formulary-label: #21406d;
+    --color-formulary-submit-bg: #071d49;
+    --color-formulary-submit-border: #071d49;
+    --color-border-input: #c2c2c2;
+    --color-error: #eb3c36;
+
+    /* Formulary: Layout */
+    --formulary-form-width: 600px;
+    --formulary-input-width: 600px;
+
+    /* Formulary: Heading */
+    --formulary-heading-size: 16px;
+    --formulary-heading-weight: 400;
+    --formulary-heading-spacing: 16px;
+    --formulary-heading-line-height: 20px;
+
+    /* Formulary: Input/Select */
+    --formulary-input-height: 44px;
+    --formulary-input-radius: 2px;
+    --formulary-input-size: 14px;
+    --formulary-input-padding: 12px 15px;
+
+    /* Formulary: Label */
+    --formulary-label-size: 16px;
+    --formulary-label-weight: 400;
+
+    /* Formulary: Submit */
+    --formulary-submit-size: 14px;
+    --formulary-submit-weight: 700;
+    --formulary-submit-radius: 30px;
+    --formulary-submit-height: 44px;
+    --formulary-submit-padding: 14px 50px 14px 30px;
+    --formulary-submit-icon-offset: 20px;
+
+    /* Formulary: Results */
+    --formulary-results-radius: 4px;
+    --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+    /* Formulary: Input Group */
+    --formulary-input-group-gap: 8px;
+    --formulary-zip-min-width: 200px;
+
+    /* Formulary: Disclaimer/Notice */
+    --formulary-disclaimer-size: 13px;
+    --formulary-disclaimer-width: 700px;
+    --formulary-recaptcha-size: 11px;
+
+    /* ---- Spacing: Common ---- */
+    --spacing-8: 8px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+
+    /* ---- Clinical Data Panel Block ---- */
+    --cdp-color-text: #21406d;
+    --cdp-color-heading: #21406d;
+    --cdp-color-accent: #1ba2da;
+    --cdp-color-muted: #50535c;
+    --cdp-color-cta: #071d49;
+    --cdp-font-body: var(--body-font-family);
+    --cdp-font-heading: var(--heading-font-family);
+    --cdp-font-size-title: 22px;
+    --cdp-font-size-callout: 26px;
+    --cdp-font-size-body: 14px;
+    --cdp-font-size-small: 12.8px;
+    --cdp-line-height-callout: 30px;
+    --cdp-line-height-body: 18px;
+    --cdp-line-height-default: 16px;
+    --formulary-recaptcha-size: 11px;   
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffce00;
+  --color-brand-accent-teal: #008481;
+  --color-brand-accent-blue: #3860be;
+  --color-brand-accent-navy: #004c97;
+  --color-brand-accent-sky: #00a3df;
+  --color-brand-accent-cyan: #1ba2da;
+
+  /* ---- Color: Tabs ---- */
+  --color-tabs-control-bg: #21406d;
+  --color-tabs-underline: #1ba2da;
+  --color-tabs-text: #191c1d;
+  --tabs-underline-height: 0.23rem;
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-text: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Gradient: Tabs ---- */
+  --gradient-tabs-panel: linear-gradient(90deg, #00a3df 0%, #85bde6 74%, #c3ae93 78%, #f39200 88%);
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-control: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Color: Text ---- */
+  --text-color: #404040;
+  --color-text-heading: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #696969;
+  --color-text-legal: #555;
+  --color-text-black: #071d49;
+  /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+  --color-text-footer: #e2e4e3;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f8f8f8;
+  --color-background-tint: #e8edef;
+  --color-background-footer: #071d49;
+  --color-background-blue: #d3f3ff;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #ccc;
+  --color-border-muted: #b3b3b3;
+  --color-border-dark: #555;
+
+  /* ---- Color: Overlay ---- */
+  --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+  /* ---- Color: ISI / Safety ---- */
+  --color-safety-bar-bg: #fff;
+  --color-safety-bar-border: #999;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 14.4px;
+  --font-size-body-xs: 13px;
+  --font-size-legal: 12.992px;
+  --font-size-nav: 14px;
+  --font-size-footer: 14px;
+  --font-size-h1: 32px;
+  --font-size-h1-hero: 25px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18.72px;
+  --font-size-h4: 16px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 17.6px;
+  --font-size-button-tertiary: 18px;
+  --font-size-eyebrow: 11px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-medium: 500;
+  --font-weight-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: normal;
+  --line-height-nav: 22px;
+  --line-height-h1-hero: 24.992px;
+  --line-height-h2: 35px;
+  --line-height-legal: 19.488px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 6px;
+  --border-radius-button-tertiary: 10px;
+  --border-radius-nav: 10px;
+  --border-radius-safety-bar: 5px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #000;
+  --button-primary-bg: #ffce00;
+  --button-primary-border: #fff;
+  --button-primary-padding: 20px 42px 20px 20px;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-color: #005272;
+  --button-tertiary-bg: transparent;
+  --button-tertiary-border: #555;
+  --button-tertiary-padding: 16px 70px 16px 24px;
+
+  /* ---- Link ---- */
+  --link-color: #005272;
+
+  /* ---- Gradient ---- */
+  --gradient-fade: linear-gradient(to top, rgba(255, 255, 255, 0) 0px, rgb(243, 243, 243) 100%);
+
+  /* ---- Spacing: Common ---- */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  /* ---- Brand Explorer Block ---- */
+  --font-family-medium: 'Univers Regular', 'Arial Narrow', sans-serif;
+  --font-family-semibold: 'Univers Regular', 'Arial Narrow', sans-serif;
+  --font-size-09: 0.9rem;
+  --be-color-text: #21406d;
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-bar-font-family: 'Univers Regular', 'Arial Narrow', sans-serif;
+  --be-bar-font-weight: 400;
+  --be-bar-font-size: 0.9rem;
+  --be-bar-line-height: 1.6rem;
+  --be-font-body: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --be-font-heading: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+
+  /* ---- Clinical Data Panel Block ---- */
+  --cdp-color-text: #21406d;
+  --cdp-color-heading: #21406d;
+  --cdp-color-accent: #1ba2da;
+  --cdp-color-muted: #50535c;
+  --cdp-color-cta: #071d49;
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: 22px;
+  --cdp-font-size-callout: 26px;
+  --cdp-font-size-body: 14px;
+  --cdp-font-size-small: 12.8px;
+  --cdp-line-height-callout: 30px;
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: 16px;
+
+  /* ---- Formulary Lookup ---- */
+  --color-formulary-text: #21406d;
+  --color-formulary-heading: #21406d;
+  --color-formulary-label: #21406d;
+  --color-formulary-submit-bg: #071d49;
+  --color-formulary-submit-border: #071d49;
+  --color-border-input: #c2c2c2;
+  --color-error: #eb3c36;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 600px;
+  --formulary-input-width: 600px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 16px;
+  --formulary-heading-weight: 400;
+  --formulary-heading-spacing: 16px;
+  --formulary-heading-line-height: 20px;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 44px;
+  --formulary-input-radius: 2px;
+  --formulary-input-size: 14px;
+  --formulary-input-padding: 12px 15px;
+
+  /* Formulary: Label */
+  --formulary-label-size: 16px;
+  --formulary-label-weight: 400;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 14px;
+  --formulary-submit-weight: 700;
+  --formulary-submit-radius: 30px;
+  --formulary-submit-height: 44px;
+  --formulary-submit-padding: 14px 50px 14px 30px;
+  --formulary-submit-icon-offset: 20px;
+
+  /* Formulary: Results */
+  --formulary-results-radius: 4px;
+  --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+  /* Formulary: Input Group */
+  --formulary-input-group-gap: 8px;
+  --formulary-zip-min-width: 200px;
+
+  /* Formulary: Disclaimer/Notice */
+  --formulary-disclaimer-size: 13px;
+  --formulary-disclaimer-width: 700px;
+  --formulary-recaptcha-size: 11px;
+
+  /* ---- Header block ---- */
+  --header-logo-width: 15.7rem;
+  --header-logo-width-mobile: 13rem;
+  --header-logo-max-height-mobile: 5rem;
+  --nav-height-mobile: var(--header-brand-row-height);
+  --header-content-max-width: 118rem;
+  --header-submenu-width: 22rem;
+  --color-skyrizi-navy: var(--color-background-footer);
+  --header-nav-sections-z-index: 9;
+  --header-mobile-nav-separator: rgb(0 0 0 / 20%);
+  --header-search-panel-top: var(--spacing-full);
+  --header-search-panel-left: 65%;
+  --header-search-panel-min-height: 6.2rem;
+  --header-search-panel-radius: 0.5rem;
+  --header-search-input-min-width: 28rem;
+  --header-nav-line-height: 1;
+  --header-nav-separator: rgb(255 255 255 / 20%);
+  --header-scroll-bg: rgb(255 255 255 / 95%);
+  --header-nav-blue: rgb(0 118 175);
+  --color-nav-gradient-start: #00a6db;
+  --color-nav-gradient-end: #c9effc;
+  --header-mobile-nav-gradient: linear-gradient(180deg, var(--color-nav-gradient-start), var(--color-nav-gradient-end));
+  --header-hamburger-letter-spacing: 0.05rem;
+  --header-utility-letter-spacing: 0.1em;
+  --header-nav-underline-bottom: calc(var(--spacing-09) * -1);
+  --header-brand-row-height: 8rem;
+  --header-brand-col-width: calc(var(--header-logo-width) + var(--spacing-12));
+  --header-search-panel-width: 28rem;
+  --header-search-panel-border: 0.3rem solid var(--color-text-black);
+  --header-utility-dropdown-border-color: var(--color-brand-accent-blue);
+  --header-utility-dropdown-border-width: 0.2rem;
+  --header-utility-dropdown-radius: var(--border-radius-m);
+  --header-utility-dropdown-min-width: 28rem;
+  --header-utility-dropdown-notch-outer: 0.9rem;
+  --header-utility-dropdown-notch-inner: 0.7rem;
+  --header-utility-dropdown-divider: rgb(210 225 240);
+  --header-utility-dropdown-item-padding: var(--spacing-20) var(--spacing-16);
+  --color-background-page: #1ba2da;
+  --header-nav-gap: var(--spacing-30);
+  --header-nav-underline-width: 80%;
+  --header-chevron-size: var(--spacing-16);
+  --header-submenu-width-mega: 55rem;
+  --header-wrapper-max-width: 122rem;
+  --color-nav-submenu-hover-bg: #baecff;
+  --header-flyout-box-shadow: 0 var(--spacing-03) var(--spacing-10) 0 rgb(0 0 0 / 15%);
+  /* ---- Skyrizi HCP: Image Compare ---- */
+  --color-skyrizi-navy-dark: #051331;
+  --color-skyrizi-blue: #1398d1;
+  --color-skyrizi-blue-rule: #1ba2da;
+  --color-skyrizi-blue-hover: #1f448c;
+  --color-skyrizi-body-color: #21406d;
+  --color-skyrizi-gallery-bg: #d1f1fc;
+  --color-skyrizi-accent-border: #f7941d;
+  --color-skyrizi-thumb-strip: #add8e6;
+  --font-skyrizi-condensed: "Univers LT W01_57 Condensed", "Arial Narrow", sans-serif;
+  --font-skyrizi-bold: "Univers LT W01_67 Bold_1476016", "Arial Narrow", sans-serif;
+
+  /* ---- Section Nav ---- */
+  --shadow-section-nav-stuck: 0 2px 12px rgb(0 0 0 / 30%);
+  /* ---- Hero: layout ---- */
+  --hero-img-min-height: 500px;
+  --hero-text-top-offset: 155px;
+  --hero-video-min-height: 450px;
+
+  /* ---- Hero: h1 banner (navy box with teal right-border) ---- */
+  --hero-h1-bg: #091d49;
+  --hero-h1-border-right-color: var(--color-skyrizi-blue);
+  --hero-h1-border-right-width: 20px;
+  --hero-h1-padding: 14px 11px 14px 65px;
+  --hero-h1-line-height: 1;
+  --hero-h1-font-size-mobile: 12px;
+  --hero-h1-font-size-tablet: 20px;
+  --hero-h1-width-tablet: 50%;
+
+  /* ---- Hero: h1 strong (large display number) ---- */
+  --hero-h1-strong-font-size-mobile: 22px;
+  --hero-h1-strong-font-size-tablet: 30px;
+
+  /* ---- Hero: h1 em strong (highlight colour) ---- */
+  --hero-h1-em-color: var(--color-background-blue);
+
+  /* ---- Breadcrumb (tab-nav variant) ---- */
+  --breadcrumb-font-size: 12px;
+  --breadcrumb-font-size-tablet: 10px;
+  --breadcrumb-height: 38px;
+  --breadcrumb-max-width: 1160px;
+  --breadcrumb-max-width-tablet: 1035px;
+  --breadcrumb-border-radius: 3px;
+  --breadcrumb-item-padding: 4px 0;
+  --breadcrumb-item-margin: 0 10px;
+  --breadcrumb-active-border-width: 2px;
+  --breadcrumb-color-text: var(--color-text-black);
+  --breadcrumb-color-active-border: var(--color-brand-accent-cyan);
+  --breadcrumb-color-bg: var(--background-color);
+}

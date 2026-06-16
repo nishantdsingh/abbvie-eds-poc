@@ -1,0 +1,44 @@
+@import '../dismiss.css';
+@import '../../../styles/rinvoq/tokens.css';
+
+/* Rinvoq — Dismiss Brand Overrides
+   White bg, heading font (Graphik Bold) at 13px, filled-circle-X close button.
+   Uses body.rinvoq specificity so brand wins regardless of CSS load order.
+*/
+
+body.rinvoq .dismiss {
+  --dismiss-color-bg: var(--background-color);
+  --dismiss-color-text: var(--color-text-heading);
+  --dismiss-close-size: var(--spacing-15);
+  --dismiss-close-border-radius: 50%;
+
+  background-color: var(--dismiss-color-bg);
+  color: var(--dismiss-color-text);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-16);
+  padding: var(--spacing-12) var(--spacing-40) var(--spacing-12) var(--spacing-24);
+}
+
+@media (--bp-desktop) {
+  body.rinvoq .dismiss {
+    line-height: var(--line-height-20);
+  }
+}
+
+body.rinvoq .dismiss-close {
+  background-color: var(--dismiss-color-text);
+  border: none;
+  border-radius: var(--dismiss-close-border-radius);
+  color: var(--color-text-on-dark);
+  height: var(--dismiss-close-size);
+  width: var(--dismiss-close-size);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+body.rinvoq .dismiss-close::before,
+body.rinvoq .dismiss-close::after {
+  width: var(--spacing-10);
+}

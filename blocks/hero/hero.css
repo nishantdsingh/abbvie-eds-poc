@@ -1,0 +1,1439 @@
+/* Hero container witdht */
+.section.abbvie-container.hero-container {
+  max-width: none;
+  width: 100%;
+  background: transparent;
+  margin: var(--spacing-00);
+}
+
+/* AbbVie Hero — White overlap panel on hero image */
+.hero-container .hero-wrapper {
+  max-width: unset;
+  padding: var(--spacing-00);
+}
+
+/* Navy-overlap hero: pull wrapper into section padding so bg image shows */
+.hero-navy {
+  padding-bottom: var(--spacing-00);
+  margin-bottom: var(--spacing-32);
+  background-color: var(--color-white);
+}
+
+.hero-navy .hero-wrapper {
+  margin: var(--spacing-n40) -3.5rem var(--spacing-00);
+  max-width: none;
+  overflow: hidden;
+}
+
+@media (width >= 744px) {
+  .hero-navy .hero-wrapper {
+    margin: -5.6rem -7rem var(--spacing-00);
+  }
+
+  .hero-navy {
+    border-top-left-radius: var(--spacing-64);
+    margin-bottom: var(--spacing-80);
+  }
+}
+
+@media (width >= 1024px) {
+  .hero-navy .hero-wrapper {
+    margin: -8rem -5.5rem 0;
+  }
+
+  .hero-navy {
+   border-top-left-radius: var(--spacing-80);
+  }
+}
+
+/* Height-tall variant — taller hero image area matching live site .height-tall */
+.height-tall .hero > :where(div):first-child {
+  min-height: var(--hero-tall-image-container-height);
+  padding: var(--spacing-00);
+}
+
+.height-tall .hero > :where(div):first-child :where(img) {
+  position: absolute;
+  inset: var(--spacing-00);
+  height: 100%;
+  width: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+
+/* Breadcrumbs inside hero text panel */
+.hero .hero-breadcrumbs {
+  margin-bottom: var(--spacing-32);
+}
+
+.hero-breadcrumbs :where(ol) {
+  display: flex;
+  flex-flow: wrap;
+  list-style: none;
+  padding: var(--spacing-00);
+  margin: var(--spacing-00);
+  gap: var(--spacing-08);
+  align-items: baseline;
+}
+
+.hero-breadcrumbs :where(ol li) {
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  line-height: var(--line-height-20);
+  text-transform: uppercase;
+  color: var(--text-color);
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Chevron separator — scaled to match text cap height and vertically centred */
+.hero-breadcrumbs :where(ol li):not(:last-child)::after {
+  content: '\203A';
+  padding-left: var(--spacing-08);
+  font-size: var(--font-size-30);
+  font-weight: var(--font-weight-700);
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.hero-breadcrumbs :where(li a) {
+  color: var(--text-color);
+  font-weight: var(--font-weight-700);
+  font-size: inherit;
+  text-decoration: none;
+}
+
+/* Current page — muted gray, no link */
+.hero-breadcrumbs :where(ol li)[aria-current] {
+  color: var(--color-gray-dark);
+  font-weight: var(--font-weight-700);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Remove gradient overlay — AbbVie uses white panel instead */
+.hero::after {
+  display: none;
+}
+
+/* Image container — natural flow, not absolute */
+.hero > div:first-child {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: var(--hero-image-container-height);
+  margin: var(--spacing-00) var(--spacing-n20);
+  padding-left: var(--spacing-55);
+  padding-right: var(--spacing-55);
+}
+
+.section-wide .hero > :where(div):first-child {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hero.no-padding > :where(div):first-child{
+  padding: var(--spacing-00);
+}
+
+.hero picture {
+  display: block;
+}
+
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top-left-radius: var(--border-top-left-radius);
+  max-height: var(--hero-image-container-height);
+}
+
+/* Text container — white overlap panel */
+.hero > div:nth-child(2) {
+ /*  display: flex;
+  flex-direction: column; */
+  background-color: var(--background-color);
+  border-top-left-radius: var(--border-top-radius-medium);
+  margin: var(--spacing-n48) var(--spacing-20) var(--spacing-00);
+  position: relative;
+  padding: var(--spacing-32) var(--spacing-20) var(--spacing-40);
+  padding-bottom: var(--spacing-00);
+  max-width: calc(100vw - var(--spacing-40));
+}
+
+/* font-weight: inherit prevents browser UA bold, defers to F37 Lineca Medium's own weight */
+.hero h1 {
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-08);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  color: var(--text-color);
+  font-family: var(--heading-font-family-bold);
+}
+
+/* Roboto Small (300 light) for all hero paragraphs */
+.hero p {
+  margin: var(--spacing-00);
+  padding-bottom: var(--spacing-16);
+}
+
+.navy-overlap .hero:where(:not(.body-unica-32-reg)) :where(p) {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-22);
+}
+
+/* Height-tall hero paragraph — larger font matching body-unica-32-reg scale
+   Uses higher specificity to override navy-overlap when both are present */
+.navy-overlap.height-tall .hero :where(p),
+.height-tall .hero p {
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-26);
+  margin-top: var(--spacing-08);
+}
+
+.hero.light-font p {
+  font-family: var(--roboto-light-font-family);
+  font-weight: var(--font-weight-300);
+}
+
+.hero a.button {
+  background: none;
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-14);
+  font-style: normal;
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  padding: var(--spacing-05) 0;
+  color: var(--highlight-dark-background-color);
+  line-height: var(--line-height-20);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: var(--spacing-16) 0 0;
+  border: 0;
+}
+
+.hero :where(a).button:hover {
+  color: var(--link-hover-color);
+  cursor: pointer;
+  background: none;
+}
+
+@media (width >= 744px) {
+  .hero > div:first-child {
+    min-height: var(--hero-image-container-height);
+    width: 100%;
+    margin: var(--spacing-00) auto;
+    padding-left: var(--spacing-70);
+    padding-right: var(--spacing-70);
+  }
+
+  .hero > div:nth-child(2) {
+    border-top-left-radius: var(--spacing-40);
+    margin: var(--spacing-n64) var(--spacing-70) var(--spacing-00);
+    padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+    max-width: calc(100vw - var(--spacing-140));
+  }
+
+  .hero > div:first-child:has(picture) {
+      padding-left: var(--spacing-70);
+      padding-right: var(--spacing-70);
+    }
+
+    .hero.no-padding > :where(div):first-child{
+      padding: var(--spacing-00);
+    }
+
+  .hero img {
+    border-top-left-radius: var(--spacing-64);
+    max-height: var(--hero-image-container-height);
+  }
+
+
+  .hero h1 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    margin-bottom: var(--spacing-16);
+  }
+
+  .navy-overlap .hero:where(:not(.body-unica-32-reg)) :where(p) {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+  }
+
+  .navy-overlap.height-tall .hero :where(p),
+  .height-tall .hero p {
+    font-size: var(--font-size-32);
+    line-height: var(--line-height-40);
+  }
+}
+
+@media (width >= 1024px) {
+    .hero > div:first-child {
+      min-height: var(--hero-image-container-height);
+      margin: var(--spacing-00) auto;
+      width: 100%;
+      padding-left: var(--spacing-55);
+      padding-right: var(--spacing-55);
+    }
+
+  .hero > div:nth-child(2) {
+    border-top-left-radius: var(--spacing-40);
+    margin: var(--spacing-n112) auto var(--spacing-00);
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+    max-width: 78%;
+  }
+
+    .hero > div:first-child:has(picture) {
+      padding-left: var(--spacing-55);
+      padding-right: var(--spacing-55);
+    }
+
+    .hero.no-padding > :where(div):first-child{
+      padding: var(--spacing-00);
+    }
+
+  .hero img {
+    border-top-left-radius: var(--spacing-80);
+    max-height: var(--hero-image-container-height);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-64);
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: var(--line-height-68);
+  }
+
+  .height-tall .hero p {
+    font-size: var(--font-size-32);
+    line-height: 4rem;
+  }
+}
+
+/* =====================================================
+   Hero Profile Variant — no hero image, navy band
+   Authoring: use block name "Hero (profile)"
+   ===================================================== */
+
+/* Section override — full-width so navy band spans edge-to-edge */
+.hero-container,
+.hero-profile-section {
+  max-width: var(--content-max-width-wide);
+  margin-bottom: var(--spacing-32);
+}
+
+/* Profile breadcrumbs — uppercase, 14px to match live site */
+.hero.profile .hero-breadcrumbs :where(ol li) {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-wide-06);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-700);
+}
+
+.profile .hero-breadcrumbs :where(ol li)[aria-current] {
+  font-weight: var(--font-weight-700);
+}
+
+/* Profile breadcrumb separator — inherits base styling */
+
+/* Navy background band replaces hero image */
+.hero.profile > :where(div):first-child {
+  background-color: var(--color-navy-dark);
+  height: var(--hero-section-height);
+  border-top-left-radius: var(--border-top-radius-medium);
+   min-height: var(--hero-profile-container-height);
+   margin: var(--spacing-00);
+}
+
+.profile.purple-overlap > :where(div):first-child {
+ background-color: var(--color-accent-purple);
+}
+
+.large-radius .hero > :where(div):first-child {
+ border-top-left-radius: var(--border-top-radius);
+}
+
+.medium-radius .hero > :where(div):first-child {
+  border-top-left-radius: var(--border-top-radius-medium);
+}
+
+.hero.profile > :where(div):first-child :where(picture),
+.hero.profile > :where(div):first-child :where(img) {
+  display: none;
+}
+
+/* White overlap card — profile spacing */
+.hero.profile > :where(div):nth-child(2) {
+  margin-top: var(--spacing-n48);
+  padding: var(--spacing-32) var(--spacing-20) var(--spacing-00);
+}
+
+/* Subtitle — Roboto Small, weight 300 (matches --roboto-small-font-family) */
+.hero.profile.light-font :where(p) {
+  font-family: var(--roboto-small-font-family);
+  font-weight: var(--font-weight-300);
+}
+
+@media (width >= 744px) {
+.hero.profile > :where(div):nth-child(2) {
+  margin-top: var(--spacing-n64);
+  padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+}
+
+.hero-profile-section {
+margin-bottom: var(--spacing-80);
+}
+}
+
+@media (width >= 1024px) {
+  .hero-profile-section {
+    margin-bottom: var(--spacing-00);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero.profile > :where(div):first-child {
+    height: var(--spacing-288);
+  }
+
+  .hero.profile > :where(div):nth-child(2) {
+    margin: var(--spacing-n112) auto -1px;
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+    width: 85%;
+    min-height: 44.8rem;
+    border-top-left-radius: var(--spacing-40);
+    max-width: 85%;
+  }
+}
+
+/* hero grid */
+.hero .hero-text-container {
+  width: 100%;
+  display: grid;
+  column-gap: var(--gap-20);
+  grid-template-columns: repeat(6, 1fr);
+  align-self: center;
+}
+
+.hero .cmp-container-x-large {
+  grid-column: 1 / span 6;
+}
+
+@media (width >= 744px) {
+.hero .hero-text-container {
+    grid-template-columns: repeat(8, 1fr);
+    min-height: var(--spacing-368);
+    }
+
+.hero .cmp-container-x-large {
+  grid-column: 1 / span 8;
+}
+}
+
+@media (width >= 1024px) {
+.hero .hero-text-container {
+    grid-template-columns: repeat(12, 1fr);
+    }
+
+.hero .cmp-container-x-large {
+  grid-column: 2 / span 10;
+}
+}
+
+/* =====================================================
+   Hero Landing Variant — full-bleed image with gradient overlay
+   Authoring: use block name "Hero (landing)"
+   Matches abbvie.com homepage hero 1:1 across breakpoints
+   ===================================================== */
+
+/* Section override — edge-to-edge, no bottom margin */
+.hero-landing-section {
+  max-width: var(--content-max-width-wide);
+  margin-left: var(--spacing-00);
+  margin-right: var(--spacing-00);
+  margin-bottom: var(--spacing-00);
+  padding: var(--spacing-00);
+}
+
+.hero-landing-section:where(:has(.fragment-wrapper)) {
+  margin-bottom: var(--spacing-32);
+}
+
+.fragment-wrapper .hero-landing-section {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.hero-landing-section .hero-wrapper {
+  margin: var(--spacing-00);
+  max-width: none;
+  overflow: hidden;
+}
+
+/* Block root — min-height for hero image area; grows with press-releases content */
+.hero.landing {
+  position: relative;
+  z-index: var(--z-index-0);
+  display: block;
+  overflow: visible;
+  min-height: var(--hero-landing-container-height);
+  border-top-left-radius: var(--border-top-left-radius);
+}
+
+/* Re-enable gradient overlay via ::after — fixed height covers image area only */
+.hero.landing::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: var(--spacing-00);
+  left: var(--spacing-00);
+  right: var(--spacing-00);
+  height: var(--hero-landing-container-height);
+  background: var(--hero-overlay-gradient);
+  z-index: var(--z-index-1);
+  pointer-events: none;
+  border-top-left-radius: var(--border-top-left-radius);
+}
+
+/* Image container — fixed height covers image area only */
+.hero.landing > :where(div):first-child {
+  position: absolute;
+  top: var(--spacing-00);
+  left: var(--spacing-00);
+  right: var(--spacing-00);
+  height: var(--hero-landing-container-height);
+  overflow: hidden;
+  min-height: var(--spacing-00);
+  margin: var(--spacing-00);
+  padding: var(--spacing-00);
+  z-index: var(--z-index-0);
+  border-top-left-radius: var(--border-top-left-radius);
+}
+
+.hero.landing picture {
+  position: absolute;
+  inset: var(--spacing-00);
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.landing img {
+  position: absolute;
+  inset: var(--spacing-00);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  display: block;
+  border-top-left-radius: var(--border-radius-00);
+  max-height: none;
+}
+
+/* Disable grid for landing — use direct padding for text offset */
+.hero.landing .hero-text-container {
+  display: block;
+  align-self: stretch;
+}
+
+/* Text container — positioned over image, text starts at padding-top */
+.hero.landing > :where(div):nth-child(2) {
+  position: relative;
+  z-index: var(--z-index-2);
+  background: none;
+  border-top-left-radius: var(--border-radius-00);
+  margin: var(--spacing-00);
+  padding: var(--spacing-88) var(--spacing-35) var(--spacing-40);
+  max-width: none;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Text colours — white on dark overlay */
+.hero.landing h1 {
+  color: var(--color-white);
+  font-size: var(--font-size-30);
+  line-height: var(--line-height-34);
+  margin-bottom: var(--spacing-16);
+}
+
+.hero.landing p {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-16);
+}
+
+/* CTA link — blue, uppercase, no background */
+.hero.landing .button-container {
+padding: var(--spacing-00);
+}
+
+.hero.landing :where(a).button {
+  color: var(--hero-button-color);
+  background: none;
+  border: var(--border-00);
+  font-family: var(--roboto-bold-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
+  letter-spacing: var(--letter-spacing-wide-06);
+  line-height: var(--line-height-20);
+  text-transform: var(--font-uppercase);
+  text-decoration: none;
+  padding: var(--spacing-00) var(--spacing-02) var(--spacing-03);
+  margin: var(--spacing-00);
+}
+
+.hero.landing :where(a.button):hover {
+  color: var(--hero-button-hover-color);
+  background: none;
+}
+
+/* Landing breadcrumbs — white text on dark overlay */
+.hero.landing .hero-breadcrumbs :where(ol li) {
+  color: var(--color-white);
+}
+
+.hero.landing .hero-breadcrumbs :where(li a) {
+  color: var(--color-white);
+}
+
+.landing .hero-breadcrumbs :where(ol li)[aria-current] {
+  color: var(--color-text-on-dark-60);
+}
+
+/* ---- Tablet (>=744px) ---- */
+@media (width >= 744px) {
+.hero-landing-section:where(:has(.fragment-wrapper)) {
+  margin-bottom: var(--spacing-80);
+}
+
+  .hero.landing {
+    border-top-left-radius: var(--border-top-left-radius-tablet);
+  }
+
+  .hero.landing::after,
+  .hero.landing > :where(div):first-child {
+    border-top-left-radius: var(--border-top-left-radius-tablet);
+  }
+
+  .hero.landing > :where(div):nth-child(2) {
+    padding: var(--spacing-192) var(--spacing-70) var(--spacing-40);
+  }
+
+  .hero.landing h1 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    margin-bottom: var(--spacing-24);
+  }
+
+  .hero.landing p {
+  margin-bottom: var(--spacing-24);
+  line-height: var(--line-height-22);
+  }
+
+  .hero.landing :where(a).button {
+  font-size: var(--font-size-14)
+  }
+}
+
+/* ---- Desktop (>=1024px) ---- */
+@media (width >= 1024px) {
+  .hero-landing-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero.landing {
+    border-top-left-radius: var(--border-top-left-radius-desktop);
+  }
+
+  .hero.landing::after,
+  .hero.landing > :where(div):first-child {
+    border-top-left-radius: var(--border-top-left-radius-desktop);
+  }
+
+  .hero.landing > :where(div):nth-child(2) {
+    padding: var(--spacing-312) var(--spacing-108) var(--spacing-40);
+  }
+
+  .hero.landing h1 {
+    font-size: var(--font-size-64);
+    line-height: var(--line-height-68);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+    .hero.landing p {
+    line-height: var(--line-height-24);
+    }
+}
+
+/* =====================================================
+   Landing hero — Press-releases wrapper (white overlap box)
+   Matches abbvie.com .homepage-overlap > .cmp-container
+   Uses same margin/width pattern as profile variant text panel
+   ===================================================== */
+
+/* ---- Mobile (base) ---- */
+.hero.landing .hero-press-releases-container {
+  background-color: var(--color-white);
+  border-top-left-radius: var(--border-top-left-radius-24);
+  margin: var(--spacing-88) var(--spacing-n15) var(--spacing-n40);
+  padding: var(--spacing-32) var(--spacing-35) var(--spacing-00);
+  position: relative;
+  color: var(--text-color);
+}
+
+.hero.landing .hero-press-releases-container :where(p) {
+color: inherit;
+}
+
+/* ---- Tablet (>=744px) ---- */
+@media (width >= 744px) {
+  .hero.landing .hero-press-releases-container {
+    border-top-left-radius: var(--border-top-left-radius-40);
+    margin: var(--spacing-118) var(--spacing-00) var(--spacing-n40);
+    padding: var(--spacing-56) var(--spacing-70) var(--spacing-00);
+  }
+}
+
+/* ---- Desktop (>=1024px) — profile-like auto centering ---- */
+@media (width >= 1024px) {
+  .hero.landing .hero-press-releases-container {
+    border-top-left-radius: var(--border-top-left-radius-40);
+    margin: var(--spacing-41) auto var(--spacing-n40);
+    padding: var(--spacing-80) var(--spacing-55) var(--spacing-00);
+  }
+}
+
+/* =====================================================
+   Hero Stat-Overlay Variant — oversized stat number on image
+   Authoring: use block name "Hero (stat-overlay)"
+   ===================================================== */
+
+.hero.stat-overlay > :where(div):nth-child(2) {
+  overflow: visible;
+}
+
+.hero.stat-overlay .hero-stat-number {
+  display: block;
+  font-family: var(--heading-font-family-bold);
+  font-size: clamp(4rem, 10vw, 10rem);
+  color: var(--color-brand-accent, var(--color-brand-primary));
+  line-height: var(--hero-stat-line-height, 0.9);
+  margin-bottom: var(--spacing-16);
+}
+
+/* =====================================================
+   Hero Multilayer Variant — buddy-state layer switching
+   Authoring: use block name "Hero (multilayer)"
+   Each direct child of the image cell is a layer;
+   JS sets data-buddy-state and toggles .is-active.
+   ===================================================== */
+
+.hero.multilayer > :where(div):first-child {
+  position: relative;
+}
+
+.hero.multilayer .hero-layer {
+  position: absolute;
+  inset: 0;
+  opacity: var(--hero-layer-opacity-hidden);
+  transition: var(--hero-layer-transition);
+  pointer-events: none;
+}
+
+.hero.multilayer .hero-layer.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hero.multilayer .hero-layer:first-child {
+  position: relative;
+  opacity: 1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.full :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.solid :where(a).button { color: var(--color-text-on-dark, var(--color-white)); }
+
+/* =====================================================
+   Hero Dual-CTA Variant — two side-by-side CTAs
+   Authoring: use block name "Hero (dual-cta)"
+   ===================================================== */
+
+.hero.dual-cta .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-16, 1.6rem);
+  align-items: center;
+}
+
+.hero.dual-cta .button-container :where(a).button:first-child {
+  margin-top: var(--spacing-16);
+}
+
+.hero.dual-cta .button-container :where(a).button:not(:first-child) {
+  margin-top: var(--spacing-16);
+}
+
+/* =====================================================
+   Hero Eyebrow Text
+   Detected by JS: first <p> before <h1>/<h2> with no links
+   ===================================================== */
+
+.hero .hero-eyebrow {
+  display: block;
+  font-size: var(--font-size-body-small, 0.6875rem);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide-06, 0.06em);
+  margin-bottom: var(--spacing-08, 0.8rem);
+  color: inherit;
+}
+
+/* Indication banner: ISI header — absolutely pinned to top of hero, above overlay */
+.hero .hero-indication {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: var(--hero-indication-bg);
+  color: var(--color-white);
+  padding: var(--spacing-16, 1rem) var(--spacing-24, 1.5rem);
+  font-size: var(--font-size-body-small, 0.8125rem);
+  line-height: 1.5;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.hero .hero-indication p {
+  margin: 0;
+  color: inherit;
+}
+
+.hero .hero-indication strong {
+  font-weight: 700;
+}
+
+/* Image caption: "Actor portrayal." etc — bottom-right corner of image cell */
+.hero .hero-image-caption {
+  position: absolute;
+  bottom: var(--spacing-08, 0.8rem);
+  right: var(--spacing-08, 0.8rem);
+  font-size: var(--font-size-body-small, 0.6875rem);
+  color: var(--color-text-on-dark-80);
+  font-style: italic;
+  pointer-events: none;
+}
+
+/* =====================================================
+   Text Alignment Modifiers
+   ===================================================== */
+
+.hero.text-center > :where(div):nth-child(2),
+.hero.text-center h1,
+.hero.text-center p {
+  text-align: center;
+}
+
+.hero.text-right > :where(div):nth-child(2),
+.hero.text-right h1,
+.hero.text-right p {
+  text-align: right;
+}
+
+/* =====================================================
+   Text Color Override Modifiers
+   ===================================================== */
+
+.hero.text-light h1,
+.hero.text-light h2,
+.hero.text-light h3,
+.hero.text-light p,
+.hero.text-light .hero-eyebrow {
+  color: var(--color-text-on-dark, var(--color-white));
+}
+
+.hero.text-dark h1,
+.hero.text-dark h2,
+.hero.text-dark h3,
+.hero.text-dark p,
+.hero.text-dark .hero-eyebrow {
+  color: var(--text-color);
+}
+
+/* =====================================================
+   Hero Full Variant — full-bleed image, tall, white text overlay
+   Authoring: use block name "Hero (full)"
+   ===================================================== */
+
+.hero.full {
+  position: relative;
+  min-height: var(--hero-full-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero.full > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero.full picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.full img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 0;
+  max-height: unset;
+}
+
+/* Dark left-to-transparent overlay for legibility */
+.hero.full::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-full);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero.full > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-full);
+}
+
+.hero.full .hero-text-container {
+  display: block;
+}
+
+.hero.full h1 {
+  color: var(--color-text-on-dark, var(--color-white));
+  font-size: var(--font-size-h1-hero, var(--font-size-h1, 2.6rem));
+  line-height: var(--line-height-h1-hero, var(--line-height-h1, 2.8rem));
+}
+
+.hero.full p {
+  color: var(--color-text-on-dark-90);
+}
+
+.hero.full .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+
+@media (width < 744px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-mobile);
+  }
+
+  .hero.full > :where(div):nth-child(2) {
+    max-width: 90%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .hero.full {
+    min-height: var(--hero-full-min-height-desktop);
+  }
+
+  .hero.full > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-full-desktop);
+  }
+}
+
+/* =====================================================
+   Hero Compact Variant — short interior-page hero
+   Authoring: use block name "Hero (compact)"
+   ===================================================== */
+
+.hero.compact {
+  position: relative;
+  min-height: var(--hero-compact-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero.compact > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero.compact picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.compact img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+
+.hero.compact::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-compact);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero.compact > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-40, 4rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-compact);
+}
+
+.hero.compact .hero-text-container {
+  display: block;
+}
+
+.hero.compact h1 {
+  color: var(--color-text-on-dark, var(--color-white));
+  font-size: var(--font-size-h2, 2rem);
+  line-height: var(--line-height-h2, 2.5rem);
+}
+
+.hero.compact p {
+  color: var(--color-text-on-dark-90);
+}
+
+.hero.compact .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+
+@media (width < 744px) {
+  .hero.compact {
+    min-height: var(--hero-compact-min-height-mobile);
+  }
+
+  .hero.compact > :where(div):nth-child(2) {
+    max-width: 90%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+
+@media (width >= 744px) {
+  .hero.compact {
+    min-height: var(--hero-compact-min-height-tablet);
+  }
+
+  .hero.compact h1 {
+    font-size: var(--font-size-h1, 2.6rem);
+    line-height: var(--line-height-h1, 2.8rem);
+  }
+}
+
+/* =====================================================
+   Hero Split Variant — 50/50 image + text side by side
+   Authoring: use block name "Hero (split)"
+   ===================================================== */
+
+.hero.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: var(--hero-split-min-height);
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero.split > :where(div):first-child {
+  position: relative;
+  min-height: unset;
+  margin: 0;
+  padding: var(--spacing-32, 3.2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero.split picture {
+  display: block;
+  width: 100%;
+}
+
+.hero.split img {
+  max-width: 100%;
+  height: auto;
+  max-height: var(--hero-split-img-max-height);
+  object-fit: contain;
+  border-radius: 0;
+  position: static;
+  display: block;
+}
+
+.hero.split > :where(div):nth-child(2) {
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: unset;
+}
+
+.hero.split .hero-text-container {
+  display: block;
+}
+
+@media (width < 744px) {
+  .hero.split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero.split > :where(div):first-child {
+    order: -1;
+    padding: var(--spacing-20, 2rem);
+  }
+
+  .hero.split > :where(div):nth-child(2) {
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+
+/* =====================================================
+   Hero Centered Variant — centered text over image or color bg
+   Authoring: use block name "Hero (centered)"
+   ===================================================== */
+
+.hero.centered {
+  position: relative;
+  min-height: var(--hero-centered-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero.centered > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero.centered picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.centered img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+
+.hero.centered::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-centered);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero.centered > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  margin: 0 auto;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-centered);
+  text-align: center;
+}
+
+.hero.centered .hero-text-container {
+  display: block;
+}
+
+.hero.centered h1 {
+  color: var(--color-text-on-dark, var(--color-white));
+  text-align: center;
+}
+
+.hero.centered p {
+  color: var(--color-text-on-dark-90);
+  text-align: center;
+}
+
+.hero.centered .hero-eyebrow { color: var(--color-text-on-dark-80); }
+
+@media (width < 744px) {
+  .hero.centered {
+    min-height: var(--hero-centered-min-height-mobile);
+  }
+
+  .hero.centered > :where(div):nth-child(2) {
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+    max-width: 90%;
+  }
+}
+
+/* =====================================================
+   Hero Video Variant — Brightcove background video
+   Authoring: use block name "Hero (video)"
+   Last <p> in image cell = Brightcove video ID (numeric only)
+   Fallback poster image must be authored before the ID paragraph
+   Video suppressed on mobile; fallback image shown instead
+   ===================================================== */
+
+.hero.video {
+  position: relative;
+  min-height: var(--hero-video-min-height);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero.video > :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  min-height: unset;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero.video picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero.video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: unset;
+}
+
+.hero.video .hero-video-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero.video .hero-video-bg .video-js,
+.hero.video .hero-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.hero.video::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay-gradient-full);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero.video > :where(div):nth-child(2) {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-80, 8rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-full);
+}
+
+.hero.video .hero-text-container {
+  display: block;
+}
+
+.hero.video h1 { color: var(--color-text-on-dark, var(--color-white)); }
+
+.hero.video p {
+  color: var(--color-text-on-dark-90);
+}
+
+.hero.video .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+
+/* Mobile: hide video, show fallback poster image only */
+@media (width < 744px) {
+  .hero.video {
+    min-height: var(--hero-video-min-height-mobile);
+  }
+
+  .hero.video > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-mobile);
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .hero.video {
+    min-height: var(--hero-video-min-height-desktop);
+  }
+
+  .hero.video > :where(div):nth-child(2) {
+    max-width: var(--hero-content-max-width-full-desktop);
+  }
+}
+
+/* =====================================================
+   Hero Solid Variant — solid brand color background, no image required
+   Authoring: use block name "Hero (solid)"
+   Background color defined by brand CSS override
+   ===================================================== */
+
+.hero.solid {
+  position: relative;
+  min-height: var(--hero-solid-min-height);
+  display: flex;
+  align-items: center;
+  background-color: var(--hero-solid-bg, var(--color-brand-primary, var(--hero-solid-bg-fallback)));
+}
+
+.hero.solid > :where(div):first-child {
+  position: relative;
+  min-height: unset;
+  margin: 0;
+  padding: var(--spacing-32, 3.2rem);
+  display: flex;
+  align-items: center;
+}
+
+.hero.solid > :where(div):first-child:empty {
+  display: none;
+}
+
+.hero.solid picture {
+  display: block;
+}
+
+.hero.solid img {
+  max-height: var(--hero-solid-img-max-height);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  position: static;
+  height: auto;
+}
+
+.hero.solid > :where(div):nth-child(2) {
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: var(--spacing-56, 5.6rem) var(--spacing-55, 5.5rem);
+  max-width: var(--hero-content-max-width-solid);
+}
+
+.hero.solid .hero-text-container {
+  display: block;
+}
+
+.hero.solid h1,
+.hero.solid h2 {
+  color: var(--color-text-on-dark, var(--color-white));
+}
+
+.hero.solid p {
+  color: var(--color-text-on-dark-90);
+}
+
+.hero.solid .hero-eyebrow {
+  color: var(--color-text-on-dark-80);
+}
+
+@media (width < 744px) {
+  .hero.solid {
+    min-height: var(--hero-solid-min-height-mobile);
+    flex-direction: column;
+  }
+
+  .hero.solid > :where(div):first-child {
+    order: -1;
+  }
+
+  .hero.solid > :where(div):nth-child(2) {
+    max-width: 100%;
+    padding: var(--spacing-32, 3.2rem) var(--spacing-20, 2rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .hero.solid {
+    min-height: var(--hero-solid-min-height-desktop);
+  }
+}

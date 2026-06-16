@@ -1,0 +1,289 @@
+@import '../footer.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* ============================================================
+   VENCLEXTA DTC — Footer brand overrides
+   Live: www.venclexta.com/aml
+   - Dark teal bg (--color-background-footer #003b52) edge-to-edge
+   - 5-column heading-based grid (h5 + vertical UL per column)
+   - White headings, off-white link text (--color-text-footer-link)
+   - Footer-bottom: horizontal sub-links + legal text + indication code
+   - Centering (1200px max-width) inherited from base
+   ============================================================ */
+
+/* Brand token overrides */
+.footer-wrapper {
+  --footer-color-bg: var(--color-background-footer);
+  --footer-color-text: var(--color-text-on-dark);
+  --footer-color-link: var(--color-text-footer-link);
+  --footer-font-family: var(--font-family-brand);
+  --footer-font-size: var(--font-size-footer);
+  --footer-line-height: var(--line-height-body);
+
+  /* Footer-logos box dimensions (semantic names — brand logo is taller than
+     partner logos to visually dominate, matching the live design). */
+  --footer-logo-width: var(--spacing-200);
+  --footer-logo-partner-height: var(--spacing-20);
+  --footer-logo-brand-height: var(--spacing-155);
+}
+
+/* ── 5-column heading-based grid ────────────────────────────── */
+.footer .footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-32);
+  margin: 0;
+}
+
+@media (width >= 744px) {
+  .footer .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  .footer .footer-columns {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Each column — left-aligned vertical list */
+.footer .footer-column {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Column heading (H5 in live) — white bold */
+.footer .footer-column h1,
+.footer .footer-column h2,
+.footer .footer-column h3,
+.footer .footer-column h4,
+.footer .footer-column h5,
+.footer .footer-column h6 {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-body);
+  margin: 0 0 var(--spacing-16) 0;
+}
+
+/* Heading-only column (e.g. "Side Effects") — anchor inside H5 inherits
+   heading color instead of the global link color. */
+.footer .footer-column h1 a,
+.footer .footer-column h2 a,
+.footer .footer-column h3 a,
+.footer .footer-column h4 a,
+.footer .footer-column h5 a,
+.footer .footer-column h6 a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+}
+
+.footer .footer-column h1 a:hover,
+.footer .footer-column h2 a:hover,
+.footer .footer-column h3 a:hover,
+.footer .footer-column h4 a:hover,
+.footer .footer-column h5 a:hover,
+.footer .footer-column h6 a:hover {
+  text-decoration: underline;
+}
+
+/* Vertical link list — no bullets, gap-separated */
+.footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.footer .footer-column li {
+  margin: 0;
+  padding: 0;
+}
+
+/* `.footer-wrapper` prefix raises specificity above the heading-anchor
+   `:hover` rules above so stylelint's no-descending-specificity passes. */
+.footer-wrapper .footer .footer-column li a,
+.footer-wrapper .footer .footer-column ul li a {
+  color: var(--footer-color-link);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--font-weight-body);
+  line-height: var(--footer-line-height);
+  text-decoration: none;
+  white-space: normal;
+}
+
+.footer-wrapper .footer .footer-column li a:hover {
+  color: var(--footer-color-text);
+  text-decoration: underline;
+}
+
+/* ── Footer bottom: sub-links + legal text + indication code ── */
+.footer .footer-bottom {
+  /* Live venclexta footer-bottom uses 14px / weight 500 (smaller than columns) */
+  --footer-font-size: var(--font-size-14);
+  --footer-font-weight: var(--font-weight-500);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+
+  /* reset base: base footer-bottom has top-border + padding which we don't want */
+  border: none;
+  padding: 0;
+  margin-top: var(--spacing-40);
+}
+
+/* Sub-links UL — horizontal on desktop, separated by 1px top border */
+.footer .footer-bottom ul {
+  list-style: none;
+  padding: var(--spacing-24) 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  border-top: 1px solid var(--footer-color-text);
+  text-align: left;
+}
+
+/* Spacing handled per-<li> (margin-right) instead of UL gap so it matches the
+   live abbv-footer pattern: padding-right + margin-right cumulatively = 40px
+   between items, with row-gap implicitly 0 when wrapped lines stack. */
+@media (width >= 744px) {
+  .footer .footer-bottom ul {
+    flex-flow: row wrap;
+    gap: 0;
+  }
+
+  .footer .footer-bottom ul li {
+    margin-right: var(--spacing-40);
+  }
+}
+
+/* `.footer-wrapper` prefix raises specificity above the heading-anchor
+   `:hover` rules so the bottom-section overrides the column section. The
+   inline disable acknowledges that the cleaner alternative — interleaving
+   selectors by specificity rather than by section — would scatter the
+   bottom-section rules and hurt readability. */
+/* stylelint-disable no-descending-specificity */
+.footer-wrapper .footer .footer-bottom ul li,
+.footer-wrapper .footer .footer-bottom ul li a {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  text-decoration: none;
+}
+/* stylelint-enable no-descending-specificity */
+
+.footer-wrapper .footer .footer-bottom ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer .footer-bottom p {
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  margin: 0;
+  text-align: left;
+}
+
+/* Logo image (if authored) — right-aligned on desktop */
+.footer .footer-bottom > p:has(picture),
+.footer .footer-bottom > p:has(img) {
+  text-align: right;
+  margin-top: var(--spacing-16);
+}
+
+/* Indication code — small text, slight top spacing */
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  font-size: var(--footer-font-size-small);
+  margin-top: var(--spacing-04);
+}
+
+.footer .footer-bottom p:has(picture) img,
+.footer .footer-bottom p:has(img) img {
+  height: var(--footer-logo-height);
+  width: auto;
+}
+
+/* ── Footer logos: partner logos (left) + brand logo (right) ── */
+.footer .footer-logos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--spacing-20);
+  margin-top: var(--spacing-32);
+}
+
+/* EDS wraps each authored image in a <p> — these flex props center the
+   <picture>/<img> vertically inside the box defined by --footer-logo-*-height. */
+.footer .footer-logos > * {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Brand logo (3rd child) wraps to its own row on mobile */
+.footer .footer-logos > *:nth-child(3) {
+  flex-basis: 100%;
+}
+
+/* Partner logos (1st, 2nd) get a small fixed box; brand logo (3rd, Venclexta)
+   gets a taller box so it visually dominates as in the live design.
+   Explicit width + height with object-fit defeats EDS's intrinsic <img>
+   width/height attributes. `.footer-wrapper` prefix also raises specificity
+   above the .footer-bottom img selectors so no-descending-specificity passes. */
+.footer-wrapper .footer .footer-logos img {
+  width: var(--spacing-100);
+  height: var(--footer-logo-partner-height);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.footer-wrapper .footer .footer-logos > *:nth-child(3) img {
+  width: var(--footer-logo-width);
+  height: var(--footer-logo-brand-height);
+  object-position: right center;
+}
+
+/* White pipe divider after first partner logo — shared mobile + desktop */
+.footer .footer-logos > *:first-child {
+  position: relative;
+  padding-right: var(--spacing-20);
+}
+
+.footer .footer-logos > *:first-child::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: var(--separator-height-1);
+  height: var(--spacing-24);
+  background-color: var(--footer-color-text);
+  transform: translateY(-50%);
+}
+
+@media (width >= 744px) {
+  .footer .footer-logos {
+    flex-wrap: nowrap;
+    gap: var(--spacing-20);
+  }
+
+  /* Push the third (brand) logo to the right edge; reset mobile full-width */
+  .footer .footer-logos > *:nth-child(3) {
+    flex-basis: auto;
+    margin-left: auto;
+  }
+}

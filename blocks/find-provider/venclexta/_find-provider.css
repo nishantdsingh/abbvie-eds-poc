@@ -1,0 +1,141 @@
+@import '../find-provider.css';
+
+/* Venclexta find-provider overrides */
+.find-provider {
+  /* Mapped to existing brand/common tokens */
+  --link-color: var(--color-brand-primary);
+
+
+  /* find-provider-specific tokens (no matching brand/common token) */
+  --fp-venclexta-bg: var(--color-background-light, #f2f2f2);
+  --fp-venclexta-accent-gold: var(--color-accent-gold);
+  --fp-venclexta-submit-color: var(--color-text-legal, #404040);
+  --fp-venclexta-submit-font-size: var(--body-font-size-s, 17px);
+  --fp-venclexta-max-width: var(--spacing-1114, 1114px);
+  --fp-venclexta-input-max-width: var(--spacing-206, 206px);
+  --fp-venclexta-submit-width: var(--spacing-150, 150px);
+  --fp-venclexta-checkbox-size: var(--spacing-40);
+  --fp-venclexta-submit-height: var(--spacing-50);
+  --fp-venclexta-terms-max-width: 42ch;
+  --fp-venclexta-line-height-1: 1;
+  --fp-venclexta-shadow-light: rgb(204 204 204 / 100%);
+  --fp-venclexta-input-shadow: 0 0 var(--spacing-04) var(--fp-venclexta-shadow-light);
+  --fp-venclexta-arrow-wing: 6px;
+  --fp-venclexta-result-font-size: 16px;
+
+  max-width: var(--fp-venclexta-max-width);
+  margin-inline: auto;
+  padding: 0;
+  font-size: var(--spacing-16);
+  border-radius: var(--border-radius-card);
+  background: var(--fp-venclexta-bg);
+  font-family: var(--font-family-brand);
+}
+
+.find-provider .find-provider-form {
+  gap: var(--spacing-20);
+}
+
+.find-provider .find-provider-search-input {
+  border: var(--border-width-thick) solid var(--fp-venclexta-accent-gold);
+  background-color: var(--color-white);
+  padding: var(--spacing-12) var(--spacing-35) var(--spacing-12) var(--spacing-15);
+  border-radius: var(--spacing-02);
+  font-size: var(--spacing-15);
+  max-width: var(--fp-venclexta-input-max-width);
+}
+
+.find-provider .find-provider-terms-checkbox {
+  border: var(--border-width-thick) solid var(--fp-venclexta-accent-gold);
+  background-color: var(--color-venclexta-navy);
+  box-shadow: var(--fp-venclexta-input-shadow);
+  height: var(--fp-venclexta-checkbox-size);
+  width: var(--fp-venclexta-checkbox-size);
+}
+
+.find-provider .find-provider-terms-label {
+  display: flex;
+  align-items: center;
+}
+
+.find-provider .find-provider-result p,
+.find-provider .find-provider-result a,
+.find-provider .find-provider-result span {
+  font-size: var(--fp-venclexta-result-font-size);
+}
+
+.find-provider .find-provider-terms-text p,
+.find-provider .find-provider-terms-text p a {
+  font-size: var(--spacing-14);
+  max-width: var(--fp-venclexta-terms-max-width);
+  line-height: var(--fp-venclexta-line-height-1);
+}
+
+.find-provider .find-provider-submit {
+  border-radius: var(--border-radius-card);
+  border: solid var(--border-width-default) var(--color-text-legal);
+  height: var(--fp-venclexta-submit-height);
+  padding: 0;
+  width: var(--fp-venclexta-submit-width);
+  background: var(--color-white);
+  color: var(--fp-venclexta-submit-color);
+  text-align: center;
+  font-size: var(--fp-venclexta-submit-font-size);
+  margin: 0;
+  font-weight: var(--font-weight-700);
+}
+
+.find-provider .find-provider-captcha-message p {
+  text-align: left;
+}
+
+.find-provider .find-provider-pagination-prev::before,
+.find-provider .find-provider-pagination-next::before {
+  content: '';
+  display: block;
+  inline-size: 0;
+  block-size: 0;
+  border-block: var(--fp-venclexta-arrow-wing) solid transparent;
+  border-block-start: var(--fp-venclexta-arrow-wing) solid transparent;
+  border-block-end: var(--fp-venclexta-arrow-wing) solid transparent;
+  transform: none;
+}
+
+.find-provider .find-provider-pagination-prev::before {
+  border-inline-start: none;
+  border-inline-end: var(--find-provider-pagination-arrow-size) solid currentcolor;
+}
+
+.find-provider .find-provider-pagination-next::before {
+  border-inline-end: none;
+  border-inline-start: var(--find-provider-pagination-arrow-size) solid currentcolor;
+}
+
+@media (width >= 744px) {
+  .find-provider {
+    padding: var(--spacing-30);
+  }
+
+  .find-provider .find-provider-results-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+  }
+
+  .find-provider .find-provider-results-layout .find-provider-results {
+    flex: 0 0 50%;
+    width: 50%;
+    order: 0;
+  }
+
+  .find-provider .find-provider-results-layout .find-provider-map-container {
+    flex: 0 0 50%;
+    width: 50%;
+    order: 1;
+  }
+}
+
+.find-provider .find-provider-results-layout {
+  gap: 0;
+}
+

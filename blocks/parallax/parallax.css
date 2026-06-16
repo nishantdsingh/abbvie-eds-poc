@@ -1,0 +1,69 @@
+/* Parallax Image Block — mobile-first */
+
+.parallax {
+  position: relative;
+  overflow: clip visible;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(-1 * (100vw - 100%) / 2);
+}
+
+.parallax .parallax-wrapper {
+  position: relative;
+  min-height: var(--parallax-min-height, 300px);
+  background-image: var(--parallax-bg-image);
+  background-size: cover;
+  background-position: var(--parallax-bg-position, center center);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Content overlay */
+.parallax .parallax-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--spacing-32, 32px) var(--spacing-24, 24px);
+  max-width: 100%;
+  color: var(--parallax-text-color, var(--color-text-on-dark, white));
+  text-shadow: var(--parallax-text-shadow, 0 1px 4px rgb(0 0 0 / 40%));
+}
+
+.parallax .parallax-content h1,
+.parallax .parallax-content h2,
+.parallax .parallax-content h3 {
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--parallax-text-color, var(--color-text-on-dark, white));
+  margin: 0 0 var(--spacing-16, 16px);
+}
+
+.parallax .parallax-content p {
+  margin: 0 0 var(--spacing-12, 12px);
+  line-height: var(--body-line-height, 1.6);
+}
+
+/* Desktop: enable parallax effect
+   Note: background-attachment:fixed is unsupported on iOS Safari/WebKit.
+   On iOS, the image renders as a static background — acceptable graceful degradation.
+   768px breakpoint: CSS custom properties cannot be used in @media conditions. */
+@media (width >= 768px) {
+  .parallax .parallax-wrapper {
+    min-height: var(--parallax-min-height-desktop, 400px);
+    background-attachment: fixed;
+  }
+
+  .parallax .parallax-content {
+    padding: var(--spacing-48, 48px) var(--spacing-64, 64px);
+    max-width: var(--parallax-content-max-width, 50%);
+  }
+}
+
+/* Disable parallax for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .parallax .parallax-wrapper {
+    background-attachment: scroll;
+  }
+}

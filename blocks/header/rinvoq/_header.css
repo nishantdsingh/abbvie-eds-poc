@@ -1,0 +1,794 @@
+@import '../header.css';
+
+/* ──────────────────────────────────────────
+   RINVOQ DTC — Header Brand Overrides
+   Source: rinvoq.com
+   Mobile-first: base = mobile, desktop in @media (width >= 1024px).
+   Specificity order within each section: low → high.
+────────────────────────────────────────── */
+
+:root {
+  --nav-bar-bg: var(--color-nav-dark);
+  --nav-bar-bg-scroll: var(--color-nav-bg-scroll);
+  --nav-active-indicator: var(--color-nav-active);
+  --nav-eyebrow-bg: var(--color-nav-eyebrow);
+  --nav-eyebrow-text: var(--color-text-on-dark);
+  --nav-brand-links-color: var(--color-text-on-dark);
+  --nav-brand-links-separator-color: rgb(255 255 255 / 60%);
+  --nav-brand-links-underline-color: transparent;
+}
+
+/* ── Nav wrapper + text (universal) ── */
+
+/* Mobile: stacks nav + utility in a column */
+header .nav-wrapper {
+  background-color: var(--color-nav-dark);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+header nav {
+  color: var(--color-text-on-dark);
+  margin: 0;
+  padding: var(--spacing-10) var(--spacing-15);
+}
+
+header nav.second-level-active .nav-brand {
+  display: block;
+}
+
+header:has(.nav-utility ul) {
+  height: auto;
+}
+
+/* ════════════════════════════════════════════════════════════
+   UTILITY NAVIGATION
+   Mobile base: visible, stacked, dark bg.
+   Desktop override (@media >= 1024px): horizontal, light gray.
+   Ordered low→high specificity.
+   ════════════════════════════════════════════════════════════ */
+
+/* Mobile: visible, pushed below logo bar via order */
+header .nav-utility {
+  background-color: var(--color-nav-dark);
+  display: block !important;
+  height: auto;
+  order: var(--order-2);
+  padding: 0;
+}
+
+header .nav-utility nav {
+  justify-content: flex-start;
+  max-width: 100%;
+  padding: 0;
+}
+
+/* Suppress base li+li text separator */
+header .nav-utility li + li::before {
+  content: none;
+}
+
+/* Generic links — magenta (home item uses this; non-home overridden below) */
+header .nav-utility a,
+header .nav-utility a.button {
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: var(--color-nav-utility);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-700);
+  gap: var(--spacing-08);
+  margin: 0;
+  padding: var(--header-utility-link-padding);
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Generic button (dropdown trigger) */
+header .nav-utility button {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-11);
+  font-weight: var(--font-weight-700);
+  height: 100%;
+  margin: 0;
+  padding: var(--header-utility-link-padding);
+}
+
+/* Home icon badge — magenta circle, white house SVG (universal) */
+header .nav-utility .nav-utility-home-icon {
+  align-items: center;
+  background-color: var(--color-nav-utility);
+  border-radius: 50%;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: var(--header-nav-home-icon-outer);
+  justify-content: center;
+  margin: 0 var(--spacing-10) 0 0;
+  width: var(--header-nav-home-icon-outer);
+}
+
+header .nav-utility .nav-utility-home-icon svg {
+  display: block;
+  fill: var(--color-text-on-dark);
+  height: var(--header-nav-home-icon-inner);
+  width: var(--header-nav-home-icon-inner);
+}
+
+/* Stacked column on mobile */
+header .nav-utility ul[role="menubar"] {
+  flex-direction: column;
+  height: auto;
+  margin: 0;
+  width: 100%;
+}
+
+/* Menubar items — full-width stacked rows on mobile */
+header .nav-utility ul[role="menubar"] > li {
+  border-bottom: none;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  padding: var(--spacing-06) 0;
+  width: 100%;
+}
+
+header .nav-utility ul[role="menubar"] > li:last-child {
+  border-bottom: 0;
+}
+
+/* Mobile: show only "Full Prescribing Information & Patient Information" (li:3) */
+header .nav-utility ul[role="menubar"] > li:not(:nth-child(3)) {
+  display: none;
+}
+
+/* Dropdown panel — static on mobile */
+header .nav-utility ul[role="menu"] {
+  box-shadow: none;
+  width: 100%;
+}
+
+/* Dropdown items */
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-utility ul[role="menu"] li {
+  border-bottom: var(--separator-height-1) solid var(--header-utility-divider-color);
+  height: auto;
+}
+
+header .nav-utility ul[role="menu"] li:last-of-type {
+  border-bottom: 0;
+}
+
+/* Dropdown links */
+header .nav-utility ul[role="menu"] a {
+  align-items: center;
+  color: var(--color-nav-utility);
+  display: inline-flex;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-700);
+  min-height: var(--header-utility-item-min-height);
+  padding: 0 var(--spacing-20);
+  width: 100%;
+}
+
+header .nav-utility ul[role="menu"] a:hover {
+  background-color: var(--color-nav-active);
+  color: var(--color-nav-dark);
+  text-decoration: none;
+}
+
+/* PDF icon in utility dropdown links */
+header .nav-utility ul[role="menu"] .nav-utility-pdf-icon {
+  align-items: center;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: var(--spacing-20);
+  margin-right: var(--spacing-08);
+  width: var(--spacing-20);
+}
+
+header .nav-utility ul[role="menu"] .nav-utility-pdf-icon svg {
+  fill: var(--color-nav-utility);
+  height: 100%;
+  width: 100%;
+}
+
+/* ════════════════════════════════════════════════════════════
+   UNIVERSAL: hamburger, logo, brand links, sections, tools
+   ════════════════════════════════════════════════════════════ */
+
+/* Hamburger — white bars on dark header */
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-hamburger {
+  margin-left: var(--spacing-20);
+}
+
+header nav .nav-hamburger button {
+  align-items: center;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* MENU label below hamburger icon (mobile only) */
+header nav .nav-hamburger button::after {
+  color: var(--color-text-on-dark);
+  content: "MENU";
+  display: block;
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-700);
+  margin-top: var(--spacing-03);
+}
+
+header nav .nav-hamburger button > span,
+header nav .nav-hamburger button > span:last-child {
+  background: var(--color-text-on-dark);
+  transform: translateX(0);
+  transform-origin: var(--header-hamburger-transform-origin);
+  width: var(--header-hamburger-bar-width);
+}
+
+/* Logo */
+header nav .nav-brand img {
+  height: auto;
+  max-width: unset;
+  width: var(--header-logo-width);
+}
+
+/* Brand links */
+header .nav-brand-links {
+  color: var(--color-text-on-dark);
+}
+
+/* Primary nav — dark charcoal, white text */
+header nav .nav-sections {
+  background-color: var(--color-nav-dark);
+  color: var(--color-text-on-dark);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-sections .default-content-wrapper > ul > li:nth-last-child(2) {
+  margin-bottom: 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > button {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-600);
+  padding: 0;
+}
+
+header nav .nav-sections .default-content-wrapper > ul > li > button span {
+  padding-left: var(--spacing-10);
+}
+
+/* Nav tools — rinvoq has no search/auth, always hidden */
+header nav .nav-tools {
+  display: none;
+}
+
+/* Section button (mobile) — amber underline + hover/focus/expanded states */
+/* stylelint-disable-next-line no-descending-specificity */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button {
+  /* Mobile section heading indicator: amber text-underline */
+  text-decoration: underline;
+  text-decoration-color: var(--color-nav-active);
+  text-decoration-thickness: var(--spacing-02);
+  text-underline-offset: var(--spacing-04);
+}
+
+/* Section button hover — amber text */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus-visible,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button[aria-expanded='true'] {
+  color: var(--nav-active-indicator);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-600);
+}
+
+/* No left-bar ::after on mobile */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::after,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover:focus,
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover:focus-visible {
+  content: none;
+}
+
+/* Chevron — white */
+header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::before {
+  color: var(--color-text-on-dark);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SUBMENU (universal — both mobile and desktop use dark bg)
+   ════════════════════════════════════════════════════════════ */
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+  background: var(--color-nav-dark);
+  border-top: 0;
+  color: var(--color-text-on-dark);
+  height: auto;
+  max-height: none;
+  opacity: 1;
+  pointer-events: auto;
+  position: static;
+  transform: none;
+  visibility: visible;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul {
+  background: var(--color-nav-dark);
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-16) var(--spacing-10) var(--spacing-20);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li {
+  padding: var(--spacing-10) 0 0 var(--spacing-10);
+  position: relative;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 ul li::before {
+  background: var(--header-nav-indicator-color);
+  bottom: var(--spacing-02);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: var(--spacing-15);
+  width: var(--spacing-02);
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 a {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
+  padding-left: 0;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 a:hover {
+  color: var(--header-nav-indicator-color);
+  font-family: var(--body-font-family);
+  font-weight: normal;
+}
+
+header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .close-btn {
+  color: var(--color-text-on-dark);
+}
+
+/* ════════════════════════════════════════════════════════════
+   OPEN STATE + BACK BTN + SEPARATOR + EYEBROW (universal)
+   ════════════════════════════════════════════════════════════ */
+
+header nav[aria-expanded='true'] {
+  position: relative;
+  height: auto;
+  padding: var(--spacing-10) var(--spacing-15);
+  background-color: var(--color-nav-dark);
+  grid-template:
+    'brand tools hamburger' var(--nav-height-mobile)
+    'info info info' auto
+    'sections sections sections' auto
+    / 1fr auto auto;
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  background-color: var(--color-nav-dark);
+  position: static;
+  padding: var(--spacing-20) var(--spacing-10);
+}
+
+header nav[aria-expanded='true'] .default-content-wrapper ul li button::before {
+  display: none;
+}
+
+/* Mobile: hide utility nav when mobile menu opens (sections fill the screen) */
+header:has(nav[aria-expanded='true']) .nav-utility {
+  display: none !important;
+}
+
+header nav .nav-item-level-0 .back-btn {
+  color: var(--color-plum);
+}
+
+/* stylelint-disable no-descending-specificity */
+header nav .nav-sections .default-content-wrapper > ul > li,
+header nav .nav-sections .default-content-wrapper>ul>li:nth-last-child(1) {
+  border: none;
+}
+/* stylelint-enable no-descending-specificity */
+
+header .nav-eyebrow-top p {
+  font-size: var(--font-size-legal);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header .nav-eyebrow-top p a {
+  font-family: var(--font-family-bold);
+  font-size: var(--font-size-legal);
+  font-weight: var(--font-weight-700);
+  text-decoration: underline;
+}
+
+/* ════════════════════════════════════════════════════════════
+   BRAND INFO
+   Mobile base: hidden by default, block + stacked when open.
+   Desktop: visible inline list (in @media >= 1024px).
+   Ordered low→high specificity.
+   ════════════════════════════════════════════════════════════ */
+
+/* Hidden by default on mobile */
+header nav .nav-brand-info {
+  display: none;
+}
+
+/* Shown when mobile menu opens — placed in 'info' grid row above sections */
+header nav[aria-expanded='true'] .nav-brand-info {
+  display: block;
+  grid-area: info;
+  padding: var(--spacing-20) var(--spacing-35);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav[aria-expanded='true'] .nav-brand-info > ul {
+  text-align: left;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav[aria-expanded='true'] .nav-brand-info > ul a {
+  margin-left: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav[aria-expanded='true'] .nav-brand-info li {
+  display: block;
+  padding-left: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav[aria-expanded='true'] .nav-brand-info li + li::before {
+  display: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+header nav[aria-expanded='true'] .nav-brand-info > p a {
+  display: inline;
+  margin-left: 0;
+  padding-bottom: 0;
+}
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP — @media (width >= 1024px)
+   Ordered low→high specificity within each group.
+   ════════════════════════════════════════════════════════════ */
+@media (width >= 1024px) {
+  /* ── Nav wrapper: reset mobile flex column + grid layout ── */
+  header .nav-wrapper {
+    display: block;
+  }
+
+  header .nav-wrapper nav {
+    align-items: flex-start;
+    display: grid;
+    grid-template:
+      'brand info tools hamburger'
+      'sections sections sections sections' auto
+      / auto 1fr auto auto;
+    height: auto;
+    margin: 0 auto;
+    max-width: var(--header-content-max-width);
+    padding: var(--spacing-20) 0 var(--spacing-10);
+  }
+
+  /* ── Utility nav: horizontal, light gray (override mobile dark/stacked) ── */
+  header .nav-utility {
+    background-color: var(--color-nav-utility-bg);
+    order: var(--order-0);
+    width: 100%;
+  }
+
+  header .nav-utility nav {
+    justify-content: center;
+    max-width: var(--header-content-max-width);
+    padding: 0;
+    display: flex;
+  }
+
+  header .nav-utility button { color: var(--color-nav-utility); }
+
+  /* Dropdown panel — absolute, box-shadow */
+  header .nav-utility ul[role="menu"] {
+    background-color: var(--color-nav-utility-bg);
+    border: none;
+    border-radius: 0;
+    box-shadow: var(--header-utility-dropdown-shadow);
+    min-width: 100%;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
+
+  header .nav-utility ul[role="menubar"] {
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    max-width: var(--header-utility-nav-width);
+  }
+
+  /* Desktop menubar items — horizontal flex, auto width */
+  header .nav-utility ul[role="menubar"] > li {
+    align-items: center;
+    border-bottom: 0;
+    flex: auto;
+    height: 100%;
+    justify-content: center;
+    padding: var(--spacing-02) 0 0;
+    width: auto;
+  }
+
+  /* Desktop: show all utility nav items (reset mobile-only hide) */
+  header .nav-utility ul[role="menubar"] > li:not(:nth-child(3)) { display: flex; }
+
+  /* Desktop hover: full amber bg, dark text */
+  header .nav-utility ul[role="menubar"] > li:hover,
+  header .nav-utility ul[role="menubar"] > li:has(button[aria-expanded='true']) { background-color: var(--color-nav-active); }
+
+  header .nav-utility ul[role="menubar"] > li:hover > a,
+  header .nav-utility ul[role="menubar"] > li:hover > button,
+  header .nav-utility ul[role="menubar"] > li:has(button[aria-expanded='true']) > button {
+    background-color: var(--color-nav-active);
+    color: var(--color-nav-dark);
+  }
+
+  /* Separator: 2px × 15px amber bar on right edge of 2nd and 3rd items */
+  header .nav-utility ul[role="menubar"] > li:nth-child(2) > a::before,
+  header .nav-utility ul[role="menubar"] > li:nth-child(3) > button::before {
+    background: var(--color-nav-active);
+    content: '';
+    height: var(--spacing-15);
+    position: absolute;
+    right: 0;
+    top: var(--spacing-06);
+    width: var(--spacing-02);
+  }
+
+  /* ── Brand info: visible, inline horizontal list ── */
+  header .nav-wrapper nav .nav-brand-info {
+    align-items: center;
+    color: var(--color-text-on-dark);
+    display: flex;
+    flex-flow: row nowrap;
+    grid-area: info;
+    justify-content: flex-end;
+    padding-right: var(--spacing-20);
+  }
+
+  header .nav-wrapper nav .nav-brand-info > ul {
+    box-sizing: border-box;
+    display: block;
+    font-size: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  header .nav-wrapper nav .nav-brand-info > p {
+    color: var(--color-text-on-dark);
+    font-size: var(--font-size-11);
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-wrapper nav .nav-brand-info li {
+    display: inline-flex;
+    font-size: var(--font-size-11);
+    list-style: none;
+    padding-left: var(--spacing-10);
+    white-space: nowrap;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-wrapper nav .nav-brand-info li:first-child { padding-left: 0; }
+
+  header .nav-wrapper nav .nav-brand-info li + li::before {
+    color: var(--color-text-on-dark);
+    content: "\2022";
+    cursor: default;
+    display: inline-block;
+    font-size: var(--font-size-22);
+    font-weight: var(--header-brand-info-font-weight);
+    margin-left: var(--spacing-07);
+    margin-right: var(--spacing-08);
+    text-decoration: none;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-wrapper nav .nav-brand-info a {
+    color: var(--color-text-on-dark);
+    display: block;
+    font-size: var(--font-size-11);
+    margin-left: var(--spacing-10);
+    padding-bottom: 0;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header .nav-wrapper nav .nav-brand-info a:hover {
+    font-weight: var(--font-weight-400);
+    text-decoration: none;
+  }
+
+  header .nav-wrapper nav .nav-brand-info a::after {
+    background: var(--color-brand-info-accent);
+    bottom: var(--spacing-01);
+    content: "";
+    height: var(--separator-height-1);
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+
+  header .nav-wrapper nav .nav-brand-info a:hover::after { height: var(--spacing-02); }
+
+  header .nav-wrapper nav .nav-brand-info li:first-child a::after { width: 100%; }
+  header .nav-wrapper nav .nav-brand-info a.external-link::after { mask: none; }
+
+  /* ── Nav sections: desktop layout ── */
+  header .nav-wrapper nav .nav-sections {
+    background: transparent;
+    display: flex;
+    height: auto;
+    margin-left: var(--header-nav-sections-offset-left);
+    margin-top: var(--header-nav-sections-offset-top);
+    min-height: auto;
+    opacity: 1;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    visibility: visible;
+    z-index: 60;
+  }
+
+  header .nav-wrapper nav .nav-sections .default-content-wrapper { width: 100%; }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    justify-content: flex-start;
+  }
+
+  /* Equal-width nav items */
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    flex: 1;
+    text-align-last: start;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  header nav .nav-sections .default-content-wrapper > ul > li > button {
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+  }
+
+  /* Active/hovered nav button — amber text */
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > button,
+  header nav .nav-sections .default-content-wrapper > ul > li > button:hover {
+    color: var(--color-nav-active);
+  }
+
+  /* Desktop amber left-bar indicator — overrides mobile text-underline */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button::after,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover:focus,
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover:focus-visible {
+    background: var(--header-nav-indicator-color);
+    bottom: var(--spacing-06);
+    content: "";
+    height: var(--header-nav-indicator-height);
+    left: 0;
+    position: absolute;
+    width: var(--header-nav-indicator-width);
+  }
+
+  /* ── Submenu: desktop — restore hidden dropdown state (overrides mobile always-visible) ── */
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition:
+      max-height var(--transition-duration-medium) var(--transition-easing-standard),
+      opacity var(--transition-duration-medium) var(--transition-easing-standard);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-wrapper {
+    background: transparent;
+    border-radius: 0;
+    display: block;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: var(--spacing-15);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-left {
+    display: block;
+    grid-column: auto;
+    margin: 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .mega-menu-card { display: none; }
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .close-btn { display: none; }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-group {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    grid-template-columns: unset;
+    padding: 0;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-level-2 {
+    border-left: var(--header-nav-indicator-width) solid var(--color-nav-active);
+    margin-bottom: 0;
+    padding-left: var(--spacing-12);
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link {
+    color: var(--color-text-on-dark);
+    display: block;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-400);
+    text-decoration: none;
+  }
+
+  header nav .nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 .navigation-item-link:hover { text-decoration: underline; }
+
+  header nav .nav-sections.nav-item-level-0 .default-content-wrapper > ul > li .submenu-level-1 {
+    display: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  /* Open state: aria-expanded (set by JS) and :hover (CSS fallback immune to JS timer races).
+     :hover .navigation-group guards against activating before async nav content is loaded. */
+  header nav .nav-sections:has(.default-content-wrapper > ul > li[aria-expanded='true'])
+    .default-content-wrapper > ul > li .submenu-level-1,
+  header nav .nav-sections:has(.default-content-wrapper > ul > li:hover .navigation-group)
+    .default-content-wrapper > ul > li .submenu-level-1 {
+    display: block;
+    max-height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  header nav .nav-sections:has(.default-content-wrapper > ul > li[aria-expanded='true'])
+    .default-content-wrapper > ul > li .submenu-level-1 > *,
+  header nav .nav-sections:has(.default-content-wrapper > ul > li:hover .navigation-group)
+    .default-content-wrapper > ul > li .submenu-level-1 > * {
+    opacity: 1;
+  }
+
+  /* Scroll: semi-transparent dark bg */
+  header.hide-nav .nav-wrapper {
+    background: var(--color-nav-bg-scroll);
+  }
+
+  header.hide-nav .nav-wrapper:hover { background: var(--color-nav-dark); }
+}

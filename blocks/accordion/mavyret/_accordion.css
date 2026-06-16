@@ -1,0 +1,158 @@
+@import '../accordion.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* Mavyret HCP accordion — Fiesta variation matching mavyret.com/hcp */
+
+.accordion {
+    --accordion-mav-border-color: var(--color-border-dark);
+    --accordion-mav-icon-color: var(--color-green-flash);
+    --accordion-mav-text-color: var(--color-black);
+    --accordion-mav-bg: var(--background-color);
+    --text-color: var(--color-black);
+    --footer-seperator-color: transparent;
+    --highlight-dark-background-color: transparent;
+
+    background: transparent;
+    color: var(--color-black);
+}
+
+/* Item — bordered card style */
+.accordion .accordion-item {
+    border: var(--border-02) solid var(--accordion-mav-border-color);
+    border-radius: 0;
+    margin-bottom: var(--spacing-08);
+    background: var(--accordion-mav-bg);
+}
+
+/* Summary row */
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-16) var(--spacing-24);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-16);
+    background: var(--accordion-mav-bg);
+}
+
+/* Heading text — dark, bold, condensed */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-mav-text-color);
+    font-family: var(--heading-font-family);
+    font-weight: var(--font-weight-heading);
+    font-size: var(--font-size-accordion);
+    text-transform: uppercase;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+/* Prevent heading change on hover/open */
+.accordion .accordion-item:hover .accordion-item-label p,
+.accordion .accordion-item:hover .accordion-item-label h2,
+.accordion .accordion-item:hover .accordion-item-label h3,
+.accordion .accordion-item:hover .accordion-item-label h4,
+.accordion .accordion-item:hover .accordion-item-label h5,
+.accordion .accordion-item:hover .accordion-item-label h6,
+.accordion .accordion-item-label.open .accordion-item-label-text,
+.accordion .accordion-item-label .accordion-item-label-text:hover {
+    color: var(--accordion-mav-text-color);
+    font-family: var(--heading-font-family);
+    font-weight: var(--font-weight-heading);
+    font-size: var(--font-size-accordion);
+    text-transform: uppercase;
+}
+
+/* Icon — filled green circle with white +/− via summary::after */
+.accordion summary::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: var(--spacing-24);
+    height: var(--spacing-24);
+    min-width: var(--spacing-24);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%2376bd22'/%3E%3Cpath d='M12 7v10M7 12h10' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 0.2s ease;
+    font-family: inherit;
+    font-size: 0;
+    transform: none;
+}
+
+.accordion .accordion-item[open] summary::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%2376bd22'/%3E%3Cpath d='M7 12h10' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Also cover icon-font variants */
+.accordion-icon-font .icon-plus::after,
+.accordion-icon-font .icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+    display: none !important;
+}
+
+/* Hover — border color changes to green (closed items only) */
+.accordion .accordion-item:not([open]):hover {
+    border-color: var(--color-green-flash);
+}
+
+/* Open state — keep default border */
+.accordion .accordion-item[open] {
+    border-color: var(--accordion-mav-border-color);
+}
+
+.accordion .accordion-item:hover summary,
+.accordion .accordion-item[open] summary {
+    background: var(--accordion-mav-bg);
+}
+
+/* Body content */
+.accordion .accordion-item-body {
+    padding: var(--spacing-16) var(--spacing-24) var(--spacing-24);
+    background: var(--accordion-mav-bg);
+}
+
+.accordion .accordion-item-body p.accordion-item-body-text,
+.accordion .accordion-item-body p {  /* stylelint-disable-line no-descending-specificity */
+    color: var(--color-black);
+    font-family: var(--body-font-family);
+    font-style: normal;
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-body);
+    line-height: 1.45;
+}
+
+/* Body links */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--color-brand-accent);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+}
+
+.accordion .accordion-item-body a:hover {
+    background: none;
+    color: var(--color-brand-primary);
+}
+
+/* Hide external link ::after */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+
+/* Expand all button */
+.accordion .accordion-expand-all {
+    color: var(--accordion-mav-text-color);
+    font-family: var(--heading-font-family);
+    font-weight: var(--font-weight-heading);
+}
+
+.accordion .accordion-expand-all:focus {
+    border-color: var(--accordion-mav-border-color);
+}

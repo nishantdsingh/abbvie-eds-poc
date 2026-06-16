@@ -1,0 +1,1397 @@
+.section-nav {
+  --section-nav-bg: var(--background-color);
+  --section-nav-border: var(--color-border);
+  --section-nav-link-color: var(--text-color);
+  --section-nav-link-hover: var(--link-color);
+  --section-nav-active-color: var(--link-color);
+
+  background-color: var(--section-nav-bg);
+  border-bottom: var(--border-width-thin) solid var(--section-nav-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.section-nav::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Sticky variant ─────────────────────────────────────────────────────── */
+
+.section-nav.sticky {
+  position: sticky;
+  top: var(--header-height);
+  z-index: var(--z-index-anchor-nav);
+}
+
+/* When the sentinel leaves viewport, switch to fixed so the nav persists
+   across sections (position:sticky only sticks within its own section height) */
+
+.section-nav.sticky.is-stuck {
+  box-shadow: var(--shadow-nav-stuck);
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: var(--header-height);
+}
+
+/* Zero-height sentinel used to detect sticky state; JS sets height when stuck
+   to reserve the layout space the nav vacates when it becomes position:fixed */
+
+.section-nav-sentinel {
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Nav inner layout ───────────────────────────────────────────────────── */
+
+.section-nav nav {
+  display: flex;
+  gap: 0;
+  margin: 0 auto;
+  max-width: var(--section-max-width);
+  padding: 0 var(--spacing-24);
+}
+
+/* ── Links ──────────────────────────────────────────────────────────────── */
+
+.section-nav a {
+  border-bottom: var(--border-width-default) solid transparent;
+  color: var(--section-nav-link-color);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-12) var(--spacing-16);
+  text-decoration: none;
+  transition: border-color var(--transition-duration-fast) var(--transition-easing-standard),
+    color var(--transition-duration-fast) var(--transition-easing-standard);
+  white-space: nowrap;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--section-nav-link-hover);
+  outline: none;
+}
+
+.section-nav a:focus-visible {
+  outline: var(--border-width-default) solid var(--color-focus);
+  outline-offset: calc(var(--spacing-02) * -1);
+}
+
+.section-nav a.is-active {
+  border-bottom-color: var(--section-nav-active-color);
+  color: var(--section-nav-link-hover);
+}
+
+/* ── Mobile Menu variant — base = mobile (toggle visible, list collapsed) ── */
+
+.section-nav.mobile-menu {
+  overflow-x: visible;
+}
+
+.section-nav.mobile-menu nav {
+  flex-direction: column;
+  padding: 0;
+}
+
+/* Toggle button — visible by default (mobile base) */
+
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--section-nav-link-color);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-semibold);
+  gap: var(--spacing-08);
+  justify-content: space-between;
+  padding: var(--spacing-12) var(--spacing-24);
+  width: 100%;
+}
+
+.section-nav.mobile-menu .section-nav-toggle:focus-visible {
+  outline: var(--border-width-default) solid var(--color-focus);
+  outline-offset: calc(var(--spacing-02) * -1);
+}
+
+/* Hamburger icon (3 bars via box-shadow trick) */
+
+.section-nav-hamburger {
+  background-color: currentcolor;
+  border-radius: var(--spacing-02);
+  display: block;
+  height: var(--spacing-02);
+  position: relative;
+  transition: background-color var(--transition-duration-fast) var(--transition-easing-standard);
+  width: var(--spacing-20);
+}
+
+.section-nav-hamburger::before,
+.section-nav-hamburger::after {
+  background-color: currentcolor;
+  border-radius: var(--spacing-02);
+  content: '';
+  display: block;
+  height: var(--spacing-02);
+  left: 0;
+  position: absolute;
+  transition: transform var(--transition-duration-fast) var(--transition-easing-standard);
+  width: 100%;
+}
+
+.section-nav-hamburger::before { top: calc(var(--spacing-06) * -1); }
+
+.section-nav-hamburger::after  { top: var(--spacing-06); }
+
+/* Animate to × when menu is open */
+
+.section-nav.mobile-menu.is-open .section-nav-hamburger {
+  background-color: transparent;
+}
+
+.section-nav.mobile-menu.is-open .section-nav-hamburger::before {
+  transform: translateY(var(--spacing-06)) rotate(45deg);
+}
+
+.section-nav.mobile-menu.is-open .section-nav-hamburger::after {
+  transform: translateY(calc(var(--spacing-06) * -1)) rotate(-45deg);
+}
+
+/* Collapsible link list — hidden by default on mobile */
+
+.section-nav.mobile-menu nav ul {
+  border-top: var(--border-width-thin) solid var(--section-nav-border);
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.section-nav.mobile-menu.is-open nav ul {
+  display: flex;
+}
+
+.section-nav.mobile-menu nav ul li {
+  align-items: center;
+  border-bottom: var(--border-width-thin) solid var(--section-nav-border);
+  display: flex;
+}
+
+.section-nav.mobile-menu nav ul li:last-child {
+  border-bottom: none;
+}
+
+.section-nav.mobile-menu nav a {
+  border-bottom: none;
+  display: block;
+  padding: var(--spacing-12) var(--spacing-24);
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: none;
+  border-left: var(--border-width-thick) solid var(--section-nav-active-color);
+  padding-left: calc(var(--spacing-24) - var(--spacing-03));
+}
+
+/* ── Desktop ≥768px: horizontal flex list, toggle hidden ─────────────────── */
+
+@media (width >= 744px) {
+  .section-nav.mobile-menu {
+    overflow-x: auto;
+  }
+
+  .section-nav.mobile-menu nav {
+    flex-direction: row;
+    padding: 0 var(--spacing-24);
+  }
+
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  .section-nav.mobile-menu nav ul {
+    border-top: none;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
+  .section-nav.mobile-menu nav ul li {
+    align-items: center;
+    border-bottom: none;
+    display: flex;
+  }
+
+  .section-nav.mobile-menu nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  .section-nav.mobile-menu nav a {
+    border-bottom: var(--border-width-default) solid transparent;
+    display: inline-block;
+    padding: var(--spacing-12) var(--spacing-16);
+    width: auto;
+  }
+
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom-color: var(--section-nav-active-color);
+    border-left: none;
+    padding-left: var(--spacing-16);
+  }
+}
+
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+
+@custom-media --bp-tablet (min-width: 744px);
+
+@custom-media --bp-desktop (min-width: 1024px);
+
+@custom-media --bp-wide (min-width: 1440px);
+
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --color-black: #000;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-light: rgb(255 255 255 / 80%);
+  --color-charcoal: #25282a;
+  --color-text-compliance: #6c757d;
+  --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-focus: var(--link-color);
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-text-on-dark: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-200: 20rem;
+  --spacing-255: 25.5rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+  --z-index-anchor-nav: 100;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-tight: 1.25;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+
+  /* ---- Brand Explorer Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --be-color-bg: var(--background-color);
+  --be-color-text: var(--text-color);
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-color-bar-text: #fff;
+  --be-color-border: #d8d8d8;
+  --be-color-border-mobile: #e0e0e0;
+  --be-color-separator: #ccc;
+  --be-color-muted: #50535c;
+  --be-color-btn-hover: #1c2d49;
+  --be-color-btn-no-border: #555;
+  --be-color-btn-no-hover: #f5f5f5;
+  --be-color-overlay: rgb(0 0 0 / 60%);
+  --be-font-body: var(--body-font-family);
+  --be-font-size-body: 14px;
+  --be-font-size-small: 11px;
+  --be-font-size-bar: 0.9rem;
+  --be-font-weight-bold: var(--font-weight-700);
+  --be-font-weight-normal: var(--font-weight-400);
+  --be-line-height-body: 16px;
+  --be-line-height-small: 14px;
+
+  /* ---- Clinical Data Panel Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --cdp-color-text: var(--text-color);
+  --cdp-color-heading: var(--text-color);
+  --cdp-color-accent: var(--link-color);
+  --cdp-color-muted: var(--color-text-muted);
+  --cdp-color-border: var(--container-border-color);
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: var(--font-size-22);
+  --cdp-font-size-callout: var(--font-size-26);
+  --cdp-font-size-body: var(--font-size-14);
+  --cdp-font-size-small: var(--font-size-13);
+  --cdp-font-weight-bold: var(--font-weight-700);
+  --cdp-font-weight-normal: var(--font-weight-400);
+  --cdp-line-height-callout: var(--line-height-30);
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: var(--line-height-16);
+  --cdp-spacing-sm: var(--spacing-08);
+  --cdp-spacing-md: var(--spacing-16);
+  --cdp-spacing-lg: var(--spacing-24);
+  --cdp-max-width: 1180px;
+  --cdp-letter-spacing-title: 0.02em;
+}
+
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+
+/* ============================================================
+   SKYRIZI HCP — Brand Token Overrides
+   Source: skyrizihcp.com/dermatology (Platform C)
+   Font: Univers LT W01_57 Condensed
+   ============================================================ */
+
+:root {
+    /* ---- Color: Brand Primary ---- */
+    --color-brand-primary: #005272;
+    --color-brand-primary-dark: #003b52;
+    --color-brand-primary-light: #e8edef;
+
+    /* ---- Color: Brand Accent ---- */
+    --color-brand-accent: #ffce00;
+    --color-brand-accent-teal: #008481;
+    --color-brand-accent-blue: #3860be;
+
+    /* ---- Color: Text ---- */
+    --text-color: #404040;
+    --color-text-heading: #005272;
+    --color-text-on-dark: #fff;
+    --color-text-muted: #696969;
+    --color-text-legal: #555;
+    --color-text-black: #071d49;
+    /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+    --color-text-footer: #e2e4e3;
+
+    /* ---- Color: Background ---- */
+    --background-color: #fff;
+    --color-background-light: #f8f8f8;
+    --color-background-tint: #e8edef;
+    --color-background-footer: #071d49;
+    --color-background-blue: #d3f3ff;
+
+    /* ---- Color: Nav ---- */
+    --color-nav-active: #1ba2da;
+    --color-nav-separator: rgb(255 255 255 / 30%);
+    --color-nav-dropdown-bg: #ccc;
+
+    /* ---- Color: Border ---- */
+    --color-border-default: #ccc;
+    --color-border-muted: #b3b3b3;
+    --color-border-dark: #555;
+
+    /* ---- Color: Overlay ---- */
+    --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+    /* ---- Color: ISI / Safety ---- */
+    --color-safety-bar-bg: #fff;
+    --color-safety-bar-border: #999;
+
+    /* ---- Font: Family ---- */
+    --body-font-family: 'Univers Regular', 'Arial Narrow', sans-serif;
+    --heading-font-family: 'Univers Regular', 'Arial Narrow', sans-serif;
+    --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+    --icon-font-family: 'abbv-iconFont';
+
+    /* ---- Font: Size ---- */
+    --font-size-body: 16px;
+    --font-size-body-small: 14.4px;
+    --font-size-body-xs: 13px;
+    --font-size-legal: 12.992px;
+    --font-size-nav: 14px;
+    --font-size-footer: 14px;
+    --letter-spacing-nav: 0.04em;
+    --font-size-h1: 32px;
+    --font-size-h1-hero: 25px;
+    --font-size-h2: 24px;
+    --font-size-h3: 18.72px;
+    --font-size-h4: 16px;
+    --font-size-h-xl: 35.2px;
+    --font-size-button: 17.6px;
+    --font-size-button-tertiary: 18px;
+    --font-size-eyebrow: 11px;
+
+    /* ---- Font: Weight ---- */
+    --font-weight-body: 400;
+    --font-weight-medium: 500;
+    --font-weight-heading: 700;
+
+    /* ---- Font: Line Height ---- */
+    --line-height-body: normal;
+    --line-height-nav: 22px;
+    --line-height-h1-hero: 24.992px;
+    --line-height-h2: 35px;
+    --line-height-legal: 19.488px;
+
+    /* ---- Border: Radius ---- */
+    --border-radius-button-primary: 30px;
+    --border-radius-button-secondary: 30px;
+    --border-radius-button-tertiary: 10px;
+    --border-radius-nav: 10px;
+    --border-radius-safety-bar: 5px;
+
+    /* ---- Button: Primary ---- */
+    --button-primary-bg: #071d49;
+    --button-primary-color: #fff;
+    --button-primary-border: transparent;
+    --button-primary-padding: 14px 60px 14px 30px;
+    --button-primary-font-size: 0.875rem;
+    --button-primary-font-weight: 400;
+    --button-primary-hover-bg: #1f448c;
+    --button-primary-hover-color: #fff;
+    --button-primary-hover-border: #1f448c;
+
+    /* ---- Button: Secondary ---- */
+    --button-secondary-bg: transparent;
+    --button-secondary-color: #071d49;
+    --button-secondary-border: #071d49;
+    --button-secondary-padding: 14px 30px;
+    --button-secondary-hover-bg: #1f448c;
+    --button-secondary-hover-color: #fff;
+    --button-secondary-hover-border: #1f448c;
+
+    /* ---- Button: Tertiary ---- */
+    --button-tertiary-bg: transparent;
+    --button-tertiary-color: #071d49;
+    --button-tertiary-border: #071d49;
+    --button-tertiary-padding: 14px 30px;
+    --button-tertiary-font-size: 18px;
+    --button-tertiary-hover-bg: #071d49;
+    --button-tertiary-hover-color: #fff;
+
+    /* ---- Button: Plain ---- */
+    --button-plain-color: #1ba2da;
+    --button-plain-weight: 700;
+    --button-plain-hover-color: #fff;
+
+    /* ---- Toggle ---- */
+    --toggle-bg-off: #b3b3b3;
+    --toggle-bg-on: #071d49;
+    --toggle-thumb-color: #fff;
+
+    /* ---- Link ---- */
+    --link-color: #005272;
+
+    /* ---- Gradient ---- */
+    --gradient-fade: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0) 0px,
+        rgb(243, 243, 243) 100%
+    );
+
+    /* ---- Brand Explorer Block ---- */
+    --be-color-text: #21406d;
+    --be-color-text-light: #21406d;
+    --be-color-bar-bg: #25282a;
+    --be-color-rinvoq: #ffd41d;
+    --be-color-rinvoq-hover: #b8860b;
+    --be-color-skyrizi: #00a8e1;
+    --be-color-skyrizi-hover: #0088b5;
+    --be-color-humira: #931947;
+    --be-font-body: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+    --be-font-heading: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+
+    /* ---- Formulary Lookup ---- */
+    --color-formulary-text: #21406d;
+    --color-formulary-heading: #21406d;
+    --color-formulary-label: #21406d;
+    --color-formulary-submit-bg: #071d49;
+    --color-formulary-submit-border: #071d49;
+    --color-border-input: #c2c2c2;
+    --color-error: #eb3c36;
+
+    /* Formulary: Layout */
+    --formulary-form-width: 600px;
+    --formulary-input-width: 600px;
+
+    /* Formulary: Heading */
+    --formulary-heading-size: 16px;
+    --formulary-heading-weight: 400;
+    --formulary-heading-spacing: 16px;
+    --formulary-heading-line-height: 20px;
+
+    /* Formulary: Input/Select */
+    --formulary-input-height: 44px;
+    --formulary-input-radius: 2px;
+    --formulary-input-size: 14px;
+    --formulary-input-padding: 12px 15px;
+
+    /* Formulary: Label */
+    --formulary-label-size: 16px;
+    --formulary-label-weight: 400;
+
+    /* Formulary: Submit */
+    --formulary-submit-size: 14px;
+    --formulary-submit-weight: 700;
+    --formulary-submit-radius: 30px;
+    --formulary-submit-height: 44px;
+    --formulary-submit-padding: 14px 50px 14px 30px;
+    --formulary-submit-icon-offset: 20px;
+
+    /* Formulary: Results */
+    --formulary-results-radius: 4px;
+    --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+    /* Formulary: Input Group */
+    --formulary-input-group-gap: 8px;
+    --formulary-zip-min-width: 200px;
+
+    /* Formulary: Disclaimer/Notice */
+    --formulary-disclaimer-size: 13px;
+    --formulary-disclaimer-width: 700px;
+    --formulary-recaptcha-size: 11px;
+
+    /* ---- Spacing: Common ---- */
+    --spacing-8: 8px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+
+    /* ---- Clinical Data Panel Block ---- */
+    --cdp-color-text: #21406d;
+    --cdp-color-heading: #21406d;
+    --cdp-color-accent: #1ba2da;
+    --cdp-color-muted: #50535c;
+    --cdp-color-cta: #071d49;
+    --cdp-font-body: var(--body-font-family);
+    --cdp-font-heading: var(--heading-font-family);
+    --cdp-font-size-title: 22px;
+    --cdp-font-size-callout: 26px;
+    --cdp-font-size-body: 14px;
+    --cdp-font-size-small: 12.8px;
+    --cdp-line-height-callout: 30px;
+    --cdp-line-height-body: 18px;
+    --cdp-line-height-default: 16px;
+    --formulary-recaptcha-size: 11px;   
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffce00;
+  --color-brand-accent-teal: #008481;
+  --color-brand-accent-blue: #3860be;
+  --color-brand-accent-navy: #004c97;
+  --color-brand-accent-sky: #00a3df;
+  --color-brand-accent-cyan: #1ba2da;
+
+  /* ---- Color: Tabs ---- */
+  --color-tabs-control-bg: #21406d;
+  --color-tabs-underline: #1ba2da;
+  --color-tabs-text: #191c1d;
+  --tabs-underline-height: 0.23rem;
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-text: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Gradient: Tabs ---- */
+  --gradient-tabs-panel: linear-gradient(90deg, #00a3df 0%, #85bde6 74%, #c3ae93 78%, #f39200 88%);
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-control: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Color: Text ---- */
+  --text-color: #404040;
+  --color-text-heading: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #696969;
+  --color-text-legal: #555;
+  --color-text-black: #071d49;
+  /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+  --color-text-footer: #e2e4e3;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f8f8f8;
+  --color-background-tint: #e8edef;
+  --color-background-footer: #071d49;
+  --color-background-blue: #d3f3ff;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #ccc;
+  --color-border-muted: #b3b3b3;
+  --color-border-dark: #555;
+
+  /* ---- Color: Overlay ---- */
+  --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+  /* ---- Color: ISI / Safety ---- */
+  --color-safety-bar-bg: #fff;
+  --color-safety-bar-border: #999;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 14.4px;
+  --font-size-body-xs: 13px;
+  --font-size-legal: 12.992px;
+  --font-size-nav: 14px;
+  --font-size-footer: 14px;
+  --font-size-h1: 32px;
+  --font-size-h1-hero: 25px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18.72px;
+  --font-size-h4: 16px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 17.6px;
+  --font-size-button-tertiary: 18px;
+  --font-size-eyebrow: 11px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-medium: 500;
+  --font-weight-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: normal;
+  --line-height-nav: 22px;
+  --line-height-h1-hero: 24.992px;
+  --line-height-h2: 35px;
+  --line-height-legal: 19.488px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 6px;
+  --border-radius-button-tertiary: 10px;
+  --border-radius-nav: 10px;
+  --border-radius-safety-bar: 5px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #000;
+  --button-primary-bg: #ffce00;
+  --button-primary-border: #fff;
+  --button-primary-padding: 20px 42px 20px 20px;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-color: #005272;
+  --button-tertiary-bg: transparent;
+  --button-tertiary-border: #555;
+  --button-tertiary-padding: 16px 70px 16px 24px;
+
+  /* ---- Link ---- */
+  --link-color: #005272;
+
+  /* ---- Gradient ---- */
+  --gradient-fade: linear-gradient(to top, rgba(255, 255, 255, 0) 0px, rgb(243, 243, 243) 100%);
+
+  /* ---- Spacing: Common ---- */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  /* ---- Brand Explorer Block ---- */
+  --be-color-text: #21406d;
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-font-body: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --be-font-heading: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+
+  /* ---- Clinical Data Panel Block ---- */
+  --cdp-color-text: #21406d;
+  --cdp-color-heading: #21406d;
+  --cdp-color-accent: #1ba2da;
+  --cdp-color-muted: #50535c;
+  --cdp-color-cta: #071d49;
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: 22px;
+  --cdp-font-size-callout: 26px;
+  --cdp-font-size-body: 14px;
+  --cdp-font-size-small: 12.8px;
+  --cdp-line-height-callout: 30px;
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: 16px;
+
+  /* ---- Formulary Lookup ---- */
+  --color-formulary-text: #21406d;
+  --color-formulary-heading: #21406d;
+  --color-formulary-label: #21406d;
+  --color-formulary-submit-bg: #071d49;
+  --color-formulary-submit-border: #071d49;
+  --color-border-input: #c2c2c2;
+  --color-error: #eb3c36;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 600px;
+  --formulary-input-width: 600px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 16px;
+  --formulary-heading-weight: 400;
+  --formulary-heading-spacing: 16px;
+  --formulary-heading-line-height: 20px;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 44px;
+  --formulary-input-radius: 2px;
+  --formulary-input-size: 14px;
+  --formulary-input-padding: 12px 15px;
+
+  /* Formulary: Label */
+  --formulary-label-size: 16px;
+  --formulary-label-weight: 400;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 14px;
+  --formulary-submit-weight: 700;
+  --formulary-submit-radius: 30px;
+  --formulary-submit-height: 44px;
+  --formulary-submit-padding: 14px 50px 14px 30px;
+  --formulary-submit-icon-offset: 20px;
+
+  /* Formulary: Results */
+  --formulary-results-radius: 4px;
+  --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+  /* Formulary: Input Group */
+  --formulary-input-group-gap: 8px;
+  --formulary-zip-min-width: 200px;
+
+  /* Formulary: Disclaimer/Notice */
+  --formulary-disclaimer-size: 13px;
+  --formulary-disclaimer-width: 700px;
+  --formulary-recaptcha-size: 11px;
+
+  /* ---- Skyrizi HCP: Image Compare ---- */
+  --color-skyrizi-navy: #071d49;
+  --color-skyrizi-navy-dark: #051331;
+  --color-skyrizi-blue: #1398d1;
+  --color-skyrizi-blue-rule: #1ba2da;
+  --color-skyrizi-blue-hover: #1f448c;
+  --color-skyrizi-body-color: #21406d;
+  --color-skyrizi-gallery-bg: #d1f1fc;
+  --color-skyrizi-accent-border: #f7941d;
+  --color-skyrizi-thumb-strip: #add8e6;
+  --font-skyrizi-condensed: "Univers LT W01_57 Condensed", "Arial Narrow", sans-serif;
+  --font-skyrizi-bold: "Univers LT W01_67 Bold_1476016", "Arial Narrow", sans-serif;
+
+  /* ---- Section Nav ---- */
+  --shadow-section-nav-stuck: 0 2px 12px rgb(0 0 0 / 30%);
+}
+
+/* Skyrizi HCP — Section Nav Brand Overrides
+   Mobile (base):  only shows when sticky+stuck — full-width dark-navy bar with toggle
+   Desktop ≥768px: floating dark-navy rounded pill (non-stuck), full-width bar (stuck)
+   Source:         skyrizihcp.com .risa-section-nav / .abbv-fixed pattern
+*/
+
+/* ── Block-scoped tokens ─────────────────────────────────────────────── */
+
+.section-nav {
+  --section-nav-text: var(--color-text-on-dark);
+  --section-nav-active: var(--color-nav-active);
+  --section-nav-separator: var(--color-nav-separator);
+  --section-nav-dropdown-bg: var(--color-nav-dropdown-bg);
+  --section-nav-bg: var(--color-background-footer);
+}
+
+/* ── Mobile: hide non-stuck sticky nav ───────────────────────────────── */
+
+.section-nav.sticky:not(.is-stuck) {
+  display: none;
+}
+
+/* ── Stuck: full-width dark-navy bar (mobile + desktop) ──────────────── */
+
+.section-nav.sticky.is-stuck {
+  background-color: var(--section-nav-bg);
+  box-shadow: var(--shadow-section-nav-stuck);
+  overflow-x: auto;
+  padding: 0;
+}
+
+/* Higher specificity (0,3,1) overrides desktop pill nav (0,1,1) */
+
+.section-nav.sticky.is-stuck nav {
+  background-color: transparent;
+  border-radius: 0;
+  max-width: var(--section-max-width);
+  padding: 0 var(--spacing-24);
+}
+
+/* ── Links ───────────────────────────────────────────────────────────── */
+
+.section-nav a {
+  border-bottom: var(--border-width-default) solid transparent;
+  color: var(--section-nav-text);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--letter-spacing-nav);
+  padding: var(--spacing-10) var(--spacing-24);
+  text-transform: uppercase;
+  transition: border-color var(--transition-duration-fast) var(--transition-easing-standard),
+    color var(--transition-duration-fast) var(--transition-easing-standard);
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  color: var(--section-nav-active);
+}
+
+/* Mobile active: full-width blue bottom border + blue text */
+
+.section-nav a.is-active {
+  border-bottom-color: var(--section-nav-active);
+  color: var(--section-nav-active);
+}
+
+/* ── Mobile menu: hide hamburger + generic label ─────────────────────── */
+
+.section-nav.mobile-menu .section-nav-hamburger,
+.section-nav.mobile-menu .section-nav-toggle-label {
+  display: none;
+}
+
+/* ── Mobile menu: stuck nav fills full viewport width ────────────────── */
+
+.section-nav.mobile-menu.sticky.is-stuck nav {
+  max-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+/* ── Toggle button ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--section-nav-text);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  justify-content: center;
+  letter-spacing: var(--letter-spacing-nav);
+  margin: 0;
+  padding: 0 var(--spacing-40) 0 var(--spacing-16);
+  position: relative;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+/* ── Current section label: centred in collapsed bar ────────────────── */
+
+.section-nav.mobile-menu .section-nav-current-label {
+  display: block;
+  flex: 1;
+  line-height: var(--spacing-32);
+  text-align: center;
+}
+
+.section-nav.mobile-menu.is-open .section-nav-current-label {
+  visibility: hidden;
+}
+
+/* ── Toggle icon: add_circle — collapsed ─────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: var(--spacing-24);
+  position: absolute;
+  right: var(--spacing-12);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--spacing-24);
+}
+
+/* ── Toggle icon: close — expanded ───────────────────────────────────── */
+
+.section-nav.mobile-menu.is-open .section-nav-toggle::after {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  height: var(--spacing-30);
+  width: var(--spacing-24);
+}
+
+/* ── Dropdown list ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu nav ul {
+  background-color: var(--section-nav-dropdown-bg);
+  border-top: none;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav ul li + li::before {
+  display: none;
+}
+
+.section-nav.mobile-menu nav ul li {
+  border-bottom: none;
+  display: block;
+}
+
+.section-nav.mobile-menu nav a {
+  border-bottom: none;
+  display: block;
+  padding: var(--spacing-02) var(--spacing-24);
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: var(--border-width-default) solid var(--section-nav-active);
+  border-left: none;
+  color: var(--section-nav-active);
+  padding-left: var(--spacing-24);
+  text-decoration: none;
+}
+
+/* ── Desktop ≥768px: floating pill, separators, show in normal flow ──── */
+
+@media (width >= 744px) {
+  /* Show sticky nav in normal flow (floating pill) */
+  .section-nav.sticky:not(.is-stuck) {
+    display: block;
+  }
+
+  /* Transparent wrapper — pill background lives on the nav element */
+  .section-nav {
+    background-color: transparent;
+    border-bottom: none;
+    box-shadow: none;
+    overflow-x: visible;
+    padding: 0 var(--spacing-20);
+  }
+
+  /* Floating dark-navy pill */
+  .section-nav nav {
+    background-color: var(--section-nav-bg);
+    border-radius: var(--border-radius-nav);
+    justify-content: center;
+    max-width: fit-content;
+    padding: var(--spacing-06) 0;
+  }
+
+  /* Desktop active: underline decoration (border-bottom already transparent from base) */
+  .section-nav a.is-active {
+    border-bottom-color: transparent;
+    color: var(--section-nav-text);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active);
+    text-decoration-thickness: var(--border-width-default);
+    text-underline-offset: var(--spacing-05);
+  }
+
+  /* Pipe separators between adjacent links */
+  .section-nav nav a + a {
+    border-left: var(--border-width-thin) solid var(--section-nav-separator);
+    padding-left: var(--spacing-24);
+  }
+
+  /* ── Mobile-menu: reset mobile-base overrides for desktop layout ─────── */
+
+  /* Hide toggle — mobile-base sets display:flex which outlasts the base desktop hide */
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  /* Horizontal link list — mobile-base sets column/100% which outlasts base desktop row */
+  .section-nav.mobile-menu nav ul {
+    background-color: transparent;
+    flex-direction: row;
+    width: auto;
+  }
+
+  /* Flex li — mobile-base sets display:block which outlasts base desktop flex */
+  .section-nav.mobile-menu nav ul li {
+    display: flex;
+  }
+
+  /* Inline link — mobile-base sets block/full-width/center which outlasts base desktop */
+  .section-nav.mobile-menu nav a {
+    border-bottom: var(--border-width-default) solid transparent;
+    display: inline-block;
+    padding: var(--spacing-10) var(--spacing-24);
+    text-align: unset;
+    width: auto;
+  }
+
+  /* Pipe separators in mobile-menu variant (horizontal on desktop) */
+  .section-nav.mobile-menu nav ul li + li::before {
+    align-self: center;
+    background-color: var(--section-nav-separator);
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    height: var(--spacing-14);
+    width: var(--border-width-thin);
+  }
+
+  /* Mobile-menu active: underline on desktop (overrides mobile border-bottom) */
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom: none;
+    border-left: none;
+    color: var(--section-nav-text);
+    padding-left: var(--spacing-16);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active);
+    text-decoration-thickness: var(--border-width-default);
+    text-underline-offset: var(--spacing-05);
+  }
+}

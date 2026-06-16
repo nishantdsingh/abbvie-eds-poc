@@ -1,0 +1,255 @@
+@import '../tokens.css';
+
+/* ============================================================
+   LINZESS DTC — Brand Token Overrides
+   Source: linzess.com (Platform C)
+   Display Font: Bebas Neue
+   Body Font: Lato
+   Legal Font: BasicCommercialLT
+   ============================================================ */
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #422e83;
+  --color-brand-primary-dark: #321f63;
+  --color-brand-primary-light: #60579e;
+  --color-brand-primary-lighter: #d9d7f9;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #faa633;
+  --color-brand-accent-hover: #f2a94b;
+
+  /* ---- Color: Named Palette (from CSS vars) ---- */
+  --linz-dark-purple: #422e83;
+  --linz-purple: #60579e;
+  --linz-light-purple: #d9d7f9;
+  --linz-orange: #faa633;
+  --linz-grey: #4d4d4f;
+  --linz-off-white: #f4f6fb;
+  --linz-white: #fff;
+  --linz-black: #000;
+
+  /* ---- Color: Text ---- */
+  --text-color: #4d4d4f;
+  --color-text-heading: #422e83;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #555;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f4f6fb;
+  --color-background-footer: #422e83;
+  --color-background-footer-dark: #151b17;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #c2c2c2;
+  --color-border-muted: #b8b8b8;
+
+  /* ---- Color: Overlay ---- */
+  --color-overlay-dark: rgba(0, 0, 0, 0.8);
+  --color-overlay-muted: rgba(115, 133, 159, 0.75);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Lato', sans-serif;
+  --heading-font-family: 'Bebas Neue', sans-serif;
+  --heading-font-family-bold: 'Bebas Neue', sans-serif;
+  --font-family-legal: 'BasicCommercialLT-Roman', sans-serif;
+  --font-family-legal-bold: 'BasicCommercialLT-Black', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 14px;
+  --font-size-body-small: 12px;
+  --font-size-body-xs: 0.75rem;
+  --font-size-legal: 14px;
+  --font-size-legal-large: 16px;
+  --font-size-nav: 14.4px;
+  --font-size-footer: 14.4px;
+  --font-size-h1: 2rem;
+  --font-size-h1-hero: 56px;
+  --font-size-h2: 1.125rem;
+  --font-size-h2-hero: 32px;
+  --font-size-h3: 14px;
+  --font-size-h-xl: 2.0625rem;
+  --font-size-button: 14.4px;
+  --font-size-eyebrow: 0.75rem;
+  --font-size-md: 1.0625rem;
+  --font-size-quote: 1.3125rem;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: normal;
+  --line-height-h1: 1.875rem;
+  --line-height-h1-hero: 50.4px;
+  --line-height-h2-hero: 30px;
+  --line-height-legal: 16px;
+  --line-height-legal-large: 20px;
+
+  /* ---- Border: Radius ---- */
+  --linz-rounded-corner: 16px;
+  --linz-rounded-corner-sm: 8px;
+  --border-radius-button-primary: 16px;
+  --border-radius-safety-bar: 16px 16px 0 0;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #fff;
+  --button-primary-bg: #422e83;
+  --button-primary-border: transparent;
+  --button-primary-padding: 16px 59px 16px 24px;
+  --button-primary-font-size: 0.9rem;
+  --button-primary-font-weight: 800;
+  --button-primary-hover-bg: #f4f6fb;
+  --button-primary-hover-color: #422e83;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: #fff;
+  --button-secondary-color: #422e83;
+  --button-secondary-border: transparent;
+  --button-secondary-padding: 16px 59px 16px 24px;
+  --border-radius-button-secondary: 16px;
+  --button-secondary-hover-bg: #d9d7f9;
+  --button-secondary-hover-color: #422e83;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: #d9d7f9;
+  --button-tertiary-color: #422e83;
+  --button-tertiary-border: transparent;
+  --button-tertiary-padding: 12px 42px 12px 24px;
+  --button-tertiary-font-size: 12px;
+  --border-radius-button-tertiary: 16px;
+  --button-tertiary-hover-bg: #fff;
+  --button-tertiary-hover-color: #422e83;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #422e83;
+  --button-plain-weight: 800;
+  --button-plain-hover-color: #222;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #b8b8b8;
+  --toggle-bg-on: #422e83;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #422e83;
+
+  /* ---- Modal ---- */
+  --modal-dialog-max-width: 720px;
+  --modal-dialog-padding: 40px;
+  --modal-dialog-border: 1px solid var(--color-border-default);
+  --modal-dialog-border-radius: 0;
+  --modal-close-size: 28px;
+  --modal-close-font-size: 1.25rem;
+
+  /* ---- Shadow ---- */
+  --shadow-safety-bar: rgba(0, 0, 0, 0.25) 0 0 10px 0;
+  --shadow-section-nav-stuck: 0 4px 12px rgb(0 0 0 / 25%);
+
+  /* ---- Gradient ---- */
+  --gradient-hero-overlay: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0));
+  --gradient-section-fade: linear-gradient(-180deg, #fff 88%, rgb(115, 133, 159) 100%);
+  --gradient-hero-nav-wrapper: linear-gradient(180deg, rgb(40 26 77 / 80%) 0%, rgb(40 26 77 / 42%) 58%, rgb(40 26 77 / 0%) 100%);
+  --gradient-hero-overlay-dual: linear-gradient(90deg, rgb(33 20 53 / 72%) 0%, rgb(33 20 53 / 36%) 26%, rgb(33 20 53 / 0%) 58%),
+    linear-gradient(180deg, rgb(26 15 44 / 48%) 0%, rgb(26 15 44 / 18%) 18%, rgb(26 15 44 / 0%) 42%);
+
+  /* ---- Transition ---- */
+  --transition-button: background 0.3s ease-in-out, border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  /* ---- Opacity ---- */
+  --opacity-hover: 0.85;
+  --opacity-muted: 0.4;
+
+  /* ---- Header block ---- */
+  --color-nav-dark: #231d1d;
+  --header-logo-width: 14.8rem;
+  --header-logo-height: 7.2rem;
+  --header-logo-filter: brightness(0) invert(1);
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 20.2rem;
+  --header-nav-line-height: 1.2;
+  --header-nav-letter-spacing: 0.05em;
+  --header-eyebrow-bg: var(--linz-purple);
+  --header-eyebrow-line-height: 1.4;
+  --header-utility-height: 28px;
+  --header-nav-separator: rgb(255 255 255 / 20%);
+  --header-utility-border: rgb(247 248 245 / 20%);
+  --header-scroll-bg: rgb(35 29 29 / 95%);
+  --header-eyebrow-gradient: linear-gradient(180deg, rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --header-cta-margin-top: -1rem;
+  --header-nav-max-width: 100rem;
+  --header-chevron-size: var(--spacing-20);
+  --header-hamburger-bar-width: 3.1rem;
+  --header-hamburger-transform-origin: 1.1rem 0.1rem;
+  --header-nav-mobile-padding: var(--spacing-15) var(--spacing-20);
+  --header-nav-item-line-height-mobile: 5.8rem;
+  --header-nav-item-before-top: 30%;
+  --header-mobile-cta-width: 12.1rem;
+  --header-submenu-item-min-height: 5rem;
+  --header-submenu-item-line-height: 5rem;
+  --header-submenu-link-font-size: 1.28rem;
+  --shadow-submenu: 0 3px 5px 0 rgb(153 153 153);
+  --icon-svg-home: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEwIDIwdi02aDR2Nmg1di04aDNMMTIgMyAyIDEyaDN2OHoiLz48L3N2Zz4=");
+  /* ---- Header: No-hero arc ---- */
+  --header-z-index: 10;
+  --header-overlay-gradient: linear-gradient(rgb(35 29 29 / 90%) 0%, rgb(35 29 29 / 0%) 100%);
+  --no-hero-arc-height: 80px;
+  --no-hero-h1-font-size: 40px;
+  --no-hero-h1-line-height: 36px;
+  --no-hero-h1-margin-bottom: 40px;
+  --no-hero-h1-font-size-mobile: 28px;
+  --no-hero-h1-line-height-mobile: 30px;
+  --no-hero-divider-width: 64px;
+  --no-hero-divider-height: var(--hero-divider-height);
+  --no-hero-divider-margin-bottom: 24px;
+
+  /* ---- Cards Grid Block ---- */
+  --linz-heading2-font-size: var(--font-size-h2);
+  --linz-body-font-size: var(--font-size-body);
+
+  /* ---- Homepage Card Tokens ---- */
+  --linz-card-heading-size: 18px;
+  --linz-card-body-size: 14px;
+  --linz-card-footnote-size: 12px;
+  --linz-section-heading-size: 32px;
+  --linz-section-heading-line-height: 30px;
+
+  /* ---- Hero: Linzess-specific ---- */
+  --hero-behind-nav-min-height: 52rem;
+  --hero-behind-nav-min-height-desktop: 62rem;
+  --hero-text-max-width: 64rem;
+  --hero-text-max-width-tablet: 72rem;
+  --hero-text-max-width-desktop: 92rem;
+  --hero-cmp-max-width: 34rem;
+  --hero-cmp-max-width-tablet: 38rem;
+  --hero-cmp-max-width-cta: 44rem;
+  --hero-eyebrow-margin-bottom: 2.4rem;
+  --hero-eyebrow-font-size: 1.2rem;
+  --hero-eyebrow-line-height: 1.2;
+  --hero-body-font-size: 1.8rem;
+  --hero-body-line-height: 1.35;
+  --hero-caption-max-width: 1000px;
+  --hero-caption-font-size: var(--font-size-legal-large);
+  --hero-caption-text-shadow: 0 0 10px rgb(0 0 0 / 50%);
+  --hero-caption-line-height: 1.2;
+  --hero-divider-height: 5px;
+  --hero-cta-min-height: 68.4rem;
+  --hero-cta-padding-bottom: 10.4rem;
+  --hero-cta-text-max-width: 40rem;
+  --hero-cta-text-max-width-tablet: 42rem;
+  --hero-cta-text-max-width-desktop: 44rem;
+  --hero-cta-curve-bottom: -6.4rem;
+  --hero-cta-curve-height: 12.8rem;
+  --hero-cta-btn-min-width: 23.8rem;
+  --hero-cta-btn-padding: 1.6rem 2.4rem;
+  --hero-cta-btn-font-size: 1.6rem;
+  --hero-cta-btn-line-height: 1.2;
+  --hero-cta-btn-arrow-margin: 1.4rem;
+  --hero-cta-btn-arrow-font-size: 1.8rem;
+  --hero-mobile-curve-bottom: -1.4rem;
+  --hero-mobile-curve-height: 3.8rem;
+  --hero-mobile-min-height: 420px;
+}

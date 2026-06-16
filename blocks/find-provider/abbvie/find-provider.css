@@ -1,0 +1,133 @@
+.find-provider {
+  --find-provider-color-border: var(--color-border);
+  --find-provider-color-text-muted: var(--color-text-muted);
+  --find-provider-color-bg-card: var(--background-color);
+  --find-provider-gap-field: var(--spacing-16);
+  --find-provider-gap-card: var(--spacing-16);
+  --find-provider-radius-input: var(--border-radius-base);
+  --find-provider-radius-card: var(--border-radius-m);
+  --find-provider-padding-card: var(--spacing-16);
+  --find-provider-map-height: var(--spacing-420);
+}
+
+.find-provider-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--find-provider-gap-field);
+  margin-block-end: var(--spacing-24);
+}
+
+.find-provider-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+  flex: 1 1 auto;
+  min-inline-size: var(--spacing-200);
+}
+
+.find-provider-label {
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-color);
+}
+
+.find-provider-search-input,
+.find-provider-radius-select,
+.find-provider-specialty-select {
+  border: var(--separator-height-1) solid var(--find-provider-color-border);
+  border-radius: var(--find-provider-radius-input);
+  font-size: var(--body-font-size-s);
+  padding: var(--spacing-08) var(--spacing-12);
+  inline-size: 100%;
+  background-color: var(--find-provider-color-bg-card);
+  color: var(--text-color);
+}
+
+.find-provider-search-input:focus-visible,
+.find-provider-radius-select:focus-visible,
+.find-provider-specialty-select:focus-visible {
+  outline: var(--spacing-02) solid var(--color-focus);
+  outline-offset: var(--spacing-02);
+}
+
+.find-provider-actions {
+  display: flex;
+  gap: var(--spacing-08);
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.find-provider-status {
+  font-size: var(--body-font-size-s);
+  color: var(--find-provider-color-text-muted);
+  min-block-size: var(--spacing-20);
+  margin-block-end: var(--spacing-08);
+}
+
+.find-provider-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--find-provider-gap-card);
+}
+
+.find-provider-result {
+  border: var(--separator-height-1) solid var(--find-provider-color-border);
+  border-radius: var(--find-provider-radius-card);
+  background-color: var(--find-provider-color-bg-card);
+  padding: var(--find-provider-padding-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08);
+}
+
+.find-provider-result-name {
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-bold);
+}
+
+.find-provider-result-specialty {
+  font-size: var(--body-font-size-s);
+  color: var(--find-provider-color-text-muted);
+}
+
+.find-provider-result-address {
+  font-style: normal;
+  font-size: var(--body-font-size-s);
+}
+
+.find-provider-result-phone,
+.find-provider-result-directions {
+  font-size: var(--body-font-size-s);
+}
+
+/* Map variant */
+
+.find-provider.find-provider-map .find-provider-map-container {
+  block-size: var(--find-provider-map-height);
+  border: var(--separator-height-1) solid var(--find-provider-color-border);
+  border-radius: var(--find-provider-radius-card);
+  margin-block-end: var(--find-provider-gap-card);
+  overflow: hidden;
+}
+
+@media (width >= 744px) {
+  .find-provider.find-provider-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-24);
+  }
+
+  .find-provider.find-provider-map .find-provider-form,
+  .find-provider.find-provider-map .find-provider-status {
+    grid-column: 1 / -1;
+  }
+
+  .find-provider.find-provider-map .find-provider-map-container {
+    margin-block-end: 0;
+  }
+}
+
+/* Abbvie find-provider overrides */

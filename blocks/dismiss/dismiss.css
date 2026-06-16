@@ -1,0 +1,60 @@
+.dismiss {
+  font-size: var(--body-font-size-s);
+  opacity: 1;
+  padding: var(--spacing-12) var(--spacing-48) var(--spacing-12) var(--spacing-24);
+  position: relative;
+  transition: opacity var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+/* JS hoists the sticky wrapper before <main> making <body> its containing block.
+   position: sticky here then works through the full page scroll. */
+body > .dismiss-wrapper:has(.dismiss.sticky) {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: var(--z-index-anchor-nav);
+}
+
+.dismiss p,
+.dismiss a,
+.dismiss li {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.dismiss.dismiss-is-closing {
+  opacity: 0;
+}
+
+.dismiss-close {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  height: var(--spacing-24);
+  padding: 0;
+  position: absolute;
+  right: var(--spacing-16);
+  top: var(--spacing-08);
+  width: var(--spacing-24);
+  margin: 0;
+}
+
+.dismiss-close::before,
+.dismiss-close::after {
+  background: currentcolor;
+  content: '';
+  display: block;
+  height: var(--spacing-02);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: var(--spacing-14);
+}
+
+.dismiss-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.dismiss-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

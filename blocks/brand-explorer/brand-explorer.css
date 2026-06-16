@@ -1,0 +1,806 @@
+/* brand-explorer — multi-brand navigator v3.0 */
+@import '../../styles/tokens.css';
+
+.brand-explorer-section {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  z-index: 100;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  background: var(--be-color-bar-bg, #25282a);
+}
+
+.brand-explorer-section .default-content-wrapper,
+.brand-explorer-section .brand-explorer-wrapper {
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.brand-explorer {
+  /* ── Block-scoped tokens ── */
+  --be-color-navy: var(--color-navy, #071d49);
+  --be-color-muted-blue: var(--color-muted-blue, #4f5e7d);
+  --be-color-icon-muted: var(--color-icon-muted, #e6e8ec);
+  --be-color-rinvoq-gold: var(--color-rinvoq-gold, #ffd524);
+  --be-color-rinvoq-gold-hover: var(--color-rinvoq-gold-hover, #bea11d);
+  --be-color-skyrizi-blue: var(--color-skyrizi-blue, #00a8e1);
+  --be-color-humira-magenta: var(--color-humira-magenta, #931947);
+  --be-font-medium: var(--font-family-medium, 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif);
+  --be-font-semibold: var(--font-family-semibold, 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif);
+  --be-font-base: var(--font-family-base, Arial, sans-serif);
+  --be-bar-height: var(--spacing-60, 6rem);
+  --be-bar-max-width: var(--content-max-width, 1220px);
+  --be-separator-height: var(--spacing-10, 1rem);
+
+  /* ── Layout ── */
+  position: relative;
+  background: var(--background-color, var(--color-white));
+  color: var(--be-color-navy);
+  font-family: var(--be-font-medium);
+  font-size: var(--be-font-size-body);
+  line-height: var(--be-line-height-body);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-explorer div {
+  grid-column: auto;
+}
+
+/* ── bar ─────────────────────────────────────────────────────── */
+.brand-explorer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: var(--be-bar-height);
+  padding: 0 11rem;
+  color: var(--color-white, #fff);
+  background: var(--be-color-bar-bg, #25282a);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-explorer-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-10, 1rem);
+  flex-shrink: 0;
+}
+
+.brand-explorer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12, 1.2rem) var(--spacing-24, 2.4rem);
+}
+
+.brand-explorer-bar a:any-link {
+  font-family: var(--be-bar-font-family, var(--body-font-family));
+  font-weight: var(--be-bar-font-weight, 400);
+  font-size: var(--be-bar-font-size, 0.9rem);
+  font-style: normal;
+  line-height: var(--be-bar-line-height, 1.6rem);
+  letter-spacing: normal;
+  color: var(--be-color-bar-text, #fff);
+  text-decoration: none;
+}
+
+.brand-explorer-right a:any-link {
+  padding: var(--spacing-08, 0.8rem) 0;
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+}
+
+.brand-explorer-content a:any-link {
+  color: var(--be-color-text);
+  text-decoration: none;
+}
+
+.brand-explorer-bar a:any-link:hover {
+  text-decoration: underline;
+}
+
+/* ── AbbVie logo ─────────────────────────────────────────────── */
+.brand-explorer-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.brand-explorer-abbvie-logo {
+  width: var(--spacing-86, 8.6rem);
+  height: auto;
+  fill: var(--be-color-bar-text);
+  color: var(--be-color-bar-text);
+}
+
+/* ── browse button ───────────────────────────────────────────── */
+.brand-explorer .brand-explorer-browse {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-08, 0.8rem);
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--be-color-bar-text, #fff);
+  font-family: var(--be-bar-font-family, var(--body-font-family));
+  font-size: var(--be-bar-font-size, 0.9rem);
+  font-weight: var(--be-bar-font-weight, 400);
+  font-style: normal;
+  line-height: var(--be-bar-line-height, 1.6rem);
+  letter-spacing: normal;
+  padding: var(--spacing-12, 1.2rem) 0;
+  cursor: pointer;
+  white-space: nowrap;
+  appearance: none;
+  box-shadow: none;
+  margin: 0;
+  text-decoration: none;
+}
+
+.brand-explorer .brand-explorer-browse:hover {
+  background: transparent;
+  background-color: transparent;
+}
+
+.brand-explorer-browse-icon {
+  font-family: abbv-iconFont, sans-serif;
+  font-size: 1.3rem;
+  color: var(--color-border-icon, #e6e8ec);
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand-explorer-browse-icon::before {
+  content: '\e147';
+}
+
+.brand-explorer-browse-icon::after {
+  display: none;
+}
+
+.brand-explorer.is-open .brand-explorer-browse {
+  display: none;
+}
+
+/* ── close button ────────────────────────────────────────────── */
+.brand-explorer .brand-explorer-close {
+  position: absolute;
+  top: var(--spacing-10, 1rem);
+  right: var(--spacing-neg-10, -1rem);
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-08, 0.8rem);
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--be-color-navy);
+  font-size: var(--font-size-16, 1.6rem);
+  font-family: var(--be-font-medium);
+  font-weight: var(--font-weight-500, 500);
+  padding: 0;
+  padding-right: var(--spacing-42, 4.2rem);
+  cursor: pointer;
+  appearance: none;
+  box-shadow: none;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.brand-explorer .brand-explorer-close:hover {
+  background: transparent;
+  background-color: transparent;
+  color: var(--color-black, #000);
+  text-decoration: underline;
+}
+
+.brand-explorer-close-icon {
+  font-family: abbv-iconFont, sans-serif;
+  font-size: var(--font-size-13, 1.3rem);
+  color: var(--be-color-navy);
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.brand-explorer-close-icon::before {
+  content: '\e5c9';
+}
+
+.brand-explorer-close-icon::after {
+  display: none;
+}
+
+.brand-explorer .brand-explorer-close:hover .brand-explorer-close-icon {
+  text-decoration: none;
+}
+
+/* ── content panel ───────────────────────────────────────────── */
+.brand-explorer-content {
+  width: 100%;
+  max-width: var(--be-bar-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-15, 1.5rem);
+  background: var(--background-color, var(--color-white));
+  color: var(--be-color-navy);
+  position: relative;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-duration-medium, 0.4s) ease, padding var(--transition-duration-medium, 0.4s) ease;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.brand-explorer.is-open .brand-explorer-content {
+  max-height: 100dvh;
+  padding: var(--spacing-30, 3rem) var(--spacing-15, 1.5rem) var(--spacing-20, 2rem);
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+/* ── accordions grid ─────────────────────────────────────────── */
+.brand-explorer-accordions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--spacing-40, 4rem);
+  max-width: var(--be-bar-max-width);
+  margin: 0 auto;
+}
+
+.brand-explorer-accordion {
+  position: relative;
+  padding-right: var(--spacing-20, 2rem);
+  border-right: var(--border-width-1, 0.1rem) solid var(--be-color-border);
+}
+
+.brand-explorer-accordion:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* ── blade (brand header) ────────────────────────────────────── */
+.brand-explorer-blade {
+  position: relative;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-explorer-blade-link {
+  display: block;
+  text-decoration: none;
+}
+
+.brand-explorer-brand-img {
+  max-height: var(--spacing-50, 5rem);
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-explorer-subtitle {
+  font-family: var(--be-font-base);
+  font-size: var(--font-size-09, 0.9rem);
+  line-height: var(--line-height-12, 1.2rem);
+  color: var(--be-color-navy);
+  margin: var(--spacing-10, 1rem) 0 0;
+  max-width: 90%;
+}
+
+.brand-explorer-subtitle p {
+  font-size: var(--font-size-09, 0.9rem);
+  line-height: var(--line-height-12, 1.2rem);
+  margin: 0;
+}
+
+.brand-explorer-subtitle b,
+.brand-explorer-subtitle strong {
+  font-family: var(--be-font-semibold);
+  font-weight: var(--font-weight-700, 700);
+  font-size: var(--font-size-09, 0.9rem);
+}
+
+/* ── colored separator bar ───────────────────────────────────── */
+.brand-explorer-separator {
+  border: none;
+  height: var(--be-separator-height, 1rem);
+  margin: var(--spacing-09, 0.9rem) 0 0;
+  margin-bottom: 0;
+  background: var(--be-color-separator);
+}
+
+/* ── indication links ────────────────────────────────────────── */
+.brand-explorer-links {
+  padding-top: var(--spacing-06, 0.6rem);
+  display: block;
+}
+
+/* stylelint-disable selector-class-pattern */
+.brand-explorer-indication {
+  display: block;
+  width: 100%;
+  color: var(--be-color-navy);
+  font-size: var(--font-size-14, 1.4rem);
+  font-weight: var(--font-weight-700, 700);
+  font-family: var(--be-font-medium);
+  line-height: var(--line-height-16, 1.68rem);
+  text-decoration: none;
+  padding: var(--spacing-10, 1rem) var(--spacing-10, 1rem) 0 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.brand-explorer-indication::before {
+  font-family: var(--be-font-medium);
+  font-size: var(--font-size-10, 1rem);
+  font-weight: var(--font-weight-400, normal);
+  color: var(--be-color-muted-blue);
+  display: block;
+  line-height: var(--line-height-11, 1.1rem);
+  margin-bottom: var(--spacing-02, 0.2rem);
+}
+
+.brand-explorer-indication--moderate::before {
+  content: 'Moderate to Severe';
+}
+
+.brand-explorer-indication--active::before {
+  content: 'Active';
+}
+
+.brand-explorer-indication--refractory::before {
+  content: 'Refractory, Moderate to Severe';
+}
+
+.brand-explorer-indication--noninfectious::before {
+  content: 'Non-infectious';
+}
+
+/* stylelint-enable selector-class-pattern */
+
+/* stylelint-disable selector-class-pattern, no-descending-specificity */
+.brand-explorer-indication:hover {
+  text-decoration: none;
+}
+
+.brand-explorer-accordion--rinvoq .brand-explorer-indication:hover,
+.brand-explorer-accordion--rinvoq .brand-explorer-indication:hover::before {
+  color: var(--be-color-rinvoq-gold-hover);
+}
+
+.brand-explorer-accordion--skyrizi .brand-explorer-indication:hover,
+.brand-explorer-accordion--skyrizi .brand-explorer-indication:hover::before {
+  color: var(--be-color-skyrizi-blue);
+}
+
+.brand-explorer-accordion--humira .brand-explorer-indication:hover,
+.brand-explorer-accordion--humira .brand-explorer-indication:hover::before {
+  color: var(--be-color-humira-magenta);
+}
+
+/* stylelint-enable selector-class-pattern, no-descending-specificity */
+
+/* ── visit link with circle arrow ────────────────────────────── */
+.brand-explorer-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-10, 1rem);
+  color: var(--be-color-navy);
+  font-size: var(--font-size-14, 1.4rem);
+  font-weight: var(--font-weight-700, 700);
+  font-family: var(--be-font-medium);
+  line-height: var(--line-height-16, 1.68rem);
+  text-decoration: none;
+  padding: var(--spacing-16, 1.6rem) 0 var(--spacing-08, 0.8rem);
+  cursor: pointer;
+}
+
+.brand-explorer-visit-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-27, 2.7rem);
+  height: var(--spacing-27, 2.7rem);
+  border-radius: 50%;
+  background: var(--be-color-rinvoq-gold);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.brand-explorer-visit-arrow::after {
+  content: '\e315';
+  font-family: abbv-iconFont, sans-serif;
+  font-size: var(--font-size-28, 2.8rem);
+  font-weight: normal;
+  color: var(--color-black, #000);
+  line-height: 1;
+}
+
+.brand-explorer-visit:hover {
+  text-decoration: underline;
+}
+
+/* ── project number ──────────────────────────────────────────── */
+.brand-explorer-project-number {
+  font-family: var(--be-font-medium);
+  font-size: var(--font-size-12, 1.2rem);
+  font-weight: var(--font-weight-700, 700);
+  color: var(--be-color-muted-blue);
+  margin: var(--spacing-12, 1.2rem) 0;
+}
+
+/* ── tablet ─────────────────────────────────────────────────── */
+@media (width <= 1219px) {
+  .brand-explorer-accordions {
+    gap: var(--spacing-24, 2.4rem);
+  }
+}
+
+@media (width <= 1023px) {
+  .brand-explorer-accordions {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-20, 2rem);
+  }
+}
+
+/* ── small tablet / large mobile ─────────────────────────────── */
+@media (width <= 895px) {
+  .brand-explorer-bar {
+    flex-direction: column;
+    align-items: stretch;
+    height: var(--spacing-112, 11.2rem);
+    padding: 0 var(--spacing-15, 1.5rem);
+  }
+
+  .brand-explorer-left {
+    width: 100%;
+    justify-content: space-between;
+    height: var(--spacing-40, 4rem);
+    padding: var(--spacing-10, 1rem) 0 0;
+    border-bottom: var(--border-width-1, 0.1rem) solid var(--color-border-light, #d8d8d8);
+  }
+
+  .brand-explorer-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+    padding: var(--spacing-12, 1.2rem) 0;
+  }
+
+  .brand-explorer-right a:any-link {
+    max-width: var(--spacing-100, 10rem);
+    padding: var(--spacing-12, 1.2rem) 0;
+    text-align: center;
+    font-size: var(--font-size-13, 1.3rem);
+    font-weight: var(--font-weight-700, 700);
+  }
+
+  .brand-explorer-accordions {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .brand-explorer-blade {
+    cursor: pointer;
+  }
+
+  .brand-explorer-blade::after {
+    content: '\e313';
+    font-family: abbv-iconFont, sans-serif;
+    position: absolute;
+    top: 58%;
+    right: var(--spacing-10, 1rem);
+    font-size: var(--font-size-20, 2rem);
+    font-weight: normal;
+    font-style: normal;
+    color: var(--be-color-text);
+    transform: translateY(-50%);
+    transition: transform var(--transition-duration-medium, 0.3s) ease;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .brand-explorer-accordion.is-active .brand-explorer-blade::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .brand-explorer-links {
+    display: none;
+    padding-top: var(--spacing-10, 1rem);
+  }
+
+  .brand-explorer-accordion.is-active .brand-explorer-links {
+    display: block;
+  }
+
+  .brand-explorer-accordion {
+    margin-bottom: var(--spacing-16, 1.6rem);
+    padding-right: 0;
+    padding-bottom: 0;
+    border-right: none;
+  }
+
+  .brand-explorer .brand-explorer-close {
+    top: var(--spacing-08, 0.8rem);
+    font-size: var(--font-size-16, 1.6rem);
+  }
+
+  .brand-explorer-modal-dialog {
+    padding: var(--spacing-40, 4rem) var(--spacing-20, 2rem) var(--spacing-30, 3rem);
+    width: 95%;
+  }
+
+  .brand-explorer-modal-title {
+    font-size: var(--font-size-20, 2rem);
+  }
+}
+
+/* ── phone ───────────────────────────────────────────────────── */
+@media (width <= 480px) {
+  .brand-explorer-bar a:any-link {
+    font-size: 0.8rem;
+  }
+
+  .brand-explorer .brand-explorer-browse {
+    font-size: 0.8rem;
+  }
+
+  .brand-explorer-right {
+    gap: var(--spacing-06, 0.6rem) var(--spacing-16, 1.6rem);
+  }
+
+  .brand-explorer-abbvie-logo {
+    width: var(--spacing-70, 7rem);
+  }
+}
+
+/* ── contact medical modal ───────────────────────────────────── */
+.brand-explorer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-explorer-modal:not([hidden]) {
+  display: flex;
+}
+
+.brand-explorer-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--be-color-overlay);
+}
+
+.brand-explorer-modal-dialog {
+  position: relative;
+  background: var(--be-color-bg);
+  max-width: var(--spacing-700, 70rem);
+  width: 90%;
+  padding: var(--spacing-40, 4rem) var(--spacing-20, 2rem);
+  text-align: center;
+  border-top: none;
+  box-shadow: 0 var(--spacing-10, 1rem) var(--spacing-40, 4rem) rgb(0 0 0 / 30%);
+  border-radius: 0;
+  overflow-y: hidden;
+}
+
+.brand-explorer-modal-close {
+  position: absolute;
+  top: var(--spacing-16, 1.6rem);
+  right: var(--spacing-16, 1.6rem);
+  width: var(--spacing-40, 4rem);
+  height: var(--spacing-40, 4rem);
+  background: transparent;
+  border: 1px solid var(--be-color-separator);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  appearance: none;
+}
+
+.brand-explorer-modal-close::before,
+.brand-explorer-modal-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--spacing-16, 1.6rem);
+  height: 0.15rem;
+  background: var(--be-color-text);
+}
+
+.brand-explorer-modal-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.brand-explorer-modal-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.brand-explorer-modal-title {
+  font-family: var(--be-font-body);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: var(--be-font-weight-bold);
+  line-height: 2rem;
+  color: var(--be-color-text);
+  margin: var(--spacing-32, 3.2rem) 0;
+  padding-right: 0;
+}
+
+.brand-explorer-modal-text {
+  font-family: var(--be-font-body);
+  font-size: clamp(0.75rem, 2.7vw, 1rem);
+  line-height: 1.5;
+  color: var(--be-color-text);
+  margin: 0 auto var(--spacing-08, 0.8rem);
+  width: 90%;
+}
+
+.brand-explorer-modal-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-12, 1.2rem);
+  margin-top: var(--spacing-24, 2.4rem);
+  margin-bottom: var(--spacing-24, 2.4rem);
+}
+
+.brand-explorer-modal-btn,
+.brand-explorer-modal .brand-explorer-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-160, 16rem);
+  height: var(--spacing-48, 4.8rem);
+  min-height: var(--spacing-48, 4.8rem);
+  max-height: var(--spacing-48, 4.8rem);
+  padding: 0;
+  margin: 0;
+  font-family: var(--be-font-body);
+  font-size: 0.875rem;
+  font-weight: var(--be-font-weight-bold);
+  line-height: 1;
+  letter-spacing: 0;
+  border-radius: 1.875rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  transition: background 0.3s linear;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.brand-explorer-modal-yes {
+  background: var(--be-color-text);
+  color: var(--be-color-bar-text);
+  border: 1px solid var(--be-color-text);
+}
+
+.brand-explorer-modal-yes:hover {
+  background: var(--be-color-btn-hover);
+}
+
+.brand-explorer-modal-no {
+  background: var(--be-color-bg);
+  color: var(--be-color-text);
+  border: 1px solid var(--be-color-btn-no-border);
+}
+
+.brand-explorer-modal-no:hover {
+  background: var(--be-color-btn-no-hover);
+}
+
+.brand-explorer-modal-project {
+  font-size: var(--font-size-12, 1.2rem);
+  color: var(--be-color-muted);
+  text-align: left;
+  margin: 0;
+}
+
+/* ── modal buttons: stack only on small phones ──────────────── */
+@media (width <= 400px) {
+  .brand-explorer-modal-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-12, 1.2rem);
+  }
+
+  .brand-explorer-modal-btn,
+  .brand-explorer-modal .brand-explorer-modal-btn {
+    width: 100%;
+  }
+}
+
+/* ── container overflow fix for abbvie-container grid ── */
+.section.brand-explorer-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+}
+
+.section.brand-explorer-container .brand-explorer-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.section.brand-explorer-container .brand-explorer {
+  width: 100%;
+  margin: 0;
+}
+
+/* ── Utility classes used by JS (no inline styles) ── */
+.brand-explorer-hidden,
+.brand-explorer > div:not(.brand-explorer-bar, .brand-explorer-content) {
+  display: none;
+}
+
+body.brand-explorer-modal-open {
+  overflow: hidden;
+}
+
+/* ── Product brand accent colors (content-driven, not site-brand overrides).
+   These style portfolio cards via authored [data-brand] attributes and are
+   identical across all sites — not site-specific, so they belong in core. ── */
+.brand-explorer-separator[data-brand="rinvoq"] {
+  background: var(--be-color-rinvoq);
+}
+
+.brand-explorer-separator[data-brand="skyrizi"] {
+  background: var(--be-color-skyrizi);
+}
+
+.brand-explorer-visit[data-brand="rinvoq"] .brand-explorer-visit-arrow {
+  background-color: var(--be-color-rinvoq-gold);
+}
+
+.brand-explorer-visit[data-brand="rinvoq"] .brand-explorer-visit-arrow::after {
+  color: var(--color-black, #000);
+}
+
+.brand-explorer-visit[data-brand="rinvoq"]:hover .brand-explorer-visit-arrow {
+  background-color: var(--be-color-rinvoq-gold-hover);
+}
+
+.brand-explorer-visit[data-brand="rinvoq"]:hover .brand-explorer-visit-arrow::after {
+  color: var(--color-white, #fff);
+}
+
+/* stylelint-disable no-descending-specificity */
+.brand-explorer-visit[data-brand="skyrizi"] .brand-explorer-visit-arrow {
+  background-color: var(--be-color-skyrizi-blue);
+}
+
+.brand-explorer-visit[data-brand="skyrizi"] .brand-explorer-visit-arrow::after {
+  color: var(--color-white, #fff);
+}
+
+.brand-explorer-separator[data-brand="humira"] {
+  background: var(--be-color-humira-magenta);
+}
+
+.brand-explorer-visit[data-brand="humira"] .brand-explorer-visit-arrow {
+  background-color: var(--be-color-humira-magenta);
+}
+
+.brand-explorer-visit[data-brand="humira"] .brand-explorer-visit-arrow::after {
+  color: var(--color-white, #fff);
+}
+/* stylelint-enable no-descending-specificity */
+

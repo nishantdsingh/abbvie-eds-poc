@@ -1,0 +1,699 @@
+@import '../carousel-video-playlist.css';
+
+/* stylelint-disable no-descending-specificity */
+
+/* Linzess carousel-video-playlist — grid (homepage) + featured (patient experiences) */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SHARED — player wrap, play button, name banner, transcript
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.carousel-video-playlist .cvp-player-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-brand-primary);
+}
+
+/* Loading shimmer — visible until video-js is injected */
+.carousel-video-playlist .cvp-player-wrap::before,
+.carousel-video-playlist .cvp-thumb-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 15%) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: cvp-shimmer 1.5s infinite;
+}
+
+.carousel-video-playlist .cvp-player-wrap:has(video-js)::before,
+.carousel-video-playlist .cvp-thumb-wrap:has(video-js)::before {
+  display: none;
+}
+
+@keyframes cvp-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Hide Brightcove UI overlays — we use our own name-banner + play button */
+.carousel-video-playlist .vjs-dock-text,
+.carousel-video-playlist .vjs-dock-title,
+.carousel-video-playlist .vjs-dock-description,
+.carousel-video-playlist .vjs-dock-shelf,
+.carousel-video-playlist .vjs-big-play-button {
+  display: none !important;
+}
+
+/* Hide play button when hidden attribute set by JS on click */
+.carousel-video-playlist .cvp-play-btn[hidden] {
+  display: none !important;
+}
+
+/* Ensure Brightcove controls ARE visible when playing */
+.carousel-video-playlist .vjs-control-bar {
+  font-size: var(--font-size-body-small, 12px) !important;
+  color: var(--color-text-on-dark) !important;
+  line-height: normal !important;
+}
+
+.carousel-video-playlist .vjs-control-bar * {
+  font-size: inherit !important;
+  color: inherit !important;
+  line-height: inherit !important;
+}
+
+/* Thumbnail video-js — only shows poster image */
+.carousel-video-playlist .cvp-thumb-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.carousel-video-playlist .cvp-name-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-brand-primary);
+  color: var(--linz-white);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-body-small, 12px);
+  text-transform: uppercase;
+  padding: 6px 12px;
+  line-height: 1.2;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.carousel-video-playlist .cvp-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background:
+    rgb(255 255 255 / 90%)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23422e83'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E")
+    center / 24px no-repeat;
+  cursor: pointer;
+  font-size: 0;
+  z-index: 2;
+  transition: opacity 200ms;
+}
+
+.carousel-video-playlist .cvp-play-btn:hover {
+  background-color: rgb(255 255 255 / 30%);
+}
+
+.carousel-video-playlist .cvp-transcript-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.carousel-video-playlist .cvp-transcript-toggle:hover {
+  text-decoration: none;
+}
+
+.carousel-video-playlist .cvp-transcript-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.carousel-video-playlist .cvp-transcript-panel.is-open {
+  max-height: 600px;
+}
+
+.carousel-video-playlist .cvp-placeholder {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   GRID MODE — homepage: dark purple bg, gold accent, 3-col card grid
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.carousel-video-playlist.grid {
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop: the heading/description live in the dark section above, so the
+   grid's own header is empty — collapse it and reduce the grid's top padding
+   to tighten the "Hear from real patients" to first-video gap (~45px, live). */
+@media (width >= 986px) {
+  .carousel-video-playlist.grid {
+    padding-top: 16px;
+  }
+
+  .carousel-video-playlist.grid .cvp-header:empty {
+    margin-bottom: 0;
+  }
+}
+
+.carousel-video-playlist.grid .cvp-card .cvp-player-wrap {
+  min-height: 0;
+}
+
+/* Authored poster image fills the frame — no letterbox.
+   Sits above the Brightcove video-js box (z-index 1) until play. */
+.carousel-video-playlist.grid .cvp-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.carousel-video-playlist.grid .cvp-poster,
+.carousel-video-playlist.grid .cvp-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-video-playlist.grid .cvp-poster[hidden] {
+  display: none;
+}
+
+/* Section header */
+.carousel-video-playlist.grid .cvp-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.carousel-video-playlist.grid .cvp-accent-line {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #faa633;
+  margin: 0 auto 16px;
+}
+
+.carousel-video-playlist.grid .cvp-heading {
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-h1, 2rem);
+  text-transform: uppercase;
+  margin: 0 0 8px;
+  line-height: 1.1;
+}
+
+.carousel-video-playlist.grid .cvp-description {
+  color: rgb(255 255 255 / 85%);
+  font-size: var(--font-size-body, 14px);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 3-col card grid */
+.carousel-video-playlist.grid .cvp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-24);
+}
+
+/* Reset global .abbvie-container div grid-column override */
+.carousel-video-playlist.grid .cvp-grid > div {
+  grid-column: auto;
+}
+
+/* why-linzess "Hear from real patients" grid has only 2 cards: center them
+   (live centers, not left-aligned in a 3-col track) and equalize card +
+   footer heights so both footers match even when one title wraps. Scoped to
+   the timeline section so the homepage's 3-card grid is untouched. */
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-grid {
+  grid-template-columns: repeat(2, 300px);
+  justify-content: center;
+  align-items: stretch;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card {
+  height: 100%;
+}
+
+body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card-footer {
+  flex: 1 0 auto;
+}
+
+/* Space above the "HEAR THE CONSTIPATION CONVERSATION" heading — a
+   default-content-wrapper sitting between the two featured carousels in the
+   patient-experiences section (live leaves a clear gap above it). */
+body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper {
+  margin-top: 48px;
+}
+
+/* Max visible cards — hide cards beyond the authored limit */
+.carousel-video-playlist.grid[data-max-visible="1"] .cvp-card:nth-child(n+2) { display: none; }
+.carousel-video-playlist.grid[data-max-visible="2"] .cvp-card:nth-child(n+3) { display: none; }
+.carousel-video-playlist.grid[data-max-visible="3"] .cvp-card:nth-child(n+4) { display: none; }
+.carousel-video-playlist.grid[data-max-visible="4"] .cvp-card:nth-child(n+5) { display: none; }
+.carousel-video-playlist.grid[data-max-visible="5"] .cvp-card:nth-child(n+6) { display: none; }
+.carousel-video-playlist.grid[data-max-visible="6"] .cvp-card:nth-child(n+7) { display: none; }
+
+.carousel-video-playlist.grid .cvp-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  grid-column: auto;
+}
+
+/* Hide name banner in grid mode — footer already shows the title */
+.carousel-video-playlist.grid .cvp-card .cvp-name-banner {
+  display: none;
+}
+
+/* Only show player-wrap and card-footer — hide any other direct children of card */
+.carousel-video-playlist.grid .cvp-card > :not(.cvp-player-wrap, .cvp-card-footer) {
+  display: none;
+}
+
+/* Hide Brightcove dock title that shows below poster — stronger selector */
+.carousel-video-playlist.grid .cvp-player-wrap .vjs-dock-text,
+.carousel-video-playlist.grid .cvp-player-wrap .vjs-dock-title,
+.carousel-video-playlist.grid .cvp-player-wrap .vjs-dock-description {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Card footer — light-purple bg, dark text, rounded bottom corners */
+.carousel-video-playlist.grid .cvp-card-footer {
+  background: var(--linz-light-purple, #d9d7f9);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 0 0 16px 16px;
+}
+
+.carousel-video-playlist.grid .cvp-title {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: 14px;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+.carousel-video-playlist.grid .cvp-transcript-toggle,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:link,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:visited,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:hover,
+.carousel-video-playlist.grid a.cvp-transcript-toggle:active {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-small, 12px);
+  font-weight: var(--font-weight-extra-bold, 800);
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-decoration: underline;
+}
+
+.carousel-video-playlist.grid .cvp-transcript-panel {
+  background: rgb(255 255 255 / 10%);
+  padding: 0 16px;
+  font-size: var(--font-size-body-small, 12px);
+  line-height: 1.6;
+  color: rgb(255 255 255 / 90%);
+}
+
+.carousel-video-playlist.grid .cvp-transcript-panel.is-open {
+  padding: 16px;
+}
+
+/* Video-js player fills player-wrap */
+.carousel-video-playlist.grid .cvp-player-wrap video-js,
+.carousel-video-playlist.grid .cvp-player-wrap .video-js {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FEATURED MODE — patient experiences: white bg, 70/30 split, thumbnail strip
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.carousel-video-playlist.featured {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 48px 24px;
+  max-width: 1046px;
+  margin: 0 auto;
+}
+
+/* Featured row: video (70%) + quote panel (30%) */
+.carousel-video-playlist.featured .cvp-featured-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 24px;
+}
+
+.carousel-video-playlist.featured .cvp-featured-player {
+  flex: 0 0 75%;
+  position: relative;
+}
+
+/* The player + quote panel form one rounded rectangle (live, r=16px): the
+   player rounds its LEFT corners, the quote panel rounds its RIGHT corners,
+   and they sit flush with no gap between them. */
+.carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap {
+  border-radius: 16px 0 0 16px;
+}
+
+/* Hide name banner on featured player — title shown below via footer */
+.carousel-video-playlist.featured .cvp-featured-player .cvp-name-banner {
+  display: none;
+}
+
+/* Hide Brightcove dock on featured player */
+.carousel-video-playlist.featured .vjs-dock-text {
+  display: none !important;
+}
+
+/* Hide featured player title below video (already in name-banner on thumbnails) */
+.carousel-video-playlist.featured .cvp-featured-title {
+  display: none;
+}
+
+/* Video-js player fills featured player wrap */
+.carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap video-js,
+.carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap .video-js {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Quote panel */
+.carousel-video-playlist.featured .cvp-quote-panel {
+  flex: 0 0 25%;
+  background: #d9d7f9;
+  border-radius: 0 16px 16px 0;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+/* Quote: 16px left-aligned (live); name/prescribed stay 14.4px. */
+.carousel-video-playlist.featured .cvp-quote {
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-brand-primary);
+  line-height: 1.3;
+  text-align: left;
+  margin: 0 0 auto;
+}
+
+.carousel-video-playlist.featured .cvp-patient-name {
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: 14.4px;
+  line-height: 19.2px;
+  color: var(--color-brand-primary);
+  margin: 0 0 4px;
+}
+
+.carousel-video-playlist.featured .cvp-prescribed {
+  font-family: var(--body-font-family);
+  font-size: 14.4px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 19.2px;
+  color: var(--color-brand-primary);
+  margin: 0 0 8px;
+}
+
+.carousel-video-playlist.featured .cvp-view-transcript {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body, 14px);
+  font-weight: var(--font-weight-bold, 700);
+  text-decoration: underline;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.carousel-video-playlist.featured .cvp-transcript-toggle {
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body-small, 12px);
+  font-weight: var(--font-weight-bold, 700);
+  text-align: left;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.carousel-video-playlist.featured .cvp-transcript-panel {
+  background: #ecebfb;
+  border-radius: 4px;
+  padding: 0 16px;
+  font-size: var(--font-size-body-small, 12px);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.carousel-video-playlist.featured .cvp-transcript-panel.is-open {
+  padding: 16px;
+}
+
+/* Playlist row: prev | thumbnails | next */
+.carousel-video-playlist.featured .cvp-playlist-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-video-playlist.featured .cvp-prev,
+.carousel-video-playlist.featured .cvp-next {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--color-brand-primary, #4a2d7f);
+  background: transparent;
+  color: var(--color-brand-primary, #4a2d7f);
+  font-size: var(--font-size-body-small, 12px);
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms;
+  padding: 0;
+}
+
+.carousel-video-playlist.featured .cvp-prev:hover:not(:disabled),
+.carousel-video-playlist.featured .cvp-next:hover:not(:disabled) {
+  background: var(--color-brand-primary, #4a2d7f);
+  color: var(--color-text-on-dark);
+}
+
+.carousel-video-playlist.featured .cvp-prev:disabled,
+.carousel-video-playlist.featured .cvp-next:disabled {
+  border-color: var(--color-border-disabled);
+  color: var(--color-border-disabled);
+  cursor: default;
+  opacity: 0.5;
+}
+
+.carousel-video-playlist.featured .cvp-thumbnails {
+  display: flex;
+  flex: 1;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel-video-playlist.featured .cvp-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-video-playlist.featured .cvp-thumb {
+  flex-shrink: 0;
+  width: 221px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color 200ms;
+  background: transparent;
+}
+
+.carousel-video-playlist.featured .cvp-thumb:hover {
+  border-color: rgb(74 45 127 / 50%);
+}
+
+.carousel-video-playlist.featured .cvp-thumb.active {
+  border-color: #faa633;
+}
+
+.carousel-video-playlist.featured .cvp-thumb-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--linz-black);
+}
+
+.carousel-video-playlist.featured .cvp-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Thumbnail video-js — only shows poster image */
+.carousel-video-playlist.featured .cvp-thumb-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Hide all Brightcove UI on thumbnails — only show poster */
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-control-bar,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-big-play-button,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-dock-text,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-dock-title,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-dock-description,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-dock-shelf,
+.carousel-video-playlist.featured .cvp-thumb-wrap .vjs-loading-spinner {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  opacity: 0 !important;
+}
+
+/* Hide name banner on thumbnails — live site only shows title below */
+.carousel-video-playlist.featured .cvp-thumbnails .cvp-name-banner {
+  display: none;
+}
+
+/* Small play icon on thumbnails */
+.carousel-video-playlist.featured .cvp-thumbnails .cvp-play-btn {
+  width: 32px;
+  height: 32px;
+  border-width: 2px;
+  background-size: 14px;
+}
+
+.carousel-video-playlist.featured .cvp-thumb-title {
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-body-small, 12px);
+  text-transform: uppercase;
+  color: var(--color-brand-primary);
+  background: #d9d7f9;
+  margin: 0;
+  padding: 8px 10px;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* The brand's whylinzess-timeline rule
+   (main:has(.whylinzess-timeline) p:not(.button-container):last-child)
+   adds margin-bottom:20px to the last <p>; the thumbnail title is a <p>, so
+   override it back to 0 for the thumbnail footer only. */
+main:has(.whylinzess-timeline) .carousel-video-playlist.featured .cvp-thumb-title:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────────── */
+
+@media (width < 768px) {
+  .carousel-video-playlist.grid {
+    padding: 16px 16px 32px;
+  }
+
+  /* The heading/description live in the dark section above, so the grid's own
+     header is empty — collapse it to tighten the "Hear from real patients"
+     to first-video gap to match live (~41px). */
+  .carousel-video-playlist.grid .cvp-header:empty {
+    margin-bottom: 0;
+  }
+
+  /* Mobile: stack vertically */
+  .carousel-video-playlist.grid .cvp-grid {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .carousel-video-playlist.grid .cvp-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-video-playlist.grid .cvp-card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .carousel-video-playlist.featured {
+    padding: 32px 16px;
+  }
+
+  /* Stack featured row vertically on mobile */
+  .carousel-video-playlist.featured .cvp-featured-row {
+    flex-direction: column;
+  }
+
+  .carousel-video-playlist.featured .cvp-featured-player,
+  .carousel-video-playlist.featured .cvp-quote-panel {
+    flex: unset;
+    width: 100%;
+  }
+
+  .carousel-video-playlist.featured .cvp-thumb {
+    width: 140px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-video-playlist .cvp-grid,
+  .carousel-video-playlist .cvp-thumbnails {
+    scroll-behavior: auto;
+  }
+
+  .carousel-video-playlist .cvp-transcript-panel {
+    transition: none;
+  }
+
+  .carousel-video-playlist .cvp-play-btn,
+  .carousel-video-playlist .cvp-prev,
+  .carousel-video-playlist .cvp-next,
+  .carousel-video-playlist .cvp-thumb {
+    transition: none;
+  }
+}

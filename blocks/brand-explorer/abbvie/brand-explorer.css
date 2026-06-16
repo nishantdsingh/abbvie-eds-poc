@@ -1,0 +1,137 @@
+.brand-explorer-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-index-brand-explorer, 300);
+}
+
+.brand-explorer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── bar ─────────────────────────────────────────────────────────────────── */
+
+.brand-explorer-bar {
+  align-items: center;
+  background-color: var(--brand-explorer-bar-bg, var(--dark-color, #2b2b2b));
+  color: var(--brand-explorer-bar-color, #fff);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.brand-explorer-trigger {
+  align-items: center;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  font-size: var(--body-font-size-s, 0.875rem);
+  font-weight: 600;
+  gap: var(--spacing-8, 8px);
+  padding: var(--spacing-8, 8px) var(--spacing-24, 24px);
+}
+
+.brand-explorer-trigger::after {
+  content: '▲';
+  display: inline-block;
+  font-size: 0.625rem;
+  transition: transform 0.3s ease;
+}
+
+.brand-explorer.is-open .brand-explorer-trigger::after {
+  transform: rotate(180deg);
+}
+
+/* ── panel ───────────────────────────────────────────────────────────────── */
+
+.brand-explorer-panel {
+  background-color: var(--brand-explorer-panel-bg, #fff);
+  border-top: 1px solid var(--brand-explorer-border, #e0e0e0);
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.35s ease;
+}
+
+.brand-explorer.is-open .brand-explorer-panel {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.brand-explorer-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: var(--spacing-12, 12px);
+  right: var(--spacing-16, 16px);
+  width: 28px;
+  height: 28px;
+}
+
+.brand-explorer-close::before,
+.brand-explorer-close::after {
+  content: '';
+  background: currentcolor;
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+
+.brand-explorer-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.brand-explorer-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ── grid ────────────────────────────────────────────────────────────────── */
+
+.brand-explorer-grid {
+  display: grid;
+  gap: var(--spacing-24, 24px);
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  list-style: none;
+  margin: 0 auto;
+  max-width: var(--section-width, 1200px);
+  padding: var(--spacing-32, 32px) var(--spacing-24, 24px);
+}
+
+.brand-explorer-link {
+  align-items: center;
+  border: 1px solid var(--brand-explorer-item-border, #e0e0e0);
+  border-radius: 4px;
+  color: var(--text-color, #111);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8, 8px);
+  padding: var(--spacing-16, 16px);
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-explorer-link:hover {
+  border-color: var(--link-color, #0057cc);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.brand-explorer-logo {
+  height: 40px;
+  object-fit: contain;
+  width: auto;
+}
+
+.brand-explorer-name {
+  font-size: var(--body-font-size-s, 0.875rem);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* abbvie brand-explorer overrides */

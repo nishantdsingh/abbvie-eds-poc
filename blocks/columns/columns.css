@@ -1,0 +1,63 @@
+/* ============================================================
+   Columns Block
+   DOM: .columns > .columns-item > .columns-item-image | .columns-item-content
+   .columns lives inside .abbvie-container which sets:
+     - display: grid (12 cols)
+     - all descendant divs: grid-column: 1 / span 12
+   We override that on .columns-item so the columns grid places them naturally.
+   Variants: columns-offset, columns-flush, columns-reverse
+   ============================================================ */
+
+.columns {
+  --columns-gap: var(--spacing-24);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--columns-gap);
+}
+
+/* Override global .abbvie-container div { grid-column: 1 / span 12 } */
+.columns > .columns-item {
+  grid-column: auto;
+}
+
+.columns > .columns-item > .columns-item-image img {
+  width: 100%;
+  display: block;
+}
+
+/* reverse: swap column order on mobile only; desktop stacks naturally */
+.columns.columns-reverse > .columns-item:first-child {
+  order: 2;
+}
+
+.columns.columns-reverse > .columns-item:last-child {
+  order: 1;
+}
+
+/* Desktop: equal columns — count driven by number of authored column items */
+@media (width >= 768px) {
+  .columns {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  /* offset: first column 33%, second column 66% */
+  .columns.columns-offset {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* reverse: swap column order on mobile only; desktop stacks naturally */
+  .columns.columns-reverse > .columns-item:first-child {
+    order: 1;
+  }
+
+  .columns.columns-reverse > .columns-item:last-child {
+    order: 2;
+  }
+}
+
+/* flush: zero gap */
+.columns.columns-flush {
+  --columns-gap: var(--spacing-00);
+}

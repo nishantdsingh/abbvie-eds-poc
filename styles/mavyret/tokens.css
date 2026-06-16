@@ -1,0 +1,323 @@
+@import '../tokens.css';
+
+/* ============================================================
+   MAVYRET HCP — Brand Token Overrides
+   Source: mavyret.com/hcp (Platform C)
+   Font: Univers LT W01 Condensed
+   ============================================================ */
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #21406d;
+  --color-brand-primary-dark: #071d49;
+  --color-brand-primary-mid: #23385b;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #1ba2da;
+  --color-brand-accent-alt: #10a4de;
+  --color-brand-accent-light: #d1f1fc;
+  --color-brand-accent-pale: #d3f3ff;
+  --color-brand-accent-cyan-light: #baecff;
+
+  /* ---- Color: Named Palette (from CSS vars) ---- */
+  --color-mavyret-amber: #fcb738;
+  --color-fiesta: #e65400;
+  --color-bright-orange: #ff5300;
+  --color-dark-orange: #e25625;
+  --color-warm-fiesta: #b73b00;
+  --color-dark-fiesta: #732b01;
+  --color-fire: #e45a2a;
+  --color-green-flash: #76bd22;
+  --color-chartreuse: #e1e000;
+  --color-yellow-chrome: #e1aa00;
+  --color-light-fiesta: #ffe4b4;
+
+  /* ---- Color: Text ---- */
+  --text-color: #21406d;
+  --color-text: #4a4a4a;
+  --color-text-dark: #1a1a1a;
+  --color-text-heading: #071d49;
+  --color-text-secondary: #50535c;
+  --color-text-on-dark: #fff;
+  --color-text-footer: #e2e4e3;
+  --color-text-disabled: #b9c4cb;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f3f3f3;
+  --color-background-light-blue: #d1f1fc;
+  --color-background-footer: #c23802;
+  --color-background-footer-end: #992200;
+  --color-background-safety-bar: #0c2556;
+  --color-background-section: #23385b;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #ccc;
+  --color-border-dark: #63636366;
+  --color-border-orange: #e65400;
+  --color-btn-border: var(--color-border-grey);
+  --color-btn-text: #111111;
+
+  /* ---- Color: Indication ---- */
+  --color-indication-bg: #6ca342;
+
+  /* ---- Color: Shadow ---- */
+  --shadow-green-glow: rgb(140, 224, 42) -2px 2px 4px 0;
+  --shadow-card: rgba(0, 0, 0, 0.4) 0 0 18px 0;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Barlow Semi Condensed', sans-serif;
+  --heading-font-family: 'Barlow Semi Condensed', sans-serif;
+  --heading-font-family-bold: 'Barlow Semi Condensed', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+  /* Footer-specific: live mavyret HCP renders footer in Roboto, not Univers */
+  --font-family-footer: 'Roboto', sans-serif;
+  --font-family-body: 'Barlow Condensed', sans-serif;
+  --font-family-paragraph: 'trade-gothic-next', sans-serif;
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 14px;
+  --font-size-body-small: 12.8px;
+  --font-size-body-xs: 11.2px;
+  --font-size-body-xxs: 12px;
+  --font-size-nav: 14px;
+  --font-size-footer: 14px;
+  --font-size-h1: 32px;
+  --font-size-h2: 70px;
+  --font-size-h3: 18.72px;
+  --font-size-h4: 20px;
+  --font-size-button: 14px;
+  --font-size-accordion: 20px;
+  --font-size-tab: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-heading: 700;
+  --font-weight-button: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 16px;
+  --line-height-h1: 32px;
+  --line-height-h3: normal;
+  --line-height-h4: 24px;
+  --line-height-button: 16px;
+  --line-height-tab: 18px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 0px;
+  --border-radius-button-secondary: 0px;
+  --border-radius-tab: 8px 0 0 8px;
+  --border-radius-card: 2px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #000;
+  --button-primary-bg: #fff;
+  --button-primary-border: var(--color-border-grey);
+  --button-primary-padding: 8px 16px;
+  --button-primary-font-size: 1.125rem;
+  --button-primary-font-weight: 600;
+  --button-primary-shadow: -2px 2px 4px 0 var(--color-green-bright);
+  --button-primary-hover-bg: #000;
+  --button-primary-hover-color: var(--color-green-bright);
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-color: #000;
+  --button-secondary-bg: #fff;
+  --button-secondary-border: #e65400;
+  --button-secondary-padding: 8px 16px;
+  --button-secondary-shadow: -2px 2px 8px 0 #e65400;
+  --button-secondary-hover-bg: #000;
+  --button-secondary-hover-color: var(--color-green-bright);
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-color: #000;
+  --button-tertiary-bg: #fff;
+  --button-tertiary-border: var(--color-border-grey);
+  --button-tertiary-padding: 8px 16px;
+  --button-tertiary-font-size: 1.125rem;
+  --border-radius-button-tertiary: 0px;
+  --button-tertiary-shadow: none;
+  --button-tertiary-hover-bg: #000;
+  --button-tertiary-hover-color: #76bd22;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #000;
+  --button-plain-weight: 600;
+  --button-plain-hover-color: #76bd22;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #ccc;
+  --toggle-bg-on: #071d49;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #071d49;
+  --color-link: #005bbb;
+  --color-link-default: #0000ee;
+
+  /* ---- Gradient ---- */
+  --gradient-hero: radial-gradient(at 50% 100%, rgb(81, 98, 142) 0, rgba(7, 29, 73, 0.9) 65%);
+  --gradient-hero-orange-tint: linear-gradient(90deg, rgb(196 62 0 / 10%) 0%, rgb(196 62 0 / 6%) 38%, rgb(196 62 0 / 0%) 60%);
+  --gradient-section-light: linear-gradient(#f2fcff 0, #e7f9ff);
+
+  /* ---- Spacing: Common ---- */
+  --spacing-section-padding: 0 20px;
+  --spacing-card-padding: 8px 24px;
+  --spacing-section-large: 32px;
+  --spacing-content-gap: 64px 0;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  /* ---- Clinical Data Panel Block ---- */
+  --cdp-color-text: #000;
+  --cdp-color-heading: #000;
+  --cdp-color-accent: #76bd22;
+  --cdp-color-muted: #000;
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: 20px;
+  --cdp-font-size-callout: 20px;
+  --cdp-font-size-body: 16px;
+  --cdp-font-size-small: 13px;
+  --cdp-line-height-callout: 26px;
+  --cdp-line-height-body: 23.2px;
+  --cdp-line-height-default: 26px;
+
+  /* ---- Formulary Lookup ---- */
+  --color-black: #000;
+  --color-formulary-submit-bg: rgb(88 166 52);
+  --color-formulary-submit-hover: rgb(70 140 40);
+  --color-formulary-submit-shadow: rgb(88 166 52);
+  --color-border-input: #aaa;
+  --color-white: #fff;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 600px;
+  --formulary-input-width: 560px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 32px;
+  --formulary-heading-weight: 400;
+  --formulary-heading-weight-bold: 700;
+  --formulary-heading-spacing: 32px;
+  --formulary-heading-line-height: 1.3;
+
+  /* Formulary: Label */
+  --formulary-label-size: 16px;
+  --formulary-label-weight: 700;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 56px;
+  --formulary-input-border-width: 2px;
+  --formulary-input-radius: 4px;
+  --formulary-input-size: 16px;
+  --formulary-input-padding: 14px 40px 14px 16px;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 16px;
+  --formulary-submit-weight: 700;
+  --formulary-submit-radius: 4px;
+  --formulary-submit-padding: 16px 48px 16px 24px;
+  --formulary-submit-spacing: 32px;
+  --formulary-submit-arrow-size: 24px;
+  --formulary-submit-arrow-offset: 18px;
+
+  /* Formulary: Disclaimer Modal */
+  --formulary-modal-radius: 16px;
+  --formulary-modal-padding: 48px 56px;
+  --formulary-modal-max-width: 900px;
+  --formulary-modal-shadow: 0 8px 40px rgb(0 0 0 / 30%);
+  --formulary-modal-line-height: 1.6;
+  --formulary-modal-close-size: 44px;
+  --formulary-modal-close-icon-size: 22px;
+  --formulary-modal-close-offset: 20px;
+
+  /* Formulary: Disclaimer/Notice */
+  --formulary-disclaimer-size: 14px;
+  --formulary-recaptcha-size: 12px;
+
+  /* Formulary: Chevron */
+  --formulary-chevron-offset: 14px;
+  --formulary-chevron-size: 20px;
+
+  /* ---- Color: CTA / Interaction ---- */
+  --color-green-bright: #8ce02a;
+  --color-border-grey: #636366;
+
+  /* ---- Header block ---- */
+  --header-hamburger-tab-height: 8.8rem;
+  --header-hamburger-triangle-width: 7.5rem;
+  --header-hamburger-triangle-offset: 5.9rem;
+  --header-logo-width: 14.3rem;
+  --header-logo-row-padding-top: 2.8rem;
+  --header-logo-row-indent: 140%;
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 22rem;
+  --header-nav-line-height: 1.3;
+  --header-eyebrow-line-height: 1.4;
+  --header-cta-line-height: 1.45;
+  --header-nav-separator: rgb(255 255 255 / 50%);
+  --header-scroll-bg: rgb(255 255 255 / 95%);
+  --header-nav-hover-shadow: 0 -0.1rem 0.6rem 0.3rem rgb(140 224 42);
+  --color-eyebrow-bg: rgb(68 68 68);
+  --opacity-muted: 0.6;
+  --opacity-hover: 0.85;
+  --header-sections-bg-height: 5.1rem;
+  --header-search-desktop-right: 18%;
+  --header-search-desktop-top: 73%;
+  --header-search-z-index: 99;
+  /* ---- Font: Size (hero-specific additions) ---- */
+  --font-size-44: 4.4rem;
+  --font-size-56: 5.6rem;
+  --font-size-72: 7.2rem;
+
+  /* ---- Hero: mavyret-data-hero ---- */
+  --hero-data-min-height: 53.2rem;
+  --hero-data-min-height-tablet: 58rem;
+  --hero-data-min-height-desktop: 53.2rem;
+  --hero-data-text-width: 74rem;
+  --hero-data-text-padding: 4rem 3.5rem 4.8rem;
+  --hero-data-text-width-tablet: 82rem;
+  --hero-data-text-padding-tablet: 5.6rem 7rem 6rem;
+  --hero-data-text-padding-desktop: 3.2rem 5.5rem 4rem;
+  --hero-data-cmp-max-width: 49rem;
+  --hero-data-cmp-max-width-tablet: 52rem;
+  --hero-data-h1-line-height: 0.98;
+  --hero-data-h1-letter-spacing: 0;
+  --hero-data-p-max-width: 48rem;
+  --hero-data-p-font-size: 1.7rem;
+  --hero-data-p-line-height: 1.38;
+  --hero-data-p-first-margin-top: 2.4rem;
+  --hero-data-p-first-font-size: 2.2rem;
+  --hero-data-p-first-line-height: 1.26;
+  --hero-data-p-first-max-width-desktop: 50rem;
+  --hero-data-p-sup-font-size: 0.7em;
+  --hero-data-button-gap: 10px;
+  --hero-data-button-border-width: 2px;
+  --hero-data-button-line-height: 1.2;
+  --hero-data-button-after-font-size: 3rem;
+  --hero-data-button-after-margin: 3px;
+  --hero-data-button-mobile-padding-top: 4px;
+  --hero-data-caption-right: 1.6rem;
+  --hero-data-caption-bottom: 1.4rem;
+  --hero-data-caption-right-tablet: 3.2rem;
+  --hero-data-caption-bottom-tablet: 2rem;
+  --hero-data-caption-right-desktop: 2.4rem;
+  --hero-data-caption-font-size: 1.1rem;
+  --hero-data-caption-line-height: 1.2;
+  --hero-data-indication-min-height: 7.4rem;
+  --hero-data-indication-min-height-tablet: 8.4rem;
+  --hero-data-indication-min-height-desktop: 7.2rem;
+  --hero-data-indication-width: 49.2rem;
+  --hero-data-indication-width-tablet: 59rem;
+  --hero-data-indication-padding: 1.2rem 3.2rem 1.2rem 4.8rem;
+  --hero-data-indication-padding-tablet: 1.4rem 4rem 1.4rem 7rem;
+  --hero-data-indication-padding-desktop: 1.1rem 3.2rem 1.1rem 4.8rem;
+  --hero-data-indication-padding-mobile: 1.2rem 3.2rem 1.2rem 2.8rem;
+  --hero-data-indication-clip-path: polygon(0 0, 100% 0, calc(100% - 6.4rem) 100%, 0 100%);
+  --hero-data-indication-p-font-size: 1.6rem;
+  --hero-data-indication-p-font-size-tablet: 1.9rem;
+  --hero-data-indication-p-line-height: 1.2;
+  --hero-data-font-family-roboto-bold: 'Roboto Bold', sans-serif;
+}

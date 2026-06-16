@@ -1,0 +1,74 @@
+.image-compare-container {
+  --compare-position: 50%;
+
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  cursor: col-resize;
+}
+
+.image-compare-after {
+  display: block;
+  line-height: 0;
+}
+
+.image-compare-after img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-compare-before {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: var(--compare-position);
+}
+
+.image-compare-before img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+}
+
+.image-compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--compare-position);
+  transform: translateX(-50%);
+  width: 4px;
+  background-color: var(--image-compare-handle-color, #fff);
+  cursor: col-resize;
+}
+
+.image-compare-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--image-compare-handle-color, #fff);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+}
+
+.image-compare-label {
+  position: absolute;
+  bottom: var(--spacing-12, 12px);
+  background: rgb(0 0 0 / 50%);
+  color: #fff;
+  font-size: var(--body-font-size-s, 0.875rem);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.image-compare-label-before { left: var(--spacing-12, 12px); }
+
+.image-compare-label-after { right: var(--spacing-12, 12px); }
+
+/* Abbvie image-compare overrides */

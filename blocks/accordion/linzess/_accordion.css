@@ -1,0 +1,164 @@
+@import '../accordion.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* Linzess FAQ accordion — purple card style matching linzess.com/savings-and-support/faqs */
+
+.accordion {
+    --accordion-linzess-bg-item: var(--linz-purple);
+    --accordion-linzess-bg-item-hover: var(--color-brand-primary);
+    --accordion-linzess-color-label: var(--linz-white);
+    --accordion-linzess-color-body: var(--text-color);
+    --accordion-linzess-radius: var(--linz-rounded-corner-sm);
+    --accordion-linzess-gap: var(--spacing-10);
+    --footer-seperator-color: transparent;
+    --highlight-dark-background-color: transparent;
+
+    background: transparent;
+}
+
+/* Card-per-item — no bottom border, gap between cards */
+.accordion .accordion-item {
+    border-bottom: none;
+    background: var(--accordion-linzess-bg-item);
+    border-radius: var(--accordion-linzess-radius);
+    overflow: hidden;
+    margin-bottom: var(--accordion-linzess-gap);
+}
+
+/* Summary row */
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-20) var(--spacing-24);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-16);
+    background: var(--accordion-linzess-bg-item);
+    color: var(--accordion-linzess-color-label);
+    cursor: pointer;
+}
+
+/* Focus */
+.accordion summary:focus-visible {
+    outline: var(--border-02) solid var(--linz-orange);
+    outline-offset: var(--border-02);
+    background: var(--accordion-linzess-bg-item);
+}
+
+/* Label text — white, bold, sentence case */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-linzess-color-label);
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-m);
+    font-weight: var(--font-weight-bold);
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+/* Chevron — CSS-driven via summary::after, no icon-font class needed */
+.accordion summary::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: var(--spacing-24);
+    height: var(--spacing-24);
+    min-width: var(--spacing-24);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 0.2s ease;
+}
+
+.accordion .accordion-item[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* Hide any icon-font icons so they don't double up */
+.accordion .item-icon-plus::after,
+.accordion .item-icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+    display: none !important;
+}
+
+/* Hover — darker purple, keep text unchanged */
+.accordion .accordion-item:hover summary {
+    background: var(--accordion-linzess-bg-item-hover);
+    color: var(--accordion-linzess-color-label);
+}
+
+.accordion .accordion-item:hover .accordion-item-label p,
+.accordion .accordion-item:hover .accordion-item-label h2,
+.accordion .accordion-item:hover .accordion-item-label h3,
+.accordion .accordion-item:hover .accordion-item-label h4,
+.accordion .accordion-item:hover .accordion-item-label h5,
+.accordion .accordion-item:hover .accordion-item-label h6 {
+    color: var(--accordion-linzess-color-label);
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-m);
+    font-weight: var(--font-weight-bold);
+}
+
+.accordion .accordion-item-label.open .accordion-item-label-text,
+.accordion .accordion-item-label .accordion-item-label-text:hover {
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-m);
+    font-weight: var(--font-weight-bold);
+    color: var(--accordion-linzess-color-label);
+}
+
+/* Open state — keep brand purple on header */
+.accordion .accordion-item[open] summary {
+    background: var(--accordion-linzess-bg-item);
+}
+
+/* Body — light greyish-purple background, padded */
+.accordion .accordion-item-body {
+    background: var(--linz-off-white) !important;
+    padding: var(--spacing-16) var(--spacing-24) var(--spacing-24);
+}
+
+.accordion .accordion-item-body .accordion-item-body-text {
+    color: var(--accordion-linzess-color-body);
+    font-family: var(--body-font-family);
+    font-size: var(--body-font-size-s);
+    line-height: 1.6;
+}
+
+/* Reset body link styles — base applies purple gradient */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+    transition: color 0.1s ease;
+}
+
+.accordion .accordion-item-body a:hover,
+.accordion .accordion-item-body a.button:hover {
+    background: none;
+    color: var(--color-brand-primary-light);
+}
+
+/* Suppress external-link ::after glyph */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+
+/* Expand all button */
+.accordion .accordion-expand-all {
+    color: var(--color-brand-primary);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-bold);
+}
+
+.accordion .accordion-expand-all:focus {
+    border-color: var(--color-brand-primary);
+}

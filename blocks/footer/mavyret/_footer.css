@@ -1,0 +1,180 @@
+@import '../footer.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* ============================================================
+   MAVYRET HCP — Footer brand overrides
+   Live: www.mavyret.com/hcp
+   - Burnt-orange bg (--color-background-footer #c23802) edge-to-edge
+   - Content constrained to centered max-width, LEFT-aligned within
+   - Two horizontal link rows separated by a 1px white border
+   - Legal text full-width; legal-number bottom-LEFT, logo bottom-RIGHT
+   ============================================================ */
+
+
+/* Brand token overrides */
+.footer-wrapper {
+  --footer-color-bg: var(--color-background-footer);
+  --footer-color-text: var(--color-text-on-dark);
+  --footer-color-link: var(--color-text-on-dark);
+
+  /* Live: .abbv-footer { background: linear-gradient(180deg, #c23802 0, #920 100%) } */
+  --footer-bg-gradient: linear-gradient(
+    180deg,
+    var(--color-background-footer) 0%,
+    var(--color-background-footer-end) 100%
+  );
+
+  /* Live: body { font-family: "Roboto"; font-size: 1rem; line-height: 1.45 } */
+  --footer-font-family: var(--font-family-footer);
+  --footer-font-size: var(--font-size-16);
+  --footer-line-height: var(--line-height-24);
+}
+
+/* Container — gradient bg full width, padding-block override.
+   Centering (max-width + padding-inline max()) is inherited from base. */
+.footer {
+  background: var(--footer-bg-gradient);
+  padding-block: var(--spacing-32);
+}
+
+/* ── Link rows: left-aligned ─────────────────────────────────── */
+.footer .footer-column {
+  text-align: left;
+}
+
+/* Mobile: two ULs side-by-side, each taking equal half-width */
+.footer .footer-links-primary {
+  gap: 0;
+  flex-direction: row;
+}
+
+/* Mobile: each UL stacks vertically; flex:1 + min-width:0 forces equal width so text wraps */
+.footer .footer-links-primary ul {
+  flex: 1;
+  min-width: 0;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--spacing-12);
+  margin-right: var(--spacing-16);
+}
+
+/* Underline all link text; allow wrapping on mobile */
+.footer .footer-links-primary li a {
+  text-decoration: underline;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+/* ── Footer bottom: stacked on mobile ────────────────────────── */
+.footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-32);
+  padding: 0;
+}
+
+.footer .footer-bottom p {
+  text-align: left;
+  margin: 0;
+}
+
+/* Mobile: logo last row, left-aligned */
+.footer .footer-bottom > p:has(picture),
+.footer .footer-bottom > p:has(img) {
+  order: 999;
+  text-align: left;
+  padding-top: 0;
+  align-self: center;
+}
+
+/* Mobile: reset padding-top — flex gap handles spacing */
+.footer .footer-bottom > p:has(br):not(:has(picture), :has(img)) {
+  padding-top: 0;
+}
+
+/* Override base small-font rule — mavyret HCP keeps legal-number at regular size */
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  font-size: var(--footer-font-size);
+}
+
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img), :has(br)) {
+  padding-top: 0;
+}
+
+/* Logo — DA delivers a white-bg JPG; invert + screen blend to render as white logo on orange */
+.footer .footer-bottom p:has(picture) img,
+.footer .footer-bottom p:has(img) img {
+  mix-blend-mode: screen;
+}
+
+.footer .footer-bottom svg {
+  fill: var(--color-text-on-dark);
+}
+
+/* ── Desktop (≥ 601px): grid layout, horizontal links ────────── */
+@media (width >= 601px) {
+  /* Restore vertical stacking of link rows */
+  .footer .footer-links-primary {
+    flex-direction: column;
+  }
+
+  /* Horizontal link row — full-width, left-aligned */
+  .footer .footer-links-primary ul {
+    flex: unset;
+    min-width: unset;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: var(--spacing-04) 0;
+    margin: 0;
+    gap: var(--spacing-12);
+    margin-right: 0;
+  }
+
+  /* Restore nowrap for links */
+  .footer .footer-links-primary li a {
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
+
+  /* Grid layout: legal text full width, legal-number bottom-left, logo bottom-right */
+  .footer .footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-16) var(--spacing-24);
+    align-items: start;
+  }
+
+  /* Logo paragraph — bottom-RIGHT */
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    order: 0;
+    grid-column: 2;
+    text-align: right;
+    align-self: end;
+    padding-top: var(--spacing-48);
+  }
+
+  /* Combined legal block (paragraph with <br>) — column 1, shares row with logo */
+  .footer .footer-bottom > p:has(br):not(:has(picture), :has(img)) {
+    grid-column: 1;
+    padding-top: var(--spacing-22);
+  }
+
+  /* Single-line legal text paragraphs span both columns */
+  .footer .footer-bottom > p:not(:has(picture), :has(img), .legal-number, :has(br)) {
+    grid-column: 1 / -1;
+  }
+
+  /* Legal-number paragraph — bottom-LEFT */
+  .footer .footer-bottom > p.legal-number,
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img), :has(br)) {
+    grid-column: 1;
+    padding-top: var(--spacing-48);
+    text-align: left;
+  }
+}

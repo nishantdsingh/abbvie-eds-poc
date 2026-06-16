@@ -1,0 +1,210 @@
+:root {
+  /* Brand Base */
+  --color-brand-primary: var(--highlight-dark-background-color);
+  --color-brand-dark: var(--footer-link-color);
+
+  /* Stock change (alias design tokens — no hex in this file) */
+  --stock-up: var(--color-accent-green);
+  --stock-down: var(--error-color);
+  --stock-neutral: var(--color-blue-grey-500);
+
+  /* Background */
+  --stock-bg: var(--background-color);
+  --stock-border: transparent;
+}
+
+/* ---------------------------------------------
+   STOCK TICKER BASE STYLES
+--------------------------------------------- */
+
+.stock-ticker {
+  border-radius: var(--border-radius-m);
+  background-color: var(--stock-bg);
+  border: var(--separator-height-1) solid var(--stock-border);
+}
+
+.stock-ticker .stock-wrapper {
+  font-family: var(--body-font-family);
+  min-height: calc(27 * var(--px-to-rem));
+  padding: var(--spacing-24) var(--spacing-32);
+}
+
+/* HEADER */
+
+.stock-ticker .stock-header {
+  margin-bottom: var(--spacing-24);
+  display: flex;
+  gap: var(--spacing-08);
+  font-weight: var(--font-weight-700);
+  font-family: var(--roboto-bold-font-family);
+}
+
+.stock-ticker .stock-header .symbol {
+  color: var(--color-brand-dark);
+}
+
+.stock-ticker .stock-header .timestamp {
+  color: var(--color-text-muted);
+}
+
+.stock-ticker .stock-header .timestamp,
+.stock-ticker .stock-header .symbol {
+  font-size: var(--font-size-12);
+  letter-spacing: var(--tracking-wide-sm);
+  line-height: var(--line-height-16);
+  margin-right: var(--spacing-12);
+  text-transform: uppercase;
+}
+
+/* PRICE */
+
+.stock-ticker .price {
+  color: var(--color-brand-primary);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xl);
+  font-weight: var(--font-weight-700);
+  letter-spacing: -0.02em;
+  line-height: var(--line-height-64);
+}
+
+.stock-ticker .fraction {
+  color: var(--color-brand-primary);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-700);
+  line-height: var(--line-height-28);
+}
+
+/* CHANGE LINE */
+
+.stock-ticker .change {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  color: var(--color-brand-dark);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+  margin-top: var(--spacing-16);
+}
+
+/* SOURCE */
+
+.stock-ticker .source {
+  color: var(--color-brand-dark);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  letter-spacing: var(--tracking-wide-sm);
+  line-height: var(--line-height-16);
+  margin-top: var(--spacing-16);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------
+   CHANGE COLORS
+--------------------------------------------- */
+
+.change.green {
+  color: var(--stock-up);
+}
+
+.change.red {
+  color: var(--stock-down);
+}
+
+.change.blue-grey {
+  color: var(--stock-neutral);
+}
+
+/* ---------------------------------------------
+   ICON SHAPES (::before)
+   Uses up-icon / down-icon / neutral-icon from stock-ticker.js (scoped under .stock-ticker for selector-max-specificity)
+--------------------------------------------- */
+
+.stock-ticker .up-icon::before,
+.stock-ticker .down-icon::before,
+.stock-ticker .neutral-icon::before {
+  display: inline-block;
+  margin-right: var(--spacing-08);
+  content: "";
+}
+
+.stock-ticker .up-icon::before {
+  width: 0;
+  height: 0;
+  border-left: var(--spacing-08) solid transparent;
+  border-right: var(--spacing-08) solid transparent;
+  border-bottom: var(--spacing-12) solid var(--stock-up);
+}
+
+.stock-ticker .down-icon::before {
+  width: 0;
+  height: 0;
+  border-left: var(--spacing-08) solid transparent;
+  border-right: var(--spacing-08) solid transparent;
+  border-top: var(--spacing-12) solid var(--stock-down);
+}
+
+.stock-ticker .neutral-icon::before {
+  content: "•";
+  font-size: var(--font-size-16);
+}
+
+/* ---------------------------------------------
+   RESPONSIVE
+--------------------------------------------- */
+
+@media (width >= 744px) {
+  .stock-ticker .price {
+    font-size: var(--font-size-64);
+    line-height: var(--line-height-68);
+  }
+
+  .stock-ticker .change {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-22);
+  }
+
+  .stock-ticker .up-icon::before {
+    border-left: var(--spacing-10) solid transparent;
+    border-right: var(--spacing-10) solid transparent;
+    border-bottom: var(--spacing-16) solid var(--stock-up);
+  }
+
+  .stock-ticker .down-icon::before {
+    border-left: var(--spacing-10) solid transparent;
+    border-right: var(--spacing-10) solid transparent;
+    border-top: var(--spacing-16) solid var(--stock-down);
+  }
+
+  .trade-container .fraction {
+    font-size: var(--font-size-30);
+    line-height: var(--line-height-34);
+  }
+}
+
+@media (width >= 1024px) {
+  .stock-ticker .price {
+    font-size: var(--font-size-80);
+    line-height: var(--line-height-84);
+    letter-spacing: -0.03em;
+  }
+
+  .stock-ticker .change {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+  }
+
+  .trade-container .fraction {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+  }
+
+  .stock-ticker .stock-header .timestamp,
+  .stock-ticker .stock-header .symbol {
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-20);
+  }
+}

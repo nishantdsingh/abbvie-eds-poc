@@ -1,0 +1,21 @@
+/* stylelint-disable no-descending-specificity */
+@import '../cta.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* Skyrizi HCP — CTA brand overrides
+   Primary: Navy (#071d49) pill button, 30px radius, uppercase
+   Secondary: Transparent with navy border
+   Plain: Cyan text links (context-dependent) */
+
+.cta.abbv-button-primary .abbv-cta {
+  font-family: var(--heading-font-family-bold);
+  text-transform: uppercase;
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--heading-font-family-bold);
+}
+
+.cta.abbv-button-secondary .abbv-cta:hover {
+  border-color: var(--button-secondary-hover-border, var(--button-secondary-hover-bg));
+}

@@ -1,0 +1,324 @@
+/* stylelint-disable no-descending-specificity, selector-not-notation, no-duplicate-selectors, media-feature-range-notation, declaration-block-no-redundant-longhand-properties */
+
+/* ============================================================
+   Footer Block — Base styles
+   Live-matching flat horizontal layout (matches all 6 AbbVie brand sites):
+   - Two centered link rows (UL-based, gap-separated, no border)
+   - Legal text + legal number + AbbVie logo
+   Brand differences flow through brand-level global tokens declared in
+   styles/{brand}/tokens.css:
+     --color-background-footer, --color-text-on-dark,
+     --body-font-family, --font-size-footer
+   ============================================================ */
+
+/* ── Block-scoped tokens (W3C DTCG: --footer-{type}-{semantic}-{variant}) ── */
+.footer-wrapper {
+  --footer-color-bg: var(--color-background-footer);
+  --footer-color-text: var(--color-text-on-dark, #fff);
+  --footer-color-link: var(--footer-color-text);
+  --footer-font-family: var(--body-font-family);
+  --footer-font-size: var(--font-size-footer, var(--font-size-14));
+  --footer-font-size-small: var(--font-size-12);
+  --footer-font-weight: var(--font-weight-400);
+  --footer-line-height: var(--line-height-22);
+  --footer-spacing-padding-y: var(--spacing-40);
+  --footer-spacing-padding-x: var(--spacing-20);
+  --footer-spacing-row-gap: var(--spacing-16);
+  --footer-spacing-link-gap-desktop: var(--spacing-24);
+  --footer-spacing-legal-gap: var(--spacing-60);
+  --footer-spacing-bottom-gap: var(--spacing-12);
+  --footer-logo-height: var(--spacing-22);
+  --footer-content-max-width: 1200px;
+}
+
+/* ── Container: flat, full-bleed ─────────────────────────────── */
+.footer-wrapper {
+  margin-top: 0;
+}
+
+.footer {
+  background-color: var(--footer-color-bg);
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  line-height: var(--footer-line-height);
+  border-radius: 0;
+  border-top-left-radius: 0;
+  max-width: none;
+  margin: 0;
+  padding-block: var(--footer-spacing-padding-y);
+  padding-inline: max(
+    var(--footer-spacing-padding-x),
+    calc((100% - var(--footer-content-max-width)) / 2)
+  );
+  position: relative;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Auto-hide any empty column (depends on what's authored) */
+.footer .footer-column:empty {
+  display: none;
+}
+
+/* ── Link rows ──────────────────────────────────────────────── */
+.footer .footer-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-row-gap);
+  margin: 0;
+  padding: 0;
+}
+
+.footer .footer-column {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+/* Primary column may hold both link rows (when 2 ULs authored in section 1) — stack them */
+.footer .footer-links-primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-row-gap);
+}
+
+/* Reset legacy "first p as label" styling */
+.footer .footer-column p:first-child {
+  text-transform: none;
+  margin-bottom: 0;
+}
+
+.footer .footer-links-tertiary p:last-child {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* UL row — flex layout, gap-separated */
+.footer .footer-links-primary ul,
+.footer .footer-links-secondary ul,
+.footer .footer-links-tertiary ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--footer-spacing-row-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  color: var(--footer-color-text);
+}
+
+.footer .footer-links-primary li,
+.footer .footer-links-secondary li,
+.footer .footer-links-tertiary li,
+.footer .footer-links-primary li:not(:last-child),
+.footer .footer-links-secondary li:not(:last-child),
+.footer .footer-links-tertiary li:not(:last-child) {
+  margin: 0;
+  padding: 0;
+}
+
+/* Link styling — high specificity to override legacy heading-style rules */
+.footer .footer-links-primary li a,
+.footer .footer-links-secondary li a,
+.footer .footer-links-tertiary li a {
+  color: var(--footer-color-link);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer .footer-links-primary li a:hover,
+.footer .footer-links-secondary li a:hover,
+.footer .footer-links-tertiary li a:hover {
+  font-family: var(--footer-font-family);
+  font-weight: var(--footer-font-weight);
+  text-decoration: underline;
+}
+
+/* P-based authoring fallback (pipe-separated text) */
+.footer .footer-links-secondary p,
+.footer .footer-links-tertiary p {
+  margin: 0;
+  text-align: center;
+  text-transform: none;
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  color: var(--footer-color-text);
+}
+
+/* External link icon */
+.footer-column li a.external-link::after {
+  content: '';
+  display: inline-flex;
+  width: var(--spacing-16);
+  height: var(--spacing-20);
+  background-image: url('/icons/external-link.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 var(--spacing-04);
+  vertical-align: middle;
+}
+
+/* ── Footer bottom: legal text + number + logo ──────────────── */
+.footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-bottom-gap);
+  border: none;
+  padding: 0;
+  margin-top: var(--footer-spacing-legal-gap);
+}
+
+.footer .footer-bottom p {
+  margin: 0;
+  text-align: center;
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  line-height: var(--footer-line-height);
+  text-transform: none;
+}
+
+/* Anchors inside footer-bottom paragraphs inherit text styling */
+.footer .footer-bottom p a {
+  color: var(--footer-color-link);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+.footer .footer-bottom p a:hover {
+  text-decoration: none;
+}
+
+/* Strip button-pill styling when legal text is authored as a button (legacy).
+   Selector specificity (0,4,1) beats global a.button rules in styles/styles.css
+   without needing !important. */
+.footer-wrapper .footer .footer-bottom a.button,
+.footer-wrapper .footer .footer-bottom .button-container a {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--footer-color-link);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  text-decoration: underline;
+  text-transform: none;
+  display: inline;
+  white-space: normal;
+  line-height: var(--footer-line-height);
+}
+
+.footer-wrapper .footer .footer-bottom a.button:hover,
+.footer-wrapper .footer .footer-bottom .button-container a:hover {
+  text-decoration: none;
+}
+
+/* Legal number — small text. Detected by .legal-number class OR by being
+   the 2nd-to-last child (paragraph immediately before the logo picture) */
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture)):not(:has(img)) {
+  font-size: var(--footer-font-size-small);
+}
+
+/* Logo — centered mobile, right-aligned desktop, white via filter (raster) or fill (SVG) */
+.footer .footer-bottom p:has(picture),
+.footer .footer-bottom p:has(img) {
+  margin: var(--footer-spacing-bottom-gap) 0 0;
+  text-align: center;
+}
+
+.footer .footer-bottom p:has(picture) img,
+.footer .footer-bottom p:has(img) img {
+  height: var(--footer-logo-height);
+  width: auto;
+  mix-blend-mode: screen;
+}
+
+.footer .footer-bottom svg {
+  height: var(--footer-logo-height);
+  width: auto;
+  fill: var(--footer-color-text);
+}
+
+/* Legacy ul fallback inside footer-bottom */
+.footer .footer-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.footer .footer-bottom ul li,
+.footer .footer-bottom ul li a {
+  color: var(--footer-color-text);
+  font-size: var(--footer-font-size);
+  text-decoration: none;
+}
+
+/* ── Desktop ≥601px (matches live media query) ──────────────── */
+@media (min-width: 601px) {
+  .footer .footer-links-primary ul,
+  .footer .footer-links-secondary ul,
+  .footer .footer-links-tertiary ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--footer-spacing-link-gap-desktop);
+  }
+
+  .footer .footer-bottom {
+    margin-top: var(--footer-spacing-legal-gap);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: var(--footer-spacing-link-gap-desktop);
+    row-gap: var(--footer-spacing-bottom-gap);
+  }
+
+  /* Legal text paragraphs — each takes its own row, full-width */
+  .footer .footer-bottom > .button-container,
+  .footer .footer-bottom > p:not(:has(picture)):not(:has(img)):not(.legal-number):not(:nth-last-child(2)) {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  /* Legal number — bottom-left of last row */
+  .footer .footer-bottom > p.legal-number,
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture)):not(:has(img)) {
+    grid-column: 1;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* Logo — bottom-right (same row as legal number due to grid auto-placement) */
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    grid-column: 2;
+    text-align: right;
+    margin: 0;
+  }
+}

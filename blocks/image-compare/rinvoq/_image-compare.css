@@ -1,0 +1,327 @@
+@import '../image-compare.css';
+
+/* ============================================================
+   RINVOQ — Image Compare block brand overrides
+   Pattern: Block-scoped design tokens on .image-compare
+   Only brand-specific token overrides live here.
+   Tokens resolve from styles/rinvoq/tokens.css via head.html.
+   Fallback values are provided on every var() for resilience.
+   ============================================================ */
+
+/* Block-scoped design tokens — references global brand tokens from styles/rinvoq/tokens.css */
+.image-compare {
+  --ic-color-primary: var(--color-rinvoq-primary, #90124a);
+  --ic-color-charcoal: var(--color-rinvoq-charcoal, #25282a);
+  --ic-color-gold: var(--color-rinvoq-gold, #ffd100);
+  --ic-color-gallery-bg: var(--color-rinvoq-gallery-bg, #666869);
+  --ic-color-prompt-bg: var(--color-rinvoq-prompt-bg, rgb(51 51 51 / 85%));
+  --ic-color-handle-circle: var(--color-rinvoq-handle-circle, #25282a);
+  --ic-color-text-light: var(--color-text-on-dark, #fff);
+  --ic-gallery-max-width: 76.5rem;
+  --ic-handle-size: var(--spacing-40, 4rem);
+  --ic-handle-border-width: var(--separator-height-1, 0.1rem);
+  --ic-handle-line-width: var(--spacing-04, 0.4rem);
+  --ic-prompt-max-width: 16rem;
+  --ic-tabs-radius: var(--spacing-05, 0.5rem);
+  --ic-tab-inner-radius: var(--spacing-03, 0.3rem);
+  --ic-thumb-width: 13rem;
+  --ic-thumb-width-mobile: var(--spacing-100, 10rem);
+  --ic-thumb-radius: var(--border-radius-m, 0.8rem);
+  --ic-thumb-image-radius: var(--spacing-05, 0.5rem);
+  --ic-thumb-label-bottom: var(--spacing-30, 3rem);
+}
+
+/* =========================================================
+   GALLERY WRAPPER
+========================================================= */
+
+.image-compare.gallery {
+  max-width: var(--ic-gallery-max-width);
+  margin: 0 auto;
+}
+
+/* =========================================================
+   LABELS — full-width banner strip (gold/charcoal)
+========================================================= */
+
+.image-compare .image-compare-label {
+  display: block;
+}
+
+.image-compare .image-compare-label-after {
+  position: absolute;
+  inset: 0 0 auto;
+  background: var(--ic-color-gold);
+  color: var(--ic-color-charcoal);
+  font-size: var(--font-size-16, 1.6rem);
+  font-weight: var(--font-weight-regular, 400);
+  padding: var(--spacing-06, 0.6rem) var(--spacing-15, 1.5rem);
+  border-radius: 0;
+  z-index: var(--z-index-3, 3);
+  text-align: right;
+}
+
+.image-compare .image-compare-label-before {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: var(--compare-position);
+  overflow: hidden;
+  background: var(--ic-color-gold);
+  color: var(--ic-color-charcoal);
+  font-size: var(--font-size-16, 1.6rem);
+  font-weight: var(--font-weight-regular, 400);
+  padding: var(--spacing-06, 0.6rem) var(--spacing-15, 1.5rem);
+  border-radius: 0;
+  z-index: var(--z-index-4, 4);
+  text-align: left;
+}
+
+/* =========================================================
+   HANDLE — charcoal line + charcoal circle with gold border
+========================================================= */
+
+.image-compare .image-compare-handle {
+  width: var(--ic-handle-line-width);
+  background-color: var(--ic-color-charcoal);
+}
+
+.image-compare .image-compare-handle::before {
+  display: block;
+  width: var(--ic-handle-size);
+  height: var(--ic-handle-size);
+  background-color: var(--ic-color-handle-circle);
+  border-radius: 50%;
+  border: var(--ic-handle-border-width) solid var(--ic-color-gold);
+  box-shadow: none;
+
+  /* icon fill is white (%23fff) to contrast against dark charcoal circle */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z'/%3E%3C/svg%3E");
+  background-size: var(--spacing-22, 2.2rem);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================================================
+   PROMPT — centered over handle position
+========================================================= */
+
+.image-compare .image-compare-prompt {
+  position: absolute;
+  top: 50%;
+  left: var(--compare-position);
+  transform: translate(-50%, -50%);
+  background: var(--ic-color-prompt-bg);
+  color: var(--ic-color-text-light);
+  font-size: var(--font-size-11, 1.1rem);
+  font-weight: var(--font-weight-700, 700);
+  padding: var(--spacing-08, 0.8rem) var(--spacing-12, 1.2rem);
+  border-radius: var(--border-radius-base, 0.4rem);
+  text-align: center;
+  white-space: normal;
+  max-width: var(--ic-prompt-max-width);
+  line-height: 1.4;
+  z-index: var(--z-index-5, 5);
+}
+
+/* =========================================================
+   GALLERY CONTENT BAR — gray caption strip
+========================================================= */
+
+.image-compare .image-compare-gallery-content {
+  background: var(--ic-color-gallery-bg);
+  color: var(--ic-color-text-light);
+  font-size: var(--font-size-16, 1.6rem);
+  font-weight: var(--font-weight-700, 700);
+  padding: var(--spacing-05, 0.5rem) var(--spacing-10, 1rem);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   TABS TOGGLE — primary burgundy pill
+========================================================= */
+
+.image-compare .image-compare-tabs-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: var(--spacing-24, 2.4rem) 0 var(--spacing-16, 1.6rem);
+  border: var(--separator-height-1, 0.1rem) solid var(--ic-color-primary);
+  border-radius: var(--ic-tabs-radius);
+  overflow: hidden;
+}
+
+.image-compare .image-compare-tabs-toggle .image-compare-tab {
+  flex: 1;
+  background: var(--color-white, #fff);
+  color: var(--ic-color-primary);
+  border: none;
+  border-radius: 0;
+  font-size: var(--font-size-14, 1.4rem);
+  font-weight: var(--font-weight-700, 700);
+  padding: var(--spacing-10, 1rem) var(--spacing-20, 2rem);
+  cursor: pointer;
+  text-align: center;
+}
+
+.image-compare .image-compare-tabs-toggle .image-compare-tab.is-active {
+  background: var(--ic-color-primary);
+  color: var(--ic-color-text-light);
+  border-color: var(--ic-color-primary);
+}
+
+.image-compare .image-compare-tabs-toggle .image-compare-tab:first-child {
+  border-radius: var(--ic-tab-inner-radius) 0 0 var(--ic-tab-inner-radius);
+}
+
+.image-compare .image-compare-tabs-toggle .image-compare-tab:last-child {
+  border-radius: 0 var(--ic-tab-inner-radius) var(--ic-tab-inner-radius) 0;
+}
+
+/* =========================================================
+   THUMBNAILS
+========================================================= */
+
+.image-compare .image-compare-thumbnails {
+  display: flex;
+  gap: var(--spacing-10, 1rem);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: var(--spacing-16, 1.6rem) 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  margin: 0;
+  max-width: none;
+}
+
+.image-compare .image-compare-thumb {
+  width: var(--ic-thumb-width-mobile);
+  height: auto;
+  border: var(--spacing-03, 0.3rem) solid transparent;
+  border-radius: var(--ic-thumb-radius);
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.image-compare .image-compare-thumb.is-active {
+  border-color: var(--ic-color-primary);
+  outline: none;
+}
+
+.image-compare .image-compare-thumb::after {
+  display: none;
+}
+
+.image-compare .image-compare-thumb-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--ic-thumb-image-radius);
+}
+
+.image-compare .image-compare-thumb-label {
+  display: block;
+  font-size: var(--font-size-14, 1.4rem);
+  font-weight: var(--font-weight-700, 700);
+  color: var(--ic-color-text-light);
+  position: absolute;
+  bottom: var(--ic-thumb-label-bottom);
+  left: var(--spacing-08, 0.8rem);
+  text-shadow: 0 var(--spacing-01, 1px) var(--spacing-03, 3px) rgb(0 0 0 / 60%);
+}
+
+.image-compare .image-compare-thumb-sublabel {
+  display: block;
+  font-size: var(--font-size-12, 1.2rem);
+  font-weight: var(--font-weight-regular, 400);
+  color: var(--ic-color-text-light);
+  position: absolute;
+  bottom: var(--spacing-10, 1rem);
+  left: var(--spacing-08, 0.8rem);
+  text-shadow: 0 var(--spacing-01, 1px) var(--spacing-03, 3px) rgb(0 0 0 / 60%);
+}
+
+/* =========================================================
+   CONTAINER / WRAPPER RESETS
+========================================================= */
+
+.image-compare .image-compare-container {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.image-compare .image-compare-wrapper {
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.image-compare .image-compare-slider-wrapper {
+  padding: 0;
+  min-width: 0;
+}
+
+/* =========================================================
+   HIDE TWO-COLUMN LAYOUT ELEMENTS
+   Rinvoq toggle variant is single-column only; these layout
+   containers are rendered by decorateGallery but unused here.
+========================================================= */
+
+.image-compare .image-compare-layout {
+  display: block;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.image-compare .image-compare-content {
+  display: none;
+}
+
+.image-compare .image-compare-bottom-bar {
+  display: none;
+}
+
+.image-compare .image-compare-patient {
+  display: none;
+}
+
+.image-compare .image-compare-eyebrow {
+  display: none;
+}
+
+.image-compare .image-compare-heading::after {
+  display: none;
+}
+
+.image-compare .image-compare-cta {
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE — mobile-first (min-width)
+========================================================= */
+
+@media (width >= 600px) {
+  .image-compare .image-compare-thumbnails {
+    gap: var(--spacing-16, 1.6rem);
+  }
+
+  .image-compare .image-compare-thumb {
+    width: var(--ic-thumb-width);
+  }
+}
+
+@media (width >= 769px) {
+  .image-compare.gallery {
+    max-width: var(--ic-gallery-max-width);
+  }
+}

@@ -1,0 +1,278 @@
+@import '../tabs.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* ============================================================
+   SKYRIZI HCP — Tabs brand overrides
+   Live: skyrizihcp.com/dermatology/psoriasis-efficacy
+   Style: Dark navy pill bar, white text, cyan underline on active
+   Panel: white card with gradient top border, 4+8 column split
+   ============================================================ */
+
+/* ── Tab container — collapse spacing to panel ── */
+.section.tabs-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ── Tab controls wrapper — centered with gradient line ── */
+.tabs-container .tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: var(--z-index-2);
+}
+
+
+/* ── Tab controls bar — dark navy pill ── */
+.tabs-container .tabs .tabs-list {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-tabs-control-bg);
+  border-radius: var(--border-radius-button-tertiary);
+  padding: var(--spacing-08) var(--spacing-12);
+  gap: 0;
+  border: none;
+}
+
+/* ── Tab buttons (inactive) ── */
+.tabs-container .tabs .tabs-list button.tabs-tab {
+  padding: var(--spacing-08) var(--spacing-20);
+  margin: 0;
+  background: transparent;
+  color: var(--color-text-on-dark);
+  font-family: var(--font-family-tabs-control);
+  font-size: var(--font-size-body-xs);
+  font-weight: var(--font-weight-400);
+  text-transform: none;
+  letter-spacing: var(--tracking-wide-sm);
+  border: none;
+  border-radius: var(--border-radius-button-primary);
+  white-space: nowrap;
+  position: relative;
+  line-height: var(--line-height-20);
+  cursor: pointer;
+}
+
+/* ── Active tab — bold with cyan underline ── */
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: transparent;
+  color: var(--color-text-on-dark);
+  font-weight: var(--font-weight-heading);
+}
+
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true']::after {
+  position: absolute;
+  bottom: calc(0.6 * var(--spacing-06));
+  left: 0;
+  width: 100%;
+  height: var(--tabs-underline-height);
+  background-color: var(--color-tabs-underline);
+  content: '';
+}
+
+/* ── Tab panel wrapper ── */
+.tabs-panel {
+  background: var(--background-color);
+  border: none;
+  border-radius: 0;
+  padding: var(--spacing-24) var(--spacing-24) var(--spacing-30);
+  margin: 0;
+  margin-top: calc(-1 * var(--spacing-25));
+  min-height: var(--spacing-420);
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Gradient line at top of panel — full viewport width */
+.tabs-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: var(--spacing-06);
+  transform: translateX(-50%);
+  background: var(--gradient-tabs-panel);
+}
+
+
+/* ── Content containment ── */
+.tabs-panel {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-20);
+  padding-right: var(--spacing-20);
+}
+
+/* ── Sections inside panel — remove default spacing ── */
+.tabs-panel > .section.abbvie-container {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+/* ── Text container inside tab panels ── */
+.tabs-panel .text-container-wrapper {
+  padding: var(--spacing-40);
+}
+
+.tabs-panel .text-container-text {
+  color: var(--color-tabs-text);
+  font-family: var(--font-family-tabs-text);
+}
+
+.tabs-panel .text-container-text p {
+  font-size: var(--font-size-16);
+  margin: 0;
+}
+
+.tabs-panel .text-container-text h5 {
+  font-size: var(--font-size-26);
+  font-family: var(--font-family-tabs-text);
+  font-weight: var(--font-weight-heading);
+  margin: 0;
+}
+
+/* ── Clinical data panel inside tab panels ── */
+.tabs-panel .clinical-data-panel-wrapper {
+  padding: var(--spacing-40);
+}
+
+/* ── Tablet+ ── */
+@media (width >= 600px) {
+  .tabs-container .tabs-wrapper {
+    margin-top: calc(-1 * var(--spacing-20));
+    margin-bottom: calc(-1 * var(--spacing-06));
+  }
+}
+
+/* ============================================================
+   PILL VARIANT — .tabs.pill
+   Rounded pill bar with filled cyan active tab.
+   Used inside modals (Study Design / Baseline Characteristics)
+   ============================================================ */
+
+/* ── Pill tab list — rounded capsule bar ── */
+.tabs.pill .tabs-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: var(--border-width-1, 0.1rem) solid var(--color-tabs-underline, #00b4d8);
+  border-radius: var(--tabs-pill-radius, 50rem);
+  padding: var(--spacing-04, 0.4rem);
+  gap: 0;
+  overflow: visible;
+  width: 100%;
+}
+
+/* ── Pill tab buttons (inactive) — transparent, dark text ── */
+.tabs.pill .tabs-list button.tabs-tab {
+  padding: var(--spacing-08, 0.8rem) var(--spacing-12, 1.2rem);
+  background: transparent;
+  color: var(--color-text-heading, #1a2b3c);
+  font-family: var(--font-family-tabs-control, var(--body-font-family));
+  font-size: var(--font-size-body-xs, 1.2rem);
+  font-weight: var(--font-weight-heading, 700);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide-sm, 0.05em);
+  border: none;
+  border-radius: var(--tabs-pill-radius, 50rem);
+  white-space: nowrap;
+  position: relative;
+  line-height: var(--line-height-20, 2rem);
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+}
+
+/* ── Pill active tab — filled cyan background ── */
+.tabs.pill .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: var(--color-tabs-underline, #00b4d8);
+  color: var(--color-text-on-dark, #fff);
+  font-weight: var(--font-weight-heading, 700);
+}
+
+/* First tab appears active when no tab is explicitly selected */
+.tabs.pill .tabs-list:not(:has(button[aria-selected='true'])) button.tabs-tab:first-child {
+  background: var(--color-tabs-underline, #00b4d8);
+  color: var(--color-text-on-dark, #fff);
+  font-weight: var(--font-weight-heading, 700);
+}
+
+.tabs.pill .tabs-list button.tabs-tab[aria-selected='true']::after {
+  display: none;
+}
+
+
+/* ── Pill panel — no gradient line, no grid split ── */
+.section:has(.tabs.pill) ~ .tabs-panel::before {
+  display: none;
+}
+
+.section:has(.tabs.pill) ~ .tabs-panel > .section[data-tabs-grid] {
+  display: block;
+}
+
+.section:has(.tabs.pill) ~ .tabs-panel > .section[data-tabs-grid].abbvie-container > div {
+  grid-column: unset;
+}
+
+/* ── Pill panel — reset text-container overrides ── */
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-wrapper {
+  background: transparent;
+  padding: 0;
+}
+
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-text {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-18, 1.8rem);
+  line-height: var(--line-height-24, 2.4rem);
+  font-weight: var(--font-weight-body, 400);
+}
+
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-text p,
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-text li,
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-text ol,
+.section:has(.tabs.pill) ~ .tabs-panel .text-container-text ul {
+  font-size: var(--font-size-18, 1.8rem);
+  line-height: var(--line-height-24, 2.4rem);
+  font-weight: var(--font-weight-body, 400);
+}
+
+/* ── Pill panel — base typography ── */
+.section:has(.tabs.pill) ~ .tabs-panel p,
+.section:has(.tabs.pill) ~ .tabs-panel a,
+.section:has(.tabs.pill) ~ .tabs-panel li,
+.section:has(.tabs.pill) ~ .tabs-panel dd,
+.section:has(.tabs.pill) ~ .tabs-panel dt {
+  font-size: var(--font-size-18, 1.8rem);
+  line-height: var(--line-height-24, 2.4rem);
+}
+
+/* ── Tablet+ pill adjustments ── */
+@media (width >= 600px) {
+  .tabs.pill .tabs-list {
+    display: inline-flex;
+    width: auto;
+  }
+
+  .tabs.pill .tabs-list button.tabs-tab {
+    font-size: var(--font-size-14, 1.4rem);
+    padding: var(--spacing-12, 1.2rem) var(--spacing-40, 4rem);
+    flex: none;
+  }
+}
+
+/* ── Desktop pill adjustments ── */
+@media (width >= 900px) {
+  .tabs.pill .tabs-list button.tabs-tab {
+    font-size: var(--font-size-16, 1.6rem);
+    padding: var(--spacing-14, 1.4rem) var(--spacing-48, 4.8rem);
+  }
+}

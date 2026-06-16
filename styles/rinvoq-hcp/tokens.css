@@ -1,0 +1,287 @@
+@import '../tokens.css';
+
+/* ============================================================
+   RINVOQ HCP — Brand Token Overrides
+   Source: rinvoqhcp.com/dermatology (Platform C)
+   Font: Graphik family
+   ============================================================ */
+
+:root {
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #90124a;
+  --color-brand-primary-dark: #25282a;
+  --color-brand-primary-light: #b15980;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffd100;
+  --color-brand-accent-light: #ffe673;
+  --color-brand-accent-butter: #fff1b3;
+  --color-brand-accent-lemon: #ffe673;
+
+  /* ---- Color: Named Palette (from CSS vars) ---- */
+  --color-plum: #90124a;
+  --color-mulberry: #b15980;
+  --color-heather: #d3a0b7;
+  --color-gold: #ffd100;
+  --color-gold-dark: #ba9900;
+  --color-light-gold: rgba(255, 209, 0, 0.55);
+  --color-lemon: #ffe673;
+  --color-butter: #fff1b3;
+  --color-charcoal: #25282a;
+  --color-iron: #46484a;
+  --color-steel: #87898a;
+  --color-silver: #c9c9ca;
+  --color-whisper: #ececec;
+  --color-ash: #e3e3e3;
+  --color-glacier: #f5f5f5;
+  --color-footer-bg: #17181b;
+
+  /* ---- Color: Text ---- */
+  --text-color: #46484a;
+  --color-text-heading: #25282a;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #696969;
+  --color-text-link: #90124a;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f5f5f5;
+  --color-background-footer: #17181b;
+  --color-background-safety-bar: #f5f5f5;
+
+  /* ---- Color: Accordion ---- */
+  --color-accordion-text: #25282a;
+  --color-accordion-accent: #c8373e;
+  --color-accordion-separator: #46484a;
+  --color-accordion-tab-inactive: #767688;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #c9c9ca;
+  --color-border-safety: #ffd100;
+
+  /* ---- Color: Status ---- */
+  --color-success: #068c5a;
+  --color-error: #d62a24;
+
+  /* ---- Color: Shadow ---- */
+  --shadow-table: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+  --shadow-default: 0 4px 19px 0 rgba(0, 0, 0, 0.07);
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --heading-font-family-bold: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-medium: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --font-family-semibold: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+  /* Handwriting accent used in no-padding hero variant — no local font file, loads from CDN/host */
+  --font-family-handwriting: 'Upa Handwriting', serif;
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 12px;
+  --font-size-body-xs: 11.2px;
+  --font-size-legal: 12.992px;
+  --font-size-nav: 16px;
+  --font-size-footer: 16px;
+  --font-size-h1: 26px;
+  --font-size-h2: 20px;
+  --font-size-h3: 14px;
+  --font-size-h4: 14px;
+  --font-size-h-xl: 35.2px;
+  --font-size-h-featured: 22px;
+  --font-size-button: 16px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-heading: 600;
+  --font-weight-button: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: 24px;
+  --line-height-h1: 27.625px;
+  --line-height-h2: 25px;
+  --line-height-h3: 16.8px;
+  --line-height-h-xl: 52.8px;
+  --line-height-h-featured: 27.5px;
+  --line-height-link: 19.2px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 100px;
+  --border-radius-card: 0px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #fff;
+  --button-primary-bg: #90124a;
+  --button-primary-border: transparent;
+  --button-primary-padding: 16px 54px 16px 32px;
+  --button-primary-font-size: 0.875rem;
+  --button-primary-font-weight: 700;
+  --button-primary-hover-bg: #25282a;
+  --button-primary-hover-color: #fff;
+
+  /* ---- Button: Secondary ---- */
+  --button-secondary-bg: transparent;
+  --button-secondary-color: #90124a;
+  --button-secondary-border: #90124a;
+  --button-secondary-padding: 16px 54px 16px 32px;
+  --border-radius-button-secondary: 100px;
+  --button-secondary-hover-bg: #90124a;
+  --button-secondary-hover-color: #fff;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-bg: transparent;
+  --button-tertiary-color: #46484a;
+  --button-tertiary-border: #c9c9ca;
+  --button-tertiary-padding: 12px 24px;
+  --button-tertiary-font-size: 0.875rem;
+  --border-radius-button-tertiary: 100px;
+  --button-tertiary-hover-bg: #46484a;
+  --button-tertiary-hover-color: #fff;
+
+  /* ---- Button: Plain ---- */
+  --button-plain-color: #90124a;
+  --button-plain-weight: 600;
+  --button-plain-hover-color: #25282a;
+
+  /* ---- Toggle ---- */
+  --toggle-bg-off: #c9c9ca;
+  --toggle-bg-on: #90124a;
+  --toggle-thumb-color: #fff;
+
+  /* ---- Link ---- */
+  --link-color: #90124a;
+
+  /* ---- Brand Explorer Block ---- */
+  --be-color-text: #46484a;
+  --be-color-text-light: #46484a;
+  --be-color-bar-bg: #000;
+  --be-bar-font-family: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --be-bar-font-weight: 600;
+  --be-bar-font-size: 1.3rem;
+  --be-bar-line-height: 1.728rem;
+  --be-color-rinvoq: #ffd41d;
+  --be-color-rinvoq-hover: #b8860b;
+  --be-color-skyrizi: #00a8e1;
+  --be-color-skyrizi-hover: #0088b5;
+  --be-color-humira: #931947;
+  --be-font-body: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --be-font-heading: 'Graphik', 'Helvetica Neue', arial, helvetica, sans-serif;
+  --be-font-weight-bold: 600;
+  /* ---- Formulary Lookup ---- */
+  --color-formulary-submit-bg: #820043;
+  --color-formulary-submit-hover: rgb(100 0 52);
+  --color-formulary-accent: #daaa00;
+  --color-formulary-highlight: rgb(255 243 200);
+  --color-formulary-filter-clear: #820043;
+  --color-formulary-link: #820043;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 520px;
+  --formulary-input-width: 520px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 24px;
+  --formulary-heading-weight: 700;
+  --formulary-heading-spacing: 32px;
+  --formulary-heading-line-height: 1.3;
+  --formulary-heading-accent-height: 8px;
+  --formulary-heading-accent-offset: -14px;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 56px;
+  --formulary-input-radius: 10px;
+  --formulary-input-size: 18px;
+  --formulary-input-padding: 18px 16px;
+  --formulary-input-spacing: 24px;
+
+  /* Formulary: Label (floating) */
+  --formulary-label-size: 12px;
+  --formulary-label-weight: 400;
+  --formulary-label-offset-left: 16px;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 18px;
+  --formulary-submit-weight: 700;
+  --formulary-submit-radius: 100px;
+  --formulary-submit-height: 56px;
+  --formulary-submit-padding: 14px 60px 14px 32px;
+  --formulary-submit-spacing: 24px;
+  --formulary-submit-icon-offset: 24px;
+
+  /* Formulary: Card */
+  --formulary-card-radius: 10px;
+  --formulary-card-shadow: rgb(0 0 0 / 15%) 0 2px 12px 0;
+  --formulary-card-padding: 48px 40px 40px;
+
+  /* Formulary: Header */
+  --formulary-header-spacing: 48px;
+  --formulary-header-gap: 16px;
+  --formulary-icon-size: 56px;
+
+  /* Formulary: Filter */
+  --formulary-filter-radius: 10px;
+  --formulary-filter-spacing: 24px;
+  --formulary-filter-chevron-size: 24px;
+
+  /* Formulary: Indications */
+  --formulary-indication-spacing: 24px;
+  --formulary-radio-size: 18px;
+
+  /* Formulary: Results */
+  --formulary-results-radius: 8px;
+  --formulary-results-shadow: rgb(0 0 0 / 10%) 0 2px 8px 0;
+
+  /* Formulary: Disclaimer/Notice */
+  --formulary-disclaimer-size: 14px;
+  --formulary-recaptcha-size: 12px;
+
+  /* Formulary: ZIP Input */
+  --formulary-zip-weight: 700;
+  --formulary-zip-margin-top: 8px;
+
+  /* Formulary: Floating Label Detail */
+  --formulary-label-left: 12px;
+  --formulary-label-line-height: 16px;
+  --formulary-chevron-bg-size: 14px;
+
+  /* ---- Footer ---- */
+  --footer-links-max-width: 33.5rem;
+
+  /* ---- Header block ---- */
+  --header-logo-width: 15rem;
+  --header-content-max-width: 115rem;
+  --header-submenu-width: 22rem;
+  --header-submenu-border-width: var(--spacing-03);
+  --header-nav-line-height: 1.3;
+  --header-search-pill-width: 36rem;
+  --header-search-pill-min-width: 20rem;
+  --header-wrapper-max-width: 122rem;
+  --header-nav-sections-height: 5.1rem;
+  /* ---- Section Nav ---- */
+  --shadow-section-nav-stuck: 0 2px 1em rgb(0 0 0 / 50%);
+  --shadow-focus-plum: 0 0 var(--spacing-05) var(--spacing-05) var(--color-plum);
+  /* ---- Hero: no-padding variant layout ---- */
+  --hero-img-height-mobile: 375px;
+  --hero-no-padding-min-height: 340px;
+  --hero-text-max-width: 1180px;
+  --hero-text-padding: 64px 20px;
+  --hero-text-margin-top: 20px;
+  --hero-img-width-desktop: 1440px;
+
+  /* ---- Hero: no-padding h1 typography ---- */
+  --hero-h1-line-height: 0.9;
+  --hero-h1-font-size-desktop: 40px;
+
+  /* ---- Hero: no-padding em (handwriting accent) typography ---- */
+  --hero-em-font-size-mobile: 58px;
+  --hero-em-font-size-desktop: 100px;
+  --hero-em-line-height: 0.8;
+  --hero-em-letter-spacing: -4px;
+
+  /* ---- Hero: stroke underline decoration ---- */
+  --hero-stroke-height: 22px;
+  --hero-stroke-bottom-offset: -15px;
+}

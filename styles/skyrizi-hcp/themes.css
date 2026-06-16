@@ -1,0 +1,177 @@
+@import 'tokens.css';
+@import 'fonts.css';
+
+/* ============================================================
+   SKYRIZI HCP — Theme Overrides
+   Applies brand-specific styling on top of base AbbVie styles.
+   Primary: Teal #005272 | Accent: Gold #FFCE00
+   Font: Univers LT W01_57 Condensed
+   ============================================================ */
+
+/* ---- Global Typography ---- */
+body {
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family);
+  color: var(--color-text-heading);
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-heading);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-heading);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-heading);
+}
+
+/* ---- Links ---- */
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--color-brand-primary-dark);
+}
+
+/* ---- Buttons ---- */
+.button-container a,
+a.button.primary {
+  color: var(--button-primary-color);
+  background-color: var(--button-primary-bg);
+  border: 2px solid var(--button-primary-border);
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-heading);
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button-container a:hover,
+a.button.primary:hover {
+  background-color: #e6b900;
+  color: var(--button-primary-color);
+}
+
+a.button.secondary,
+a.button.tertiary {
+  color: var(--button-tertiary-color);
+  background-color: var(--button-tertiary-bg);
+  border: 2px solid var(--button-tertiary-border);
+  border-radius: var(--border-radius-button-tertiary);
+  padding: var(--button-tertiary-padding);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-button-tertiary);
+  font-weight: var(--font-weight-heading);
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.button.secondary:hover,
+a.button.tertiary:hover {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* ---- Header ---- */
+header {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-nav);
+}
+
+header nav a {
+  color: var(--text-color);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-nav);
+}
+
+/* ---- Footer ---- */
+footer {
+  background-color: var(--color-background-footer);
+  color: var(--color-text-on-dark);
+}
+
+footer a {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-footer);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Hero Section ---- */
+.section.hero-container {
+  position: relative;
+}
+
+.section.hero-container h1 {
+  color: var(--color-text-on-dark);
+  font-size: var(--font-size-h1-hero);
+  line-height: var(--line-height-h1-hero);
+}
+
+/* ---- Cards ---- */
+.cards .cards-card-body {
+  color: var(--text-color);
+  font-size: var(--font-size-body-small);
+}
+
+/* ---- Accordion ---- */
+.accordion summary {
+  color: var(--color-brand-primary);
+  font-family: var(--heading-font-family);
+}
+
+/* ---- ISI / Safety Bar ---- */
+.isi-container {
+  background-color: var(--color-safety-bar-bg);
+  border-top: 2px solid var(--color-safety-bar-border);
+  border-radius: var(--border-radius-safety-bar) var(--border-radius-safety-bar) 0 0;
+}
+
+/* ---- Legal / Disclaimer Text ---- */
+.legal-text,
+.disclaimer {
+  font-size: var(--font-size-legal);
+  line-height: var(--line-height-legal);
+  color: var(--color-text-legal);
+}
+
+/* ---- Section Backgrounds ---- */
+.section.grey-bg {
+  background-color: var(--color-background-light);
+}
+
+.section.tint-bg {
+  background-color: var(--color-background-tint);
+}
+
+.section.dark-bg {
+  background-color: var(--color-brand-primary-dark);
+  color: var(--color-text-on-dark);
+}
+
+.section.dark-bg h1,
+.section.dark-bg h2,
+.section.dark-bg h3 {
+  color: var(--color-text-on-dark);
+}

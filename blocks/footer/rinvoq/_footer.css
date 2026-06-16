@@ -1,0 +1,311 @@
+@import '../footer.css';
+@import '../../../styles/rinvoq-dtc/tokens.css';
+
+/* ============================================================
+   RINVOQ DTC — Footer brand overrides
+   Live: www.rinvoq.com/atopic-dermatitis
+   - Light gray bg (--color-glacier #f5f5f5)
+   - 3-column grid layout (each col: H5 + vertical UL)
+   - Magenta links (--color-plum #90124a)
+   - Logo on bottom-left, indication code + legal text on right
+   ============================================================ */
+
+/* Brand token overrides */
+.footer-wrapper {
+  --footer-color-bg: var(--color-glacier);
+  --footer-color-text: var(--color-charcoal);
+  --footer-color-link: var(--color-plum);
+  --footer-spacing-padding-y: var(--spacing-40);
+  --footer-spacing-padding-x: var(--spacing-30);
+  --footer-spacing-legal-gap: var(--spacing-30);
+
+  /* --footer-content-max-width: 1200px is inherited from base */
+}
+
+/* Container: white bg (gray scoped to .footer-columns only) */
+.footer {
+  background-color: var(--background-color);
+  color: var(--footer-color-text);
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  border-radius: 0;
+  border-top-left-radius: 0;
+}
+
+/* ── Footer top: indication code (white bg, ABOVE gray columns) ── */
+.footer .footer-top {
+  background-color: var(--background-color);
+  padding-block: var(--spacing-12);
+  padding-inline: max(
+    var(--footer-spacing-padding-x),
+    calc((100% - var(--footer-content-max-width)) / 2)
+  );
+}
+
+.footer .footer-top p {
+  margin: 0;
+  text-align: left;
+  color: var(--color-charcoal);
+  font-family: var(--footer-font-family);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+}
+
+/* ── 3-column grid (GRAY bg only here, NOT on .footer) ──────── */
+.footer .footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-32);
+  margin: 0;
+  padding-block: var(--footer-spacing-padding-y);
+  padding-inline: max(
+    var(--footer-spacing-padding-x),
+    calc((100% - var(--footer-content-max-width)) / 2)
+  );
+  background-color: var(--footer-color-bg);
+  position: relative;
+}
+
+@media (width >= 744px) {
+  .footer .footer-columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Replace per-heading borders with a single continuous line under headings */
+  .footer .footer-column h1,
+  .footer .footer-column h2,
+  .footer .footer-column h3,
+  .footer .footer-column h4,
+  .footer .footer-column h5,
+  .footer .footer-column h6 {
+    border-bottom: none;
+  }
+
+  .footer .footer-columns::after {
+    content: '';
+    position: absolute;
+    top: calc(
+      var(--footer-spacing-padding-y) + var(--line-height-22) + var(--spacing-12)
+    );
+    left: max(
+      var(--footer-spacing-padding-x),
+      calc((100% - var(--footer-content-max-width)) / 2)
+    );
+    right: max(
+      var(--footer-spacing-padding-x),
+      calc((100% - var(--footer-content-max-width)) / 2)
+    );
+    height: var(--separator-height-1);
+    background-color: var(--color-black);
+  }
+}
+
+/* Each column — left-aligned */
+.footer .footer-column {
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset legacy "first p as label" */
+.footer .footer-column p:first-child {
+  text-transform: none;
+  margin-bottom: 0;
+}
+
+/* Column heading (H5) */
+.footer .footer-column h1,
+.footer .footer-column h2,
+.footer .footer-column h3,
+.footer .footer-column h4,
+.footer .footer-column h5,
+.footer .footer-column h6 {
+  color: var(--color-charcoal);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-22);
+  margin: 0 0 var(--spacing-16) 0;
+  padding-bottom: var(--spacing-12);
+  border-bottom: var(--separator-height-1) solid var(--color-silver);
+}
+
+/* Vertical link list */
+.footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  font-family: var(--footer-font-family);
+}
+
+.footer .footer-column li {
+  margin: 0;
+  padding: 0;
+}
+
+/* High-specificity link override (matches base `.footer .footer-links-primary li a`) */
+.footer .footer-column li a,
+.footer .footer-column ul li a {
+  color: var(--color-plum);
+  font-family: var(--footer-font-family);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+  margin: 0;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.footer .footer-column li a:hover {
+  font-family: var(--footer-font-family);
+  font-weight: var(--font-weight-400);
+  text-decoration: underline;
+}
+
+/* ── Footer bottom: legal text + number + logo (GRAY bg, same as columns) ── */
+.footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  border: none;
+  padding-block: var(--footer-spacing-legal-gap);
+  padding-inline: max(
+    var(--footer-spacing-padding-x),
+    calc((100% - var(--footer-content-max-width)) / 2)
+  );
+  margin-top: 0;
+  background-color: var(--footer-color-bg);
+  position: relative;
+}
+
+/* 1px separator between columns and legal/logo row — full viewport width */
+.footer .footer-bottom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--separator-height-1);
+  background-color: var(--color-black);
+}
+
+/* `.footer-wrapper` prefix raises specificity to (0,3,1) — matches the column-section
+   selectors (.footer .footer-column p:first-child etc.) so stylelint's
+   no-descending-specificity rule passes without forcing a cross-section reorder. */
+.footer-wrapper .footer .footer-bottom p {
+  margin: 0;
+  text-align: left;
+  color: var(--color-charcoal);
+  font-family: var(--footer-font-family);
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
+  text-transform: none;
+}
+
+.footer-wrapper .footer .footer-bottom p a {
+  color: var(--color-plum);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+/* Strip button styling on legacy authoring */
+.footer-wrapper .footer .footer-bottom a.button,
+.footer-wrapper .footer .footer-bottom .button-container a {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--color-plum);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
+  text-decoration: underline;
+  text-transform: none;
+  display: inline;
+  white-space: normal;
+}
+
+.footer-wrapper .footer .footer-bottom p a:hover {
+  text-decoration: none;
+}
+
+/* Legal number — small gray text */
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  font-size: var(--font-size-12);
+  color: var(--color-pewter);
+}
+
+/* Logo — DTC has dark logo on light bg.
+   Live: `.logo svg { fill: #194560 }` — dark navy/teal (--color-navy).
+   For <img> SVG (white source): filter chain converts white → ~--color-navy.
+   For inline SVG: fill override applies the token directly. */
+.footer-wrapper .footer .footer-bottom p:has(picture),
+.footer-wrapper .footer .footer-bottom p:has(img) {
+  margin: 0;
+  text-align: left;
+}
+
+.footer .footer-bottom p:has(picture) img,
+.footer .footer-bottom p:has(img) img {
+  height: var(--footer-logo-height);
+  width: auto;
+  filter: sepia(1) brightness(0.25) saturate(18) hue-rotate(143deg);
+  mix-blend-mode: normal;
+}
+
+.footer .footer-bottom svg {
+  height: var(--footer-logo-height);
+  width: auto;
+  fill: var(--color-navy);
+}
+
+/* Mobile first: logo appears before legal text on mobile */
+.footer-wrapper .footer .footer-bottom > p:has(picture),
+.footer-wrapper .footer .footer-bottom > p:has(img) {
+  order: -1;
+}
+
+/* ── Desktop ≥601px: legal text + number row, logo left ─────── */
+@media (width >= 601px) {
+  .footer .footer-bottom {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-12) var(--spacing-24);
+    align-items: center;
+  }
+
+  /* Legal text paragraphs span full width on top row */
+  .footer .footer-bottom > .button-container,
+  .footer .footer-bottom > p:not(:has(picture), :has(img), .legal-number, :nth-last-child(2)) {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  /* Legal number — bottom-right, next to logo */
+  .footer .footer-bottom > p.legal-number,
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+  }
+
+  /* Reset order; place logo on the LEFT (DTC-specific, opposite of HCP) */
+  .footer-wrapper .footer .footer-bottom > p:has(picture),
+  .footer-wrapper .footer .footer-bottom > p:has(img) {
+    order: 0;
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+  }
+}

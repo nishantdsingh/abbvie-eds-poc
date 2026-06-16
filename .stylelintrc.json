@@ -1,0 +1,15 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "import-notation": null
+  },
+  "overrides": [
+    {
+      "files": ["blocks/cards-grid/*/cards-grid.css", "blocks/cards-grid/*/_cards-grid.css"],
+      "rules": {
+        "selector-class-pattern": null,
+        "no-descending-specificity": null
+      }
+    }
+  ]
+}

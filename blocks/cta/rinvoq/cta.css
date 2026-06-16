@@ -1,0 +1,17 @@
+@import '../../../styles/rinvoq/tokens.css';
+
+/* Rinvoq (shared base) — CTA brand overrides
+   Primary: Plum pill button, Graphik Bold font
+   Secondary: Transparent with plum border */
+
+.cta.abbv-button-primary .abbv-cta {
+  font-family: var(--heading-font-family-bold);
+}
+
+.cta.abbv-button-secondary .abbv-cta {
+  border-radius: var(--border-radius-button-secondary);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--font-family-semibold);
+}

@@ -1,0 +1,383 @@
+/* =========================================================
+   Tag Utility Nav – search + category filter block
+   AEM source: TagsUtilityNav component
+   ========================================================= */
+
+/* Block wrapper */
+
+.tag-utility-nav {
+  width: 100%;
+  margin-top: var(--spacing-24);
+  padding: var(--spacing-10) var(--spacing-00);
+  margin-bottom: var(--spacing-40);
+}
+
+/* ── Eyebrow toolbar ──────────────────────────────────────── */
+
+.tag-utility-nav-eyebrow {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--spacing-08);
+  border-bottom: var(--border-01) solid var(--color-gray-dark);
+}
+
+/* ── Search container (icon + field) ──────────────────────── */
+
+.tag-utility-nav-search-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  flex: 1;
+  transition: border-color 0.2s;
+}
+
+/* Search icon */
+
+.tag-utility-nav-search-icon {
+  width: var(--icon-width);
+  max-width: var(--icon-width);
+  height: var(--icon-height);
+  flex-shrink: 0;
+  margin-bottom: var(--spacing-00);
+}
+
+/* Search field wrapper */
+
+.tag-utility-nav-search-field {
+  position: relative;
+  flex: 1;
+  overflow: visible;
+}
+
+/* Search input */
+
+.tag-utility-nav-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-16);
+  font-family: inherit;
+  color: var(--color-gray-dark);
+  padding: var(--spacing-03) var(--spacing-00) var(--spacing-00);
+  width: 100%;
+  line-height: var(--line-height-16);
+  height: var(--spacing-22);
+}
+
+.tag-utility-nav-search-input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* Search clear button */
+
+.hide-close-icon {
+  display: none;
+}
+
+.tag-utility-nav-search-clear {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;  
+  color: var(--color-gray-dark);  
+  line-height: 1;
+  padding: var(--spacing-00);
+  margin: var(--spacing-00);
+}
+
+.tag-utility-nav-search-clear::after {
+  content:'\e908';
+  display: block;
+  color: inherit;
+  font-family: var(--icon-font-family);
+  font-size: var(--font-size-14);
+}
+
+.tag-utility-nav-search-clear:hover{
+  background-color: transparent;
+  color: var(--color-gray-dark);  
+}
+
+/* Floating label – overlaps input, moves up when focused / has value */
+
+.tag-utility-nav-search-label {
+  position: absolute;
+  top: var(--spacing-03);
+  left: 0;
+  width: 100%;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-400);
+  color: var(--color-gray-dark);
+  pointer-events: none;
+  white-space: nowrap;
+  line-height: var(--line-height-20);
+  transition: all 0.2s ease;
+}
+
+/* Label moves up + shrinks when input is focused or has a value */
+
+.tag-utility-nav-search-input:focus ~ .tag-utility-nav-search-label,
+.tag-utility-nav-search-field.has-value .tag-utility-nav-search-label {
+ opacity: 0;
+ top: 0;
+}
+
+/* ── Category dropdown ────────────────────────────────────── */
+
+.tag-utility-nav-dropdown-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  flex-shrink: 0;
+  margin-bottom: var(--spacing-24);
+}
+
+.tag-utility-nav-title {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400);
+  color: inherit;
+  margin: var(--spacing-00);
+  white-space: nowrap;
+  line-height: var(--line-height-16);
+}
+
+.tag-utility-nav-dropdown {
+  position: relative;
+}
+
+.tag-utility-nav-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  color: var(--text-color);
+  padding: var(--spacing-04) var(--spacing-00);
+  margin: var(--spacing-00);
+  text-transform: var(--font-uppercase);
+}
+
+.tag-utility-nav-dropdown-btn::after {
+  content: "";
+  font-family: var(--icon-font-family);
+  font-size: var(--spacing-06);
+  transition: transform 0.2s;
+}
+
+.tag-utility-nav-dropdown-btn[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.tag-utility-nav-dropdown-modal {
+  position: absolute;
+  top: 100%;
+  left: var(--spacing-00);
+  z-index: var(--z-index-4);
+  min-width: var(--spacing-180);
+  background: var(--background-color);
+  border: var(--border-01) solid rgb(0 0 0 / 15%);
+  border-radius: var(--border-radius-base);
+  list-style: none;
+  padding:var(--spacing-00);
+  margin: var(--spacing-04) var(--spacing-00) var(--spacing-00);
+  max-height: var(--spacing-250);
+  overflow: hidden auto;
+}
+
+.tag-utility-nav-dropdown-modal li:hover {
+ background-color: var(--color-gray-medium);
+}
+
+.tag-utility-nav-dropdown-modal button,
+.tag-utility-nav-dropdown-modal a {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: var(--spacing-10) var(--spacing-20);
+  text-align: left;
+  cursor: pointer;
+  font-size: var(--font-size-14);
+  color: var(--text-color);
+  border-radius: var(--spacing-00);
+  margin: var(--spacing-00);
+}
+
+.tag-utility-nav-dropdown button:hover, .tag-utility-nav-dropdown button:focus {
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tag-utility-nav-dropdown-modal button:hover {
+  background: var(--bg-b9b4b4);
+}
+
+.tag-utility-nav-dropdown-modal button.option-selected {
+  font-weight: var(--font-weight-700);
+}
+
+/* ── Clear / Reset button ─────────────────────────────────── */
+
+.tag-utility-nav-clear-container {
+  margin-top: var(--spacing-12);
+}
+
+.tag-utility-nav-reset-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--story-card-link-color);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
+  text-transform: var(--font-uppercase);
+  letter-spacing: var(--letter-spacing-wide-06);
+  padding: var(--spacing-00);
+}
+
+.tag-utility-nav-reset-btn:hover {
+  text-decoration: underline;
+}
+
+/* ── Empty results message ───────────────────────────────── */
+
+.tag-utility-nav-empty-results {
+  width: 100%;
+  margin-top: var(--spacing-16);
+}
+
+.tag-utility-nav-empty-results-title {
+  color: var(--error-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-650);
+  line-height: var(--line-height-24);
+}
+
+.tag-utility-nav-empty-results-quote {
+  color: var(--error-color);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-400);
+  line-height: var(--line-height-20);
+}
+
+/* =========================================================
+   Flex-section context — default content surrounding the
+   tag-utility-nav block inside .tag-utility-nav-container
+   Mobile-first, matches spacing & typography from live site
+   ========================================================= */
+
+/* ── Mobile (default) ────────────────────────────────────── */
+
+.tag-utility-nav-container .default-content-wrapper h2 {
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-26);
+  font-weight: var(--font-weight-800);
+  line-height: var(--line-height-30);
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-16);
+}
+
+.tag-utility-nav-container .default-content-wrapper p {
+  line-height: var(--line-height-20);
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-16);
+}
+
+/* Separator: invisible 48px spacer matching .separator-height-48 */
+
+.tag-utility-nav-container .default-content-wrapper hr {
+  border: none;
+  height: var(--separator-height-48);
+  margin: var(--spacing-00);
+  padding: var(--spacing-00);
+}
+
+.tag-utility-nav-container .default-content-wrapper h4 {
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-650);
+  line-height: var(--line-height-28);
+  margin: var(--spacing-00) var(--spacing-00) var(--spacing-16);
+  padding-top: var(--spacing-48);
+}
+
+.tag-utility-nav-container .default-content-wrapper ul {
+  margin-top: var(--spacing-30);
+  margin-bottom: var(--spacing-50);
+}
+
+/* tag-utility-nav block: reset margins inside flex context
+   (spacing is handled by surrounding elements) */
+
+.tag-utility-nav-container .tag-utility-nav {
+  margin-top: var(--spacing-00);
+  margin-bottom: var(--spacing-00);
+}
+
+/* ── Tablet (>= 768px) ──────────────────────────────────── */
+
+@media (width >= 744px) {
+  .tag-utility-nav-eyebrow {
+   flex-direction: row;
+   justify-content: space-between;   
+   margin-bottom: var(--spacing-10);
+  }
+
+  .tag-utility-nav-dropdown-container {
+    margin-bottom: 0;
+  }
+
+  .tag-utility-nav-search-container {
+    max-width: var(--spacing-380);
+  }
+
+  .tag-utility-nav-container .default-content-wrapper h2 {
+    font-size: var(--font-size-32);
+    line-height: var(--line-height-36);
+  }
+
+  .tag-utility-nav-container .default-content-wrapper h4 {
+    font-size: var(--font-size-30);
+    line-height: var(--line-height-34);
+  }
+
+  .tag-utility-nav-empty-results-title {
+  font-size: var(--font-size-28);
+  line-height: var(--line-height-32);
+  }
+}
+
+/* ── Desktop (>= 1024px) ────────────────────────────────── */
+
+@media (width >= 1024px) {
+  .tag-utility-nav-search-input {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+  }
+
+  .tag-utility-nav-container .default-content-wrapper h2 {
+    font-size: var(--font-size-48);
+    line-height: var(--line-height-52);
+    margin-bottom: var(--spacing-24);
+  }
+
+  .tag-utility-nav-container .default-content-wrapper p {
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-24);
+    margin-bottom: var(--spacing-24);
+  }
+
+  .tag-utility-nav-container .default-content-wrapper h4 {
+    font-size: var(--font-size-40);
+    line-height: var(--line-height-44);
+    margin-bottom: var(--spacing-24);
+  }
+
+  .tag-utility-nav-empty-results-title {  
+  font-size: var(--font-size-32);
+  line-height: var(--line-height-36);
+  }
+}

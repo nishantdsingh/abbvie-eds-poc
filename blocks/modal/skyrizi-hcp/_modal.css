@@ -1,0 +1,149 @@
+@import '../modal.css';
+
+/* stylelint-disable no-descending-specificity */
+
+/* Skyrizi HCP modal — Red Hat Display, centered content, navy buttons */
+
+.modal-overlay {
+  --modal-close-color-default: var(--color-text-on-dark, #fff);
+  --modal-close-hover-color-default: var(--color-text-on-dark, #fff);
+  --modal-information-accent-color: var(--color-brand-accent, #ffce00);
+  --modal-dialog-max-width: var(--modal-skyrizi-max-width, 700px);
+  --modal-dialog-padding: var(--spacing-40, 40px);
+  --modal-dialog-border: none;
+  --modal-dialog-border-radius: var(--modal-skyrizi-border-radius, 8px);
+  --modal-close-size: var(--modal-skyrizi-close-size, 44px);
+  --modal-close-font-size: var(--font-size-h3, 22px);
+}
+
+/* Close button — white circle with sky blue X + shadow */
+.modal-header .modal-close {
+  background: var(--background-color, #fff);
+  color: var(--color-brand-accent-sky, #2196c8);
+  border-radius: 50%;
+  font-weight: var(--font-weight-light, 300);
+  font-size: var(--font-size-h2, 26px);
+  width: var(--modal-close-size-skyrizi, 48px);
+  height: var(--modal-close-size-skyrizi, 48px);
+  box-shadow: var(--shadow-modal-close, 0 2px 12px rgb(0 0 0 / 10%));
+}
+
+.modal-header .modal-close:hover {
+  opacity: 0.85;
+}
+
+/* Blue gradient top border on dialog */
+.modal-overlay .modal-dialog::before {
+  content: '';
+  display: block;
+  height: var(--modal-accent-bar-height, 5px);
+  background: linear-gradient(90deg, var(--color-brand-primary, #005272), var(--color-brand-accent-sky, #2196c8));
+  border-radius: var(--modal-dialog-border-radius, 8px) var(--modal-dialog-border-radius, 8px) 0 0;
+}
+
+/* Dialog heading — centered, large, bold, black */
+.modal-content h2 {
+  color: var(--color-charcoal, #25282a);
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-h2, 1.75rem);
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-24, 24px);
+  text-align: center;
+}
+
+/* Body text — centered, gray */
+.modal-content p {
+  color: var(--text-color, #404040);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.9375rem);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-16, 16px);
+  text-align: center;
+}
+
+/* Compliance code */
+.modal-content p:last-of-type {
+  font-size: var(--font-size-body-xs, 0.6875rem);
+  color: var(--color-text-compliance, #636366);
+  margin-top: var(--spacing-20, 20px);
+}
+
+/* Button container — make link paragraphs inline */
+.modal-dialog .modal-content .button-container,
+.modal-dialog .modal-content p:has(a[href]) {
+  display: inline;
+  text-align: center;
+}
+
+/* Links styled as buttons — dark navy filled pill + outlined pill */
+.modal-dialog .modal-content a[href] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  padding: var(--spacing-16, 16px) var(--spacing-48, 48px);
+  border-radius: var(--border-radius-pill, 30px);
+  font-weight: var(--font-weight-bold, 700);
+  font-family: var(--body-font-family, sans-serif);
+  font-size: var(--font-size-body, 0.9375rem);
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-right: var(--spacing-16, 16px);
+  margin-top: var(--spacing-16, 16px);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  background: var(--color-background-footer, #071d49);
+  color: var(--color-text-on-dark, #fff);
+  border: none;
+}
+
+/* Second button — outlined with dark navy border */
+.modal-dialog .modal-content a[href]:last-of-type {
+  background: var(--background-color, #fff);
+  color: var(--color-background-footer, #071d49);
+  border: var(--border-width-button, 1px) solid var(--color-background-footer, #071d49);
+}
+
+.modal-overlay .modal-dialog .modal-content a[href]:hover {
+  opacity: 0.85;
+}
+
+/* Media variant — wider, for study details */
+.modal-overlay.modal-media .modal-dialog {
+  max-width: var(--modal-media-max-width, 900px);
+}
+
+.modal-overlay.modal-media .modal-content {
+  padding: 0 var(--spacing-32, 32px) var(--spacing-32, 32px);
+}
+
+.modal-overlay.modal-media .modal-content p {
+  text-align: left;
+}
+
+/* Don't style links as buttons inside media modals */
+.modal-overlay.modal-media .modal-dialog .modal-content a[href] {
+  display: inline;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-weight: var(--font-weight-regular, 400);
+  font-size: inherit;
+  color: var(--color-brand-primary, #005272);
+  background: none;
+  text-decoration: underline;
+  text-transform: none;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Tabs inside modal (when tabs block is built) */
+.modal-overlay.modal-media .modal-content .tabs-list {
+  border-bottom: 2px solid var(--color-border-tabs, #ccc);
+  margin-bottom: var(--spacing-24, 24px);
+}
+
+.modal-overlay.modal-media .modal-content .tabs-list button[aria-selected="true"] {
+  color: var(--color-brand-primary, #005272);
+  border-bottom-color: var(--color-brand-primary, #005272);
+}

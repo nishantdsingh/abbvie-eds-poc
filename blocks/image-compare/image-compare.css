@@ -1,0 +1,369 @@
+/* =========================================================
+   IMAGE COMPARE - CORE ENGINE
+========================================================= */
+
+.image-compare-container {
+  --compare-position: 50%;
+  --ic-container-bg: var(--color-gray-light, #d9d9d9);
+  --image-compare-thumb-bg: transparent;
+
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: col-resize;
+  aspect-ratio: auto;
+  background: var(--ic-container-bg);
+}
+
+/* =========================================
+   IMAGE LAYERS
+========================================= */
+
+.image-compare-after,
+.image-compare-before {
+  height: 100%;
+}
+
+.image-compare-after {
+  display: block;
+  line-height: 0;
+}
+
+.image-compare-after img,
+.image-compare-before img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.image-compare-before {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: var(--compare-position);
+}
+
+.image-compare-before img {
+  object-position: left;
+
+  /* max-width set to none here; JS sets exact pixel width for the clip reveal */
+  max-width: none;
+}
+
+/* =========================================
+   HANDLE
+========================================= */
+
+.image-compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--compare-position);
+  transform: translateX(-50%);
+  width: var(--spacing-04, 4px);
+  background-color: var(--image-compare-handle-color, #fff);
+  cursor: col-resize;
+  touch-action: none;
+  z-index: var(--z-index-2, 2);
+}
+
+.image-compare-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--spacing-52, 52px);
+  height: var(--spacing-52, 52px);
+  background-color: var(--image-compare-handle-color, #fff);
+  border-radius: 50%;
+  box-shadow: 0 var(--spacing-02, 2px) var(--spacing-12, 12px) rgb(0 0 0 / 30%);
+
+  /* fill='%23333' (#333) is hardcoded in this data URI — CSS vars cannot reach inside SVG
+     data URIs. To tint the icon per brand, override via -webkit-mask-image / mask-image +
+     background-color on this pseudo-element in brand CSS, or swap to a standalone .svg file.
+     Tracked as a known multi-brand limitation (warning, not blocker). */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: var(--spacing-26, 26px);
+}
+
+.image-compare-handle:focus-visible::before {
+  outline: var(--spacing-02, 2px) solid var(--color-focus, #0057cc);
+  outline-offset: var(--spacing-02, 2px);
+}
+
+/* =========================================
+   LABELS
+========================================= */
+
+.image-compare-label {
+  position: absolute;
+  bottom: var(--spacing-14, 14px);
+  background: var(--image-compare-label-bg, rgb(0 0 0 / 60%));
+  color: var(--color-white, #fff);
+  font-size: var(--font-size-11, 11px);
+  font-weight: var(--font-weight-800, 800);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  padding: var(--spacing-06, 6px) var(--spacing-10, 10px);
+  border-radius: 0;
+  z-index: var(--z-index-1, 1);
+}
+
+.image-compare-label-before {
+  left: var(--spacing-14, 14px);
+}
+
+.image-compare-label-after {
+  right: var(--spacing-14, 14px);
+}
+
+/* =========================================
+   VERTICAL VARIANT
+========================================= */
+
+.image-compare.vertical .image-compare-container {
+  cursor: row-resize;
+}
+
+.image-compare.vertical .image-compare-before {
+  width: 100%;
+  height: var(--compare-position);
+  inset: 0 0 auto;
+}
+
+.image-compare.vertical .image-compare-before img {
+  object-position: top;
+}
+
+.image-compare.vertical .image-compare-handle {
+  inset: var(--compare-position) 0 auto;
+  width: 100%;
+  height: var(--spacing-04, 4px);
+  transform: translateY(-50%);
+}
+
+.image-compare.vertical .image-compare-label-before {
+  left: var(--spacing-14, 14px);
+  top: var(--spacing-14, 14px);
+  bottom: auto;
+}
+
+.image-compare.vertical .image-compare-label-after {
+  right: var(--spacing-14, 14px);
+  bottom: var(--spacing-14, 14px);
+}
+
+/* =========================================
+   PROMPT
+========================================= */
+
+.image-compare-prompt {
+  position: absolute;
+  top: var(--spacing-12, 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--image-compare-prompt-bg, rgb(0 0 0 / 70%));
+  color: var(--color-white, #fff);
+  font-size: var(--font-size-12, 12px);
+  font-weight: var(--font-weight-700, 700);
+  padding: var(--spacing-06, 6px) var(--spacing-14, 14px);
+  border-radius: var(--border-radius-base, 4px);
+  pointer-events: none;
+  z-index: var(--z-index-3, 3);
+  white-space: nowrap;
+  transition: opacity var(--transition-duration-medium, 400ms);
+}
+
+.image-compare-prompt.is-hidden {
+  opacity: 0;
+}
+
+/* =========================================
+   WRAPPER
+========================================= */
+
+.image-compare-wrapper {
+  max-width: var(--content-max-width, 1280px);
+  margin: 0 auto;
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.image-compare-heading {
+  font-size: var(--font-size-20, 2rem);
+  font-weight: var(--font-weight-700, 700);
+  margin-bottom: var(--spacing-08, 8px);
+}
+
+.image-compare-description {
+  font-size: var(--font-size-10, 1rem);
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+/* =========================================
+   TABS
+   Mobile default: stacked column.
+   At ≥600px: single row (overridden in media query below).
+========================================= */
+
+.image-compare-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-08, 8px);
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.image-compare-tab {
+  background: var(--image-compare-tab-bg, #f5f5f5);
+  border: var(--separator-height-1, 2px) solid var(--image-compare-tab-border, #ccc);
+  border-radius: var(--border-radius-base, 4px);
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--font-size-14, 0.875rem);
+  font-weight: var(--font-weight-600, 600);
+  padding: var(--spacing-08, 8px) var(--spacing-16, 16px);
+  transition:
+    background var(--transition-duration-fast, 200ms),
+    border-color var(--transition-duration-fast, 200ms);
+}
+
+.image-compare-tab.is-active {
+  background: var(--image-compare-tab-active-bg, #333);
+  border-color: var(--image-compare-tab-active-bg, #333);
+  color: var(--color-white, #fff);
+}
+
+.image-compare-tab:focus-visible {
+  outline: var(--spacing-02, 2px) solid var(--color-focus, #0057cc);
+  outline-offset: var(--spacing-02, 2px);
+}
+
+/* =========================================
+   TOGGLE VARIANT
+========================================= */
+
+.image-compare-tabs-toggle {
+  flex-direction: row;
+  gap: 0;
+}
+
+.image-compare-tabs-toggle .image-compare-tab {
+  flex: 1;
+  text-align: center;
+  border-radius: 0;
+}
+
+.image-compare-tabs-toggle .image-compare-tab:first-child {
+  border-radius: 999px 0 0 999px;
+}
+
+.image-compare-tabs-toggle .image-compare-tab:last-child {
+  border-radius: 0 999px 999px 0;
+}
+
+/* =========================================
+   GALLERY CONTENT
+========================================= */
+
+.image-compare-gallery-content {
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.image-compare.gallery .image-compare-container {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* =========================================
+   THUMBNAILS
+   Mobile default: 64px wide thumbnails.
+   At ≥600px: 74px (overridden in media query below).
+========================================= */
+
+.image-compare-thumbnails {
+  display: flex;
+  gap: var(--spacing-18, 18px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: var(--spacing-24, 24px);
+  background: var(--image-compare-thumb-bg);
+}
+
+.image-compare-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--spacing-64, 64px);
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+  scroll-snap-align: start;
+}
+
+.image-compare-thumb.is-active {
+  outline: var(--spacing-03, 3px) solid var(--image-compare-thumb-active-border, currentColor);
+}
+
+.image-compare-thumb:focus-visible {
+  outline: var(--spacing-02, 2px) solid var(--color-focus, #0057cc);
+  outline-offset: var(--spacing-02, 2px);
+}
+
+.image-compare-thumb-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.image-compare-thumb-label,
+.image-compare-thumb-sublabel {
+  display: none;
+}
+
+/* =========================================
+   MOBILE-HIDDEN VARIANT
+   Hidden on small screens, visible at ≥900px.
+========================================= */
+
+.image-compare.mobile-hidden {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE — mobile-first (min-width)
+========================================= */
+
+@media (width >= 600px) {
+  .image-compare-tabs {
+    flex-direction: row;
+  }
+
+  .image-compare-thumb {
+    width: var(--spacing-74, 74px);
+  }
+}
+
+@media (width >= 900px) {
+  .image-compare.mobile-hidden {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-compare-prompt,
+  .image-compare-tab,
+  .image-compare-thumb {
+    transition: none;
+  }
+}

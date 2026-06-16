@@ -1,0 +1,180 @@
+@import '../accordion.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* Venclexta DTC accordion — White BG variation matching venclexta.com */
+
+.accordion {
+    --accordion-ven-text-color: var(--color-brand-primary);
+    --accordion-ven-icon-color: var(--text-color);
+    --accordion-ven-bg: var(--background-color);
+    --accordion-ven-border: var(--color-border-default);
+    --footer-seperator-color: transparent;
+    --highlight-dark-background-color: transparent;
+
+    background: transparent;
+}
+
+/* Item — white bg, light border, spaced apart */
+.accordion .accordion-item {
+    border: var(--border-01) solid var(--accordion-ven-border);
+    border-radius: 0;
+    margin-bottom: var(--spacing-16);
+    background: var(--accordion-ven-bg);
+}
+
+/* Summary row */
+.accordion summary,
+.accordion .accordion-item-label {
+    padding: var(--spacing-16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-16);
+    background: var(--accordion-ven-bg);
+}
+
+/* Heading text — brand teal, medium weight */
+.accordion .accordion-item-label p,
+.accordion .accordion-item-label h2,
+.accordion .accordion-item-label h3,
+.accordion .accordion-item-label h4,
+.accordion .accordion-item-label h5,
+.accordion .accordion-item-label h6 {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-h5-brand);
+    text-transform: none;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+/* Prevent heading change on hover/open */
+.accordion .accordion-item:hover .accordion-item-label p,
+.accordion .accordion-item:hover .accordion-item-label h2,
+.accordion .accordion-item:hover .accordion-item-label h3,
+.accordion .accordion-item:hover .accordion-item-label h4,
+.accordion .accordion-item:hover .accordion-item-label h5,
+.accordion .accordion-item:hover .accordion-item-label h6,
+.accordion .accordion-item-label.open .accordion-item-label-text,
+.accordion .accordion-item-label .accordion-item-label-text:hover {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-h5-brand);
+}
+
+/* Icon — outline circled +/− in dark gray via summary::after */
+.accordion summary::after {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: var(--spacing-24);
+    height: var(--spacing-24);
+    min-width: var(--spacing-24);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%23404040' stroke-width='1.5' fill='none'/%3E%3Cpath d='M12 7v10M7 12h10' stroke='%23404040' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+    font-family: inherit;
+    font-size: 0;
+    transform: none;
+}
+
+.accordion .accordion-item[open] summary::after {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%23404040' stroke-width='1.5' fill='none'/%3E%3Cpath d='M7 12h10' stroke='%23404040' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Hide icon-font duplicates */
+.accordion-icon-font .icon-plus::after,
+.accordion-icon-font .icon-minus::after,
+.accordion-icon-font .item-icon-plus::after,
+.accordion-icon-font .item-icon-minus::after {
+    display: none !important;
+}
+
+/* Hover/Open — no background change */
+.accordion .accordion-item:hover summary,
+.accordion .accordion-item[open] summary {
+    background: var(--accordion-ven-bg);
+}
+
+/* Body content */
+.accordion .accordion-item-body {
+    padding: var(--spacing-16) var(--spacing-16) var(--spacing-24);
+    background: var(--accordion-ven-bg);
+}
+
+.accordion .accordion-item-body p.accordion-item-body-text,
+.accordion .accordion-item-body p { /* stylelint-disable-line no-descending-specificity */
+    color: var(--text-color);
+    font-family: var(--body-font-family);
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-body);
+    line-height: 1.5;
+}
+
+/* Body links */
+.accordion .accordion-item-body a,
+.accordion .accordion-item-body a.button {
+    background: none;
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+    padding: 0;
+    border-radius: 0;
+}
+
+.accordion .accordion-item-body a:hover {
+    background: none;
+    color: var(--color-brand-primary-dark);
+}
+
+/* Hide external link ::after */
+.accordion .accordion-item-body .external-link::after,
+.accordion .accordion-item-body a::after {
+    display: none;
+}
+
+/* Icon row — inline images with text labels */
+.accordion .accordion-item-body p img {
+    display: inline-block;
+    vertical-align: middle;
+    width: var(--spacing-40);
+    height: var(--spacing-40);
+    margin-right: var(--spacing-08);
+}
+
+/* Content cards — paragraphs with strong headings get card treatment */
+.accordion .accordion-item-body .columns {
+    display: flex;
+    gap: var(--spacing-16);
+    flex-wrap: wrap;
+    margin: var(--spacing-24) var(--spacing-00);
+}
+
+.accordion .accordion-item-body .columns > div {
+    flex: 1;
+    min-width: var(--spacing-200, 200px);
+    background: var(--background-color);
+    border: var(--border-01) solid var(--color-border-default);
+    border-radius: var(--spacing-08);
+    padding: var(--spacing-24);
+    text-align: center;
+}
+
+.accordion .accordion-item-body .columns > div h2, /* stylelint-disable-line no-descending-specificity */
+.accordion .accordion-item-body .columns > div h3, /* stylelint-disable-line no-descending-specificity */
+.accordion .accordion-item-body .columns > div h4 { /* stylelint-disable-line no-descending-specificity */
+    color: var(--color-brand-primary);
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-heading);
+    margin-bottom: var(--spacing-16);
+}
+
+/* Expand all button */
+.accordion .accordion-expand-all {
+    color: var(--accordion-ven-text-color);
+    font-family: var(--body-font-family);
+    font-weight: var(--font-weight-medium);
+}
+
+.accordion .accordion-expand-all:focus {
+    border-color: var(--accordion-ven-text-color);
+}

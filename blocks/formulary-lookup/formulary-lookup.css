@@ -1,0 +1,700 @@
+/* --- Formulary Lookup Block --- */
+
+.formulary-lookup {
+  position: relative;
+  text-align: var(--formulary-text-align, start);
+  color: var(--formulary-text-color, var(--text-color, inherit));
+}
+
+/* --- Card variant --- */
+
+.formulary-lookup.card {
+  background: var(--formulary-card-bg, white);
+  border-radius: var(--formulary-card-border-radius, 10px);
+  box-shadow: var(--formulary-card-box-shadow, rgb(0 0 0 / 25%) 2px 1px 8px 0);
+  padding: var(--formulary-card-padding, 24px);
+}
+
+/* --- Form container --- */
+
+.formulary-lookup-form {
+  position: relative;
+}
+
+/* --- Centered variant --- */
+
+.formulary-lookup.centered {
+  text-align: center;
+}
+
+.formulary-lookup.centered .formulary-lookup-form {
+  margin-inline: auto;
+  max-width: var(--formulary-form-max-width, none);
+}
+
+/* --- Heading --- */
+
+.formulary-lookup-heading {
+  font-size: var(--formulary-heading-font-size, var(--heading-font-size-m, 1.5rem));
+  font-weight: var(--formulary-heading-font-weight, 600);
+  color: var(--formulary-heading-color, var(--heading-color, inherit));
+  margin-bottom: var(--formulary-heading-margin-bottom, var(--spacing-8, 8px));
+  line-height: var(--formulary-heading-line-height, 1.25);
+  text-transform: var(--formulary-heading-text-transform, none);
+  position: relative;
+}
+
+.formulary-lookup-heading::after {
+  content: var(--formulary-heading-accent-content, none);
+  display: var(--formulary-heading-accent-display, none);
+  position: absolute;
+  bottom: var(--formulary-heading-accent-bottom, -4px);
+  left: var(--formulary-heading-accent-left, 0);
+  width: var(--formulary-heading-accent-width, 100%);
+  height: var(--formulary-heading-accent-height, 3px);
+  background: var(--formulary-heading-accent-bg, var(--link-color));
+  margin: var(--formulary-heading-accent-margin, 0);
+}
+
+/* --- Description --- */
+
+.formulary-lookup-description {
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+/* --- Icon (optional above heading) --- */
+
+.formulary-lookup-icon {
+  display: block;
+  margin-bottom: var(--spacing-8, 8px);
+}
+
+.formulary-lookup-icon img {
+  max-width: 48px;
+  height: auto;
+}
+
+/* --- Header (icon + heading side-by-side) --- */
+
+.formulary-lookup-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12, 12px);
+  margin-bottom: var(--formulary-heading-margin-bottom, var(--spacing-8, 8px));
+}
+
+.formulary-lookup-header .formulary-lookup-icon {
+  margin-bottom: 0;
+  margin-inline: 0;
+  flex-shrink: 0;
+}
+
+.formulary-lookup-header .formulary-lookup-heading {
+  margin-bottom: 0;
+}
+
+.formulary-lookup.centered .formulary-lookup-icon {
+  margin-inline: auto;
+}
+
+.formulary-lookup.centered .formulary-lookup-header {
+  justify-content: center;
+}
+
+/* --- Labels --- */
+
+.formulary-lookup-label {
+  display: var(--formulary-label-display, block);
+  position: var(--formulary-label-position, static);
+  font-size: var(--formulary-label-font-size, var(--body-font-size-s, 0.875rem));
+  font-weight: var(--formulary-label-font-weight, 600);
+  margin-bottom: var(--formulary-label-margin-bottom, var(--spacing-4, 4px));
+  color: var(--formulary-label-color, inherit);
+  background: var(--formulary-label-bg, transparent);
+  padding: var(--formulary-label-padding, 0);
+  top: var(--formulary-label-top, auto);
+  left: var(--formulary-label-left, auto);
+  z-index: var(--formulary-label-z-index, auto);
+  line-height: var(--formulary-label-line-height, normal);
+}
+
+/* --- Select dropdowns (state/county) --- */
+
+.formulary-lookup-select {
+  border: var(--formulary-input-border, 1px solid var(--formulary-border, rgb(0 0 0 / 20%)));
+  border-radius: var(--formulary-input-border-radius, 4px);
+  font-size: var(--formulary-input-font-size, var(--body-font-size-m, 1rem));
+  padding: var(--formulary-input-padding, var(--spacing-8, 8px) var(--spacing-12, 12px));
+  width: 100%;
+  max-width: var(--formulary-input-max-width, 400px);
+  height: var(--formulary-input-height, auto);
+  margin-bottom: var(--formulary-input-margin-bottom, var(--spacing-16, 16px));
+  background: var(--background-color, white);
+  color: var(--formulary-input-color, var(--text-color, inherit));
+}
+
+/* --- County cascading dropdown (dynamic variant) --- */
+
+.formulary-lookup-county-wrapper {
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+/* --- ZIP code input (zip variant) --- */
+
+.formulary-lookup-zip-form {
+  margin: 0;
+}
+
+.formulary-lookup-input-group {
+  display: flex;
+  gap: var(--spacing-8, 8px);
+  max-width: var(--formulary-input-max-width, 400px);
+  margin-bottom: var(--formulary-input-margin-bottom, var(--spacing-16, 16px));
+  position: relative;
+}
+
+.formulary-lookup.centered .formulary-lookup-input-group {
+  margin-inline: auto;
+}
+
+.formulary-lookup-zip-input {
+  border: var(--formulary-input-border, 1px solid var(--formulary-border, rgb(0 0 0 / 20%)));
+  border-radius: var(--formulary-input-border-radius, 4px);
+  font-size: var(--formulary-input-font-size, var(--body-font-size-m, 1rem));
+  padding: var(--formulary-input-padding, var(--spacing-8, 8px) var(--spacing-12, 12px));
+  height: var(--formulary-input-height, auto);
+  flex: 1;
+  min-width: 0;
+  color: var(--formulary-input-color, var(--text-color, inherit));
+  background: var(--background-color, white);
+}
+
+/* --- Submit button --- */
+
+.formulary-lookup-submit {
+  background: var(--formulary-submit-bg, var(--link-color));
+  border: var(--formulary-submit-border, none);
+  border-radius: var(--formulary-submit-border-radius, 4px);
+  color: var(--formulary-submit-color, white);
+  cursor: pointer;
+  font-size: var(--formulary-submit-font-size, var(--body-font-size-m, 1rem));
+  font-weight: var(--formulary-submit-font-weight, 600);
+  padding: var(--formulary-submit-padding, var(--spacing-8, 8px) var(--spacing-16, 16px));
+  height: var(--formulary-submit-height, auto);
+  width: var(--formulary-submit-width, auto);
+  white-space: nowrap;
+  transition: background 200ms;
+  position: relative;
+  box-shadow: var(--formulary-submit-box-shadow, none);
+}
+
+.formulary-lookup-submit::after {
+  content: "";
+  display: var(--formulary-submit-icon-display, none);
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: var(--formulary-submit-icon-right, 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: currentcolor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.formulary-lookup-submit.has-icon::after {
+  display: inline-block;
+}
+
+.formulary-lookup-submit:hover {
+  opacity: 0.9;
+}
+
+.formulary-lookup-submit:focus-visible {
+  outline: 2px solid var(--color-focus, currentColor);
+  outline-offset: 2px;
+}
+
+/* --- Filter dropdown (custom checkbox) --- */
+
+.formulary-lookup-filter {
+  position: relative;
+  margin-bottom: var(--formulary-input-margin-bottom, var(--spacing-16, 16px));
+  max-width: var(--formulary-input-max-width, 400px);
+  width: 100%;
+}
+
+.formulary-lookup.centered .formulary-lookup-filter {
+  margin-inline: auto;
+}
+
+.formulary-lookup-filter-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: var(--formulary-input-border, 1px solid var(--formulary-border, rgb(0 0 0 / 20%)));
+  border-radius: var(--formulary-input-border-radius, 4px);
+  font-size: var(--formulary-input-font-size, var(--body-font-size-m, 1rem));
+  padding: var(--formulary-input-padding, var(--spacing-8, 8px) var(--spacing-12, 12px));
+  height: var(--formulary-input-height, auto);
+  background: var(--background-color, white);
+  color: var(--formulary-input-color, var(--text-color, inherit));
+  cursor: pointer;
+  user-select: none;
+}
+
+.formulary-lookup-filter-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.formulary-lookup-filter-clear {
+  background: none;
+  border: none;
+  color: var(--formulary-error-color, rgb(214 42 36));
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0 0 0 8px;
+  line-height: 1;
+}
+
+.formulary-lookup-filter-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--background-color, white);
+  border: var(--formulary-input-border, 1px solid var(--formulary-border, rgb(0 0 0 / 20%)));
+  border-top: none;
+  border-radius: 0 0 var(--formulary-input-border-radius, 4px) var(--formulary-input-border-radius, 4px);
+  z-index: 10;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.formulary-lookup-filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: var(--body-font-size-s, 0.875rem);
+  transition: background 150ms;
+}
+
+.formulary-lookup-filter-option:hover {
+  background: var(--formulary-row-hover-bg, rgb(0 0 0 / 5%));
+}
+
+.formulary-lookup-filter-option:has(input:checked) {
+  background: var(--formulary-filter-selected-bg, rgb(230 240 255));
+}
+
+.formulary-lookup-filter-option input[type="checkbox"] {
+  accent-color: var(--formulary-submit-bg, var(--link-color));
+}
+
+/* --- Indication radio group --- */
+
+.formulary-lookup-indications {
+  margin-bottom: var(--formulary-input-margin-bottom, var(--spacing-16, 16px));
+  max-width: var(--formulary-input-max-width, 400px);
+  text-align: left;
+}
+
+.formulary-lookup.centered .formulary-lookup-indications {
+  margin-inline: auto;
+}
+
+.formulary-lookup-indications-heading {
+  font-size: var(--body-font-size-m, 1rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-8, 8px);
+}
+
+.formulary-lookup-indications-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-12, 12px);
+}
+
+.formulary-lookup-indications-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4, 4px);
+  cursor: pointer;
+}
+
+/* --- Status / loading / error --- */
+
+.formulary-lookup-status {
+  font-size: var(--body-font-size-s, 0.875rem);
+  min-height: 1.5em;
+}
+
+.formulary-lookup-status.error {
+  color: var(--formulary-error-color, rgb(214 42 36));
+  font-size: var(--formulary-error-font-size, var(--body-font-size-s, 0.875rem));
+}
+
+.formulary-lookup-loading {
+  width: var(--formulary-loading-size, 24px);
+  height: var(--formulary-loading-size, 24px);
+  border: 3px solid var(--formulary-loading-track, rgb(0 0 0 / 15%));
+  border-top-color: var(--formulary-loading-indicator, var(--link-color));
+  border-radius: 50%;
+  animation: formulary-spin 0.8s linear infinite;
+}
+
+@keyframes formulary-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- reCAPTCHA notice --- */
+
+.formulary-lookup-recaptcha-notice {
+  font-size: var(--formulary-captcha-font-size, 11px);
+  margin-top: var(--spacing-8, 8px);
+  color: var(--formulary-text-color, var(--text-color, inherit));
+}
+
+.formulary-lookup-recaptcha-notice a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* --- Disclaimer --- */
+
+.formulary-lookup-disclaimer {
+  font-size: var(--formulary-disclaimer-font-size, var(--body-font-size-s, 0.875rem));
+  color: var(--formulary-disclaimer-color, var(--formulary-text-color, var(--text-color, inherit)));
+  margin-top: var(--spacing-16, 16px);
+}
+
+/* --- Disclaimer modal --- */
+
+.formulary-lookup-disclaimer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--formulary-overlay-bg, rgb(0 0 0 / 40%));
+  padding: var(--formulary-overlay-padding, 24px);
+}
+
+.formulary-lookup-disclaimer-overlay[hidden] {
+  display: none;
+}
+
+.formulary-lookup-disclaimer-modal {
+  position: relative;
+  background: var(--background-color, white);
+  border-radius: var(--formulary-modal-radius, 16px);
+  box-shadow: var(--formulary-modal-shadow, 0 8px 32px rgb(0 0 0 / 25%));
+  padding: var(--formulary-modal-padding, 40px 48px);
+  max-width: var(--formulary-modal-max-width, 900px);
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.formulary-lookup-disclaimer-modal .formulary-lookup-disclaimer {
+  margin-top: 0;
+}
+
+.formulary-lookup-disclaimer-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--formulary-modal-close-bg, var(--link-color));
+  color: var(--formulary-modal-close-color, var(--color-white, white));
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.formulary-lookup-disclaimer-close:hover {
+  background: var(--formulary-modal-close-hover-bg, var(--link-hover-color));
+}
+
+@media (width <= 600px) {
+  .formulary-lookup-disclaimer-modal {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+}
+
+/* --- Results --- */
+
+.formulary-lookup-results {
+  margin-top: var(--spacing-16, 16px);
+}
+
+/* --- Results list --- */
+
+.formulary-results-heading {
+  font-size: var(--body-font-size-m, 1rem);
+  font-weight: 700;
+  margin-bottom: var(--spacing-8, 8px);
+}
+
+.formulary-results-list {
+  border-radius: var(--formulary-results-border-radius, 4px);
+  box-shadow: var(--formulary-results-box-shadow, none);
+  overflow: hidden;
+  background: var(--background-color, white);
+}
+
+.formulary-results-header {
+  display: flex;
+  font-weight: var(--formulary-results-header-font-weight, 700);
+  font-size: var(--body-font-size-xs, 0.75rem);
+  border-bottom: 2px solid var(--formulary-border, rgb(0 0 0 / 20%));
+  padding: var(--spacing-8, 8px) var(--spacing-12, 12px);
+}
+
+.formulary-results-row {
+  display: flex;
+  font-size: var(--body-font-size-s, 0.875rem);
+  padding: var(--spacing-8, 8px) var(--spacing-12, 12px);
+  border-bottom: 1px solid var(--formulary-border, rgb(0 0 0 / 20%));
+}
+
+.formulary-results-row:last-child {
+  border-bottom: none;
+}
+
+.formulary-results-row:hover {
+  background: var(--formulary-row-hover-bg, rgb(0 0 0 / 5%));
+}
+
+.formulary-results-col {
+  padding: 4px 0;
+}
+
+.formulary-col-name {
+  flex: 3;
+  min-width: 0;
+}
+
+.formulary-col-type {
+  flex: 1;
+  text-align: center;
+}
+
+.formulary-col-status {
+  flex: 1;
+  text-align: center;
+}
+
+/* --- Pagination --- */
+
+.formulary-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-16, 16px);
+  margin-top: var(--spacing-16, 16px);
+  padding: var(--spacing-8, 8px) 0;
+}
+
+.formulary-pagination-btn {
+  background: none;
+  border: none;
+  color: var(--formulary-text-color, var(--text-color, inherit));
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.formulary-pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.formulary-pagination-btn:focus-visible {
+  outline: 2px solid var(--color-focus, currentColor);
+  outline-offset: 2px;
+}
+
+.formulary-pagination-num {
+  background: none;
+  border: none;
+  color: var(--formulary-text-color, var(--text-color, inherit));
+  cursor: pointer;
+  font-size: var(--body-font-size-s, 0.875rem);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.formulary-pagination-num.is-active {
+  background: var(--formulary-submit-bg, var(--link-color));
+  color: var(--formulary-submit-color, white);
+}
+
+.formulary-pagination-num:hover:not(.is-active) {
+  background: var(--formulary-row-hover-bg, rgb(0 0 0 / 5%));
+}
+
+/* --- Error Tooltip (inline popup near input) --- */
+
+.formulary-lookup-error-tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  background: var(--formulary-error-tooltip-bg, var(--background-color, white));
+  border-radius: var(--formulary-error-tooltip-radius, var(--spacing-8, 8px));
+  box-shadow: var(--formulary-error-tooltip-shadow, 0 4px 20px rgb(0 0 0 / 20%));
+  padding: var(--formulary-error-tooltip-padding, var(--spacing-16, 16px) var(--spacing-48, 48px) var(--spacing-16, 16px) var(--spacing-20, 20px));
+  max-width: var(--formulary-error-tooltip-max-width, 320px);
+  font-size: var(--formulary-error-tooltip-font-size, var(--body-font-size-s, 0.875rem));
+  color: var(--formulary-text-color, var(--text-color, inherit));
+  line-height: 1.4;
+}
+
+.formulary-lookup-error-tooltip-text {
+  display: block;
+}
+
+.formulary-lookup-error-tooltip-close {
+  position: absolute;
+  top: var(--formulary-error-tooltip-close-top, 8px);
+  right: var(--formulary-error-tooltip-close-right, 8px);
+  width: var(--formulary-error-tooltip-close-size, 28px);
+  height: var(--formulary-error-tooltip-close-size, 28px);
+  border: none;
+  background: var(--formulary-error-tooltip-close-bg, transparent);
+  border-radius: 50%;
+  color: var(--formulary-text-color, var(--text-color, inherit));
+  font-size: var(--formulary-error-tooltip-close-font-size, 14px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.formulary-lookup-error-tooltip-close:hover {
+  background: var(--formulary-error-tooltip-close-hover-bg, transparent);
+}
+
+/* --- Error Modal (full overlay) --- */
+
+.formulary-lookup-error-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--formulary-overlay-bg, rgb(0 0 0 / 40%));
+  padding: var(--formulary-overlay-padding, 24px);
+}
+
+.formulary-lookup-error-modal {
+  position: relative;
+  background: var(--background-color, white);
+  border-radius: var(--formulary-error-modal-radius, 16px);
+  box-shadow: var(--formulary-error-modal-shadow, 0 8px 32px rgb(0 0 0 / 25%));
+  padding: var(--formulary-error-modal-padding, var(--spacing-40, 40px) var(--spacing-48, 48px));
+  max-width: var(--formulary-error-modal-max-width, 600px);
+  width: 100%;
+}
+
+.formulary-lookup-error-modal-content {
+  font-size: var(--body-font-size-m, 1rem);
+  line-height: 1.5;
+  color: var(--text-color, inherit);
+}
+
+.formulary-lookup-error-modal-close {
+  position: absolute;
+  top: var(--formulary-error-modal-close-top, 16px);
+  right: var(--formulary-error-modal-close-right, 16px);
+  width: var(--formulary-error-modal-close-size, 40px);
+  height: var(--formulary-error-modal-close-size, 40px);
+  border-radius: 50%;
+  border: none;
+  background: var(--formulary-error-modal-close-bg, var(--link-color));
+  color: var(--formulary-error-modal-close-color, var(--color-white, white));
+  font-size: var(--formulary-error-modal-close-font-size, 20px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.formulary-lookup-error-modal-close:hover {
+  background: var(--formulary-error-modal-close-hover-bg, var(--link-hover-color));
+}
+
+@media (width <= 600px) {
+  .formulary-lookup-error-modal {
+    padding: var(--formulary-error-modal-padding-mobile, var(--spacing-24, 24px) var(--spacing-20, 20px));
+    border-radius: var(--formulary-error-modal-radius-mobile, var(--spacing-12, 12px));
+  }
+
+  .formulary-lookup-error-tooltip {
+    max-width: calc(100vw - var(--spacing-48, 48px));
+  }
+}
+
+/* --- Mobile responsive --- */
+
+@media (width <= 600px) {
+  .formulary-lookup-select {
+    max-width: 100%;
+  }
+
+  .formulary-lookup-input-group {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .formulary-lookup-submit {
+    width: 100%;
+  }
+
+  .formulary-lookup-filter {
+    max-width: 100%;
+  }
+
+  .formulary-lookup-indications {
+    max-width: 100%;
+  }
+
+  .formulary-pagination {
+    flex-wrap: wrap;
+    gap: var(--spacing-8, 8px);
+  }
+
+  .formulary-pagination-btn {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formulary-lookup-loading {
+    animation: none;
+    border-top-color: var(--formulary-border, rgb(0 0 0 / 20%));
+    opacity: 0.6;
+  }
+}

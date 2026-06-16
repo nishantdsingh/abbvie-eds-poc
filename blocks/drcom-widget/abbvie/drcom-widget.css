@@ -1,0 +1,35 @@
+.drcom-widget-heading {
+  margin-bottom: var(--spacing-16, 16px);
+}
+
+.drcom-widget-placeholder {
+  background: var(--light-color, #f4f4f4);
+  border-radius: 4px;
+  min-height: 200px;
+  position: relative;
+}
+
+.drcom-widget-placeholder[aria-busy='true']::after {
+  animation: drcom-spin 0.8s linear infinite;
+  border: 3px solid var(--light-color, #e0e0e0);
+  border-top-color: var(--link-color, #0057cc);
+  border-radius: 50%;
+  content: '';
+  height: 32px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+}
+
+@keyframes drcom-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+directory-widget {
+  display: block;
+  width: 100%;
+}
+
+/* abbvie drcom-widget overrides */

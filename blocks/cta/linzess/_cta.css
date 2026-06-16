@@ -1,0 +1,20 @@
+@import '../cta.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* Linzess — CTA brand overrides
+   Primary: Dark purple (#422e83), white text, 16px radius
+   Secondary: White bg, purple text
+   Tertiary: Light purple (#d9d7f9), purple text
+   Font: Lato, weight 800 */
+
+.cta.abbv-button-primary .abbv-cta,
+.cta.abbv-button-secondary .abbv-cta,
+.cta.abbv-button-tertiary .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-primary-font-weight);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-primary-font-weight);
+}

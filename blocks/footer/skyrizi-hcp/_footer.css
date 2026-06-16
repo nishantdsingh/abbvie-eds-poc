@@ -1,0 +1,67 @@
+@import '../footer.css';
+@import '../../../styles/skyrizi-hcp/tokens.css';
+
+/* ============================================================
+   SKYRIZI HCP — Footer brand overrides
+   Live: www.skyrizihcp.com/dermatology
+   Background, font-family, font-size all flow through brand tokens
+   in styles/skyrizi-hcp/tokens.css. Only brand-specific tweaks live here.
+   ============================================================ */
+
+/* Live SkyRizi HCP uses off-white footer text (--color-text-footer)
+   instead of the default --color-text-on-dark: #fff.
+   Centering (1200px max-width via padding-inline max()) is inherited from base. */
+.footer-wrapper {
+  --footer-color-text: var(--color-text-footer);
+}
+
+/* ── Mobile-first defaults ──────────────────────────────────── */
+
+/* 1. Tighter gap between stacked link items on mobile */
+.footer .footer-links-primary ul,
+.footer .footer-links-secondary ul,
+.footer .footer-links-tertiary ul {
+  gap: var(--spacing-08);
+}
+
+/* 2. Tighter gap between footer-bottom content blocks on mobile */
+.footer .footer-bottom {
+  gap: var(--spacing-01);
+}
+
+/* 3. Center AbbVie logo on mobile — text-align won't work on display:block
+   children, so flex+justify-content is used instead */
+.footer .footer-bottom > p:has(picture),
+.footer .footer-bottom > p:has(img) {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-08);
+}
+
+/* Indication code (e.g. US-SKZD-260038) — 40px top gap matches live site */
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  margin-top: var(--spacing-40);
+}
+
+/* ── Desktop (≥ 601px): reset mobile-only overrides ────────── */
+@media (width >= 601px) {
+  .footer .footer-links-primary ul,
+  .footer .footer-links-secondary ul,
+  .footer .footer-links-tertiary ul {
+    gap: var(--footer-spacing-row-gap);
+  }
+
+  .footer .footer-bottom {
+    gap: var(--footer-spacing-bottom-gap);
+  }
+
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    display: block;
+    margin-top: 0;
+  }
+
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+    margin-top: 0;
+  }
+}

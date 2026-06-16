@@ -1,0 +1,445 @@
+@import '../hero.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* ============================================================
+   MAVYRET HCP — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+/* Heading: Univers LT Bold Condensed */
+.hero h1 {
+  color: var(--color-text-heading);
+  font-family: var(--heading-font-family-bold);
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--heading-font-family);
+}
+
+/* Body: Univers LT Regular Condensed */
+.hero p {
+  font-family: var(--body-font-family);
+}
+
+/* Profile band: dark navy */
+.hero.profile> :where(div):first-child {
+  background-color: var(--color-background-footer);
+}
+
+/* Profile text panel: white text on dark navy band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* CTA button: bright blue accent */
+.hero :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* Landing gradient: brand radial gradient */
+.hero.landing::after {
+  background: var(--gradient-hero);
+}
+
+/* Full/video overlay: brand radial gradient */
+.hero.full::after,
+.hero.video::after {
+  background: var(--gradient-hero);
+}
+
+/* Solid background: brand radial gradient */
+.hero.solid {
+  background: var(--gradient-hero);
+}
+
+.hero.solid :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* No-padding variant: center content vertically when no indication banner is present */
+.hero.no-padding:not(:has(.hero-indication)) {
+  justify-content: center;
+}
+
+
+/* ============================================================
+   MAVYRET data hero
+   Author with custom class: mavyret-data-hero
+   ============================================================ */
+
+.hero.mavyret-data-hero {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  min-height: var(--hero-data-min-height);
+}
+
+.hero.mavyret-data-hero> :where(div):has(> div:empty) {
+  display: none;
+}
+
+.hero.mavyret-data-hero> :where(div):first-child {
+  position: absolute;
+  inset: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: var(--z-index-0);
+}
+
+.hero.mavyret-data-hero> :where(div):first-child picture,
+.hero.mavyret-data-hero> :where(div):first-child img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero.mavyret-data-hero> :where(div):first-child img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: none;
+}
+
+.hero.mavyret-data-hero::after {
+  display: block;
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: var(--gradient-hero-orange-tint);
+  pointer-events: none;
+  z-index: var(--z-index-1);
+}
+
+.hero.mavyret-data-hero .hero-text-container {
+  position: relative;
+  z-index: var(--z-index-2);
+  display: block;
+  align-self: center;
+  width: min(100%, var(--hero-data-text-width));
+  margin: 0;
+  padding: var(--hero-data-text-padding);
+  background: transparent;
+  max-width: none;
+}
+
+.hero.mavyret-data-hero .cmp-container-x-large {
+  grid-column: auto;
+  max-width: var(--hero-data-cmp-max-width);
+}
+
+.hero.mavyret-data-hero h1,
+.hero.mavyret-data-hero h2,
+.hero.mavyret-data-hero h3,
+.hero.mavyret-data-hero p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.mavyret-data-hero h1 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: clamp(var(--font-size-44), 6vw, var(--font-size-72));
+  font-weight: var(--font-weight-body);
+  line-height: var(--hero-data-h1-line-height);
+  letter-spacing: var(--hero-data-h1-letter-spacing);
+  text-transform: none;
+}
+
+.hero.mavyret-data-hero h1+h1 {
+  margin-top: var(--spacing-16);
+}
+
+.hero.mavyret-data-hero h1 strong,
+.hero.mavyret-data-hero h2 strong,
+.hero.mavyret-data-hero p strong {
+  font-family: var(--heading-font-family-bold);
+  font-weight: var(--font-weight-heading);
+}
+
+.hero.mavyret-data-hero .hero-text-container p {
+  max-width: var(--hero-data-p-max-width);
+  font-size: var(--hero-data-p-font-size);
+  line-height: var(--hero-data-p-line-height);
+}
+
+.hero.mavyret-data-hero .hero-text-container p:first-of-type {
+  margin-top: var(--hero-data-p-first-margin-top);
+  font-size: var(--hero-data-p-first-font-size);
+  line-height: var(--hero-data-p-first-line-height);
+}
+
+.hero.mavyret-data-hero .hero-text-container p:nth-of-type(2) {
+  font-size: var(--font-size-body);
+  font-family: var(--hero-data-font-family-roboto-bold);
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.hero.mavyret-data-hero .hero-text-container p:nth-of-type(3) {
+  font-size: var(--font-size-body);
+  margin: 0;
+  padding: 0;
+}
+
+.hero.mavyret-data-hero .hero-text-container p sup {
+  font-size: var(--hero-data-p-sup-font-size);
+  line-height: 0;
+}
+
+.hero.mavyret-data-hero .button-container {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+
+.hero.mavyret-data-hero :where(a).button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--hero-data-button-gap);
+  min-width: unset;
+  padding: var(--spacing-8) var(--spacing-16);
+  border: var(--hero-data-button-border-width) solid var(--color-btn-border);
+  border-radius: 0;
+  background: var(--background-color);
+  box-shadow: var(--shadow-green-glow);
+  color: var(--color-btn-text);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--hero-data-button-line-height);
+  text-transform: none;
+}
+
+.hero.mavyret-data-hero :where(a).button::after {
+  content: '\203A';
+  font-size: var(--hero-data-button-after-font-size);
+  line-height: 1;
+  margin-bottom: var(--hero-data-button-after-margin);
+}
+
+.hero.mavyret-data-hero :where(a).button:hover {
+  background: var(--background-color);
+  color: var(--color-btn-text);
+  text-decoration: none;
+}
+
+.hero.mavyret-data-hero .hero-image-caption {
+  position: absolute;
+  right: var(--hero-data-caption-right);
+  bottom: var(--hero-data-caption-bottom);
+  z-index: var(--z-index-3);
+  width: auto;
+  max-width: calc(100% - var(--spacing-32));
+  padding: 0;
+  background: none;
+  color: var(--color-text-on-dark);
+  font-size: var(--hero-data-caption-font-size);
+  line-height: var(--hero-data-caption-line-height);
+  text-align: right;
+}
+
+.hero.mavyret-data-hero .hero-indication {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: var(--z-index-3);
+  display: flex;
+  align-items: center;
+  min-height: var(--hero-data-indication-min-height);
+  width: min(100%, var(--hero-data-indication-width));
+  padding: var(--hero-data-indication-padding);
+  background: var(--color-indication-bg);
+  color: var(--color-text-on-dark);
+  text-align: center;
+  clip-path: var(--hero-data-indication-clip-path);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.mavyret-data-hero .hero-indication p {
+  width: 100%;
+  margin: 0;
+  max-width: none;
+  color: inherit;
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--hero-data-indication-p-font-size);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--hero-data-indication-p-line-height);
+}
+
+@media (width >=744px) {
+  .hero.mavyret-data-hero {
+    min-height: var(--hero-data-min-height-tablet);
+  }
+
+  .hero.mavyret-data-hero .hero-text-container {
+    width: min(100%, var(--hero-data-text-width-tablet));
+    padding: var(--hero-data-text-padding-tablet);
+  }
+
+  .hero.mavyret-data-hero .cmp-container-x-large {
+    max-width: var(--hero-data-cmp-max-width-tablet);
+  }
+
+  .hero.mavyret-data-hero h1 {
+    font-size: clamp(var(--font-size-56), 6.4vw, var(--font-size-80));
+  }
+
+  .hero.mavyret-data-hero .hero-text-container p:first-of-type {
+    font-size: var(--font-size-28);
+  }
+
+  .hero.mavyret-data-hero .hero-image-caption {
+    right: var(--hero-data-caption-right-tablet);
+    bottom: var(--hero-data-caption-bottom-tablet);
+  }
+
+  .hero.mavyret-data-hero .hero-indication {
+    min-height: var(--hero-data-indication-min-height-tablet);
+    width: min(100%, var(--hero-data-indication-width-tablet));
+    padding: var(--hero-data-indication-padding-tablet);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .hero.mavyret-data-hero .hero-indication p {
+    font-size: var(--hero-data-indication-p-font-size-tablet);
+  }
+}
+
+@media (width >=1024px) {
+  .hero.mavyret-data-hero {
+    min-height: var(--hero-data-min-height-desktop);
+  }
+
+  .hero.mavyret-data-hero .hero-text-container {
+    width: 100%;
+    padding: var(--hero-data-text-padding-desktop);
+  }
+
+  .hero.mavyret-data-hero .cmp-container-x-large {
+    max-width: none;
+  }
+
+  .hero.mavyret-data-hero h1 {
+    font-size: var(--font-size-64);
+  }
+
+  .hero.mavyret-data-hero .hero-text-container p:first-of-type {
+    max-width: var(--hero-data-p-first-max-width-desktop);
+    font-size: var(--font-size-28);
+  }
+
+  .hero.mavyret-data-hero .hero-text-container p:nth-of-type(2) {
+    font-size: var(--font-size-body);
+    font-family: var(--hero-data-font-family-roboto-bold);
+    margin: 0;
+    padding-bottom: 0;
+  }
+
+  .hero.mavyret-data-hero .hero-image-caption {
+    right: var(--hero-data-caption-right-desktop);
+  }
+
+  .hero.mavyret-data-hero .hero-indication {
+    min-height: var(--hero-data-indication-min-height-desktop);
+    width: var(--hero-data-indication-width);
+    padding: var(--hero-data-indication-padding-desktop);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .hero.mavyret-data-hero .hero-indication p {
+    font-size: var(--hero-data-indication-p-font-size);
+  }
+}
+
+.hero.mavyret-data-hero.no-padding .hero-text-container {
+  max-width: var(--cdp-max-width);
+}
+
+.hero.mavyret-data-hero.no-padding:not(:has(.hero-indication)) {
+  justify-content: center;
+}
+
+.hero.mavyret-data-hero.no-padding:not(:has(.hero-indication)) .hero-text-container {
+  display: flex;
+  align-items: center;
+}
+
+.hero.mavyret-data-hero.no-padding .hero-indication {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hero.mavyret-data-hero.no-padding .hero-indication p:first-child {
+  font-size: var(--font-size-28);
+  font-weight: var(--font-weight-extra-bold);
+  padding: 0;
+}
+
+.hero.mavyret-data-hero.no-padding .hero-indication p:last-child {
+  font-size: var(--font-size-28);
+  font-weight: var(--font-weight-body);
+  padding: 0;
+  padding-left: var(--spacing-content-gap);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero.mavyret-data-hero .hero-text-container p:last-child:not(:has(a)) {
+  font-size: var(--font-size-body);
+  margin-top: var(--spacing-16);
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.hero.mavyret-data-hero {
+  min-height: unset;
+}
+
+.hero.mavyret-data-hero.hero-home {
+  height: auto;
+  min-height: var(--spacing-500);
+}
+
+@media (width < 744px) {
+  .hero.mavyret-data-hero .hero-indication {
+    clip-path: none;
+    text-align: left;
+    padding: var(--hero-data-indication-padding-mobile);
+  }
+
+  .hero.mavyret-data-hero .hero-text-container {
+    padding: var(--spacing-16);
+  }
+
+  .hero.mavyret-data-hero h1 {
+    font-size: var(--font-size-40);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .hero.mavyret-data-hero .hero-text-container p:first-of-type {
+    font-size: var(--font-size-24);
+  }
+
+  .hero.mavyret-data-hero.no-padding .hero-indication p:first-child,
+  .hero.mavyret-data-hero.no-padding .hero-indication p:nth-child(2) {
+    font-size: var(--font-size-24);
+  }
+
+  .hero.mavyret-data-hero :where(a).button {
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--hero-data-button-mobile-padding-top) var(--spacing-16);
+  }
+}

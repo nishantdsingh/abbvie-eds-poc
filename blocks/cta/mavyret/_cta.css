@@ -1,0 +1,42 @@
+/* stylelint-disable no-descending-specificity */
+@import '../cta.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* Mavyret HCP — CTA brand overrides
+   Primary: White bg, black text, gray border (#636366), GREEN glow shadow
+   Secondary: White bg, black text, orange border (#e65400), ORANGE glow shadow
+   Tertiary: White bg, black text, gray border, no shadow
+   Hover (all): Black bg, green (#76bd22) text
+   Font: Barlow Semi Condensed */
+
+.cta.abbv-button-primary .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-primary-shadow);
+}
+
+.cta.abbv-button-secondary .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-secondary-shadow);
+}
+
+.cta.abbv-button-tertiary .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-primary-font-weight);
+  box-shadow: var(--button-tertiary-shadow);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--body-font-family);
+  font-weight: var(--button-plain-weight);
+}
+
+.cta.abbv-button-primary .abbv-cta:hover,
+.cta.abbv-button-secondary .abbv-cta:hover {
+  box-shadow: none;
+}
+
+.cta.i-a .cta-icon {
+  right: 12px;
+}

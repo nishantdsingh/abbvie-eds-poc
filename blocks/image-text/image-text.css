@@ -1,0 +1,90 @@
+/* Image with Text — mobile-first two-column layout */
+
+/* ── Base: single-column stack on mobile ── */
+.image-text {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  margin-bottom: var(--spacing-80);
+  position: relative;
+}
+
+/* Reset the .abbvie-container div { grid-column: 1 / span N } override
+   so our own grid places the two children side by side. */
+.image-text > div {
+  grid-column: auto;
+}
+
+.image-text .image-text-image-col {
+  overflow: hidden;
+}
+
+.image-text .image-text-image-col picture,
+.image-text .image-text-image-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-text .image-text-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-16);
+}
+
+/* ── Tablet+: two-column layout ──
+   Default DOM order: image-col first, content-col second.
+   Column 1 = image, Column 2 = content. */
+@media (width >= 744px) {
+  .image-text {
+    grid-template-columns: 1fr 1fr;     /* image=50%, content=50% */
+    gap: var(--spacing-32);
+  }
+}
+
+@media (width >= 1024px) {
+  .image-text {
+    gap: var(--spacing-48);
+  }
+}
+
+/* ── Image size variants (default layout: image col 1, content col 2) ── */
+@media (width >= 744px) {
+  .image-text.image-text-image-large  { grid-template-columns: 3fr 2fr; } /* image=60% */
+  .image-text.image-text-image-medium { grid-template-columns: 2fr 3fr; } /* image=40% */
+  .image-text.image-text-image-small  { grid-template-columns: 1fr 2fr; } /* image=33% */
+}
+
+/* ── Variant: Reverse (text left, image right) ──
+   JS appends content-col FIRST, image-col SECOND for this variant,
+   so col 1 = content, col 2 = image — no CSS `order` needed. */
+@media (width >= 744px) {
+  /* Size variants: col 1 = content track, col 2 = image track */
+  .image-text.image-text-reverse.image-text-image-large  { grid-template-columns: 2fr 3fr; } /* content=40%, image=60% */
+  .image-text.image-text-reverse.image-text-image-medium { grid-template-columns: 3fr 2fr; } /* content=60%, image=40% */
+  .image-text.image-text-reverse.image-text-image-small  { grid-template-columns: 2fr 1fr; } /* content=67%, image=33% */
+}
+
+/* ── Variant: Scale (CSS transform on image hover) ── */
+.image-text.image-text-scale .image-text-image-col img {
+  transition: transform 0.3s ease;
+}
+
+/* Use :hover on the block so the scale fires even when the stretched-link overlay
+   intercepts pointer events over the image column. */
+.image-text.image-text-scale:hover .image-text-image-col img {
+  transform: scale(1.05);
+}
+
+/* ── Variant: Stretched Link (entire card is the CTA link) ── */
+.image-text.image-text-stretched .button-container .button {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+  color: transparent;
+  font-size: 0;
+  cursor: pointer;
+  z-index: 2;
+}

@@ -1,0 +1,1290 @@
+/* stylelint-disable no-descending-specificity, selector-not-notation, no-duplicate-selectors, media-feature-range-notation, declaration-block-no-redundant-longhand-properties */
+
+/* ============================================================
+   Footer Block — Base styles
+   Live-matching flat horizontal layout (matches all 6 AbbVie brand sites):
+   - Two centered link rows (UL-based, gap-separated, no border)
+   - Legal text + legal number + AbbVie logo
+   Brand differences flow through brand-level global tokens declared in
+   styles/{brand}/tokens.css:
+     --color-background-footer, --color-text-on-dark,
+     --body-font-family, --font-size-footer
+   ============================================================ */
+
+/* ── Block-scoped tokens (W3C DTCG: --footer-{type}-{semantic}-{variant}) ── */
+
+.footer-wrapper {
+  --footer-color-bg: var(--color-background-footer);
+  --footer-color-text: var(--color-text-on-dark, #fff);
+  --footer-color-link: var(--footer-color-text);
+  --footer-font-family: var(--body-font-family);
+  --footer-font-size: var(--font-size-footer, var(--font-size-14));
+  --footer-font-size-small: var(--font-size-12);
+  --footer-font-weight: var(--font-weight-400);
+  --footer-line-height: var(--line-height-22);
+  --footer-spacing-padding-y: var(--spacing-40);
+  --footer-spacing-padding-x: var(--spacing-20);
+  --footer-spacing-row-gap: var(--spacing-16);
+  --footer-spacing-link-gap-desktop: var(--spacing-24);
+  --footer-spacing-legal-gap: var(--spacing-60);
+  --footer-spacing-bottom-gap: var(--spacing-12);
+  --footer-logo-height: var(--spacing-22);
+  --footer-content-max-width: 1200px;
+}
+
+/* ── Container: flat, full-bleed ─────────────────────────────── */
+
+.footer-wrapper {
+  margin-top: 0;
+}
+
+.footer {
+  background-color: var(--footer-color-bg);
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  line-height: var(--footer-line-height);
+  border-radius: 0;
+  border-top-left-radius: 0;
+  max-width: none;
+  margin: 0;
+  padding-block: var(--footer-spacing-padding-y);
+  padding-inline: max(
+    var(--footer-spacing-padding-x),
+    calc((100% - var(--footer-content-max-width)) / 2)
+  );
+  position: relative;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Auto-hide any empty column (depends on what's authored) */
+
+.footer .footer-column:empty {
+  display: none;
+}
+
+/* ── Link rows ──────────────────────────────────────────────── */
+
+.footer .footer-columns {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-row-gap);
+  margin: 0;
+  padding: 0;
+}
+
+.footer .footer-column {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+/* Primary column may hold both link rows (when 2 ULs authored in section 1) — stack them */
+
+.footer .footer-links-primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-row-gap);
+}
+
+/* Reset legacy "first p as label" styling */
+
+.footer .footer-column p:first-child {
+  text-transform: none;
+  margin-bottom: 0;
+}
+
+.footer .footer-links-tertiary p:last-child {
+  margin-top: 0;
+  text-align: center;
+}
+
+/* UL row — flex layout, gap-separated */
+
+.footer .footer-links-primary ul,
+.footer .footer-links-secondary ul,
+.footer .footer-links-tertiary ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--footer-spacing-row-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  color: var(--footer-color-text);
+}
+
+.footer .footer-links-primary li,
+.footer .footer-links-secondary li,
+.footer .footer-links-tertiary li,
+.footer .footer-links-primary li:not(:last-child),
+.footer .footer-links-secondary li:not(:last-child),
+.footer .footer-links-tertiary li:not(:last-child) {
+  margin: 0;
+  padding: 0;
+}
+
+/* Link styling — high specificity to override legacy heading-style rules */
+
+.footer .footer-links-primary li a,
+.footer .footer-links-secondary li a,
+.footer .footer-links-tertiary li a {
+  color: var(--footer-color-link);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  margin: 0;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer .footer-links-primary li a:hover,
+.footer .footer-links-secondary li a:hover,
+.footer .footer-links-tertiary li a:hover {
+  font-family: var(--footer-font-family);
+  font-weight: var(--footer-font-weight);
+  text-decoration: underline;
+}
+
+/* P-based authoring fallback (pipe-separated text) */
+
+.footer .footer-links-secondary p,
+.footer .footer-links-tertiary p {
+  margin: 0;
+  text-align: center;
+  text-transform: none;
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  line-height: var(--footer-line-height);
+  color: var(--footer-color-text);
+}
+
+/* External link icon */
+
+.footer-column li a.external-link::after {
+  content: '';
+  display: inline-flex;
+  width: var(--spacing-16);
+  height: var(--spacing-20);
+  background-image: url('/icons/external-link.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 var(--spacing-04);
+  vertical-align: middle;
+}
+
+/* ── Footer bottom: legal text + number + logo ──────────────── */
+
+.footer .footer-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-spacing-bottom-gap);
+  border: none;
+  padding: 0;
+  margin-top: var(--footer-spacing-legal-gap);
+}
+
+.footer .footer-bottom p {
+  margin: 0;
+  text-align: center;
+  color: var(--footer-color-text);
+  font-family: var(--footer-font-family);
+  font-size: var(--footer-font-size);
+  line-height: var(--footer-line-height);
+  text-transform: none;
+}
+
+/* Anchors inside footer-bottom paragraphs inherit text styling */
+
+.footer .footer-bottom p a {
+  color: var(--footer-color-link);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+.footer .footer-bottom p a:hover {
+  text-decoration: none;
+}
+
+/* Strip button-pill styling when legal text is authored as a button (legacy).
+   Selector specificity (0,4,1) beats global a.button rules in styles/styles.css
+   without needing !important. */
+
+.footer-wrapper .footer .footer-bottom a.button,
+.footer-wrapper .footer .footer-bottom .button-container a {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  color: var(--footer-color-link);
+  font-size: var(--footer-font-size);
+  font-weight: var(--footer-font-weight);
+  text-decoration: underline;
+  text-transform: none;
+  display: inline;
+  white-space: normal;
+  line-height: var(--footer-line-height);
+}
+
+.footer-wrapper .footer .footer-bottom a.button:hover,
+.footer-wrapper .footer .footer-bottom .button-container a:hover {
+  text-decoration: none;
+}
+
+/* Legal number — small text. Detected by .legal-number class OR by being
+   the 2nd-to-last child (paragraph immediately before the logo picture) */
+
+.footer .footer-bottom > p.legal-number,
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture)):not(:has(img)) {
+  font-size: var(--footer-font-size-small);
+}
+
+/* Logo — centered mobile, right-aligned desktop, white via filter (raster) or fill (SVG) */
+
+.footer .footer-bottom p:has(picture),
+.footer .footer-bottom p:has(img) {
+  margin: var(--footer-spacing-bottom-gap) 0 0;
+  text-align: center;
+}
+
+.footer .footer-bottom p:has(picture) img,
+.footer .footer-bottom p:has(img) img {
+  height: var(--footer-logo-height);
+  width: auto;
+  mix-blend-mode: screen;
+}
+
+.footer .footer-bottom svg {
+  height: var(--footer-logo-height);
+  width: auto;
+  fill: var(--footer-color-text);
+}
+
+/* Legacy ul fallback inside footer-bottom */
+
+.footer .footer-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.footer .footer-bottom ul li,
+.footer .footer-bottom ul li a {
+  color: var(--footer-color-text);
+  font-size: var(--footer-font-size);
+  text-decoration: none;
+}
+
+/* ── Desktop ≥601px (matches live media query) ──────────────── */
+
+@media (min-width: 601px) {
+  .footer .footer-links-primary ul,
+  .footer .footer-links-secondary ul,
+  .footer .footer-links-tertiary ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--footer-spacing-link-gap-desktop);
+  }
+
+  .footer .footer-bottom {
+    margin-top: var(--footer-spacing-legal-gap);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: var(--footer-spacing-link-gap-desktop);
+    row-gap: var(--footer-spacing-bottom-gap);
+  }
+
+  /* Legal text paragraphs — each takes its own row, full-width */
+  .footer .footer-bottom > .button-container,
+  .footer .footer-bottom > p:not(:has(picture)):not(:has(img)):not(.legal-number):not(:nth-last-child(2)) {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  /* Legal number — bottom-left of last row */
+  .footer .footer-bottom > p.legal-number,
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture)):not(:has(img)) {
+    grid-column: 1;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* Logo — bottom-right (same row as legal number due to grid auto-placement) */
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    grid-column: 2;
+    text-align: right;
+    margin: 0;
+  }
+}
+
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+
+@custom-media --bp-tablet (min-width: 744px);
+
+@custom-media --bp-desktop (min-width: 1024px);
+
+@custom-media --bp-wide (min-width: 1440px);
+
+:root {
+/* -----------------------------------------------------------
+   PX → REM Conversion Helper
+   How to use:
+   - Define a base root font-size (default = 10px)
+   - Use `calc(<px> * var(--px-to-rem))` to convert pixels to rem
+   - Example: calc(24 * var(--px-to-rem)) = 2.4rem
+----------------------------------------------------------- */
+  --base-size: 10; /* 1rem = 10px */
+  --px-to-rem: calc(1rem / var(--base-size));
+
+    /* Colors */
+  --link-color: #035fe6;
+  --link-hover-color: #136ff6;
+
+  /* Secondary link blue (e.g. nav preview tools column; legacy #0662BB) */
+  --color-link-secondary: #0662BB;
+  --background-color: #fff;
+  --color-black: #000;
+  --highlight-background-color: #f1f3ff;
+  --highlight-dark-background-color:#0066F5;
+  --container-border-color: #a6b5e0;
+  --footer-background-color: #fafafa;
+  --footer-text-color: #666b7a;
+  --footer-link-color: #071d49;
+  --footer-seperator-color: #b9b4b4;
+  --text-color: #071d49; /* primary dark/nav text */
+  --strong-heading: #0066f5;
+  --hero-button-color: #479ff8;
+  --text-color-gray: #808080;
+  --color-text-muted: #555;
+  --color-blue-grey-500: #607d8b;
+  --color-gray-600: #6c7280;
+  --light-color: #f8f8f8;
+  --dark-color: #505050;
+  --overlay-background-color: lightgrey;
+  --color-accent-purple: #8a2ecc;
+  --color-accent-blue: #0066f5;
+  --color-accent-blue-light: #479ff8;
+  --color-accent-green: #338700;
+  --overlay-navy: rgb(7 29 73 / 70%);
+  --overlay-navy-medium: rgb(7 29 73 / 55%);
+  --overlay-navy-light: rgb(7 29 73 / 50%);
+  --color-overlay-dark: rgb(0 0 0 / 60%);
+  --color-overlay-light: rgb(255 255 255 / 80%);
+  --color-charcoal: #25282a;
+  --color-text-compliance: #6c757d;
+  --color-border-tabs: #dde1e6;
+  --color-border: #e0e0e0;
+  --color-focus: var(--link-color);
+
+  /* Background Colors for Style Field Values */
+  --color-white: #fff;
+  --color-text-on-dark: #fff;
+  --color-navy-dark: #071d49;
+  --color-blue-light: #a6b5e0;
+  --color-blue-very-light: #f1f3ff;
+  --color-blue-ultra-light: #fafbff;
+  --color-gray-dark: #666b7a;
+  --color-gray-medium: #b9b4b4;
+  --color-gray-light: #f4f4f4;
+  --color-gray-extra-light: #fafafa;
+  --color-purple-primary: #8a2ecc;
+  --color-purple-light: #a86bde;
+  --color-blue-primary: #0066f5;
+  --color-blue-secondary: #479ff8;
+  --color-orange-dark: #cf451c;
+  --color-orange-light: #f7634f;
+  --color-green-primary: #338700;
+
+  /* Alerts */
+  --error-color: #cf451c;
+  --warning-color: #f2dede;
+  --success-color: #2f9ece;
+
+  /* Fonts */
+  --body-font-family: 'Roboto Regular', helvetica, arial, sans-serif;
+  --heading-font-family: 'F37 Lineca Book', helvetica, arial, sans-serif;
+  --icon-font-family: 'Abbvie Icon';
+  --heading-font-family-bold: 'F37 Lineca Medium', helvetica, arial, sans-serif;
+  --roboto-small-font-family: 'Roboto Small', helvetica, arial, sans-serif;
+  --roboto-bold-font-family: 'Roboto Bold', helvetica, arial, sans-serif;
+  --roboto-medium-font-family: 'Roboto Medium', helvetica, arial, sans-serif;
+  --form-font-family: "Open Sans", sans-serif;
+
+  /* Body sizes (match abbvie breakpoints) */
+  --body-font-size-m: 1.8rem;
+  --body-font-size-s: 1.6rem;
+  --body-font-size-xs: 1.4rem;
+  --font-size-10: 1rem;
+  --font-size-11: 1.1rem;
+  --font-size-12: 1.2rem;
+  --font-size-13: 1.3rem;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-32: 3.2rem;
+  --font-size-30: 3rem;
+  --font-size-33: 3.3rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-40: 4rem;
+  --font-size-42: 4.2rem;
+  --font-size-50: 5rem;
+  --font-size-625: 6.25rem;
+  --font-size-64: 6.4rem;
+  --font-size-70: 7rem;
+  --font-size-80: 8rem;
+
+  /* Heading sizes */
+  --heading-font-size-xxl: 6.4rem;
+  --heading-font-size-xl: 5.6rem;
+  --heading-font-size-l: 4.8rem;
+  --heading-font-size-m: 4rem;
+  --heading-font-size-s: 3.2rem;
+  --heading-font-size-xs: 2.4rem;
+
+  /* nav height (approx) */
+  --nav-height: calc(72 * var(--px-to-rem));
+  --nav-height-mobile: 72px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+
+  /* Spacing Tokens */
+  --space-token-xxs: calc(8 * var(--px-to-rem));
+  --space-token-xs: calc(16 * var(--px-to-rem));
+  --space-token-s: calc(24 * var(--px-to-rem));
+  --space-token-m: calc(32 * var(--px-to-rem));
+  --space-token-l: calc(40 * var(--px-to-rem));
+  --space-token-xl: calc(56 * var(--px-to-rem));
+  --space-token-xxl: calc(80 * var(--px-to-rem));
+  --space-token-xxxl: calc(104 * var(--px-to-rem));
+
+  /* Generalized Spacing Tokens */
+  --spacing-02: 0.2rem;
+  --spacing-03: 0.3rem;
+  --spacing-04: 0.4rem;
+  --spacing-05: 0.5rem;
+  --spacing-06: 0.6rem;
+  --spacing-08: 0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-15: 1.5rem;
+  --spacing-16: 1.6rem;
+  --spacing-17: 1.7rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-21: 2.1rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-25: 2.5rem;
+  --spacing-26: 2.6rem;
+  --spacing-27: 2.7rem;
+  --spacing-275: 2.75rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-34: 3.4rem;
+  --spacing-35: 3.5rem;
+  --spacing-36: 3.6rem;
+  --spacing-37-5: 3.75rem;
+  --spacing-38: 3.8rem;
+  --spacing-40: 4rem;
+  --spacing-42: 4.2rem;
+  --spacing-44: 4.4rem;
+  --spacing-46: 4.6rem;
+  --spacing-48: 4.8rem;
+  --spacing-50: 5rem;
+  --spacing-52: 5.2rem;
+  --spacing-55: 5.5rem;
+  --spacing-56: 5.6rem;
+  --spacing-60: 6rem;
+  --spacing-64: 6.4rem;
+  --spacing-66: 6.6rem;
+  --spacing-70: 7rem;
+  --spacing-72: 7.2rem;
+  --spacing-74: 7.4rem;
+  --spacing-80: 8rem;
+  --spacing-81: 8.1rem;
+  --spacing-85: 8.5rem;
+  --spacing-86: 8.6rem;
+  --spacing-90: 9rem;
+  --spacing-100: 10rem;
+  --spacing-110: 11rem;
+  --spacing-120: 12rem;
+  --spacing-124: 12.4rem;
+  --spacing-155: 15.5rem;
+  --spacing-168: 16.8rem;
+  --spacing-180: 18rem;
+  --spacing-200: 20rem;
+  --spacing-255: 25.5rem;
+  --spacing-288: 28.8rem;
+  --spacing-300: 30rem;
+  --spacing-320: 32rem;
+  --spacing-375: 37.5rem;
+  --spacing-420: 42rem;
+  --spacing-500: 50rem;
+  --spacing-585: 58.5rem;
+  --spacing-810: 81rem;
+  --spacing-1000: 100rem;
+  --spacing-1200: 120rem;
+
+  /* Separator Height */
+  --separator-height-1: .1rem;
+  --separator-height-8: .8rem;
+  --separator-height-16: 1.6rem;
+  --separator-height-24: 2.4rem;
+  --separator-height-32: 3.2rem;
+  --separator-height-48: 4.8rem;
+  --separator-height-64: 6.4rem;
+  --separator-height-80: 8rem;
+  --separator-height-96: 9.6rem;
+  --separator-height-112: 11.2rem;
+  --separator-height-128: 12.8rem;
+  --separator-height-144: 14.4rem;
+
+  /* text transform */
+  --font-uppercase: uppercase;
+  --font-lowercase: lowercase;
+  --font-normal: normal;
+
+  /* Border Radius */
+  --border-radius-base: 0.4rem;
+  --border-radius-m: 0.8rem;
+
+  /* Border Width */
+  --border-width-thin: 1px;
+  --border-width-default: 2px;
+  --border-width-thick: 3px;
+
+  /* z-index */
+  --z-index-negative: -1;
+  --z-index-0 : 0;
+  --z-index-1 : 1;
+  --z-index-2 : 2;
+  --z-index-3 : 3;
+  --z-index-10: 10;
+  --z-index-anchor-nav: 100;
+
+  /* Flex/Grid order */
+  --order-first: -1;
+  --order-0: 0;
+  --order-1: 1;
+  --order-unset: unset;
+
+  /* Layout */
+  --content-max-width: 133rem;
+  --content-max-width-narrow: 110rem;
+  --content-max-width-medium: 90rem;
+  --content-max-width-faq: 80rem;
+  --section-max-width: 120rem;
+  --icon-size: 2.4rem;
+
+  /* Font Weight */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-650: 650;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* Gap */
+  --gap-0: 0;
+  --gap-10: 1rem;
+  --gap-20: 2rem;
+  --gap-24: 2.4rem;
+  --gap-32: 3.2rem;
+  --gap-42: 4.2rem;
+  --border-top-radius: 3.2rem;
+  --hero-section-height: 12rem;
+  --hero-tall-image-container-height: 25.6rem;
+
+  /* Generalized Line Heights */
+  --line-height-16: 1.6rem;
+  --line-height-20: 2rem;
+  --line-height-22: 2.2rem;
+  --line-height-24: 2.4rem;
+  --line-height-26: 2.6rem;
+  --line-height-28: 2.8rem;
+  --line-height-30: 3rem;
+  --line-height-32: 3.2rem;
+  --line-height-34: 3.4rem;
+  --line-height-35: 3.5rem;
+  --line-height-36: 3.6rem;
+  --line-height-44: 4.4rem;
+  --line-height-46: 4.6rem;
+  --line-height-68: 6.8rem;
+  --line-height-64: 6.4rem;
+  --line-height-84: 8.4rem;
+  --line-height-tight: 1.25;
+
+  /* Shared Motion, Surface, Border, Text, Elevation, Focus, Tracking */
+  --transition-duration-fast: 0.2s;
+  --transition-duration-medium: 0.3s;
+  --transition-easing-standard: ease;
+  --transition-easing-emphasized: ease-out;
+  --shadow-nav-stuck: 0 2px 8px rgb(0 0 0 / 12%);
+  --surface-background-default: var(--background-color);
+  --border-subtle: var(--separator-height-1) solid var(--container-border-color);
+  --text-subtle: var(--color-gray-dark);
+  --elevation-card: 0 var(--spacing-08) var(--spacing-20) rgb(7 29 73 / 10%);
+  --focus-ring-default: 0 0 0 var(--spacing-02) rgb(0 102 245 / 16%);
+  --motion-hover-scale: 1.02;
+  --tracking-wide-sm: 0.04em;
+  --tracking-wide-md: 0.06em;
+
+  /* Hero Colors */
+  --hero-overlay-gradient: linear-gradient(to top, rgb(0 0 0 / 90%) 42.91%, transparent);
+  --hero-button-hover-color: var(--container-border-color);
+  --story-card-text-color: var(--footer-link-color);
+  --story-card-link-color: #0066f5;
+  --story-card-hover-bg: #f1f3ff;
+
+  /* Form Colors */
+  --form-background-color: #fff;
+  --form-text-color: #727272;
+  --form-secondary-text-color: #727272;
+  --form-border-color: #ccc;
+  --form-border-hover-color: #000;
+  --form-background-hover-color: #f3f3f3;
+  --form-primary-color: #7c3098;
+  --form-secondary-color: #80379b;
+  --form-secondary-hover-color: #6d2f85;
+  --form-disabled-color: #5e2b72;
+  --form-dark-color: #071d49;
+  --form-white-color: white;
+  --form-error-color: #eb3c36;
+  --form-error-border-color: rgb(212 43 43);
+  --form-shadow-color: rgb(167 167 167);
+  --form-overlay-bg: rgb(255 255 255 / 90%);
+  --form-divider-color: #eee;
+  --form-light-border-color: #d0d0d0;
+  --form-light-bg-color: #f5f5f5;
+  --form-light-text-color: #666;
+  --form-dark-text-color: #333;
+  --form-darker-text-color: #55565a;
+  --form-medium-text-color: #999;
+  --form-light-divider-color: #f0f0f0;
+  --form-medium-border-color: #ddd;
+  --form-orange-color: #e98300;
+  --form-success-color: #2f9ece;
+  --form-warning-color: #d32f2f;
+
+  /* Form Fonts */
+
+  /* ---- Brand Explorer Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --be-color-bg: var(--background-color);
+  --be-color-text: var(--text-color);
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-color-bar-text: #fff;
+  --be-color-border: #d8d8d8;
+  --be-color-border-mobile: #e0e0e0;
+  --be-color-separator: #ccc;
+  --be-color-muted: #50535c;
+  --be-color-btn-hover: #1c2d49;
+  --be-color-btn-no-border: #555;
+  --be-color-btn-no-hover: #f5f5f5;
+  --be-color-overlay: rgb(0 0 0 / 60%);
+  --be-font-body: var(--body-font-family);
+  --be-font-size-body: 14px;
+  --be-font-size-small: 11px;
+  --be-font-size-bar: 0.9rem;
+  --be-font-weight-bold: var(--font-weight-700);
+  --be-font-weight-normal: var(--font-weight-400);
+  --be-line-height-body: 16px;
+  --be-line-height-small: 14px;
+
+  /* ---- Clinical Data Panel Block (defaults — brands override in styles/{brand}/tokens.css) ---- */
+  --cdp-color-text: var(--text-color);
+  --cdp-color-heading: var(--text-color);
+  --cdp-color-accent: var(--link-color);
+  --cdp-color-muted: var(--color-text-muted);
+  --cdp-color-border: var(--container-border-color);
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: var(--font-size-22);
+  --cdp-font-size-callout: var(--font-size-26);
+  --cdp-font-size-body: var(--font-size-14);
+  --cdp-font-size-small: var(--font-size-13);
+  --cdp-font-weight-bold: var(--font-weight-700);
+  --cdp-font-weight-normal: var(--font-weight-400);
+  --cdp-line-height-callout: var(--line-height-30);
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: var(--line-height-16);
+  --cdp-spacing-sm: var(--spacing-08);
+  --cdp-spacing-md: var(--spacing-16);
+  --cdp-spacing-lg: var(--spacing-24);
+  --cdp-max-width: 1180px;
+  --cdp-letter-spacing-title: 0.02em;
+}
+
+@media (--bp-tablet) {
+  :root {
+    --border-top-radius: 6.4rem;
+    --hero-section-height: 26rem;
+    --hero-tall-image-container-height: 41.6rem;
+  }
+}
+
+@media (--bp-desktop) {
+  :root {
+    --border-top-radius: 8rem;
+    --hero-section-height: 28.8rem;
+    --hero-tall-image-container-height: 60.8rem;
+  }
+}
+
+/* ============================================================
+   SKYRIZI HCP — Brand Token Overrides
+   Source: skyrizihcp.com/dermatology (Platform C)
+   Font: Univers LT W01_57 Condensed
+   ============================================================ */
+
+:root {
+    /* ---- Color: Brand Primary ---- */
+    --color-brand-primary: #005272;
+    --color-brand-primary-dark: #003b52;
+    --color-brand-primary-light: #e8edef;
+
+    /* ---- Color: Brand Accent ---- */
+    --color-brand-accent: #ffce00;
+    --color-brand-accent-teal: #008481;
+    --color-brand-accent-blue: #3860be;
+
+    /* ---- Color: Text ---- */
+    --text-color: #404040;
+    --color-text-heading: #005272;
+    --color-text-on-dark: #fff;
+    --color-text-muted: #696969;
+    --color-text-legal: #555;
+    --color-text-black: #071d49;
+    /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+    --color-text-footer: #e2e4e3;
+
+    /* ---- Color: Background ---- */
+    --background-color: #fff;
+    --color-background-light: #f8f8f8;
+    --color-background-tint: #e8edef;
+    --color-background-footer: #071d49;
+    --color-background-blue: #d3f3ff;
+
+    /* ---- Color: Nav ---- */
+    --color-nav-active: #1ba2da;
+    --color-nav-separator: rgb(255 255 255 / 30%);
+    --color-nav-dropdown-bg: #ccc;
+
+    /* ---- Color: Border ---- */
+    --color-border-default: #ccc;
+    --color-border-muted: #b3b3b3;
+    --color-border-dark: #555;
+
+    /* ---- Color: Overlay ---- */
+    --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+    /* ---- Color: ISI / Safety ---- */
+    --color-safety-bar-bg: #fff;
+    --color-safety-bar-border: #999;
+
+    /* ---- Font: Family ---- */
+    --body-font-family: 'Univers Regular', 'Arial Narrow', sans-serif;
+    --heading-font-family: 'Univers Regular', 'Arial Narrow', sans-serif;
+    --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+    --icon-font-family: 'abbv-iconFont';
+
+    /* ---- Font: Size ---- */
+    --font-size-body: 16px;
+    --font-size-body-small: 14.4px;
+    --font-size-body-xs: 13px;
+    --font-size-legal: 12.992px;
+    --font-size-nav: 14px;
+    --font-size-footer: 14px;
+    --letter-spacing-nav: 0.04em;
+    --font-size-h1: 32px;
+    --font-size-h1-hero: 25px;
+    --font-size-h2: 24px;
+    --font-size-h3: 18.72px;
+    --font-size-h4: 16px;
+    --font-size-h-xl: 35.2px;
+    --font-size-button: 17.6px;
+    --font-size-button-tertiary: 18px;
+    --font-size-eyebrow: 11px;
+
+    /* ---- Font: Weight ---- */
+    --font-weight-body: 400;
+    --font-weight-medium: 500;
+    --font-weight-heading: 700;
+
+    /* ---- Font: Line Height ---- */
+    --line-height-body: normal;
+    --line-height-nav: 22px;
+    --line-height-h1-hero: 24.992px;
+    --line-height-h2: 35px;
+    --line-height-legal: 19.488px;
+
+    /* ---- Border: Radius ---- */
+    --border-radius-button-primary: 30px;
+    --border-radius-button-secondary: 30px;
+    --border-radius-button-tertiary: 10px;
+    --border-radius-nav: 10px;
+    --border-radius-safety-bar: 5px;
+
+    /* ---- Button: Primary ---- */
+    --button-primary-bg: #071d49;
+    --button-primary-color: #fff;
+    --button-primary-border: transparent;
+    --button-primary-padding: 14px 60px 14px 30px;
+    --button-primary-font-size: 0.875rem;
+    --button-primary-font-weight: 400;
+    --button-primary-hover-bg: #1f448c;
+    --button-primary-hover-color: #fff;
+    --button-primary-hover-border: #1f448c;
+
+    /* ---- Button: Secondary ---- */
+    --button-secondary-bg: transparent;
+    --button-secondary-color: #071d49;
+    --button-secondary-border: #071d49;
+    --button-secondary-padding: 14px 30px;
+    --button-secondary-hover-bg: #1f448c;
+    --button-secondary-hover-color: #fff;
+    --button-secondary-hover-border: #1f448c;
+
+    /* ---- Button: Tertiary ---- */
+    --button-tertiary-bg: transparent;
+    --button-tertiary-color: #071d49;
+    --button-tertiary-border: #071d49;
+    --button-tertiary-padding: 14px 30px;
+    --button-tertiary-font-size: 18px;
+    --button-tertiary-hover-bg: #071d49;
+    --button-tertiary-hover-color: #fff;
+
+    /* ---- Button: Plain ---- */
+    --button-plain-color: #1ba2da;
+    --button-plain-weight: 700;
+    --button-plain-hover-color: #fff;
+
+    /* ---- Toggle ---- */
+    --toggle-bg-off: #b3b3b3;
+    --toggle-bg-on: #071d49;
+    --toggle-thumb-color: #fff;
+
+    /* ---- Link ---- */
+    --link-color: #005272;
+
+    /* ---- Gradient ---- */
+    --gradient-fade: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0) 0px,
+        rgb(243, 243, 243) 100%
+    );
+
+    /* ---- Brand Explorer Block ---- */
+    --be-color-text: #21406d;
+    --be-color-text-light: #21406d;
+    --be-color-bar-bg: #25282a;
+    --be-color-rinvoq: #ffd41d;
+    --be-color-rinvoq-hover: #b8860b;
+    --be-color-skyrizi: #00a8e1;
+    --be-color-skyrizi-hover: #0088b5;
+    --be-color-humira: #931947;
+    --be-font-body: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+    --be-font-heading: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+
+    /* ---- Formulary Lookup ---- */
+    --color-formulary-text: #21406d;
+    --color-formulary-heading: #21406d;
+    --color-formulary-label: #21406d;
+    --color-formulary-submit-bg: #071d49;
+    --color-formulary-submit-border: #071d49;
+    --color-border-input: #c2c2c2;
+    --color-error: #eb3c36;
+
+    /* Formulary: Layout */
+    --formulary-form-width: 600px;
+    --formulary-input-width: 600px;
+
+    /* Formulary: Heading */
+    --formulary-heading-size: 16px;
+    --formulary-heading-weight: 400;
+    --formulary-heading-spacing: 16px;
+    --formulary-heading-line-height: 20px;
+
+    /* Formulary: Input/Select */
+    --formulary-input-height: 44px;
+    --formulary-input-radius: 2px;
+    --formulary-input-size: 14px;
+    --formulary-input-padding: 12px 15px;
+
+    /* Formulary: Label */
+    --formulary-label-size: 16px;
+    --formulary-label-weight: 400;
+
+    /* Formulary: Submit */
+    --formulary-submit-size: 14px;
+    --formulary-submit-weight: 700;
+    --formulary-submit-radius: 30px;
+    --formulary-submit-height: 44px;
+    --formulary-submit-padding: 14px 50px 14px 30px;
+    --formulary-submit-icon-offset: 20px;
+
+    /* Formulary: Results */
+    --formulary-results-radius: 4px;
+    --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+    /* Formulary: Input Group */
+    --formulary-input-group-gap: 8px;
+    --formulary-zip-min-width: 200px;
+
+    /* Formulary: Disclaimer/Notice */
+    --formulary-disclaimer-size: 13px;
+    --formulary-disclaimer-width: 700px;
+    --formulary-recaptcha-size: 11px;
+
+    /* ---- Spacing: Common ---- */
+    --spacing-8: 8px;
+    --spacing-16: 16px;
+    --spacing-24: 24px;
+
+    /* ---- Clinical Data Panel Block ---- */
+    --cdp-color-text: #21406d;
+    --cdp-color-heading: #21406d;
+    --cdp-color-accent: #1ba2da;
+    --cdp-color-muted: #50535c;
+    --cdp-color-cta: #071d49;
+    --cdp-font-body: var(--body-font-family);
+    --cdp-font-heading: var(--heading-font-family);
+    --cdp-font-size-title: 22px;
+    --cdp-font-size-callout: 26px;
+    --cdp-font-size-body: 14px;
+    --cdp-font-size-small: 12.8px;
+    --cdp-line-height-callout: 30px;
+    --cdp-line-height-body: 18px;
+    --cdp-line-height-default: 16px;
+    --formulary-recaptcha-size: 11px;   
+  /* ---- Color: Brand Primary ---- */
+  --color-brand-primary: #005272;
+  --color-brand-primary-dark: #003b52;
+  --color-brand-primary-light: #e8edef;
+
+  /* ---- Color: Brand Accent ---- */
+  --color-brand-accent: #ffce00;
+  --color-brand-accent-teal: #008481;
+  --color-brand-accent-blue: #3860be;
+  --color-brand-accent-navy: #004c97;
+  --color-brand-accent-sky: #00a3df;
+  --color-brand-accent-cyan: #1ba2da;
+
+  /* ---- Color: Tabs ---- */
+  --color-tabs-control-bg: #21406d;
+  --color-tabs-underline: #1ba2da;
+  --color-tabs-text: #191c1d;
+  --tabs-underline-height: 0.23rem;
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-text: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Gradient: Tabs ---- */
+  --gradient-tabs-panel: linear-gradient(90deg, #00a3df 0%, #85bde6 74%, #c3ae93 78%, #f39200 88%);
+
+  /* ---- Font: Tabs ---- */
+  --font-family-tabs-control: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+
+  /* ---- Color: Text ---- */
+  --text-color: #404040;
+  --color-text-heading: #005272;
+  --color-text-on-dark: #fff;
+  --color-text-muted: #696969;
+  --color-text-legal: #555;
+  --color-text-black: #071d49;
+  /* Live skyrizihcp.com renders footer text in off-white (not pure #fff) */
+  --color-text-footer: #e2e4e3;
+
+  /* ---- Color: Background ---- */
+  --background-color: #fff;
+  --color-background-light: #f8f8f8;
+  --color-background-tint: #e8edef;
+  --color-background-footer: #071d49;
+  --color-background-blue: #d3f3ff;
+
+  /* ---- Color: Border ---- */
+  --color-border-default: #ccc;
+  --color-border-muted: #b3b3b3;
+  --color-border-dark: #555;
+
+  /* ---- Color: Overlay ---- */
+  --color-overlay-dark: rgba(22, 22, 22, 0.75);
+
+  /* ---- Color: ISI / Safety ---- */
+  --color-safety-bar-bg: #fff;
+  --color-safety-bar-border: #999;
+
+  /* ---- Font: Family ---- */
+  --body-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --heading-font-family-bold: 'Univers LT W01_67 Bold_1476016', 'Arial Narrow', sans-serif;
+  --icon-font-family: 'abbv-iconFont';
+
+  /* ---- Font: Size ---- */
+  --font-size-body: 16px;
+  --font-size-body-small: 14.4px;
+  --font-size-body-xs: 13px;
+  --font-size-legal: 12.992px;
+  --font-size-nav: 14px;
+  --font-size-footer: 14px;
+  --font-size-h1: 32px;
+  --font-size-h1-hero: 25px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18.72px;
+  --font-size-h4: 16px;
+  --font-size-h-xl: 35.2px;
+  --font-size-button: 17.6px;
+  --font-size-button-tertiary: 18px;
+  --font-size-eyebrow: 11px;
+
+  /* ---- Font: Weight ---- */
+  --font-weight-body: 400;
+  --font-weight-medium: 500;
+  --font-weight-heading: 700;
+
+  /* ---- Font: Line Height ---- */
+  --line-height-body: normal;
+  --line-height-nav: 22px;
+  --line-height-h1-hero: 24.992px;
+  --line-height-h2: 35px;
+  --line-height-legal: 19.488px;
+
+  /* ---- Border: Radius ---- */
+  --border-radius-button-primary: 6px;
+  --border-radius-button-tertiary: 10px;
+  --border-radius-nav: 10px;
+  --border-radius-safety-bar: 5px;
+
+  /* ---- Button: Primary ---- */
+  --button-primary-color: #000;
+  --button-primary-bg: #ffce00;
+  --button-primary-border: #fff;
+  --button-primary-padding: 20px 42px 20px 20px;
+
+  /* ---- Button: Tertiary ---- */
+  --button-tertiary-color: #005272;
+  --button-tertiary-bg: transparent;
+  --button-tertiary-border: #555;
+  --button-tertiary-padding: 16px 70px 16px 24px;
+
+  /* ---- Link ---- */
+  --link-color: #005272;
+
+  /* ---- Gradient ---- */
+  --gradient-fade: linear-gradient(to top, rgba(255, 255, 255, 0) 0px, rgb(243, 243, 243) 100%);
+
+  /* ---- Spacing: Common ---- */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+
+  /* ---- Brand Explorer Block ---- */
+  --be-color-text: #21406d;
+  --be-color-text-light: #21406d;
+  --be-color-bar-bg: #25282a;
+  --be-font-body: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+  --be-font-heading: 'Univers LT W01_57 Condensed', 'Arial Narrow', sans-serif;
+
+  /* ---- Clinical Data Panel Block ---- */
+  --cdp-color-text: #21406d;
+  --cdp-color-heading: #21406d;
+  --cdp-color-accent: #1ba2da;
+  --cdp-color-muted: #50535c;
+  --cdp-color-cta: #071d49;
+  --cdp-font-body: var(--body-font-family);
+  --cdp-font-heading: var(--heading-font-family);
+  --cdp-font-size-title: 22px;
+  --cdp-font-size-callout: 26px;
+  --cdp-font-size-body: 14px;
+  --cdp-font-size-small: 12.8px;
+  --cdp-line-height-callout: 30px;
+  --cdp-line-height-body: 18px;
+  --cdp-line-height-default: 16px;
+
+  /* ---- Formulary Lookup ---- */
+  --color-formulary-text: #21406d;
+  --color-formulary-heading: #21406d;
+  --color-formulary-label: #21406d;
+  --color-formulary-submit-bg: #071d49;
+  --color-formulary-submit-border: #071d49;
+  --color-border-input: #c2c2c2;
+  --color-error: #eb3c36;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 600px;
+  --formulary-input-width: 600px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 16px;
+  --formulary-heading-weight: 400;
+  --formulary-heading-spacing: 16px;
+  --formulary-heading-line-height: 20px;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 44px;
+  --formulary-input-radius: 2px;
+  --formulary-input-size: 14px;
+  --formulary-input-padding: 12px 15px;
+
+  /* Formulary: Label */
+  --formulary-label-size: 16px;
+  --formulary-label-weight: 400;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 14px;
+  --formulary-submit-weight: 700;
+  --formulary-submit-radius: 30px;
+  --formulary-submit-height: 44px;
+  --formulary-submit-padding: 14px 50px 14px 30px;
+  --formulary-submit-icon-offset: 20px;
+
+  /* Formulary: Results */
+  --formulary-results-radius: 4px;
+  --formulary-results-shadow: rgb(16 164 222 / 20%) 0 5px 15px 0;
+
+  /* Formulary: Input Group */
+  --formulary-input-group-gap: 8px;
+  --formulary-zip-min-width: 200px;
+
+  /* Formulary: Disclaimer/Notice */
+  --formulary-disclaimer-size: 13px;
+  --formulary-disclaimer-width: 700px;
+  --formulary-recaptcha-size: 11px;
+
+  /* ---- Skyrizi HCP: Image Compare ---- */
+  --color-skyrizi-navy: #071d49;
+  --color-skyrizi-navy-dark: #051331;
+  --color-skyrizi-blue: #1398d1;
+  --color-skyrizi-blue-rule: #1ba2da;
+  --color-skyrizi-blue-hover: #1f448c;
+  --color-skyrizi-body-color: #21406d;
+  --color-skyrizi-gallery-bg: #d1f1fc;
+  --color-skyrizi-accent-border: #f7941d;
+  --color-skyrizi-thumb-strip: #add8e6;
+  --font-skyrizi-condensed: "Univers LT W01_57 Condensed", "Arial Narrow", sans-serif;
+  --font-skyrizi-bold: "Univers LT W01_67 Bold_1476016", "Arial Narrow", sans-serif;
+
+  /* ---- Section Nav ---- */
+  --shadow-section-nav-stuck: 0 2px 12px rgb(0 0 0 / 30%);
+}
+
+/* ============================================================
+   SKYRIZI HCP — Footer brand overrides
+   Live: www.skyrizihcp.com/dermatology
+   Background, font-family, font-size all flow through brand tokens
+   in styles/skyrizi-hcp/tokens.css. Only brand-specific tweaks live here.
+   ============================================================ */
+
+/* Live SkyRizi HCP uses off-white footer text (--color-text-footer)
+   instead of the default --color-text-on-dark: #fff.
+   Centering (1200px max-width via padding-inline max()) is inherited from base. */
+
+.footer-wrapper {
+  --footer-color-text: var(--color-text-footer);
+}
+
+/* ── Mobile-first defaults ──────────────────────────────────── */
+
+/* 1. Tighter gap between stacked link items on mobile */
+
+.footer .footer-links-primary ul,
+.footer .footer-links-secondary ul,
+.footer .footer-links-tertiary ul {
+  gap: var(--spacing-08);
+}
+
+/* 2. Tighter gap between footer-bottom content blocks on mobile */
+
+.footer .footer-bottom {
+  gap: var(--spacing-01);
+}
+
+/* 3. Center AbbVie logo on mobile — text-align won't work on display:block
+   children, so flex+justify-content is used instead */
+
+.footer .footer-bottom > p:has(picture),
+.footer .footer-bottom > p:has(img) {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--spacing-08);
+}
+
+/* Indication code (e.g. US-SKZD-260038) — 40px top gap matches live site */
+
+.footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+  margin-top: var(--spacing-40);
+}
+
+/* ── Desktop (≥ 601px): reset mobile-only overrides ────────── */
+
+@media (width >= 601px) {
+  .footer .footer-links-primary ul,
+  .footer .footer-links-secondary ul,
+  .footer .footer-links-tertiary ul {
+    gap: var(--footer-spacing-row-gap);
+  }
+
+  .footer .footer-bottom {
+    gap: var(--footer-spacing-bottom-gap);
+  }
+
+  .footer .footer-bottom > p:has(picture),
+  .footer .footer-bottom > p:has(img) {
+    display: block;
+    margin-top: 0;
+  }
+
+  .footer .footer-bottom > p:nth-last-child(2):not(:has(picture), :has(img)) {
+    margin-top: 0;
+  }
+}

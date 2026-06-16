@@ -1,0 +1,586 @@
+@import '../hero.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* ============================================================
+   LINZESS DTC — Hero Block Overrides (XWalk/UE preview)
+   ============================================================ */
+
+/* Heading: Bebas Neue, uppercase, purple */
+.hero h1 {
+  color: var(--color-text-heading);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-h1-hero);
+  line-height: var(--line-height-h1-hero);
+  text-transform: uppercase;
+}
+
+.hero h2,
+.hero h3 {
+  font-family: var(--heading-font-family);
+  text-transform: uppercase;
+}
+
+/* Body: Lato */
+.hero p {
+  font-family: var(--body-font-family);
+}
+
+/* Profile band: purple */
+.hero.profile > :where(div):first-child {
+  background-color: var(--color-brand-primary);
+}
+
+/* Profile text panel: white text on purple band */
+.hero.profile h1,
+.hero.profile h2,
+.hero.profile h3,
+.hero.profile p {
+  color: var(--color-text-on-dark);
+}
+
+.hero.profile .hero-breadcrumbs :where(ol li),
+.hero.profile .hero-breadcrumbs :where(li a) {
+  color: var(--color-text-on-dark);
+}
+
+/* CTA button: orange accent */
+.hero :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+.hero.landing :where(a).button,
+.hero.full :where(a).button,
+.hero.video :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* Landing/full gradient: dark-to-transparent overlay from tokens */
+.hero.landing::after,
+.hero.full::after,
+.hero.video::after {
+  background: var(--gradient-hero-overlay);
+}
+
+/* Solid background: purple */
+.hero.solid {
+  background-color: var(--color-brand-primary);
+}
+
+.hero.solid :where(a).button {
+  color: var(--color-brand-accent);
+}
+
+/* ============================================================
+   LINZESS nav-overlap heroes
+   Custom classes:
+   - linzess-behind-nav: header overlays hero
+   - linzess-editorial-hero: left-copy editorial banner
+   - linzess-cta-hero: left-copy CTA banner with curved bottom
+   ============================================================ */
+
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header .nav-wrapper {
+  background: var(--gradient-hero-nav-wrapper);
+  box-shadow: none;
+}
+
+/* Nav hamburger: transparent bg + white text (lower specificity — must come first) */
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-hamburger button {
+  background-color: transparent;
+  color: var(--color-text-on-dark);
+}
+
+/* Nav text: white on dark overlay */
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-brand a,
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-sections > .default-content-wrapper > ul > li > button,
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-tools > .default-content-wrapper > ul > li > button {
+  color: var(--color-text-on-dark);
+}
+
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-hamburger button > span {
+  background: var(--color-text-on-dark);
+}
+
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:hover::after,
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus::after,
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button:focus-visible::after,
+body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)) header nav .nav-item-level-0 .default-content-wrapper > ul > li > button[aria-expanded='true']::after {
+  background: var(--color-brand-accent);
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  min-height: var(--hero-behind-nav-min-height);
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):has(> div:empty) {
+  display: none;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child {
+  position: relative;
+  inset: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child picture,
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > :where(div):first-child img {
+  position: relative;
+  inset: 0;
+  object-fit: cover;
+  border-radius: 0;
+  max-height: none;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero)::after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero-overlay-dual);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* h1/h2/h3/p: white text on dark overlay — comes before more specific p rules */
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h1,
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h2,
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h3,
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) p {
+  color: var(--color-text-on-dark);
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+  margin: 0 0 var(--spacing-20);
+  font-size: var(--font-size-h1-hero);
+  font-weight: var(--font-weight-body);
+  line-height: 90%;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) p {
+  font-size: var(--hero-body-font-size);
+  line-height: var(--hero-body-line-height);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+/* stylelint-disable-next-line selector-not-notation */
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container):not(:first-child):has(> div > p) p {
+  margin: 0;
+  color: var(--color-text-on-dark);
+  font-family: var(--body-font-family);
+  font-size: var(--hero-eyebrow-font-size);
+  font-weight: var(--font-weight-extra-bold);
+  letter-spacing: 0;
+  line-height: var(--hero-eyebrow-line-height);
+  text-transform: uppercase;
+  padding-bottom: var(--spacing-40);
+}
+
+/* stylelint-disable-next-line selector-not-notation */
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container):not(:first-child):has(> div > p) p::after {
+  display: block;
+  margin-top: var(--spacing-24);
+  content: '';
+  background-image: url("/icons/divider.svg");
+  width: var(--spacing-64);
+  height: var(--hero-divider-height);
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(100%, var(--hero-text-max-width));
+  margin: 0;
+  padding: calc(var(--nav-height-mobile) + 4rem) 3.5rem 5.6rem;
+  background: transparent;
+  max-width: none;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
+  grid-column: auto;
+  max-width: var(--hero-cmp-max-width);
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow {
+  display: inline-block;
+  padding: 0;
+  margin: 0 0 var(--spacing-16);
+  color: var(--color-text-on-dark);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-legal-large);
+  font-weight: var(--font-weight-body);
+  letter-spacing: 0;
+  line-height: var(--hero-eyebrow-line-height);
+  text-transform: capitalize;
+}
+
+.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-image-caption {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 20%;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--hero-caption-max-width);
+  margin-inline: auto;
+  padding: 0;
+  background: none;
+  color: var(--color-text-on-dark);
+  font-family: var(--font-family-legal);
+  font-size: var(--hero-caption-font-size);
+  font-style: normal;
+  line-height: var(--hero-caption-line-height);
+  text-align: right;
+  text-shadow: var(--hero-caption-text-shadow);
+}
+
+.hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
+  min-height: var(--hero-cta-min-height);
+}
+
+.hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+  padding-bottom: var(--hero-cta-padding-bottom);
+}
+
+.hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .cmp-container-x-large {
+  max-width: var(--hero-cta-text-max-width);
+}
+
+.hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) h1 {
+  font-size: var(--font-size-40);
+  line-height: 0.9;
+  letter-spacing: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) {
+  min-height: auto;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: var(--hero-cta-curve-bottom);
+  z-index: 2;
+  height: var(--hero-cta-curve-height);
+  background: var(--background-color);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  content: '';
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) p {
+  margin-top: 1.6rem;
+  font-size: var(--font-size-legal-large);
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+  font-size: var(--font-size-40);
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
+  width: min(100%, 72rem);
+  padding-bottom: 7.6rem;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
+  max-width: var(--hero-cta-text-max-width-tablet);
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .button-container {
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button {
+  min-width: var(--hero-cta-btn-min-width);
+  padding: var(--hero-cta-btn-padding);
+  border-radius: var(--border-radius-button-primary);
+  background: var(--color-brand-accent);
+  color: var(--color-brand-primary);
+  font-family: var(--body-font-family);
+  font-size: var(--hero-cta-btn-font-size);
+  font-weight: var(--font-weight-extra-bold);
+  letter-spacing: 0;
+  line-height: var(--hero-cta-btn-line-height);
+  text-transform: none;
+  margin-top: 0;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button::after {
+  display: inline-block;
+  margin-left: var(--hero-cta-btn-arrow-margin);
+  content: '\203A';
+  font-size: var(--hero-cta-btn-arrow-font-size);
+  line-height: 1;
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) :where(a).button:hover {
+  background: var(--color-brand-accent-hover);
+  color: var(--color-brand-primary);
+}
+
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--hero-caption-max-width);
+  min-height: 0;
+  padding: 0;
+  margin-inline: auto;
+}
+
+.hero.linzess-behind-nav-linzess-editorial-hero .hero-eyebrow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  inset: unset;
+  width: 100%;
+  max-width: var(--hero-caption-max-width);
+  min-height: auto;
+  padding: 0;
+  margin-inline: auto;
+  margin-bottom: var(--spacing-40);
+  font-size: var(--font-size-legal-large);
+  font-weight: var(--font-weight-body);
+  text-transform: uppercase;
+}
+
+.hero.linzess-behind-nav-linzess-editorial-hero p.hero-eyebrow::after {
+  display: block;
+  margin-top: var(--spacing-24);
+  content: '';
+  background-image: url("/icons/divider.svg");
+  width: var(--spacing-64);
+  height: var(--hero-divider-height);
+}
+
+@media (width < 744px) {
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) picture img {
+    min-height: var(--hero-mobile-min-height);
+  }
+
+  .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero),
+  .hero-eyebrow,
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) p {
+    font-size: var(--font-size-body);
+    min-height: auto;
+  }
+
+  .hero:is(.linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+    padding: var(--spacing-20);
+    justify-content: center;
+    height: 100%;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
+    bottom: var(--hero-mobile-curve-bottom);
+    height: var(--hero-mobile-curve-height);
+  }
+
+  .hero:is(.linzess-behind-nav-linzess-cta-hero) .button-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .hero:is(.linzess-behind-nav-linzess-cta-hero) .button-container a {
+    font-size: var(--font-size-body);
+  }
+}
+
+@media (width >= 744px) {
+  .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
+    min-height: auto;
+  }
+
+  .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
+    width: min(100%, var(--hero-text-max-width-tablet));
+    padding: calc(var(--nav-height) + 6.4rem) 7rem 7rem;
+  }
+
+  /* Editorial hero keeps a tall band on tablet (matches live ~768px) instead
+     of collapsing to the image's natural aspect ratio. */
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
+    min-height: var(--hero-behind-nav-min-height);
+  }
+
+  /* Image fills the tall band as a background (text overlays it). */
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) > :where(div):first-child {
+    position: absolute;
+  }
+
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+    width: 100%;
+    padding: calc(var(--nav-height) + 6.2rem) 7rem 7rem;
+  }
+
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .cmp-container-x-large {
+    max-width: var(--hero-cmp-max-width-tablet);
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) {
+    min-height: auto;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
+    width: 100%;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
+    display: none;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) {
+    min-height: var(--hero-behind-nav-min-height-desktop);
+  }
+
+  .hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-hero, .linzess-behind-nav-linzess-cta-hero) .hero-text-container {
+    width: min(100%, var(--hero-text-max-width-desktop));
+    padding: calc(var(--nav-height) + 8.4rem) 5.5rem 7.2rem;
+  }
+
+  /* Editorial hero: both image and text containers are absolutely
+     positioned at desktop, so the band needs an explicit min-height
+     (auto would collapse it to 0). */
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
+    min-height: var(--hero-behind-nav-min-height-desktop);
+  }
+
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+    width: 90%;
+    padding: calc(var(--nav-height) + 27.8rem) 11.8rem 8rem;
+  }
+
+  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .cmp-container-x-large {
+    max-width: none;
+    width: 100%;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) {
+    min-height: auto;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: var(--hero-caption-max-width);
+    min-height: 0;
+    padding: 0;
+    margin-inline: auto;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
+    max-width: var(--hero-cmp-max-width-cta);
+  }
+
+  .hero.linzess-behind-nav-linzess-editorial-hero .hero-eyebrow {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    inset: unset;
+    width: 100%;
+    max-width: var(--hero-caption-max-width);
+    min-height: auto;
+    padding: 0;
+    margin-inline: auto;
+    margin-bottom: var(--spacing-40);
+    font-size: var(--font-size-legal-large);
+    font-weight: var(--font-weight-body);
+    text-transform: uppercase;
+  }
+
+  .hero.linzess-behind-nav-linzess-editorial-hero p.hero-eyebrow::after {
+    display: block;
+    margin-top: var(--spacing-24);
+    content: '';
+    background-image: url("/icons/divider.svg");
+    width: var(--spacing-64);
+    height: var(--hero-divider-height);
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
+    display: block;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HOMEPAGE HERO FIX — match live linzess.com computed styles
+   Desktop H1: 56px / line-height 50.4px (live source getComputedStyle)
+   Desktop eyebrow: 16px / weight 400 / no uppercase (live source)
+   Mobile H1: 40px / 36px (live source)
+   Mobile eyebrow: 14px / weight 400 / no uppercase (live source)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Desktop (>= 1024px): H1 = 56px to match live; widen text container to ~960px */
+@media (width >= 1024px) {
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+    font-size: 56px;
+    line-height: 50.4px;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* All viewports: eyebrow fix — sentence case, 16px, normal weight */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* Override the generic p rule that forces 12px/800/uppercase on eyebrow divs */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+/* Hide divider after eyebrow on CTA hero (live homepage has no divider on eyebrow) */
+.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p::after {
+  display: none;
+}
+
+@media (width < 744px) {
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
+    font-size: 40px;
+    line-height: 36px;
+  }
+
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow,
+  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+  }
+}

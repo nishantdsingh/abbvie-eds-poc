@@ -1,0 +1,171 @@
+@import '../quick-poll.css';
+
+/* Rinvoq: radio-circle option buttons — gold ring on left, checkmark on hover/focus */
+
+.quick-poll-container {
+  --qpoll-brushstroke-width: var(--spacing-225);
+  --qpoll-label-letter-spacing: var(--letter-spacing-wide-03);
+
+  padding: var(--spacing-40) var(--spacing-31);
+  margin: 0;
+
+  .default-content-wrapper h4 {
+    font-size: var(--font-size-10);
+    letter-spacing: var(--qpoll-label-letter-spacing);
+    line-height: var(--line-height-18);
+    margin-bottom: var(--spacing-15);
+    position: relative;
+  }
+}
+
+.quick-poll-container .default-content-wrapper h4::after {
+  background-image: url("/icons/brushstroke-poll.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  bottom: calc(-1 * var(--spacing-12));
+  content: "";
+  display: inline-block;
+  height: var(--spacing-12);
+  left: calc(-1 * var(--spacing-15));
+  position: absolute;
+  width: var(--spacing-225);
+}
+
+.quick-poll {
+  --qpoll-option-border-color: transparent;
+  --qpoll-option-color: var(--button-tertiary-color);
+  --qpoll-option-hover-bg: transparent;
+  --qpoll-option-hover-color: var(--button-tertiary-color);
+  --qpoll-option-size: var(--body-font-size-m);
+  --qpoll-pct-color: var(--color-rinvoq-gold);
+  --qpoll-pct-size: var(--heading-font-size-xs);
+  --qpoll-question-size: var(--heading-font-size-xs);
+  --qpoll-result-item-border-color: transparent;
+  --qpoll-circle-size: var(--spacing-40);
+  --qpoll-circle-color: var(--color-rinvoq-gold);
+  --qpoll-btn-icon-size: var(--heading-font-size-xs);
+
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.qpoll-options {
+  flex-direction: column;
+  gap: 0;
+  display: inline-flex;
+}
+
+.qpoll-option {
+  align-items: center;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  flex: none;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-16);
+  gap: var(--spacing-16);
+  padding: var(--spacing-08) 0;
+  text-align: left;
+  margin: 0;
+}
+
+/* Gold ring indicator */
+.qpoll-option::before {
+  border: var(--border-width-default) solid var(--qpoll-circle-color);
+  border-radius: 50%;
+  color: var(--qpoll-circle-color);
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-bold);
+  height: var(--qpoll-circle-size);
+  line-height: var(--qpoll-circle-size);
+  text-align: center;
+  width: var(--qpoll-circle-size);
+}
+
+/* Hover / focus: show checkmark inside ring */
+.qpoll-option:hover::before,
+.qpoll-option:focus-visible::before {
+  content: '✓';
+}
+
+.qpoll-pct {
+  color: var(--qpoll-pct-color);
+  flex-shrink: 0;
+  margin-right: var(--spacing-38);
+}
+
+.qpoll-pct::after {
+  font-size: var(--font-size-16);
+  vertical-align: middle;
+}
+
+/* Results: vertical list — percentage left, label right */
+
+.qpoll-results-label {
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-regular);
+  text-align: left;
+}
+
+.qpoll-result-set {
+  flex-direction: column;
+  gap: var(--spacing-08);
+  text-align: left;
+}
+
+.qpoll-result-item {
+  align-items: center;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: var(--spacing-08) 0;
+}
+
+.qpoll-result-item p {
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-20);
+  margin: 0;
+  text-align: left;
+  width: var(--spacing-200);
+}
+
+.qpoll-results-desc {
+  a.button {
+    background-color: var(--color-white);
+    border: var(--border-width-default) solid var(--color-brand-primary);
+    border-radius: var(--border-radius-base);
+    color: var(--color-brand-primary);
+    font-size: var(--body-font-size-s);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-20);
+    padding: var(--spacing-10);
+    padding-right: var(--spacing-30);
+    position: relative;
+
+    &::after {
+      content: "\e315";
+      font-family: var(--icon-font-family);
+      font-size: var(--qpoll-btn-icon-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--line-height-icon);
+      margin-left: var(--spacing-10);
+      margin-top: calc(-1 * var(--spacing-08));
+      position: absolute;
+      right: 0;
+      top: 50%;
+      vertical-align: middle;
+    }
+  }
+}
+
+@media (width >= 1024px) { 
+  .quick-poll-container { 
+    padding: var(--spacing-45) var(--spacing-70);
+  }
+}

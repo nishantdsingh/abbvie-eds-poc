@@ -1,0 +1,337 @@
+{
+  "PhysicianLocatorResponse": {
+    "PhysicianLocatorResponseHeader": {
+      "PublisherName": "VENXTACLLCOM"
+    },
+    "PhysicianLocatorResponseBody": {
+      "IsStatusSuccessful": "true",
+      "ContentResult": {
+        "MatchCount": "10",
+        "RecordCount": "10",
+        "Party": [
+          {
+            "PartyID": "100001",
+            "PartyName": "Byung Kim",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Byung",
+              "LastName": "Kim",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "8806 55th Ave",
+                "CityName": "Elmhurst",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11373",
+                "Latitude": "40.7376",
+                "Longitude": "-73.8786",
+                "DistanceInMiles": "2.63",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0101" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100002",
+            "PartyName": "Triantafillos Fillos",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Triantafillos",
+              "LastName": "Fillos",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "8806 55th Ave",
+                "CityName": "Elmhurst",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11373",
+                "Latitude": "40.8210",
+                "Longitude": "-73.9560",
+                "DistanceInMiles": "2.63",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0102" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100003",
+            "PartyName": "Li-teh Wu",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Li-teh",
+              "LastName": "Wu",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "8806 55th Ave",
+                "CityName": "Elmhurst",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11373",
+                "Latitude": "40.8160",
+                "Longitude": "-73.9495",
+                "DistanceInMiles": "2.63",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0103" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100004",
+            "PartyName": "Evan Scott Diamond",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Evan",
+              "MiddleName": "Scott",
+              "LastName": "Diamond",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "8714 57th Rd",
+                "CityName": "Elmhurst",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11373",
+                "Latitude": "40.7510",
+                "Longitude": "-73.9760",
+                "DistanceInMiles": "2.77",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0104" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100005",
+            "PartyName": "Maria Gonzalez",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Maria",
+              "LastName": "Gonzalez",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "ON", "SpecialtyDescription": "Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "120 East 36th St",
+                "CityName": "New York",
+                "StateProvinceCode": "NY",
+                "PostalCode": "10016",
+                "Latitude": "40.7466",
+                "Longitude": "-73.9785",
+                "DistanceInMiles": "3.10",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "212-555-0105" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100006",
+            "PartyName": "David Chen",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "David",
+              "LastName": "Chen",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "455 Central Park Ave",
+                "CityName": "Long Island City",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11101",
+                "Latitude": "40.7480",
+                "Longitude": "-73.9380",
+                "DistanceInMiles": "3.42",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0106" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100007",
+            "PartyName": "Sarah Patel",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Sarah",
+              "LastName": "Patel",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "ON", "SpecialtyDescription": "Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "200 West 57th St",
+                "CityName": "New York",
+                "StateProvinceCode": "NY",
+                "PostalCode": "10019",
+                "Latitude": "40.7660",
+                "Longitude": "-73.9810",
+                "DistanceInMiles": "3.85",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "212-555-0107" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100008",
+            "PartyName": "Michael Brown",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Michael",
+              "LastName": "Brown",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "350 Broadway",
+                "CityName": "New York",
+                "StateProvinceCode": "NY",
+                "PostalCode": "10013",
+                "Latitude": "40.7180",
+                "Longitude": "-74.0040",
+                "DistanceInMiles": "4.10",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "212-555-0108" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100009",
+            "PartyName": "Jennifer Lee",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Jennifer",
+              "LastName": "Lee",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "ON", "SpecialtyDescription": "Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "85 Riverside Dr",
+                "CityName": "New York",
+                "StateProvinceCode": "NY",
+                "PostalCode": "10024",
+                "Latitude": "40.7860",
+                "Longitude": "-73.9760",
+                "DistanceInMiles": "4.55",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "212-555-0109" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          },
+          {
+            "PartyID": "100010",
+            "PartyName": "Robert Singh",
+            "PartyTypeDescription": "Physician",
+            "PartyStatusCode": "0",
+            "HCPExtension": {
+              "FirstName": "Robert",
+              "LastName": "Singh",
+              "NamePrefix": "Dr.",
+              "DegreeCode": "MD",
+              "ProfessionalDesignationDescription": "Medical Doctor",
+              "PrescriberStatus": "PRESCRIBERS"
+            },
+            "Specialty": [{ "SpecialtyCode": "HO", "SpecialtyDescription": "Hematology/Oncology", "BestSpecialtyIndicator": "YES" }],
+            "PartyAddress": [
+              {
+                "AddressTypeDescription": "Practice",
+                "AddressLine1": "78 Atlantic Ave",
+                "CityName": "Brooklyn",
+                "StateProvinceCode": "NY",
+                "PostalCode": "11201",
+                "Latitude": "40.6920",
+                "Longitude": "-73.9990",
+                "DistanceInMiles": "4.92",
+                "BestAddressIndicator": "Yes"
+              }
+            ],
+            "Communication": [
+              { "CommunicationTypeCode": "203200", "CommunicationTypeDescription": "Telephone", "CommunicationValueText": "718-555-0110" }
+            ],
+            "HCPBrandData": [{ "BrandName": "VENCLEXTA", "IndicationName": "CLL", "ShowInUnbranded": "Y" }]
+          }
+        ]
+      }
+    }
+  }
+}

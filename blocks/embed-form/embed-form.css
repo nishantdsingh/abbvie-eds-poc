@@ -1,0 +1,23 @@
+.embed-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.embed-form-container {
+  min-height: 100px;
+}
+
+.embed-form-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-style: italic;
+  color: var(--text-color-light, var(--text-color));
+}
+
+.embed-form-error {
+  color: var(--color-error, var(--text-color));
+  text-align: center;
+  padding: var(--spacing-16, 1.6rem);
+}

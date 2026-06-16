@@ -1,0 +1,68 @@
+/* MAVYRET HCP — Font Declarations
+   Primary: Univers LT W01 Condensed
+   Bold: Univers LT W01 67 Bold
+   Secondary: Barlow Condensed, Barlow Semi Condensed */
+
+@font-face {
+  font-family: 'Univers LT W01_57 Condensed';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/univers-condensed.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Univers LT W01_67 Bold_1476016';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/univers-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/cards-grid-mavyret/barlow-condensed-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/cards-grid-mavyret/barlow-condensed-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/cards-grid-mavyret/barlow-condensed-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Semi Condensed';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/mavyret/BarlowSemiCondensed-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'trade-gothic-next';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/trade-gothlic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'trade-gothic-next';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/trade-gothic-next.woff2') format('woff2');
+}

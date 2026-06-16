@@ -1,0 +1,392 @@
+{
+  "analysisDate": "2026-04-23",
+  "summary": "Analysis of 18 Linzess DTC sub-page URLs. The Linzess site has been restructured to use anchor-based navigation on parent pages. Most sub-page URLs now return 404 or redirect to parent pages with hash anchors.",
+
+  "urlStatusSummary": {
+    "total": 18,
+    "page404": 11,
+    "redirectToParent": 3,
+    "redirectToExternal": 1,
+    "liveUniquePage": 3,
+    "details": [
+      {"url": "https://www.linzess.com/why-linzess/what-to-expect", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/why-linzess/linzess-patient-experiences/getting-on-same-page", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/why-linzess/linzess-patient-experiences/setting-expectations", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/understanding-constipation/ibs-c-cic", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/understanding-constipation/constipation-treatment-options", "status": "redirect-to-parent", "redirectsTo": "https://www.linzess.com/understanding-constipation", "title": "Understanding Symptoms & Types of Constipation | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/find-relief/how-to-take-linzess", "status": "redirect-to-parent", "redirectsTo": "https://www.linzess.com/find-relief#howtotake", "title": "Find Relief | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/resources/healthy-routines", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/resources/wellness-tips", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/resources/community-resources", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/savings-and-support/financial-support", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/savings-and-support/check-my-symptoms", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/savings-and-support/faqs", "status": "live", "title": "Frequently Asked Questions | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/savings-and-support/sign-up", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/savings-and-support/linzess-savings-program", "status": "redirect-to-parent", "redirectsTo": "https://www.linzess.com/savings-and-support", "title": "Cost Savings & Financial Support | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/contact-us", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/privacy-notice", "status": "redirect-to-external", "redirectsTo": "https://privacy.abbvie/privacy-policies/us-privacy-policy.html", "note": "Redirects to AbbVie global privacy policy"},
+      {"url": "https://www.linzess.com/terms-of-use", "status": "404", "title": "Page Not Found | LINZESS® (linaclotide)"},
+      {"url": "https://www.linzess.com/sitemap", "status": "live", "title": "Sitemap | LINZESS® (linaclotide)"}
+    ]
+  },
+
+  "livePages": {
+    "page_faqs": {
+      "url": "https://www.linzess.com/savings-and-support/faqs",
+      "title": "Frequently Asked Questions | LINZESS® (linaclotide)",
+      "pageType": "faq-page",
+      "mainStructure": [
+        {"section": "hero-header", "content": "FAQs eyebrow + H1: Frequently Asked Questions About IBS-C, CIC & LINZESS"},
+        {"section": "accordion-group-1", "heading": "IBS-C, CIC & Chronic Constipation", "items": [
+          "What's the difference between occasional and chronic constipation?",
+          "Is there a cure for IBS-C or CIC?"
+        ]},
+        {"section": "accordion-group-2", "heading": "What LINZESS Does & How it Can Help", "items": [
+          "How is LINZESS different than a laxative?",
+          "What does LINZESS do?",
+          "When can I expect to start seeing my symptoms improve with LINZESS?"
+        ]},
+        {"section": "accordion-group-3", "heading": "Getting Treatment & More Resources", "items": [
+          "How do I start a conversation with a doctor about my symptoms?",
+          "Besides talking to a doctor, where else can I find information about IBS-C or CIC?"
+        ]},
+        {"section": "accordion-group-4", "heading": "Your LINZESS Prescription", "items": [
+          "How much does LINZESS cost?",
+          "Why do I need to take LINZESS daily?",
+          "What is the best time of day to take LINZESS?",
+          "How do I know if LINZESS is working for me?",
+          "Is it common to experience diarrhea when starting LINZESS?",
+          "What should I do if I experience any severe side effects?",
+          "Where should I store LINZESS?"
+        ]},
+        {"section": "cta-cards", "items": ["Check My Symptoms -> /find-relief/gutcheck", "How LINZESS Can Help -> /why-linzess"]},
+        {"section": "isi", "content": "USES + IMPORTANT RISK INFORMATION (full inline ISI)"},
+        {"section": "footer", "content": "Standard Linzess footer with navigation"}
+      ],
+      "components": {
+        "accordion": {"count": 14, "type": "FAQ accordion with button toggles, grouped by category"},
+        "cta-cards": {"count": 2, "type": "Bottom CTA navigation cards"},
+        "isi": {"type": "Full inline ISI + floating/sticky ISI bar"},
+        "header": {"type": "Standard Linzess header with utility nav, logo, Check My Symptoms CTA"}
+      }
+    },
+
+    "page_find_relief": {
+      "url": "https://www.linzess.com/find-relief#howtotake",
+      "title": "Find Relief | LINZESS® (linaclotide)",
+      "note": "/find-relief/how-to-take-linzess redirects here with #howtotake anchor",
+      "pageType": "content-page-with-anchors",
+      "mainStructure": [
+        {"section": "hero-header", "content": "Find Relief eyebrow + H1: Chronic Constipation Calls for a Conversation"},
+        {"section": "jump-links", "items": ["Talk to a Doctor -> #talktoadoctor", "How to Take LINZESS -> #howtotake"]},
+        {"section": "talk-to-doctor", "anchor": "#talktoadoctor", "content": [
+          "H2 heading: What To Talk About At Your Visit",
+          "4-item numbered list: Discuss Your Symptoms, List Out What You've Tried, Have a Plan, Learn More About LINZESS",
+          "CTA callout: Prepare for Your Visit With the Gut Check + Get My Discussion Guide button",
+          "H2: Why Finding The Right Doctor Is Important",
+          "Brightcove video player: GETTING ON THE SAME PAGE (ID: 6391879132112) with transcript link"
+        ]},
+        {"section": "how-to-take", "anchor": "#howtotake", "content": [
+          "H2: What to Know Before Starting LINZESS",
+          "Brightcove video player: WHAT TO KNOW BEFORE STARTING LINZESS (ID: 6337642986112) with transcript link",
+          "H2: Already Been Prescribed LINZESS?",
+          "2-column cards: Refill on Time, Keep Your Doctor Updated",
+          "Savings card signup section with 3 methods: Text/Call/Click",
+          "Tab component: Instructions For Adults & Children (Adults with IBS-C or CIC | Pediatric Functional Constipation)",
+          "Dosing instructions: Every Day, Once a Day, On an Empty Stomach, With Applesauce or Water",
+          "Storage instructions section",
+          "Savings card promo with image"
+        ]},
+        {"section": "cta-cards", "items": ["Check My Symptoms -> /find-relief/gutcheck", "See Resources -> /resources"]},
+        {"section": "isi", "content": "Full inline ISI"},
+        {"section": "footer", "content": "Standard Linzess footer"}
+      ],
+      "components": {
+        "video": {"count": 2, "type": "Brightcove video players", "ids": ["6391879132112", "6337642986112"]},
+        "tabs": {"count": 1, "type": "Adult vs Pediatric dosing instructions toggle"},
+        "accordion": {"count": 0},
+        "cards": {"count": 4, "type": "Numbered instruction cards + savings sign-up cards"},
+        "cta": {"count": "multiple", "types": ["Text to Sign Up (sms:59257)", "Call to Sign Up (tel:1-855-859-5614)", "Sign Up Online (/savings-card)", "Get My Discussion Guide", "Sign Up Now"]},
+        "isi": {"type": "Full inline ISI + floating/sticky ISI bar"},
+        "savings-card-promo": {"count": 2, "note": "Savings card promo sections with $30 offer"}
+      }
+    },
+
+    "page_savings_and_support": {
+      "url": "https://www.linzess.com/savings-and-support",
+      "title": "Cost Savings & Financial Support | LINZESS® (linaclotide)",
+      "note": "/savings-and-support/linzess-savings-program redirects here",
+      "pageType": "content-page-with-anchors",
+      "mainStructure": [
+        {"section": "hero-header", "content": "Savings & Support eyebrow + H1: See If You're Eligible To Save on LINZESS"},
+        {"section": "jump-links", "items": ["Savings -> #savings", "Financial Support -> #financialsupport"]},
+        {"section": "savings", "anchor": "#savings", "content": [
+          "Heading: You Could Pay as Little as $30* For 90 or 30 Days of LINZESS",
+          "Image + text: savings card promo with Sign Up Now CTA",
+          "3-column cards: Text/Call/Click sign-up methods",
+          "Fine print with Program Terms accordion"
+        ]},
+        {"section": "financial-support", "anchor": "#financialsupport", "content": [
+          "H2: What Financial Help Is Available?",
+          "WAC pricing info: $282.48/month as of January 2026",
+          "Insurance coverage table with 6 rows: Commercial Insurance, Medicaid, Medicare Part D, Medicare LIS, Other Insurance (VA/DOD/TRICARE), Uninsured",
+          "2-column info cards: Insurance Coverage Support, MyAbbvie Assist",
+          "CTA callout: Ready to Talk to Your Doctor? -> Start My Discussion Guide"
+        ]},
+        {"section": "cta-cards", "items": ["Check My Symptoms -> /find-relief/gutcheck", "Why LINZESS? -> /why-linzess"]},
+        {"section": "isi", "content": "Full inline ISI"},
+        {"section": "footer", "content": "Standard Linzess footer"}
+      ],
+      "components": {
+        "table": {"count": 1, "type": "Insurance coverage comparison table (6 coverage types x 2 columns)"},
+        "accordion": {"count": 1, "type": "Program Terms, Conditions accordion"},
+        "cards": {"count": 5, "types": ["3 savings signup method cards", "2 info cards (Insurance Coverage, MyAbbVie Assist)"]},
+        "cta": {"count": "multiple", "types": ["Sign Up Now", "Text to Sign Up (sms:59257)", "Call to Sign Up (tel:1-855-859-5614)", "Sign Up Online (/savings-card)", "Activate now", "Start My Discussion Guide"]},
+        "jump-links": {"count": 1, "type": "Dropdown jump-to navigation"},
+        "isi": {"type": "Full inline ISI + floating/sticky ISI bar"}
+      }
+    },
+
+    "page_sitemap": {
+      "url": "https://www.linzess.com/sitemap",
+      "title": "Sitemap | LINZESS® (linaclotide)",
+      "pageType": "sitemap",
+      "mainStructure": [
+        {"section": "header", "content": "H1: Sitemap"},
+        {"section": "sitemap-links", "columns": [
+          {"heading": "Why LINZESS", "links": [
+            "How LINZESS Can Help -> /why-linzess#howlinzesscanhelp",
+            "How LINZESS Works -> /why-linzess#howlinzessworks",
+            "Side Effects of LINZESS -> /why-linzess#sideeffects",
+            "LINZESS Patient Experiences -> /why-linzess#patientexperiences"
+          ]},
+          {"heading": "Understanding Constipation", "links": [
+            "Types of Constipation -> /understanding-constipation#typesofconstipation",
+            "IBS-C & CIC -> /understanding-constipation#ibsccic",
+            "Constipation Treatment Options -> /understanding-constipation#treatmentoptions",
+            "Pediatric Functional Constipation -> /understanding-constipation#pediatric"
+          ]},
+          {"heading": "Find Relief", "links": [
+            "Talk to a Doctor -> /find-relief#talktoadoctor",
+            "How to Take LINZESS -> /find-relief#howtotake"
+          ]},
+          {"heading": "Resources", "links": [
+            "Healthy Routines -> /resources#healthyroutines",
+            "Wellness Tips -> /resources#wellnesstips",
+            "Community Resources -> /resources#communityresources"
+          ]},
+          {"heading": "Savings & Support", "links": [
+            "Savings -> /savings-and-support#savings",
+            "Financial Support -> /savings-and-support#financialsupport"
+          ]},
+          {"heading": "(standalone links)", "links": [
+            "Check My Symptoms -> /find-relief/gutcheck",
+            "FAQs -> /savings-and-support/faqs",
+            "Sign Up for Updates -> /savings-and-support/from-the-gut"
+          ]}
+        ]},
+        {"section": "isi", "content": "Full inline ISI"},
+        {"section": "footer", "content": "Standard Linzess footer"}
+      ],
+      "components": {
+        "isi": {"type": "Full inline ISI + floating/sticky ISI bar"}
+      }
+    }
+  },
+
+  "page404Analysis": {
+    "url": "https://www.linzess.com/[any-404-url]",
+    "title": "Page Not Found | LINZESS® (linaclotide)",
+    "mainStructure": [
+      {"section": "header", "content": "Standard Linzess header"},
+      {"section": "error-content", "content": [
+        "H1: THIS PAGE MAY HAVE MOVED",
+        "Go back to the homepage link",
+        "H2: You might be able to find what you're looking for through one of these links:",
+        "Link: Learn more about the types of constipation -> /understanding-constipation#typesofconstipation",
+        "Link: Find out how LINZESS works -> /why-linzess#howlinzessworks",
+        "Link: Take the 5-question Gut Check -> /find-relief/gutcheck"
+      ]},
+      {"section": "isi", "content": "Full inline ISI"},
+      {"section": "footer", "content": "Standard Linzess footer"}
+    ],
+    "note": "404 pages have a delayed JavaScript redirect that sends users to random AbbVie brand sites (SKYRIZI, RINVOQ, VENCLEXTA, MAVYRET). The 404 page itself has the correct Linzess branding and content."
+  },
+
+  "actualSiteStructure": {
+    "note": "The Linzess DTC site has been restructured from multi-page to single-page-with-anchors architecture. The sitemap confirms only these distinct pages exist:",
+    "pages": [
+      {"path": "/", "title": "Homepage"},
+      {"path": "/why-linzess", "title": "Why LINZESS", "anchors": ["#howlinzesscanhelp", "#howlinzessworks", "#sideeffects", "#patientexperiences"]},
+      {"path": "/understanding-constipation", "title": "Understanding Constipation", "anchors": ["#typesofconstipation", "#ibsccic", "#treatmentoptions", "#pediatric"]},
+      {"path": "/find-relief", "title": "Find Relief", "anchors": ["#talktoadoctor", "#howtotake"]},
+      {"path": "/find-relief/gutcheck", "title": "Check My Symptoms (Gut Check Quiz)"},
+      {"path": "/resources", "title": "Resources", "anchors": ["#healthyroutines", "#wellnesstips", "#communityresources"]},
+      {"path": "/savings-and-support", "title": "Savings & Support", "anchors": ["#savings", "#financialsupport"]},
+      {"path": "/savings-and-support/faqs", "title": "FAQs"},
+      {"path": "/savings-and-support/from-the-gut", "title": "Sign Up for Updates"},
+      {"path": "/savings-card", "title": "Savings Card Activation"},
+      {"path": "/sitemap", "title": "Sitemap"}
+    ]
+  },
+
+  "commonStructuralPatterns": {
+    "pageLayout": "All Linzess pages follow the same layout: promo-bar > header > main > inline-ISI > footer > floating-ISI-bar > cookie-banner",
+    "promoBar": {
+      "description": "Top banner with 'Save on Linzess' message, Learn how CTA -> /savings-and-support, phone number 1-855-226-3937",
+      "role": "region",
+      "ariaLabel": "Save on Linzess"
+    },
+    "header": {
+      "description": "Standard Linzess header with utility nav (Prescribing Info, Medication Guide), logo, Check My Symptoms CTA, hamburger menu",
+      "role": "banner",
+      "utilityNav": ["Prescribing Information (external PDF)", "Medication Guide (external PDF)"],
+      "primaryCTA": "Check My Symptoms -> /find-relief/gutcheck"
+    },
+    "jumpLinks": {
+      "description": "Dropdown jump-to navigation for long pages with anchor sections",
+      "foundOn": ["/find-relief", "/savings-and-support"],
+      "pattern": "Select dropdown with anchor links"
+    },
+    "inlineISI": {
+      "description": "Full Important Safety Information section with USES and IMPORTANT RISK INFORMATION headings",
+      "role": "region",
+      "ariaLabel": "Important Safety Information",
+      "structure": "USES heading + indication text, IMPORTANT RISK INFORMATION heading + boxed warning + side effects + FDA reporting + PI/MG links",
+      "jobCode": "US-LIN-250121"
+    },
+    "floatingISI": {
+      "description": "Sticky bottom bar with expandable ISI content",
+      "pattern": "Button 'Expand Safety Information' that toggles full ISI content overlay",
+      "containsRegions": ["USES", "IMPORTANT RISK INFORMATION"]
+    },
+    "footer": {
+      "description": "6-column footer navigation matching sitemap structure + legal links + logos",
+      "columns": ["WHY LINZESS", "UNDERSTANDING CONSTIPATION", "FIND RELIEF", "RESOURCES", "SAVINGS & SUPPORT", "CHECK MY SYMPTOMS/FAQs/SIGN UP"],
+      "legalLinks": ["Accessibility Statement", "Contact Us", "Terms of Use", "Terms and Conditions", "Privacy Notice", "Consumer Health Data Privacy Notice", "Cookies Settings", "Sitemap", "Your Privacy Choices"],
+      "logos": ["AbbVie", "Ironwood"],
+      "jobCode": "US-LIN-250071"
+    },
+    "ctaCards": {
+      "description": "Bottom-of-page 2-column CTA cards linking to other sections",
+      "pattern": "Each card has a title + 'Learn More' link with arrow icon",
+      "commonPairs": [
+        ["Check My Symptoms", "How LINZESS Can Help"],
+        ["Check My Symptoms", "Why LINZESS?"],
+        ["Check My Symptoms", "See Resources"]
+      ]
+    },
+    "savingsSignup": {
+      "description": "3-method savings card signup pattern found on /find-relief and /savings-and-support",
+      "methods": [
+        {"type": "Text", "action": "Text LINZESS to 59257", "url": "sms:59257"},
+        {"type": "Call", "action": "Call 1-855-859-5614", "url": "tel:1-855-859-5614"},
+        {"type": "Click", "action": "Sign up online", "url": "/savings-card"}
+      ]
+    }
+  },
+
+  "uniqueAbbvClasses": {
+    "note": "abbv-* classes found from the 404 page DOM (which loads the full Linzess framework). Due to redirect issues, JS evaluation on live pages returned data from other AbbVie sites. The classes below are from the Linzess-specific page snapshot analysis.",
+    "layoutClasses": [
+      "abbv-container", "abbv-content", "abbv-content-container", "abbv-content-top",
+      "abbv-col", "abbv-col-12", "abbv-row", "abbv-row-container", "abbv-row-flush", "abbv-row-margin-bottom",
+      "abbv-flex-container-v2", "abbv-flex-item-v2"
+    ],
+    "headerClasses": [
+      "abbv-header-v2", "abbv-header-v2-content", "abbv-header-v2-left", "abbv-header-v2-right",
+      "abbv-header-v2-lite", "abbv-header-v2-fl-safety", "abbv-header-v2-utility-navigation",
+      "abbv-header-v2-primary-navigation", "abbv-header-v2-mobile-primary-navigation",
+      "abbv-header-content-container", "abbv-header-primary-navigation-submenu",
+      "abbv-header-util", "abbv-has-submenu", "abbv-submenu", "abbv-navigation", "abbv-nav-active"
+    ],
+    "footerClasses": [
+      "abbv-footer", "abbv-footer-content", "abbv-footer-horizontal", "abbv-footer-border-top"
+    ],
+    "componentClasses": [
+      "abbv-accordion", "abbv-accordion-blade", "abbv-accordion-blade-1", "abbv-accordion-blade-content",
+      "abbv-accordion-blade-icon", "abbv-accordion-blade-text", "abbv-accordion-container", "abbv-accordion-content", "abbv-accordion-single",
+      "abbv-modal", "abbv-modal-close", "abbv-modal-close-inline", "abbv-modal-content", "abbv-modal-content-container", "abbv-modal-open",
+      "abbv-image-text", "abbv-image-text-v2", "abbv-image-text-img", "abbv-image-text-img-large", "abbv-image-text-img-medium", "abbv-image-text-img-small",
+      "abbv-image-text-content-container-v2", "abbv-image-text-content-v2", "abbv-image-text-display-v2", "abbv-image-text-out",
+      "abbv-image-content-container", "abbv-image-content-container-v2", "abbv-image-scale", "abbv-image-swap", "abbv-swap-images",
+      "abbv-video-player", "abbv-video-container", "abbv-video-content", "abbv-video-content-container",
+      "abbv-rich-text", "abbv-rich-text-common",
+      "abbv-title", "abbv-eyebrow", "abbv-eyebrow-large", "abbv-eyebrow-medium", "abbv-eyebrow-small"
+    ],
+    "isiClasses": [
+      "abbv-inline-use-isi", "abbv-inline-safety", "abbv-inline-use", "abbv-inline-miscisi", "abbv-isi-content",
+      "abbv-safety-bar", "abbv-safety-bar-content", "abbv-safety-bar-content-maximized",
+      "abbv-safety-bar-content-minimized-desktop", "abbv-safety-bar-content-minimized-desktop-more",
+      "abbv-safety-bar-content-minimized-mobile", "abbv-safety-bar-content-minimized-mobile-more",
+      "abbv-safety-bar-button-plus", "abbv-safety-bar-button-minus", "abbv-safety-bar-fade",
+      "abbv-safety-bar-less", "abbv-safety-bar-more",
+      "abbv-floating-isi", "abbv-floating-isi-v2"
+    ],
+    "formClasses": [
+      "abbv-formulary", "abbv-formulary-dynamic", "abbv-formulary-error", "abbv-formulary-note",
+      "abbv-formulary-results", "abbv-formulary-results-container", "abbv-formulary-results-header", "abbv-formulary-zipcode",
+      "abbv-form-checkbox", "abbv-form-checkbox-click", "abbv-form-radio-button",
+      "abbv-pick-indication", "abbv-plan-category", "abbv-selected-area", "abbv-paging-numbers"
+    ],
+    "buttonClasses": [
+      "abbv-button-primary", "abbv-button-secondary", "abbv-button-plain", "abbv-button--width-auto"
+    ],
+    "iconClasses": [
+      "abbv-icon-add", "abbv-icon-add_circle", "abbv-icon-archive", "abbv-icon-arrow_upward",
+      "abbv-icon-cancel", "abbv-icon-close", "abbv-icon-keyboard_arrow_right", "abbv-icon-remove_circle", "abbv-icon-search"
+    ],
+    "utilityClasses": [
+      "abbv-active", "abbv-loaded", "abbv-animation", "abbv-animation-loading",
+      "abbv-back-to-top", "abbv-badgeless-captcha", "abbv-browser-chrome", "abbv-clear",
+      "abbv-dimmer", "abbv-embed-pro", "abbv-error-msg", "abbv-html-container",
+      "abbv-jump-link", "abbv-label-text", "abbv-label-checkbox",
+      "abbv-legal-number", "abbv-legal-text", "abbv-signed-out", "abbv-social-copy",
+      "abbv-skip-to-main-content", "abbv-sticky", "abbv-sticky-anchor", "abbv-stretched-card-body",
+      "abbv-svg-defs", "abbv-hide-mobile", "abbv-hide-tablet", "abbv-search", "abbv-search-navigation",
+      "abbv-search-suggestions", "abbv-search-toggle", "abbv-additional-info"
+    ],
+    "backgroundClasses": [
+      "abbv-background-container", "abbv-background-container--flex-center", "abbv-background-container--reset",
+      "abbv-background-container-content", "abbv-background-container-display",
+      "abbv-background-container-image-bg", "abbv-background-container-image-swap-bg", "abbv-background-container-video-bg"
+    ]
+  },
+
+  "migrationImplications": {
+    "urlMapping": {
+      "description": "Most sub-page URLs from the original list are now 404 or redirect. The actual content lives on 5 main section pages plus 3-4 standalone pages.",
+      "redirectMap": {
+        "/why-linzess/what-to-expect": "CONTENT CONSOLIDATED INTO /why-linzess (404)",
+        "/why-linzess/linzess-patient-experiences/getting-on-same-page": "VIDEO CONTENT MOVED TO /find-relief#talktoadoctor (404, but video is on find-relief)",
+        "/why-linzess/linzess-patient-experiences/setting-expectations": "VIDEO CONTENT MOVED TO /find-relief#howtotake (404, but video is on find-relief)",
+        "/understanding-constipation/ibs-c-cic": "CONTENT CONSOLIDATED INTO /understanding-constipation#ibsccic (404)",
+        "/understanding-constipation/constipation-treatment-options": "REDIRECTS TO /understanding-constipation",
+        "/find-relief/how-to-take-linzess": "REDIRECTS TO /find-relief#howtotake",
+        "/resources/healthy-routines": "CONTENT CONSOLIDATED INTO /resources#healthyroutines (404)",
+        "/resources/wellness-tips": "CONTENT CONSOLIDATED INTO /resources#wellnesstips (404)",
+        "/resources/community-resources": "CONTENT CONSOLIDATED INTO /resources#communityresources (404)",
+        "/savings-and-support/financial-support": "CONTENT CONSOLIDATED INTO /savings-and-support#financialsupport (404)",
+        "/savings-and-support/check-my-symptoms": "REDIRECTS TO /find-relief/gutcheck (404 on this path)",
+        "/savings-and-support/sign-up": "CONTENT MOVED TO /savings-and-support/from-the-gut (404)",
+        "/savings-and-support/linzess-savings-program": "REDIRECTS TO /savings-and-support",
+        "/contact-us": "EXTERNAL: https://www.abbvie.com/contactus.html (404)",
+        "/privacy-notice": "EXTERNAL: https://privacy.abbvie/privacy-policies/us-privacy-policy.html",
+        "/terms-of-use": "EXTERNAL: https://www.abbvie.com/termsofuse.html (404)"
+      }
+    },
+    "platformSignature": "Platform C (abbv-*): Uses abbv-header-v2, abbv-container, abbv-col-*, abbv-accordion, abbv-modal, etc.",
+    "keyComponents": [
+      "abbv-header-v2 (header with utility nav, v2 variant used on Linzess)",
+      "abbv-accordion (FAQ items and expandable content)",
+      "abbv-video-player (Brightcove video embeds)",
+      "abbv-image-text-v2 (image + text combination layouts)",
+      "abbv-floating-isi-v2 (sticky bottom ISI bar)",
+      "abbv-safety-bar (expandable safety information bar)",
+      "abbv-modal (modals for Terms & Conditions, external links)",
+      "abbv-formulary (insurance/formulary lookup - found on 404 page framework)",
+      "abbv-background-container (section backgrounds with image/video/color variants)",
+      "abbv-flex-container-v2 (flexible layout containers for cards, CTAs)"
+    ]
+  }
+}

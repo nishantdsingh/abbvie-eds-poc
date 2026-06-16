@@ -1,0 +1,108 @@
+@import '../clinical-data-panel.css';
+
+/* Mavyret HCP — clinical-data-panel brand overrides
+   Source: mavyret.com/hcp/efficacy
+   --cdp-* tokens declared in styles/mavyret/tokens.css */
+
+.clinical-data-panel {
+  padding: 0 20px;
+}
+
+/* ── footnotes ── */
+.clinical-data-panel-footnotes {
+  border-top: none;
+  padding-top: var(--cdp-spacing-lg);
+}
+
+.clinical-data-panel-footnotes p {
+  font-family: var(--cdp-font-body);
+  font-size: var(--cdp-font-size-body);
+  font-weight: var(--cdp-font-weight-normal);
+  line-height: var(--cdp-line-height-body);
+  color: var(--cdp-color-heading);
+  margin: 0 0 var(--cdp-spacing-md);
+}
+
+/* Green callout text */
+.clinical-data-panel-footnotes p:first-child {
+  color: var(--cdp-color-accent);
+  font-family: var(--cdp-font-heading);
+  font-weight: var(--cdp-font-weight-bold);
+  font-size: var(--cdp-font-size-callout);
+  line-height: var(--cdp-line-height-callout);
+  text-align: center;
+  margin-bottom: var(--spacing-32, 32px);
+}
+
+/* METHODOLOGY heading */
+.clinical-data-panel-footnotes p:nth-child(2) {
+  font-family: var(--cdp-font-heading);
+  font-size: var(--cdp-font-size-callout);
+  font-weight: var(--cdp-font-weight-bold);
+  line-height: var(--cdp-line-height-callout);
+  color: var(--cdp-color-heading);
+  text-transform: uppercase;
+  margin-bottom: var(--cdp-spacing-sm);
+}
+
+/* Methodology body text */
+.clinical-data-panel-footnotes p:nth-child(3) {
+  margin-bottom: var(--cdp-spacing-lg);
+}
+
+/* LIMITATIONS heading */
+.clinical-data-panel-footnotes p:nth-child(4) {
+  font-family: var(--cdp-font-heading);
+  font-size: var(--cdp-font-size-callout);
+  font-weight: var(--cdp-font-weight-bold);
+  line-height: var(--cdp-line-height-callout);
+  color: var(--cdp-color-heading);
+  text-transform: uppercase;
+  margin-bottom: var(--cdp-spacing-sm);
+}
+
+/* Limitations body text */
+.clinical-data-panel-footnotes p:nth-child(5) {
+  margin-bottom: var(--cdp-spacing-lg);
+}
+
+/* Last paragraph: small text */
+.clinical-data-panel-footnotes p:last-child {
+  font-size: var(--cdp-font-size-small);
+  margin-top: var(--cdp-spacing-md);
+}
+
+/* Bold/strong text — green accent */
+.clinical-data-panel-footnotes strong {
+  color: var(--cdp-color-accent);
+  font-family: var(--cdp-font-heading);
+}
+
+/* Superscript styling */
+.clinical-data-panel-footnotes sup {
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+/* ── CTA link ── */
+.clinical-data-panel .clinical-data-panel-cta {
+  color: var(--cdp-color-heading);
+  text-transform: none;
+  padding: 12px 42px 12px 0;
+  position: relative;
+  border-bottom: 2px solid transparent;
+  margin-top: var(--cdp-spacing-lg);
+}
+
+.clinical-data-panel .clinical-data-panel-cta:hover {
+  border-bottom-color: var(--cdp-color-heading);
+  text-decoration: none;
+}
+
+.clinical-data-panel .clinical-data-panel-cta::after {
+  content: '>';
+  position: absolute;
+  right: 20px;
+  font-size: 1.4em;
+  font-weight: var(--cdp-font-weight-normal);
+}

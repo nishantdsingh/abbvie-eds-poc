@@ -1,0 +1,221 @@
+@import '../section-nav.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* RINVOQ HCP — Section Nav Brand Overrides
+   Normal (non-stuck):  in-flow white bar, "ON THIS PAGE:" label + horizontal links
+   Sticky + stuck:      fixed white bar, identical layout, no box-shadow
+   Mobile:              "ON THIS PAGE:" label left + gold OPEN/CLOSE button right
+   Source:              rinvoqhcp.com/dermatology section-navigation pattern
+*/
+
+/* ── Block-scoped tokens ─────────────────────────────────────────────── */
+
+.section-nav {
+  --section-nav-bg: var(--background-color);
+  --section-nav-border: var(--color-border-default);
+  --section-nav-link-color: var(--text-color);
+  --section-nav-link-hover: var(--color-brand-primary);
+  --section-nav-active-color: var(--color-brand-primary);
+  --section-nav-open-bg: var(--color-brand-accent);
+  --section-nav-open-text: var(--color-charcoal);
+  --font-size-nav: var(--body-font-size-xs);
+
+  border-bottom: none;
+}
+
+/* ── Links ───────────────────────────────────────────────────────────── */
+
+.section-nav a {
+  color: var(--section-nav-link-color);
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  position: relative;
+  text-decoration: none;
+}
+
+/* No color shift on hover */
+.section-nav a:hover {
+  color: var(--section-nav-link-color);
+}
+
+/* Focus/focus-visible: plum glow on ::before, inset by horizontal padding */
+.section-nav a:focus,
+.section-nav a:focus-visible {
+  outline: none;
+}
+
+.section-nav a:focus::before,
+.section-nav a:focus-visible::before {
+  box-shadow: var(--shadow-focus-plum);
+  content: '';
+  inset: 0 var(--spacing-12);
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Active text stays iron — only the border-bottom signals active */
+.section-nav a.is-active {
+  border-bottom-color: var(--section-nav-active-color);
+  color: var(--section-nav-link-color);
+}
+
+/* ── Sticky stuck: no shadow on mobile, live-site shadow on desktop ──── */
+
+.section-nav.sticky.is-stuck {
+  box-shadow: none;
+}
+
+/* ── Mobile menu: hide hamburger, generic label, and current-label ───── */
+
+.section-nav.mobile-menu .section-nav-hamburger,
+.section-nav.mobile-menu .section-nav-toggle-label,
+.section-nav.mobile-menu .section-nav-current-label {
+  display: none;
+}
+
+/* ── Toggle button layout ────────────────────────────────────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle {
+  align-items: stretch;
+  background: none;
+  border: none;
+  border-radius: 0;
+  color: var(--section-nav-link-color);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-heading);
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* ── "ON THIS PAGE:" static label (mobile toggle left side) ──────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::before {
+  align-self: center;
+  content: 'ON THIS PAGE:';
+  padding: var(--spacing-08) var(--spacing-24) var(--spacing-12);
+}
+
+/* ── Gold OPEN / CLOSE button (mobile toggle right side) ─────────────── */
+
+.section-nav.mobile-menu .section-nav-toggle::after {
+  align-items: center;
+  align-self: stretch;
+  background-color: var(--section-nav-open-bg);
+  border-radius: 0;
+  color: var(--section-nav-open-text);
+  content: 'OPEN';
+  display: flex;
+  font-family: var(--heading-font-family);
+  font-size: var(--font-size-nav);
+  font-weight: var(--font-weight-body);
+  justify-content: center;
+  padding: 0 var(--spacing-10);
+}
+
+.section-nav.mobile-menu.is-open .section-nav-toggle::after {
+  content: 'CLOSE';
+}
+
+/* ── Dropdown list ───────────────────────────────────────────────────── */
+
+.section-nav.mobile-menu nav ul {
+  border-top: none;
+}
+
+.section-nav.mobile-menu nav ul li {
+  border-bottom: none;
+}
+
+.section-nav.mobile-menu nav ul li + li::before {
+  display: none;
+}
+
+.section-nav.mobile-menu nav a {
+  padding: var(--spacing-08) var(--spacing-24) var(--spacing-12);
+}
+
+/* Active: plum underline (text-width only), no left border */
+.section-nav.mobile-menu nav a.is-active {
+  border-bottom: none;
+  border-left: none;
+  color: var(--section-nav-link-color);
+  padding-left: var(--spacing-24);
+  text-decoration: underline;
+  text-decoration-color: var(--section-nav-active-color);
+  text-decoration-thickness: var(--spacing-04);
+  text-underline-offset: var(--spacing-06);
+}
+
+/* ── Desktop ≥768px ──────────────────────────────────────────────────── */
+
+@media (width >= 744px) {
+  .section-nav.sticky.is-stuck {
+    box-shadow: var(--shadow-section-nav-stuck);
+  }
+
+  /* "ON THIS PAGE:" prefix label in the nav row */
+  .section-nav nav::before {
+    align-self: center;
+    color: var(--section-nav-link-color);
+    content: 'ON THIS PAGE:';
+    font-family: var(--heading-font-family);
+    font-size: var(--font-size-nav);
+    font-weight: var(--font-weight-heading);
+    padding: 0 var(--spacing-16);
+    white-space: nowrap;
+  }
+
+  /* Active: plum border-bottom, iron text (no underline decoration) */
+  .section-nav a.is-active {
+    border-bottom-color: var(--section-nav-active-color);
+    color: var(--section-nav-link-color);
+    text-decoration: none;
+  }
+
+  /* ── Mobile-menu: reset mobile-base overrides for desktop layout ─── */
+
+  /* Hide toggle — mobile-base display:flex outlasts base desktop display:none */
+  .section-nav.mobile-menu .section-nav-toggle {
+    display: none;
+  }
+
+  /* Horizontal list — mobile-base column/100% outlasts base desktop row */
+  .section-nav.mobile-menu nav ul {
+    flex-direction: row;
+    width: auto;
+  }
+
+  /* Flex li — mobile-base display:block outlasts base desktop display:flex */
+  .section-nav.mobile-menu nav ul li {
+    display: flex;
+  }
+
+  /* Inline link — mobile-base block/full-width outlasts base desktop inline */
+  .section-nav.mobile-menu nav a {
+    border-bottom: var(--border-width-default) solid transparent;
+    display: inline-block;
+    font-size: var(--body-font-size-xs);
+    padding: var(--spacing-12) var(--spacing-12);
+    text-align: unset;
+    width: auto;
+  }
+
+  /* Active on desktop: plum underline (text-width only), no left border */
+  .section-nav.mobile-menu nav a.is-active {
+    border-bottom: none;
+    border-left: none;
+    color: var(--section-nav-link-color);
+    margin: var(--spacing-04);
+    padding-left: var(--spacing-16);
+    text-decoration: underline;
+    text-decoration-color: var(--section-nav-active-color);
+    text-decoration-thickness: var(--border-width-default);
+    text-underline-offset: var(--spacing-20);
+  }
+}

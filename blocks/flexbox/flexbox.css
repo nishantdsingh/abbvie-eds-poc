@@ -1,0 +1,76 @@
+/* Flexbox Layout Block — mobile-first */
+
+.flexbox {
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--flexbox-gap, var(--spacing-16, 16px));
+}
+
+/* Flex items — base (mobile: full width stack) */
+.flexbox .flexbox-item {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.flexbox .flexbox-item-image picture,
+.flexbox .flexbox-item-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.flexbox .flexbox-item-content {
+  padding: var(--flexbox-item-padding, 0);
+}
+
+/* Desktop: enable flex row */
+@media (width >= 744px) {
+  .flexbox:not(.column, .column-reverse) {
+    flex-direction: row;
+  }
+
+  .flexbox.row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  .flexbox .flexbox-item {
+    flex: 1;
+  }
+
+  /* Per-item width classes */
+  .flexbox .flexbox-item[data-width="full"] { flex: 0 0 100%; }
+  .flexbox .flexbox-item[data-width="half"] { flex: 0 0 calc(50% - var(--flexbox-gap, var(--spacing-16, 16px)) / 2); }
+  .flexbox .flexbox-item[data-width="third"] { flex: 0 0 calc(33.333% - var(--flexbox-gap, var(--spacing-16, 16px)) * 2 / 3); }
+  .flexbox .flexbox-item[data-width="quarter"] { flex: 0 0 calc(25% - var(--flexbox-gap, var(--spacing-16, 16px)) * 3 / 4); }
+  .flexbox .flexbox-item[data-width="sixty"] { flex: 0 0 calc(60% - var(--flexbox-gap, var(--spacing-16, 16px)) / 2); }
+  .flexbox .flexbox-item[data-width="thirty"] { flex: 0 0 calc(30% - var(--flexbox-gap, var(--spacing-16, 16px)) / 2); }
+}
+
+/* Direction variants */
+.flexbox.column { flex-direction: column; }
+.flexbox.column-reverse { flex-direction: column-reverse; }
+
+/* Justify-content variants */
+.flexbox.center {
+  justify-content: center;
+  align-items: center;
+}
+.flexbox.space-between { justify-content: space-between; }
+.flexbox.space-around { justify-content: space-around; }
+.flexbox.space-evenly { justify-content: space-evenly; }
+
+/* Align-items variants */
+.flexbox.align-stretch { align-items: stretch; }
+.flexbox.align-top { align-items: flex-start; }
+.flexbox.align-bottom { align-items: flex-end; }
+.flexbox.align-center { align-items: center; }
+.flexbox.align-baseline { align-items: baseline; }
+
+/* Align-content variants (multi-row) */
+.flexbox.content-space-between { align-content: space-between; }
+
+/* Wrap variant */
+.flexbox.no-wrap { flex-wrap: nowrap; }
+
+/* No-wrap: don't stack on mobile */
+.flexbox.no-wrap .flexbox-item { flex: 1; }

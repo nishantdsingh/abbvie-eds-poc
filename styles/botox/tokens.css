@@ -1,0 +1,44 @@
+@import '../tokens.css';
+
+/* Brand-specific token overrides */
+
+:root {
+  /* ---- Formulary Lookup ---- */
+  --color-black: #000;
+  --color-formulary-submit-bg: rgb(88 166 52);
+  --color-formulary-submit-hover: rgb(70 140 40);
+  --color-border-input: #aaa;
+  --color-white: #fff;
+
+  /* Formulary: Layout */
+  --formulary-form-width: 350px;
+  --formulary-input-width: 300px;
+
+  /* Formulary: Heading */
+  --formulary-heading-size: 22px;
+  --formulary-heading-weight: 400;
+  --formulary-heading-spacing: 16px;
+  --formulary-heading-line-height: 1.3;
+
+  /* Formulary: Label */
+  --formulary-label-size: 14px;
+  --formulary-label-weight: 600;
+
+  /* Formulary: Input/Select */
+  --formulary-input-height: 40px;
+  --formulary-input-radius: 4px;
+  --formulary-input-size: 14px;
+  --formulary-input-padding: 8px 12px;
+
+  /* Formulary: Submit */
+  --formulary-submit-size: 14px;
+  --formulary-submit-weight: 600;
+  --formulary-submit-radius: 4px;
+  --formulary-submit-padding: 10px 32px 10px 16px;
+  --formulary-submit-spacing: 16px;
+  --formulary-submit-arrow-size: 18px;
+  --formulary-submit-arrow-offset: 10px;
+
+  /* Formulary: Disclaimer */
+  --formulary-disclaimer-size: 13px;
+}

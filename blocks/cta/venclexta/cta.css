@@ -1,0 +1,24 @@
+@import '../../../styles/venclexta/tokens.css';
+
+/* Venclexta — CTA brand overrides
+   Primary: Dark teal (#005570), white text, 8px radius
+   Secondary: Gold (#ffce00), dark gray text, 10px radius
+   Tertiary: Transparent, dark gray text, gray border, 10px radius
+   Plain: Teal (#005272) text
+   Font: Red Hat Display */
+
+.cta.abbv-button-primary .abbv-cta,
+.cta.abbv-button-secondary .abbv-cta,
+.cta.abbv-button-tertiary .abbv-cta {
+  font-family: var(--font-family-brand);
+  font-weight: var(--font-weight-button);
+}
+
+.cta.abbv-button-primary .abbv-cta {
+  font-weight: var(--button-primary-font-weight);
+}
+
+.cta.abbv-button-plain .abbv-cta {
+  font-family: var(--font-family-brand);
+  font-weight: var(--button-plain-weight);
+}

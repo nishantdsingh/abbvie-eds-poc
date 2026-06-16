@@ -1,0 +1,95 @@
+{
+  "definitions": [
+    {
+      "title": "Breadcrumb",
+      "id": "breadcrumb",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Breadcrumb",
+              "model": "breadcrumb",
+              "filter": "breadcrumb",
+              "blockId": "id:",
+              "item0": {
+                "name": "Breadcrumb Item",
+                "model": "breadcrumb-item",
+                "label": "Link Label",
+                "href": "/"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Breadcrumb Item",
+      "id": "breadcrumb-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Breadcrumb Item",
+              "model": "breadcrumb-item",
+              "label": "Link Label",
+              "href": "/"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "breadcrumb",
+      "fields": [
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "auto",
+          "label": "Auto Generate",
+          "value": false,
+          "description": "Auto-generate breadcrumb from URL path. Turn off to use manually authored crumb items."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "homeLabel",
+          "label": "Home Label",
+          "value": "Home",
+          "description": "Label for the root breadcrumb item (auto mode only)."
+        }
+      ]
+    },
+    {
+      "id": "breadcrumb-item",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "label",
+          "label": "Link Label",
+          "value": "",
+          "description": "Display text for this breadcrumb link."
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "href",
+          "label": "Link URL",
+          "description": "Page this crumb links to. The item matching the current page URL is highlighted."
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "breadcrumb",
+      "components": [
+        "breadcrumb-item"
+      ]
+    }
+  ]
+}

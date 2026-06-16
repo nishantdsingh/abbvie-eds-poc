@@ -1,0 +1,158 @@
+@import '../tabs.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* ============================================================
+   LINZESS — Tabs brand overrides
+   Live: linzess.com/how-to-take-linzess
+   Style: Dark purple active, light purple inactive, rounded bar
+   ============================================================ */
+
+/* ── Tab container ── */
+.section.tabs-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* ── Tab controls wrapper ── */
+.tabs-container .tabs-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+  z-index: var(--z-index-1);
+}
+
+/* ── Tab list — light purple bg bar with rounded ends ── */
+.tabs-container .tabs .tabs-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  background: var(--linz-light-purple);
+  border: none;
+  padding: 0;
+  border-radius: var(--linz-rounded-corner);
+  overflow: visible;
+  width: 100%;
+}
+
+/* ── Tab buttons (inactive) — transparent on purple bar ── */
+.tabs-container .tabs .tabs-list button.tabs-tab {
+  padding: var(--spacing-14) var(--spacing-20);
+  background: transparent;
+  color: var(--color-text-heading);
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  font-style: normal;
+  border: none;
+  border-radius: 0;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  line-height: var(--line-height-body);
+  transition:
+    background-color var(--transition-duration-medium) var(--transition-easing-standard),
+    color var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+/* First tab — rounded left corners */
+.tabs-container .tabs .tabs-list button.tabs-tab:first-child {
+  border-radius: var(--linz-rounded-corner) 0 0 var(--linz-rounded-corner);
+}
+
+/* Last tab — rounded right corners */
+.tabs-container .tabs .tabs-list button.tabs-tab:last-child {
+  border-radius: 0 var(--linz-rounded-corner) var(--linz-rounded-corner) 0;
+}
+
+/* Hover */
+.tabs-container .tabs .tabs-list button.tabs-tab:hover {
+  background: var(--linz-purple);
+  color: var(--color-text-on-dark);
+}
+
+/* ── Active tab — dark purple, rounded right side only ── */
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: var(--linz-dark-purple);
+  color: var(--color-text-on-dark);
+  border-radius: 0 var(--linz-rounded-corner) var(--linz-rounded-corner) 0;
+  z-index: var(--z-index-1);
+}
+
+/* If first tab is active — round left side instead */
+.tabs-container .tabs .tabs-list button.tabs-tab:first-child[aria-selected='true'] {
+  border-radius: var(--linz-rounded-corner);
+}
+
+/* If last tab is active — round right side */
+.tabs-container .tabs .tabs-list button.tabs-tab:last-child[aria-selected='true'] {
+  border-radius: 0 var(--linz-rounded-corner) var(--linz-rounded-corner) 0;
+}
+
+/* ── Panel wrapper ── */
+.tabs-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  background: var(--background-color);
+  border: none;
+  padding: var(--spacing-30) var(--spacing-16);
+  margin: 0;
+  position: relative;
+}
+
+/* ── Sections inside panel — reset to stacked ── */
+.tabs-panel > .section.abbvie-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.tabs-panel > .section.abbvie-container > div {
+  grid-column: unset;
+}
+
+/* Single section → full width */
+.tabs-panel > .section:only-child {
+  grid-column: 1 / -1;
+}
+
+/* ── Tablet (600px+): larger tabs + 2-section grid ── */
+@media (width >= 600px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-16) var(--spacing-30);
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-40) var(--spacing-24);
+  }
+
+  .tabs-panel:has(> .section:first-child:nth-last-child(2)) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) {
+    grid-column: span 6;
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) ~ .section {
+    grid-column: span 6;
+  }
+}
+
+/* ── Desktop (900px+) ── */
+@media (width >= 900px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-18);
+    padding: var(--spacing-20) var(--spacing-40);
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-48) var(--spacing-30);
+  }
+}

@@ -1,0 +1,160 @@
+@import '../tabs.css';
+@import '../../../styles/mavyret/tokens.css';
+
+/* ============================================================
+   MAVYRET — Tabs brand overrides
+   Live: mavyret.com/hcp/efficacy
+   Style: Black bar, white active tab with green border, green hover
+   ============================================================ */
+
+/* ── Tab container ── */
+.section.tabs-container {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-left: var(--spacing-15);
+  margin-right: var(--spacing-15);
+}
+
+/* ── Tab controls wrapper ── */
+.tabs-container .tabs-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  z-index: var(--z-index-1);
+  position: relative;
+}
+
+/* ── Tab list — mobile: horizontal row, compact ── */
+.tabs-container .tabs .tabs-list {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  background: var(--color-black);
+  border: none;
+  padding: 0;
+  border-radius: var(--spacing-10) var(--spacing-10) 0 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* ── Tab buttons (inactive) — mobile: black bg, white text ── */
+.tabs-container .tabs .tabs-list button.tabs-tab {
+  padding: var(--spacing-10) var(--spacing-08);
+  background: var(--color-black);
+  color: var(--color-text-on-dark);
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-heading);
+  font-style: normal;
+  border: none;
+  border-radius: 0;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  flex: 1;
+  line-height: var(--line-height-tab);
+  transition:
+    background-color var(--transition-duration-medium) var(--transition-easing-standard),
+    color var(--transition-duration-medium) var(--transition-easing-standard);
+}
+
+/* Hover — green text */
+.tabs-container .tabs .tabs-list button.tabs-tab:hover {
+  color: var(--color-green-flash);
+}
+
+/* ── Active tab — white bg, green border ── */
+.tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+  background: var(--background-color);
+  color: var(--color-text-heading);
+  border: var(--spacing-03) solid var(--color-green-flash);
+  border-bottom: none;
+  z-index: var(--z-index-1);
+}
+
+/* ── Panel wrapper ── */
+.tabs-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+  background: var(--background-color);
+  border: var(--separator-height-1) solid var(--color-border-default);
+  border-top: none;
+  padding: var(--spacing-24) var(--spacing-16);
+  margin: 0;
+  margin-top: calc(-1 * var(--spacing-08));
+  margin-left: var(--spacing-20);
+  margin-right: var(--spacing-20);
+  position: relative;
+}
+
+/* ── Sections inside panel — reset to stacked ── */
+.tabs-panel > .section.abbvie-container {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.tabs-panel > .section.abbvie-container > div {
+  grid-column: unset;
+}
+
+/* Single section → full width */
+.tabs-panel > .section:only-child {
+  grid-column: 1 / -1;
+}
+
+/* ── Tablet (600px+): horizontal black bar + 2-section grid ── */
+@media (width >= 600px) {
+  .section.tabs-container {
+    margin-left: var(--spacing-110);
+  }
+
+  .tabs-container .tabs .tabs-list {
+    flex-direction: row;
+    background: var(--color-black);
+    border-radius: var(--spacing-18) var(--spacing-18) 0 0;
+    overflow: hidden;
+  }
+
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    flex: 1;
+    font-size: var(--font-size-18);
+    padding: var(--spacing-10) var(--spacing-20);
+  }
+
+  .tabs-container .tabs .tabs-list button.tabs-tab[aria-selected='true'] {
+    border-bottom: none;
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-30) var(--spacing-24);
+  }
+
+  .tabs-panel:has(> .section:first-child:nth-last-child(2)) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) {
+    grid-column: span 8;
+  }
+
+  .tabs-panel > .section:first-child:nth-last-child(2) ~ .section {
+    grid-column: span 4;
+  }
+}
+
+/* ── Desktop (900px+) ── */
+@media (width >= 900px) {
+  .tabs-container .tabs .tabs-list button.tabs-tab {
+    font-size: var(--font-size-20);
+    padding: var(--spacing-10) var(--spacing-25);
+  }
+
+  .tabs-panel {
+    padding: var(--spacing-40) var(--spacing-30);
+  }
+}

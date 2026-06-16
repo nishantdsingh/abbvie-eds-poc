@@ -1,0 +1,281 @@
+@import '../safety-bar.css';
+@import '../../../styles/linzess/tokens.css';
+
+/* Linzess — Safety Bar Brand Overrides
+   Source: linzess.com .linzess-safety-bar computed styles
+   Container: white bg, no border, rounded top corners, box-shadow
+   Typography: BasicCommercialLT-Black headings, BasicCommercialLT-Roman body
+   Toggle: purple icon color, no filled background */
+
+/* Section wrapper — full viewport width */
+.safety-bar-section {
+  width: 100vw;
+  max-width: 100%;
+}
+
+/* Dark overlay behind expanded safety bar (CSS-only via ::before) */
+.safety-bar-section::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgb(0 0 0 / 50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.safety-bar-section:has(.is-expanded)::before {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Container */
+.safety-bar {
+  background-color: var(--background-color);
+  border: 0;
+  border-radius: var(--border-radius-safety-bar);
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 25%);
+  color: var(--text-color);
+  font-family: var(--font-family-legal);
+}
+
+/* Toggle button: icon-font circle plus/minus, purple, no border */
+.safety-bar-toggle {
+  border: none;
+  background-color: transparent;
+  color: var(--color-brand-primary);
+  font-family: var(--icon-font-family);
+  font-size: var(--spacing-20);
+  width: auto;
+  height: var(--spacing-24);
+  border-radius: 0;
+  top: var(--spacing-08);
+  right: 0;
+  padding: 0 var(--spacing-20);
+}
+
+.safety-bar-toggle[aria-expanded='true'] {
+  background-color: transparent;
+  border: none;
+  color: var(--color-brand-primary);
+}
+
+.safety-bar-toggle::after {
+  content: '\e147';
+  font-family: var(--icon-font-family);
+  font-size: var(--spacing-20);
+  font-weight: normal;
+  font-style: normal;
+  color: var(--color-brand-primary);
+  transform: none;
+  display: inline-block;
+}
+
+.safety-bar-toggle[aria-expanded='true']::after {
+  content: '\e15c';
+  color: var(--color-brand-primary);
+  transform: none;
+}
+
+/* Collapsed: abbreviated content padding — matches live site */
+.safety-bar-abbreviated {
+  padding: var(--spacing-10) var(--spacing-25, 25px) 0;
+  margin: auto;
+}
+
+
+/* Collapsed: headings — BasicCommercialLT-Black, purple */
+.safety-bar-abbreviated h2,
+.safety-bar-abbreviated h3 {
+  font-family: var(--font-family-legal-bold);
+  font-size: var(--font-size-legal-large);
+  font-weight: normal;
+  color: var(--color-text-heading);
+  line-height: normal;
+  letter-spacing: -0.032rem;
+  margin: var(--spacing-10) 0 0;
+}
+
+/* Collapsed: paragraphs — BasicCommercialLT-Roman */
+.safety-bar-abbreviated p {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-legal);
+  letter-spacing: -0.028rem;
+  margin: var(--spacing-10) 0;
+}
+
+/* Collapsed: bold text */
+.safety-bar-abbreviated strong,
+.safety-bar-abbreviated b {
+  font-family: var(--font-family-legal-bold);
+  font-size: var(--font-size-legal);
+  font-weight: normal;
+  line-height: var(--line-height-legal);
+  color: var(--color-text-muted);
+}
+
+/* Collapsed col2: subtitle bold text purple (not list item bold) */
+.safety-bar-col2 p strong,
+.safety-bar-col2 h4 {
+  color: var(--color-text-heading);
+}
+
+.safety-bar-col2 li strong {
+  color: var(--color-text-muted);
+}
+
+/* Collapsed: list items */
+.safety-bar-abbreviated ul {
+  margin: var(--spacing-10) 0;
+  padding: 0 0 0 var(--spacing-15);
+}
+
+.safety-bar-abbreviated li {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-legal);
+  letter-spacing: -0.028rem;
+  margin: var(--spacing-10) 0;
+}
+
+.safety-bar-abbreviated li::marker {
+  color: var(--color-brand-primary);
+}
+
+/* Expanded: headings */
+.safety-bar.is-expanded .safety-bar-full h2,
+.safety-bar.is-expanded .safety-bar-full h3 {
+  font-family: var(--font-family-legal-bold);
+  font-size: var(--font-size-legal-large);
+  font-weight: normal;
+  color: var(--color-text-heading);
+  line-height: normal;
+  letter-spacing: -0.032rem;
+  margin: var(--spacing-10) 0 0;
+}
+
+/* h4 in safety-bar (collapsed + expanded) — purple bold */
+.safety-bar h4 {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-legal);
+  font-weight: 700;
+  color: var(--color-text-heading);
+  line-height: normal;
+  letter-spacing: normal;
+  margin: var(--spacing-14) 0;
+  text-transform: none;
+  text-decoration: none;
+}
+
+/* h5 "Side Effects" in safety-bar — purple */
+.safety-bar h5 {
+  font-family: var(--font-family-legal-bold);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  color: var(--color-text-heading);
+  line-height: normal;
+  letter-spacing: normal;
+  margin: var(--spacing-14) 0;
+  text-transform: none;
+  text-decoration: none;
+}
+
+/* Expanded: ALL paragraphs dark (override any purple inheritance) */
+.safety-bar .safety-bar-full p {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-legal);
+  letter-spacing: -0.028rem;
+  margin: var(--spacing-10) 0;
+}
+
+/* Expanded: bold text — dark, not purple */
+.safety-bar .safety-bar-full p strong,
+.safety-bar .safety-bar-full p b {
+  font-family: var(--font-family-legal-bold);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  line-height: var(--line-height-legal);
+  color: var(--color-text-muted);
+}
+
+/* Expanded: list items */
+.safety-bar.is-expanded .safety-bar-full ul {
+  margin: var(--spacing-10) 0;
+  padding: 0 0 0 var(--spacing-15);
+}
+
+.safety-bar.is-expanded .safety-bar-full li {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-legal);
+  letter-spacing: -0.028rem;
+  margin: var(--spacing-10) 0;
+}
+
+.safety-bar.is-expanded .safety-bar-full li::marker {
+  color: var(--color-brand-primary);
+}
+
+
+/* Expanded: links */
+.safety-bar.is-expanded .safety-bar-full a {
+  font-family: var(--font-family-legal);
+  font-size: var(--font-size-legal);
+  font-weight: 400;
+  line-height: var(--line-height-legal);
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+  letter-spacing: -0.028rem;
+}
+
+/* Expanded: superscript (®) */
+.safety-bar.is-expanded .safety-bar-full sup {
+  position: relative;
+  top: var(--spacing-04);
+  line-height: 0;
+}
+
+/* Maximized height override */
+.safety-bar.is-expanded .safety-bar-full {
+  max-height: calc(100vh - 215px);
+  overflow-y: auto;
+}
+
+/* Mobile: single column, hide USES (col1), show only IRI (col2) with first bullet only */
+@media (width <= 744px) {
+  .safety-bar.split .safety-bar-abbreviated {
+    display: block;
+    grid-template-columns: none;
+  }
+
+  .safety-bar.split .safety-bar-col1 {
+    display: none;
+  }
+
+  .safety-bar.split .safety-bar-col2 {
+    display: block;
+  }
+
+  .safety-bar.split .safety-bar-col2 li:nth-child(n+2) {
+    display: none;
+  }
+
+  .safety-bar.split .safety-bar-col2 > p {
+    display: none;
+  }
+
+  .safety-bar-abbreviated h3 {
+    font-size: var(--font-size-legal);
+  }
+}
