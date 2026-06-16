@@ -4460,6 +4460,21 @@
         "name": "imageAlt",
         "value": "",
         "label": "Image Alt"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileImage",
+        "label": "Column Image (Mobile)",
+        "description": "Optional. Shown on screens ≤767px; falls back to Column Image if empty.",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mobileImageAlt",
+        "value": "",
+        "label": "Mobile Image Alt"
       }
     ]
   },
@@ -6432,7 +6447,7 @@
       {
         "component": "select",
         "valueType": "string",
-        "name": "rowType",
+        "name": "rowKind",
         "label": "Row Type",
         "value": "text",
         "options": [
@@ -6457,6 +6472,20 @@
             "value": "text"
           }
         ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt Text"
       },
       {
         "component": "richtext",
@@ -8499,17 +8528,30 @@
           {
             "name": "Stretched Link (entire card clickable)",
             "value": "image-text-stretched"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes_imageSize",
+        "value": "",
+        "label": "Image Size",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default (50/50)",
+            "value": ""
           },
           {
-            "name": "Large image (60%)",
+            "name": "Large (60% image)",
             "value": "image-text-image-large"
           },
           {
-            "name": "Medium image (40%)",
+            "name": "Medium (40% image)",
             "value": "image-text-image-medium"
           },
           {
-            "name": "Small image (33%)",
+            "name": "Small (33% image)",
             "value": "image-text-image-small"
           }
         ]
