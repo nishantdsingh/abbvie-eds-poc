@@ -1,0 +1,13 @@
+{
+  "project": "rinvoq-hcp",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Sidekick Library",
+      "environments": [
+        "edit"
+      ],
+      "url": "/rinvoq-hcp/tools/sidekick/library.html"
+    }
+  ]
+}

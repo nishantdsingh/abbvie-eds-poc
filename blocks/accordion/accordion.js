@@ -13,7 +13,8 @@ function getIconImage(row) {
 }
 
 /**
- * Main accordion properties order:
+ * Main accordion properties order (xwalk: columns in first row,
+ * document-authoring: one row per field):
  * 0: blockHeading
  * 1: expandAllText
  * 2: collapseAllText
@@ -30,24 +31,39 @@ function getIconImage(row) {
  * 13: analyticsId (optional)
  */
 function gteConfigIcons(block) {
-  const headingText = block.children[0].textContent.trim();
-  const expandAllText = block.children[1].textContent.trim();
-  const collapseAllText = block.children[2].textContent.trim();
-  const expandAllIcon = `icon-${block.children[3].textContent.trim()}`;
-  const collapseAllIcon = `icon-${block.children[4].textContent.trim()}`;
-  const expandIcon = `item-icon-${block.children[5].textContent.trim()}`;
-  const collapseIcon = `item-icon-${block.children[6].textContent.trim()}`;
-  const expandAllIconImage = getIconImage(block.children[7]);
-  const collapseAllIconImage = getIconImage(block.children[8]);
-  const expandIconImage = getIconImage(block.children[9]);
-  const collapseIconImage = getIconImage(block.children[10]);
-  const ariaExpandAllLabel = block.children[11].textContent.trim();
-  const ariaCollapseAllLabel = block.children[12].textContent.trim();
-  const analyticsId = block.children[13]?.textContent.trim() || '';
+  const firstRow = block.children[0];
+  const isXwalk = firstRow && firstRow.children.length > 1;
+
+  let cells;
+  let configRowCount;
+  if (isXwalk) {
+    cells = [...firstRow.children];
+    configRowCount = 1;
+  } else {
+    cells = [...block.children].slice(0, 14);
+    configRowCount = 14;
+  }
+
+  const cell = (i) => cells[i] || document.createElement('div');
+
+  const headingText = cell(0).textContent.trim();
+  const expandAllText = cell(1).textContent.trim();
+  const collapseAllText = cell(2).textContent.trim();
+  const expandAllIcon = `icon-${cell(3).textContent.trim()}`;
+  const collapseAllIcon = `icon-${cell(4).textContent.trim()}`;
+  const expandIcon = `item-icon-${cell(5).textContent.trim()}`;
+  const collapseIcon = `item-icon-${cell(6).textContent.trim()}`;
+  const expandAllIconImage = getIconImage(cell(7));
+  const collapseAllIconImage = getIconImage(cell(8));
+  const expandIconImage = getIconImage(cell(9));
+  const collapseIconImage = getIconImage(cell(10));
+  const ariaExpandAllLabel = cell(11).textContent.trim();
+  const ariaCollapseAllLabel = cell(12).textContent.trim();
+  const analyticsId = cell(13)?.textContent.trim() || '';
 
   // clean config rows
   [...block.children].forEach((child, index) => {
-    if (index <= 13) {
+    if (index < configRowCount) {
       child.remove();
     }
   });

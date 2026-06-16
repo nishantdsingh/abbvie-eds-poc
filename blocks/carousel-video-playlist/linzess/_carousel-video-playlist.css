@@ -154,45 +154,6 @@
   background: var(--color-brand-primary);
   color: var(--color-text-on-dark);
   padding: 48px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Desktop: the heading/description live in the dark section above, so the
-   grid's own header is empty — collapse it and reduce the grid's top padding
-   to tighten the "Hear from real patients" to first-video gap (~45px, live). */
-@media (width >= 986px) {
-  .carousel-video-playlist.grid {
-    padding-top: 16px;
-  }
-
-  .carousel-video-playlist.grid .cvp-header:empty {
-    margin-bottom: 0;
-  }
-}
-
-.carousel-video-playlist.grid .cvp-card .cvp-player-wrap {
-  min-height: 0;
-}
-
-/* Authored poster image fills the frame — no letterbox.
-   Sits above the Brightcove video-js box (z-index 1) until play. */
-.carousel-video-playlist.grid .cvp-poster {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-.carousel-video-playlist.grid .cvp-poster,
-.carousel-video-playlist.grid .cvp-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.carousel-video-playlist.grid .cvp-poster[hidden] {
-  display: none;
 }
 
 /* Section header */
@@ -205,7 +166,7 @@
   display: block;
   width: 60px;
   height: 3px;
-  background: #faa633;
+  background: var(--color-accent-gold);
   margin: 0 auto 16px;
 }
 
@@ -238,31 +199,6 @@
   grid-column: auto;
 }
 
-/* why-linzess "Hear from real patients" grid has only 2 cards: center them
-   (live centers, not left-aligned in a 3-col track) and equalize card +
-   footer heights so both footers match even when one title wraps. Scoped to
-   the timeline section so the homepage's 3-card grid is untouched. */
-body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-grid {
-  grid-template-columns: repeat(2, 300px);
-  justify-content: center;
-  align-items: stretch;
-}
-
-body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card {
-  height: 100%;
-}
-
-body main .section:has(.whylinzess-timeline) .carousel-video-playlist.grid .cvp-card-footer {
-  flex: 1 0 auto;
-}
-
-/* Space above the "HEAR THE CONSTIPATION CONVERSATION" heading — a
-   default-content-wrapper sitting between the two featured carousels in the
-   patient-experiences section (live leaves a clear gap above it). */
-body main .section.carousel-video-playlist-container .carousel-video-playlist-wrapper:has(.carousel-video-playlist.featured) + .default-content-wrapper {
-  margin-top: 48px;
-}
-
 /* Max visible cards — hide cards beyond the authored limit */
 .carousel-video-playlist.grid[data-max-visible="1"] .cvp-card:nth-child(n+2) { display: none; }
 .carousel-video-playlist.grid[data-max-visible="2"] .cvp-card:nth-child(n+3) { display: none; }
@@ -274,7 +210,7 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 .carousel-video-playlist.grid .cvp-card {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   grid-column: auto;
 }
@@ -298,32 +234,27 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
   overflow: hidden !important;
 }
 
-/* Card footer — light-purple bg, dark text, rounded bottom corners */
+/* Card footer — white bg, dark text, matching site */
 .carousel-video-playlist.grid .cvp-card-footer {
-  background: var(--linz-light-purple, #d9d7f9);
+  background: var(--linz-white, #fff);
   padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   min-height: 44px;
-  border-radius: 0 0 16px 16px;
 }
 
 .carousel-video-playlist.grid .cvp-title {
   color: var(--color-brand-primary);
-  font-family: var(--body-font-family);
+  font-family: var(--heading-font-family);
   font-weight: var(--font-weight-bold, 700);
-  font-size: 14px;
-  text-transform: none;
+  font-size: var(--font-size-body, 14px);
+  text-transform: uppercase;
   line-height: 1.2;
 }
 
-.carousel-video-playlist.grid .cvp-transcript-toggle,
-.carousel-video-playlist.grid a.cvp-transcript-toggle:link,
-.carousel-video-playlist.grid a.cvp-transcript-toggle:visited,
-.carousel-video-playlist.grid a.cvp-transcript-toggle:hover,
-.carousel-video-playlist.grid a.cvp-transcript-toggle:active {
+.carousel-video-playlist.grid .cvp-transcript-toggle {
   color: var(--color-brand-primary);
   font-family: var(--body-font-family);
   font-size: var(--font-size-body-small, 12px);
@@ -362,8 +293,6 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
   background: var(--background-color);
   color: var(--text-color);
   padding: 48px 24px;
-  max-width: 1046px;
-  margin: 0 auto;
 }
 
 /* Featured row: video (70%) + quote panel (30%) */
@@ -374,15 +303,8 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 }
 
 .carousel-video-playlist.featured .cvp-featured-player {
-  flex: 0 0 75%;
+  flex: 0 0 70%;
   position: relative;
-}
-
-/* The player + quote panel form one rounded rectangle (live, r=16px): the
-   player rounds its LEFT corners, the quote panel rounds its RIGHT corners,
-   and they sit flush with no gap between them. */
-.carousel-video-playlist.featured .cvp-featured-player .cvp-player-wrap {
-  border-radius: 16px 0 0 16px;
 }
 
 /* Hide name banner on featured player — title shown below via footer */
@@ -411,9 +333,8 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 
 /* Quote panel */
 .carousel-video-playlist.featured .cvp-quote-panel {
-  flex: 0 0 25%;
-  background: #d9d7f9;
-  border-radius: 0 16px 16px 0;
+  flex: 0 0 30%;
+  background: var(--color-lavender);
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -421,33 +342,28 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
   gap: 16px;
 }
 
-/* Quote: 16px left-aligned (live); name/prescribed stay 14.4px. */
 .carousel-video-playlist.featured .cvp-quote {
   font-family: var(--body-font-family);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--font-size-quote, 1.3125rem);
+  font-weight: var(--font-weight-bold, 700);
   font-style: normal;
   color: var(--color-brand-primary);
   line-height: 1.3;
-  text-align: left;
   margin: 0 0 auto;
 }
 
 .carousel-video-playlist.featured .cvp-patient-name {
   font-family: var(--body-font-family);
-  font-weight: 400;
-  font-size: 14.4px;
-  line-height: 19.2px;
+  font-weight: var(--font-weight-bold, 700);
+  font-size: var(--font-size-body, 14px);
   color: var(--color-brand-primary);
   margin: 0 0 4px;
 }
 
 .carousel-video-playlist.featured .cvp-prescribed {
   font-family: var(--body-font-family);
-  font-size: 14.4px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 19.2px;
+  font-size: var(--font-size-body, 14px);
+  font-style: italic;
   color: var(--color-brand-primary);
   margin: 0 0 8px;
 }
@@ -473,7 +389,7 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 }
 
 .carousel-video-playlist.featured .cvp-transcript-panel {
-  background: #ecebfb;
+  background: var(--color-lavender-light);
   border-radius: 4px;
   padding: 0 16px;
   font-size: var(--font-size-body-small, 12px);
@@ -540,7 +456,7 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 
 .carousel-video-playlist.featured .cvp-thumb {
   flex-shrink: 0;
-  width: 221px;
+  width: 180px;
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;
@@ -554,7 +470,7 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
 }
 
 .carousel-video-playlist.featured .cvp-thumb.active {
-  border-color: #faa633;
+  border-color: var(--color-accent-gold);
 }
 
 .carousel-video-playlist.featured .cvp-thumb-wrap {
@@ -613,40 +529,28 @@ body main .section.carousel-video-playlist-container .carousel-video-playlist-wr
   font-size: var(--font-size-body-small, 12px);
   text-transform: uppercase;
   color: var(--color-brand-primary);
-  background: #d9d7f9;
+  background: var(--color-lavender);
   margin: 0;
   padding: 8px 10px;
   line-height: 1.2;
   text-align: left;
 }
 
-/* The brand's whylinzess-timeline rule
-   (main:has(.whylinzess-timeline) p:not(.button-container):last-child)
-   adds margin-bottom:20px to the last <p>; the thumbnail title is a <p>, so
-   override it back to 0 for the thumbnail footer only. */
-main:has(.whylinzess-timeline) .carousel-video-playlist.featured .cvp-thumb-title:last-child {
-  margin-bottom: 0;
-}
-
 /* ── Mobile ──────────────────────────────────────────────────────────────────── */
 
 @media (width < 768px) {
   .carousel-video-playlist.grid {
-    padding: 16px 16px 32px;
+    padding: 32px 16px;
   }
 
-  /* The heading/description live in the dark section above, so the grid's own
-     header is empty — collapse it to tighten the "Hear from real patients"
-     to first-video gap to match live (~41px). */
-  .carousel-video-playlist.grid .cvp-header:empty {
-    margin-bottom: 0;
-  }
-
-  /* Mobile: stack vertically */
+  /* Mobile: horizontal scroll carousel */
   .carousel-video-playlist.grid .cvp-grid {
     display: flex;
-    flex-direction: column;
     grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     gap: 16px;
     padding-bottom: 8px;
   }
@@ -656,8 +560,8 @@ main:has(.whylinzess-timeline) .carousel-video-playlist.featured .cvp-thumb-titl
   }
 
   .carousel-video-playlist.grid .cvp-card {
-    flex: 1 1 auto;
-    width: 100%;
+    flex: 0 0 82%;
+    scroll-snap-align: start;
   }
 
   .carousel-video-playlist.featured {

@@ -2,5 +2,11 @@
   "type": "xwalk",
   "contentHostUrl": "author-p160552-e1944799.adobeaemcloud.com",
   "previewOrg": "nishant-adobe",
-  "previewSite": "abbvie-eds-poc"
+  "previewSite": "abbvie-eds-poc",
+  "aemSitePath": "/content/abbvie-eds-poc",
+  "aemAssetsFolderPath": "/content/dam/abbvie-eds-poc",
+  "aemSiteName": "abbvie-eds-poc",
+  "aemSiteTitle": "Abbvie-EDS-POC",
+  "libraryUrl": "https://develop--abbvie-eds-poc--nishant-adobe.aem.page/rinvoq-hcp/tools/sidekick/library.json",
+  "baseUrl": "https://www.rinvoqhcp.com"
 }

@@ -37,7 +37,8 @@ function extractRows(block) {
     return cell?.querySelector('h1,h2,h3,h4,h5,h6') || cell?.querySelector('a[href]');
   });
 
-  const mobileImageRow = rows.slice(1).find((row) => {
+  const textRowIndex = rows.indexOf(textRow);
+  const mobileImageRow = rows.slice(1, textRowIndex > 0 ? textRowIndex : undefined).find((row) => {
     if (row === textRow || row === videoRow) return false;
     return row.firstElementChild?.querySelector('picture,img');
   });
@@ -111,7 +112,7 @@ function mergeMobileImage(imageCell, mobileImageRow) {
 
   const combined = document.createElement('picture');
   const source = document.createElement('source');
-  source.media = '(min-width: 744px)';
+  source.media = '(min-width: 985px)';
   source.srcset = desktopImg.src;
   combined.appendChild(source);
   combined.appendChild(mobileImg.cloneNode(true));
@@ -292,6 +293,21 @@ export default async function decorate(block) {
       const p = thirdRow?.querySelector('p');
       if (p) textCell.prepend(p);
     }
+  }
+
+  const rows = Array.from(block.children);
+  const layersRow = rows.find((row) => {
+    if (row === imageRow || row === textRow || row === videoRow
+      || row === mobileImageRow || row === indicationRow || row === captionRow) return false;
+    return row.firstElementChild?.querySelector('picture,img');
+  });
+  if (layersRow && textCell) {
+    const badge = layersRow.firstElementChild?.querySelector('p') || layersRow.firstElementChild;
+    if (badge) {
+      badge.classList.add('hero-badge');
+      textCell.appendChild(badge);
+    }
+    layersRow.remove();
   }
 
   absorbBreadcrumb(textCell, section);

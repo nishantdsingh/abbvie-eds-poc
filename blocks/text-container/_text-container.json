@@ -43,7 +43,7 @@
             "template": {
               "name": "Text Container Text",
               "model": "text-container-text",
-              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur volutpat consequat dui, sit amet ..."
+              "text": ""
             }
           }
         }
@@ -58,6 +58,13 @@
           "component": "tab",
           "label": "Styles",
           "name": "styles"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "classes_customDynamicClass",
+          "label": "Custom Dynamic Class",
+          "description": "Comma-separated list of custom CSS classes"
         },
         {
           "component": "select",
@@ -213,6 +220,13 @@
         },
         {
           "...": "../../models/_common-properties.json#/common-prop"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "analytics_id",
+          "label": "Analytics ID",
+          "description": "Analytics tracking identifier"
         }
       ]
     },
@@ -252,8 +266,8 @@
     {
       "id": "text-container",
       "components": [
-        "text-container-image",
-        "text-container-text"
+        "text-container-text",
+        "text-container-image"
       ]
     }
   ]

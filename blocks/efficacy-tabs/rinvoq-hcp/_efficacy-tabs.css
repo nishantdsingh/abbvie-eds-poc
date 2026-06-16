@@ -1,0 +1,277 @@
+@import '../efficacy-tabs.css';
+@import '../../../styles/rinvoq-hcp/tokens.css';
+
+/* ============================================================
+   RINVOQ HCP — Efficacy Tabs brand styling
+   Live spec: outer tabs (H2H/Switch) = full-width pills, active #f5f5f5 /
+   Graphik Black, inactive #e3e3e3 / Graphik Medium, 16px. Inner tabs
+   (Week 16 / Rapid) = white-pill-on-dark, Graphik Medium 14px. 60/30 flex
+   chart-left (740px) + text-right. Gold callout #ffd100. CTAs Graphik Bold
+   16px rgb(70,72,74) with + / › icons.
+   ============================================================ */
+
+/* ── Outer tabs (content-width pills, left-aligned, bottom-aligned so the
+   active tab grows taller upward and sits flush on the panel) ──────────── */
+.efficacy-tabs .efficacy-tabs-list--outer {
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.efficacy-tabs .efficacy-tabs-list--outer .efficacy-tabs-tab {
+  flex: 0 0 auto;
+  margin: 0;
+  background-color: #e3e3e3;
+  color: rgb(37 40 42);
+  font-family: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 10px 10px 0 0;
+}
+
+.efficacy-tabs .efficacy-tabs-list--outer .efficacy-tabs-tab[aria-selected='true'] {
+  background-color: #f5f5f5;
+  font-family: 'Graphik Black', 'Helvetica Neue', arial, helvetica, sans-serif;
+  padding: 20px 24px;
+}
+
+/* Outer panel surface (matches the active outer tab) */
+.efficacy-tabs .efficacy-tabs-panel--outer {
+  background-color: #f5f5f5;
+  padding: 32px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* ── Intro block (flag image + small-header + objective copy) ── */
+.efficacy-tabs .efficacy-tabs-intro {
+  margin-bottom: 24px;
+}
+
+.efficacy-tabs .efficacy-tabs-intro img {
+  width: 225px;
+  max-width: 225px;
+  margin-left: -30px;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.efficacy-tabs .efficacy-tabs-intro .small-header,
+.efficacy-tabs .efficacy-tabs-intro p:first-of-type {
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgb(37 40 42);
+  margin: 0 0 12px;
+}
+
+.efficacy-tabs .efficacy-tabs-intro p {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(70 72 74);
+  margin: 0 0 12px;
+}
+
+.efficacy-tabs .efficacy-tabs-intro ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+.efficacy-tabs .efficacy-tabs-intro li {
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(70 72 74);
+  margin-bottom: 8px;
+}
+
+/* ── Inner tabs (white pill on a dark bar, content-width) ────── */
+.efficacy-tabs .efficacy-tabs-list--inner {
+  display: inline-flex;
+  gap: 4px;
+  background-color: rgb(37 40 42);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 24px;
+}
+
+.efficacy-tabs .efficacy-tabs-list--inner .efficacy-tabs-tab {
+  flex: 0 0 auto;
+  margin: 2px;
+  min-width: 200px;
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Graphik Medium', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 40px;
+  border-radius: 10px;
+}
+
+.efficacy-tabs .efficacy-tabs-list--inner .efficacy-tabs-tab[aria-selected='true'] {
+  background-color: #fff;
+  color: rgb(37 40 42);
+}
+
+/* ── 60/30 content row ────────────────────────────────────── */
+.efficacy-tabs .efficacy-tabs-text p {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(70 72 74);
+  margin: 0 0 16px;
+}
+
+.efficacy-tabs .footnote {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+
+/* "DATA LIMITATIONS:" — own line, Graphik Semibold, brushstroke underline */
+.efficacy-tabs .efficacy-tabs-text strong.underline-brush {
+  display: inline-block;
+  font-family: 'Graphik Semibold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-weight: 400;
+  padding-bottom: 6px;
+  background-image: url('/content/dam/abbvie-eds-poc/stroke--underline.svg');
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 8px;
+}
+
+.efficacy-tabs .efficacy-tabs-text p:has(> strong.underline-brush) {
+  margin-bottom: 4px;
+}
+
+/* Chart-header copy — full-width band above the 60/30 row (matches live) */
+.efficacy-tabs .efficacy-tabs-chart-header {
+  margin-bottom: 16px;
+}
+
+.efficacy-tabs .chart-header--large {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgb(70 72 74);
+  margin: 0;
+}
+
+.efficacy-tabs .efficacy-tabs-chart-header .chart-header--large + p,
+.efficacy-tabs .efficacy-tabs-chart-header > p:not([class]) {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(70 72 74);
+  margin: 0;
+}
+
+.efficacy-tabs .chart-header {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgb(37 40 42);
+  margin: 0 0 6px;
+}
+
+.efficacy-tabs .efficacy-tabs-chart-header .small-header {
+  font-family: Graphik, 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: rgb(37 40 42);
+  margin: 0 0 6px;
+}
+
+/* Gold callout box inside the text column */
+.efficacy-tabs .callout--gold {
+  background-color: var(--color-gold, #ffd100);
+  border-radius: 10px;
+  padding: 24px;
+  margin: 16px 0 40px;
+}
+
+/* CTA group sits flush at the bottom of the text column */
+.efficacy-tabs .efficacy-tabs-text .button-container {
+  margin-bottom: 0;
+}
+
+/* Inline "Label Highlights" link inside the gold callout — plum underline,
+   not a plain-gray CTA (no icon, no flex). */
+.efficacy-tabs .efficacy-tabs-text .callout--gold a {
+  display: inline;
+  margin: 0;
+  gap: 0;
+  color: var(--color-plum, #90124a);
+  font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.efficacy-tabs .efficacy-tabs-text .callout--gold a::after {
+  content: none;
+}
+
+.efficacy-tabs .callout--gold p {
+  color: rgb(37 40 42);
+  margin: 0;
+}
+
+/* ── CTAs: plain plum-gray text + trailing icon, no pill ───── */
+.efficacy-tabs .efficacy-tabs-text a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 0;
+  color: rgb(70 72 74);
+  font-family: 'Graphik Bold', 'Helvetica Neue', arial, helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* "Study Details" — plum add-circle icon on the RIGHT (matches live's
+   abbv-iconFont add_circle glyph, rendered here as an SVG) */
+.efficacy-tabs .efficacy-tabs-text a[href*='study-details']::after {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-image: url('/content/dam/abbvie-eds-poc/icon-circle-add-plum.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* "See Efficacy…" / arrow CTAs — plum circle-arrow SVG on the RIGHT */
+.efficacy-tabs .efficacy-tabs-text a[href*='efficacy']::after,
+.efficacy-tabs .efficacy-tabs-text a[href*='post-switch']::after {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-image: url('/content/dam/abbvie-eds-poc/icon-circle-arrow-right-plum.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Desktop image column = 757px, text column takes the remainder (matches live) */
+@media (width >= 985px) {
+  .efficacy-tabs .efficacy-tabs-image {
+    flex: 0 0 757px;
+    max-width: 757px;
+  }
+
+  .efficacy-tabs .efficacy-tabs-text {
+    flex: 0 1 378px;
+  }
+}

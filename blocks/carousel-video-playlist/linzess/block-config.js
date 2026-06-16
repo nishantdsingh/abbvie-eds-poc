@@ -62,42 +62,16 @@ function parseConfig(block) {
   };
 }
 
-function parseItems(block, isFeatured) {
+function parseItems(block) {
   return [...block.children]
     .filter(isItemRow)
     .map((row) => {
       const cells = [...row.children];
       const getText = (i) => cells[i]?.textContent?.trim() ?? '';
-
-      // Grid schema, two authorings:
-      //  A) videoId | thumbnail(picture) | title | transcriptHref
-      //  B) videoId | title | transcriptLink(a) | ... (featured-style cells)
-      if (!isFeatured) {
-        const hasThumb = !!cells[1]?.querySelector('picture, img');
-        if (hasThumb) {
-          return {
-            videoId: getText(0),
-            thumbnail: cells[1].querySelector('picture, img'),
-            nameBanner: getText(2),
-            transcriptHref: cells[3]?.querySelector('a')?.getAttribute('href') ?? getText(3),
-            transcript: null,
-          };
-        }
-        return {
-          videoId: getText(0),
-          thumbnail: null,
-          nameBanner: getText(1),
-          transcriptHref: cells[2]?.querySelector('a')?.getAttribute('href') ?? getText(2),
-          transcript: null,
-        };
-      }
-
-      // Featured schema: videoId | nameBanner | transcriptLink | transcript
-      //                  | patientName | prescribed | quote
       return {
         videoId: getText(0),
         nameBanner: getText(1),
-        transcriptHref: cells[2]?.querySelector('a')?.getAttribute('href') ?? getText(2),
+        transcriptHref: getText(2),
         transcript: cells[3] ?? null,
         patientName: getText(4),
         prescribed: getText(5),
@@ -228,13 +202,6 @@ function buildGridMode(block, cfg, items, accountId, playerId) {
     const playerWrap = document.createElement('div');
     playerWrap.className = 'cvp-player-wrap';
 
-    let poster = null;
-    if (item.thumbnail) {
-      poster = item.thumbnail.cloneNode(true);
-      poster.classList.add('cvp-poster');
-      playerWrap.append(poster);
-    }
-
     if (item.nameBanner) {
       const banner = document.createElement('div');
       banner.className = 'cvp-name-banner';
@@ -247,7 +214,6 @@ function buildGridMode(block, cfg, items, accountId, playerId) {
     playBtn.className = 'cvp-play-btn';
     playBtn.setAttribute('aria-label', `Play ${item.nameBanner || 'video'}`);
     playBtn.innerHTML = '&#9654;';
-    if (poster) playBtn.addEventListener('click', () => { poster.hidden = true; });
     playerWrap.append(playBtn);
 
     card.append(playerWrap);
@@ -540,7 +506,7 @@ async function decorateBlock(block) {
   if (!isFeatured && !block.classList.contains('grid')) block.classList.add('grid');
 
   const cfg = parseConfig(block);
-  const items = parseItems(block, isFeatured);
+  const items = parseItems(block);
 
   block.textContent = '';
 

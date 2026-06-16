@@ -366,6 +366,14 @@
           "valueType": "string"
         },
         {
+        "component": "text",
+        "valueType": "string",
+        "name": "fragmentPath",
+        "value": "",
+        "label": "Fragment Path (overrides Description Text)",
+        "description": "Path to a fragment page with complex content (tabs, video, charts). If set, this is rendered instead of the Description Text field above."
+        },
+        {
           "component": "boolean",
           "valueType": "boolean",
           "name": "classes_defaultOpen",

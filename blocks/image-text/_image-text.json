@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "Image with Text",
+      "title": "Image Text",
       "id": "image-text",
       "plugins": {
         "xwalk": {
@@ -44,30 +44,17 @@
             {
               "name": "Stretched Link (entire card clickable)",
               "value": "image-text-stretched"
-            }
-          ]
-        },
-        {
-          "component": "select",
-          "name": "classes_imageSize",
-          "value": "",
-          "label": "Image Size",
-          "valueType": "string",
-          "options": [
-            {
-              "name": "Default (50/50)",
-              "value": ""
             },
             {
-              "name": "Large (60% image)",
+              "name": "Large image (60%)",
               "value": "image-text-image-large"
             },
             {
-              "name": "Medium (40% image)",
+              "name": "Medium image (40%)",
               "value": "image-text-image-medium"
             },
             {
-              "name": "Small (33% image)",
+              "name": "Small image (33%)",
               "value": "image-text-image-small"
             }
           ]

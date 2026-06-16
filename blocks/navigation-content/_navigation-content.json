@@ -10,8 +10,21 @@
             "template": {
               "name": "Navigation Content",
               "model": "navigation-content",
-
-
+              "content_searchIcon": ":icon-search:",
+              "megamenutitle": "",
+              "megamenudescription": "",
+              "megamenu_link": "",
+              "megamenu_linkText": "",
+              "megamenudashboardlinks": "",
+              "megamenucardtitle": "",
+              "megamenucardcontent": "",
+              "megamenucard_link": "",
+              "megamenucard_linkText": "",
+              "megamenudashboardcard": "",
+              "dashboardCardType": "light",
+              "content_eyebrowPosition": "top",
+              "content_floatingIsiExpandLabel": "See Full ISI",
+              "content_floatingIsiCollapseLabel": "Collapse ISI",
               "language": "lang:none",
               "blockId": "id:"
             }

@@ -36,6 +36,14 @@
 
 @font-face {
   font-family: 'Red Hat Display';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/red-hat-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
   font-weight: 700;
   font-style: normal;
   font-display: swap;

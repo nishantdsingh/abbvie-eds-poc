@@ -132,7 +132,30 @@ table td {
 }
 
 /* ---- Section Backgrounds ---- */
-.section.glacier-bg { background-color: var(--color-glacier); }
+.section.glacier-bg,
+.section.glacier {
+  background-color: var(--color-glacier);
+}
+
+.section.glacier {
+  position: relative;
+  padding: 48px 0;
+}
+
+.section.glacier::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--background-color, #fff), var(--color-glacier, #f5f5f5));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section.glacier > * {
+  position: relative;
+  z-index: 1;
+}
+
 .section.dark-bg { background-color: var(--color-charcoal); color: var(--color-text-on-dark); }
 .section.dark-bg h1, .section.dark-bg h2, .section.dark-bg h3 { color: var(--color-text-on-dark); }
 

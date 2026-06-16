@@ -16,6 +16,11 @@
       }
     }
   ],
-  "models": [],
-   "filters": []
+  "models": [
+    {
+      "id": "stock-ticker",
+      "fields": []
+    }
+  ],
+  "filters": []
 }

@@ -5,7 +5,12 @@
   },
   "overrides": [
     {
-      "files": ["blocks/cards-grid/*/cards-grid.css", "blocks/cards-grid/*/_cards-grid.css"],
+      "files": [
+        "blocks/cards-grid/*/cards-grid.css",
+        "blocks/cards-grid/*/_cards-grid.css",
+        "blocks/efficacy-tabs/*/efficacy-tabs.css",
+        "blocks/efficacy-tabs/*/_efficacy-tabs.css"
+      ],
       "rules": {
         "selector-class-pattern": null,
         "no-descending-specificity": null

@@ -11,7 +11,9 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/text/v1/text",
-                "template": {}
+                "template": {
+                  "model": "text"
+                }
               }
             }
           }
@@ -37,7 +39,9 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/image/v1/image",
-                "template": {}
+                "template": {
+                  "model": "image"
+                }
               }
             }
           }
@@ -230,37 +234,18 @@
                   "name": "Brand Explorer",
                   "model": "brand-explorer",
                   "filter": "brand-explorer",
+                  "anchorId": "",
+                  "barLabel": "",
+                  "projectNumber": "",
+                  "navLink1Label": "",
+                  "navLink1Url": "",
+                  "navLink2Label": "",
+                  "navLink2Url": "",
+                  "navLink3Label": "",
+                  "navLink3Url": "",
                   "blockId": "id:",
-                  "barLabel": "Explore AbbVie",
-                  "brand_explorer_rinvoq": {
-                    "name": "Brand Explorer Item",
-                    "model": "brand-explorer-item",
-                    "brandName": "RINVOQ",
-                    "brandUrl": "https://www.rinvoqhcp.com/",
-                    "therapeuticArea": "Immunology",
-                    "description": "Treatment for rheumatoid arthritis, psoriatic arthritis, and more.",
-                    "safetyText": "<b>Please see Important Safety Information, including BOXED WARNING on Serious Infections, Mortality, Malignancies, Major Adverse Cardiovascular Events, and Thrombosis.</b>",
-                    "indications": "Rheumatoid Arthritis|https://www.rinvoqhcp.com/rheumatoid-arthritis|moderate\nPsoriatic Arthritis|https://www.rinvoqhcp.com/psoriatic-arthritis|active\nAnkylosing Spondylitis|https://www.rinvoqhcp.com/axspa|active\nNon-radiographic Axial Spondyloarthritis|https://www.rinvoqhcp.com/axspa|active\nGiant Cell Arteritis|https://www.rinvoqhcp.com/giant-cell-arteritis|\nAtopic Dermatitis|https://www.rinvoqhcp.com/atopic-dermatitis|refractory\nUlcerative Colitis|https://www.rinvoqhcp.com/ulcerative-colitis|moderate\nCrohn's Disease|https://www.rinvoqhcp.com/crohns-disease|moderate"
-                  },
-                  "brand_explorer_skyrizi": {
-                    "name": "Brand Explorer Item",
-                    "model": "brand-explorer-item",
-                    "brandName": "SKYRIZI",
-                    "brandUrl": "https://www.skyrizihcp.com/",
-                    "therapeuticArea": "Immunology",
-                    "description": "Treatment for plaque psoriasis, psoriatic arthritis, and more.",
-                    "indications": "Plaque Psoriasis|https://www.skyrizihcp.com/dermatology|moderate\nPsoriatic Arthritis|https://www.skyrizihcp.com/rheumatology|active\nUlcerative Colitis|https://www.skyrizihcp.com/gastroenterology/ulcerative-colitis|moderate\nCrohn's Disease|https://www.skyrizihcp.com/gastroenterology/crohns-disease|moderate"
-                  },
-                  "brand_explorer_humira": {
-                    "name": "Brand Explorer Item",
-                    "model": "brand-explorer-item",
-                    "brandName": "HUMIRA",
-                    "brandUrl": "https://www.humirapro.com/",
-                    "therapeuticArea": "Immunology",
-                    "description": "Treatment for multiple immunological conditions.",
-                    "safetyText": "<b>Please see Important Safety Information, including BOXED WARNING on Serious Infections and Malignancy.</b>",
-                    "indications": "Hidradenitis Suppurativa|https://www.humirapro.com/hidradenitis-suppurativa|moderate\nJuvenile Idiopathic Arthritis|https://www.humirapro.com/jia|moderate\nPediatric Crohn's Disease|https://www.humirapro.com/pediatric-crohns-disease|moderate\nPediatric Ulcerative Colitis|https://www.humirapro.com/pediatric-ulcerative-colitis|moderate\nPediatric Uveitis|https://www.humirapro.com/uveitis-pediatric|noninfectious\nUveitis (Adult)|https://www.humirapro.com/uveitis|noninfectious\nOther Indications|https://www.humirapro.com/|"
-                  }
+                  "classes_commonCustomClass": "",
+                  "language": "lang:none"
                 }
               }
             }
@@ -276,8 +261,14 @@
                 "template": {
                   "name": "Brand Explorer Item",
                   "model": "brand-explorer-item",
-                  "brandName": "Brand Name",
-                  "brandUrl": "https://example.com"
+                  "logo": "",
+                  "logoAccessibleName": "",
+                  "brandName": "",
+                  "therapeuticArea": "",
+                  "description": "",
+                  "brandUrl": "",
+                  "safetyContent": "",
+                  "indications": ""
                 }
               }
             }
@@ -510,6 +501,7 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Carousel",
+                  "model": "carousel",
                   "filter": "carousel"
                 }
               }
@@ -736,54 +728,6 @@
           }
         },
         {
-          "title": "Flexbox",
-          "id": "flexbox",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Flexbox",
-                  "model": "flexbox",
-                  "filter": "flexbox"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Flexbox Item",
-          "id": "flexbox-item",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Flexbox Item",
-                  "model": "flexbox-item",
-                  "content": "<p>Item content</p>",
-                  "itemClasses": ""
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Parallax",
-          "id": "parallax",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Parallax",
-                  "model": "parallax"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Doctor Locator",
           "id": "doctor-locator",
           "plugins": {
@@ -825,6 +769,37 @@
                 "template": {
                   "name": "EDS Form",
                   "model": "eds-form"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Efficacy Tabs",
+          "id": "efficacy-tabs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Efficacy Tabs",
+                  "model": "efficacy-tabs",
+                  "filter": "efficacy-tabs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Efficacy Tabs Row",
+          "id": "efficacy-tabs-row",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Efficacy Tabs Row",
+                  "model": "efficacy-tabs-row"
                 }
               }
             }
@@ -889,6 +864,39 @@
                   "model": "find-provider",
                   "blockId": "id:",
                   "classes": ""
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Flexbox",
+          "id": "flexbox",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Flexbox",
+                  "model": "flexbox",
+                  "filter": "flexbox"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Flexbox Item",
+          "id": "flexbox-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Flexbox Item",
+                  "model": "flexbox-item",
+                  "content": "<p>Item content</p>",
+                  "itemClasses": ""
                 }
               }
             }
@@ -1010,7 +1018,7 @@
           }
         },
         {
-          "title": "Image with Text",
+          "title": "Image Text",
           "id": "image-text",
           "plugins": {
             "xwalk": {
@@ -1683,7 +1691,7 @@
                 "template": {
                   "name": "Tab Item",
                   "model": "tab-item",
-                  "tabTitle": ""
+                  "tabName": ""
                 }
               }
             }
@@ -1788,7 +1796,7 @@
                 "template": {
                   "name": "Text Container Text",
                   "model": "text-container-text",
-                  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur volutpat consequat dui, sit amet ..."
+                  "text": ""
                 }
               }
             }

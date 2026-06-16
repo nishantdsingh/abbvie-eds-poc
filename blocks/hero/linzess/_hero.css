@@ -261,8 +261,7 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
 
 .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) h1 {
   font-size: var(--font-size-40);
-  line-height: 0.9;
-  letter-spacing: 0;
+  line-height: 0.95;
   max-width: none;
   width: 100%;
 }
@@ -419,15 +418,8 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
     padding: calc(var(--nav-height) + 6.4rem) 7rem 7rem;
   }
 
-  /* Editorial hero keeps a tall band on tablet (matches live ~768px) instead
-     of collapsing to the image's natural aspect ratio. */
   .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
-    min-height: var(--hero-behind-nav-min-height);
-  }
-
-  /* Image fills the tall band as a background (text overlays it). */
-  .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) > :where(div):first-child {
-    position: absolute;
+    min-height: auto;
   }
 
   .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
@@ -462,11 +454,8 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
     padding: calc(var(--nav-height) + 8.4rem) 5.5rem 7.2rem;
   }
 
-  /* Editorial hero: both image and text containers are absolutely
-     positioned at desktop, so the band needs an explicit min-height
-     (auto would collapse it to 0). */
   .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) {
-    min-height: var(--hero-behind-nav-min-height-desktop);
+    min-height: auto;
   }
 
   .hero:is(.linzess-editorial-hero, .linzess-behind-nav-linzess-editorial-hero) .hero-text-container {
@@ -526,61 +515,5 @@ body:has(.hero:is(.linzess-behind-nav, .linzess-behind-nav-linzess-editorial-her
 
   .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero, .linzess-behind-nav-linzess-editorial-hero)::before {
     display: block;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════════
-   HOMEPAGE HERO FIX — match live linzess.com computed styles
-   Desktop H1: 56px / line-height 50.4px (live source getComputedStyle)
-   Desktop eyebrow: 16px / weight 400 / no uppercase (live source)
-   Mobile H1: 40px / 36px (live source)
-   Mobile eyebrow: 14px / weight 400 / no uppercase (live source)
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* Desktop (>= 1024px): H1 = 56px to match live; widen text container to ~960px */
-@media (width >= 1024px) {
-  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
-    font-size: 56px;
-    line-height: 50.4px;
-  }
-
-  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .cmp-container-x-large {
-    max-width: none;
-    width: 100%;
-  }
-}
-
-/* All viewports: eyebrow fix — sentence case, 16px, normal weight */
-.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow {
-  font-size: 16px;
-  font-weight: 400;
-  text-transform: none;
-}
-
-/* stylelint-disable no-descending-specificity */
-
-/* Override the generic p rule that forces 12px/800/uppercase on eyebrow divs */
-.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
-  font-size: 16px;
-  font-weight: 400;
-  text-transform: none;
-}
-
-/* Hide divider after eyebrow on CTA hero (live homepage has no divider on eyebrow) */
-.hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p::after {
-  display: none;
-}
-
-@media (width < 744px) {
-  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) h1 {
-    font-size: 40px;
-    line-height: 36px;
-  }
-
-  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) .hero-eyebrow,
-  .hero:is(.linzess-cta-hero, .linzess-behind-nav-linzess-cta-hero) > div:not(.hero-text-container, :first-child):has(> div > p) p {
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: none;
   }
 }

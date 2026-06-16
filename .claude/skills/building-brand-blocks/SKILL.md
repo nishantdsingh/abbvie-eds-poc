@@ -120,6 +120,60 @@ Styles layer in this order (each level can override the previous):
 
 The `_block.css` partials always start with `@import '../{block-name}.css';` (or the appropriate relative path) so the cascade is explicit.
 
+## Procedural rule: read-existing-CSS-first (AEMCODER-021)
+
+**Before adding ANY `::before` / `::after` / icon / decorative rule in
+`styles/{brand}/_styles.css` for a block, you MUST first `Read` BOTH:**
+
+1. `blocks/{block-name}/{block-name}.css` (base)
+2. `blocks/{block-name}/{brand}/_{block-name}.css` (brand override, if exists)
+
+Inventory ALL existing pseudo-elements and decorative rules for that block.
+THEN decide whether to:
+
+- **Override existing rule** via CSS variables (preferred — if the brand
+  block exposes them, e.g. `--cards-grid-arrow-color`, `--cta-icon-content`).
+- **Extend existing selector** in the same partial (rarely — only if the
+  page-level layer truly needs to differ for one page only).
+- **Add a new pseudo-element** — ONLY if no existing pseudo-element does
+  this job and the design genuinely requires a new layer.
+
+### Forbidden patterns (lead to double-decoration bugs)
+
+- Adding `::before` in page CSS for an icon when brand block already has
+  `::after` doing the same (AEMCODER-021: formulary submit-button had
+  two search icons because of this).
+- Adding `::after` in page CSS for a chevron when brand block already has
+  a chevron via `background-image` on the element itself.
+- Adding plum-circle decoration in page CSS when brand block already has
+  it as `::before` (AEMCODER-021: filter dropdown had a duplicated
+  plum circle).
+
+### Detection checklist before writing the rule
+
+```
+Block being decorated:    {block-name}
+Brand:                     {brand-key}
+Files I have READ first:
+  - blocks/{block-name}/{block-name}.css       ✓
+  - blocks/{block-name}/{brand}/_{block-name}.css   ✓
+Existing pseudo-elements on this block:
+  - .{block-name}::before                       used for: ___
+  - .{block-name}::after                        used for: ___
+  - .{block-name} .{child}::before              used for: ___
+  - .{block-name} .{child}::after               used for: ___
+CSS variables exposed (preferred override mechanism):
+  - --{block-name}-{property}                   default: ___
+Decision:
+  - [ ] Override existing rule via variable
+  - [ ] Extend existing selector
+  - [ ] Add new pseudo-element (only if first two don't apply)
+```
+
+This checklist is part of the pre-edit gate for any
+`styles/{brand}/_styles.css` work touching a block that already has
+brand-block CSS.
+
 ## Process Overview
 
 1. Verify Prerequisites (CDD completed)

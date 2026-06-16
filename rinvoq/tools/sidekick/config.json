@@ -1,0 +1,13 @@
+{
+  "project": "rinvoq",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Sidekick Library",
+      "environments": [
+        "edit"
+      ],
+      "url": "/rinvoq/tools/sidekick/library.html"
+    }
+  ]
+}

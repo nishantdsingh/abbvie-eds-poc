@@ -59,7 +59,7 @@
   align-items: center;
   width: 100%;
   height: var(--be-bar-height);
-  padding: 0 11rem;
+  padding: 0 max(var(--spacing-15, 1.5rem), calc((100% - 1220px) / 2));
   color: var(--color-white, #fff);
   background: var(--be-color-bar-bg, #25282a);
   box-sizing: border-box;
@@ -296,6 +296,7 @@
   color: var(--be-color-navy);
   margin: var(--spacing-10, 1rem) 0 0;
   max-width: 90%;
+  min-height: var(--spacing-40, 4rem);
 }
 
 .brand-explorer-subtitle p {
