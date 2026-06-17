@@ -33,6 +33,14 @@
   font-family: var(--font-family-brand);
 }
 
+.hero.no-padding h1 {
+  max-width: 400px;
+}
+
+.hero.no-padding h1 strong {
+  display: block;
+}
+
 .hero h2,
 .hero h3 {
   font-family: var(--font-family-brand);
@@ -86,6 +94,7 @@
 .hero.landing h2 em {
   color: var(--color-brand-accent);
   font-style: normal;
+  display: block;
 }
 
 .hero .break {
@@ -118,22 +127,18 @@
 
 /* Landing gradient: dark teal left-to-right */
 .hero.landing::after {
-  background: linear-gradient(
-    to right,
-    var(--color-background-container) 0%,
-    color-mix(in srgb, var(--color-brand-primary-dark) 30%, transparent) 100%
-  );
+  background: linear-gradient(to right,
+      var(--color-background-container) 0%,
+      color-mix(in srgb, var(--color-brand-primary-dark) 30%, transparent) 100%);
 }
 
 /* Full/video overlay: teal gradient */
 .hero.full::after,
 .hero.video::after {
-  background: linear-gradient(
-    to right,
-    var(--color-background-container) 0%,
-    color-mix(in srgb, var(--color-brand-primary-dark) 25%, transparent) 60%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      var(--color-background-container) 0%,
+      color-mix(in srgb, var(--color-brand-primary-dark) 25%, transparent) 60%,
+      transparent 100%);
 }
 
 /* Solid background: light gray */
@@ -173,7 +178,7 @@
   align-items: stretch;
 }
 
-.hero.full > div:first-child {
+.hero.full>div:first-child {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -183,17 +188,13 @@
   z-index: 0;
 }
 
-.hero.full > div:first-child picture,
-.hero.full > div:first-child img {
+.hero.full>div:first-child picture,
+.hero.full>div:first-child img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero.full::after {
-  background: var(--hero-overlay-gradient-full);
 }
 
 .hero.full> :where(div):has(> div:empty) {
@@ -218,10 +219,11 @@
 .hero.full h1,
 .hero.no-padding h1 {
   margin: 0;
+  padding-top: 30px;
   color: var(--color-text-on-dark);
   font-size: var(--font-size-40);
   font-weight: var(--font-weight-700);
-  line-height: var(--line-height-44);
+  line-height: normal;
   letter-spacing: -0.03em;
 }
 
@@ -312,7 +314,7 @@
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.hero > div:first-child {
+.hero>div:first-child {
   min-height: unset;
 }
 
@@ -383,12 +385,19 @@
 
   .hero.full h1 {
     font-size: var(--font-size-h1);
-    line-height: var(--line-height-h1);
+    line-height: normal;
   }
 
   .hero.no-padding h1 {
     font-size: var(--font-size-33);
     line-height: 1.09;
+    padding-top: 0;
+  }
+
+  /* AML landing hero (eyebrow + em accent): smaller H1 to match live */
+  .hero.full h1:has(em) {
+    font-size: 25px;
+    line-height: 1;
   }
 
   /* stylelint-disable-next-line no-descending-specificity */
@@ -404,17 +413,13 @@
    These rules take cascade priority over all base rules above.
    ============================================================ */
 
-/* Full hero: constrain content stack to 1180px max width, vertically center */
+/* Full hero: constrain content stack, content-driven height */
 .hero.full>.hero-content-stack {
   max-width: var(--cdp-max-width);
   width: 100%;
-  padding: var(--spacing-20) var(--spacing-20) var(--spacing-30);
+  padding: 20px 0;
   margin: 0 auto;
   z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: var(--hero-full-min-height);
 }
 
 /* No-padding hero: remove fixed min-height */
@@ -449,7 +454,7 @@
 }
 
 /* Full hero: bottom footnote/legal row — centered with right-aligned text */
-  .hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) {
+.hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) {
   bottom: var(--hero-caption-bottom);
   width: 100%;
   display: flex;
@@ -464,7 +469,7 @@
   text-align: right;
 }
 
-.hero.full > div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) p {
+.hero.full>div:not(:first-child, .hero-text-container, .hero-indication, .hero-content-stack):has(> div > p) p {
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-brand-heading);
   max-width: var(--cdp-max-width);
@@ -532,4 +537,190 @@
 
 .hero.full :where(a).button:hover {
   background: var(--color-background-light);
+}
+
+/* Mobile/Tablet: hero padding and CTA stacking */
+@media (width < 1024px) {
+  .hero.full>.hero-content-stack {
+    padding: 20px;
+  }
+
+  .hero.full .button-container {
+    display: block;
+    margin: 0 0 var(--spacing-08);
+  }
+
+  .hero.full :where(a).button {
+    display: block;
+    width: 100%;
+  }
+
+  .hero.full .cmp-container-x-large {
+    max-width: 100%;
+  }
+}
+
+/* stylelint-disable no-duplicate-selectors, no-descending-specificity -- intentional late cascade overrides */
+.hero.full::after,
+.hero.video::after {
+  background: transparent;
+}
+
+.hero.full .hero-text-container {
+  min-height: auto;
+}
+
+.hero.full :where(a).button {
+  width: 100%;
+  text-align: center;
+}
+
+.hero.full p:last-child,
+.hero.full p:nth-last-child(2),
+.hero.full p:nth-last-child(3),
+.hero.full p:nth-last-child(4) {
+  width: calc((100% - 30px) / 3);
+  max-width: none;
+}
+
+/* stylelint-enable no-duplicate-selectors, no-descending-specificity */
+
+@media (width < 800px) {
+
+  .hero.full p:last-child,
+  .hero.full p:nth-last-child(2),
+  .hero.full p:nth-last-child(3),
+  .hero.full p:nth-last-child(4) {
+    width: 100%;
+  }
+}
+
+@media (width >=745px) {
+  .hero.full .hero-text-container {
+    margin-top: 20px;
+  }
+
+  .hero.full {
+    min-height: auto;
+  }
+}
+
+@media (width < 744px) {
+  .hero.full {
+    min-height: auto;
+  }
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors -- intentional override of arrow color */
+.hero.full :where(a).button::after {
+  border-right-color: black;
+  border-bottom-color: black;
+}
+
+/* ============================================================
+   VENCLEXTA — Homepage hero (CTA pills) mobile fidelity
+   Scoped to :has(.button-container) so only the homepage hero is
+   affected — AML landing and other .hero.full pages are untouched.
+   ============================================================ */
+@media (width < 744px) {
+  .hero.full:has(.button-container) h1 {
+    font-size: var(--font-size-40);
+    line-height: normal;
+  }
+
+  .hero.full:has(.button-container) .button-container {
+    margin: var(--spacing-10) 0;
+  }
+
+  .hero.full:has(.button-container) :where(a).button {
+    font-weight: var(--font-weight-700);
+    border-radius: 0 5px 5px 0;
+  }
+
+  .hero.full:has(.button-container) p:last-child {
+    font-size: var(--font-size-16);
+  }
+}
+
+@media (width < 974px) {
+  .hero.full:has(.button-container) .button-container {
+    margin: 48px 0 25px;
+  }
+
+  .hero.full:has(.button-container) .button-container a {
+    font-family: 'Red Hat Display';
+    font-weight: 700;
+    color: black;
+    letter-spacing: 0px;
+  }
+}
+
+.hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:last-child,
+.hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(2),
+.hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(3),
+.hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(4) {
+  width: 57%;
+}
+
+.hero.full h1+h1 {
+  padding-top: 0;
+}
+
+#proven-to-help-some-adults-with {
+  padding-top: 0;
+}
+
+.section.teal-bg .columns-wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.hero.no-padding h1 {
+  max-width: 600px;
+}
+
+/* .hero.full.block:has(#proven-to-help-some-adults-with)  */
+
+@media (width < 780px) {
+  .hero.full.block:has(#proven-to-help-some-adults-with) .hero-text-container {
+    padding: 0;
+  }
+
+  .hero.full.block:has(#proven-to-help-some-adults-with) h1 {
+    font-size: 25px;
+    line-height: 1;
+  }
+
+  .hero.full.block:has(#proven-to-help-some-adults-with) .hero-image-caption {
+    font-size: 14px;
+  }
+
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(2),
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(2) strong {
+    font-size: 18px;
+  }
+
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:last-child,
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(2),
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(3),
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(4) {
+    width: 66%;
+  }
+}
+
+@media (width < 700px) {
+  .hero.full:has(#proven-to-help-some-adults-with) img {
+    height: 457px;
+    object-position: 75% 10%;
+  }
+
+  .hero.full:has(#proven-to-help-some-adults-with).block {
+    background: #7e7d7d;
+  }
+
+  .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:last-child, .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(2), .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(3), .hero.full:has(#proven-to-help-some-adults-with) .hero-text-container p:nth-last-child(4) {
+    width: 95%;
+  }
 }

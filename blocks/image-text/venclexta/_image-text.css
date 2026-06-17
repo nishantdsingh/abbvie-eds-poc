@@ -1,0 +1,49 @@
+@import '../image-text.css';
+@import '../../../styles/venclexta/tokens.css';
+
+/* Venclexta — Image Text overrides */
+.image-text,
+.image-with-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1180px;
+  margin: 40px auto 0;
+  padding: 0 20px;
+}
+
+.image-text .image-text-image-col,
+.image-with-text .image-text-image-col {
+  flex: 0 0 auto;
+  width: 50px;
+}
+
+.image-text .image-text-image-col img,
+.image-with-text .image-text-image-col img {
+  width: 50px;
+  height: auto;
+}
+
+.image-text .image-text-content-col,
+.image-with-text .image-text-content-col {
+  flex: 1;
+}
+
+.image-text .image-text-content-col h2,
+.image-with-text .image-text-content-col h2 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #005272;
+  margin: 0 0 15px;
+  line-height: 28px;
+}
+
+.image-text .image-text-content-col p,
+.image-with-text .image-text-content-col p {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #404040;
+  margin: 0 0 10px;
+}

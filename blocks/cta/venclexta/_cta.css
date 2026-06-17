@@ -1,25 +1,64 @@
 @import '../cta.css';
 @import '../../../styles/venclexta/tokens.css';
 
-/* Venclexta — CTA brand overrides
-   Primary: Dark teal (#005570), white text, 8px radius
-   Secondary: Gold (#ffce00), dark gray text, 10px radius
-   Tertiary: Transparent, dark gray text, gray border, 10px radius
-   Plain: Teal (#005272) text
-   Font: Red Hat Display */
-
+/* Venclexta — CTA brand overrides */
 .cta.abbv-button-primary .abbv-cta,
 .cta.abbv-button-secondary .abbv-cta,
 .cta.abbv-button-tertiary .abbv-cta {
-  font-family: var(--font-family-brand);
-  font-weight: var(--font-weight-button);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700;
 }
 
 .cta.abbv-button-primary .abbv-cta {
-  font-weight: var(--button-primary-font-weight);
+  font-weight: 700;
 }
 
 .cta.abbv-button-plain .abbv-cta {
-  font-family: var(--font-family-brand);
-  font-weight: var(--button-plain-weight);
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 500;
+}
+
+/* Tertiary: bordered button with right arrow */
+.cta.abbv-button-tertiary .abbv-cta {
+  position: relative;
+  font-size: 14.4px;
+  color: #005272;
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 16px 70px 16px 24px;
+}
+
+.cta.abbv-button-tertiary .abbv-cta::after {
+  content: '';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #005272;
+  border-top: 2px solid #005272;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Secondary: gold bg, arrow */
+.cta.abbv-button-secondary .abbv-cta {
+  position: relative;
+  background-color: #ffce00;
+  color: #404040;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 50px 16px 24px;
+  font-size: 16px;
+}
+
+.cta.abbv-button-secondary .abbv-cta::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #404040;
+  border-top: 2px solid #404040;
+  transform: translateY(-50%) rotate(45deg);
 }

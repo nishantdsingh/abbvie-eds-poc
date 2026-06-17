@@ -1,24 +1,255 @@
-@import '../../../styles/venclexta/tokens.css';
+/* stylelint-disable no-descending-specificity -- Intentional: base .abbv-cta rules precede
+   variant-specific selectors (.abbv-button-primary, etc.), then shared icon/toggle rules follow.
+   This structure is clearer for brand overrides despite lower-specificity selectors appearing later. */
 
-/* Venclexta — CTA brand overrides
-   Primary: Dark teal (#005570), white text, 8px radius
-   Secondary: Gold (#ffce00), dark gray text, 10px radius
-   Tertiary: Transparent, dark gray text, gray border, 10px radius
-   Plain: Teal (#005272) text
-   Font: Red Hat Display */
+/* ============================================================
+   CTA Block — Base Styles (Token-Driven)
+   All values reference tokens declared in brand token files.
+   No fallback values — each brand must define its own tokens.
+   ============================================================ */
 
-.cta.abbv-button-primary .abbv-cta,
-.cta.abbv-button-secondary .abbv-cta,
-.cta.abbv-button-tertiary .abbv-cta {
-  font-family: var(--font-family-brand);
-  font-weight: var(--font-weight-button);
+.cta {
+  display: block;
 }
+
+/* -------------------------------------------------------
+   Shared button base (a + button)
+   ------------------------------------------------------- */
+
+.cta .cta-wrapper {
+  display: contents;
+}
+
+.cta .abbv-cta {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--heading-font-family-bold);
+  font-size: var(--button-primary-font-size);
+  font-weight: var(--button-primary-font-weight);
+  line-height: 1.25;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-button-primary);
+  padding: var(--button-primary-padding);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.cta .abbv-cta:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+.cta button.abbv-cta {
+  margin: 0;
+  border-radius: var(--border-radius-button-primary);
+}
+
+/* -------------------------------------------------------
+   Primary (default)
+   ------------------------------------------------------- */
 
 .cta.abbv-button-primary .abbv-cta {
-  font-weight: var(--button-primary-font-weight);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border-color: var(--button-primary-border);
 }
 
-.cta.abbv-button-plain .abbv-cta {
-  font-family: var(--font-family-brand);
-  font-weight: var(--button-plain-weight);
+.cta.abbv-button-primary .abbv-cta:hover {
+  background-color: var(--button-primary-hover-bg);
+  color: var(--button-primary-hover-color);
+  border-color: var(--button-primary-hover-bg);
 }
+
+/* -------------------------------------------------------
+   Secondary
+   ------------------------------------------------------- */
+
+.cta.abbv-button-secondary .abbv-cta {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-color);
+  border-color: var(--button-secondary-border);
+  border-radius: var(--border-radius-button-secondary);
+  padding: var(--button-secondary-padding);
+}
+
+.cta.abbv-button-secondary .abbv-cta:hover {
+  background-color: var(--button-secondary-hover-bg);
+  color: var(--button-secondary-hover-color);
+  border-color: var(--button-secondary-hover-bg);
+}
+
+/* -------------------------------------------------------
+   Tertiary
+   ------------------------------------------------------- */
+
+.cta.abbv-button-tertiary .abbv-cta {
+  background-color: var(--button-tertiary-bg);
+  color: var(--button-tertiary-color);
+  border-color: var(--button-tertiary-border);
+  border-radius: var(--border-radius-button-tertiary);
+  padding: var(--button-tertiary-padding);
+  font-size: var(--button-tertiary-font-size);
+}
+
+.cta.abbv-button-tertiary .abbv-cta:hover {
+  background-color: var(--button-tertiary-hover-bg);
+  color: var(--button-tertiary-hover-color);
+  border-color: var(--button-tertiary-hover-bg);
+}
+
+/* -------------------------------------------------------
+   Plain (text-link style)
+   ------------------------------------------------------- */
+
+.cta.abbv-button-plain .abbv-cta {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  color: var(--button-plain-color);
+  font-weight: var(--button-plain-weight);
+  text-decoration: none;
+}
+
+.cta.abbv-button-plain .abbv-cta:hover {
+  color: var(--button-plain-hover-color);
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------
+   Icon positioning — padding + absolute
+   ------------------------------------------------------- */
+
+.cta .cta-icon {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cta .cta-icon-font {
+  font-family: var(--icon-font-family);
+  font-size: 1.3rem;
+}
+
+.cta .cta-icon-image img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.cta.i-b .abbv-cta {
+  padding-left: 42px;
+}
+
+.cta.i-b .cta-icon {
+  left: 10px;
+}
+
+.cta.i-a .abbv-cta {
+  padding-right: 42px;
+}
+
+.cta.i-a .cta-icon {
+  right: 10px;
+}
+
+/* -------------------------------------------------------
+   Toggle — shared base
+   ------------------------------------------------------- */
+
+.cta .cta-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-button);
+}
+
+.cta .cta-toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cta .cta-toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  background-color: var(--toggle-bg-off);
+  transition: background-color 0.2s ease;
+}
+
+.cta .cta-toggle-slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--toggle-thumb-color);
+  transition: transform 0.2s ease;
+}
+
+.cta .cta-toggle-input:checked + .cta-toggle-slider {
+  background-color: var(--toggle-bg-on);
+}
+
+.cta .cta-toggle-input:checked + .cta-toggle-slider::after {
+  transform: translateX(24px);
+}
+
+.cta .cta-toggle-input:focus-visible + .cta-toggle-slider {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Round toggle */
+
+.cta.abbv-switch-round .cta-toggle-slider {
+  border-radius: 24px;
+}
+
+.cta.abbv-switch-round .cta-toggle-slider::after {
+  border-radius: 50%;
+}
+
+/* Square toggle */
+
+.cta.abbv-switch-square .cta-toggle-slider {
+  border-radius: 4px;
+}
+
+.cta.abbv-switch-square .cta-toggle-slider::after {
+  border-radius: 2px;
+}
+
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/* Media Query Breakpoints (min-width, mobile-first)
+   Mobile: 0 – 743px | Tablet: 744px+ | Desktop: 1024px+ | Wide: 1440px+ */
+
+@custom-media --bp-tablet (min-width: 744px);
+
+@custom-media --bp-desktop (min-width: 1024px);
+
+@custom-media --bp-wide (min-width: 1440px);
+
