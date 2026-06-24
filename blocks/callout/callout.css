@@ -1,0 +1,68 @@
+.callout {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  padding: 3.2rem 4rem;
+  background: var(--callout-bg, var(--color-background-light, #f4f6fb));
+  border-radius: 1.6rem;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 6%);
+  margin: 3.2rem auto;
+  max-width: 80rem;
+}
+
+.callout .callout-icon {
+  flex-shrink: 0;
+  width: 6.4rem;
+  height: 6.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.callout .callout-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.callout .callout-content {
+  flex: 1;
+}
+
+.callout .callout-content h2,
+.callout .callout-content h3 {
+  margin: 0 0 0.4rem;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  color: var(--callout-heading-color, var(--color-text-heading, #333));
+}
+
+.callout .callout-content p {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: var(--callout-text-color, var(--text-color, #555));
+}
+
+.callout.highlight {
+  background: var(--callout-highlight-bg, var(--color-brand-primary, #422e83));
+  color: var(--color-text-on-dark, #fff);
+}
+
+.callout.highlight .callout-content h2,
+.callout.highlight .callout-content h3 {
+  color: var(--color-text-on-dark, #fff);
+}
+
+.callout.highlight .callout-content p {
+  color: var(--color-text-on-dark, #fff);
+  opacity: 0.9;
+}
+
+@media (width < 744px) {
+  .callout {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.4rem 2rem;
+    margin: 2.4rem 1.6rem;
+  }
+}
