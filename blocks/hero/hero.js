@@ -92,7 +92,7 @@ function detectEyebrow(textCell) {
   }
 }
 
-function mergeMobileImage(imageCell, mobileImageRow) {
+function mergeMobileImage(imageCell, mobileImageRow, swapMinWidth = 744) {
   if (!imageCell) return;
   let desktopPicture = null;
   let mobilePicture = null;
@@ -112,7 +112,7 @@ function mergeMobileImage(imageCell, mobileImageRow) {
 
   const combined = document.createElement('picture');
   const source = document.createElement('source');
-  source.media = '(min-width: 744px)';
+  source.media = `(min-width: ${swapMinWidth}px)`;
   source.srcset = desktopImg.src;
   combined.appendChild(source);
   combined.appendChild(mobileImg.cloneNode(true));
@@ -330,7 +330,13 @@ export default async function decorate(block) {
 
   absorbBreadcrumb(textCell, section);
   detectEyebrow(textCell);
-  mergeMobileImage(imageCell, mobileImageRow);
+  // Linzess editorial-hero keeps the tall mobile image through tablet and only
+  // swaps to the wide desktop image at >=1024px (matching the live site). All
+  // other heroes/brands keep the default 744px swap.
+  const heroSwapMinWidth = block.classList.contains('linzess-behind-nav-linzess-editorial-hero')
+    ? 1024
+    : 744;
+  mergeMobileImage(imageCell, mobileImageRow, heroSwapMinWidth);
   promoteImageLink(imageCell);
   if (block.classList.contains('full')) {
     const indication = createIndication(indicationRow);

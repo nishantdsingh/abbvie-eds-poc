@@ -339,7 +339,102 @@ function buildLinzessIconImageCardColumn(wrapper, columnIndex) {
   return col;
 }
 
+function buildLinzessRecipeCardRow(wrapper) {
+  // grid-card cells: [link?], image, line1=title, line2=description, line3=CTA.
+  // Emits the live AbbVie image-text structure (mirrors linzess.com markup).
+  const directDivs = [...wrapper.children].filter((c) => c.tagName === 'DIV');
+  let pictureDiv;
+  let titleDiv;
+  let bodyDiv;
+  let ctaDiv;
+  if (directDivs.length >= 5) {
+    [, pictureDiv, titleDiv, bodyDiv, ctaDiv] = directDivs;
+  } else {
+    [pictureDiv, titleDiv, bodyDiv, ctaDiv] = directDivs;
+  }
+
+  const root = document.createElement('div');
+  root.className = 'abbv-image-text linzess-tips articleItem linzess-5holiday-text';
+
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'abbv-image-content-container i-b';
+  if (pictureDiv) {
+    const picture = pictureDiv.querySelector('picture');
+    const loneImg = pictureDiv.querySelector(':scope > img');
+    if (picture) imgContainer.append(picture);
+    else if (loneImg) imgContainer.append(loneImg);
+  }
+
+  const contentContainer = document.createElement('div');
+  contentContainer.className = 'abbv-image-text-content-container abbv-image-text-below abbv-image-text-desktop-out-mobile-out';
+  const content = document.createElement('div');
+  content.className = 'abbv-image-text-content';
+  const display = document.createElement('div');
+  display.className = 'abbv-image-text-display abbv-rich-text-common';
+
+  const titleP = titleDiv?.querySelector('p');
+  if (titleP) {
+    const h2 = document.createElement('h2');
+    h2.className = 'c-linz-dark-purple';
+    h2.textContent = titleP.textContent?.trim() || '';
+    display.append(h2);
+  }
+
+  if (bodyDiv) {
+    bodyDiv.querySelectorAll(':scope > p').forEach((srcP) => {
+      const bp = document.createElement('p');
+      [...srcP.cloneNode(true).childNodes].forEach((node) => bp.append(node));
+      fixLinzessEncodedBoldInParagraph(bp);
+      fixEncodedSupInParagraph(bp);
+      display.append(bp);
+    });
+  }
+
+  // Only emit a CTA when the cell actually carries one (a link or text).
+  // Some recipe-card uses (e.g. game-plan strategy rows) are title+body only.
+  const hasCta = ctaDiv
+    && (ctaDiv.querySelector('a[href]') || (ctaDiv.textContent || '').trim());
+  if (hasCta) {
+    const { href, label } = resolveLinzessArticleCta(ctaDiv);
+    const ctaP = document.createElement('p');
+    const a = document.createElement('a');
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    const b = document.createElement('b');
+    b.textContent = label === 'Read the article' ? 'Get the recipe' : label;
+    a.append(b);
+    ctaP.append(a);
+    display.append(ctaP);
+  }
+
+  content.append(display);
+  contentContainer.append(content);
+  root.append(imgContainer, contentContainer);
+
+  const itemParbase = document.createElement('div');
+  itemParbase.className = 'image-text parbase';
+  itemParbase.append(root);
+  return itemParbase;
+}
+
 export default function decorate(block) {
+  if (block.classList.contains('cards-grid-recipe-cards')) {
+    const wrappers = [...block.querySelectorAll(':scope > div')];
+    if (wrappers.length === 0) return false;
+    const container = document.createElement('div');
+    container.className = 'container parbase';
+    const module = document.createElement('div');
+    module.className = 'abbv-container module2';
+    wrappers.forEach((wrapper) => {
+      module.append(buildLinzessRecipeCardRow(wrapper));
+      wrapper.remove();
+    });
+    container.append(module);
+    block.append(container);
+    return true;
+  }
+
   if (block.classList.contains('cards-grid-stat-card')) {
     const wrappers = [...block.querySelectorAll(':scope > div')];
     if (wrappers.length === 0) return false;
